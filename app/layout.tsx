@@ -3,7 +3,7 @@ import { Inter, Playfair_Display } from "next/font/google"
 import "./globals.css"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
-import { CookieBanner } from "@/components/cookie-banner"
+import { CookieConsent } from "@/components/CookieConsent"
 import { ScrollToTop } from "@/components/scroll-to-top"
 import { WhatsAppButton } from "@/components/whatsapp-button"
 import { PreloadResources } from "@/components/performance/preload-resources"
@@ -124,7 +124,7 @@ export default function RootLayout({
         <Header />
         <main className="min-h-screen">{children}</main>
         <Footer />
-        <CookieBanner />
+        <CookieConsent />
         <ScrollToTop />
         <WhatsAppButton />
       </body>
