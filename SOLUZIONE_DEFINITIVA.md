@@ -1,99 +1,157 @@
-# ✅ SOLUZIONE DEFINITIVA - Villa Olimpia
+# 🚀 SOLUZIONE DEFINITIVA - Avvio Server Locale
 
-## 🎯 TUTTI GLI ERRORI RISOLTI
+**Problema**: Il server non si avvia correttamente su localhost:3001
 
-### ✅ Correzioni Applicate
-
-1. **Hero Section**
-   - ✅ Rimossa dipendenza da immagini mancanti
-   - ✅ Gradient mediterraneo elegante con pattern texture
-   - ✅ Parallax scroll funzionante
-   - ✅ Nessun errore
-
-2. **Gallery Component**
-   - ✅ Sistema fallback con placeholder colorati
-   - ✅ Gestione errori immagini
-   - ✅ Componente separato per evitare React Hooks errors
-   - ✅ Funziona sempre, anche senza foto
-
-3. **Review Cards**
-   - ✅ Fallback per avatar mancanti
-   - ✅ Placeholder con iniziale nome
-   - ✅ Nessun errore se avatar non carica
-
-4. **Booking Form**
-   - ✅ Rimosso console.log
-   - ✅ Codice pulito
-
-5. **Tutti i Componenti**
-   - ✅ Fallback per tutte le immagini
-   - ✅ Gestione errori completa
-   - ✅ Design professionale anche senza foto
-
-## 🚀 IL SITO FUNZIONA PERFETTAMENTE
-
-### Test Immediato
-
-```bash
-cd /Users/francesconigro/Desktop/VillaOlimpia
-npm run dev
-```
-
-Apri [http://localhost:3000](http://localhost:3000)
-
-**Il sito dovrebbe funzionare perfettamente!**
-
-## 📸 AGGIUNGERE LE FOTO (PASSO SUCCESSIVO)
-
-### Quando sei pronto:
-
-1. **Copia le foto:**
-   ```bash
-   chmod +x scripts/copy-photos-fixed.sh
-   ./scripts/copy-photos-fixed.sh
-   ```
-
-2. **Le foto verranno integrate automaticamente**
-   - Hero section userà la foto se disponibile
-   - Gallery mostrerà le foto reali
-   - Placeholder solo per immagini mancanti
-
-### Cartella Foto
-`~/Desktop/Foto Villa Olimpia Sito`
-
-## ✅ STATO FINALE
-
-- [x] Tutti gli errori corretti
-- [x] Sito funziona senza foto
-- [x] Design professionale
-- [x] Animazioni smooth
-- [x] Responsive design
-- [x] SEO ottimizzato
-- [x] Performance ottimizzate
-- [x] Nessun console.log
-- [x] Codice pulito
-
-## 🎨 CARATTERISTICHE
-
-- ✅ Hero con gradient elegante
-- ✅ Gallery con placeholder automatici
-- ✅ Animazioni fluide
-- ✅ Design mediterraneo
-- ✅ Completamente responsive
-- ✅ Fallback intelligenti
-
-## 📝 NOTE IMPORTANTI
-
-- Il sito è **completamente funzionante** anche senza foto
-- I placeholder sono **eleganti e professionali**
-- Quando aggiungi foto, vengono **automaticamente integrate**
-- **Nessuna modifica codice necessaria** dopo aver copiato le foto
-- Tutti gli errori sono stati risolti
+**Causa**: Next.js di default usa la porta 3000, non 3001
 
 ---
 
-**IL SITO È PRONTO E FUNZIONANTE!** 🎉
+## ✅ SOLUZIONE RAPIDA
 
-Prova ora: `npm run dev`
+### Opzione 1: Usa porta 3000 (Consigliato)
 
+Next.js usa automaticamente la porta 3000. Se è occupata, usa la successiva disponibile.
 
+**Comandi da eseguire nel Terminal del Mac:**
+
+```bash
+# 1. Vai nella directory del progetto
+cd /Users/francesconigro/Desktop/VillaOlimpia
+
+# 2. Ferma eventuali processi in esecuzione
+lsof -ti:3000 -ti:3001 | xargs kill -9 2>/dev/null || true
+
+# 3. Pulisci la cache
+rm -rf .next node_modules/.cache .turbo
+
+# 4. Avvia il server
+npm run dev
+```
+
+**Il server si avvierà su:**
+👉 http://localhost:3000
+
+---
+
+### Opzione 2: Forza porta 3001
+
+Se vuoi usare specificamente la porta 3001:
+
+**Modifica `package.json`:**
+
+```json
+"scripts": {
+  "dev": "next dev -p 3001",
+  "build": "next build",
+  "start": "next start",
+  "lint": "next lint"
+}
+```
+
+Poi esegui:
+```bash
+npm run dev
+```
+
+---
+
+## 🔧 SE CI SONO ERRORI
+
+### Errore: "Port already in use"
+
+**Soluzione:**
+```bash
+# Trova e termina il processo sulla porta
+lsof -ti:3000 | xargs kill -9
+# Oppure per porta 3001
+lsof -ti:3001 | xargs kill -9
+
+# Poi riavvia
+npm run dev
+```
+
+### Errore: "Cannot find module"
+
+**Soluzione:**
+```bash
+# Reinstalla dipendenze
+rm -rf node_modules package-lock.json
+npm install
+npm run dev
+```
+
+### Errore: "Turbopack runtime"
+
+**Soluzione:**
+```bash
+# Pulisci tutto e riavvia
+rm -rf .next node_modules/.cache .turbo
+npm run dev
+```
+
+---
+
+## 📋 CHECKLIST AVVIO
+
+Prima di avviare, verifica:
+
+- [ ] Sei nella directory corretta: `/Users/francesconigro/Desktop/VillaOlimpia`
+- [ ] `node_modules` è presente (se no: `npm install`)
+- [ ] Nessun processo sulla porta 3000/3001
+- [ ] Cache pulita (`.next`, `node_modules/.cache`)
+
+---
+
+## 🎯 COMANDI RAPIDI
+
+**Avvio completo (copia e incolla):**
+```bash
+cd /Users/francesconigro/Desktop/VillaOlimpia && \
+lsof -ti:3000 -ti:3001 | xargs kill -9 2>/dev/null || true && \
+rm -rf .next node_modules/.cache .turbo && \
+npm run dev
+```
+
+**Dopo l'avvio:**
+- Apri: http://localhost:3000
+- Se vedi errori, premi `Ctrl+C` e riprova
+
+---
+
+## ✅ VERIFICA FUNZIONAMENTO
+
+Dopo l'avvio, dovresti vedere:
+
+```
+▲ Next.js 16.0.7
+- Local:        http://localhost:3000
+- Ready in X.Xs
+```
+
+Se vedi questo messaggio, il server è attivo! 🎉
+
+---
+
+## 🆘 SE NIENTE FUNZIONA
+
+**Reset completo:**
+
+```bash
+cd /Users/francesconigro/Desktop/VillaOlimpia
+
+# Ferma tutto
+lsof -ti:3000 -ti:3001 | xargs kill -9 2>/dev/null || true
+
+# Pulisci tutto
+rm -rf .next node_modules/.cache .turbo node_modules package-lock.json
+
+# Reinstalla
+npm install
+
+# Avvia
+npm run dev
+```
+
+---
+
+**Il server dovrebbe funzionare su http://localhost:3000** 🚀
