@@ -5,68 +5,26 @@ import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { CookieBanner } from "@/components/cookie-banner"
 import { ScrollToTop } from "@/components/scroll-to-top"
+import { WhatsAppButton } from "@/components/whatsapp-button"
+import { PreloadResources } from "@/components/performance/preload-resources"
+import { TouchOptimizer } from "@/components/mobile/touch-optimizer"
+import { defaultMetadata } from "@/lib/metadata"
 
 const inter = Inter({ 
   subsets: ["latin"],
   variable: "--font-inter",
   display: "swap",
+  preload: true,
 })
 
 const playfair = Playfair_Display({ 
   subsets: ["latin"],
   variable: "--font-playfair",
   display: "swap",
+  preload: true,
 })
 
-export const metadata: Metadata = {
-  title: {
-    default: "Villa Olimpia - Luxury Vacation Rentals in Calabria, Italy",
-    template: "%s | Villa Olimpia",
-  },
-  description: "Experience luxury vacation rentals in Calabria, Italy. Stunning apartments with sea views in Tropea. Book your perfect Mediterranean getaway.",
-  keywords: ["villa calabria", "vacation rental tropea", "luxury apartments calabria", "italy vacation rental", "calabria luxury villa", "tropea apartments", "calabria beach rental"],
-  authors: [{ name: "Villa Olimpia" }],
-  creator: "Villa Olimpia",
-  openGraph: {
-    type: "website",
-    locale: "it_IT",
-    url: "https://villaolimpia.com",
-    siteName: "Villa Olimpia",
-    title: "Villa Olimpia - Luxury Vacation Rentals in Calabria",
-    description: "Experience luxury vacation rentals in Calabria, Italy. Stunning apartments with sea views in Tropea.",
-    images: [
-      {
-        url: "/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Villa Olimpia - Luxury Vacation Rentals",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Villa Olimpia - Luxury Vacation Rentals in Calabria",
-    description: "Experience luxury vacation rentals in Calabria, Italy.",
-    images: ["/og-image.jpg"],
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
-  verification: {
-    google: "your-google-verification-code",
-  },
-  alternates: {
-    canonical: "https://villaolimpia.com",
-  },
-}
+export const metadata: Metadata = defaultMetadata
 
 export default function RootLayout({
   children,
@@ -85,34 +43,90 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "LodgingBusiness",
               name: "Villa Olimpia",
-              description: "Luxury vacation rentals in Calabria, Italy",
+              description: "9 appartamenti di lusso con piscina privata a Capo Rizzuto, Calabria. A 100 metri dalla Spiaggia dei Gigli, Area Marina Protetta Capo Rizzuto.",
               url: "https://villaolimpia.com",
-              telephone: "+393491234567",
+              telephone: "+393290479193",
               address: {
                 "@type": "PostalAddress",
-                streetAddress: "Via della Costa",
-                addressLocality: "Tropea",
+                streetAddress: "Località Capopiccolo snc",
+                addressLocality: "Isola di Capo Rizzuto",
                 addressRegion: "Calabria",
-                postalCode: "89861",
+                postalCode: "88841",
                 addressCountry: "IT",
               },
               geo: {
                 "@type": "GeoCoordinates",
-                latitude: 38.6775,
-                longitude: 15.8969,
+                latitude: 38.913856,
+                longitude: 17.0754964,
               },
-              priceRange: "€€€",
+              priceRange: "€€",
               image: "https://villaolimpia.com/og-image.jpg",
+              numberOfRooms: 9,
+              starRating: {
+                "@type": "Rating",
+                ratingValue: "4.9",
+                bestRating: "5"
+              },
+              aggregateRating: {
+                "@type": "AggregateRating",
+                ratingValue: "4.9",
+                reviewCount: "150",
+                bestRating: "5",
+                worstRating: "1"
+              },
+              amenityFeature: [
+                {
+                  "@type": "LocationFeatureSpecification",
+                  name: "Piscina privata",
+                  value: true
+                },
+                {
+                  "@type": "LocationFeatureSpecification",
+                  name: "Parcheggio gratuito",
+                  value: true
+                },
+                {
+                  "@type": "LocationFeatureSpecification",
+                  name: "Wi-Fi gratuito",
+                  value: true
+                },
+                {
+                  "@type": "LocationFeatureSpecification",
+                  name: "Aria condizionata",
+                  value: true
+                },
+                {
+                  "@type": "LocationFeatureSpecification",
+                  name: "Cucina attrezzata",
+                  value: true
+                },
+                {
+                  "@type": "LocationFeatureSpecification",
+                  name: "Vista mare",
+                  value: true
+                },
+                {
+                  "@type": "LocationFeatureSpecification",
+                  name: "Terrazza privata",
+                  value: true
+                }
+              ],
+              checkInTime: "15:00",
+              checkOutTime: "10:00",
+              petsAllowed: false
             }),
           }}
         />
       </head>
       <body className={inter.className}>
+        <PreloadResources />
+        <TouchOptimizer />
         <Header />
         <main className="min-h-screen">{children}</main>
         <Footer />
         <CookieBanner />
         <ScrollToTop />
+        <WhatsAppButton />
       </body>
     </html>
   )

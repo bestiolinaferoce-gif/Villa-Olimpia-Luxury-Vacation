@@ -12,8 +12,8 @@ export function Footer() {
               Villa Olimpia
             </h3>
             <p className="text-sm text-muted-foreground">
-              Luxury vacation rentals in the heart of Calabria. Experience the
-              Mediterranean lifestyle in our stunning apartments with sea views.
+              Il tuo rifugio di lusso in Calabria. 9 appartamenti eleganti con piscina privata, 
+              a soli 100m dalla splendida Spiaggia dei Gigli.
             </p>
             <div className="flex space-x-4">
               <a
@@ -77,6 +77,14 @@ export function Footer() {
                   Contatti
                 </Link>
               </li>
+              <li>
+                <Link
+                  href="/faq"
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                >
+                  FAQ
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -86,65 +94,57 @@ export function Footer() {
             <ul className="space-y-3 text-sm text-muted-foreground">
               <li className="flex items-start gap-2">
                 <Phone className="h-4 w-4 mt-0.5 flex-shrink-0" />
-                <a
-                  href="tel:+393491234567"
-                  className="hover:text-primary transition-colors"
-                >
-                  +39 349 123 4567
-                </a>
+                <div className="space-y-1">
+                  <a
+                    href="tel:+393290479193"
+                    className="hover:text-primary transition-colors block"
+                  >
+                    +39 329 047 9193
+                  </a>
+                  <a
+                    href="tel:+393335773390"
+                    className="hover:text-primary transition-colors block"
+                  >
+                    +39 333 577 3390
+                  </a>
+                </div>
               </li>
               <li className="flex items-start gap-2">
                 <Mail className="h-4 w-4 mt-0.5 flex-shrink-0" />
                 <a
-                  href="mailto:info@villaolimpia.com"
+                  href="mailto:villaolimpiacaporizzuto@gmail.com"
                   className="hover:text-primary transition-colors"
                 >
-                  info@villaolimpia.com
+                  villaolimpiacaporizzuto@gmail.com
                 </a>
               </li>
               <li className="flex items-start gap-2">
                 <MapPin className="h-4 w-4 mt-0.5 flex-shrink-0" />
-                <span>Tropea, Calabria, Italia</span>
+                <span>Località Capopiccolo snc<br />88841 Isola di Capo Rizzuto (KR), Calabria</span>
               </li>
             </ul>
           </div>
 
-          {/* Legal */}
+          {/* Prenota Ora - AGGIUNTO */}
           <div>
-            <h4 className="font-semibold mb-4">Informazioni</h4>
-            <ul className="space-y-2 text-sm text-muted-foreground">
-              <li>
-                <Link
-                  href="/privacy"
-                  className="hover:text-primary transition-colors"
-                >
-                  Privacy Policy
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/termini"
-                  className="hover:text-primary transition-colors"
-                >
-                  Termini e Condizioni
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/cookie"
-                  className="hover:text-primary transition-colors"
-                >
-                  Cookie Policy
-                </Link>
-              </li>
-            </ul>
+            <h4 className="font-semibold mb-4">Prenota Ora</h4>
+            <p className="text-sm text-muted-foreground mb-4">
+              Contattaci via WhatsApp per disponibilità e preventivi personalizzati
+            </p>
+            <a
+              href="https://wa.me/393335773390?text=Vorrei%20informazioni%20su%20Villa%20Olimpia"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block bg-[#25D366] text-white px-6 py-3 rounded-full text-sm font-semibold hover:bg-[#20BA5A] transition-colors"
+            >
+              💬 WhatsApp
+            </a>
           </div>
         </div>
 
         <div className="mt-12 pt-8 border-t text-center text-sm text-muted-foreground">
           <p>
-            &copy; {new Date().getFullYear()} Villa Olimpia. Tutti i diritti
-            riservati.
+            &copy; {new Date().getFullYear()} Villa Olimpia - Tutti i diritti riservati | Capo Rizzuto, Calabria
           </p>
         </div>
       </div>

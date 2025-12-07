@@ -58,12 +58,20 @@ export default function ContattiPage() {
                   <Phone className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
                   <div>
                     <p className="font-medium">Telefono</p>
-                    <a
-                      href="tel:+393491234567"
-                      className="text-muted-foreground hover:text-primary transition-colors"
-                    >
-                      +39 349 123 4567
-                    </a>
+                    <div className="space-y-1">
+                      <a
+                        href="tel:+393290479193"
+                        className="text-muted-foreground hover:text-primary transition-colors block"
+                      >
+                        +39 329 047 9193
+                      </a>
+                      <a
+                        href="tel:+393335773390"
+                        className="text-muted-foreground hover:text-primary transition-colors block"
+                      >
+                        +39 333 577 3390
+                      </a>
+                    </div>
                   </div>
                 </div>
 
@@ -72,10 +80,10 @@ export default function ContattiPage() {
                   <div>
                     <p className="font-medium">Email</p>
                     <a
-                      href="mailto:info@villaolimpia.com"
+                      href="mailto:villaolimpiacaporizzuto@gmail.com"
                       className="text-muted-foreground hover:text-primary transition-colors"
                     >
-                      info@villaolimpia.com
+                      villaolimpiacaporizzuto@gmail.com
                     </a>
                   </div>
                 </div>
@@ -85,9 +93,9 @@ export default function ContattiPage() {
                   <div>
                     <p className="font-medium">Indirizzo</p>
                     <p className="text-muted-foreground">
-                      Via della Costa
+                      Località Capopiccolo snc
                       <br />
-                      Tropea, Calabria, Italia
+                      Isola di Capo Rizzuto 88841 (KR), Calabria, Italia
                     </p>
                   </div>
                 </div>
@@ -102,20 +110,36 @@ export default function ContattiPage() {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <Button
-                  variant="luxury"
-                  className="w-full"
-                  asChild
-                >
-                  <a
-                    href="https://wa.me/393491234567"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                <div className="space-y-3">
+                  <Button
+                    variant="luxury"
+                    className="w-full"
+                    asChild
                   >
-                    <MessageCircle className="mr-2 h-5 w-5" />
-                    Contatta su WhatsApp
-                  </a>
-                </Button>
+                    <a
+                      href="https://wa.me/393335773390"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <MessageCircle className="mr-2 h-5 w-5" />
+                      WhatsApp: 333 577 3390
+                    </a>
+                  </Button>
+                  <Button
+                    variant="outline"
+                    className="w-full"
+                    asChild
+                  >
+                    <a
+                      href="https://wa.me/393290479193"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <MessageCircle className="mr-2 h-5 w-5" />
+                      WhatsApp: 329 047 9193
+                    </a>
+                  </Button>
+                </div>
               </CardContent>
             </Card>
 

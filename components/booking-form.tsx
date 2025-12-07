@@ -43,7 +43,7 @@ export function BookingForm() {
     setIsSubmitting(true)
     // Simulate API call
     await new Promise((resolve) => setTimeout(resolve, 1500))
-    console.log("Booking data:", data)
+    // Booking data ready for submission
     setIsSubmitting(false)
     setIsSubmitted(true)
   }

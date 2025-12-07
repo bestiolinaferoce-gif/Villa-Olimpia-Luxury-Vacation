@@ -1,19 +1,27 @@
 "use client"
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { MapPin, Navigation } from "lucide-react"
+import { MapPin, Navigation, Route } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { VILLA_OLIMPIA_LOCATION } from "@/lib/location-data"
 
 export function MapComponent() {
   // Placeholder per integrazione Google Maps o Mapbox
   // In produzione, sostituire con componente reale
   
   const handleOpenMaps = () => {
-    // Apri Google Maps con le coordinate
-    const lat = 38.6775
-    const lng = 15.8969
+    // Apri Google Maps con ricerca Villa Olimpia Capopiccolo
     window.open(
-      `https://www.google.com/maps?q=${lat},${lng}`,
+      VILLA_OLIMPIA_LOCATION.coordinates.googleMaps,
+      "_blank",
+      "noopener,noreferrer"
+    )
+  }
+
+  const handleGetDirections = () => {
+    // Apri Google Maps con direzioni
+    window.open(
+      VILLA_OLIMPIA_LOCATION.coordinates.directions,
       "_blank",
       "noopener,noreferrer"
     )
@@ -27,7 +35,7 @@ export function MapComponent() {
           Posizione
         </CardTitle>
         <CardDescription>
-          Villa Olimpia, Via della Costa, Tropea, Calabria
+          {VILLA_OLIMPIA_LOCATION.address.fullAddress}
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -55,15 +63,25 @@ export function MapComponent() {
           Apri in Google Maps
         </Button>
         
-        <div className="mt-4 p-4 bg-secondary/50 rounded-lg">
-          <p className="text-sm font-semibold mb-2">Indirizzo:</p>
-          <p className="text-sm text-muted-foreground">
-            Via della Costa
-            <br />
-            89861 Tropea (VV)
-            <br />
-            Calabria, Italia
-          </p>
+        <div className="mt-4 space-y-3">
+          <Button
+            variant="luxury"
+            className="w-full"
+            onClick={handleGetDirections}
+          >
+            <Route className="mr-2 h-4 w-4" />
+            Ottieni Indicazioni
+          </Button>
+          
+          <div className="p-4 bg-secondary/50 rounded-lg">
+            <p className="text-sm font-semibold mb-2">Indirizzo Completo:</p>
+            <p className="text-sm text-muted-foreground">
+              {VILLA_OLIMPIA_LOCATION.address.fullAddress}
+            </p>
+            <p className="text-xs text-muted-foreground mt-2">
+              Coordinate: {VILLA_OLIMPIA_LOCATION.coordinates.latitude}, {VILLA_OLIMPIA_LOCATION.coordinates.longitude}
+            </p>
+          </div>
         </div>
       </CardContent>
     </Card>

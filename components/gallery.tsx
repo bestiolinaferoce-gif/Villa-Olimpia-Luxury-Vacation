@@ -104,3 +104,4 @@ export function Gallery({ images }: GalleryProps) {
   )
 }
 
+

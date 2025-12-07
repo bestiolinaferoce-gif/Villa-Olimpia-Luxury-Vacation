@@ -52,21 +52,26 @@ const config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        // Custom colors for Villa Olimpia
+        // Custom colors for Villa Olimpia - Updated Palette
         ocean: {
-          DEFAULT: "hsl(200, 100%, 40%)",
-          light: "hsl(200, 100%, 50%)",
-          dark: "hsl(200, 100%, 30%)",
+          DEFAULT: "#0077BE", // Blu mare
+          light: "#0099E6",
+          dark: "#005A8F",
         },
         gold: {
-          DEFAULT: "hsl(45, 100%, 50%)",
-          light: "hsl(45, 100%, 60%)",
-          dark: "hsl(45, 100%, 40%)",
+          DEFAULT: "#FFC107", // Giallo oro
+          light: "#FFD54F",
+          dark: "#FFA000",
+        },
+        turquoise: {
+          DEFAULT: "#00A896", // Turchese area marina
+          light: "#00C9A7",
+          dark: "#008B75",
         },
         beige: {
-          DEFAULT: "hsl(35, 30%, 85%)",
-          light: "hsl(35, 30%, 95%)",
-          dark: "hsl(35, 30%, 75%)",
+          DEFAULT: "#F8FAFC", // Grigio chiarissimo
+          light: "#FFFFFF",
+          dark: "#E2E8F0",
         },
       },
       borderRadius: {

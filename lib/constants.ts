@@ -8,14 +8,14 @@ export const SITE_CONFIG = {
   email: "info@villaolimpia.com",
   address: {
     street: "Via della Costa",
-    city: "Tropea",
+    city: "Isola di Capo Rizzuto",
     region: "Calabria",
     postalCode: "89861",
     country: "Italia",
   },
   coordinates: {
-    lat: 38.6775,
-    lng: 15.8969,
+    lat: 38.9600,
+    lng: 17.0900,
   },
   social: {
     facebook: "#",
@@ -31,14 +31,14 @@ export const SITE_CONFIG = {
 
 export const SEO_KEYWORDS = [
   "villa calabria",
-  "vacation rental tropea",
+  "vacation rental capo rizzuto",
   "luxury apartments calabria",
   "italy vacation rental",
   "calabria luxury villa",
-  "tropea apartments",
+  "capopiccolo apartments",
   "calabria beach rental",
   "costa degli dei",
-  "tropea luxury accommodation",
+  "capo rizzuto luxury accommodation",
   "calabria holiday rental",
 ] as const
 

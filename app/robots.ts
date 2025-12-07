@@ -1,15 +1,21 @@
 import { MetadataRoute } from "next"
 
 export default function robots(): MetadataRoute.Robots {
+  const baseUrl = "https://villaolimpia.com"
+  
   return {
     rules: [
       {
         userAgent: "*",
         allow: "/",
+        disallow: ["/api/", "/admin/", "/_next/"],
+      },
+      {
+        userAgent: "Googlebot",
+        allow: "/",
         disallow: ["/api/", "/admin/"],
       },
     ],
-    sitemap: "https://villaolimpia.com/sitemap.xml",
+    sitemap: `${baseUrl}/sitemap.xml`,
   }
 }
-

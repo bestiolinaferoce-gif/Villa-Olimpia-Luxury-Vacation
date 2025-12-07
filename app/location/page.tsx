@@ -1,42 +1,39 @@
-import { MapComponent } from "@/components/map-component"
+"use client"
+
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { MapPin, Car, Plane, Train, Ship } from "lucide-react"
-
-export const metadata = {
-  title: "La Location - Villa Olimpia",
-  description: "Scopri Tropea, la perla della Calabria. Informazioni su come raggiungerci e le attrazioni della zona.",
-}
+import { VILLA_OLIMPIA_LOCATION } from "@/lib/location-data"
 
 const attractions = [
   {
-    name: "Centro Storico di Tropea",
-    description: "Il caratteristico borgo medievale con le sue chiese e vicoli",
+    name: "Spiagge di Capopiccolo",
+    description: "Spiagge cristalline e calette incontaminate a pochi passi dalla villa",
+    distance: "A pochi passi",
+  },
+  {
+    name: "Le Castella",
+    description: "Il famoso castello aragonese su un'isola, simbolo della Spiaggia dei Gigli",
+    distance: "5 km",
+  },
+  {
+    name: "Isola di Capo Rizzuto",
+    description: "Centro storico con caratteristici vicoli e ristoranti tipici",
+    distance: "3 km",
+  },
+  {
+    name: "Riserva Marina Capo Rizzuto",
+    description: "Una delle più belle aree marine protette d'Italia con fondali spettacolari",
     distance: "2 km",
   },
   {
-    name: "Spiaggia di Tropea",
-    description: "Una delle spiagge più belle d'Italia con sabbia bianca e acque cristalline",
-    distance: "1.5 km",
-  },
-  {
-    name: "Santuario di Santa Maria dell'Isola",
-    description: "Il simbolo di Tropea, un santuario su uno scoglio panoramico",
-    distance: "2.5 km",
-  },
-  {
-    name: "Capo Vaticano",
-    description: "Promontorio con vista mozzafiato e spiagge da sogno",
-    distance: "8 km",
-  },
-  {
-    name: "Pizzo",
-    description: "Famosa per il tartufo e il castello aragonese",
+    name: "Crotone",
+    description: "Città storica con museo archeologico e centro antico",
     distance: "15 km",
   },
   {
-    name: "Scilla",
-    description: "Il borgo dei pescatori con Chianalea e il castello",
-    distance: "45 km",
+    name: "Soverato",
+    description: "La perla dello Ionio con spiagge dorate e vita notturna",
+    distance: "60 km",
   },
 ]
 
@@ -44,22 +41,22 @@ const transportOptions = [
   {
     icon: Plane,
     title: "Aereo",
-    description: "Aeroporto Lamezia Terme (SUF) - 60 km",
+    description: "Aeroporto Crotone - 20 km",
   },
   {
     icon: Train,
     title: "Treno",
-    description: "Stazione di Tropea - 3 km",
+    description: "Stazione di Crotone - 15 km",
   },
   {
     icon: Car,
     title: "Auto",
-    description: "Autostrada A3, uscita Pizzo - 15 km",
+    description: "SS106, uscita Isola di Capo Rizzuto",
   },
   {
     icon: Ship,
     title: "Nave",
-    description: "Porto di Vibo Marina - 20 km",
+    description: "Porto di Crotone - 15 km",
   },
 ]
 
@@ -74,7 +71,7 @@ export default function LocationPage() {
               La Location
             </h1>
             <p className="text-xl text-muted-foreground">
-              Scopri Tropea, la perla della Costa degli Dei, e tutte le
+              Scopri Capopiccolo, Isola di Capo Rizzuto, nella splendida Spiaggia dei Gigli, e tutte le
               meraviglie che la circondano
             </p>
           </div>
@@ -86,17 +83,43 @@ export default function LocationPage() {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <div className="lg:col-span-2">
-              <MapComponent />
+              <div className="w-full h-96 rounded-2xl overflow-hidden shadow-xl">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3058.234567891234!2d17.0729161!3d38.9138601!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x13403beea88d8403%3A0x2f47168bf140d1f3!2sVilla%20Olimpia!5e0!3m2!1sit!2sit!4v1234567890"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Mappa Villa Olimpia"
+                />
+              </div>
             </div>
             
             <div className="space-y-4">
               <Card>
                 <CardHeader>
-                  <CardTitle>Come Raggiungerci</CardTitle>
+                  <CardTitle>Indirizzo Completo</CardTitle>
                   <CardDescription>
-                    Villa Olimpia si trova a Tropea, nel cuore della Costa degli Dei
+                    Villa Olimpia si trova a Capopiccolo, Isola di Capo Rizzuto, nella splendida Spiaggia dei Gigli
                   </CardDescription>
                 </CardHeader>
+                <CardContent>
+                  <div className="space-y-2 text-sm">
+                    <p className="font-semibold">{VILLA_OLIMPIA_LOCATION.address.fullAddress}</p>
+                    <div className="pt-4 space-y-2">
+                      <p className="text-xs text-muted-foreground">
+                        <strong>Distanze:</strong>
+                      </p>
+                      <ul className="text-xs text-muted-foreground space-y-1">
+                        <li>• Spiaggia: {VILLA_OLIMPIA_LOCATION.distances.spiaggia}</li>
+                        <li>• Centro Storico: {VILLA_OLIMPIA_LOCATION.distances.centroStorico}</li>
+                        <li>• Le Castella: {VILLA_OLIMPIA_LOCATION.distances.leCastella}</li>
+                      </ul>
+                    </div>
+                  </div>
+                </CardContent>
               </Card>
               
               <div className="grid grid-cols-1 gap-4">

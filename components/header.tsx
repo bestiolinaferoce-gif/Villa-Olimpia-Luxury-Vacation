@@ -23,6 +23,8 @@ export function Header() {
     { href: "/appartamenti", label: "Gli Appartamenti" },
     { href: "/location", label: "La Location" },
     { href: "/servizi", label: "Servizi" },
+    { href: "/recensioni", label: "Recensioni" },
+    { href: "/faq", label: "FAQ" },
     { href: "/contatti", label: "Contatti" },
   ]
 
@@ -30,7 +32,7 @@ export function Header() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-background/95 backdrop-blur-md shadow-lg"
+          ? "bg-white/90 backdrop-blur-md shadow-md"
           : "bg-transparent"
       }`}
     >
@@ -40,7 +42,7 @@ export function Header() {
           <Link href="/" className="flex items-center space-x-2 group">
             <motion.div
               whileHover={{ scale: 1.05 }}
-              className="text-2xl font-playfair font-bold text-primary"
+              className="text-2xl font-playfair font-bold text-blue-600"
             >
               Villa Olimpia
             </motion.div>
@@ -52,10 +54,10 @@ export function Header() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors relative group"
+                className="text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors relative group"
               >
                 {item.label}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full" />
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all group-hover:w-full" />
               </Link>
             ))}
           </nav>
@@ -68,12 +70,16 @@ export function Header() {
               asChild
               className="flex items-center gap-2"
             >
-              <a href="https://wa.me/393491234567" target="_blank" rel="noopener noreferrer">
+              <a href="https://wa.me/393290479193" target="_blank" rel="noopener noreferrer">
                 <Phone className="h-4 w-4" />
                 WhatsApp
               </a>
             </Button>
-            <Button variant="luxury" size="sm" asChild>
+            <Button 
+              size="sm" 
+              className="bg-[#FFC107] text-gray-900 hover:bg-[#FFD54F] font-medium"
+              asChild
+            >
               <Link href="/contatti">Prenota Ora</Link>
             </Button>
           </div>
@@ -121,7 +127,7 @@ export function Header() {
                   className="w-full flex items-center justify-center gap-2"
                   asChild
                 >
-                  <a href="https://wa.me/393491234567" target="_blank" rel="noopener noreferrer">
+                  <a href="https://wa.me/393290479193" target="_blank" rel="noopener noreferrer">
                     <Phone className="h-4 w-4" />
                     WhatsApp
                   </a>

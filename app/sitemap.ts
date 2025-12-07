@@ -1,14 +1,14 @@
 import { MetadataRoute } from "next"
-import { apartments } from "@/lib/data"
+import { apartments } from "@/data/apartments"
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://villaolimpia.com"
 
   const apartmentRoutes = apartments.map((apartment) => ({
-    url: `${baseUrl}/appartamenti/${apartment.id}`,
+    url: `${baseUrl}/appartamenti/apartment-${apartment.id}`,
     lastModified: new Date(),
     changeFrequency: "monthly" as const,
-    priority: 0.8,
+    priority: apartment.premium ? 0.9 : 0.8,
   }))
 
   return [
