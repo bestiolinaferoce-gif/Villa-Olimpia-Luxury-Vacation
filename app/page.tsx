@@ -7,10 +7,12 @@ import { WhyChooseUs } from "@/components/why-choose-us"
 import { StatsSection } from "@/components/stats-section"
 import { HomeGallery } from "@/components/home-gallery"
 import { ScrollReveal } from "@/components/animations/scroll-reveal"
+import { SectionDivider } from "@/components/animations/section-divider"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
+import { WeatherWidget } from "@/components/weather-widget"
 import Link from "next/link"
-import { Star, Wifi, Car, Waves, Utensils, Shield } from "lucide-react"
+import { Star, Wifi, Car, Waves, Utensils, Shield, Umbrella, MapPin, Sparkles } from "lucide-react"
 import { getFeaturedApartments } from "@/data/apartments"
 import { motion } from "framer-motion"
 
@@ -46,6 +48,42 @@ const services = [
     description: "Assistenza dedicata per rendere il tuo soggiorno indimenticabile",
   },
 ]
+
+function CTAButtons() {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: 0.4, duration: 0.8 }}
+      className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+    >
+      <motion.div
+        whileHover={{ scale: 1.05, y: -2 }}
+        whileTap={{ scale: 0.95 }}
+      >
+        <Button
+          variant="luxury"
+          size="lg"
+          className="text-lg px-8 py-6 group shadow-xl !border-2 !border-white"
+          style={{ borderWidth: '2px', borderStyle: 'solid', borderColor: 'white' }}
+          asChild
+        >
+          <Link href="/contatti">
+            <span className="group-hover:translate-x-1 transition-transform inline-block">
+              Prenota Ora
+            </span>
+            <svg className="w-5 h-5 ml-2 inline-block group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+          </Link>
+        </Button>
+      </motion.div>
+      {/* Weather Widget nella sezione CTA */}
+      <WeatherWidget position="cta" />
+    </motion.div>
+  )
+}
 
 export default function HomePage() {
   const featuredApartments = getFeaturedApartments()
@@ -108,62 +146,70 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Separatore elegante */}
+      <SectionDivider />
+
       {/* Perché Sceglierci */}
-      <section className="py-20 bg-gradient-to-br from-blue-50 to-white">
+      <section className="py-24 bg-gradient-to-br from-primary/5 via-background to-ocean/5">
         <div className="container mx-auto px-4">
           <ScrollReveal>
-            <h2 className="text-4xl md:text-5xl font-playfair font-bold text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-playfair font-bold text-center mb-4">
               Perché Scegliere Villa Olimpia
             </h2>
+            <p className="text-center text-muted-foreground text-lg mb-12 max-w-2xl mx-auto">
+              Scopri cosa ci rende la scelta perfetta per la tua vacanza
+            </p>
           </ScrollReveal>
 
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
-                icon: "🏖️",
+                icon: Umbrella,
                 title: "Posizione Privilegiata",
-                text: "A 1 km dalla splendida Spiaggia dei Gigli, nell'Area Marina Protetta"
+                text: "A meno di 100 metri dalla splendida Spiaggia dei Gigli, nell'Area Marina Protetta"
               },
               {
-                icon: "🏊",
+                icon: Waves,
                 title: "Piscina Privata",
                 text: "Grande piscina condivisa con solarium e gazebo per il relax"
               },
               {
-                icon: "🌟",
+                icon: Sparkles,
                 title: "Comfort Premium",
                 text: "9 appartamenti moderni con tutti i comfort per una vacanza perfetta"
               }
-            ].map((item, i) => (
-              <ScrollReveal key={i} delay={i * 0.2}>
-                <motion.div
-                  whileHover={{ 
-                    y: -10,
-                    scale: 1.02,
-                    transition: { duration: 0.3 }
-                  }}
-                  className="text-center p-6 bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer group"
-                >
+            ].map((item, i) => {
+              const IconComponent = item.icon
+              return (
+                <ScrollReveal key={i} delay={i * 0.2}>
                   <motion.div
-                    animate={{ 
-                      y: [0, -5, 0],
-                      rotate: [0, 5, -5, 0]
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.2, duration: 0.6 }}
+                    whileHover={{ 
+                      y: -12,
+                      scale: 1.03,
+                      transition: { duration: 0.3, ease: "easeOut" }
                     }}
-                    transition={{
-                      duration: 3,
-                      repeat: Infinity,
-                      delay: i * 0.5,
-                      ease: "easeInOut"
-                    }}
-                    className="text-6xl mb-4 inline-block"
+                    className="text-center p-8 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer group border-2 border-transparent hover:border-primary/20"
                   >
-                    {item.icon}
+                    <motion.div
+                      whileHover={{ 
+                        scale: 1.15,
+                        rotate: [0, -5, 5, 0],
+                        transition: { duration: 0.4 }
+                      }}
+                      className="mb-6 inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-primary/10 to-ocean/10 group-hover:from-primary/20 group-hover:to-ocean/20 transition-all duration-300"
+                    >
+                      <IconComponent className="h-10 w-10 text-primary group-hover:scale-110 transition-transform" />
+                    </motion.div>
+                    <h3 className="text-xl font-playfair font-bold mb-3 text-foreground group-hover:text-primary transition-colors">{item.title}</h3>
+                    <p className="text-muted-foreground leading-relaxed">{item.text}</p>
                   </motion.div>
-                  <h3 className="text-xl font-bold mb-2 text-gray-900 group-hover:text-primary transition-colors">{item.title}</h3>
-                  <p className="text-gray-600">{item.text}</p>
-                </motion.div>
-              </ScrollReveal>
-            ))}
+                </ScrollReveal>
+              )
+            })}
           </div>
         </div>
       </section>
@@ -274,18 +320,26 @@ export default function HomePage() {
       {/* Why Choose Us */}
       <WhyChooseUs />
 
-      {/* FAQ Section */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4 max-w-3xl">
+      {/* Separatore elegante */}
+      <SectionDivider />
+
+      {/* FAQ Section Premium */}
+      <section className="py-24 bg-gradient-to-b from-background via-primary/5 to-background">
+        <div className="container mx-auto px-4 max-w-4xl">
           <ScrollReveal>
-            <h2 className="text-4xl font-bold text-center mb-12">Domande Frequenti</h2>
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-playfair font-bold mb-4">Domande Frequenti</h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                Trova rapidamente le risposte alle domande più comuni
+              </p>
+            </div>
           </ScrollReveal>
 
-          <div className="space-y-4">
+          <div className="space-y-6">
             {[
               {
                 q: "Quanto dista Villa Olimpia dalla spiaggia?",
-                a: "Siamo a soli 1 km dalla splendida Spiaggia dei Gigli, raggiungibile in 2 minuti d'auto o 15 minuti a piedi."
+                a: "Siamo a meno di 100 metri dalla splendida Spiaggia dei Gigli, raggiungibile in 1 minuto a piedi."
               },
               {
                 q: "È incluso il parcheggio?",
@@ -300,32 +354,56 @@ export default function HomePage() {
                 a: "Il check-in è dalle 15:00 e il check-out entro le 10:00. Siamo flessibili per esigenze particolari, contattateci!"
               }
             ].map((faq, i) => (
-              <ScrollReveal key={i} delay={i * 0.15}>
-                <motion.details
-                  whileHover={{ scale: 1.02 }}
-                  className="bg-gray-50 rounded-lg p-6 cursor-pointer hover:bg-gray-100 transition-all duration-300 group"
+              <ScrollReveal key={i} delay={i * 0.1}>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1, duration: 0.5 }}
+                  whileHover={{ 
+                    scale: 1.02,
+                    y: -4,
+                    transition: { duration: 0.3 }
+                  }}
                 >
-                  <summary className="font-bold text-lg text-gray-900 group-hover:text-primary transition-colors flex items-center justify-between">
-                    <span>{faq.q}</span>
-                    <motion.svg
-                      className="w-5 h-5 text-gray-400 group-hover:text-primary transition-colors"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      animate={{ rotate: 0 }}
-                      transition={{ duration: 0.3 }}
+                  <Card className="group border-2 border-transparent hover:border-primary/30 bg-white/80 backdrop-blur-sm shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden">
+                    <motion.details
+                      className="cursor-pointer"
                     >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                    </motion.svg>
-                  </summary>
-                  <motion.p
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: "auto" }}
-                    className="mt-4 text-gray-600"
-                  >
-                    {faq.a}
-                  </motion.p>
-                </motion.details>
+                      <CardHeader className="pb-4">
+                        <summary className="font-playfair font-bold text-lg text-foreground group-hover:text-primary transition-colors flex items-center justify-between list-none">
+                          <span className="flex-1 pr-4">{faq.q}</span>
+                          <motion.div
+                            animate={{ rotate: 0 }}
+                            transition={{ duration: 0.3 }}
+                            className="flex-shrink-0"
+                          >
+                            <motion.svg
+                              className="w-6 h-6 text-muted-foreground group-hover:text-primary transition-colors"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                              whileHover={{ rotate: 180 }}
+                              transition={{ duration: 0.3 }}
+                            >
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                            </motion.svg>
+                          </motion.div>
+                        </summary>
+                      </CardHeader>
+                      <CardContent className="pt-0">
+                        <motion.p
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: "auto" }}
+                          transition={{ duration: 0.3 }}
+                          className="text-muted-foreground leading-relaxed"
+                        >
+                          {faq.a}
+                        </motion.p>
+                      </CardContent>
+                    </motion.details>
+                  </Card>
+                </motion.div>
               </ScrollReveal>
             ))}
           </div>
@@ -352,31 +430,31 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Trust Badges */}
-      <section className="py-12 bg-gray-50">
+      {/* Trust Badges Premium */}
+      <section className="py-16 bg-gradient-to-br from-muted/30 via-background to-primary/5">
         <div className="container mx-auto px-4">
           <ScrollReveal>
-            <div className="flex justify-center items-center gap-8 flex-wrap">
+            <div className="flex justify-center items-center gap-12 flex-wrap">
               {[
-                { label: "Certificato da", name: "Booking.com", color: "text-blue-600" },
-                { label: "Partner", name: "Airbnb", color: "text-blue-600" },
-                { label: "Area Protetta", name: "Capo Rizzuto", color: "text-green-600" }
+                { label: "Certificato da", name: "Booking.com", color: "text-primary" },
+                { label: "Partner", name: "Airbnb", color: "text-primary" },
+                { label: "Area Protetta", name: "Capo Rizzuto", color: "text-turquoise" }
               ].map((badge, i) => (
                 <motion.div
                   key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0, y: 20, scale: 0.9 }}
+                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
                   viewport={{ once: true }}
-                  transition={{ delay: i * 0.2, duration: 0.6 }}
+                  transition={{ delay: i * 0.15, duration: 0.6, type: "spring" }}
                   whileHover={{ 
-                    scale: 1.1,
-                    y: -5,
-                    transition: { duration: 0.3 }
+                    scale: 1.15,
+                    y: -8,
+                    transition: { duration: 0.3, ease: "easeOut" }
                   }}
-                  className="text-center cursor-pointer"
+                  className="text-center cursor-pointer p-6 rounded-xl bg-white/60 backdrop-blur-sm border-2 border-transparent hover:border-primary/30 transition-all duration-300 shadow-md hover:shadow-xl"
                 >
-                  <p className="text-sm font-medium text-gray-600">{badge.label}</p>
-                  <p className={`text-2xl font-bold ${badge.color}`}>{badge.name}</p>
+                  <p className="text-sm font-semibold text-muted-foreground mb-2">{badge.label}</p>
+                  <p className={`text-3xl font-playfair font-bold ${badge.color}`}>{badge.name}</p>
                 </motion.div>
               ))}
             </div>
@@ -384,8 +462,11 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-ocean to-primary text-white relative overflow-hidden">
+      {/* Separatore elegante */}
+      <SectionDivider variant="accent" />
+
+      {/* CTA Section Premium */}
+      <section className="py-24 bg-gradient-to-br from-ocean via-primary to-ocean/80 text-white relative overflow-hidden">
         {/* Animated background elements */}
         <motion.div
           animate={{
@@ -436,54 +517,7 @@ export default function HomePage() {
               Prenota il tuo appartamento e vivi un&apos;esperienza indimenticabile
               nella splendida Calabria
             </motion.p>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.4, duration: 0.8 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center"
-            >
-              <motion.div
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Button
-                  variant="luxury"
-                  size="lg"
-                  className="text-lg px-8 py-6 group shadow-xl"
-                  asChild
-                >
-                  <Link href="/contatti">
-                    <span className="group-hover:translate-x-1 transition-transform inline-block">
-                      Prenota Ora
-                    </span>
-                    <svg className="w-5 h-5 ml-2 inline-block group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                    </svg>
-                  </Link>
-                </Button>
-              </motion.div>
-              <motion.div
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="text-lg px-8 py-6 bg-white/10 border-white/20 text-white hover:bg-white/20 group backdrop-blur-sm"
-                  asChild
-                >
-                  <Link href="/location">
-                    <span className="group-hover:translate-x-1 transition-transform inline-block">
-                      Scopri la Location
-                    </span>
-                    <svg className="w-5 h-5 ml-2 inline-block group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                    </svg>
-                  </Link>
-                </Button>
-              </motion.div>
-            </motion.div>
+            <CTAButtons />
           </ScrollReveal>
         </div>
       </section>

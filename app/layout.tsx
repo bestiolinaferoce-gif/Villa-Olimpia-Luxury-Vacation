@@ -8,6 +8,7 @@ import { ScrollToTop } from "@/components/scroll-to-top"
 import { WhatsAppButton } from "@/components/whatsapp-button"
 import { PreloadResources } from "@/components/performance/preload-resources"
 import { TouchOptimizer } from "@/components/mobile/touch-optimizer"
+import { DirectionsProvider } from "@/components/directions-context"
 import { defaultMetadata } from "@/lib/metadata"
 
 const inter = Inter({ 
@@ -119,14 +120,16 @@ export default function RootLayout({
         />
       </head>
       <body className={inter.className}>
-        <PreloadResources />
-        <TouchOptimizer />
-        <Header />
-        <main className="min-h-screen">{children}</main>
-        <Footer />
-        <CookieConsent />
-        <ScrollToTop />
-        <WhatsAppButton />
+        <DirectionsProvider>
+          <PreloadResources />
+          <TouchOptimizer />
+          <Header />
+          <main className="min-h-screen">{children}</main>
+          <Footer />
+          <CookieConsent />
+          <ScrollToTop />
+          <WhatsAppButton />
+        </DirectionsProvider>
       </body>
     </html>
   )
