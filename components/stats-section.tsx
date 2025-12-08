@@ -38,20 +38,51 @@ export function StatsSection() {
           {stats.map((stat, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1, duration: 0.5 }}
-              className="text-center"
+              initial={{ opacity: 0, y: 30, scale: 0.9 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ delay: index * 0.15, duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+              whileHover={{ 
+                scale: 1.1,
+                y: -5,
+                transition: { duration: 0.3 }
+              }}
+              className="text-center cursor-pointer"
             >
-              <div className="flex justify-center mb-4">
-                <div className="w-16 h-16 rounded-full bg-white/20 flex items-center justify-center">
+              <motion.div
+                whileHover={{ 
+                  scale: 1.15,
+                  rotate: 5
+                }}
+                className="flex justify-center mb-4"
+              >
+                <motion.div
+                  animate={{
+                    boxShadow: [
+                      "0 0 0px rgba(255,255,255,0.2)",
+                      "0 0 20px rgba(255,255,255,0.3)",
+                      "0 0 0px rgba(255,255,255,0.2)"
+                    ]
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    delay: index * 0.3
+                  }}
+                  className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center border-2 border-white/30"
+                >
                   <stat.icon className="h-8 w-8" />
-                </div>
-              </div>
-              <div className="text-4xl md:text-5xl font-playfair font-bold mb-2">
+                </motion.div>
+              </motion.div>
+              <motion.div
+                initial={{ scale: 0 }}
+                whileInView={{ scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.15 + 0.3, duration: 0.5, type: "spring" }}
+                className="text-4xl md:text-5xl font-playfair font-bold mb-2"
+              >
                 {stat.value}
-              </div>
+              </motion.div>
               <div className="text-lg font-semibold mb-1">{stat.label}</div>
               <div className="text-sm text-white/80">{stat.description}</div>
             </motion.div>

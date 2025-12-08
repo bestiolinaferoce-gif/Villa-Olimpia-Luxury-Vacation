@@ -25,13 +25,15 @@ export function ScrollReveal({
   const variants = {
     hidden: {
       opacity: 0,
-      y: direction === "up" ? 50 : direction === "down" ? -50 : 0,
-      x: direction === "left" ? 50 : direction === "right" ? -50 : 0,
+      y: direction === "up" ? 60 : direction === "down" ? -60 : 0,
+      x: direction === "left" ? 60 : direction === "right" ? -60 : 0,
+      scale: 0.95,
     },
     visible: {
       opacity: 1,
       y: 0,
       x: 0,
+      scale: 1,
     },
   }
 
@@ -41,7 +43,13 @@ export function ScrollReveal({
       initial="hidden"
       animate={inView ? "visible" : "hidden"}
       variants={variants}
-      transition={{ duration: 0.6, delay, ease: [0.25, 0.25, 0, 1] }}
+      transition={{ 
+        duration: 0.7, 
+        delay, 
+        ease: [0.25, 0.46, 0.45, 0.94],
+        opacity: { duration: 0.5 },
+        scale: { duration: 0.6 }
+      }}
       className={className}
     >
       {children}
