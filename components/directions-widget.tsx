@@ -15,6 +15,12 @@ interface RouteData {
   alternative?: boolean
 }
 
+interface Airline {
+  name: string
+  url: string
+  icon?: string
+}
+
 interface AirportInfo {
   name: string
   code: string
@@ -22,6 +28,7 @@ interface AirportInfo {
   driveTime: number // minuti
   website?: string
   flightSearch?: string
+  airlines?: Airline[]
 }
 
 interface UserLocation {
@@ -42,8 +49,18 @@ const AIRPORTS: AirportInfo[] = [
     code: "CRV",
     distance: 20,
     driveTime: 25,
-    website: "https://www.aeroportodicrotone.it",
+    website: "https://sacal.it/it/crotone/",
     flightSearch: "https://www.google.com/flights?q=flights+to+Crotone",
+    airlines: [
+      {
+        name: "Ryanair",
+        url: "https://www.ryanair.com/it/it",
+      },
+      {
+        name: "SkyAlps",
+        url: "https://www.skyalps.com/it",
+      },
+    ],
   },
   {
     name: "Aeroporto di Lamezia Terme",
@@ -52,6 +69,24 @@ const AIRPORTS: AirportInfo[] = [
     driveTime: 75,
     website: "https://www.aeroportolameziaterme.it",
     flightSearch: "https://www.google.com/flights?q=flights+to+Lamezia+Terme",
+    airlines: [
+      {
+        name: "Ryanair",
+        url: "https://www.ryanair.com/it/it",
+      },
+      {
+        name: "ITA Airways",
+        url: "https://www.itaspa.com/it-it",
+      },
+      {
+        name: "EasyJet",
+        url: "https://www.easyjet.com/it",
+      },
+      {
+        name: "Wizz Air",
+        url: "https://wizzair.com/it-it",
+      },
+    ],
   },
   {
     name: "Aeroporto di Reggio Calabria",
@@ -60,6 +95,20 @@ const AIRPORTS: AirportInfo[] = [
     driveTime: 90,
     website: "https://www.aeroportoreggiocalabria.it",
     flightSearch: "https://www.google.com/flights?q=flights+to+Reggio+Calabria",
+    airlines: [
+      {
+        name: "Ryanair",
+        url: "https://www.ryanair.com/it/it",
+      },
+      {
+        name: "ITA Airways",
+        url: "https://www.itaspa.com/it-it",
+      },
+      {
+        name: "EasyJet",
+        url: "https://www.easyjet.com/it",
+      },
+    ],
   },
 ]
 
@@ -483,7 +532,7 @@ export function DirectionsWidget({ showBadge = true }: DirectionsWidgetProps = {
                         transition={{ delay: index * 0.1 }}
                         className="p-4 rounded-xl border-2 border-gray-200 hover:border-primary/30 bg-gradient-to-r from-white to-primary/5 transition-all"
                       >
-                        <div className="flex items-start justify-between">
+                        <div className="flex items-start justify-between mb-3">
                           <div className="flex-1">
                             <div className="flex items-center gap-2 mb-2">
                               <h3 className="font-bold text-foreground">{airport.name}</h3>
@@ -509,7 +558,7 @@ export function DirectionsWidget({ showBadge = true }: DirectionsWidgetProps = {
                                 className="text-xs"
                               >
                                 <ExternalLink className="h-3 w-3 mr-1" />
-                                Sito Web
+                                Sito Aeroporto
                               </Button>
                             )}
                             {airport.flightSearch && (
@@ -528,6 +577,33 @@ export function DirectionsWidget({ showBadge = true }: DirectionsWidgetProps = {
                             )}
                           </div>
                         </div>
+                        
+                        {/* Compagnie Aeree */}
+                        {airport.airlines && airport.airlines.length > 0 && (
+                          <div className="mt-3 pt-3 border-t border-gray-200">
+                            <p className="text-xs font-semibold text-muted-foreground mb-2">
+                              ✈️ Compagnie Aeree Operanti:
+                            </p>
+                            <div className="flex flex-wrap gap-2">
+                              {airport.airlines.map((airline, airlineIndex) => (
+                                <Button
+                                  key={airlineIndex}
+                                  size="sm"
+                                  variant="outline"
+                                  onClick={() => {
+                                    if (typeof window !== 'undefined') {
+                                      window.open(airline.url, "_blank")
+                                    }
+                                  }}
+                                  className="text-xs h-7 px-2 bg-white hover:bg-primary/5 hover:border-primary/30"
+                                >
+                                  {airline.name}
+                                  <ExternalLink className="h-3 w-3 ml-1" />
+                                </Button>
+                              ))}
+                            </div>
+                          </div>
+                        )}
                       </motion.div>
                     ))}
                   </CardContent>
