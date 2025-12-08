@@ -41,19 +41,23 @@ export function MapComponent() {
   const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY
 
   const handleOpenMaps = () => {
-    window.open(
-      VILLA_OLIMPIA_LOCATION.coordinates.googleMaps,
-      "_blank",
-      "noopener,noreferrer"
-    )
+    if (typeof window !== 'undefined') {
+      window.open(
+        VILLA_OLIMPIA_LOCATION.coordinates.googleMaps,
+        "_blank",
+        "noopener,noreferrer"
+      )
+    }
   }
 
   const handleGetDirections = () => {
-    window.open(
-      VILLA_OLIMPIA_LOCATION.coordinates.directions,
-      "_blank",
-      "noopener,noreferrer"
-    )
+    if (typeof window !== 'undefined') {
+      window.open(
+        VILLA_OLIMPIA_LOCATION.coordinates.directions,
+        "_blank",
+        "noopener,noreferrer"
+      )
+    }
   }
 
   const onLoad = useCallback((map: google.maps.Map) => {

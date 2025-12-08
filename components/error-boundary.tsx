@@ -23,7 +23,9 @@ export class ErrorBoundary extends React.Component<
   }
 
   componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
-    console.error("ErrorBoundary caught an error:", error, errorInfo)
+    if (process.env.NODE_ENV === "development") {
+      console.error("ErrorBoundary caught an error:", error, errorInfo)
+    }
   }
 
   render() {
@@ -41,7 +43,9 @@ export class ErrorBoundary extends React.Component<
             <Button
               onClick={() => {
                 this.setState({ hasError: false, error: null })
-                window.location.reload()
+                if (typeof window !== 'undefined') {
+                  window.location.reload()
+                }
               }}
               className="w-full"
             >

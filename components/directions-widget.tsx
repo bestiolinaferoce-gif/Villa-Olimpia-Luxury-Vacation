@@ -78,7 +78,7 @@ export function DirectionsWidget({ showBadge = true }: DirectionsWidgetProps = {
 
   // Rilevamento posizione automatica
   const detectLocation = useCallback(() => {
-    if (!navigator.geolocation) {
+    if (typeof window === 'undefined' || !navigator.geolocation) {
       setLocationError("La geolocalizzazione non è supportata dal tuo browser")
       return
     }
@@ -170,7 +170,9 @@ export function DirectionsWidget({ showBadge = true }: DirectionsWidgetProps = {
 
       setRoutes([mainRoute, ...alternativeRoutes])
     } catch (error) {
-      console.error("Route calculation error:", error)
+      if (process.env.NODE_ENV === "development") {
+        console.error("Route calculation error:", error)
+      }
       // Fallback: mostra percorso approssimativo
       const roadDistance = Math.round(directDistance * 1.15)
       const estimatedDuration = Math.round((roadDistance / 70) * 60 * 1.2) // velocità media 70 km/h
@@ -211,18 +213,20 @@ export function DirectionsWidget({ showBadge = true }: DirectionsWidgetProps = {
       ? `${userLocation.lat},${userLocation.lng}`
       : ""
 
-    if (originParam) {
-      window.open(
-        `https://www.google.com/maps/dir/${originParam}/${DESTINATION.lat},${DESTINATION.lng}`,
-        "_blank",
-        "noopener,noreferrer"
-      )
-    } else {
-      window.open(
-        `https://www.google.com/maps/dir/?api=1&destination=${DESTINATION.lat},${DESTINATION.lng}`,
-        "_blank",
-        "noopener,noreferrer"
-      )
+    if (typeof window !== 'undefined') {
+      if (originParam) {
+        window.open(
+          `https://www.google.com/maps/dir/${originParam}/${DESTINATION.lat},${DESTINATION.lng}`,
+          "_blank",
+          "noopener,noreferrer"
+        )
+      } else {
+        window.open(
+          `https://www.google.com/maps/dir/?api=1&destination=${DESTINATION.lat},${DESTINATION.lng}`,
+          "_blank",
+          "noopener,noreferrer"
+        )
+      }
     }
   }
 
@@ -497,7 +501,11 @@ export function DirectionsWidget({ showBadge = true }: DirectionsWidgetProps = {
                               <Button
                                 size="sm"
                                 variant="outline"
-                                onClick={() => window.open(airport.website, "_blank")}
+                                onClick={() => {
+                                  if (typeof window !== 'undefined') {
+                                    window.open(airport.website, "_blank")
+                                  }
+                                }}
                                 className="text-xs"
                               >
                                 <ExternalLink className="h-3 w-3 mr-1" />
@@ -508,7 +516,11 @@ export function DirectionsWidget({ showBadge = true }: DirectionsWidgetProps = {
                               <Button
                                 size="sm"
                                 className="bg-primary hover:bg-primary/90 text-white text-xs"
-                                onClick={() => window.open(airport.flightSearch, "_blank")}
+                                onClick={() => {
+                                  if (typeof window !== 'undefined') {
+                                    window.open(airport.flightSearch, "_blank")
+                                  }
+                                }}
                               >
                                 <Plane className="h-3 w-3 mr-1" />
                                 Cerca Voli

@@ -8,12 +8,16 @@ function enableTracking() {
   // Placeholder for analytics/marketing scripts
   // Google Analytics ID: G-XXXXXXXXXX
   // Meta Pixel ID: 000000000000000
-  console.log("Tracking enabled")
+  if (process.env.NODE_ENV === "development") {
+    console.log("Tracking enabled")
+  }
 }
 
 function disableTracking() {
   // Remove scripts and prevent tracking
-  console.log("Tracking disabled")
+  if (process.env.NODE_ENV === "development") {
+    console.log("Tracking disabled")
+  }
 }
 
 export function CookieConsent() {
@@ -26,26 +30,34 @@ export function CookieConsent() {
   })
 
   useEffect(() => {
+    // Solo nel browser
+    if (typeof window === 'undefined') return
+    
     // Check if consent has been given
-    const consent = localStorage.getItem("cookieConsent")
-    if (!consent) {
-      setShowBanner(true)
-    } else {
-      // Load saved preferences
-      try {
-        const savedPrefs = JSON.parse(consent)
-        if (savedPrefs.preferences) {
-          setCookiePreferences(savedPrefs.preferences)
-          applyTrackingPreferences(savedPrefs.preferences)
-        } else if (savedPrefs === "accepted") {
-          // Legacy: all cookies accepted
-          setCookiePreferences({ analytics: true, marketing: true, functional: true })
-          enableTracking()
-        }
-      } catch (e) {
-        // Invalid stored data, show banner again
+    try {
+      const consent = localStorage.getItem("cookieConsent")
+      if (!consent) {
         setShowBanner(true)
+      } else {
+        // Load saved preferences
+        try {
+          const savedPrefs = JSON.parse(consent)
+          if (savedPrefs.preferences) {
+            setCookiePreferences(savedPrefs.preferences)
+            applyTrackingPreferences(savedPrefs.preferences)
+          } else if (savedPrefs === "accepted") {
+            // Legacy: all cookies accepted
+            setCookiePreferences({ analytics: true, marketing: true, functional: true })
+            enableTracking()
+          }
+        } catch (e) {
+          // Invalid stored data, show banner again
+          setShowBanner(true)
+        }
       }
+    } catch (e) {
+      // localStorage non disponibile, mostra banner
+      setShowBanner(true)
     }
   }, [])
 
@@ -64,7 +76,13 @@ export function CookieConsent() {
       functional: true,
     }
     setCookiePreferences(allAccepted)
-    localStorage.setItem("cookieConsent", JSON.stringify({ preferences: allAccepted }))
+    if (typeof window !== 'undefined') {
+      try {
+        localStorage.setItem("cookieConsent", JSON.stringify({ preferences: allAccepted }))
+      } catch (e) {
+        // localStorage non disponibile
+      }
+    }
     setShowBanner(false)
     enableTracking()
   }
@@ -76,7 +94,13 @@ export function CookieConsent() {
       functional: false,
     }
     setCookiePreferences(allRejected)
-    localStorage.setItem("cookieConsent", JSON.stringify({ preferences: allRejected }))
+    if (typeof window !== 'undefined') {
+      try {
+        localStorage.setItem("cookieConsent", JSON.stringify({ preferences: allRejected }))
+      } catch (e) {
+        // localStorage non disponibile
+      }
+    }
     setShowBanner(false)
     disableTracking()
   }
@@ -86,10 +110,16 @@ export function CookieConsent() {
   }
 
   const handleSavePreferences = () => {
-    localStorage.setItem(
-      "cookieConsent",
-      JSON.stringify({ preferences: cookiePreferences })
-    )
+    if (typeof window !== 'undefined') {
+      try {
+        localStorage.setItem(
+          "cookieConsent",
+          JSON.stringify({ preferences: cookiePreferences })
+        )
+      } catch (e) {
+        // localStorage non disponibile
+      }
+    }
     setShowBanner(false)
     setShowModal(false)
     applyTrackingPreferences(cookiePreferences)

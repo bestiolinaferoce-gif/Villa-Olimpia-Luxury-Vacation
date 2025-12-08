@@ -217,7 +217,9 @@ export function HeroSectionPremium() {
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
           className="flex flex-col items-center gap-2 text-white/80 cursor-pointer"
           onClick={() => {
-            window.scrollTo({ top: window.innerHeight, behavior: "smooth" })
+            if (typeof window !== 'undefined') {
+              window.scrollTo({ top: window.innerHeight, behavior: "smooth" })
+            }
           }}
         >
           <span className="text-sm font-medium">Scorri</span>

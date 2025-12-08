@@ -11,6 +11,9 @@ export function PreloadResources() {
   const pathname = usePathname()
 
   useEffect(() => {
+    // Solo nel browser
+    if (typeof window === 'undefined' || typeof document === 'undefined') return
+
     // Preload immagini critiche basato sulla route
     if (pathname === "/") {
       // Preload hero image

@@ -10,6 +10,8 @@ export function WhatsAppButton() {
   const menuRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
+    if (typeof window === 'undefined') return
+    
     const handleScroll = () => {
       setIsVisible(window.scrollY > 300)
     }
@@ -18,6 +20,8 @@ export function WhatsAppButton() {
   }, [])
 
   useEffect(() => {
+    if (typeof document === 'undefined') return
+    
     const handleClickOutside = (event: MouseEvent) => {
       if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
         setIsMenuOpen(false)

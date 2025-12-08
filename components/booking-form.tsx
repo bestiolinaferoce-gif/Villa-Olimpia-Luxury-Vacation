@@ -85,7 +85,9 @@ export function BookingForm() {
       setIsSubmitted(true)
       reset() // Reset form after successful submission
     } catch (error) {
-      console.error('Errore invio email:', error)
+      if (process.env.NODE_ENV === "development") {
+        console.error('Errore invio email:', error)
+      }
       setIsSubmitting(false)
       
       // Provide more specific error messages
