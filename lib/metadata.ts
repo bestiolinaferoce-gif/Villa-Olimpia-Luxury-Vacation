@@ -65,7 +65,7 @@ export function getApartmentMetadata(apartmentId: number): Metadata {
 
   // SEO ottimizzato per OTA (Booking.com, Airbnb, etc.)
   const seoTitle = `Appartamento ${apartment.name} - Villa Olimpia | ${apartment.floor} | ${apartment.guests} Ospiti | Capopiccolo, Isola di Capo Rizzuto`
-  const seoDescription = `Affitta l'appartamento ${apartment.name} a Villa Olimpia, ${apartment.floor} ${apartment.size} per ${apartment.guests} ospiti. ${apartment.bedrooms} camere, ${apartment.bathrooms} bagni. ${apartment.features.slice(0, 3).join(', ')}. A meno di 100 metri dalla Spiaggia dei Gigli, Area Marina Protetta Capo Rizzuto. Prenota su Booking.com, Airbnb o direttamente.`
+  const seoDescription = `Affitta l'appartamento ${apartment.name} a Villa Olimpia, ${apartment.floor} ${apartment.size} per ${apartment.guests} ospiti. ${apartment.bedrooms} camere, ${apartment.bathrooms} bagni. ${apartment.features.slice(0, 3).join(', ')}. A meno di 100 metri dalla Spiaggia dei Gigli, Area Marina Protetta Capo Rizzuto. Prenota ora su Booking.com, Airbnb o contattaci direttamente per disponibilità e preventivi personalizzati.`
   
   const keywords = [
     `appartamento ${apartment.name.toLowerCase()} villa olimpia`,
@@ -113,7 +113,7 @@ export const defaultMetadata: Metadata = {
       default: `${siteName} | 9 Appartamenti con Piscina a Capo Rizzuto Calabria`,
       template: `%s | ${siteName}`,
     },
-  description: "9 appartamenti di lusso con piscina privata a Capo Rizzuto, Calabria. A 100 metri dalla Spiaggia dei Gigli. Prenota la tua vacanza perfetta nell'Area Marina Protetta Capo Rizzuto. WiFi gratuito, parcheggio, vista mare.",
+  description: "9 appartamenti di lusso con piscina privata a Capo Rizzuto, Calabria. A meno di 100 metri dalla splendida Spiaggia dei Gigli. Prenota ora la tua vacanza perfetta nell'Area Marina Protetta Capo Rizzuto. WiFi gratuito, parcheggio, vista mare. Disponibilità e preventivi personalizzati.",
   keywords: [
     "appartamenti vacanze Calabria piscina",
     "villa piscina Capo Rizzuto",

@@ -223,7 +223,10 @@ export default function HomePage() {
                 Servizi e Comfort
               </h2>
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                Tutto ciò di cui hai bisogno per un soggiorno indimenticabile
+                Tutto ciò di cui hai bisogno per un soggiorno indimenticabile.{" "}
+                <Link href="/servizi" className="text-primary hover:underline font-semibold">Scopri tutti i servizi inclusi</Link>{" "}
+                e{" "}
+                <Link href="/location" className="text-primary hover:underline font-semibold">la nostra location privilegiata</Link>.
               </p>
             </div>
           </ScrollReveal>
@@ -289,7 +292,10 @@ export default function HomePage() {
               >
                 Leggi cosa dicono i nostri ospiti su Villa Olimpia. Valutazione media{" "}
                 <span className="font-bold text-primary text-xl">4.9/5</span> stelle basata su{" "}
-                <span className="font-bold text-primary text-xl">35</span> recensioni.
+                <span className="font-bold text-primary text-xl">35</span> recensioni.{" "}
+                <Link href="/recensioni" className="text-primary hover:underline font-semibold">Leggi tutte le recensioni</Link>{" "}
+                o{" "}
+                <Link href="/contatti" className="text-primary hover:underline font-semibold">contattaci per prenotare</Link>.
               </motion.p>
               <motion.div
                 whileHover={{ scale: 1.05 }}

@@ -300,7 +300,7 @@ export function CookieConsent() {
                 </button>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       )}
     </>

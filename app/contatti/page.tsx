@@ -3,15 +3,17 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button"
 import { Phone, Mail, MapPin, MessageCircle } from "lucide-react"
 import Link from "next/link"
+import { Breadcrumb } from "@/components/breadcrumb"
 
 export const metadata = {
   title: "Contatti - Villa Olimpia",
-  description: "Contattaci per prenotare il tuo appartamento a Villa Olimpia. Siamo disponibili per rispondere a tutte le tue domande.",
+  description: "Contattaci per prenotare il tuo appartamento a Villa Olimpia. Telefono, email, WhatsApp. Siamo disponibili per rispondere a tutte le tue domande e aiutarti a pianificare la tua vacanza perfetta in Calabria.",
 }
 
 export default function ContattiPage() {
   return (
     <div className="min-h-screen pt-20">
+      <Breadcrumb items={[{ label: "Contatti" }]} />
       {/* Hero */}
       <section className="bg-gradient-to-br from-ocean/10 to-primary/10 py-16">
         <div className="container mx-auto px-4">

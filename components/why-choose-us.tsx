@@ -1,6 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
+import Link from "next/link"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Award, Heart, Clock, Shield, Sparkles, Users, Waves, Car } from "lucide-react"
 
@@ -47,7 +48,10 @@ export function WhyChooseUs() {
             Perché Scegliere Villa Olimpia
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Scopri cosa ci rende la scelta perfetta per la tua vacanza in Calabria
+            Scopri cosa ci rende la scelta perfetta per la tua vacanza in Calabria.{" "}
+            <Link href="/appartamenti" className="text-primary hover:underline font-semibold">Esplora i nostri appartamenti</Link>{" "}
+            o{" "}
+            <Link href="/servizi" className="text-primary hover:underline font-semibold">scopri tutti i servizi inclusi</Link>.
           </p>
         </div>
 
