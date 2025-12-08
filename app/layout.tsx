@@ -9,6 +9,7 @@ import { WhatsAppButton } from "@/components/whatsapp-button"
 import { PreloadResources } from "@/components/performance/preload-resources"
 import { TouchOptimizer } from "@/components/mobile/touch-optimizer"
 import { DirectionsProvider } from "@/components/directions-context"
+import { ErrorBoundary } from "@/components/error-boundary"
 import { defaultMetadata } from "@/lib/metadata"
 
 const inter = Inter({ 
@@ -120,16 +121,18 @@ export default function RootLayout({
         />
       </head>
       <body className={inter.className}>
-        <DirectionsProvider>
-          <PreloadResources />
-          <TouchOptimizer />
-          <Header />
-          <main className="min-h-screen">{children}</main>
-          <Footer />
-          <CookieConsent />
-          <ScrollToTop />
-          <WhatsAppButton />
-        </DirectionsProvider>
+        <ErrorBoundary>
+          <DirectionsProvider>
+            <PreloadResources />
+            <TouchOptimizer />
+            <Header />
+            <main className="min-h-screen">{children}</main>
+            <Footer />
+            <CookieConsent />
+            <ScrollToTop />
+            <WhatsAppButton />
+          </DirectionsProvider>
+        </ErrorBoundary>
       </body>
     </html>
   )

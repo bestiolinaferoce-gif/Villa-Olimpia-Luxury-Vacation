@@ -33,13 +33,21 @@ export function WeatherWidget({ position = 'hero' }: WeatherWidgetProps = {}) {
         setError(false)
         
         // Open-Meteo API (gratuito, no API key richiesta)
+        const controller = new AbortController()
+        const timeoutId = setTimeout(() => controller.abort(), 10000) // 10 secondi timeout
+        
         const response = await fetch(
-          `https://api.open-meteo.com/v1/forecast?latitude=${LAT}&longitude=${LON}&current=temperature_2m,relative_humidity_2m,weather_code,wind_speed_10m,visibility&timezone=Europe/Rome&forecast_days=1`
+          `https://api.open-meteo.com/v1/forecast?latitude=${LAT}&longitude=${LON}&current=temperature_2m,relative_humidity_2m,weather_code,wind_speed_10m,visibility&timezone=Europe/Rome&forecast_days=1`,
+          { signal: controller.signal }
         )
+        
+        clearTimeout(timeoutId)
         
         if (!response.ok) throw new Error('Failed to fetch weather')
         
         const data = await response.json()
+        if (!data || !data.current) throw new Error('Invalid weather data')
+        
         const current = data.current
         
         // Mappa weather code WMO a condizioni italiane
@@ -65,7 +73,10 @@ export function WeatherWidget({ position = 'hero' }: WeatherWidgetProps = {}) {
           visibility: Math.round(current.visibility / 1000) // converti da metri a km
         })
       } catch (err) {
-        console.error('Weather fetch error:', err)
+        // Silently handle errors - don't log in production
+        if (process.env.NODE_ENV === "development") {
+          console.error('Weather fetch error:', err)
+        }
         setError(true)
         // Fallback con dati realistici per Capo Rizzuto
         setWeather({
@@ -81,11 +92,16 @@ export function WeatherWidget({ position = 'hero' }: WeatherWidgetProps = {}) {
       }
     }
 
-    fetchWeather()
-    
-    // Aggiorna ogni 30 minuti
-    const interval = setInterval(fetchWeather, 30 * 60 * 1000)
-    return () => clearInterval(interval)
+    // Solo fetch se siamo nel browser
+    if (typeof window !== 'undefined') {
+      fetchWeather()
+      
+      // Aggiorna ogni 30 minuti
+      const interval = setInterval(fetchWeather, 30 * 60 * 1000)
+      return () => {
+        clearInterval(interval)
+      }
+    }
   }, [])
 
   const getWeatherIcon = (code: number) => {

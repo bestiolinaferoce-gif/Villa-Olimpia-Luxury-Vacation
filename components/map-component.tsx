@@ -37,6 +37,7 @@ const mapOptions = {
 export function MapComponent() {
   const [isMapLoaded, setIsMapLoaded] = useState(false)
   const [showInfoPanel, setShowInfoPanel] = useState(false)
+  const [mapError, setMapError] = useState(false)
   const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY
 
   const handleOpenMaps = () => {
@@ -57,10 +58,16 @@ export function MapComponent() {
 
   const onLoad = useCallback((map: google.maps.Map) => {
     setIsMapLoaded(true)
+    setMapError(false)
+  }, [])
+
+  const onError = useCallback(() => {
+    setMapError(true)
+    setIsMapLoaded(false)
   }, [])
 
   // Se non c'è API key, mostra placeholder con link
-  if (!apiKey || apiKey === 'your_google_maps_api_key_here') {
+  if (!apiKey || apiKey === 'your_google_maps_api_key_here' || mapError) {
     return (
       <Card>
         <CardHeader>
@@ -135,7 +142,16 @@ export function MapComponent() {
       </CardHeader>
       <CardContent>
         <div className="relative">
-          <LoadScript googleMapsApiKey={apiKey}>
+          <LoadScript 
+            googleMapsApiKey={apiKey}
+            onError={onError}
+            loadingElement={<div className="w-full h-[400px] bg-gray-100 rounded-lg flex items-center justify-center">
+              <div className="text-center">
+                <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin mx-auto mb-2" />
+                <p className="text-sm text-muted-foreground">Caricamento mappa...</p>
+              </div>
+            </div>}
+          >
             <GoogleMap
               mapContainerStyle={mapContainerStyle}
               center={center}
