@@ -128,18 +128,7 @@ export function HomeGallery() {
   // AGGIUNTO: Se non ci sono immagini valide, usa tutte le immagini disponibili
   const imagesToShow = validImages.length > 0 ? validImages : galleryImages
 
-  // AGGIUNTO: Debug - rimuovere in produzione
-  useEffect(() => {
-    console.log('🏊 HomeGallery renderizzato:', {
-      totalImages: galleryImages.length,
-      validImages: validImages.length,
-      imagesToShow: imagesToShow.length,
-      currentIndex
-    })
-  }, [validImages.length, imagesToShow.length, currentIndex])
-
   if (imagesToShow.length === 0) {
-    console.warn('⚠️ HomeGallery: Nessuna immagine disponibile')
     return (
       <section id="gallery-home" className="py-20 bg-gradient-to-b from-white to-blue-50">
         <div className="container mx-auto px-4 text-center">
@@ -151,7 +140,7 @@ export function HomeGallery() {
   }
 
   return (
-    <section id="gallery-home" className="py-20 bg-gradient-to-b from-white via-blue-50 to-white relative z-10">
+    <section id="gallery-home" className="py-20 bg-gradient-to-b from-background via-primary/5 to-background relative z-10">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-playfair font-bold mb-4 text-gray-900">

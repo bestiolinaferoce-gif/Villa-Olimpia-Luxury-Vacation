@@ -60,15 +60,22 @@ export function WhyChooseUs() {
               viewport={{ once: true }}
               transition={{ delay: index * 0.1, duration: 0.5 }}
             >
-              <Card className="h-full hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+              <Card className="group h-full hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border-2 border-transparent hover:border-primary/20 hover:ring-2 hover:ring-primary/5 cursor-pointer">
                 <CardHeader>
-                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary/20 to-gold/20 flex items-center justify-center mb-4">
-                    <feature.icon className="h-8 w-8 text-primary" />
-                  </div>
-                  <CardTitle>{feature.title}</CardTitle>
+                  <motion.div
+                    whileHover={{ 
+                      scale: 1.15,
+                      rotate: [0, -5, 5, 0],
+                      transition: { duration: 0.4 }
+                    }}
+                    className="w-16 h-16 rounded-full bg-gradient-to-br from-primary/20 to-gold/20 group-hover:from-primary/30 group-hover:to-gold/30 flex items-center justify-center mb-4 transition-all duration-300"
+                  >
+                    <feature.icon className="h-8 w-8 text-primary group-hover:scale-110 transition-transform" />
+                  </motion.div>
+                  <CardTitle className="group-hover:text-primary transition-colors">{feature.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-muted-foreground">{feature.description}</p>
+                  <p className="text-muted-foreground group-hover:text-foreground/80 transition-colors">{feature.description}</p>
                 </CardContent>
               </Card>
             </motion.div>

@@ -4,6 +4,7 @@ import { getApartmentById, apartments } from "@/data/apartments"
 // FIX: Import esplicito per risolvere problemi di routing
 import { getApartmentMetadata } from "@/lib/metadata"
 import { getApartmentSEO } from "@/data/apartments-seo"
+import { getApartmentContent } from "@/data/apartment-content"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Bed, Users, Bath, MapPin, Calendar, Star } from "lucide-react"
@@ -86,6 +87,7 @@ export default async function ApartmentDetailPage({ params }: PageProps) {
   }
 
   const seoData = getApartmentSEO(apartmentId)
+  const content = getApartmentContent(apartmentId)
 
   return (
     <div className="min-h-screen pt-20">
@@ -117,7 +119,7 @@ export default async function ApartmentDetailPage({ params }: PageProps) {
             <h1 className="text-4xl md:text-5xl font-playfair font-bold mb-2">
               Appartamento {apartment.name} - Villa Olimpia Capo Rizzuto
             </h1>
-            <p className="text-xl text-white/90">{apartment.description}</p>
+            <p className="text-xl text-white/90">{content?.shortDescription || apartment.description}</p>
           </div>
         </div>
       </section>
@@ -132,51 +134,120 @@ export default async function ApartmentDetailPage({ params }: PageProps) {
               alt={apartment.name}
             />
 
-            {/* Description SEO Ottimizzata */}
-            <Card>
-              <CardHeader>
-                <CardTitle>Descrizione</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                  <div className="prose prose-lg max-w-none">
-                  <p className="text-muted-foreground leading-relaxed text-base">
-                    {apartment.fullDescription || apartment.description}
+            {/* Short Description */}
+            {content && (
+              <Card>
+                <CardHeader>
+                  <CardTitle>Descrizione</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground leading-relaxed text-base mb-6">
+                    {content.shortDescription}
                   </p>
-                  
-                  {/* Contenuto SEO ottimizzato per OTA */}
-                  {seoData && (
-                    <div className="mt-6 space-y-4 text-muted-foreground text-sm leading-relaxed">
-                      <div dangerouslySetInnerHTML={{ __html: seoData.seoContent.replace(/\n/g, '<br />') }} />
+                </CardContent>
+              </Card>
+            )}
+
+            {/* Full Premium Description */}
+            {content && (
+              <Card>
+                <CardHeader>
+                  <CardTitle>Descrizione Completa</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="prose prose-lg max-w-none">
+                    <div className="text-muted-foreground leading-relaxed whitespace-pre-line">
+                      {content.fullPremiumDescription}
                     </div>
-                  )}
-                  
-                  {/* Fallback se non c'è SEO data */}
-                  {!seoData && (
-                    <div className="mt-6 space-y-4 text-muted-foreground text-sm leading-relaxed">
-                      <p>
-                        L&apos;appartamento <strong className="text-foreground">{apartment.name}</strong> si trova a Villa Olimpia, 
-                        nella splendida località di <strong className="text-foreground">Capopiccolo, Isola di Capo Rizzuto</strong>, 
-                        nel cuore dell&apos;Area Marina Protetta Capo Rizzuto. Questo appartamento di <strong className="text-foreground">{apartment.size}</strong> 
-                        al <strong className="text-foreground">{apartment.floor}</strong> può ospitare fino a <strong className="text-foreground">{apartment.guests} persone</strong> 
-                        ed è dotato di <strong className="text-foreground">{apartment.bedrooms} camere da letto</strong> e <strong className="text-foreground">{apartment.bathrooms} bagni</strong>.
-                      </p>
-                      
-                      <p>
-                        La posizione privilegiata a soli <strong className="text-foreground">1 km dalla Spiaggia dei Gigli</strong> rende questo appartamento 
-                        perfetto per una vacanza al mare in Calabria. Ideale per famiglie, coppie o piccoli gruppi che cercano relax e comfort in una delle 
-                        zone più belle della costa ionica calabrese.
-                      </p>
-                      
-                      <p>
-                        Disponibile su <strong className="text-foreground">Booking.com</strong>, <strong className="text-foreground">Airbnb</strong> e 
-                        per prenotazioni dirette. Prezzo a partire da <strong className="text-foreground">€{apartment.price}/notte</strong>. 
-                        Check-in dalle 15:00, check-out entro le 10:00.
-                      </p>
+                  </div>
+                </CardContent>
+              </Card>
+            )}
+
+            {/* Feature Bullets */}
+            {content && content.featureBullets.length > 0 && (
+              <Card>
+                <CardHeader>
+                  <CardTitle>Punti di Forza</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-3">
+                    {content.featureBullets.map((feature, index) => (
+                      <li key={index} className="flex items-start gap-3">
+                        <span className="text-primary mt-1">•</span>
+                        <span className="text-muted-foreground">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
+            )}
+
+            {/* Perfect For */}
+            {content && content.perfectFor.length > 0 && (
+              <Card>
+                <CardHeader>
+                  <CardTitle>Perfetto per…</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-3">
+                    {content.perfectFor.map((item, index) => (
+                      <li key={index} className="flex items-start gap-3">
+                        <span className="text-primary mt-1">•</span>
+                        <span className="text-muted-foreground">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
+            )}
+
+            {/* SEO Paragraph */}
+            {content && (
+              <Card className="bg-gradient-to-br from-blue-50 to-primary/5 border-primary/20">
+                <CardHeader>
+                  <CardTitle>Informazioni Dettagliate</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground leading-relaxed">
+                    {content.seoParagraph}
+                  </p>
+                </CardContent>
+              </Card>
+            )}
+
+            {/* Technical Summary */}
+            {content && (
+              <Card>
+                <CardHeader>
+                  <CardTitle>Dati Tecnici</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <p className="font-semibold text-foreground mb-1">Posti Letto</p>
+                      <p className="text-muted-foreground">{content.technicalSummary.capacity}</p>
                     </div>
-                  )}
-                </div>
-              </CardContent>
-            </Card>
+                    <div>
+                      <p className="font-semibold text-foreground mb-1">Camere</p>
+                      <p className="text-muted-foreground">{content.technicalSummary.rooms}</p>
+                    </div>
+                    <div>
+                      <p className="font-semibold text-foreground mb-1">Bagni</p>
+                      <p className="text-muted-foreground">{content.technicalSummary.bathrooms}</p>
+                    </div>
+                    <div>
+                      <p className="font-semibold text-foreground mb-1">Area Esterna</p>
+                      <p className="text-muted-foreground">{content.technicalSummary.outdoorArea}</p>
+                    </div>
+                    <div>
+                      <p className="font-semibold text-foreground mb-1">Piano</p>
+                      <p className="text-muted-foreground">{content.technicalSummary.floor}</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            )}
 
             {/* SEO Info Box per OTA */}
             <Card className="bg-gradient-to-br from-blue-50 to-primary/5 border-primary/20">
@@ -196,7 +267,7 @@ export default async function ApartmentDetailPage({ params }: PageProps) {
                   </div>
                   <div>
                     <p className="font-semibold text-foreground mb-1">🏖️ Distanza Spiaggia</p>
-                    <p className="text-muted-foreground">1 km (2 minuti in auto, 15 minuti a piedi)</p>
+                    <p className="text-muted-foreground">Meno di 100 metri (1 minuto a piedi)</p>
                   </div>
                   <div>
                     <p className="font-semibold text-foreground mb-1">📅 Check-in / Check-out</p>
@@ -217,39 +288,6 @@ export default async function ApartmentDetailPage({ params }: PageProps) {
               </CardContent>
             </Card>
 
-            {/* Features */}
-            <Card>
-              <CardHeader>
-                <CardTitle>Caratteristiche</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                  {apartment.features?.map((feature, index) => (
-                    <div key={index} className="flex items-center gap-2">
-                      <span className="text-primary">✓</span>
-                      <span className="text-sm">{feature}</span>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Amenities */}
-            <Card>
-              <CardHeader>
-                <CardTitle>Servizi Inclusi</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                  {apartment.features?.map((feature, index) => (
-                    <div key={index} className="flex items-center gap-2">
-                      <span className="text-primary">•</span>
-                      <span className="text-sm">{feature}</span>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
           </div>
 
           {/* Sidebar */}

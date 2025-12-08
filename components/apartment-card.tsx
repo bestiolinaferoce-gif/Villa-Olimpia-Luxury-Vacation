@@ -45,7 +45,7 @@ export function ApartmentCard({
       }}
       transition={{ duration: 0.5, ease: [0.25, 0.25, 0, 1] }}
     >
-      <Card className="group overflow-hidden bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 h-full flex flex-col cursor-pointer border-2 border-transparent hover:border-primary/20">
+      <Card className="group overflow-hidden bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 h-full flex flex-col cursor-pointer border-2 border-transparent hover:border-primary/30 hover:ring-2 hover:ring-primary/10">
         <div className="relative h-64 overflow-hidden bg-gradient-to-br from-ocean/20 to-primary/20">
           {!showPlaceholder && image.startsWith('/') ? (
             <motion.div
@@ -81,7 +81,7 @@ export function ApartmentCard({
               </span>
             </div>
           )}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
           <div className="absolute bottom-4 left-4 right-4 z-10 opacity-0 group-hover:opacity-100 transition-opacity">
             <Button
               variant="luxury"

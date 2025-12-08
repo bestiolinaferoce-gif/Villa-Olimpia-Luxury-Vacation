@@ -32,8 +32,24 @@ const stats = [
 
 export function StatsSection() {
   return (
-    <section className="py-20 bg-gradient-to-br from-primary to-ocean text-white">
-      <div className="container mx-auto px-4">
+    <section className="py-24 bg-gradient-to-br from-primary via-ocean to-primary/90 text-white relative overflow-hidden">
+      {/* Animated background gradient overlay */}
+      <motion.div
+        animate={{
+          background: [
+            "radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 0%, transparent 50%)",
+            "radial-gradient(circle at 80% 50%, rgba(255,255,255,0.1) 0%, transparent 50%)",
+            "radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 0%, transparent 50%)",
+          ]
+        }}
+        transition={{
+          duration: 8,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+        className="absolute inset-0 opacity-50"
+      />
+      <div className="container mx-auto px-4 relative z-10">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           {stats.map((stat, index) => (
             <motion.div

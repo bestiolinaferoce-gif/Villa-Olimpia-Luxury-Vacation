@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import { motion } from "framer-motion"
 
 // Placeholder tracking functions
 function enableTracking() {
@@ -105,42 +106,78 @@ export function CookieConsent() {
 
   return (
     <>
-      {/* Cookie Banner - Elegant Bottom Bar */}
-      <div className="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-gray-200 shadow-sm">
-        <div className="max-w-[900px] mx-auto px-4 py-3 md:py-4">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4">
-            <p className="text-sm md:text-base text-gray-700 flex-1 text-center sm:text-left">
-              Questo sito usa cookie per migliorare l&apos;esperienza.{" "}
-              <a
-                href="/cookie-policy"
-                className="text-[#1e3a8a] hover:underline font-medium"
-              >
-                Cookie Policy
-              </a>
-            </p>
-            <div className="flex items-center gap-2 sm:gap-2.5 flex-shrink-0">
-              <button
-                onClick={handleCustomize}
-                className="px-3 py-1.5 md:px-4 md:py-2 rounded-full text-xs md:text-sm font-medium border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 hover:border-gray-400 transition-all duration-200 whitespace-nowrap"
-              >
-                Preferenze
-              </button>
-              <button
-                onClick={handleReject}
-                className="px-3 py-1.5 md:px-4 md:py-2 rounded-full text-xs md:text-sm font-medium bg-gray-100 text-gray-700 hover:bg-gray-200 transition-all duration-200 whitespace-nowrap"
-              >
-                Rifiuta
-              </button>
-              <button
-                onClick={handleAccept}
-                className="px-3 py-1.5 md:px-4 md:py-2 rounded-full text-xs md:text-sm font-medium bg-[#1e3a8a] text-white hover:bg-[#1e40af] transition-all duration-200 whitespace-nowrap"
-              >
-                Accetta
-              </button>
+      {/* Cookie Banner - Interactive Premium Design */}
+      <motion.div
+        initial={{ y: 100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ type: "spring", damping: 25, stiffness: 200 }}
+        className="fixed bottom-0 left-0 right-0 z-50 p-4"
+      >
+        <div className="max-w-4xl mx-auto">
+          <motion.div
+            whileHover={{ scale: 1.01 }}
+            className="bg-white rounded-2xl shadow-2xl border-2 border-primary/20 backdrop-blur-md overflow-hidden"
+          >
+            <div className="bg-gradient-to-r from-primary/10 via-ocean/5 to-primary/10 p-4 md:p-5">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                <div className="flex-1">
+                  <div className="flex items-start gap-3">
+                    <motion.div
+                      animate={{ rotate: [0, 10, -10, 0] }}
+                      transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                      className="flex-shrink-0 mt-0.5"
+                    >
+                      <svg className="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z" />
+                      </svg>
+                    </motion.div>
+                    <div>
+                      <p className="text-sm md:text-base font-medium text-gray-900 mb-1">
+                        Utilizziamo i cookie per migliorare la tua esperienza
+                      </p>
+                      <p className="text-xs md:text-sm text-gray-600">
+                        Continuando a navigare, accetti la nostra{" "}
+                        <a
+                          href="/cookie-policy"
+                          className="text-primary hover:underline font-medium"
+                        >
+                          Cookie Policy
+                        </a>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="flex items-center gap-2.5 flex-shrink-0 w-full sm:w-auto">
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={handleReject}
+                    className="px-4 py-2 rounded-xl text-sm font-semibold bg-gray-100 text-gray-700 hover:bg-gray-200 transition-all duration-200 whitespace-nowrap shadow-sm hover:shadow-md"
+                  >
+                    Rifiuta
+                  </motion.button>
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={handleCustomize}
+                    className="px-4 py-2 rounded-xl text-sm font-semibold border-2 border-primary/30 bg-white text-gray-700 hover:border-primary/50 hover:bg-primary/5 transition-all duration-200 whitespace-nowrap shadow-sm hover:shadow-md"
+                  >
+                    Personalizza
+                  </motion.button>
+                  <motion.button
+                    whileHover={{ scale: 1.05, boxShadow: "0 10px 25px rgba(0,119,190,0.3)" }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={handleAccept}
+                    className="px-5 py-2 rounded-xl text-sm font-bold bg-gradient-to-r from-primary to-ocean text-white hover:from-primary/90 hover:to-ocean/90 transition-all duration-200 whitespace-nowrap shadow-md hover:shadow-lg"
+                  >
+                    Accetta
+                  </motion.button>
+                </div>
+              </div>
             </div>
-          </div>
+          </motion.div>
         </div>
-      </div>
+      </motion.div>
 
       {/* Customize Modal - Elegant Minimal Design */}
       {showModal && (

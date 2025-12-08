@@ -65,7 +65,7 @@ export function getApartmentMetadata(apartmentId: number): Metadata {
 
   // SEO ottimizzato per OTA (Booking.com, Airbnb, etc.)
   const seoTitle = `Appartamento ${apartment.name} - Villa Olimpia | ${apartment.floor} | ${apartment.guests} Ospiti | Capopiccolo, Isola di Capo Rizzuto`
-  const seoDescription = `Affitta l'appartamento ${apartment.name} a Villa Olimpia, ${apartment.floor} ${apartment.size} per ${apartment.guests} ospiti. ${apartment.bedrooms} camere, ${apartment.bathrooms} bagni. ${apartment.features.slice(0, 3).join(', ')}. A 1 km dalla Spiaggia dei Gigli, Area Marina Protetta Capo Rizzuto. Prenota su Booking.com, Airbnb o direttamente.`
+  const seoDescription = `Affitta l'appartamento ${apartment.name} a Villa Olimpia, ${apartment.floor} ${apartment.size} per ${apartment.guests} ospiti. ${apartment.bedrooms} camere, ${apartment.bathrooms} bagni. ${apartment.features.slice(0, 3).join(', ')}. A meno di 100 metri dalla Spiaggia dei Gigli, Area Marina Protetta Capo Rizzuto. Prenota su Booking.com, Airbnb o direttamente.`
   
   const keywords = [
     `appartamento ${apartment.name.toLowerCase()} villa olimpia`,

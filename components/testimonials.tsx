@@ -42,7 +42,7 @@ export function Testimonials() {
   const featuredReviews = reviews.slice(0, 6)
 
   return (
-    <section className="py-20 bg-blue-600 text-white overflow-hidden">
+    <section className="py-24 bg-gradient-to-br from-primary via-ocean to-primary/90 text-white overflow-hidden">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

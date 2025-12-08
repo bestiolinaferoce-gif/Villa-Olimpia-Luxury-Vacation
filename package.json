@@ -4,12 +4,14 @@
   "private": true,
   "scripts": {
     "dev": "next dev -p 3001",
+    "dev:clean": "lsof -ti:3001 | xargs kill -9 2>/dev/null || true && next dev -p 3001",
     "dev:3000": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "@gsap/react": "^2.1.2",
     "@hookform/resolvers": "^3.3.0",
     "@lottiefiles/react-lottie-player": "^3.6.0",
@@ -51,4 +53,3 @@
     "typescript": "^5.5.0"
   }
 }
-

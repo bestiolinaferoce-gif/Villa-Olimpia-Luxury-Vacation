@@ -4,12 +4,13 @@ import { useState } from "react"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
+import emailjs from "@emailjs/browser"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Calendar, Users, Mail, Phone, MessageSquare } from "lucide-react"
+import { Calendar, Users, Mail, Phone, MessageSquare, AlertCircle } from "lucide-react"
 import { motion } from "framer-motion"
 
 const bookingSchema = z.object({
@@ -29,23 +30,81 @@ export function BookingForm() {
   const [currentStep, setCurrentStep] = useState(1)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [submitError, setSubmitError] = useState<string | null>(null)
 
   const {
     register,
     handleSubmit,
     formState: { errors },
     watch,
+    reset,
   } = useForm<BookingFormData>({
     resolver: zodResolver(bookingSchema),
   })
 
   const onSubmit = async (data: BookingFormData) => {
     setIsSubmitting(true)
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1500))
-    // Booking data ready for submission
-    setIsSubmitting(false)
-    setIsSubmitted(true)
+    setSubmitError(null)
+
+    try {
+      // EmailJS configuration
+      // IMPORTANTE: Configurare queste variabili in .env.local
+      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID
+      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID
+      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+
+      // Validate configuration
+      if (!serviceId || serviceId === 'service_default') {
+        throw new Error('Service ID non configurato. Controlla il file .env.local')
+      }
+      if (!templateId || templateId === 'template_default') {
+        throw new Error('Template ID non configurato. Controlla il file .env.local')
+      }
+      if (!publicKey || publicKey === '') {
+        throw new Error('Public Key non configurata. Controlla il file .env.local e riavvia il server.')
+      }
+
+      // Prepare email template parameters
+      const templateParams = {
+        from_name: data.name,
+        from_email: data.email,
+        phone: data.phone,
+        check_in: data.checkIn,
+        check_out: data.checkOut,
+        guests: data.guests,
+        apartment: data.apartment || 'Non specificato',
+        message: data.message || 'Nessun messaggio aggiuntivo',
+        to_email: 'villaolimpiacaporizzuto@gmail.com',
+        subject: `Nuova Richiesta Prenotazione - ${data.name}`,
+      }
+
+      // Send email via EmailJS
+      await emailjs.send(serviceId, templateId, templateParams, publicKey)
+
+      setIsSubmitting(false)
+      setIsSubmitted(true)
+      reset() // Reset form after successful submission
+    } catch (error) {
+      console.error('Errore invio email:', error)
+      setIsSubmitting(false)
+      
+      // Provide more specific error messages
+      let errorMessage = 'Si è verificato un errore durante l\'invio. Riprova più tardi o contattaci direttamente.'
+      
+      if (error instanceof Error) {
+        if (error.message.includes('Service ID') || error.message.includes('Template ID') || error.message.includes('Public Key')) {
+          errorMessage = error.message + ' Riavvia il server di sviluppo dopo aver modificato .env.local'
+        } else if (error.message.includes('400')) {
+          errorMessage = 'Errore nella configurazione EmailJS. Verifica Service ID e Template ID.'
+        } else if (error.message.includes('401') || error.message.includes('403')) {
+          errorMessage = 'Errore di autenticazione EmailJS. Verifica la Public Key.'
+        } else {
+          errorMessage = error.message
+        }
+      }
+      
+      setSubmitError(errorMessage)
+    }
   }
 
   if (isSubmitted) {
@@ -56,15 +115,19 @@ export function BookingForm() {
         className="text-center py-12"
       >
         <div className="text-6xl mb-4">✅</div>
-        <h3 className="text-2xl font-bold mb-2">Richiesta Inviata!</h3>
-        <p className="text-muted-foreground mb-6">
-          Ti risponderemo entro 24 ore per confermare la tua prenotazione.
+        <h3 className="text-2xl font-bold mb-2">Richiesta Inviata con Successo!</h3>
+        <p className="text-muted-foreground mb-4">
+          Abbiamo ricevuto la tua richiesta di prenotazione.
+        </p>
+        <p className="text-sm text-muted-foreground mb-6">
+          Ti risponderemo entro 24 ore all&apos;indirizzo email fornito per confermare la disponibilità.
         </p>
         <Button
           variant="outline"
           onClick={() => {
             setIsSubmitted(false)
             setCurrentStep(1)
+            reset()
           }}
         >
           Invia Nuova Richiesta
@@ -262,6 +325,24 @@ export function BookingForm() {
               {isSubmitting ? "Invio in corso..." : "Invia Richiesta"}
             </Button>
           </div>
+
+          {/* Error Message */}
+          {submitError && (
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="flex items-start gap-3 p-4 bg-destructive/10 border border-destructive/20 rounded-lg"
+            >
+              <AlertCircle className="h-5 w-5 text-destructive flex-shrink-0 mt-0.5" />
+              <div className="flex-1">
+                <p className="text-sm font-medium text-destructive mb-1">Errore nell&apos;invio</p>
+                <p className="text-sm text-destructive/80">{submitError}</p>
+                <p className="text-xs text-muted-foreground mt-2">
+                  Puoi contattarci direttamente via WhatsApp o email.
+                </p>
+              </div>
+            </motion.div>
+          )}
         </motion.div>
       )}
 

@@ -31,7 +31,7 @@ export const VILLA_OLIMPIA_LOCATION = {
   },
   // Distanze da punti di interesse (aggiornate per Capo Rizzuto)
   distances: {
-    spiaggia: "1 km (Spiaggia Capo Rizzuto)",
+    spiaggia: "Meno di 100 metri (Spiaggia dei Gigli)",
     riservaMarina: "2 km (Riserva Marina Capo Rizzuto)",
     leCastella: "5 km",
     centroStorico: "Isola di Capo Rizzuto - 3 km",
