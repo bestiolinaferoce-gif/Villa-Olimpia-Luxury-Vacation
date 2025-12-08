@@ -7,6 +7,7 @@ import { ArrowDown, Calendar, MapPin, Star } from "lucide-react"
 import Link from "next/link"
 import { CounterAnimation } from "@/components/animations/counter-animation"
 import { WeatherWidget } from "@/components/weather-widget"
+import { DirectionsWidget } from "@/components/directions-widget"
 import Image from "next/image"
 
 export function HeroSectionPremium() {
@@ -226,6 +227,9 @@ export function HeroSectionPremium() {
           <ArrowDown className="h-6 w-6" />
         </motion.div>
       </motion.div>
+
+      {/* Directions Widget - Badge floating "Come Raggiungerci" */}
+      <DirectionsWidget showBadge={true} />
     </section>
   )
 }
