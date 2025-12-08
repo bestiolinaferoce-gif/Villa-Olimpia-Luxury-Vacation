@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Menu, X, Phone } from "lucide-react"
+import { Menu, X } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
 
 export function Header() {
@@ -64,17 +64,6 @@ export function Header() {
 
           {/* CTA Buttons */}
           <div className="hidden lg:flex items-center space-x-4">
-            <Button
-              variant="ghost"
-              size="sm"
-              asChild
-              className="flex items-center gap-2"
-            >
-              <a href="https://wa.me/393290479193" target="_blank" rel="noopener noreferrer">
-                <Phone className="h-4 w-4" />
-                WhatsApp
-              </a>
-            </Button>
             <Button 
               size="sm" 
               className="bg-[#FFC107] text-gray-900 hover:bg-[#FFD54F] font-medium"
@@ -122,16 +111,6 @@ export function Header() {
                 </Link>
               ))}
               <div className="pt-4 space-y-3 border-t">
-                <Button
-                  variant="outline"
-                  className="w-full flex items-center justify-center gap-2"
-                  asChild
-                >
-                  <a href="https://wa.me/393290479193" target="_blank" rel="noopener noreferrer">
-                    <Phone className="h-4 w-4" />
-                    WhatsApp
-                  </a>
-                </Button>
                 <Button variant="luxury" className="w-full" asChild>
                   <Link href="/contatti" onClick={() => setIsMenuOpen(false)}>
                     Prenota Ora
