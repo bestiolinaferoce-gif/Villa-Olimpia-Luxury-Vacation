@@ -91,6 +91,12 @@ export function BookingForm() {
   })
 
   const onSubmit = async (data: BookingFormData) => {
+    // Verifica che siamo nel browser PRIMA di tutto
+    if (typeof window === 'undefined') {
+      setSubmitError('Il form può essere inviato solo dal browser. Ricarica la pagina.')
+      return
+    }
+
     setIsSubmitting(true)
     setSubmitError(null)
 
@@ -175,8 +181,10 @@ Oppure contattaci direttamente via WhatsApp o email.`
           errorMessage += 'Errore nella configurazione EmailJS. Verifica Service ID e Template ID su Vercel.'
         } else if (errorMsg.includes('401') || errorMsg.includes('403')) {
           errorMessage += 'Errore di autenticazione EmailJS. Verifica la Public Key su Vercel.'
-        } else if (errorMsg.includes('network') || errorMsg.includes('fetch')) {
+        } else if (errorMsg.includes('network') || errorMsg.includes('fetch') || errorMsg.includes('failed to fetch')) {
           errorMessage += 'Errore di connessione. Verifica la tua connessione internet e riprova.'
+        } else if (errorMsg.includes('cors')) {
+          errorMessage += 'Errore CORS. Contatta il supporto tecnico.'
         } else {
           errorMessage += `Errore: ${error.message}`
         }
