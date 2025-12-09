@@ -9,13 +9,8 @@ const nextConfig = {
     formats: ['image/avif', 'image/webp'],
   },
   
-  // Variabili ambiente pubbliche
-  env: {
-    NEXT_PUBLIC_EMAILJS_SERVICE_ID: process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
-    NEXT_PUBLIC_EMAILJS_TEMPLATE_ID: process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
-    NEXT_PUBLIC_EMAILJS_PUBLIC_KEY: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY,
-    NEXT_PUBLIC_GOOGLE_MAPS_API_KEY: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
-  },
+  // Next.js espone automaticamente le variabili NEXT_PUBLIC_* nel client
+  // Non serve esplicitarle qui, ma le lasciamo per compatibilità
 }
 
 module.exports = nextConfig

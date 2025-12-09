@@ -48,27 +48,20 @@ export function BookingForm() {
 
     try {
       // EmailJS configuration
-      // IMPORTANTE: Configurare queste variabili in .env.local
-  // Leggi variabili ambiente sia da server che client
-  const serviceId = typeof window !== 'undefined' 
-    ? (window as any).__NEXT_DATA__?.env?.NEXT_PUBLIC_EMAILJS_SERVICE_ID || process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID
-    : process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID
-  const templateId = typeof window !== 'undefined'
-    ? (window as any).__NEXT_DATA__?.env?.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID
-    : process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID
-  const publicKey = typeof window !== 'undefined'
-    ? (window as any).__NEXT_DATA__?.env?.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
-    : process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+      // IMPORTANTE: Configurare queste variabili su Vercel → Settings → Environment Variables
+      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || ''
+      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || ''
+      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || ''
 
       // Validate configuration
-      if (!serviceId || serviceId === 'service_default') {
-        throw new Error('Service ID non configurato. Controlla il file .env.local')
+      if (!serviceId || serviceId.trim() === '') {
+        throw new Error('Service ID non configurato. Configura NEXT_PUBLIC_EMAILJS_SERVICE_ID su Vercel.')
       }
-      if (!templateId || templateId === 'template_default') {
-        throw new Error('Template ID non configurato. Controlla il file .env.local')
+      if (!templateId || templateId.trim() === '') {
+        throw new Error('Template ID non configurato. Configura NEXT_PUBLIC_EMAILJS_TEMPLATE_ID su Vercel.')
       }
-      if (!publicKey || publicKey === '') {
-        throw new Error('Public Key non configurata. Controlla il file .env.local e riavvia il server.')
+      if (!publicKey || publicKey.trim() === '') {
+        throw new Error('Public Key non configurata. Configura NEXT_PUBLIC_EMAILJS_PUBLIC_KEY su Vercel.')
       }
 
       // Prepare email template parameters

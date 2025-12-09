@@ -39,10 +39,8 @@ export function MapComponent() {
   const [showInfoPanel, setShowInfoPanel] = useState(false)
   const [mapError, setMapError] = useState(false)
   
-  // Leggi API key sia da server che client
-  const apiKey = typeof window !== 'undefined' 
-    ? (window as any).__NEXT_DATA__?.env?.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY
-    : process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY
+  // Leggi API key - Next.js espone automaticamente NEXT_PUBLIC_* nel client
+  const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || ''
 
   const handleOpenMaps = () => {
     if (typeof window !== 'undefined') {
@@ -75,10 +73,13 @@ export function MapComponent() {
   }, [])
 
   // Se non c'è API key o c'è un errore, mostra placeholder con link
-  const hasValidApiKey = apiKey && 
+  const hasValidApiKey = Boolean(
+    apiKey && 
+    apiKey.trim() !== '' &&
     apiKey !== 'your_google_maps_api_key_here' && 
     apiKey !== 'INSERISCI_QUI_IL_TUO_GOOGLE_MAPS_API_KEY' &&
     apiKey.length > 10
+  )
 
   if (!hasValidApiKey || mapError) {
     return (
@@ -103,7 +104,7 @@ export function MapComponent() {
               </p>
               <p className="text-sm text-muted-foreground">
                 {!hasValidApiKey 
-                  ? "Configura NEXT_PUBLIC_GOOGLE_MAPS_API_KEY su Vercel"
+                  ? "Configura NEXT_PUBLIC_GOOGLE_MAPS_API_KEY su Vercel → Settings → Environment Variables"
                   : "Errore nel caricamento della mappa"}
               </p>
             </div>
