@@ -27,7 +27,17 @@ const bookingSchema = z.object({
 type BookingFormData = z.infer<typeof bookingSchema>
 
 // Funzione per ottenere configurazione EmailJS (legge sempre le variabili ambiente fresche)
+// IMPORTANTE: In Next.js, le variabili NEXT_PUBLIC_* sono disponibili solo lato client
 const getEmailJSConfig = () => {
+  // Verifica che siamo nel browser
+  if (typeof window === 'undefined') {
+    return {
+      serviceId: '',
+      templateId: '',
+      publicKey: '',
+    }
+  }
+  
   return {
     serviceId: process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || '',
     templateId: process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || '',
