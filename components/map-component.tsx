@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useCallback } from "react"
+import { useState, useCallback, useEffect } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { MapPin, Navigation, Route, ExternalLink } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -38,9 +38,22 @@ export function MapComponent() {
   const [isMapLoaded, setIsMapLoaded] = useState(false)
   const [showInfoPanel, setShowInfoPanel] = useState(false)
   const [mapError, setMapError] = useState(false)
+  const [apiKey, setApiKey] = useState<string>('')
+  const [isClient, setIsClient] = useState(false)
   
-  // Leggi API key - Next.js espone automaticamente NEXT_PUBLIC_* nel client
-  const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || ''
+  // Leggi API key solo lato client per evitare problemi SSR
+  useEffect(() => {
+    setIsClient(true)
+    const key = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || ''
+    setApiKey(key)
+    
+    // Se non c'è API key, mostra errore dopo un breve delay
+    if (!key || key.trim() === '') {
+      setTimeout(() => {
+        setMapError(true)
+      }, 1000)
+    }
+  }, [])
 
   const handleOpenMaps = () => {
     if (typeof window !== 'undefined') {
@@ -67,13 +80,18 @@ export function MapComponent() {
     setMapError(false)
   }, [])
 
-  const onError = useCallback(() => {
+  const onError = useCallback((error: Error) => {
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Google Maps LoadScript Error:', error)
+    }
     setMapError(true)
     setIsMapLoaded(false)
   }, [])
+  
 
   // Se non c'è API key o c'è un errore, mostra placeholder con link
   const hasValidApiKey = Boolean(
+    isClient &&
     apiKey && 
     apiKey.trim() !== '' &&
     apiKey !== 'your_google_maps_api_key_here' && 
@@ -81,7 +99,8 @@ export function MapComponent() {
     apiKey.length > 10
   )
 
-  if (!hasValidApiKey || mapError) {
+  // Mostra placeholder durante SSR o se non c'è API key
+  if (!isClient || !hasValidApiKey || mapError) {
     return (
       <Card>
         <CardHeader>
@@ -158,30 +177,45 @@ export function MapComponent() {
       </CardHeader>
       <CardContent>
         <div className="relative">
-          <LoadScript 
-            googleMapsApiKey={apiKey}
-            onError={onError}
-            loadingElement={<div className="w-full h-[400px] bg-gray-100 rounded-lg flex items-center justify-center">
+          {isClient && hasValidApiKey && !mapError ? (
+            <LoadScript 
+              googleMapsApiKey={apiKey}
+              onError={onError}
+              onLoad={() => {
+                setIsMapLoaded(true)
+                setMapError(false)
+              }}
+              loadingElement={
+                <div className="w-full h-[400px] bg-gray-100 rounded-lg flex items-center justify-center">
+                  <div className="text-center">
+                    <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin mx-auto mb-2" />
+                    <p className="text-sm text-muted-foreground">Caricamento mappa...</p>
+                  </div>
+                </div>
+              }
+            >
+              <GoogleMap
+                mapContainerStyle={mapContainerStyle}
+                center={center}
+                zoom={15}
+                options={mapOptions}
+                onLoad={onLoad}
+              >
+                <Marker
+                  position={center}
+                  title="Villa Olimpia"
+                  onClick={() => setShowInfoPanel(true)}
+                />
+              </GoogleMap>
+            </LoadScript>
+          ) : (
+            <div className="w-full h-[400px] bg-gray-100 rounded-lg flex items-center justify-center">
               <div className="text-center">
                 <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin mx-auto mb-2" />
                 <p className="text-sm text-muted-foreground">Caricamento mappa...</p>
               </div>
-            </div>}
-          >
-            <GoogleMap
-              mapContainerStyle={mapContainerStyle}
-              center={center}
-              zoom={15}
-              options={mapOptions}
-              onLoad={onLoad}
-            >
-              <Marker
-                position={center}
-                title="Villa Olimpia"
-                onClick={() => setShowInfoPanel(true)}
-              />
-            </GoogleMap>
-          </LoadScript>
+            </div>
+          )}
           
           {/* Pannello laterale con informazioni */}
           {showInfoPanel && (
