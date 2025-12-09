@@ -38,7 +38,11 @@ export function MapComponent() {
   const [isMapLoaded, setIsMapLoaded] = useState(false)
   const [showInfoPanel, setShowInfoPanel] = useState(false)
   const [mapError, setMapError] = useState(false)
-  const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY
+  
+  // Leggi API key sia da server che client
+  const apiKey = typeof window !== 'undefined' 
+    ? (window as any).__NEXT_DATA__?.env?.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY
+    : process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY
 
   const handleOpenMaps = () => {
     if (typeof window !== 'undefined') {
@@ -70,8 +74,13 @@ export function MapComponent() {
     setIsMapLoaded(false)
   }, [])
 
-  // Se non c'è API key, mostra placeholder con link
-  if (!apiKey || apiKey === 'your_google_maps_api_key_here' || mapError) {
+  // Se non c'è API key o c'è un errore, mostra placeholder con link
+  const hasValidApiKey = apiKey && 
+    apiKey !== 'your_google_maps_api_key_here' && 
+    apiKey !== 'INSERISCI_QUI_IL_TUO_GOOGLE_MAPS_API_KEY' &&
+    apiKey.length > 10
+
+  if (!hasValidApiKey || mapError) {
     return (
       <Card>
         <CardHeader>
@@ -93,7 +102,9 @@ export function MapComponent() {
                 Mappa interattiva
               </p>
               <p className="text-sm text-muted-foreground">
-                Configura NEXT_PUBLIC_GOOGLE_MAPS_API_KEY in .env.local
+                {!hasValidApiKey 
+                  ? "Configura NEXT_PUBLIC_GOOGLE_MAPS_API_KEY su Vercel"
+                  : "Errore nel caricamento della mappa"}
               </p>
             </div>
           </div>

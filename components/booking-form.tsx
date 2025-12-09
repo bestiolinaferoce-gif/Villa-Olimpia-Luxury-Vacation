@@ -49,9 +49,16 @@ export function BookingForm() {
     try {
       // EmailJS configuration
       // IMPORTANTE: Configurare queste variabili in .env.local
-      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID
-      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID
-      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+  // Leggi variabili ambiente sia da server che client
+  const serviceId = typeof window !== 'undefined' 
+    ? (window as any).__NEXT_DATA__?.env?.NEXT_PUBLIC_EMAILJS_SERVICE_ID || process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID
+    : process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID
+  const templateId = typeof window !== 'undefined'
+    ? (window as any).__NEXT_DATA__?.env?.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID
+    : process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID
+  const publicKey = typeof window !== 'undefined'
+    ? (window as any).__NEXT_DATA__?.env?.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+    : process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
 
       // Validate configuration
       if (!serviceId || serviceId === 'service_default') {
