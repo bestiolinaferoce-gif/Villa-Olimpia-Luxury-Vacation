@@ -78,8 +78,25 @@ export function BookingForm() {
         subject: `Nuova Richiesta Prenotazione - ${data.name}`,
       }
 
+      // Debug logging prima dell'invio
+      console.log('📧 EmailJS - Invio email:', {
+        serviceId: serviceId ? `${serviceId.substring(0, 10)}...` : 'MISSING',
+        templateId: templateId ? `${templateId.substring(0, 10)}...` : 'MISSING',
+        publicKeyPresent: Boolean(publicKey && publicKey.length > 5),
+        templateParams: {
+          ...templateParams,
+          // Non loggare dati sensibili completi
+          from_email: templateParams.from_email ? `${templateParams.from_email.substring(0, 5)}...` : 'MISSING',
+        },
+      })
+
       // Send email via EmailJS
-      await emailjs.send(serviceId, templateId, templateParams, publicKey)
+      const result = await emailjs.send(serviceId, templateId, templateParams, publicKey)
+      
+      console.log('✅ EmailJS - Email inviata con successo:', {
+        status: result.status,
+        text: result.text,
+      })
 
       setIsSubmitting(false)
       setIsSubmitted(true)

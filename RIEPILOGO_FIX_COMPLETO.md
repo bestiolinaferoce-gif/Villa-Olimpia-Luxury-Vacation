@@ -1,147 +1,210 @@
-# ✅ RIEPILOGO COMPLETO - Fix Foto e 404
+# ✅ RIEPILOGO FIX COMPLETO - Google Maps e Form Contatti
 
-## 🎯 PROBLEMI RISOLTI
+## 🎯 PROBLEMA RISOLTO
 
-### 1. ✅ FOTO APPARTAMENTI - COPIA AUTOMATICA
-- **Script creato**: `scripts/copia_foto.py`
-- **Foto copiate automaticamente** per:
-  - **Frangipane**: 6 foto (main, camera, cucina x2, bagno, living)
-  - **Fiordaliso**: 3 foto (main, living-1, living-2)
-  - **Orchidea**: 4 foto (main, camera, terrazza x2)
-
-### 2. ✅ ERRORE 404 PAGINE DETTAGLIO - RISOLTO
-- **Aggiunto**: `generateStaticParams()` per pre-generare tutte le pagine
-- **Migliorato**: `generateMetadata()` per gestire tutti i formati di ID
-- **Risultato**: Le pagine sono ora generate staticamente e non danno più 404
-
-### 3. ✅ PERCORSI IMMAGINI AGGIORNATI
-- **Frangipane**: Array `images[]` aggiornato con tutte le 6 foto disponibili
-- **Fiordaliso**: Array `images[]` aggiornato con 3 foto
-- **Orchidea**: Array `images[]` aggiornato con 4 foto
+Dopo migrazione da Netlify a Vercel, Google Maps e form contatti non funzionavano più.
 
 ---
 
-## 📋 MODIFICHE APPLICATE
+## ✅ FASE 1: DIAGNOSTICA - COMPLETATA
 
-### File: `app/appartamenti/[id]/page.tsx`
-```typescript
-// AGGIUNTO: generateStaticParams per pre-generare pagine
-export async function generateStaticParams() {
-  return apartments.map((apartment) => ({
-    id: `apartment-${apartment.id}`,
-  }))
+### Problemi Identificati:
+1. **Google Maps**: Variabile ambiente non configurata + CSP headers mancanti
+2. **Form Contatti**: Variabili ambiente EmailJS non configurate
+
+### File Analizzati:
+- ✅ `package.json` - Dipendenze OK
+- ✅ `components/map-component.tsx` - Componente OK
+- ✅ `components/booking-form.tsx` - Form OK (usa EmailJS client-side)
+- ✅ `vercel.json` - Presente ma mancavano CSP headers
+
+---
+
+## ✅ FASE 2: FIX GOOGLE MAPS - COMPLETATA
+
+### Modifiche Applicate:
+
+#### 1. **vercel.json** - CSP Headers
+```json
+{
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Content-Security-Policy",
+          "value": "...permessi Google Maps e EmailJS..."
+        }
+      ]
+    }
+  ]
 }
-
-// MIGLIORATO: generateMetadata per gestire tutti i formati
-export async function generateMetadata({ params }: PageProps) {
-  // Gestisce: "apartment-1", "1", "frangipane"
-  // ...
-}
 ```
 
-### File: `data/apartments.ts`
+**Permessi aggiunti:**
+- ✅ Scripts Google Maps (`maps.googleapis.com`)
+- ✅ Immagini Google Maps (`maps.gstatic.com`)
+- ✅ API calls Google Maps
+- ✅ EmailJS API (`api.emailjs.com`)
 
-**FRANGIPANE (id: 1)**:
-```typescript
-image: "/images/villa/appartamenti/frangipane/main.jpg",
-images: [
-  "/images/villa/appartamenti/frangipane/main.jpg",
-  "/images/villa/appartamenti/frangipane/camera-matrimoniale-frangipane-1.jpg",
-  "/images/villa/appartamenti/frangipane/cucina-appartamento-frangipane-1.jpg",
-  "/images/villa/appartamenti/frangipane/cucina-appartamento-frangipane-3.jpg",
-  "/images/villa/appartamenti/frangipane/bagno-frangipane.jpg",
-  "/images/villa/appartamenti/frangipane/zona-living-appartamento-lavanda.jpg",
-]
-```
+#### 2. **components/map-component.tsx**
+- ✅ Migliorato error handling con logging dettagliato
+- ✅ Aggiunto debug logging per verificare API key
+- ✅ Log sempre attivo (anche in produzione) per troubleshooting
 
-**FIORDALISO (id: 2)**:
-```typescript
-image: "/images/villa/appartamenti/fiordaliso/main.jpg",
-images: [
-  "/images/villa/appartamenti/fiordaliso/main.jpg",
-  "/images/villa/appartamenti/fiordaliso/living-1.jpg",
-  "/images/villa/appartamenti/fiordaliso/living-2.jpg",
-]
-```
-
-**ORCHIDEA (id: 3)**:
-```typescript
-image: "/images/villa/appartamenti/orchidea/main.jpg",
-images: [
-  "/images/villa/appartamenti/orchidea/main.jpg",
-  "/images/villa/appartamenti/orchidea/camera-matrimoniale-gardenia-1.jpg",
-  "/images/villa/appartamenti/orchidea/terrazza-appartamento-azalea.jpg",
-  "/images/villa/appartamenti/orchidea/terrazza-azalea-3.jpg",
-]
-```
+#### 3. **components/booking-form.tsx**
+- ✅ Migliorato logging errori EmailJS
+- ✅ Include informazioni su variabili ambiente nel log
 
 ---
 
-## 🚀 COME USARE LO SCRIPT
+## ⚠️ AZIONI RICHIESTE DALL'UTENTE
 
-### Opzione 1 - Esegui lo script Python:
-```bash
-cd ~/Desktop/VillaOlimpia
-python3 scripts/copia_foto.py
+### 1. Configurare Variabili Ambiente su Vercel
+
+**Vai su Vercel → Settings → Environment Variables**
+
+Aggiungi queste 4 variabili:
+
+#### Variabile 1: Google Maps API Key
+```
+Key: NEXT_PUBLIC_GOOGLE_MAPS_API_KEY
+Value: AIzaSyARI-Fmhhh_AMHsJYuBBZBhLEl1rbVAnFo
+Environment: All Environments (o Production, Preview, Development)
 ```
 
-### Opzione 2 - Se Python non funziona, usa lo script bash:
-```bash
-cd ~/Desktop/VillaOlimpia
-bash scripts/copia-foto-finale.sh
+#### Variabile 2: EmailJS Service ID
+```
+Key: NEXT_PUBLIC_EMAILJS_SERVICE_ID
+Value: service_bbp2k8u
+Environment: All Environments
 ```
 
-### Opzione 3 - Copia manualmente (vedi `GUIDA_COMPLETA_COPIA_FOTO.md`)
+#### Variabile 3: EmailJS Template ID
+```
+Key: NEXT_PUBLIC_EMAILJS_TEMPLATE_ID
+Value: template_2kw4d3d
+Environment: All Environments
+```
+
+#### Variabile 4: EmailJS Public Key
+```
+Key: NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+Value: JeiPqp4zNMlRw6ug9
+Environment: All Environments
+```
+
+### 2. Fare Redeploy
+
+**IMPORTANTE:** Le variabili ambiente vengono incluse solo nei nuovi deploy!
+
+1. Vai su **Deployments**
+2. Clicca i **3 puntini** (⋮) sull'ultimo deploy
+3. Clicca **"Redeploy"**
+4. Attendi 2-3 minuti
+
+### 3. Verificare Google Cloud Console
+
+**Vai su:** https://console.cloud.google.com/apis/credentials
+
+1. Seleziona la tua API Key di Google Maps
+2. In **"Application restrictions"**:
+   - Seleziona **"HTTP referrers (web sites)"**
+   - Aggiungi questi referrer:
+     * `https://villa-olimpia-lusso-vacanza.vercel.app/*`
+     * `https://*.vercel.app/*` (per tutti i preview)
+     * `http://localhost:3000/*` (per sviluppo)
+3. In **"API restrictions"**:
+   - Assicurati siano abilitate:
+     * ✅ Maps JavaScript API
+     * ✅ Geocoding API (se usata)
+4. **Salva** modifiche
 
 ---
 
-## ✅ VERIFICA FINALE
+## 🧪 TEST DOPO IL DEPLOY
 
-Dopo aver eseguito lo script:
+### Test 1: Google Maps
+1. Apri il sito su Vercel
+2. Vai su `/location`
+3. Apri la console del browser (F12)
+4. Cerca log che iniziano con "MapComponent Debug:"
+5. Verifica che la mappa si carichi
 
-1. **Verifica che le foto siano state copiate:**
-   ```bash
-   ls -la public/images/villa/appartamenti/frangipane/
-   ls -la public/images/villa/appartamenti/fiordaliso/
-   ls -la public/images/villa/appartamenti/orchidea/
-   ```
+**Se vedi "API Key NON TROVATA":**
+- Le variabili non sono configurate correttamente su Vercel
+- O non è stato fatto un redeploy dopo aver aggiunto le variabili
 
-2. **Ricarica la pagina** nel browser (`Cmd+Shift+R`)
+**Se vedi "Google Maps LoadScript Error":**
+- Controlla i dettagli dell'errore nella console
+- Verifica Google Cloud Console (restrizioni API key)
 
-3. **Testa i link "Vedi Dettagli"**:
-   - Dovrebbero funzionare senza 404
-   - Le pagine si caricano correttamente
-   - Le gallery mostrano tutte le foto
+### Test 2: Form Contatti
+1. Apri il sito su Vercel
+2. Vai su `/contatti`
+3. Compila e invia il form
+4. Apri la console del browser (F12)
+5. Verifica che non ci siano errori
 
-4. **Verifica le card** nella homepage:
-   - Mostrano foto reali (non placeholder)
-   - Hover effects funzionano
-   - Link funzionano
-
----
-
-## 🎯 RISULTATO FINALE
-
-- ✅ **Frangipane**: 6 foto reali copiate e configurate
-- ✅ **Fiordaliso**: 3 foto copiate e configurate
-- ✅ **Orchidea**: 4 foto copiate e configurate
-- ✅ **404 Risolto**: `generateStaticParams()` aggiunto
-- ✅ **Routing migliorato**: Gestisce tutti i formati di ID
-- ✅ **Gallery complete**: Ogni appartamento ha multiple foto
+**Se vedi "Service ID non configurato":**
+- Le variabili EmailJS non sono configurate su Vercel
+- O non è stato fatto un redeploy
 
 ---
 
-## 📝 NOTE IMPORTANTI
+## 📋 FILE MODIFICATI
 
-1. **Esegui lo script** per copiare le foto fisicamente
-2. **Ricarica il browser** dopo la copia
-3. **Se vedi ancora 404**: Esegui `npm run build` per rigenerare le pagine statiche
-4. **Le foto sono placeholder** per Fiordaliso e Orchidea (da Azalea/Gardenia), ma funzionano perfettamente
+1. ✅ `vercel.json` - Aggiunti CSP headers
+2. ✅ `components/map-component.tsx` - Migliorato error handling
+3. ✅ `components/booking-form.tsx` - Migliorato logging errori
 
 ---
 
-## 🎉 TUTTO PRONTO!
+## 🎯 RISULTATO ATTESO
 
-Il codice è completamente aggiornato. Basta eseguire lo script per copiare le foto e il problema 404 è risolto!
+Dopo aver configurato le variabili ambiente su Vercel e fatto il redeploy:
 
+✅ **Google Maps**: Si caricherà correttamente
+✅ **Form Contatti**: Invierà email via EmailJS
+✅ **Console Browser**: Mostrerà log di debug utili per troubleshooting
 
+---
+
+## 🆘 SE NON FUNZIONA ANCORA
+
+1. **Verifica variabili su Vercel:**
+   - Vai su Settings → Environment Variables
+   - Conta quante variabili ci sono (devono essere 4)
+   - Verifica che tutte abbiano "All Environments"
+
+2. **Verifica redeploy:**
+   - Controlla quando è stato fatto l'ultimo deploy
+   - Se hai aggiunto le variabili DOPO l'ultimo deploy → Fai Redeploy
+
+3. **Verifica console browser:**
+   - Apri F12 → Console
+   - Cerca errori o log di debug
+   - Copia gli errori e inviameli
+
+4. **Verifica Google Cloud Console:**
+   - Controlla che l'API key sia attiva
+   - Verifica che i domini Vercel siano autorizzati
+   - Controlla che le API necessarie siano abilitate
+
+---
+
+## 📝 NOTE TECNICHE
+
+- ✅ Nessuna API key hardcoded nel codice
+- ✅ Tutte le variabili usano `NEXT_PUBLIC_*` per client-side
+- ✅ CSP headers configurati correttamente
+- ✅ Error handling migliorato con logging dettagliato
+- ✅ Compatibile con Next.js 16 e Vercel
+
+---
+
+**✅ TUTTE LE MODIFICHE SONO STATE COMMITTATE E PUSHATE SU GITHUB**
+
+Vercel dovrebbe rilevare automaticamente il push e avviare un nuovo deploy.
+
+**PROSSIMO STEP:** Configura le variabili ambiente su Vercel e fai un redeploy!
