@@ -145,13 +145,13 @@ Oppure contattaci direttamente via WhatsApp o email.`
         subject: `Nuova Richiesta Prenotazione - ${data.name}`,
       }
 
-      // Log per debug (sempre visibile per troubleshooting)
-      console.log('📧 EmailJS - Invio email:', {
-        serviceId: serviceId ? `${serviceId.substring(0, 10)}...` : 'MISSING',
-        templateId: templateId ? `${templateId.substring(0, 10)}...` : 'MISSING',
-        publicKeyPresent: Boolean(publicKey && publicKey.length > 5),
-        emailjsAvailable: Boolean(emailjs && typeof emailjs.send === 'function'),
-      })
+      // Log rimosso per produzione
+      // console.log('📧 EmailJS - Invio email:', {
+      //   serviceId: serviceId ? `${serviceId.substring(0, 10)}...` : 'MISSING',
+      //   templateId: templateId ? `${templateId.substring(0, 10)}...` : 'MISSING',
+      //   publicKeyPresent: Boolean(publicKey && publicKey.length > 5),
+      //   emailjsAvailable: Boolean(emailjs && typeof emailjs.send === 'function'),
+      // })
 
       // Send email via EmailJS con gestione errori migliorata
       let result
@@ -175,10 +175,11 @@ Oppure contattaci direttamente via WhatsApp o email.`
         }
       }
       
-      console.log('✅ EmailJS - Email inviata con successo:', {
-        status: result.status,
-        text: result.text,
-      })
+      // Log rimosso per produzione
+      // console.log('✅ EmailJS - Email inviata con successo:', {
+      //   status: result.status,
+      //   text: result.text,
+      // })
 
       setIsSubmitting(false)
       setIsSubmitted(true)

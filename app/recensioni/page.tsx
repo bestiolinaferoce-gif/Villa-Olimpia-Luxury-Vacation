@@ -1,5 +1,5 @@
 import { ReviewsSection } from "@/components/reviews/reviews-section"
-import { reviews, getAverageRating } from "@/data/reviews"
+import { reviews, getAverageRating } from "@/data/reviews-detailed"
 import { ReviewSchema } from "@/components/reviews/review-schema"
 import { Breadcrumb } from "@/components/breadcrumb"
 

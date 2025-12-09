@@ -9,14 +9,14 @@ function enableTracking() {
   // Google Analytics ID: G-XXXXXXXXXX
   // Meta Pixel ID: 000000000000000
   if (process.env.NODE_ENV === "development") {
-    console.log("Tracking enabled")
+    // console.log("Tracking enabled") // Rimosso per produzione
   }
 }
 
 function disableTracking() {
   // Remove scripts and prevent tracking
   if (process.env.NODE_ENV === "development") {
-    console.log("Tracking disabled")
+    // console.log("Tracking disabled") // Rimosso per produzione
   }
 }
 
