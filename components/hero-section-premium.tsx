@@ -36,16 +36,18 @@ export function HeroSectionPremium() {
             }}
           />
           
-          {/* Immagine di sfondo - Piscina di notte */}
+          {/* Immagine di sfondo - Piscina di notte - Ottimizzata */}
           <div className="absolute inset-0">
             <Image
               src="/images/villa/gallery/night-1.jpg"
               alt="Villa Olimpia - Piscina di notte"
               fill
               priority
-              quality={90}
+              quality={75}
               className="object-cover"
               sizes="100vw"
+              placeholder="blur"
+              blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAiIGhlaWdodD0iMTAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIj48c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMDA1MGZmIi8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMDA3N2ZmIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkKSIvPjwvc3ZnPg=="
             />
           </div>
           

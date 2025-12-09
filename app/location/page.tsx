@@ -3,7 +3,20 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { MapPin, Car, Plane, Train, Ship } from "lucide-react"
 import { VILLA_OLIMPIA_LOCATION } from "@/lib/location-data"
-import { MapComponent } from "@/components/map-component"
+import dynamic from "next/dynamic"
+
+// Lazy load Google Maps (componente pesante)
+const MapComponent = dynamic(() => import("@/components/map-component").then(mod => ({ default: mod.MapComponent })), {
+  loading: () => (
+    <div className="w-full h-[400px] bg-gradient-to-br from-ocean/20 to-primary/20 rounded-lg flex items-center justify-center">
+      <div className="text-center">
+        <div className="w-12 h-12 border-4 border-primary border-t-transparent rounded-full animate-spin mx-auto mb-4" />
+        <p className="text-muted-foreground">Caricamento mappa...</p>
+      </div>
+    </div>
+  ),
+  ssr: false
+})
 
 const attractions = [
   {

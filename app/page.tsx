@@ -5,17 +5,27 @@ import { ApartmentCard } from "@/components/apartment-card"
 import { Testimonials } from "@/components/testimonials"
 import { WhyChooseUs } from "@/components/why-choose-us"
 import { StatsSection } from "@/components/stats-section"
-import { HomeGallery } from "@/components/home-gallery"
 import { ScrollReveal } from "@/components/animations/scroll-reveal"
 import { SectionDivider } from "@/components/animations/section-divider"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { WeatherWidget } from "@/components/weather-widget"
-import { HowToReachUs } from "@/components/how-to-reach-us"
 import Link from "next/link"
-import { Star, Wifi, Car, Waves, Utensils, Shield, Umbrella, MapPin, Sparkles } from "lucide-react"
+import { Star, Wifi, Car, Waves, Utensils, Shield, Umbrella, MapPin } from "lucide-react"
 import { getFeaturedApartments } from "@/data/apartments"
 import { motion } from "framer-motion"
+import dynamic from "next/dynamic"
+
+// Lazy load componenti pesanti
+const HomeGallery = dynamic(() => import("@/components/home-gallery").then(mod => ({ default: mod.HomeGallery })), {
+  loading: () => <div className="h-96 bg-gradient-to-br from-ocean/10 to-primary/10 animate-pulse rounded-lg" />,
+  ssr: false
+})
+
+const HowToReachUs = dynamic(() => import("@/components/how-to-reach-us").then(mod => ({ default: mod.HowToReachUs })), {
+  loading: () => <div className="h-64 bg-gradient-to-br from-ocean/10 to-primary/10 animate-pulse rounded-lg" />,
+  ssr: false
+})
 
 const services = [
   {

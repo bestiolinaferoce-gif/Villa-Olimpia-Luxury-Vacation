@@ -27,18 +27,61 @@ export function WeatherWidget({ position = 'hero' }: WeatherWidgetProps = {}) {
   const [error, setError] = useState(false)
 
   useEffect(() => {
+    // Cache in localStorage per evitare fetch ripetuti
+    const CACHE_KEY = 'weather_cache_caporizzuto'
+    const CACHE_DURATION = 10 * 60 * 1000 // 10 minuti cache
+    
+    const getCachedWeather = (): WeatherData | null => {
+      if (typeof window === 'undefined') return null
+      try {
+        const cached = localStorage.getItem(CACHE_KEY)
+        if (cached) {
+          const { data, timestamp } = JSON.parse(cached)
+          if (Date.now() - timestamp < CACHE_DURATION) {
+            return data
+          }
+        }
+      } catch {
+        // Ignora errori cache
+      }
+      return null
+    }
+    
+    const setCachedWeather = (data: WeatherData) => {
+      if (typeof window === 'undefined') return
+      try {
+        localStorage.setItem(CACHE_KEY, JSON.stringify({
+          data,
+          timestamp: Date.now()
+        }))
+      } catch {
+        // Ignora errori cache
+      }
+    }
+
     const fetchWeather = async () => {
+      // Controlla cache prima
+      const cached = getCachedWeather()
+      if (cached) {
+        setWeather(cached)
+        setIsLoading(false)
+        return
+      }
+      
       try {
         setIsLoading(true)
         setError(false)
         
         // Open-Meteo API (gratuito, no API key richiesta)
         const controller = new AbortController()
-        const timeoutId = setTimeout(() => controller.abort(), 10000) // 10 secondi timeout
+        const timeoutId = setTimeout(() => controller.abort(), 5000) // Ridotto a 5 secondi
         
         const response = await fetch(
           `https://api.open-meteo.com/v1/forecast?latitude=${LAT}&longitude=${LON}&current=temperature_2m,relative_humidity_2m,weather_code,wind_speed_10m,visibility&timezone=Europe/Rome&forecast_days=1`,
-          { signal: controller.signal }
+          { 
+            signal: controller.signal,
+            cache: 'no-cache' // Usiamo la nostra cache
+          }
         )
         
         clearTimeout(timeoutId)
@@ -64,14 +107,17 @@ export function WeatherWidget({ position = 'hero' }: WeatherWidgetProps = {}) {
         
         const condition = getCondition(current.weather_code)
         
-        setWeather({
+        const weatherData: WeatherData = {
           temperature: Math.round(current.temperature_2m),
           condition: condition.text,
           conditionCode: current.weather_code,
           humidity: current.relative_humidity_2m,
           windSpeed: Math.round(current.wind_speed_10m),
           visibility: Math.round(current.visibility / 1000) // converti da metri a km
-        })
+        }
+        
+        setWeather(weatherData)
+        setCachedWeather(weatherData)
       } catch (err) {
         // Silently handle errors - don't log in production
         if (process.env.NODE_ENV === "development") {
@@ -79,14 +125,15 @@ export function WeatherWidget({ position = 'hero' }: WeatherWidgetProps = {}) {
         }
         setError(true)
         // Fallback con dati realistici per Capo Rizzuto
-        setWeather({
+        const fallbackData: WeatherData = {
           temperature: 18,
           condition: "Parzialmente nuvoloso",
           conditionCode: 2,
           humidity: 65,
           windSpeed: 12,
           visibility: 10
-        })
+        }
+        setWeather(fallbackData)
       } finally {
         setIsLoading(false)
       }
@@ -96,8 +143,8 @@ export function WeatherWidget({ position = 'hero' }: WeatherWidgetProps = {}) {
     if (typeof window !== 'undefined') {
       fetchWeather()
       
-      // Aggiorna ogni 30 minuti
-      const interval = setInterval(fetchWeather, 30 * 60 * 1000)
+      // Aggiorna ogni 10 minuti (ridotto da 30)
+      const interval = setInterval(fetchWeather, 10 * 60 * 1000)
       return () => {
         clearInterval(interval)
       }
