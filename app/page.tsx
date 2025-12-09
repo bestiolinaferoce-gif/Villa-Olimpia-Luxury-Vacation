@@ -11,7 +11,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button"
 import { WeatherWidget } from "@/components/weather-widget"
 import Link from "next/link"
-import { Star, Wifi, Car, Waves, Utensils, Shield, Umbrella, MapPin } from "lucide-react"
+import { Star, Wifi, Car, Waves, Utensils, Shield, Umbrella, MapPin, Sparkles } from "lucide-react"
 import { getFeaturedApartments } from "@/data/apartments"
 import { motion } from "framer-motion"
 import dynamic from "next/dynamic"
