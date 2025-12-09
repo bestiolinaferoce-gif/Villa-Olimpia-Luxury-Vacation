@@ -26,6 +26,41 @@ const bookingSchema = z.object({
 
 type BookingFormData = z.infer<typeof bookingSchema>
 
+// EmailJS Configuration Object
+const EMAILJS_CONFIG = {
+  serviceId: process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || '',
+  templateId: process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || '',
+  publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || '',
+}
+
+// Validazione configurazione EmailJS
+const validateEmailConfig = (): { valid: boolean; missing: string[] } => {
+  const missing: string[] = []
+  
+  if (!EMAILJS_CONFIG.serviceId || EMAILJS_CONFIG.serviceId.trim() === '') {
+    missing.push('SERVICE_ID')
+  }
+  if (!EMAILJS_CONFIG.templateId || EMAILJS_CONFIG.templateId.trim() === '') {
+    missing.push('TEMPLATE_ID')
+  }
+  if (!EMAILJS_CONFIG.publicKey || EMAILJS_CONFIG.publicKey.trim() === '') {
+    missing.push('PUBLIC_KEY')
+  }
+  
+  if (missing.length > 0) {
+    console.error('❌ EmailJS - Variabili mancanti:', missing)
+    console.error('📋 Config attuale:', {
+      serviceId: EMAILJS_CONFIG.serviceId ? `✓ Presente (${EMAILJS_CONFIG.serviceId.substring(0, 10)}...)` : '✗ MANCANTE',
+      templateId: EMAILJS_CONFIG.templateId ? `✓ Presente (${EMAILJS_CONFIG.templateId.substring(0, 10)}...)` : '✗ MANCANTE',
+      publicKey: EMAILJS_CONFIG.publicKey ? '✓ Presente' : '✗ MANCANTE',
+    })
+    return { valid: false, missing }
+  }
+  
+  console.log('✅ EmailJS - Configurazione completa')
+  return { valid: true, missing: [] }
+}
+
 export function BookingForm() {
   const [currentStep, setCurrentStep] = useState(1)
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -46,23 +81,21 @@ export function BookingForm() {
     setIsSubmitting(true)
     setSubmitError(null)
 
-    try {
-      // EmailJS configuration
-      // IMPORTANTE: Configurare queste variabili su Vercel → Settings → Environment Variables
-      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || ''
-      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || ''
-      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || ''
+    // Validazione PRIMA di inviare
+    const configValidation = validateEmailConfig()
+    if (!configValidation.valid) {
+      const missingVars = configValidation.missing.join(', ')
+      const errorMsg = `Configurazione email non completa. Variabili mancanti: ${missingVars}. Contatta l'amministratore o configura le variabili su Vercel → Settings → Environment Variables.`
+      setSubmitError(errorMsg)
+      setIsSubmitting(false)
+      return
+    }
 
-      // Validate configuration
-      if (!serviceId || serviceId.trim() === '') {
-        throw new Error('Service ID non configurato. Configura NEXT_PUBLIC_EMAILJS_SERVICE_ID su Vercel.')
-      }
-      if (!templateId || templateId.trim() === '') {
-        throw new Error('Template ID non configurato. Configura NEXT_PUBLIC_EMAILJS_TEMPLATE_ID su Vercel.')
-      }
-      if (!publicKey || publicKey.trim() === '') {
-        throw new Error('Public Key non configurata. Configura NEXT_PUBLIC_EMAILJS_PUBLIC_KEY su Vercel.')
-      }
+    try {
+      // EmailJS configuration (già validata)
+      const serviceId = EMAILJS_CONFIG.serviceId
+      const templateId = EMAILJS_CONFIG.templateId
+      const publicKey = EMAILJS_CONFIG.publicKey
 
       // Prepare email template parameters
       const templateParams = {
