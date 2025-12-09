@@ -19,7 +19,7 @@ interface ApartmentCardProps {
   featured?: boolean
 }
 
-export const ApartmentCard = memo(function ApartmentCard({
+function ApartmentCardComponent({
   id,
   name,
   description,
