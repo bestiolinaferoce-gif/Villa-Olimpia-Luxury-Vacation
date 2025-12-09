@@ -85,9 +85,18 @@ export function BookingForm() {
       setIsSubmitted(true)
       reset() // Reset form after successful submission
     } catch (error) {
-      if (process.env.NODE_ENV === "development") {
-        console.error('Errore invio email:', error)
-      }
+      // Log sempre per debug in produzione
+      const serviceIdDebug = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || ''
+      const templateIdDebug = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || ''
+      const publicKeyDebug = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || ''
+      
+      console.error('Errore invio email EmailJS:', {
+        error,
+        message: error instanceof Error ? error.message : String(error),
+        serviceId: serviceIdDebug ? `${serviceIdDebug.substring(0, 10)}...` : 'MISSING',
+        templateId: templateIdDebug ? `${templateIdDebug.substring(0, 10)}...` : 'MISSING',
+        publicKeyPresent: Boolean(publicKeyDebug && publicKeyDebug.length > 5),
+      })
       setIsSubmitting(false)
       
       // Provide more specific error messages
