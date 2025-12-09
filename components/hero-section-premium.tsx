@@ -49,11 +49,11 @@ export function HeroSectionPremium() {
             />
           </div>
           
-          {/* Overlay elegante per profondità */}
+          {/* Overlay elegante per profondità - rimosso radial-gradient che creava ombra centrale */}
           <div 
             className="absolute inset-0"
             style={{
-              background: "radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.2) 100%)"
+              background: "linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.3) 100%)"
             }}
           />
           
