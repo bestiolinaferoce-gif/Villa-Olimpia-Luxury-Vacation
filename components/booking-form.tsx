@@ -26,36 +26,42 @@ const bookingSchema = z.object({
 
 type BookingFormData = z.infer<typeof bookingSchema>
 
-// EmailJS Configuration Object
-const EMAILJS_CONFIG = {
-  serviceId: process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || '',
-  templateId: process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || '',
-  publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || '',
+// Funzione per ottenere configurazione EmailJS (legge sempre le variabili ambiente fresche)
+const getEmailJSConfig = () => {
+  return {
+    serviceId: process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || '',
+    templateId: process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || '',
+    publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || '',
+  }
 }
 
 // Validazione configurazione EmailJS
-const validateEmailConfig = (): { valid: boolean; missing: string[] } => {
+const validateEmailConfig = (): { valid: boolean; missing: string[]; config: ReturnType<typeof getEmailJSConfig> } => {
+  const config = getEmailJSConfig()
   const missing: string[] = []
   
-  if (!EMAILJS_CONFIG.serviceId || EMAILJS_CONFIG.serviceId.trim() === '') {
+  if (!config.serviceId || config.serviceId.trim() === '') {
     missing.push('SERVICE_ID')
   }
-  if (!EMAILJS_CONFIG.templateId || EMAILJS_CONFIG.templateId.trim() === '') {
+  if (!config.templateId || config.templateId.trim() === '') {
     missing.push('TEMPLATE_ID')
   }
-  if (!EMAILJS_CONFIG.publicKey || EMAILJS_CONFIG.publicKey.trim() === '') {
+  if (!config.publicKey || config.publicKey.trim() === '') {
     missing.push('PUBLIC_KEY')
   }
   
+  // Log sempre per debug (anche in produzione per capire il problema)
   if (missing.length > 0) {
-    // Log solo in sviluppo
-    if (process.env.NODE_ENV === 'development') {
-      console.error('❌ EmailJS - Variabili mancanti:', missing)
-    }
-    return { valid: false, missing }
+    console.error('❌ EmailJS - Variabili mancanti:', missing)
+    console.error('📋 Config attuale:', {
+      serviceId: config.serviceId ? `${config.serviceId.substring(0, 10)}...` : 'MISSING',
+      templateId: config.templateId ? `${config.templateId.substring(0, 10)}...` : 'MISSING',
+      publicKey: config.publicKey ? 'PRESENT' : 'MISSING',
+      nodeEnv: process.env.NODE_ENV,
+    })
   }
   
-  return { valid: true, missing: [] }
+  return { valid: missing.length === 0, missing, config }
 }
 
 export function BookingForm() {
@@ -78,21 +84,31 @@ export function BookingForm() {
     setIsSubmitting(true)
     setSubmitError(null)
 
-    // Validazione PRIMA di inviare
-    const configValidation = validateEmailConfig()
-    if (!configValidation.valid) {
-      const missingVars = configValidation.missing.join(', ')
-      const errorMsg = `Configurazione email non completa. Variabili mancanti: ${missingVars}. Contatta l'amministratore o configura le variabili su Vercel → Settings → Environment Variables.`
-      setSubmitError(errorMsg)
-      setIsSubmitting(false)
-      return
-    }
-
     try {
+      // Validazione PRIMA di inviare (legge sempre variabili fresche)
+      const configValidation = validateEmailConfig()
+      if (!configValidation.valid) {
+        const missingVars = configValidation.missing.join(', ')
+        const errorMsg = `Configurazione email non completa. Variabili mancanti: ${missingVars}. 
+        
+Per risolvere:
+1. Vai su Vercel → Settings → Environment Variables
+2. Aggiungi le variabili mancanti
+3. Fai un Redeploy
+
+Oppure contattaci direttamente via WhatsApp o email.`
+        setSubmitError(errorMsg)
+        setIsSubmitting(false)
+        return
+      }
+
       // EmailJS configuration (già validata)
-      const serviceId = EMAILJS_CONFIG.serviceId
-      const templateId = EMAILJS_CONFIG.templateId
-      const publicKey = EMAILJS_CONFIG.publicKey
+      const { serviceId, templateId, publicKey } = configValidation.config
+
+      // Inizializza EmailJS se non già fatto
+      if (typeof window !== 'undefined' && !emailjs.init) {
+        emailjs.init(publicKey)
+      }
 
       // Prepare email template parameters
       const templateParams = {
@@ -108,33 +124,52 @@ export function BookingForm() {
         subject: `Nuova Richiesta Prenotazione - ${data.name}`,
       }
 
+      // Log per debug (sempre visibile per troubleshooting)
+      console.log('📧 EmailJS - Invio email:', {
+        serviceId: serviceId ? `${serviceId.substring(0, 10)}...` : 'MISSING',
+        templateId: templateId ? `${templateId.substring(0, 10)}...` : 'MISSING',
+        publicKeyPresent: Boolean(publicKey && publicKey.length > 5),
+      })
+
       // Send email via EmailJS
-      await emailjs.send(serviceId, templateId, templateParams, publicKey)
+      const result = await emailjs.send(serviceId, templateId, templateParams, publicKey)
+      
+      console.log('✅ EmailJS - Email inviata con successo:', {
+        status: result.status,
+        text: result.text,
+      })
 
       setIsSubmitting(false)
       setIsSubmitted(true)
       reset() // Reset form after successful submission
     } catch (error) {
-      // Log solo in sviluppo
-      if (process.env.NODE_ENV === 'development') {
-        console.error('Errore invio email EmailJS:', error)
-      }
+      // Log sempre per debug (anche in produzione)
+      console.error('❌ Errore invio email EmailJS:', error)
+      
       setIsSubmitting(false)
       
       // Provide more specific error messages
-      let errorMessage = 'Si è verificato un errore durante l\'invio. Riprova più tardi o contattaci direttamente.'
+      let errorMessage = 'Si è verificato un errore durante l\'invio. '
       
       if (error instanceof Error) {
-        if (error.message.includes('Service ID') || error.message.includes('Template ID') || error.message.includes('Public Key')) {
-          errorMessage = error.message + ' Riavvia il server di sviluppo dopo aver modificato .env.local'
-        } else if (error.message.includes('400')) {
-          errorMessage = 'Errore nella configurazione EmailJS. Verifica Service ID e Template ID.'
-        } else if (error.message.includes('401') || error.message.includes('403')) {
-          errorMessage = 'Errore di autenticazione EmailJS. Verifica la Public Key.'
+        const errorMsg = error.message.toLowerCase()
+        
+        if (errorMsg.includes('service id') || errorMsg.includes('template id') || errorMsg.includes('public key')) {
+          errorMessage += 'Configurazione EmailJS incompleta. Verifica le variabili ambiente su Vercel.'
+        } else if (errorMsg.includes('400')) {
+          errorMessage += 'Errore nella configurazione EmailJS. Verifica Service ID e Template ID su Vercel.'
+        } else if (errorMsg.includes('401') || errorMsg.includes('403')) {
+          errorMessage += 'Errore di autenticazione EmailJS. Verifica la Public Key su Vercel.'
+        } else if (errorMsg.includes('network') || errorMsg.includes('fetch')) {
+          errorMessage += 'Errore di connessione. Verifica la tua connessione internet e riprova.'
         } else {
-          errorMessage = error.message
+          errorMessage += `Errore: ${error.message}`
         }
+      } else {
+        errorMessage += 'Errore sconosciuto. Riprova più tardi o contattaci direttamente.'
       }
+      
+      errorMessage += '\n\nPuoi contattarci direttamente via WhatsApp o email usando i pulsanti qui sotto.'
       
       setSubmitError(errorMessage)
     }
