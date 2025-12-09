@@ -121,14 +121,14 @@ Oppure contattaci direttamente via WhatsApp o email.`
       // EmailJS configuration (già validata)
       const { serviceId, templateId, publicKey } = configValidation.config
 
-      // Inizializza EmailJS se necessario (solo lato client)
-      if (typeof window !== 'undefined') {
-        try {
-          // EmailJS si inizializza automaticamente con la publicKey nel send
-          // Non serve chiamare init esplicitamente
-        } catch (initError) {
-          console.warn('EmailJS init warning:', initError)
-        }
+      // Verifica che EmailJS sia disponibile
+      if (!emailjs || typeof emailjs.send !== 'function') {
+        throw new Error('EmailJS non è disponibile. Ricarica la pagina e riprova.')
+      }
+
+      // Verifica che tutti i parametri siano validi
+      if (!serviceId || !templateId || !publicKey) {
+        throw new Error('Configurazione EmailJS incompleta. Verifica le variabili ambiente su Vercel.')
       }
 
       // Prepare email template parameters
@@ -150,10 +150,30 @@ Oppure contattaci direttamente via WhatsApp o email.`
         serviceId: serviceId ? `${serviceId.substring(0, 10)}...` : 'MISSING',
         templateId: templateId ? `${templateId.substring(0, 10)}...` : 'MISSING',
         publicKeyPresent: Boolean(publicKey && publicKey.length > 5),
+        emailjsAvailable: Boolean(emailjs && typeof emailjs.send === 'function'),
       })
 
-      // Send email via EmailJS
-      const result = await emailjs.send(serviceId, templateId, templateParams, publicKey)
+      // Send email via EmailJS con gestione errori migliorata
+      let result
+      try {
+        result = await emailjs.send(
+          serviceId,
+          templateId,
+          templateParams,
+          publicKey
+        )
+      } catch (sendError: any) {
+        // Gestione specifica errori EmailJS
+        if (sendError?.status === 400) {
+          throw new Error('Errore 400: Verifica che Service ID e Template ID siano corretti su EmailJS Dashboard.')
+        } else if (sendError?.status === 401 || sendError?.status === 403) {
+          throw new Error('Errore 401/403: Verifica che la Public Key sia corretta e valida su EmailJS Dashboard.')
+        } else if (sendError?.text) {
+          throw new Error(`EmailJS Error: ${sendError.text}`)
+        } else {
+          throw sendError
+        }
+      }
       
       console.log('✅ EmailJS - Email inviata con successo:', {
         status: result.status,
