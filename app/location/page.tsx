@@ -4,6 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { MapPin, Car, Plane, Train, Ship } from "lucide-react"
 import { VILLA_OLIMPIA_LOCATION } from "@/lib/location-data"
 import { MapComponent } from "@/components/map-component"
+import { MapDebug } from "@/components/map-debug"
 
 const attractions = [
   {
@@ -64,6 +65,7 @@ const transportOptions = [
 export default function LocationPage() {
   return (
     <div className="min-h-screen pt-20">
+      <MapDebug />
       {/* Hero */}
       <section className="bg-gradient-to-br from-ocean/10 to-primary/10 py-16">
         <div className="container mx-auto px-4">

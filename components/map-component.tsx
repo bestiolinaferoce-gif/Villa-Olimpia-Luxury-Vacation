@@ -123,9 +123,16 @@ export function MapComponent() {
               </p>
               <p className="text-sm text-muted-foreground">
                 {!hasValidApiKey 
-                  ? "Configura NEXT_PUBLIC_GOOGLE_MAPS_API_KEY su Vercel → Settings → Environment Variables"
-                  : "Errore nel caricamento della mappa"}
+                  ? "Configura NEXT_PUBLIC_GOOGLE_MAPS_API_KEY su Vercel → Settings → Environment Variables e fai un Redeploy"
+                  : "Errore nel caricamento della mappa. Verifica la console del browser (F12) per dettagli."}
               </p>
+              {process.env.NODE_ENV === 'development' && (
+                <p className="text-xs text-muted-foreground mt-2">
+                  Debug: API Key presente = {hasValidApiKey ? 'Sì' : 'No'} | 
+                  Lunghezza = {apiKey.length} | 
+                  Client = {isClient ? 'Sì' : 'No'}
+                </p>
+              )}
             </div>
           </div>
           
