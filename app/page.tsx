@@ -11,6 +11,7 @@ import { SectionDivider } from "@/components/animations/section-divider"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { WeatherWidget } from "@/components/weather-widget"
+import { HowToReachUs } from "@/components/how-to-reach-us"
 import Link from "next/link"
 import { Star, Wifi, Car, Waves, Utensils, Shield, Umbrella, MapPin, Sparkles } from "lucide-react"
 import { getFeaturedApartments } from "@/data/apartments"
@@ -97,6 +98,10 @@ export default function HomePage() {
         <div className="container mx-auto px-4">
           <ScrollReveal>
             <div className="text-center mb-12">
+              <div className="inline-flex items-center gap-2 bg-primary/10 px-4 py-2 rounded-full mb-4">
+                <Sparkles className="h-4 w-4 text-primary" />
+                <span className="text-sm font-semibold text-primary">Più Prenotati</span>
+              </div>
               <h2 className="text-4xl md:text-5xl font-playfair font-bold mb-4">
                 I Nostri Appartamenti
               </h2>
@@ -288,15 +293,21 @@ export default function HomePage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.2, duration: 0.6 }}
-                className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8"
+                className="text-lg text-muted-foreground max-w-2xl mx-auto mb-6"
               >
                 Leggi cosa dicono i nostri ospiti su Villa Olimpia. Valutazione media{" "}
                 <span className="font-bold text-primary text-xl">4.9/5</span> stelle basata su{" "}
-                <span className="font-bold text-primary text-xl">35</span> recensioni.{" "}
+                <span className="font-bold text-primary text-xl">150+</span> recensioni.{" "}
                 <Link href="/recensioni" className="text-primary hover:underline font-semibold">Leggi tutte le recensioni</Link>{" "}
                 o{" "}
                 <Link href="/contatti" className="text-primary hover:underline font-semibold">contattaci per prenotare</Link>.
               </motion.p>
+              <div className="inline-flex items-center gap-2 bg-yellow-400/20 px-6 py-3 rounded-full border border-yellow-400/30 mb-6">
+                <Star className="h-5 w-5 text-yellow-500 fill-yellow-500" />
+                <span className="text-lg font-bold text-gray-900">4.9/5 su Google</span>
+                <span className="text-sm text-muted-foreground">•</span>
+                <span className="text-sm font-semibold text-gray-700">150+ Recensioni</span>
+              </div>
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -304,7 +315,7 @@ export default function HomePage() {
                 <Button variant="luxury" size="lg" asChild className="group">
                   <Link href="/recensioni">
                     <span className="group-hover:translate-x-1 transition-transform inline-block">
-                      Vedi Tutte le Recensioni
+                      Leggi tutte le 150+ Recensioni
                     </span>
                     <svg className="w-5 h-5 ml-2 inline-block group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
@@ -325,6 +336,39 @@ export default function HomePage() {
 
       {/* Why Choose Us */}
       <WhyChooseUs />
+
+      {/* Separatore elegante */}
+      <SectionDivider />
+
+      {/* Come Raggiungerci - Sezione Ultra Moderna */}
+      <section className="py-20 md:py-24 bg-gradient-to-br from-primary/5 via-ocean/5 to-primary/10">
+        <div className="container mx-auto px-4 max-w-4xl">
+          <ScrollReveal>
+            <div className="text-center mb-12">
+              <motion.h2
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="text-4xl md:text-5xl font-playfair font-bold mb-4"
+              >
+                Come Raggiungerci
+              </motion.h2>
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2, duration: 0.8 }}
+                className="text-lg text-muted-foreground max-w-2xl mx-auto"
+              >
+                Scopri tutti i modi per raggiungere Villa Olimpia. Informazioni complete su aeroporti, treni e percorsi in auto.
+              </motion.p>
+            </div>
+          </ScrollReveal>
+          
+          <HowToReachUs />
+        </div>
+      </section>
 
       {/* Separatore elegante */}
       <SectionDivider />
@@ -440,11 +484,19 @@ export default function HomePage() {
       <section className="py-16 bg-gradient-to-br from-muted/30 via-background to-primary/5">
         <div className="container mx-auto px-4">
           <ScrollReveal>
-            <div className="flex justify-center items-center gap-12 flex-wrap">
+            <div className="text-center mb-8">
+              <h3 className="text-2xl font-playfair font-bold text-foreground mb-2">
+                Certificazioni e Partner
+              </h3>
+              <p className="text-muted-foreground">
+                Prenota con fiducia sulle piattaforme più sicure
+              </p>
+            </div>
+            <div className="flex justify-center items-center gap-8 md:gap-12 flex-wrap">
               {[
-                { label: "Certificato da", name: "Booking.com", color: "text-primary" },
-                { label: "Partner", name: "Airbnb", color: "text-primary" },
-                { label: "Area Protetta", name: "Capo Rizzuto", color: "text-turquoise" }
+                { label: "Certificato da", name: "Booking.com", color: "text-primary", icon: "🏆" },
+                { label: "Superhost", name: "Airbnb", color: "text-primary", icon: "⭐" },
+                { label: "Area Protetta", name: "Capo Rizzuto", color: "text-turquoise", icon: "🌊" }
               ].map((badge, i) => (
                 <motion.div
                   key={i}
@@ -457,12 +509,30 @@ export default function HomePage() {
                     y: -8,
                     transition: { duration: 0.3, ease: "easeOut" }
                   }}
-                  className="text-center cursor-pointer p-6 rounded-xl bg-white/60 backdrop-blur-sm border-2 border-transparent hover:border-primary/30 transition-all duration-300 shadow-md hover:shadow-xl"
+                  className="text-center cursor-pointer p-6 rounded-xl bg-white/80 backdrop-blur-sm border-2 border-primary/20 hover:border-primary/50 transition-all duration-300 shadow-lg hover:shadow-xl"
                 >
+                  <div className="text-4xl mb-2">{badge.icon}</div>
                   <p className="text-sm font-semibold text-muted-foreground mb-2">{badge.label}</p>
                   <p className={`text-3xl font-playfair font-bold ${badge.color}`}>{badge.name}</p>
                 </motion.div>
               ))}
+            </div>
+            <div className="text-center mt-8">
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Button variant="outline" size="lg" asChild className="group">
+                  <Link href="/contatti">
+                    <span className="group-hover:translate-x-1 transition-transform inline-block">
+                      Prenota su Booking.com
+                    </span>
+                    <svg className="w-5 h-5 ml-2 inline-block group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                  </Link>
+                </Button>
+              </motion.div>
             </div>
           </ScrollReveal>
         </div>
@@ -473,37 +543,21 @@ export default function HomePage() {
 
       {/* CTA Section Premium */}
       <section className="py-24 bg-gradient-to-br from-ocean via-primary to-ocean/80 text-white relative overflow-hidden">
-        {/* Animated background elements */}
-        <motion.div
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.1, 0.2, 0.1],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-          className="absolute inset-0 bg-white/5 rounded-full blur-3xl"
-          style={{ left: "20%", top: "20%" }}
-        />
-        <motion.div
-          animate={{
-            scale: [1, 1.3, 1],
-            opacity: [0.1, 0.15, 0.1],
-          }}
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 1
-          }}
-          className="absolute inset-0 bg-white/5 rounded-full blur-3xl"
-          style={{ right: "20%", bottom: "20%" }}
-        />
-        
         <div className="container mx-auto px-4 text-center relative z-10">
           <ScrollReveal delay={0.2}>
+            {/* Trust Badges */}
+            <div className="flex items-center justify-center gap-4 mb-6 flex-wrap">
+              <div className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full border border-white/30">
+                <span className="text-white text-sm font-semibold">✅ Certificato Booking.com</span>
+              </div>
+              <div className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full border border-white/30">
+                <span className="text-white text-sm font-semibold">🏆 Superhost Airbnb</span>
+              </div>
+              <div className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full border border-white/30">
+                <span className="text-white text-sm font-semibold">🔒 Prenotazione Sicura</span>
+              </div>
+            </div>
+
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -518,11 +572,25 @@ export default function HomePage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2, duration: 0.8 }}
-              className="text-xl mb-8 max-w-2xl mx-auto text-white/90"
+              className="text-xl mb-6 max-w-2xl mx-auto text-white/90"
             >
               Prenota il tuo appartamento e vivi un&apos;esperienza indimenticabile
               nella splendida Calabria
             </motion.p>
+            
+            {/* Badge Prenota Direttamente */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3, duration: 0.5 }}
+              className="mb-6"
+            >
+              <div className="inline-flex items-center gap-2 bg-green-500/90 backdrop-blur-sm px-6 py-3 rounded-full border border-green-300/50 shadow-lg">
+                <span className="text-white text-base font-bold">💰 Prenota Direttamente e Risparmia fino al 15%</span>
+              </div>
+            </motion.div>
+
             <CTAButtons />
           </ScrollReveal>
         </div>

@@ -7,7 +7,6 @@ import { ArrowDown, Calendar, MapPin, Star } from "lucide-react"
 import Link from "next/link"
 import { CounterAnimation } from "@/components/animations/counter-animation"
 import { WeatherWidget } from "@/components/weather-widget"
-import { DirectionsWidget } from "@/components/directions-widget"
 import Image from "next/image"
 
 export function HeroSectionPremium() {
@@ -158,18 +157,33 @@ export function HeroSectionPremium() {
             transition={{ delay: 1 }}
             className="flex items-center gap-4 justify-center mt-6 flex-wrap"
           >
-            <div className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full">
-              <span className="text-white text-sm">⭐ 9.5/10 su Google</span>
+            <div className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full border border-white/30">
+              <span className="text-white text-sm font-semibold">⭐ 4.9/5 Rating</span>
             </div>
-            <div className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full">
-              <span className="text-white text-sm">🏖️ Meno di 100 metri dalla spiaggia</span>
+            <div className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full border border-white/30">
+              <span className="text-white text-sm font-semibold">🏖️ 100 metri dalla spiaggia</span>
             </div>
-            <div className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full">
-              <span className="text-white text-sm">🏊 Piscina Privata</span>
+            <div className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full border border-white/30">
+              <span className="text-white text-sm font-semibold">🏊 Piscina Privata</span>
+            </div>
+            <div className="bg-yellow-400/90 backdrop-blur-sm px-4 py-2 rounded-full border border-yellow-300/50 shadow-lg">
+              <span className="text-gray-900 text-sm font-bold">✅ Prenotato da 150+ ospiti nel 2024</span>
             </div>
             {/* Weather Widget integrato nei badge - visibile solo su desktop */}
             <div className="hidden lg:block">
               <WeatherWidget position="hero" />
+            </div>
+          </motion.div>
+
+          {/* Badge Prenota Direttamente */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.85, duration: 0.5 }}
+            className="mt-4"
+          >
+            <div className="inline-flex items-center gap-2 bg-green-500/90 backdrop-blur-sm px-4 py-2 rounded-full border border-green-300/50 shadow-lg">
+              <span className="text-white text-sm font-bold">💰 Prenota Direttamente e Risparmia</span>
             </div>
           </motion.div>
 
@@ -178,11 +192,11 @@ export function HeroSectionPremium() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.9, duration: 0.8 }}
-            className="flex flex-wrap items-center justify-center gap-4 pt-8"
+            className="flex flex-wrap items-center justify-center gap-4 pt-6"
           >
             <Button
               size="lg"
-              className="text-lg px-8 py-6 group bg-[#FFC107] text-gray-900 hover:bg-[#FFD54F] shadow-lg font-semibold !border-2 !border-white"
+              className="text-lg px-8 py-6 group bg-[#FFC107] text-gray-900 hover:bg-[#FFD54F] shadow-xl font-semibold !border-2 !border-white hover:scale-105 transition-transform"
               style={{ borderWidth: '2px', borderStyle: 'solid', borderColor: 'white' }}
               asChild
             >
@@ -193,7 +207,7 @@ export function HeroSectionPremium() {
             </Button>
             <Button
               size="lg"
-              className="text-lg px-8 py-6 bg-white/20 backdrop-blur-sm text-white !border-2 !border-white hover:bg-white/30 group font-semibold"
+              className="text-lg px-8 py-6 bg-white/20 backdrop-blur-sm text-white !border-2 !border-white hover:bg-white/30 group font-semibold hover:scale-105 transition-transform"
               style={{ borderWidth: '2px', borderStyle: 'solid', borderColor: 'white' }}
               asChild
             >
@@ -227,9 +241,6 @@ export function HeroSectionPremium() {
           <ArrowDown className="h-6 w-6" />
         </motion.div>
       </motion.div>
-
-      {/* Directions Widget - Badge floating "Come Raggiungerci" */}
-      <DirectionsWidget showBadge={true} />
     </section>
   )
 }

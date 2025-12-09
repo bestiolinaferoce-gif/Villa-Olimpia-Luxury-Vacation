@@ -40,8 +40,8 @@ export const apartments: Apartment[] = [
       "/images/villa/appartamenti/frangipane/bagno-frangipane.jpg",
       "/images/villa/appartamenti/frangipane/zona-living-appartamento-lavanda.jpg",
     ],
-    description: "Accogliente appartamento al piano terra con terrazza privata e vista giardino",
-    fullDescription: "L'appartamento Frangipane si trova al piano terra, in posizione bassa a sinistra. Questo accogliente appartamento di 45 mq può ospitare comodamente fino a 4 persone ed è dotato di 1 camera da letto matrimoniale e 1 bagno completo. La terrazza privata è ideale per colazioni all'aperto e serate relax, offrendo una vista tranquilla sul giardino. La cucina completa è attrezzata con tutti gli elettrodomestici necessari, mentre la zona living offre un ambiente confortevole per il relax. La posizione tranquilla e riservata lo rende perfetto per coppie o piccole famiglie che cercano privacy e comfort. A meno di 100 metri dalla Spiaggia dei Gigli, raggiungibile in 1 minuto a piedi.",
+    description: "Il lodge più spazioso di Villa Olimpia: due camere matrimoniali, veranda privata arredata, cucina completa. Perfetto per famiglie fino a 6 persone. A 100 metri dalla Spiaggia dei Gigli, Capopiccolo.",
+    fullDescription: "Frangipane è il lodge più spazioso di Villa Olimpia, situato al piano terra. Con due camere matrimoniali reali, zona living ampia con divano letto matrimoniale, cucina completa e veranda privata arredata, può ospitare comodamente fino a 6 persone. La veranda privata con vista giardino è ideale per colazioni all'aperto e serate relax. Accesso diretto alla piscina condivisa e alle aree comuni. A 100 metri dalla Spiaggia dei Gigli, nell'Area Marina Protetta Capo Rizzuto, raggiungibile in 1 minuto a piedi.",
     price: 120,
   },
   {

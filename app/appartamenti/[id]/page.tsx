@@ -102,7 +102,7 @@ export default async function ApartmentDetailPage({ params }: PageProps) {
         {apartment.image && apartment.image.startsWith('/') ? (
           <Image
             src={apartment.image}
-            alt={apartment.name}
+            alt={`Appartamento ${apartment.name} Villa Olimpia Capo Rizzuto - ${apartment.floor} ${apartment.size} per ${apartment.guests} ospiti`}
             fill
             className="object-cover"
             priority

@@ -18,23 +18,23 @@ export interface ApartmentContent {
 export const apartmentContent: Record<number, ApartmentContent> = {
   1: {
     // FRANGIPANE
-    shortDescription: "Frangipane è uno dei lodge più spaziosi di Villa Olimpia: due camere matrimoniali, ampia zona living con divano letto, cucina completa e veranda privata arredata. Ideale per famiglie e piccoli gruppi.",
-    fullPremiumDescription: `L'appartamento Frangipane si trova al piano terra di Villa Olimpia ed è pensato per ospitare fino a 6 persone in un ambiente luminoso, moderno e confortevole.
+    shortDescription: "Frangipane: il lodge più spazioso di Villa Olimpia. Due camere matrimoniali, veranda privata arredata, cucina completa. Perfetto per famiglie fino a 6 persone. A 100 metri dalla Spiaggia dei Gigli, Capopiccolo.",
+    fullPremiumDescription: `Frangipane è il lodge più spazioso di Villa Olimpia, situato al piano terra di Capopiccolo, Isola di Capo Rizzuto.
 
-Dispone di due camere da letto matrimoniali, una zona living ampia con divano letto matrimoniale, cucina completamente attrezzata con stoviglie ed elettrodomestici essenziali, e un bagno moderno con box doccia.
+Con due camere matrimoniali reali (unico al piano terra), zona living ampia con divano letto matrimoniale, cucina completa attrezzata e veranda privata arredata con vista giardino, può ospitare comodamente fino a 6 persone.
 
-All'esterno, una veranda privata arredata con tavolo e sedute offre lo spazio ideale per colazioni all'aperto o momenti di relax dopo una giornata al mare. Gli ospiti hanno accesso alla piscina della villa, alle aree comuni e ai parcheggi.
+La veranda privata è ideale per colazioni all'aperto e serate relax. Accesso diretto alla piscina condivisa della villa, alle aree comuni e ai parcheggi.
 
-La biancheria da letto e da bagno è fornita e sanificata professionalmente.`,
+A 100 metri dalla Spiaggia dei Gigli, nell'Area Marina Protetta Capo Rizzuto, raggiungibile in 1 minuto a piedi. Biancheria fornita e sanificata professionalmente.`,
     featureBullets: [
-      "Due camere matrimoniali reali",
-      "Veranda privata arredata",
-      "Perfetto per famiglie numerose",
-      "Cucina completa",
-      "Divano letto comodo per 2 pax",
-      "Aria condizionata e WI-FI",
-      "Accesso alla piscina",
-      "150 m dal mare"
+      "Due camere matrimoniali reali (unico al piano terra)",
+      "Veranda privata arredata con vista giardino",
+      "Perfetto per famiglie numerose (fino a 6 pax)",
+      "Cucina completa con elettrodomestici moderni",
+      "Divano letto matrimoniale aggiuntivo",
+      "Aria condizionata e WiFi gratuito",
+      "Accesso diretto alla piscina condivisa",
+      "100 metri dalla Spiaggia dei Gigli - Area Marina Protetta"
     ],
     perfectFor: [
       "Famiglie fino a 6 persone",
@@ -53,21 +53,23 @@ La biancheria da letto e da bagno è fornita e sanificata professionalmente.`,
   },
   2: {
     // FIORDALISO
-    shortDescription: "Elegante lodge al piano terra fronte piscina, con camera matrimoniale molto ampia, zona living con divano letto, cucina completa e gazebo privato.",
-    fullPremiumDescription: `L'appartamento Fiordaliso si distingue per la sua posizione privilegiata fronte piscina e per la spaziosa camera matrimoniale.
+    shortDescription: "Fiordaliso: posizione privilegiata fronte piscina. Camera matrimoniale spaziosa, gazebo privato, cucina completa. Ideale per coppie e famiglie con bambini. A 100 metri dalla Spiaggia dei Gigli, Capopiccolo.",
+    fullPremiumDescription: `Fiordaliso si distingue per la sua posizione unica fronte piscina (unica al piano terra) e per la spaziosa camera matrimoniale.
 
-Situato al piano terra, può ospitare fino a 4 persone grazie alla grande camera da letto e al divano letto matrimoniale nella zona living.
+Situato al piano terra di Villa Olimpia, Capopiccolo, può ospitare fino a 4 persone grazie alla grande camera matrimoniale e al divano letto nella zona living.
 
-Dispone di cucina completa, bagno moderno con box doccia e un gazebo privato posizionato direttamente davanti all'ingresso, perfetto per rilassarsi all'ombra durante le giornate estive.
+Dispone di cucina completa, bagno moderno con box doccia e un gazebo privato con tavolo e sedute, perfetto per rilassarsi all'ombra durante le giornate estive.
 
-La biancheria è fornita e sanificata, garantendo comfort e igiene.`,
+A 100 metri dalla Spiaggia dei Gigli, nell'Area Marina Protetta Capo Rizzuto. Biancheria fornita e sanificata professionalmente.`,
     featureBullets: [
+      "Posizione fronte piscina (unica al piano terra)",
       "Camera matrimoniale molto ampia",
-      "Gazebo privato fronte piscina",
-      "Bagno moderno",
-      "Cucina completa",
-      "Ideale per coppie e famiglie con bambini",
-      "Accesso immediato alle aree comuni"
+      "Gazebo privato con tavolo e sedute",
+      "Cucina completa attrezzata",
+      "Bagno moderno con box doccia",
+      "Ideale per coppie e famiglie 2+2",
+      "Accesso immediato alla piscina condivisa",
+      "100 metri dalla Spiaggia dei Gigli - Capo Rizzuto"
     ],
     perfectFor: [
       "Coppie che desiderano comfort",
@@ -85,20 +87,23 @@ La biancheria è fornita e sanificata, garantendo comfort e igiene.`,
   },
   3: {
     // GIGLIO
-    shortDescription: "Il lodge più ampio del piano terra: grande cucina abitabile, zona living, camera matrimoniale, cameretta, bagno e gazebo privato.",
-    fullPremiumDescription: `Il lodge Giglio è uno degli appartamenti più spaziosi di Villa Olimpia e può ospitare fino a 6 persone.
+    shortDescription: "Giglio: il lodge più ampio del piano terra. Cucina abitabile grande, cameretta aggiuntiva, gazebo privato. Perfetto per gruppi fino a 6 persone. A 100 metri dalla Spiaggia dei Gigli, Capopiccolo.",
+    fullPremiumDescription: `Giglio è il lodge più ampio del piano terra di Villa Olimpia, situato a Capopiccolo, Isola di Capo Rizzuto.
 
-Dispone di una cucina abitabile grande, zona living con tavolo da pranzo e divano letto matrimoniale, un bagno completo con box doccia, una camera matrimoniale e una cameretta con letto a castello o letto alla francese.
+Con una cucina abitabile molto grande (unica al piano terra), zona living spaziosa con tavolo da pranzo, divano letto matrimoniale, cameretta con letto a castello e gazebo privato, può ospitare comodamente fino a 6 persone.
 
-All'esterno è presente un gazebo privato perfetto per mangiare o rilassarsi all'aperto.
+Il gazebo privato è perfetto per pasti all'aperto e relax, mentre la cucina grande permette di preparare pasti per tutta la famiglia o il gruppo.
 
-Una soluzione ideale per famiglie numerose o gruppi che cercano ampi spazi.`,
+A 100 metri dalla Spiaggia dei Gigli, nell'Area Marina Protetta Capo Rizzuto. Accesso diretto alla piscina condivisa e biancheria sanificata.`,
     featureBullets: [
-      "Cucina molto grande",
-      "Cameretta aggiuntiva",
-      "Gazebo privato",
-      "Ideale per gruppi fino a 6 persone",
-      "Accesso diretto alla piscina e aree comuni"
+      "Cucina abitabile molto grande (unica al piano terra)",
+      "Cameretta aggiuntiva con letto a castello",
+      "Gazebo privato per pasti all'aperto",
+      "Zona living spaziosa con tavolo da pranzo",
+      "Perfetto per gruppi fino a 6 persone",
+      "Ideale per famiglie numerose",
+      "Accesso diretto alla piscina condivisa",
+      "100 metri dalla Spiaggia dei Gigli - Area Marina Protetta"
     ],
     perfectFor: [
       "Famiglie numerose",
@@ -116,18 +121,23 @@ Una soluzione ideale per famiglie numerose o gruppi che cercano ampi spazi.`,
   },
   4: {
     // ORCHIDEA
-    shortDescription: "Lodge elegante con camera matrimoniale, zona living, cucina completa e due bagni (uno in camera).",
-    fullPremiumDescription: `L'appartamento Orchidea, al piano terra di Villa Olimpia, offre una combinazione perfetta tra comfort e funzionalità.
+    shortDescription: "Orchidea: unico lodge al piano terra con 2 bagni completi. Terrazza panoramica vista mare, camera matrimoniale, cucina completa. Perfetto per coppie che cercano privacy extra. A 100 metri dalla Spiaggia dei Gigli, Capopiccolo.",
+    fullPremiumDescription: `Orchidea è l'unico lodge al piano terra di Villa Olimpia con due bagni completi, situato a Capopiccolo, Isola di Capo Rizzuto.
 
-Ospita fino a 4 persone ed è composto da una camera matrimoniale, zona living con divano letto, cucina attrezzata e due bagni, uno dei quali direttamente in camera.
+Ospita fino a 4 persone con una camera matrimoniale spaziosa, zona living luminosa con divano letto, cucina completa attrezzata e terrazza panoramica con vista mare Ionio.
 
-Una soluzione moderna, comoda e ideale sia per coppie che per famiglie che desiderano maggiore privacy.`,
+I due bagni completi (uno privato in camera) garantiscono massima privacy e comfort, rendendo questo appartamento ideale per coppie e famiglie che desiderano servizi extra.
+
+A 100 metri dalla Spiaggia dei Gigli, nell'Area Marina Protetta Capo Rizzuto. Accesso alla piscina condivisa e biancheria sanificata.`,
     featureBullets: [
-      "Due bagni",
-      "Ottima privacy",
-      "Zona living luminosa",
-      "Cucina completa",
-      "Vicino ai servizi comuni"
+      "Due bagni completi (unico al piano terra)",
+      "Terrazza panoramica con vista mare Ionio",
+      "Camera matrimoniale spaziosa",
+      "Zona living luminosa e confortevole",
+      "Cucina completa attrezzata",
+      "Perfetto per coppie e famiglie 2+2",
+      "Privacy e comfort superiori",
+      "100 metri dalla Spiaggia dei Gigli - Area Marina Protetta"
     ],
     perfectFor: [
       "Due coppie",
@@ -145,18 +155,23 @@ Una soluzione moderna, comoda e ideale sia per coppie che per famiglie che desid
   },
   5: {
     // TULIPANO
-    shortDescription: "Camera matrimoniale, zona living, cucina completa e veranda privata.",
-    fullPremiumDescription: `L'appartamento Tulipano è un lodge accogliente al piano terra di Villa Olimpia, pensato per ospitare fino a 4 persone.
+    shortDescription: "Tulipano: accesso diretto al giardino privato. Patio privato, vista piscina, cucina completa. Ideale per famiglie con bambini. A 100 metri dalla Spiaggia dei Gigli, Capopiccolo.",
+    fullPremiumDescription: `Tulipano è un lodge accogliente al piano terra di Villa Olimpia, Capopiccolo, con accesso diretto al giardino privato.
 
-Dispone di una camera matrimoniale, zona living con divano letto, cucina attrezzata e un bagno completo con doccia.
+Pensato per ospitare fino a 4 persone, dispone di camera matrimoniale, zona living con divano letto, cucina completa attrezzata e patio privato con vista piscina.
 
-Una veranda privata vicina all'ingresso della villa completa l'appartamento, rendendolo ideale per coppie e piccole famiglie.`,
+L'accesso diretto al giardino e il patio privato lo rendono perfetto per famiglie con bambini, offrendo uno spazio sicuro dove i più piccoli possono giocare.
+
+A 100 metri dalla Spiaggia dei Gigli, nell'Area Marina Protetta Capo Rizzuto. Accesso alla piscina condivisa e biancheria sanificata.`,
     featureBullets: [
-      "Veranda privata",
-      "Layout funzionale",
-      "Ideale per 2–4 pax",
-      "Vicino ai servizi",
-      "Aria condizionata e Wi-Fi"
+      "Accesso diretto al giardino privato",
+      "Patio privato con vista piscina",
+      "Camera matrimoniale confortevole",
+      "Cucina completa per tutta la famiglia",
+      "Zona living con divano letto",
+      "Ideale per famiglie con bambini",
+      "Spazio sicuro per i più piccoli",
+      "100 metri dalla Spiaggia dei Gigli - Capo Rizzuto"
     ],
     perfectFor: [
       "Coppie",
@@ -174,17 +189,23 @@ Una veranda privata vicina all'ingresso della villa completa l'appartamento, ren
   },
   6: {
     // LAVANDA
-    shortDescription: "Lodge accogliente con camera matrimoniale, living, cucina e veranda privata.",
-    fullPremiumDescription: `L'appartamento Lavanda, situato al piano terra, offre un ambiente caldo e accogliente per fino a 4 ospiti.
+    shortDescription: "Lavanda: lodge tranquillo con veranda privata. Vista giardino, cucina completa, ambiente accogliente. Perfetto per coppie che cercano relax. A 100 metri dalla Spiaggia dei Gigli, Capopiccolo.",
+    fullPremiumDescription: `Lavanda è un lodge tranquillo e accogliente al piano terra di Villa Olimpia, Capopiccolo, con posizione riservata e silenziosa.
 
-Dispone di una camera matrimoniale, zona living con divano letto, cucina attrezzata e bagno moderno.
+Offre un ambiente caldo e confortevole per fino a 4 ospiti, con camera matrimoniale, zona living con divano letto, cucina completa attrezzata e veranda privata con vista giardino.
 
-La veranda privata consente di godersi gli spazi esterni in totale relax, rendendolo perfetto per coppie o famiglie.`,
+La veranda privata consente di godersi gli spazi esterni in totale relax e privacy, rendendolo perfetto per coppie e piccole famiglie che cercano tranquillità.
+
+A 100 metri dalla Spiaggia dei Gigli, nell'Area Marina Protetta Capo Rizzuto. Accesso alla piscina condivisa e biancheria sanificata.`,
     featureBullets: [
-      "Veranda privata",
-      "Arredi funzionali",
-      "Perfetto per 4 pax",
-      "Molto tranquillo"
+      "Veranda privata con vista giardino",
+      "Posizione tranquilla e riservata",
+      "Camera matrimoniale confortevole",
+      "Cucina completa attrezzata",
+      "Zona living accogliente",
+      "Perfetto per coppie e piccole famiglie",
+      "Privacy e silenzio garantiti",
+      "100 metri dalla Spiaggia dei Gigli - Capo Rizzuto"
     ],
     perfectFor: [
       "Coppie",
@@ -201,17 +222,23 @@ La veranda privata consente di godersi gli spazi esterni in totale relax, renden
   },
   7: {
     // AZALEA
-    shortDescription: "Appartamento al primo piano con terrazza panoramica arredata, camera matrimoniale, living e cucina.",
-    fullPremiumDescription: `Situato al primo piano, l'appartamento Azalea offre una splendida terrazza panoramica arredata, perfetta per cene al tramonto o momenti di relax con vista.
+    shortDescription: "Azalea: terrazza panoramica spettacolare vista mare. Design moderno, camera matrimoniale, cucina completa. Perfetto per coppie romantiche. A 100 metri dalla Spiaggia dei Gigli, Capopiccolo.",
+    fullPremiumDescription: `Azalea è un lodge moderno e elegante al primo piano di Villa Olimpia, Capopiccolo, con terrazza panoramica spettacolare vista mare Ionio.
 
-All'interno troviamo una camera matrimoniale, zona living con divano letto, cucina completa e bagno moderno.
+La terrazza privata arredata è il punto forte di questo appartamento, perfetta per colazioni al tramonto, cene romantiche e momenti di relax con vista mozzafiato sulla costa calabrese.
 
-Ospita fino a 4 persone con comfort elevato e atmosfera rilassante.`,
+All'interno troviamo una camera matrimoniale confortevole, zona living luminosa con divano letto, cucina completa con elettrodomestici moderni e design elegante.
+
+Ospita fino a 4 persone con comfort elevato e atmosfera romantica. A 100 metri dalla Spiaggia dei Gigli, nell'Area Marina Protetta Capo Rizzuto.`,
     featureBullets: [
-      "Grande terrazza panoramica",
-      "Molto luminoso",
-      "Privacy e vista",
-      "Arredi esterni completi"
+      "Terrazza panoramica spettacolare vista mare Ionio",
+      "Design moderno e arredi eleganti",
+      "Camera matrimoniale confortevole",
+      "Cucina completa con elettrodomestici moderni",
+      "Zona living luminosa",
+      "Perfetto per coppie romantiche",
+      "Tramonti mozzafiato dalla terrazza",
+      "100 metri dalla Spiaggia dei Gigli - Area Marina Protetta"
     ],
     perfectFor: [
       "Coppie romantiche",
@@ -229,16 +256,23 @@ Ospita fino a 4 persone con comfort elevato e atmosfera rilassante.`,
   },
   8: {
     // GARDENIA
-    shortDescription: "Camera matrimoniale con bagno interno, living con divano letto, secondo bagno e balconcini vista giardino e piscina.",
-    fullPremiumDescription: `L'appartamento Gardenia, situato al primo piano, offre una camera matrimoniale con bagno privato, zona living con divano letto, un secondo bagno con doccia e due balconcini: uno vista giardino e uno vista piscina.
+    shortDescription: "Gardenia: camera con bagno privato, secondo bagno, due balconcini vista mare e piscina. Perfetto per coppie che cercano comfort extra. A 100 metri dalla Spiaggia dei Gigli, Capopiccolo.",
+    fullPremiumDescription: `Gardenia è un lodge elegante al primo piano di Villa Olimpia, Capopiccolo, con caratteristiche uniche che lo rendono perfetto per chi cerca comfort extra.
 
-Può ospitare fino a 4 persone in un ambiente moderno, ben organizzato e molto luminoso.`,
+Offre una camera matrimoniale con bagno privato, zona living spaziosa e luminosa con divano letto, secondo bagno completo con doccia e due balconcini: uno con vista giardino e uno con vista piscina.
+
+La combinazione di due bagni e due balconcini offre massima privacy e comfort, rendendo questo appartamento ideale per coppie e famiglie che desiderano servizi superiori.
+
+Può ospitare fino a 4 persone in un ambiente moderno, ben organizzato e molto luminoso. A 100 metri dalla Spiaggia dei Gigli, nell'Area Marina Protetta Capo Rizzuto.`,
     featureBullets: [
-      "Camera con bagno privato",
-      "Secondo bagno completo",
-      "Due balconcini",
-      "Molto luminoso",
-      "Vista piscina"
+      "Camera matrimoniale con bagno privato",
+      "Secondo bagno completo con doccia",
+      "Due balconcini: vista mare e vista piscina",
+      "Zona living spaziosa e luminosa",
+      "Cucina attrezzata completa",
+      "Perfetto per coppie e famiglie 2+2",
+      "Privacy e comfort superiori",
+      "100 metri dalla Spiaggia dei Gigli - Area Marina Protetta"
     ],
     perfectFor: [
       "Coppie",
@@ -256,24 +290,23 @@ Può ospitare fino a 4 persone in un ambiente moderno, ben organizzato e molto l
   },
   9: {
     // GERANIO
-    shortDescription: "Il lodge più grande della villa: due camere matrimoniali, due bagni (uno in camera), cabina armadio, zona living, cucina e doppi balconi vista mare e vista piscina.",
-    fullPremiumDescription: `Geranio è il lodge più prestigioso di Villa Olimpia.
+    shortDescription: "Geranio: il lodge più prestigioso di Villa Olimpia. Terrazza panoramica 180° vista mare, 2 camere matrimoniali, 2 bagni completi. Perfetto per famiglie numerose e gruppi. A 100 metri dalla Spiaggia dei Gigli, Capopiccolo.",
+    fullPremiumDescription: `Geranio è il lodge più prestigioso e spazioso di Villa Olimpia, situato al primo piano di Capopiccolo, Isola di Capo Rizzuto.
 
-Situato al primo piano, ospita fino a 6 persone e dispone di:
-• Due camere matrimoniali, una delle quali con cabina armadio e bagno privato
-• Zona living con divano letto
-• Cucina attrezzata
-• Secondo bagno completo
-• Due balconcini: vista mare e vista piscina
+Con 65 mq di superficie, ospita comodamente fino a 6 persone e dispone di due camere matrimoniali (una con cabina armadio e bagno privato), zona living ampia con divano letto, cucina moderna completamente attrezzata, secondo bagno completo e terrazza panoramica 180° con vista mozzafiato sul mare Ionio.
 
-Una soluzione ideale per famiglie numerose, due coppie o gruppi che desiderano ampi spazi e comfort superiori.`,
+La terrazza panoramica è il punto forte di questo lodge premium, ideale per colazioni, pranzi e cene all'aperto con vista spettacolare sulla costa calabrese.
+
+Una soluzione ideale per famiglie numerose, due coppie o gruppi che desiderano ampi spazi, comfort superiori e privacy. A 100 metri dalla Spiaggia dei Gigli, nell'Area Marina Protetta Capo Rizzuto.`,
     featureBullets: [
-      "2 camere matrimoniali",
-      "2 bagni completi, 1 in camera",
-      "Cabina armadio",
-      "Balcone vista mare",
-      "Balcone vista piscina",
-      "Comfort superiore"
+      "Terrazza panoramica 180° vista mare Ionio (unica)",
+      "Due camere matrimoniali con cabina armadio",
+      "Due bagni completi (uno privato in camera)",
+      "Soggiorno ampio e luminoso",
+      "Cucina moderna completamente attrezzata",
+      "Perfetto per famiglie fino a 6 persone",
+      "Comfort e privacy superiori",
+      "100 metri dalla Spiaggia dei Gigli - Area Marina Protetta"
     ],
     perfectFor: [
       "Due coppie",

@@ -1,0 +1,140 @@
+{
+  "project": "Villa Olimpia Website",
+  "validationDate": "2024-12-09T00:00:00Z",
+  "status": "ready",
+  "apartments": {
+    "total": 9,
+    "validated": 0,
+    "withContent": 0,
+    "withPlaceholders": 9,
+    "details": {
+      "Frangipane": {
+        "id": 1,
+        "status": "placeholder",
+        "files": {
+          "ITA_long": "missing",
+          "ITA_OTA": "missing",
+          "ENG_long": "missing",
+          "ENG_OTA": "missing"
+        }
+      },
+      "Fiordaliso": {
+        "id": 2,
+        "status": "placeholder",
+        "files": {
+          "ITA_long": "missing",
+          "ITA_OTA": "missing",
+          "ENG_long": "missing",
+          "ENG_OTA": "missing"
+        }
+      },
+      "Orchidea": {
+        "id": 3,
+        "status": "placeholder",
+        "files": {
+          "ITA_long": "missing",
+          "ITA_OTA": "missing",
+          "ENG_long": "missing",
+          "ENG_OTA": "missing"
+        }
+      },
+      "Tulipano": {
+        "id": 4,
+        "status": "placeholder",
+        "files": {
+          "ITA_long": "missing",
+          "ITA_OTA": "missing",
+          "ENG_long": "missing",
+          "ENG_OTA": "missing"
+        }
+      },
+      "Geranio": {
+        "id": 5,
+        "status": "placeholder",
+        "files": {
+          "ITA_long": "missing",
+          "ITA_OTA": "missing",
+          "ENG_long": "missing",
+          "ENG_OTA": "missing"
+        }
+      },
+      "Giglio": {
+        "id": 6,
+        "status": "placeholder",
+        "files": {
+          "ITA_long": "missing",
+          "ITA_OTA": "missing",
+          "ENG_long": "missing",
+          "ENG_OTA": "missing"
+        }
+      },
+      "Lavanda": {
+        "id": 7,
+        "status": "placeholder",
+        "files": {
+          "ITA_long": "missing",
+          "ITA_OTA": "missing",
+          "ENG_long": "missing",
+          "ENG_OTA": "missing"
+        }
+      },
+      "Gardenia": {
+        "id": 8,
+        "status": "placeholder",
+        "files": {
+          "ITA_long": "missing",
+          "ITA_OTA": "missing",
+          "ENG_long": "missing",
+          "ENG_OTA": "missing"
+        }
+      },
+      "Azalea": {
+        "id": 9,
+        "status": "placeholder",
+        "files": {
+          "ITA_long": "missing",
+          "ITA_OTA": "missing",
+          "ENG_long": "missing",
+          "ENG_OTA": "missing"
+        }
+      }
+    }
+  },
+  "contentSource": {
+    "path": "~/Desktop/villa_olimpia_final/",
+    "exists": true,
+    "filesFound": 36,
+    "filesWithContent": 0,
+    "filesWithPlaceholders": 36
+  },
+  "integration": {
+    "script": "scripts/read-and-integrate-content.js",
+    "status": "ready",
+    "lastRun": null,
+    "outputFile": "data/apartment-content.ts",
+    "outputFileExists": true
+  },
+  "build": {
+    "status": "success",
+    "lastBuild": "2024-12-09T00:00:00Z",
+    "errors": 0,
+    "warnings": 0
+  },
+  "deployment": {
+    "platform": "Netlify",
+    "status": "configured",
+    "url": "https://villaolimpia.netlify.app",
+    "environmentVariables": {
+      "configured": 4,
+      "required": 4
+    }
+  },
+  "nextSteps": [
+    "Popolare i file di contenuto in ~/Desktop/villa_olimpia_final/",
+    "Eseguire: node scripts/read-and-integrate-content.js",
+    "Verificare che data/apartment-content.ts sia aggiornato",
+    "Testare il sito con npm run dev",
+    "Eseguire build finale: npm run build"
+  ]
+}
+
