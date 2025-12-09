@@ -1,9 +1,9 @@
 "use client"
 
+import { memo, useState } from "react"
 import { motion } from "framer-motion"
 import Image from "next/image"
 import Link from "next/link"
-import { useState } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Bed, Users, Maximize2, Home } from "lucide-react"
