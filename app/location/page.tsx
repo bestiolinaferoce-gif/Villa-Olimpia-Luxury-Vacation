@@ -4,7 +4,6 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { MapPin, Car, Plane, Train, Ship } from "lucide-react"
 import { VILLA_OLIMPIA_LOCATION } from "@/lib/location-data"
 import { MapComponent } from "@/components/map-component"
-import { MapDebug } from "@/components/map-debug"
 
 const attractions = [
   {
