@@ -105,9 +105,14 @@ Oppure contattaci direttamente via WhatsApp o email.`
       // EmailJS configuration (già validata)
       const { serviceId, templateId, publicKey } = configValidation.config
 
-      // Inizializza EmailJS se non già fatto
-      if (typeof window !== 'undefined' && !emailjs.init) {
-        emailjs.init(publicKey)
+      // Inizializza EmailJS se necessario (solo lato client)
+      if (typeof window !== 'undefined') {
+        try {
+          // EmailJS si inizializza automaticamente con la publicKey nel send
+          // Non serve chiamare init esplicitamente
+        } catch (initError) {
+          console.warn('EmailJS init warning:', initError)
+        }
       }
 
       // Prepare email template parameters
