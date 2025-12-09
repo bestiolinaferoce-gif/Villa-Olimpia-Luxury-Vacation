@@ -10,7 +10,6 @@ import { PreloadResources } from "@/components/performance/preload-resources"
 import { TouchOptimizer } from "@/components/mobile/touch-optimizer"
 import { DirectionsProvider } from "@/components/directions-context"
 import { ErrorBoundary } from "@/components/error-boundary"
-import { DebugPanel } from "@/components/debug-panel"
 import { defaultMetadata } from "@/lib/metadata"
 
 const inter = Inter({ 
@@ -132,7 +131,6 @@ export default function RootLayout({
             <CookieConsent />
             <ScrollToTop />
             <WhatsAppButton />
-            <DebugPanel />
           </DirectionsProvider>
         </ErrorBoundary>
       </body>

@@ -47,17 +47,8 @@ export function MapComponent() {
     const key = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || ''
     setApiKey(key)
     
-    // Debug logging
-    console.log('MapComponent Debug:', {
-      hasApiKey: Boolean(key && key.length > 10),
-      apiKeyLength: key.length,
-      apiKeyPreview: key ? `${key.substring(0, 10)}...` : 'MISSING',
-      isClient: true,
-    })
-    
     // Se non c'è API key, mostra errore dopo un breve delay
     if (!key || key.trim() === '') {
-      console.warn('Google Maps API Key non trovata! Configura NEXT_PUBLIC_GOOGLE_MAPS_API_KEY su Vercel.')
       setTimeout(() => {
         setMapError(true)
       }, 1000)
@@ -90,18 +81,13 @@ export function MapComponent() {
   }, [])
 
   const onError = useCallback((error: Error) => {
-    // Log sempre in produzione per debug
-    console.error('Google Maps LoadScript Error:', {
-      message: error.message,
-      name: error.name,
-      stack: error.stack,
-      apiKeyPresent: Boolean(apiKey && apiKey.length > 10),
-      apiKeyLength: apiKey.length,
-      isClient,
-    })
+    // Log solo in sviluppo
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Google Maps LoadScript Error:', error)
+    }
     setMapError(true)
     setIsMapLoaded(false)
-  }, [apiKey, isClient])
+  }, [])
   
 
   // Se non c'è API key o c'è un errore, mostra placeholder con link
@@ -139,15 +125,8 @@ export function MapComponent() {
               <p className="text-sm text-muted-foreground">
                 {!hasValidApiKey 
                   ? "Configura NEXT_PUBLIC_GOOGLE_MAPS_API_KEY su Vercel → Settings → Environment Variables e fai un Redeploy"
-                  : "Errore nel caricamento della mappa. Verifica la console del browser (F12) per dettagli."}
+                  : "Errore nel caricamento della mappa. Contatta il supporto se il problema persiste."}
               </p>
-              {process.env.NODE_ENV === 'development' && (
-                <p className="text-xs text-muted-foreground mt-2">
-                  Debug: API Key presente = {hasValidApiKey ? 'Sì' : 'No'} | 
-                  Lunghezza = {apiKey.length} | 
-                  Client = {isClient ? 'Sì' : 'No'}
-                </p>
-              )}
             </div>
           </div>
           

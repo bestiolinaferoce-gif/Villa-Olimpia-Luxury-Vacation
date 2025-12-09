@@ -48,16 +48,13 @@ const validateEmailConfig = (): { valid: boolean; missing: string[] } => {
   }
   
   if (missing.length > 0) {
-    console.error('❌ EmailJS - Variabili mancanti:', missing)
-    console.error('📋 Config attuale:', {
-      serviceId: EMAILJS_CONFIG.serviceId ? `✓ Presente (${EMAILJS_CONFIG.serviceId.substring(0, 10)}...)` : '✗ MANCANTE',
-      templateId: EMAILJS_CONFIG.templateId ? `✓ Presente (${EMAILJS_CONFIG.templateId.substring(0, 10)}...)` : '✗ MANCANTE',
-      publicKey: EMAILJS_CONFIG.publicKey ? '✓ Presente' : '✗ MANCANTE',
-    })
+    // Log solo in sviluppo
+    if (process.env.NODE_ENV === 'development') {
+      console.error('❌ EmailJS - Variabili mancanti:', missing)
+    }
     return { valid: false, missing }
   }
   
-  console.log('✅ EmailJS - Configurazione completa')
   return { valid: true, missing: [] }
 }
 
@@ -111,42 +108,17 @@ export function BookingForm() {
         subject: `Nuova Richiesta Prenotazione - ${data.name}`,
       }
 
-      // Debug logging prima dell'invio
-      console.log('📧 EmailJS - Invio email:', {
-        serviceId: serviceId ? `${serviceId.substring(0, 10)}...` : 'MISSING',
-        templateId: templateId ? `${templateId.substring(0, 10)}...` : 'MISSING',
-        publicKeyPresent: Boolean(publicKey && publicKey.length > 5),
-        templateParams: {
-          ...templateParams,
-          // Non loggare dati sensibili completi
-          from_email: templateParams.from_email ? `${templateParams.from_email.substring(0, 5)}...` : 'MISSING',
-        },
-      })
-
       // Send email via EmailJS
-      const result = await emailjs.send(serviceId, templateId, templateParams, publicKey)
-      
-      console.log('✅ EmailJS - Email inviata con successo:', {
-        status: result.status,
-        text: result.text,
-      })
+      await emailjs.send(serviceId, templateId, templateParams, publicKey)
 
       setIsSubmitting(false)
       setIsSubmitted(true)
       reset() // Reset form after successful submission
     } catch (error) {
-      // Log sempre per debug in produzione
-      const serviceIdDebug = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || ''
-      const templateIdDebug = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || ''
-      const publicKeyDebug = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || ''
-      
-      console.error('Errore invio email EmailJS:', {
-        error,
-        message: error instanceof Error ? error.message : String(error),
-        serviceId: serviceIdDebug ? `${serviceIdDebug.substring(0, 10)}...` : 'MISSING',
-        templateId: templateIdDebug ? `${templateIdDebug.substring(0, 10)}...` : 'MISSING',
-        publicKeyPresent: Boolean(publicKeyDebug && publicKeyDebug.length > 5),
-      })
+      // Log solo in sviluppo
+      if (process.env.NODE_ENV === 'development') {
+        console.error('Errore invio email EmailJS:', error)
+      }
       setIsSubmitting(false)
       
       // Provide more specific error messages

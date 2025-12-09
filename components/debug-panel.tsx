@@ -46,18 +46,6 @@ export function DebugPanel() {
     ]
     
     setEnvVars(vars)
-    
-    // Log completo in console
-    console.log('🔍 DEBUG PANEL - Variabili Ambiente:', vars)
-    console.log('🔍 DEBUG PANEL - Is Client:', true)
-    console.log('🔍 DEBUG PANEL - Window:', typeof window !== 'undefined')
-    console.log('🔍 DEBUG PANEL - Process.env:', {
-      NODE_ENV: process.env.NODE_ENV,
-      NEXT_PUBLIC_GOOGLE_MAPS_API_KEY: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY ? 'PRESENT' : 'MISSING',
-      NEXT_PUBLIC_EMAILJS_SERVICE_ID: process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID ? 'PRESENT' : 'MISSING',
-      NEXT_PUBLIC_EMAILJS_TEMPLATE_ID: process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID ? 'PRESENT' : 'MISSING',
-      NEXT_PUBLIC_EMAILJS_PUBLIC_KEY: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY ? 'PRESENT' : 'MISSING',
-    })
   }, [])
 
   if (!isClient) return null
