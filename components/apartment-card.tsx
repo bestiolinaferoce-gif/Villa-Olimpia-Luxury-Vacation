@@ -19,7 +19,7 @@ interface ApartmentCardProps {
   featured?: boolean
 }
 
-function ApartmentCardComponent({
+const ApartmentCardComponent = ({
   id,
   name,
   description,
@@ -28,7 +28,7 @@ function ApartmentCardComponent({
   bedrooms,
   price,
   featured = false,
-}: ApartmentCardProps) {
+}: ApartmentCardProps) => {
   const [imageError, setImageError] = useState(false)
   const isPlaceholder = image.includes('placeholder') || !image.startsWith('/')
   const showPlaceholder = isPlaceholder || imageError
@@ -153,4 +153,7 @@ function ApartmentCardComponent({
     </motion.div>
   )
 }
+
+export const ApartmentCard = memo(ApartmentCardComponent)
+ApartmentCard.displayName = 'ApartmentCard'
 
