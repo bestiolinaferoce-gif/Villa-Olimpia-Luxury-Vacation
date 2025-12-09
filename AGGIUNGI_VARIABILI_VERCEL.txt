@@ -1,0 +1,24 @@
+COPIA E INCOLLA QUESTE 3 VARIABILI SU VERCEL:
+
+=== VARIABILE 1 ===
+Key: NEXT_PUBLIC_EMAILJS_TEMPLATE_ID
+Value: template_2kw4d3d
+Environment: Seleziona "All Environments" (o Production, Preview, Development)
+
+=== VARIABILE 2 ===
+Key: NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+Value: JeiPqp4zNMlRw6ug9
+Environment: Seleziona "All Environments" (o Production, Preview, Development)
+
+=== VARIABILE 3 ===
+Key: NEXT_PUBLIC_GOOGLE_MAPS_API_KEY
+Value: AIzaSyARI-Fmhhh_AMHsJYuBBZBhLEl1rbVAnFo
+Environment: Seleziona "All Environments" (o Production, Preview, Development)
+
+DOPO AVER AGGIUNTO TUTTE E 3:
+1. Clicca "Save"
+2. Vai su "Deployments"
+3. Clicca i 3 puntini (⋮) sull'ultimo deploy
+4. Clicca "Redeploy"
+5. Attendi 2-3 minuti
+
