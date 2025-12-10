@@ -10,6 +10,10 @@ import { SectionDivider } from "@/components/animations/section-divider"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { WeatherWidget } from "@/components/weather-widget"
+import { UrgencyBanner } from "@/components/conversion/urgency-banner"
+import { TrustBadges } from "@/components/conversion/trust-badges"
+import { SocialProof } from "@/components/conversion/social-proof"
+import { TerritorySection } from "@/components/territory-section"
 import Link from "next/link"
 import { Star, Wifi, Car, Waves, Utensils, Shield, Umbrella, MapPin, Sparkles } from "lucide-react"
 import { getFeaturedApartments } from "@/data/apartments"
@@ -101,7 +105,9 @@ export default function HomePage() {
 
   return (
     <>
+      <UrgencyBanner />
       <HeroSectionPremium />
+      <TrustBadges />
 
       {/* Featured Apartments */}
       <section className="py-20 bg-background">
@@ -343,6 +349,12 @@ export default function HomePage() {
 
       {/* Testimonials */}
       <Testimonials />
+
+      {/* Social Proof */}
+      <SocialProof />
+
+      {/* Territorio e Mete Turistiche */}
+      <TerritorySection />
 
       {/* Why Choose Us */}
       <WhyChooseUs />

@@ -15,6 +15,7 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Menu, X } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
+import { LanguageSelector } from "@/components/language-selector"
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -90,8 +91,9 @@ export function Header() {
             ))}
           </nav>
 
-          {/* CTA Buttons */}
-          <div className="hidden lg:flex items-center space-x-4">
+          {/* CTA Buttons e Language Selector */}
+          <div className="hidden lg:flex items-center space-x-3">
+            <LanguageSelector />
             <Button 
               size="sm" 
               className={`
@@ -147,6 +149,9 @@ export function Header() {
                 </Link>
               ))}
               <div className="pt-4 space-y-3 border-t">
+                <div className="px-4">
+                  <LanguageSelector />
+                </div>
                 <Button variant="luxury" className="w-full" asChild>
                   <Link href="/contatti" onClick={() => setIsMenuOpen(false)}>
                     Prenota Ora

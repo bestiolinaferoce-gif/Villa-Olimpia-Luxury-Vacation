@@ -199,13 +199,13 @@ export function HowToReachUs() {
               className="fixed inset-0 z-[100] bg-black/60 backdrop-blur-md"
             />
 
-            {/* Modal Content */}
+            {/* Modal Content - Posizionamento e Overflow Corretti */}
             <motion.div
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="fixed inset-4 md:inset-auto md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 z-[110] md:max-w-5xl md:w-full md:max-h-[90vh] overflow-y-auto bg-white rounded-3xl shadow-2xl border-2 border-primary/20"
+              className="fixed top-4 left-4 right-4 bottom-4 md:top-1/2 md:left-1/2 md:right-auto md:bottom-auto md:-translate-x-1/2 md:-translate-y-1/2 z-[110] md:max-w-5xl md:w-[90vw] md:max-h-[90vh] flex flex-col bg-white rounded-3xl shadow-2xl border-2 border-primary/20 overflow-hidden"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Header Gradient */}
@@ -232,8 +232,8 @@ export function HowToReachUs() {
                 </button>
               </div>
 
-              {/* Content */}
-              <div className="p-6 md:p-8 space-y-6">
+              {/* Content - Scrollabile con padding corretto */}
+              <div className="flex-1 overflow-y-auto p-6 md:p-8 space-y-6">
                 {/* In Auto */}
                 <Card className="border-2 border-primary/20 shadow-lg overflow-hidden">
                   <CardHeader className="bg-gradient-to-r from-primary/10 to-ocean/10">
@@ -297,25 +297,25 @@ export function HowToReachUs() {
                         className="p-5 rounded-xl border-2 border-gray-200 hover:border-primary/40 bg-gradient-to-r from-white to-primary/5 transition-all"
                       >
                         <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
-                          <div className="flex-1">
-                            <div className="flex items-center gap-3 mb-3">
-                              <h3 className="text-lg md:text-xl font-bold text-foreground">{airport.name}</h3>
-                              <span className="text-xs font-semibold text-primary bg-primary/10 px-3 py-1 rounded-full">
+                          <div className="flex-1 min-w-0">
+                            <div className="flex flex-wrap items-center gap-3 mb-3">
+                              <h3 className="text-lg md:text-xl font-bold text-foreground break-words">{airport.name}</h3>
+                              <span className="text-xs font-semibold text-primary bg-primary/10 px-3 py-1 rounded-full whitespace-nowrap">
                                 {airport.code}
                               </span>
                             </div>
                             <div className="space-y-2 text-sm text-muted-foreground">
-                              <p className="flex items-center gap-2">
-                                <MapPin className="w-4 h-4" />
-                                {airport.distance} km da Villa Olimpia
+                              <p className="flex items-center gap-2 flex-wrap">
+                                <MapPin className="w-4 h-4 flex-shrink-0" />
+                                <span className="break-words">{airport.distance} km da Villa Olimpia</span>
                               </p>
-                              <p className="flex items-center gap-2">
-                                <Clock className="w-4 h-4" />
-                                {formatDuration(airport.driveTime)} in auto
+                              <p className="flex items-center gap-2 flex-wrap">
+                                <Clock className="w-4 h-4 flex-shrink-0" />
+                                <span className="break-words">{formatDuration(airport.driveTime)} in auto</span>
                               </p>
                             </div>
                           </div>
-                          <div className="flex flex-col gap-2">
+                          <div className="flex flex-col gap-2 flex-shrink-0">
                             <Button
                               size="sm"
                               variant="outline"
@@ -324,14 +324,14 @@ export function HowToReachUs() {
                                   window.open(airport.website, "_blank")
                                 }
                               }}
-                              className="text-xs"
+                              className="text-xs whitespace-nowrap"
                             >
                               <ExternalLink className="h-3 w-3 mr-1" />
                               Sito Aeroporto
                             </Button>
                             <Button
                               size="sm"
-                              className="bg-primary hover:bg-primary/90 text-white text-xs"
+                              className="bg-primary hover:bg-primary/90 text-white text-xs whitespace-nowrap"
                               onClick={() => {
                                 if (typeof window !== 'undefined') {
                                   window.open(airport.flightSearch, "_blank")
@@ -362,10 +362,10 @@ export function HowToReachUs() {
                                       window.open(airline.url, "_blank")
                                     }
                                   }}
-                                  className="text-xs h-8 px-3 bg-white hover:bg-primary/5 hover:border-primary/30"
+                                  className="text-xs h-8 px-3 bg-white hover:bg-primary/5 hover:border-primary/30 whitespace-nowrap"
                                 >
-                                  {airline.name}
-                                  <ExternalLink className="h-3 w-3 ml-1" />
+                                  <span className="truncate max-w-[120px]">{airline.name}</span>
+                                  <ExternalLink className="h-3 w-3 ml-1 flex-shrink-0" />
                                 </Button>
                               ))}
                             </div>
@@ -396,16 +396,16 @@ export function HowToReachUs() {
                         className="p-5 rounded-xl border-2 border-gray-200 hover:border-primary/40 bg-gradient-to-r from-white to-primary/5 transition-all"
                       >
                         <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
-                          <div className="flex-1">
-                            <h3 className="text-lg md:text-xl font-bold text-foreground mb-3">{station.name}</h3>
+                          <div className="flex-1 min-w-0">
+                            <h3 className="text-lg md:text-xl font-bold text-foreground mb-3 break-words">{station.name}</h3>
                             <div className="space-y-2 text-sm text-muted-foreground">
-                              <p className="flex items-center gap-2">
-                                <MapPin className="w-4 h-4" />
-                                {station.distance} km da Villa Olimpia
+                              <p className="flex items-center gap-2 flex-wrap">
+                                <MapPin className="w-4 h-4 flex-shrink-0" />
+                                <span className="break-words">{station.distance} km da Villa Olimpia</span>
                               </p>
-                              <p className="flex items-center gap-2">
-                                <Clock className="w-4 h-4" />
-                                {formatDuration(station.driveTime)} in auto
+                              <p className="flex items-center gap-2 flex-wrap">
+                                <Clock className="w-4 h-4 flex-shrink-0" />
+                                <span className="break-words">{formatDuration(station.driveTime)} in auto</span>
                               </p>
                             </div>
                           </div>
@@ -418,7 +418,7 @@ export function HowToReachUs() {
                                   window.open(station.website, "_blank")
                                 }
                               }}
-                              className="text-xs"
+                              className="text-xs whitespace-nowrap flex-shrink-0"
                             >
                               <ExternalLink className="h-3 w-3 mr-1" />
                               Trenitalia

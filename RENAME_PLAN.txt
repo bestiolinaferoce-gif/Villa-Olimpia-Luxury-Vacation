@@ -1,0 +1,16 @@
+/Users/francesconigro/Desktop/Foto Villa Olimpia Sito/Bagno Frangipane completo.jpg → /Users/francesconigro/Desktop/ViviCalabria.com/public/images/villa/appartamenti/frangipane/bagno-frangipane-completo.jpg
+/Users/francesconigro/Desktop/Foto Villa Olimpia Sito/Camera da letto matrimoniale A Frangipane 1.png → /Users/francesconigro/Desktop/ViviCalabria.com/public/images/villa/appartamenti/frangipane/camera-matrimoniale-frangipane-2.jpg
+/Users/francesconigro/Desktop/Foto Villa Olimpia Sito/Esterni Villa Olimpia.jpg → /Users/francesconigro/Desktop/ViviCalabria.com/public/images/villa/gallery/esterni-villa-olimpia.jpg
+/Users/francesconigro/Desktop/Foto Villa Olimpia Sito/Facciata esterna Villa Olimpia ( 3).jpg → /Users/francesconigro/Desktop/ViviCalabria.com/public/images/villa/gallery/facciata-esterna-villa-olimpia-3.jpg
+/Users/francesconigro/Desktop/Foto Villa Olimpia Sito/Facciata Villa Olimpia .jpg → /Users/francesconigro/Desktop/ViviCalabria.com/public/images/villa/gallery/facciata-villa-olimpia.jpg
+/Users/francesconigro/Desktop/Foto Villa Olimpia Sito/Gazebo notte Olimpia.jpg → /Users/francesconigro/Desktop/ViviCalabria.com/public/images/villa/gallery/gazebo-notte-olimpia.jpg
+/Users/francesconigro/Desktop/Foto Villa Olimpia Sito/Gazebo Olimpia 2.jpg → /Users/francesconigro/Desktop/ViviCalabria.com/public/images/villa/gallery/gazebo-olimpia-2.jpg
+/Users/francesconigro/Desktop/Foto Villa Olimpia Sito/Ingresso Villa Olimpia.jpg → /Users/francesconigro/Desktop/ViviCalabria.com/public/images/villa/gallery/ingresso-villa-olimpia.jpg
+/Users/francesconigro/Desktop/Foto Villa Olimpia Sito/Piscina Villa Olimpia ( 3).jpg → /Users/francesconigro/Desktop/ViviCalabria.com/public/images/villa/gallery/piscina-villa-olimpia-3.jpg
+/Users/francesconigro/Desktop/Foto Villa Olimpia Sito/Piscina Villa Olimpia .jpg → /Users/francesconigro/Desktop/ViviCalabria.com/public/images/villa/gallery/piscina-villa-olimpia.jpg
+/Users/francesconigro/Desktop/Foto Villa Olimpia Sito/Piscina.jpg → /Users/francesconigro/Desktop/ViviCalabria.com/public/images/villa/gallery/piscina.jpg
+/Users/francesconigro/Desktop/Foto Villa Olimpia Sito/Villa Olimpia Notte ( 2).jpg → /Users/francesconigro/Desktop/ViviCalabria.com/public/images/villa/gallery/villa-olimpia-notte-2.jpg
+/Users/francesconigro/Desktop/Foto Villa Olimpia Sito/Facciata esterna Villa Olimpia Notte.jpg → /Users/francesconigro/Desktop/ViviCalabria.com/public/images/villa/hero/facciata-esterna-villa-olimpia-notte.jpg
+/Users/francesconigro/Desktop/Foto Villa Olimpia Sito/Spiaggia dei Gigli .jpg → /Users/francesconigro/Desktop/ViviCalabria.com/public/images/villa/location/spiaggia-dei-gigli.jpg
+/Users/francesconigro/Desktop/Foto Villa Olimpia Sito/Spiaggia dei Gigli 2.jpg → /Users/francesconigro/Desktop/ViviCalabria.com/public/images/villa/location/spiaggia-dei-gigli-2.jpg
+/Users/francesconigro/Desktop/Foto Villa Olimpia Sito/Spiaggia dei Gigli notturna.jpg → /Users/francesconigro/Desktop/ViviCalabria.com/public/images/villa/location/spiaggia-dei-gigli-notturna.jpg

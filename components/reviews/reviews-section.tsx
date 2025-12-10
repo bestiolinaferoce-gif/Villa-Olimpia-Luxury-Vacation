@@ -14,6 +14,10 @@ export function ReviewsSection() {
   const [currentPage, setCurrentPage] = useState(1)
 
   const filteredReviews = useMemo(() => {
+    if (!reviews || reviews.length === 0) {
+      return []
+    }
+    
     let filtered = [...reviews]
     
     if (selectedRating !== null) {
@@ -21,7 +25,13 @@ export function ReviewsSection() {
     }
     
     // Ordina per data (più recenti prima)
-    filtered.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    filtered.sort((a, b) => {
+      try {
+        return new Date(b.date).getTime() - new Date(a.date).getTime()
+      } catch {
+        return 0
+      }
+    })
     
     return filtered
   }, [selectedRating])
@@ -60,15 +70,23 @@ export function ReviewsSection() {
         />
 
         {/* Reviews Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-          {paginatedReviews.map((review, index) => (
-            <ReviewCard
-              key={review.id}
-              review={review}
-              index={index}
-            />
-          ))}
-        </div>
+        {paginatedReviews.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+            {paginatedReviews.map((review, index) => (
+              <ReviewCard
+                key={review.id}
+                review={review}
+                index={index}
+              />
+            ))}
+          </div>
+        ) : (
+          <div className="text-center py-12">
+            <p className="text-muted-foreground">
+              Nessuna recensione trovata per i filtri selezionati.
+            </p>
+          </div>
+        )}
 
         {/* Pagination */}
         {totalPages > 1 && (

@@ -38,6 +38,14 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/favicon.ico" />
         <link rel="canonical" href="https://villaolimpia.com" />
+        {/* Hreflang tags per multilingua */}
+        <link rel="alternate" hrefLang="it" href="https://villaolimpia.com/it" />
+        <link rel="alternate" hrefLang="en" href="https://villaolimpia.com/en" />
+        <link rel="alternate" hrefLang="de" href="https://villaolimpia.com/de" />
+        <link rel="alternate" hrefLang="nl" href="https://villaolimpia.com/nl" />
+        <link rel="alternate" hrefLang="es" href="https://villaolimpia.com/es" />
+        <link rel="alternate" hrefLang="fr" href="https://villaolimpia.com/fr" />
+        <link rel="alternate" hrefLang="x-default" href="https://villaolimpia.com" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

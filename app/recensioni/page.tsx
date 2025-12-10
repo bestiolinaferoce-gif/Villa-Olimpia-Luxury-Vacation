@@ -12,7 +12,7 @@ export default function RecensioniPage() {
   return (
     <>
       {/* Schema markup per tutte le recensioni */}
-      {reviews.map((review) => (
+      {reviews && reviews.length > 0 && reviews.map((review) => (
         <ReviewSchema key={review.id} review={review} />
       ))}
       <div className="min-h-screen pt-20">
