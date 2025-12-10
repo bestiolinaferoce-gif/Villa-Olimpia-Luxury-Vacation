@@ -1,0 +1,277 @@
+================================================================================
+                    ANALISI PROGETTO VILLA OLIMPIA
+                    Next.js 16+ - Luxury Vacation Rental
+================================================================================
+
+COPIARE TUTTO QUESTO TESTO E INCOLLARLO IN UNA NUOVA CONVERSAZIONE CON CLAUDE
+================================================================================
+
+Ciao Claude! 
+
+Devo che tu analizzi questo progetto Next.js per me. Ecco tutte le informazioni:
+
+---
+
+📍 PERCORSO PROGETTO SUL MAC:
+/Users/francesconigro/Desktop/ViviCalabria.com
+
+---
+
+🚨 PRIORITÀ ASSOLUTE DA FIXARE (ORDINE DI IMPORTANZA):
+
+1. PAGINA RECENSIONI NON FUNZIONA:
+   - Debug completo della pagina /recensioni
+   - Implementa 100+ recensioni realistiche da Booking/Airbnb
+   - Aggiungi filtri, rating visivo, date, foto recensori
+   - Verifica che tutte le recensioni siano visualizzate correttamente
+   - Controlla paginazione e ordinamento
+
+2. PAGINE TERRITORIO & ENOGASTRONOMIA VUOTE:
+   - Popola con contenuti SEO-rich + immagini 4K
+   - AGGIUNGI QUESTE DESTINAZIONI MANCANTI:
+     * Valli Cupe (canyon + trekking)
+     * Castello di Santa Severina (borgo medievale)
+     * Sila Piccola (40 min auto - montagna, laghi)
+     * Spiagge rosse di Capo Rizzuto
+     * Le Castella (castello aragonese)
+     * Patrimonio UNESCO Calabria
+     * Crotone città e museo archeologico
+     * Isola di Capo Rizzuto (riserva marina)
+   - Crea sezione Enogastronomia con: cantine, frantoi, ristoranti tipici
+
+3. FOTO APPARTAMENTI SBAGLIATE:
+   - Sistema organizzazione gallery per ogni appartamento
+   - Ogni appartamento deve avere le SUE foto nella gallery corretta
+   - Implementa un sistema definitivo per evitare errori
+   - Verifica che le immagini siano ottimizzate (WebP, dimensioni corrette)
+   - Controlla che non ci siano immagini duplicate o errate
+
+4. ERRORI NEL SITO:
+   - Elenca TUTTI gli errori presenti (TypeScript, runtime, build)
+   - Correggi errori TypeScript
+   - Correggi broken links (verifica tutti i link interni ed esterni)
+   - Correggi immagini mancanti (404 su immagini)
+   - Verifica console errors e warnings
+
+5. OTTIMIZZAZIONI PERFORMANCE:
+   - Lighthouse score 95+ su tutte le pagine
+   - Ottimizza immagini (WebP, AVIF, lazy loading)
+   - Implementa caching appropriato
+   - Riduci bundle size se necessario
+   - Ottimizza Core Web Vitals (LCP, FID, CLS)
+
+6. SEO INTERNAZIONALE:
+   - Meta tags completi in italiano (title 50-60 chars, description 155-160 chars)
+   - Structured data per LodgingBusiness, Reviews, LocalBusiness
+   - Alt text keyword-rich su tutte le immagini
+   - Verifica canonical URLs su tutte le pagine
+   - Controlla hreflang tags per multilingua futuro
+
+---
+
+🎯 COSA DEVO (ANALISI COMPLETA):
+
+1. ANALISI SEO COMPLETA:
+   - Verifica meta tags, Open Graph, Twitter Cards su tutte le pagine
+   - Controlla structured data (Schema.org) - LodgingBusiness, Review, etc.
+   - Analizza title tags (devono essere 50-60 caratteri)
+   - Analizza meta descriptions (devono essere 155-160 caratteri)
+   - Verifica canonical URLs su tutte le pagine
+   - Controlla alt text immagini (devono essere keyword-rich)
+   - Verifica hreflang tags per multilingua
+   - Controlla robots.txt e sitemap.xml
+
+2. ANALISI PERFORMANCE:
+   - Verifica ottimizzazioni immagini (WebP, AVIF, lazy loading)
+   - Controlla code splitting e dynamic imports
+   - Analizza bundle size e dipendenze
+   - Verifica preconnect/DNS prefetch
+   - Controlla caching headers
+
+3. ANALISI CODE QUALITY:
+   - Verifica TypeScript errors e warnings
+   - Controlla best practices Next.js 16+
+   - Analizza struttura componenti
+   - Verifica accessibility (ARIA labels, semantic HTML, keyboard navigation)
+   - Controlla error handling
+
+4. ANALISI SECURITY:
+   - Verifica security headers in next.config.js
+   - Controlla input sanitization nei form
+   - Analizza CORS e CSP policies
+   - Verifica protezione XSS
+
+5. IDENTIFICA PROBLEMI:
+   - Errori di build
+   - Warning in console
+   - Problemi di rendering
+   - Broken links
+   - Immagini mancanti o non ottimizzate
+
+6. RACCOMANDAZIONI:
+   - Ottimizzazioni prioritarie (cosa fare subito)
+   - Best practices mancanti
+   - Feature da implementare
+   - Miglioramenti UX/UI
+
+---
+
+📁 FILE CHIAVE DA LEGGERE:
+
+CONFIGURAZIONE:
+- /Users/francesconigro/Desktop/ViviCalabria.com/next.config.js
+- /Users/francesconigro/Desktop/ViviCalabria.com/package.json
+- /Users/francesconigro/Desktop/ViviCalabria.com/tsconfig.json
+
+LAYOUT & HOMEPAGE:
+- /Users/francesconigro/Desktop/ViviCalabria.com/app/layout.tsx
+- /Users/francesconigro/Desktop/ViviCalabria.com/app/page.tsx
+
+SEO & METADATA:
+- /Users/francesconigro/Desktop/ViviCalabria.com/lib/metadata.ts
+
+PAGINE PRINCIPALI:
+- /Users/francesconigro/Desktop/ViviCalabria.com/app/appartamenti/page.tsx
+- /Users/francesconigro/Desktop/ViviCalabria.com/app/appartamenti/[id]/page.tsx
+- /Users/francesconigro/Desktop/ViviCalabria.com/app/location/page.tsx
+- /Users/francesconigro/Desktop/ViviCalabria.com/app/recensioni/page.tsx
+- /Users/francesconigro/Desktop/ViviCalabria.com/app/contatti/page.tsx
+
+ERROR PAGES:
+- /Users/francesconigro/Desktop/ViviCalabria.com/app/error.tsx
+- /Users/francesconigro/Desktop/ViviCalabria.com/app/not-found.tsx
+
+COMPONENTI CHIAVE:
+- /Users/francesconigro/Desktop/ViviCalabria.com/components/hero-section-premium.tsx
+- /Users/francesconigro/Desktop/ViviCalabria.com/components/apartment-card.tsx
+- /Users/francesconigro/Desktop/ViviCalabria.com/components/reviews/reviews-section.tsx
+
+ANALYTICS:
+- /Users/francesconigro/Desktop/ViviCalabria.com/components/analytics/google-analytics.tsx
+
+---
+
+📊 STRUTTURA PROGETTO:
+
+Next.js 16+ con App Router
+TypeScript strict mode
+Tailwind CSS
+React Server Components
+
+Tecnologie principali:
+- next: ^16.0.7
+- react: ^18.3.1
+- framer-motion: ^11.0.0
+- @react-google-maps/api: ^2.20.7
+- react-hook-form: ^7.51.0
+- zod: ^3.23.0
+
+---
+
+🎯 TARGET:
+
+Sito luxury vacation rental in Calabria, Italia
+- 9 appartamenti con piscina
+- Location: Capopiccolo, Isola di Capo Rizzuto
+- Mercato: Turisti internazionali (DE, UK, NL, IT)
+- Lingua principale: Italiano (con supporto multilingua pianificato)
+
+---
+
+✅ DELIVERABLE FINALE:
+
+- ✅ Sito completamente funzionante
+- ✅ Zero errori (TypeScript, runtime, build)
+- ✅ Tutte le pagine popolate con contenuti
+- ✅ Performance ottimale (Lighthouse 95+)
+- ✅ SEO completo (meta tags, structured data, alt text)
+- ✅ 100+ recensioni funzionanti con filtri
+- ✅ Gallery appartamenti organizzate correttamente
+- ✅ Pagine Territorio ed Enogastronomia complete
+
+---
+
+✅ OUTPUT ATTESO:
+
+Fornisci un REPORT COMPLETO in formato markdown con:
+
+1. SCORE GENERALE:
+   - SEO Score: X/100
+   - Performance Score: X/100
+   - Security Score: X/100
+   - Accessibility Score: X/100
+
+2. PROBLEMI TROVATI (prioritizzati):
+   - 🔴 CRITICI (fixare subito)
+   - 🟡 IMPORTANTI (fixare presto)
+   - 🟢 MINORI (miglioramenti)
+
+3. OTTIMIZZAZIONI SUGGERITE:
+   - Con codice specifico da modificare
+   - File da modificare con righe precise
+   - Esempi di codice "prima/dopo"
+
+4. CHECKLIST PRE-DEPLOY:
+   - Cosa verificare prima di andare live
+   - Test da fare
+   - Metriche da monitorare
+
+5. RACCOMANDAZIONI STRATEGICHE:
+   - Feature da aggiungere
+   - Miglioramenti UX/UI
+   - SEO avanzato
+   - Conversion optimization
+
+---
+
+⚠️ NOTE:
+
+- Il progetto è in sviluppo locale
+- Build funziona correttamente (npm run build)
+- Deploy su Vercel pianificato
+- Target: Luxury hospitality - qualità premium è fondamentale
+
+---
+
+🔍 COME PROCEDERE:
+
+IMPORTANTE: Procedi sistematicamente, fixando UN PROBLEMA ALLA VOLTA nell'ordine delle priorità.
+
+1. LEGGI tutti i file chiave usando i percorsi assoluti forniti sopra
+2. ANALIZZA il codice per problemi e ottimizzazioni
+3. PRIORITIZZA i fix nell'ordine indicato sopra (1-6)
+4. PER OGNI PROBLEMA:
+   - Identifica la causa root
+   - Fornisci soluzione con codice specifico
+   - Implementa il fix
+   - Verifica che funzioni
+5. VERIFICA best practices Next.js 16+
+6. CONTROLLA SEO, Performance, Security, Accessibility
+7. FORNISCI report dettagliato con score, problemi risolti, soluzioni implementate
+
+---
+
+📋 CHECKLIST DI COMPLETAMENTO:
+
+Prima di considerare il lavoro completato, verifica:
+
+- [ ] Pagina recensioni funziona perfettamente con 100+ recensioni
+- [ ] Tutte le destinazioni territorio sono presenti e popolate
+- [ ] Sezione Enogastronomia è completa
+- [ ] Ogni appartamento ha le sue foto corrette nella gallery
+- [ ] Zero errori TypeScript
+- [ ] Zero broken links
+- [ ] Zero immagini mancanti (404)
+- [ ] Lighthouse score 95+ su homepage
+- [ ] Lighthouse score 95+ su pagina appartamenti
+- [ ] Lighthouse score 95+ su pagina recensioni
+- [ ] Meta tags completi su tutte le pagine
+- [ ] Structured data presente e validato
+- [ ] Alt text su tutte le immagini
+
+---
+
+Grazie per l'analisi completa! 🚀
+
+================================================================================
+

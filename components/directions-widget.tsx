@@ -125,6 +125,18 @@ export function DirectionsWidget({ showBadge = true }: DirectionsWidgetProps = {
   const [isLoadingRoutes, setIsLoadingRoutes] = useState(false)
   const [manualAddress, setManualAddress] = useState("")
 
+  // Previeni scroll body quando modal aperto
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'unset'
+    }
+    return () => {
+      document.body.style.overflow = 'unset'
+    }
+  }, [isOpen])
+
   // Rilevamento posizione automatica
   const detectLocation = useCallback(() => {
     if (typeof window === 'undefined' || !navigator.geolocation) {
@@ -350,7 +362,8 @@ export function DirectionsWidget({ showBadge = true }: DirectionsWidgetProps = {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={closeModal}
-              className="fixed inset-0 z-[60] bg-black/60 backdrop-blur-sm"
+              className="fixed inset-0 z-[9999] bg-black/60 backdrop-blur-sm"
+              style={{ pointerEvents: 'auto' }}
             />
 
             {/* Modal Content */}
@@ -359,7 +372,7 @@ export function DirectionsWidget({ showBadge = true }: DirectionsWidgetProps = {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="fixed inset-4 md:inset-auto md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 z-[70] md:max-w-4xl md:w-full md:max-h-[90vh] overflow-y-auto bg-white rounded-2xl shadow-2xl border-2 border-primary/20"
+              className="fixed inset-4 md:inset-auto md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 z-[10000] md:max-w-4xl md:w-full md:max-h-[90vh] overflow-y-auto bg-white rounded-2xl shadow-2xl border-2 border-primary/20"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Header */}
