@@ -1,9 +1,9 @@
 "use client"
 
+import { memo, useState } from "react"
 import { motion } from "framer-motion"
 import Image from "next/image"
 import Link from "next/link"
-import { useState } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Bed, Users, Maximize2, Home } from "lucide-react"
@@ -19,7 +19,7 @@ interface ApartmentCardProps {
   featured?: boolean
 }
 
-export function ApartmentCard({
+const ApartmentCardComponent = ({
   id,
   name,
   description,
@@ -28,23 +28,24 @@ export function ApartmentCard({
   bedrooms,
   price,
   featured = false,
-}: ApartmentCardProps) {
+}: ApartmentCardProps) => {
   const [imageError, setImageError] = useState(false)
   const isPlaceholder = image.includes('placeholder') || !image.startsWith('/')
   const showPlaceholder = isPlaceholder || imageError
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
+      initial={{ opacity: 0, y: 30, scale: 0.95 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      viewport={{ once: true, margin: "-50px" }}
       whileHover={{ 
-        scale: 1.05,
-        y: -10
+        scale: 1.03,
+        y: -12,
+        transition: { duration: 0.3, ease: "easeOut" }
       }}
-      transition={{ duration: 0.3 }}
+      transition={{ duration: 0.5, ease: [0.25, 0.25, 0, 1] }}
     >
-      <Card className="group overflow-hidden bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 h-full flex flex-col cursor-pointer">
+      <Card className="group overflow-hidden bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 h-full flex flex-col cursor-pointer border-2 border-transparent hover:border-primary/30 hover:ring-2 hover:ring-primary/10">
         <div className="relative h-64 overflow-hidden bg-gradient-to-br from-ocean/20 to-primary/20">
           {!showPlaceholder && image.startsWith('/') ? (
             <motion.div
@@ -80,7 +81,7 @@ export function ApartmentCard({
               </span>
             </div>
           )}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
           <div className="absolute bottom-4 left-4 right-4 z-10 opacity-0 group-hover:opacity-100 transition-opacity">
             <Button
               variant="luxury"
@@ -97,7 +98,12 @@ export function ApartmentCard({
         </div>
 
         <CardHeader>
-          <CardTitle className="text-xl font-playfair text-gray-900">{name}</CardTitle>
+          <motion.div
+            whileHover={{ x: 5 }}
+            transition={{ duration: 0.2 }}
+          >
+            <CardTitle className="text-xl font-playfair text-gray-900 group-hover:text-primary transition-colors">{name}</CardTitle>
+          </motion.div>
           <CardDescription className="line-clamp-2 text-gray-600">{description}</CardDescription>
         </CardHeader>
 
@@ -114,23 +120,40 @@ export function ApartmentCard({
           </div>
 
           <div className="flex items-center justify-between pt-4 border-t">
-            <div>
-              <span className="text-2xl font-bold text-blue-600">
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+            >
+              <span className="text-2xl font-bold text-blue-600 group-hover:text-primary transition-colors">
                 €{price}
               </span>
               <span className="text-sm text-gray-600">/notte</span>
-            </div>
-            <Button 
-              size="sm" 
-              className="bg-[#FFC107] text-gray-900 hover:bg-[#FFD54F] font-semibold"
-              asChild
+            </motion.div>
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
-              <Link href={`/appartamenti/${id}`}>Vedi Dettagli</Link>
-            </Button>
+              <Button 
+                size="sm" 
+                className="bg-[#FFC107] text-gray-900 hover:bg-[#FFD54F] font-semibold group/btn"
+                asChild
+              >
+                <Link href={`/appartamenti/${id}`}>
+                  <span className="group-hover/btn:translate-x-1 transition-transform inline-block">
+                    Vedi Dettagli
+                  </span>
+                  <svg className="w-4 h-4 ml-1 inline-block group-hover/btn:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
+                </Link>
+              </Button>
+            </motion.div>
           </div>
         </CardContent>
       </Card>
     </motion.div>
   )
 }
+
+export const ApartmentCard = memo(ApartmentCardComponent)
+ApartmentCard.displayName = 'ApartmentCard'
 

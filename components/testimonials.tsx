@@ -42,16 +42,34 @@ export function Testimonials() {
   const featuredReviews = reviews.slice(0, 6)
 
   return (
-    <section className="py-20 bg-blue-600 text-white overflow-hidden">
+    <section className="py-24 bg-gradient-to-br from-primary via-ocean to-primary/90 text-white overflow-hidden">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-playfair font-bold mb-4">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-12"
+        >
+          <motion.h2
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-4xl md:text-5xl font-playfair font-bold mb-4"
+          >
             Cosa Dicono i Nostri Ospiti
-          </h2>
-          <p className="text-lg text-white/90 max-w-2xl mx-auto">
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2, duration: 0.6 }}
+            className="text-lg text-white/90 max-w-2xl mx-auto"
+          >
             Le recensioni dei nostri ospiti parlano da sole
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
         {/* Carousel animato per mobile */}
         <div className="md:hidden relative overflow-hidden">
@@ -95,26 +113,43 @@ export function Testimonials() {
           {testimonials.map((testimonial, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1, duration: 0.5 }}
+              initial={{ opacity: 0, y: 30, scale: 0.95 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ delay: index * 0.15, duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+              whileHover={{ 
+                y: -8,
+                scale: 1.02,
+                transition: { duration: 0.3 }
+              }}
             >
-              <Card className="h-full hover:shadow-lg transition-shadow bg-white/10 backdrop-blur-sm border-white/20">
+              <Card className="h-full hover:shadow-xl transition-all duration-300 bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/15 cursor-pointer group">
                 <CardContent className="p-6">
-                  <div className="flex gap-1 mb-4">
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.15 + 0.2, duration: 0.4 }}
+                    className="flex gap-1 mb-4"
+                  >
                     {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star
+                      <motion.div
                         key={i}
-                        className="h-5 w-5 fill-yellow-400 text-yellow-400"
-                      />
+                        initial={{ opacity: 0, scale: 0 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: index * 0.15 + 0.3 + i * 0.1, duration: 0.3 }}
+                        whileHover={{ scale: 1.2, rotate: 10 }}
+                      >
+                        <Star className="h-5 w-5 fill-yellow-400 text-yellow-400" />
+                      </motion.div>
                     ))}
-                  </div>
-                  <p className="text-white/90 mb-4 italic">
+                  </motion.div>
+                  <p className="text-white/90 mb-4 italic group-hover:text-white transition-colors">
                     &quot;{testimonial.text}&quot;
                   </p>
                   <div className="border-t border-white/20 pt-4">
-                    <p className="font-semibold text-white">{testimonial.name}</p>
+                    <p className="font-semibold text-white group-hover:text-yellow-200 transition-colors">{testimonial.name}</p>
                     <p className="text-sm text-white/80">
                       {testimonial.location} • {testimonial.date}
                     </p>

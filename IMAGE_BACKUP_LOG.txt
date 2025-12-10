@@ -1,0 +1,21 @@
+# IMAGE BACKUP LOG - Villa Olimpia
+Data backup: 2025-12-10 00:01:14
+Directory backup: backup_images_20251210_000114/
+
+## STATO PRE-MODIFICA
+
+Backup completo della directory:
+/public/images/villa/appartamenti/
+
+Contenuto salvato in:
+/Users/francesconigro/Desktop/ViviCalabria.com/backup_images_20251210_000114/appartamenti/
+
+## FILE BACKUP
+
+Tutti i file delle 9 cartelle appartamenti sono stati salvati.
+
+## RESTORE
+
+Per ripristinare:
+cp -r backup_images_20251210_000114/appartamenti/* public/images/villa/appartamenti/
+

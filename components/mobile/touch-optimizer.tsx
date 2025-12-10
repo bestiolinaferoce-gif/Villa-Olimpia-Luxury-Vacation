@@ -10,6 +10,9 @@ import { useEffect } from "react"
  */
 export function TouchOptimizer() {
   useEffect(() => {
+    // Solo nel browser
+    if (typeof window === 'undefined' || typeof document === 'undefined') return
+
     // Previeni zoom su double-tap (solo su mobile)
     let lastTouchEnd = 0
     const preventZoom = (e: TouchEvent) => {
@@ -36,7 +39,7 @@ export function TouchOptimizer() {
     window.addEventListener("orientationchange", setVH)
 
     // Smooth scroll behavior
-    if (CSS.supports("scroll-behavior", "smooth")) {
+    if (typeof CSS !== 'undefined' && CSS.supports("scroll-behavior", "smooth")) {
       document.documentElement.style.scrollBehavior = "smooth"
     }
 

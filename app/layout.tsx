@@ -3,11 +3,13 @@ import { Inter, Playfair_Display } from "next/font/google"
 import "./globals.css"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
-import { CookieBanner } from "@/components/cookie-banner"
+import { CookieConsent } from "@/components/CookieConsent"
 import { ScrollToTop } from "@/components/scroll-to-top"
 import { WhatsAppButton } from "@/components/whatsapp-button"
 import { PreloadResources } from "@/components/performance/preload-resources"
 import { TouchOptimizer } from "@/components/mobile/touch-optimizer"
+import { DirectionsProvider } from "@/components/directions-context"
+import { ErrorBoundary } from "@/components/error-boundary"
 import { defaultMetadata } from "@/lib/metadata"
 
 const inter = Inter({ 
@@ -36,6 +38,14 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/favicon.ico" />
         <link rel="canonical" href="https://villaolimpia.com" />
+        {/* Hreflang tags per multilingua */}
+        <link rel="alternate" hrefLang="it" href="https://villaolimpia.com/it" />
+        <link rel="alternate" hrefLang="en" href="https://villaolimpia.com/en" />
+        <link rel="alternate" hrefLang="de" href="https://villaolimpia.com/de" />
+        <link rel="alternate" hrefLang="nl" href="https://villaolimpia.com/nl" />
+        <link rel="alternate" hrefLang="es" href="https://villaolimpia.com/es" />
+        <link rel="alternate" hrefLang="fr" href="https://villaolimpia.com/fr" />
+        <link rel="alternate" hrefLang="x-default" href="https://villaolimpia.com" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -119,14 +129,18 @@ export default function RootLayout({
         />
       </head>
       <body className={inter.className}>
-        <PreloadResources />
-        <TouchOptimizer />
-        <Header />
-        <main className="min-h-screen">{children}</main>
-        <Footer />
-        <CookieBanner />
-        <ScrollToTop />
-        <WhatsAppButton />
+        <ErrorBoundary>
+          <DirectionsProvider>
+            <PreloadResources />
+            <TouchOptimizer />
+            <Header />
+            <main className="min-h-screen">{children}</main>
+            <Footer />
+            <CookieConsent />
+            <ScrollToTop />
+            <WhatsAppButton />
+          </DirectionsProvider>
+        </ErrorBoundary>
       </body>
     </html>
   )

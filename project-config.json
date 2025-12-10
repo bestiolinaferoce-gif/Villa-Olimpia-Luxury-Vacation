@@ -1,0 +1,95 @@
+{
+  "project": {
+    "name": "Villa Olimpia Website",
+    "version": "1.0.0",
+    "description": "Sito web per Villa Olimpia - Appartamenti di lusso a Capo Rizzuto, Calabria",
+    "url": "https://villaolimpia.netlify.app"
+  },
+  "apartments": {
+    "total": 9,
+    "list": [
+      "Frangipane",
+      "Fiordaliso",
+      "Orchidea",
+      "Tulipano",
+      "Geranio",
+      "Giglio",
+      "Lavanda",
+      "Gardenia",
+      "Azalea"
+    ],
+    "contentSource": "~/Desktop/villa_olimpia_final/",
+    "contentFormat": "[Nome]_[ITA|ENG]_[long|OTA].txt"
+  },
+  "languages": {
+    "supported": ["it", "en"],
+    "default": "it"
+  },
+  "features": {
+    "booking": {
+      "enabled": true,
+      "provider": "EmailJS",
+      "form": "components/booking-form.tsx"
+    },
+    "maps": {
+      "enabled": true,
+      "provider": "Google Maps",
+      "component": "components/map-component.tsx"
+    },
+    "weather": {
+      "enabled": true,
+      "provider": "Open-Meteo",
+      "component": "components/weather-widget.tsx"
+    },
+    "directions": {
+      "enabled": true,
+      "provider": "OpenRouteService",
+      "component": "components/how-to-reach-us.tsx"
+    }
+  },
+  "seo": {
+    "enabled": true,
+    "sitemap": true,
+    "robots": true,
+    "schema": {
+      "LodgingBusiness": true,
+      "FAQPage": true,
+      "BreadcrumbList": true
+    }
+  },
+  "deployment": {
+    "platform": "Netlify",
+    "buildCommand": "npm run build",
+    "publishDirectory": ".next",
+    "environmentVariables": [
+      "NEXT_PUBLIC_EMAILJS_SERVICE_ID",
+      "NEXT_PUBLIC_EMAILJS_TEMPLATE_ID",
+      "NEXT_PUBLIC_EMAILJS_PUBLIC_KEY",
+      "NEXT_PUBLIC_GOOGLE_MAPS_API_KEY"
+    ]
+  },
+  "scripts": {
+    "importContent": "node scripts/read-and-integrate-content.js",
+    "validateContent": "node scripts/read-and-integrate-content.js",
+    "build": "npm run build",
+    "dev": "npm run dev"
+  },
+  "paths": {
+    "contentSource": "~/Desktop/villa_olimpia_final/",
+    "contentOutput": "data/apartment-content.ts",
+    "apartmentsData": "data/apartments.ts",
+    "seoData": "data/apartments-seo.ts"
+  },
+  "validation": {
+    "otaMaxLength": 500,
+    "longMinLength": 100,
+    "requiredFiles": [
+      "[Nome]_ITA_long.txt",
+      "[Nome]_ITA_OTA.txt",
+      "[Nome]_ENG_long.txt",
+      "[Nome]_ENG_OTA.txt"
+    ]
+  },
+  "lastUpdated": "2024-12-09T00:00:00Z"
+}
+

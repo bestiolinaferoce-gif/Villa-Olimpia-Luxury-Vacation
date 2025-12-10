@@ -1,0 +1,55 @@
+REPORT DUPLICATI
+============================================================
+
+Duplicati: 29
+Nuove foto: 16
+
+DUPLICATI DA ELIMINARE:
+- /Users/francesconigro/Desktop/Foto Villa Olimpia Sito/Camera Matrimoniale Azalea .jpg
+- /Users/francesconigro/Desktop/Foto Villa Olimpia Sito/Zona living Appartamento Giglio .jpg
+- /Users/francesconigro/Desktop/Foto Villa Olimpia Sito/Living Room appartamento Azalea .jpg
+- /Users/francesconigro/Desktop/Foto Villa Olimpia Sito/Camera Matrimoniale Orchidea.jpg
+- /Users/francesconigro/Desktop/Foto Villa Olimpia Sito/Terrazza Azalea 3.jpg
+- /Users/francesconigro/Desktop/Foto Villa Olimpia Sito/Camera da letto appartamento Geranio 1.jpg
+- /Users/francesconigro/Desktop/Foto Villa Olimpia Sito/Camera Matrimoniale Giglio 1.jpg
+- /Users/francesconigro/Desktop/Foto Villa Olimpia Sito/Camera Matrimoniale Fiordaliso .jpg
+- /Users/francesconigro/Desktop/Foto Villa Olimpia Sito/Camera Matrimoniale Lavanda.jpg
+- /Users/francesconigro/Desktop/Foto Villa Olimpia Sito/Camera da letto appartamento Geranio 1 2.jpg
+- /Users/francesconigro/Desktop/Foto Villa Olimpia Sito/Terrazza Azalea .jpg
+- /Users/francesconigro/Desktop/Foto Villa Olimpia Sito/Camera Matrimoniale Giglio 2.jpg
+- /Users/francesconigro/Desktop/Foto Villa Olimpia Sito/Bagno Appartamento Tulipano .jpg
+- /Users/francesconigro/Desktop/Foto Villa Olimpia Sito/Camera da letto appartamento Geranio 1 3.jpg
+- /Users/francesconigro/Desktop/Foto Villa Olimpia Sito/Veranda Lavanda.jpg
+- /Users/francesconigro/Desktop/Foto Villa Olimpia Sito/Zona Living Appartamento Tulipano ( 1).jpg
+- /Users/francesconigro/Desktop/Foto Villa Olimpia Sito/Cucina Geranio .jpg
+- /Users/francesconigro/Desktop/Foto Villa Olimpia Sito/Camera Matrimoniale Lavanda 2.jpg
+- /Users/francesconigro/Desktop/Foto Villa Olimpia Sito/Zona Living Appartamento Tulipano ( 2).jpg
+- /Users/francesconigro/Desktop/Foto Villa Olimpia Sito/Camera Matrimoniale Appartamento Gardenia (1).jpg
+- /Users/francesconigro/Desktop/Foto Villa Olimpia Sito/Terrazza Azalea Sunset.jpg
+- /Users/francesconigro/Desktop/Foto Villa Olimpia Sito/Zona Living Appartamento Tulipano .jpg
+- /Users/francesconigro/Desktop/Foto Villa Olimpia Sito/Camera Matrimoniale Lavanda 4.jpg
+- /Users/francesconigro/Desktop/Foto Villa Olimpia Sito/Camera Matrimoniale Lavanda .jpg
+- /Users/francesconigro/Desktop/Foto Villa Olimpia Sito/Camera Matrimoniale Orchidea 2.jpg
+- /Users/francesconigro/Desktop/Foto Villa Olimpia Sito/Terrazza Appartamento Azalea .jpg
+- /Users/francesconigro/Desktop/Foto Villa Olimpia Sito/Camera Matrimoniale Appartamento Azalea .jpg
+- /Users/francesconigro/Desktop/Foto Villa Olimpia Sito/Camera Matrimoniale Giglio .jpg
+- /Users/francesconigro/Desktop/Foto Villa Olimpia Sito/Camera Matrimoniale Appartamento Gardenia.jpg
+
+
+NUOVE FOTO DA PROCESSARE:
+- /Users/francesconigro/Desktop/Foto Villa Olimpia Sito/Esterni Villa Olimpia.jpg
+- /Users/francesconigro/Desktop/Foto Villa Olimpia Sito/Bagno Frangipane completo.jpg
+- /Users/francesconigro/Desktop/Foto Villa Olimpia Sito/Gazebo Olimpia 2.jpg
+- /Users/francesconigro/Desktop/Foto Villa Olimpia Sito/Spiaggia dei Gigli .jpg
+- /Users/francesconigro/Desktop/Foto Villa Olimpia Sito/Piscina Villa Olimpia .jpg
+- /Users/francesconigro/Desktop/Foto Villa Olimpia Sito/Piscina.jpg
+- /Users/francesconigro/Desktop/Foto Villa Olimpia Sito/Facciata esterna Villa Olimpia ( 3).jpg
+- /Users/francesconigro/Desktop/Foto Villa Olimpia Sito/Facciata esterna Villa Olimpia Notte.jpg
+- /Users/francesconigro/Desktop/Foto Villa Olimpia Sito/Gazebo notte Olimpia.jpg
+- /Users/francesconigro/Desktop/Foto Villa Olimpia Sito/Ingresso Villa Olimpia.jpg
+- /Users/francesconigro/Desktop/Foto Villa Olimpia Sito/Villa Olimpia Notte ( 2).jpg
+- /Users/francesconigro/Desktop/Foto Villa Olimpia Sito/Spiaggia dei Gigli notturna.jpg
+- /Users/francesconigro/Desktop/Foto Villa Olimpia Sito/Piscina Villa Olimpia ( 3).jpg
+- /Users/francesconigro/Desktop/Foto Villa Olimpia Sito/Facciata Villa Olimpia .jpg
+- /Users/francesconigro/Desktop/Foto Villa Olimpia Sito/Spiaggia dei Gigli 2.jpg
+- /Users/francesconigro/Desktop/Foto Villa Olimpia Sito/Camera da letto matrimoniale A Frangipane 1.png

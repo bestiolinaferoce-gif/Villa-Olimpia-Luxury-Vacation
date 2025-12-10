@@ -35,8 +35,27 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# Log files
+*.log
+build-check.log
+build-output.log
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+*.swo
+
+# Reports (temporanei, da mantenere in repo)
+# CATEGORIZATION_REPORT.txt
+# COPY_LOG.txt
+# DUPLICATES_REPORT.txt
+
 # IDE
 .vscode/
 .idea/
 *.swp
 *.swo
+
+# Local Netlify folder
+.netlify

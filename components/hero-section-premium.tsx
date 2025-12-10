@@ -6,6 +6,8 @@ import { Button } from "@/components/ui/button"
 import { ArrowDown, Calendar, MapPin, Star } from "lucide-react"
 import Link from "next/link"
 import { CounterAnimation } from "@/components/animations/counter-animation"
+import { WeatherWidget } from "@/components/weather-widget"
+import Image from "next/image"
 
 export function HeroSectionPremium() {
   const ref = useRef<HTMLDivElement>(null)
@@ -20,33 +22,48 @@ export function HeroSectionPremium() {
 
   return (
     <section ref={ref} className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background with Parallax */}
+      {/* Background elegante con gradiente mediterraneo */}
       <motion.div
         style={{ y, scale, opacity }}
         className="absolute inset-0 -z-10"
       >
         <div className="relative w-full h-full">
-          {/* Video Background Placeholder - Gradient Elegante */}
-          <div className="absolute inset-0 bg-gradient-to-br from-ocean via-ocean-dark to-primary">
-            {/* Pattern overlay per texture */}
-            <div
-              className="absolute inset-0 opacity-10"
-              style={{
-                backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-              }}
-            />
-          </div>
-          {/* Overlay per leggibilità - più chiaro */}
+          {/* Overlay elegante per migliorare leggibilità */}
           <div 
             className="absolute inset-0"
             style={{
-              background: "linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(0,119,190,0.7) 100%)"
+              background: "linear-gradient(135deg, rgba(0,119,190,0.4) 0%, rgba(0,80,150,0.5) 50%, rgba(0,50,100,0.6) 100%)"
             }}
           />
-          {/* Effetto onde decorative */}
-          <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-ocean/30 to-transparent" />
+          
+          {/* Immagine di sfondo - Piscina di notte - Ottimizzata */}
+          <div className="absolute inset-0">
+            <Image
+              src="/images/villa/gallery/night-1.jpg"
+              alt="Villa Olimpia - Piscina di notte"
+              fill
+              priority
+              quality={75}
+              className="object-cover"
+              sizes="100vw"
+              placeholder="blur"
+              blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAiIGhlaWdodD0iMTAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIj48c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMDA1MGZmIi8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMDA3N2ZmIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkKSIvPjwvc3ZnPg=="
+            />
+          </div>
+          
+          {/* Overlay elegante per profondità - rimosso radial-gradient che creava ombra centrale */}
+          <div 
+            className="absolute inset-0"
+            style={{
+              background: "linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.3) 100%)"
+            }}
+          />
+          
+          {/* Effetto onde decorative molto sottile */}
+          <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-ocean/10 to-transparent" />
         </div>
       </motion.div>
+
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 text-center text-white">
@@ -135,21 +152,40 @@ export function HeroSectionPremium() {
             </div>
           </motion.div>
 
-          {/* Badge aggiuntivi */}
+          {/* Badge aggiuntivi con Weather Widget integrato */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1 }}
             className="flex items-center gap-4 justify-center mt-6 flex-wrap"
           >
-            <div className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full">
-              <span className="text-white text-sm">⭐ 9.5/10 su Google</span>
+            <div className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full border border-white/30">
+              <span className="text-white text-sm font-semibold">⭐ 4.9/5 Rating</span>
             </div>
-            <div className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full">
-              <span className="text-white text-sm">🏖️ 1 km dalla spiaggia</span>
+            <div className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full border border-white/30">
+              <span className="text-white text-sm font-semibold">🏖️ 100 metri dalla spiaggia</span>
             </div>
-            <div className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full">
-              <span className="text-white text-sm">🏊 Piscina Privata</span>
+            <div className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full border border-white/30">
+              <span className="text-white text-sm font-semibold">🏊 Piscina Privata</span>
+            </div>
+            <div className="bg-yellow-400/90 backdrop-blur-sm px-4 py-2 rounded-full border border-yellow-300/50 shadow-lg">
+              <span className="text-gray-900 text-sm font-bold">✅ Prenotato da 150+ ospiti nel 2024</span>
+            </div>
+            {/* Weather Widget integrato nei badge - visibile solo su desktop */}
+            <div className="hidden lg:block">
+              <WeatherWidget position="hero" />
+            </div>
+          </motion.div>
+
+          {/* Badge Prenota Direttamente */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.85, duration: 0.5 }}
+            className="mt-4"
+          >
+            <div className="inline-flex items-center gap-2 bg-green-500/90 backdrop-blur-sm px-4 py-2 rounded-full border border-green-300/50 shadow-lg">
+              <span className="text-white text-sm font-bold">💰 Prenota Direttamente e Risparmia</span>
             </div>
           </motion.div>
 
@@ -158,11 +194,12 @@ export function HeroSectionPremium() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.9, duration: 0.8 }}
-            className="flex flex-wrap items-center justify-center gap-4 pt-8"
+            className="flex flex-wrap items-center justify-center gap-4 pt-6"
           >
             <Button
               size="lg"
-              className="text-lg px-8 py-6 group bg-[#FFC107] text-gray-900 hover:bg-[#FFD54F] shadow-lg font-semibold"
+              className="text-lg px-8 py-6 group bg-[#FFC107] text-gray-900 hover:bg-[#FFD54F] shadow-xl font-semibold !border-2 !border-white hover:scale-105 transition-transform"
+              style={{ borderWidth: '2px', borderStyle: 'solid', borderColor: 'white' }}
               asChild
             >
               <Link href="/appartamenti">
@@ -172,7 +209,8 @@ export function HeroSectionPremium() {
             </Button>
             <Button
               size="lg"
-              className="text-lg px-8 py-6 bg-white/20 backdrop-blur-sm text-white border-2 border-white hover:bg-white/30 group font-semibold"
+              className="text-lg px-8 py-6 bg-white/20 backdrop-blur-sm text-white !border-2 !border-white hover:bg-white/30 group font-semibold hover:scale-105 transition-transform"
+              style={{ borderWidth: '2px', borderStyle: 'solid', borderColor: 'white' }}
               asChild
             >
               <Link href="/location">
@@ -196,7 +234,9 @@ export function HeroSectionPremium() {
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
           className="flex flex-col items-center gap-2 text-white/80 cursor-pointer"
           onClick={() => {
-            window.scrollTo({ top: window.innerHeight, behavior: "smooth" })
+            if (typeof window !== 'undefined') {
+              window.scrollTo({ top: window.innerHeight, behavior: "smooth" })
+            }
           }}
         >
           <span className="text-sm font-medium">Scorri</span>

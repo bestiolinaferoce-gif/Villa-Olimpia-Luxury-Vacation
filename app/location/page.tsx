@@ -3,6 +3,20 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { MapPin, Car, Plane, Train, Ship } from "lucide-react"
 import { VILLA_OLIMPIA_LOCATION } from "@/lib/location-data"
+import dynamic from "next/dynamic"
+
+// Lazy load Google Maps (componente pesante)
+const MapComponent = dynamic(() => import("@/components/map-component").then(mod => ({ default: mod.MapComponent })), {
+  loading: () => (
+    <div className="w-full h-[400px] bg-gradient-to-br from-ocean/20 to-primary/20 rounded-lg flex items-center justify-center">
+      <div className="text-center">
+        <div className="w-12 h-12 border-4 border-primary border-t-transparent rounded-full animate-spin mx-auto mb-4" />
+        <p className="text-muted-foreground">Caricamento mappa...</p>
+      </div>
+    </div>
+  ),
+  ssr: false
+})
 
 const attractions = [
   {
@@ -83,18 +97,7 @@ export default function LocationPage() {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <div className="lg:col-span-2">
-              <div className="w-full h-96 rounded-2xl overflow-hidden shadow-xl">
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3058.234567891234!2d17.0729161!3d38.9138601!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x13403beea88d8403%3A0x2f47168bf140d1f3!2sVilla%20Olimpia!5e0!3m2!1sit!2sit!4v1234567890"
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  title="Mappa Villa Olimpia"
-                />
-              </div>
+              <MapComponent />
             </div>
             
             <div className="space-y-4">

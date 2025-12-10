@@ -19,6 +19,21 @@ const galleryImages = [
     alt: 'Piscina Villa Olimpia - Vista panoramica della piscina',
     category: 'Piscina'
   },
+  {
+    src: '/images/villa/gallery/piscina-villa-olimpia.jpg',
+    alt: 'Piscina Villa Olimpia',
+    category: 'Piscina'
+  },
+  {
+    src: '/images/villa/gallery/piscina-villa-olimpia-3.jpg',
+    alt: 'Piscina Villa Olimpia - Vista panoramica',
+    category: 'Piscina'
+  },
+  {
+    src: '/images/villa/gallery/piscina.jpg',
+    alt: 'Piscina Villa Olimpia',
+    category: 'Piscina'
+  },
   // RELAX - Gazebo e aree relax
   {
     src: '/images/villa/gallery/gazebo-2.jpg',
@@ -32,6 +47,16 @@ const galleryImages = [
   },
   {
     src: '/images/villa/gallery/gazebo-night.jpg',
+    alt: 'Gazebo Villa Olimpia di notte',
+    category: 'Relax'
+  },
+  {
+    src: '/images/villa/gallery/gazebo-olimpia-2.jpg',
+    alt: 'Gazebo Villa Olimpia',
+    category: 'Relax'
+  },
+  {
+    src: '/images/villa/gallery/gazebo-notte-olimpia.jpg',
     alt: 'Gazebo Villa Olimpia di notte',
     category: 'Relax'
   },
@@ -58,6 +83,21 @@ const galleryImages = [
   },
   {
     src: '/images/villa/location/beach-night.jpg',
+    alt: 'Spiaggia dei Gigli notturna',
+    category: 'Territorio'
+  },
+  {
+    src: '/images/villa/location/spiaggia-dei-gigli.jpg',
+    alt: 'Spiaggia dei Gigli',
+    category: 'Territorio'
+  },
+  {
+    src: '/images/villa/location/spiaggia-dei-gigli-2.jpg',
+    alt: 'Spiaggia dei Gigli',
+    category: 'Territorio'
+  },
+  {
+    src: '/images/villa/location/spiaggia-dei-gigli-notturna.jpg',
     alt: 'Spiaggia dei Gigli notturna',
     category: 'Territorio'
   },
@@ -101,6 +141,31 @@ const galleryImages = [
     src: '/images/villa/gallery/night-2.jpg',
     alt: 'Villa Olimpia di notte - Illuminazione',
     category: 'Villa'
+  },
+  {
+    src: '/images/villa/gallery/esterni-villa-olimpia.jpg',
+    alt: 'Esterni Villa Olimpia',
+    category: 'Villa'
+  },
+  {
+    src: '/images/villa/gallery/facciata-villa-olimpia.jpg',
+    alt: 'Facciata Villa Olimpia',
+    category: 'Villa'
+  },
+  {
+    src: '/images/villa/gallery/facciata-esterna-villa-olimpia-3.jpg',
+    alt: 'Facciata esterna Villa Olimpia',
+    category: 'Villa'
+  },
+  {
+    src: '/images/villa/gallery/ingresso-villa-olimpia.jpg',
+    alt: 'Ingresso Villa Olimpia',
+    category: 'Villa'
+  },
+  {
+    src: '/images/villa/gallery/villa-olimpia-notte-2.jpg',
+    alt: 'Villa Olimpia di notte',
+    category: 'Villa'
   }
 ].filter(img => img.src) // Filtra solo immagini valide
 
@@ -128,18 +193,7 @@ export function HomeGallery() {
   // AGGIUNTO: Se non ci sono immagini valide, usa tutte le immagini disponibili
   const imagesToShow = validImages.length > 0 ? validImages : galleryImages
 
-  // AGGIUNTO: Debug - rimuovere in produzione
-  useEffect(() => {
-    console.log('🏊 HomeGallery renderizzato:', {
-      totalImages: galleryImages.length,
-      validImages: validImages.length,
-      imagesToShow: imagesToShow.length,
-      currentIndex
-    })
-  }, [validImages.length, imagesToShow.length, currentIndex])
-
   if (imagesToShow.length === 0) {
-    console.warn('⚠️ HomeGallery: Nessuna immagine disponibile')
     return (
       <section id="gallery-home" className="py-20 bg-gradient-to-b from-white to-blue-50">
         <div className="container mx-auto px-4 text-center">
@@ -151,7 +205,7 @@ export function HomeGallery() {
   }
 
   return (
-    <section id="gallery-home" className="py-20 bg-gradient-to-b from-white via-blue-50 to-white relative z-10">
+    <section id="gallery-home" className="py-20 bg-gradient-to-b from-background via-primary/5 to-background relative z-10">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-playfair font-bold mb-4 text-gray-900">

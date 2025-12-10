@@ -1,48 +1,25 @@
 "use client"
 
 import { useEffect } from "react"
-import { usePathname } from "next/navigation"
 
 /**
- * Componente per preload intelligente delle risorse critiche
- * Basato sulla pagina corrente
+ * Componente per pre-caricare risorse critiche
+ * Migliora le performance del sito pre-caricando solo risorse essenziali
  */
 export function PreloadResources() {
-  const pathname = usePathname()
-
   useEffect(() => {
-    // Preload immagini critiche basato sulla route
-    if (pathname === "/") {
-      // Preload hero image
-      const heroImage = document.createElement("link")
-      heroImage.rel = "preload"
-      heroImage.as = "image"
-      heroImage.href = "/images/villa/hero/villa-olimpia-hero.jpg"
-      document.head.appendChild(heroImage)
-    }
+    if (typeof window === 'undefined') return
 
-    // Preload font critici (già gestito da Next.js, ma possiamo aggiungere fallback)
-    const preconnectGoogle = document.createElement("link")
-    preconnectGoogle.rel = "preconnect"
-    preconnectGoogle.href = "https://fonts.googleapis.com"
-    document.head.appendChild(preconnectGoogle)
+    // Preload solo immagine hero (critica)
+    const link = document.createElement('link')
+    link.rel = 'preload'
+    link.as = 'image'
+    link.href = '/images/villa/gallery/night-1.jpg'
+    link.fetchPriority = 'high'
+    document.head.appendChild(link)
 
-    const preconnectGoogleFonts = document.createElement("link")
-    preconnectGoogleFonts.rel = "preconnect"
-    preconnectGoogleFonts.href = "https://fonts.gstatic.com"
-    preconnectGoogleFonts.crossOrigin = "anonymous"
-    document.head.appendChild(preconnectGoogleFonts)
-
-    // DNS prefetch per API esterne
-    const dnsPrefetch = document.createElement("link")
-    dnsPrefetch.rel = "dns-prefetch"
-    dnsPrefetch.href = "https://api.dicebear.com"
-    document.head.appendChild(dnsPrefetch)
-
-    return () => {
-      // Cleanup se necessario
-    }
-  }, [pathname])
+    // Preload font già gestiti da Next.js, non serve qui
+  }, [])
 
   return null
 }

@@ -33,7 +33,7 @@ const faqs: FAQItem[] = [
   },
   {
     question: "Quanto dista la spiaggia?",
-    answer: "La spiaggia più vicina si trova a soli 1.5 km da Villa Olimpia. È facilmente raggiungibile a piedi in circa 15-20 minuti o in auto in 5 minuti.",
+    answer: "Siamo a meno di 100 metri dalla splendida Spiaggia dei Gigli, raggiungibile in 1 minuto a piedi. Una delle spiagge più belle della Calabria, nell'Area Marina Protetta Capo Rizzuto.",
   },
   {
     question: "Gli appartamenti hanno l'aria condizionata?",

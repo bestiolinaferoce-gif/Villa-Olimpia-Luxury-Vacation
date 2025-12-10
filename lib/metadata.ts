@@ -65,7 +65,7 @@ export function getApartmentMetadata(apartmentId: number): Metadata {
 
   // SEO ottimizzato per OTA (Booking.com, Airbnb, etc.)
   const seoTitle = `Appartamento ${apartment.name} - Villa Olimpia | ${apartment.floor} | ${apartment.guests} Ospiti | Capopiccolo, Isola di Capo Rizzuto`
-  const seoDescription = `Affitta l'appartamento ${apartment.name} a Villa Olimpia, ${apartment.floor} ${apartment.size} per ${apartment.guests} ospiti. ${apartment.bedrooms} camere, ${apartment.bathrooms} bagni. ${apartment.features.slice(0, 3).join(', ')}. A 1 km dalla Spiaggia dei Gigli, Area Marina Protetta Capo Rizzuto. Prenota su Booking.com, Airbnb o direttamente.`
+  const seoDescription = `Affitta l'appartamento ${apartment.name} a Villa Olimpia, ${apartment.floor} ${apartment.size} per ${apartment.guests} ospiti. ${apartment.bedrooms} camere, ${apartment.bathrooms} bagni. ${apartment.features.slice(0, 3).join(', ')}. A meno di 100 metri dalla Spiaggia dei Gigli, Area Marina Protetta Capo Rizzuto. Prenota ora su Booking.com, Airbnb o contattaci direttamente per disponibilità e preventivi personalizzati.`
   
   const keywords = [
     `appartamento ${apartment.name.toLowerCase()} villa olimpia`,
@@ -110,11 +110,20 @@ export function getApartmentMetadata(apartmentId: number): Metadata {
 export const defaultMetadata: Metadata = {
   metadataBase: new URL(baseUrl),
     title: {
-      default: `${siteName} | 9 Appartamenti con Piscina a Capo Rizzuto Calabria`,
+      default: "Villa Olimpia Capo Rizzuto | 9 Appartamenti Lusso Piscina | Le Castella Calabria",
       template: `%s | ${siteName}`,
     },
-  description: "9 appartamenti di lusso con piscina privata a Capo Rizzuto, Calabria. A 100 metri dalla Spiaggia dei Gigli. Prenota la tua vacanza perfetta nell'Area Marina Protetta Capo Rizzuto. WiFi gratuito, parcheggio, vista mare.",
+  description: "Villa Olimpia: 9 appartamenti vacanza lusso con piscina 12x6m a Capo Rizzuto, Calabria. 500m spiaggia, WiFi 150Mbps, parcheggio gratuito. Prenota diretto.",
   keywords: [
+    "villa olimpia capo rizzuto",
+    "appartamenti piscina calabria",
+    "affitto vacanze le castella",
+    "villa lusso isola capo rizzuto",
+    "appartamenti capopiccolo",
+    "residence capo rizzuto",
+    "case vacanza area marina protetta",
+    "affitto appartamenti crotone mare",
+    "villa pet friendly calabria",
     "appartamenti vacanze Calabria piscina",
     "villa piscina Capo Rizzuto",
     "affitto casa mare Calabria",
@@ -153,22 +162,22 @@ export const defaultMetadata: Metadata = {
     type: "website",
     locale: "it_IT",
     url: baseUrl,
-    siteName,
-    title: `${siteName} - Luxury Vacation Rentals in Calabria`,
-    description: "Experience luxury vacation rentals in Calabria, Italy. Stunning apartments with sea views in Capopiccolo, Isola di Capo Rizzuto.",
+    siteName: "Villa Olimpia Capo Rizzuto",
+    title: "Villa Olimpia Capo Rizzuto | Appartamenti Vacanza Lusso con Piscina",
+    description: "Scopri Villa Olimpia: 9 appartamenti luxury a Capo Rizzuto con piscina 12x6m, giardino mediterraneo, 500m dalla spiaggia",
     images: [
       {
         url: `${baseUrl}/og-image.jpg`,
         width: 1200,
         height: 630,
-        alt: `${siteName} - Luxury Vacation Rentals`,
+        alt: "Villa Olimpia Capo Rizzuto - Appartamenti Lusso con Piscina",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: `${siteName} - Luxury Vacation Rentals in Calabria`,
-    description: "Experience luxury vacation rentals in Calabria, Italy.",
+    title: "Villa Olimpia Capo Rizzuto | 9 Appartamenti Lusso con Piscina",
+    description: "Appartamenti vacanza lusso in Calabria. Piscina, WiFi, 500m spiaggia, Le Castella 3km",
     images: [`${baseUrl}/og-image.jpg`],
   },
   alternates: {

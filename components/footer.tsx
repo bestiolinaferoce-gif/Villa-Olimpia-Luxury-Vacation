@@ -5,7 +5,7 @@ export function Footer() {
   return (
     <footer className="bg-secondary/30 border-t">
       <div className="container mx-auto px-4 py-12 md:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
           {/* Brand */}
           <div className="space-y-4">
             <h3 className="text-2xl font-playfair font-bold text-primary">
@@ -83,6 +83,61 @@ export function Footer() {
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
                   FAQ
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* SEO Local Pages */}
+          <div>
+            <h4 className="font-semibold mb-4">Scopri Capo Rizzuto</h4>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <Link
+                  href="/capo-rizzuto"
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                >
+                  Appartamenti Capo Rizzuto
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/le-castella"
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                >
+                  Vacanze Le Castella
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/spiagge-capo-rizzuto"
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                >
+                  Spiagge Capo Rizzuto
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/area-marina-protetta"
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                >
+                  Area Marina Protetta
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/cosa-fare-capo-rizzuto"
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                >
+                  Cosa Fare a Capo Rizzuto
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/ciro-wine-tour"
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                >
+                  Tour Enogastronomici Cirò
                 </Link>
               </li>
             </ul>

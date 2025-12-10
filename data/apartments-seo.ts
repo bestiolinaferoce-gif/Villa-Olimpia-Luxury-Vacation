@@ -16,7 +16,7 @@ export const apartmentsSEO: Record<number, ApartmentSEO> = {
     id: 1,
     name: "Frangipane",
     seoTitle: "Appartamento Frangipane Villa Olimpia - 4 Ospiti | Piano Terra | Capopiccolo",
-    seoDescription: "Affitta l'appartamento Frangipane a Villa Olimpia, Capopiccolo. 45 mq, 4 ospiti, 1 camera, terrazza privata vista giardino. A 1 km dalla Spiaggia dei Gigli. Disponibile su Booking.com e Airbnb.",
+    seoDescription: "Affitta l'appartamento Frangipane a Villa Olimpia, Capopiccolo. 45 mq, 4 ospiti, 1 camera, terrazza privata vista giardino. A meno di 100 metri dalla Spiaggia dei Gigli. Disponibile su Booking.com e Airbnb.",
     seoKeywords: [
       "appartamento frangipane villa olimpia",
       "affitto frangipane capopiccolo",
@@ -30,7 +30,7 @@ export const apartmentsSEO: Record<number, ApartmentSEO> = {
 
 La caratteristica principale dell'appartamento Frangipane è la terrazza privata con vista sul giardino, ideale per colazioni all'aperto e serate relax. La posizione tranquilla e riservata lo rende perfetto per coppie o piccole famiglie che cercano privacy e comfort.
 
-Situato a Villa Olimpia, nella splendida località di Capopiccolo, Isola di Capo Rizzuto, l'appartamento si trova a soli 1 km dalla Spiaggia dei Gigli, una delle spiagge più belle dell'Area Marina Protetta Capo Rizzuto. La posizione privilegiata permette di raggiungere la spiaggia in 2 minuti d'auto o 15 minuti a piedi.
+Situato a Villa Olimpia, nella splendida località di Capopiccolo, Isola di Capo Rizzuto, l'appartamento si trova a meno di 100 metri dalla Spiaggia dei Gigli, una delle spiagge più belle dell'Area Marina Protetta Capo Rizzuto. La posizione privilegiata permette di raggiungere la spiaggia in 1 minuto a piedi.
 
 L'appartamento è completamente attrezzato con cucina completa, aria condizionata, WiFi gratuito e tutti i comfort necessari per una vacanza indimenticabile. La piscina condivisa della villa è a pochi passi, così come il gazebo e le aree relax comuni.
 
@@ -65,7 +65,7 @@ Disponibile per prenotazioni su Booking.com, Airbnb o direttamente tramite il si
 
 Il punto forte dell'appartamento Fiordaliso è il balcone con vista diretta sulla piscina, rendendo questo appartamento ideale per chi ama il relax acquatico. La posizione centrale permette facile accesso a tutti i servizi comuni della villa.
 
-Situato a Villa Olimpia, Capopiccolo, Isola di Capo Rizzuto, l'appartamento si trova a soli 1 km dalla Spiaggia dei Gigli. La vista sulla piscina e la posizione privilegiata lo rendono uno degli appartamenti più richiesti.
+Situato a Villa Olimpia, Capopiccolo, Isola di Capo Rizzuto, l'appartamento si trova a meno di 100 metri dalla Spiaggia dei Gigli. La vista sulla piscina e la posizione privilegiata lo rendono uno degli appartamenti più richiesti.
 
 Completamente attrezzato con cucina attrezzata, aria condizionata, WiFi gratuito. Prezzo a partire da €130/notte. Disponibile su Booking.com, Airbnb o prenotazione diretta.`,
     bookingKeywords: [
@@ -96,7 +96,7 @@ Completamente attrezzato con cucina attrezzata, aria condizionata, WiFi gratuito
 
 La caratteristica principale dell'appartamento Orchidea è la terrazza panoramica con vista mozzafiato sul mare Ionio. La zona living spaziosa e la posizione privilegiata lo rendono uno degli appartamenti più richiesti per la vista panoramica.
 
-Situato a Villa Olimpia, Capopiccolo, Isola di Capo Rizzuto, nell'Area Marina Protetta Capo Rizzuto. A soli 1 km dalla Spiaggia dei Gigli, una delle spiagge più belle della Calabria.
+Situato a Villa Olimpia, Capopiccolo, Isola di Capo Rizzuto, nell'Area Marina Protetta Capo Rizzuto. A meno di 100 metri dalla Spiaggia dei Gigli, una delle spiagge più belle della Calabria, raggiungibile in 1 minuto a piedi.
 
 Completamente attrezzato con zona living, aria condizionata, WiFi gratuito. Prezzo a partire da €140/notte. Disponibile su Booking.com, Airbnb o prenotazione diretta.`,
     bookingKeywords: [
@@ -127,7 +127,7 @@ Completamente attrezzato con zona living, aria condizionata, WiFi gratuito. Prez
 
 L'appartamento Tulipano offre accesso diretto al giardino e un patio privato, rendendolo perfetto per famiglie con bambini. La vista sulla piscina e la posizione centrale garantiscono massima comodità.
 
-Situato a Villa Olimpia, Capopiccolo, Isola di Capo Rizzuto. A soli 1 km dalla Spiaggia dei Gigli. L'accesso diretto al giardino lo rende ideale per chi viaggia con bambini.
+Situato a Villa Olimpia, Capopiccolo, Isola di Capo Rizzuto. A meno di 100 metri dalla Spiaggia dei Gigli, raggiungibile in 1 minuto a piedi. L'accesso diretto al giardino lo rende ideale per chi viaggia con bambini.
 
 Completamente attrezzato con aria condizionata, WiFi gratuito. Prezzo a partire da €125/notte. Disponibile su Booking.com, Airbnb o prenotazione diretta.`,
     bookingKeywords: [
@@ -158,7 +158,7 @@ Completamente attrezzato con aria condizionata, WiFi gratuito. Prezzo a partire 
 
 L'appartamento Giglio offre una terrazza privata con vista mare e una cucina moderna completamente attrezzata, ideale per chi ama cucinare e godere dei panorami marini. La posizione tranquilla garantisce privacy e relax.
 
-Situato a Villa Olimpia, Capopiccolo, Isola di Capo Rizzuto. A soli 1 km dalla Spiaggia dei Gigli. La terrazza con vista mare è il punto forte di questo appartamento.
+Situato a Villa Olimpia, Capopiccolo, Isola di Capo Rizzuto. A meno di 100 metri dalla Spiaggia dei Gigli, raggiungibile in 1 minuto a piedi. La terrazza con vista mare è il punto forte di questo appartamento.
 
 Completamente attrezzato con cucina moderna, aria condizionata, WiFi gratuito. Prezzo a partire da €135/notte. Disponibile su Booking.com, Airbnb o prenotazione diretta.`,
     bookingKeywords: [
@@ -189,7 +189,7 @@ Completamente attrezzato con cucina moderna, aria condizionata, WiFi gratuito. P
 
 L'appartamento Lavanda offre un balcone con vista giardino e una cucina completa, perfetto per chi cerca tranquillità. La posizione laterale garantisce privacy e silenzio.
 
-Situato a Villa Olimpia, Capopiccolo, Isola di Capo Rizzuto. A soli 1 km dalla Spiaggia dei Gigli. La posizione tranquilla lo rende ideale per chi cerca relax.
+Situato a Villa Olimpia, Capopiccolo, Isola di Capo Rizzuto. A meno di 100 metri dalla Spiaggia dei Gigli, raggiungibile in 1 minuto a piedi. La posizione tranquilla lo rende ideale per chi cerca relax.
 
 Completamente attrezzato con cucina completa, aria condizionata, WiFi gratuito. Prezzo a partire da €120/notte. Disponibile su Booking.com, Airbnb o prenotazione diretta.`,
     bookingKeywords: [
@@ -222,7 +222,7 @@ Completamente attrezzato con cucina completa, aria condizionata, WiFi gratuito. 
 
 La caratteristica principale dell'appartamento Geranio è la terrazza panoramica che offre una vista mozzafiato a 180° sul mare Ionio. Il soggiorno ampio e i doppi servizi garantiscono massimo comfort e privacy, rendendolo perfetto per famiglie o gruppi di amici.
 
-Situato a Villa Olimpia, nella splendida località di Capopiccolo, Isola di Capo Rizzuto, nell'Area Marina Protetta Capo Rizzuto. L'appartamento si trova a soli 1 km dalla Spiaggia dei Gigli, una delle spiagge più belle della Calabria.
+Situato a Villa Olimpia, nella splendida località di Capopiccolo, Isola di Capo Rizzuto, nell'Area Marina Protetta Capo Rizzuto. L'appartamento si trova a meno di 100 metri dalla Spiaggia dei Gigli, una delle spiagge più belle della Calabria.
 
 L'appartamento Geranio è completamente attrezzato con soggiorno ampio, cucina moderna, doppi servizi, aria condizionata in tutte le stanze, WiFi gratuito ad alta velocità. La terrazza panoramica è arredata e ideale per cene all'aperto con vista mare.
 
@@ -257,7 +257,7 @@ Disponibile per prenotazioni su Booking.com, Airbnb o direttamente tramite il si
 
 L'appartamento Gardenia offre un balcone con vista mare e una zona living spaziosa, ideale per coppie o piccole famiglie. La posizione centrale garantisce facile accesso a tutti i servizi e una vista panoramica sul mare.
 
-Situato a Villa Olimpia, Capopiccolo, Isola di Capo Rizzuto. A soli 1 km dalla Spiaggia dei Gigli. La posizione elevata al primo piano offre una vista migliore sul mare e sulla costa.
+Situato a Villa Olimpia, Capopiccolo, Isola di Capo Rizzuto. A meno di 100 metri dalla Spiaggia dei Gigli, raggiungibile in 1 minuto a piedi. La posizione elevata al primo piano offre una vista migliore sul mare e sulla costa.
 
 Completamente attrezzato con zona living, cucina attrezzata, aria condizionata, WiFi gratuito. Prezzo a partire da €150/notte. Disponibile su Booking.com, Airbnb o prenotazione diretta.`,
     bookingKeywords: [
@@ -288,7 +288,7 @@ Completamente attrezzato con zona living, cucina attrezzata, aria condizionata, 
 
 L'appartamento Azalea offre una terrazza privata con vista panoramica e un design moderno, perfetto per chi cerca eleganza e comfort. La posizione elevata garantisce una vista spettacolare sul mare e sulla costa calabrese.
 
-Situato a Villa Olimpia, Capopiccolo, Isola di Capo Rizzuto. A soli 1 km dalla Spiaggia dei Gigli. La terrazza privata è il punto forte di questo appartamento, ideale per colazioni e cene al tramonto.
+Situato a Villa Olimpia, Capopiccolo, Isola di Capo Rizzuto. A meno di 100 metri dalla Spiaggia dei Gigli, raggiungibile in 1 minuto a piedi. La terrazza privata è il punto forte di questo appartamento, ideale per colazioni e cene al tramonto.
 
 Completamente attrezzato con design moderno, aria condizionata, WiFi gratuito. Prezzo a partire da €145/notte. Disponibile su Booking.com, Airbnb o prenotazione diretta.`,
     bookingKeywords: [
