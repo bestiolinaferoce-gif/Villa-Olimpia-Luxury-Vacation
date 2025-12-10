@@ -37,22 +37,42 @@ export function ReviewCard({ review, index }: ReviewCardProps) {
           <div className="flex items-start justify-between mb-4">
             <div className="flex items-center gap-3">
               <div className="relative w-12 h-12 rounded-full overflow-hidden bg-primary/10 flex-shrink-0">
-                <Image
-                  src={avatarUrl}
-                  alt={review.author}
-                  width={48}
-                  height={48}
-                  className="object-cover"
-                  onError={(e) => {
-                    // Fallback a placeholder se avatar non carica
-                    const target = e.target as HTMLImageElement
-                    target.style.display = 'none'
-                    const parent = target.parentElement
-                    if (parent) {
-                      parent.innerHTML = `<div class="w-full h-full flex items-center justify-center bg-primary/20 text-primary font-semibold text-lg">${review.author.charAt(0).toUpperCase()}</div>`
-                    }
-                  }}
-                />
+                {avatarUrl.includes('dicebear.com') ? (
+                  // Per immagini SVG esterne, usa img normale
+                  <img
+                    src={avatarUrl}
+                    alt={review.author}
+                    width={48}
+                    height={48}
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      // Fallback a placeholder se avatar non carica
+                      const target = e.target as HTMLImageElement
+                      target.style.display = 'none'
+                      const parent = target.parentElement
+                      if (parent) {
+                        parent.innerHTML = `<div class="w-full h-full flex items-center justify-center bg-primary/20 text-primary font-semibold text-lg">${review.author.charAt(0).toUpperCase()}</div>`
+                      }
+                    }}
+                  />
+                ) : (
+                  <Image
+                    src={avatarUrl}
+                    alt={review.author}
+                    width={48}
+                    height={48}
+                    className="object-cover"
+                    onError={(e) => {
+                      // Fallback a placeholder se avatar non carica
+                      const target = e.target as HTMLImageElement
+                      target.style.display = 'none'
+                      const parent = target.parentElement
+                      if (parent) {
+                        parent.innerHTML = `<div class="w-full h-full flex items-center justify-center bg-primary/20 text-primary font-semibold text-lg">${review.author.charAt(0).toUpperCase()}</div>`
+                      }
+                    }}
+                  />
+                )}
               </div>
               <div>
                 <div className="flex items-center gap-2">

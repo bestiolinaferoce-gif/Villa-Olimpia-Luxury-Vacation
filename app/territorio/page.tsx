@@ -319,9 +319,15 @@ export default function TerritorioPage() {
                   </CardHeader>
                   
                   <CardContent>
-                    <p className="text-muted-foreground mb-4">
+                    <p className="text-muted-foreground mb-3">
                       {destination.description}
                     </p>
+                    
+                    {destination.fullDescription && (
+                      <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
+                        {destination.fullDescription}
+                      </p>
+                    )}
                     
                     {destination.highlights && destination.highlights.length > 0 && (
                       <div className="mb-4">
