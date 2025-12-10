@@ -30,3 +30,4 @@ Devo verificare se il progetto VillaOlimpia è già connesso a GitHub e fare il 
 3. Se necessario, connettere e pushare VillaOlimpia
 4. Configurare Vercel per il progetto corretto
 
+
