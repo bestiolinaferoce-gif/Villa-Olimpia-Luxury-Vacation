@@ -2,7 +2,7 @@ import { Metadata } from "next"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { generateMetadata } from "@/lib/metadata"
-import { Waves, Fish, Snorkel, MapPin, Shield } from "lucide-react"
+import { Waves, Fish, MapPin, Shield } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 
 export const metadata: Metadata = generateMetadata({
@@ -26,9 +26,9 @@ export default function AreaMarinaProtettaPage() {
               offre fondali spettacolari ricchi di biodiversità, perfetti per snorkeling e immersioni.
             </p>
           </div>
-        </section>
+        </div>
+      </section>
 
-      {/* About AMP */}
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
@@ -93,7 +93,7 @@ export default function AreaMarinaProtettaPage() {
               <Card>
                 <CardHeader>
                   <div className="flex items-center gap-3">
-                    <Snorkel className="h-8 w-8 text-primary" />
+                    <Waves className="h-8 w-8 text-primary" />
                     <CardTitle className="text-2xl">Snorkeling</CardTitle>
                   </div>
                 </CardHeader>

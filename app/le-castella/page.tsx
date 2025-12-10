@@ -26,9 +26,9 @@ export default function LeCastellaPage() {
               a soli 8 minuti di auto dal famoso Castello Aragonese.
             </p>
           </div>
-        </section>
+        </div>
+      </section>
 
-      {/* About Le Castella */}
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">

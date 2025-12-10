@@ -11,17 +11,6 @@ export const metadata: Metadata = genMeta({
   title: "Territorio e Attrazioni - Scopri la Calabria",
   description: "Esplora le meraviglie del territorio calabrese: Valli Cupe, Castello di Santa Severina, Sila Piccola, spiagge rosse e Le Castella. A pochi minuti da Villa Olimpia.",
   path: "/territorio",
-  keywords: [
-    "valli cupe calabria",
-    "castello santa severina",
-    "sila piccola calabria",
-    "capo rizzuto attrazioni",
-    "le castella calabria",
-    "calabria turismo",
-    "riserva marina capo rizzuto",
-    "crotone calabria",
-    "spiagge rosse capo rizzuto"
-  ]
 })
 
 const destinations = [

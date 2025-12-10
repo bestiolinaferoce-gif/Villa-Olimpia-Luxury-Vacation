@@ -26,9 +26,9 @@ export default function SpiaggeCapoRizzutoPage() {
               alle calette incontaminate di Capopiccolo. Villa Olimpia è la base perfetta per la tua vacanza al mare.
             </p>
           </div>
-        </section>
+        </div>
+      </section>
 
-      {/* Main Beaches */}
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
