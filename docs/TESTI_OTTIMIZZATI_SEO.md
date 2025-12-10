@@ -238,3 +238,4 @@ la serata senza pensieri.
 4. **Link interni:**
    - Collegare sempre alle pagine correlate
    - Usare anchor text descrittivi
+

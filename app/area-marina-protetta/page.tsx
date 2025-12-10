@@ -2,7 +2,7 @@ import { Metadata } from "next"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { generateMetadata } from "@/lib/metadata"
-import { Waves, Fish, MapPin, Shield } from "lucide-react"
+import { Waves, Fish, MapPin, Shield, Eye } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 
 export const metadata: Metadata = generateMetadata({
@@ -93,7 +93,7 @@ export default function AreaMarinaProtettaPage() {
               <Card>
                 <CardHeader>
                   <div className="flex items-center gap-3">
-                    <Waves className="h-8 w-8 text-primary" />
+                    <Eye className="h-8 w-8 text-primary" />
                     <CardTitle className="text-2xl">Snorkeling</CardTitle>
                   </div>
                 </CardHeader>
