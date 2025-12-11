@@ -34,6 +34,13 @@ const mapOptions = {
   ],
 }
 
+// Variabile globale per tracciare se Google Maps è già stato caricato
+declare global {
+  interface Window {
+    googleMapsLoaded?: boolean;
+  }
+}
+
 export function MapComponent() {
   const [isMapLoaded, setIsMapLoaded] = useState(false)
   const [showInfoPanel, setShowInfoPanel] = useState(false)
@@ -78,15 +85,35 @@ export function MapComponent() {
   const onLoad = useCallback((map: google.maps.Map) => {
     setIsMapLoaded(true)
     setMapError(false)
+    if (typeof window !== 'undefined') {
+      window.googleMapsLoaded = true
+    }
   }, [])
 
   const onError = useCallback((error: Error) => {
-    // Log solo in sviluppo
+    // Ignora errore "already loaded" - è normale se lo script è già presente
+    if (error.message && error.message.includes('already')) {
+      setIsMapLoaded(true)
+      setMapError(false)
+      if (typeof window !== 'undefined') {
+        window.googleMapsLoaded = true
+      }
+      return
+    }
+    // Log solo altri errori in sviluppo
     if (process.env.NODE_ENV === 'development') {
       console.error('Google Maps LoadScript Error:', error)
     }
     setMapError(true)
     setIsMapLoaded(false)
+  }, [])
+
+  const handleScriptLoad = useCallback(() => {
+    setIsMapLoaded(true)
+    setMapError(false)
+    if (typeof window !== 'undefined') {
+      window.googleMapsLoaded = true
+    }
   }, [])
   
 
@@ -182,10 +209,8 @@ export function MapComponent() {
             <LoadScript 
               googleMapsApiKey={apiKey}
               onError={onError}
-              onLoad={() => {
-                setIsMapLoaded(true)
-                setMapError(false)
-              }}
+              onLoad={handleScriptLoad}
+              preventGoogleFontsLoading={true}
               loadingElement={
                 <div className="w-full h-[400px] bg-gray-100 rounded-lg flex items-center justify-center">
                   <div className="text-center">
