@@ -157,3 +157,4 @@ Se il build locale funziona, il problema è solo nella configurazione Vercel.
 
 **✅ Problema risolto! Verifica le impostazioni Vercel e triggera un nuovo deploy.**
 
+

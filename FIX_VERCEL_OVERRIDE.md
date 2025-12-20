@@ -77,3 +77,4 @@ Dopo il salvataggio, nella sezione "Project Settings" dovresti vedere:
 
 **✅ Attiva i toggle "Override" e imposta i valori corretti!**
 
+

@@ -143,6 +143,102 @@ export default function LocationPage() {
         </div>
       </section>
 
+      {/* Territorio SEO Section */}
+      <section className="py-20 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-playfair font-bold mb-8 text-center">
+              Il Territorio di Capo Rizzuto e della Calabria
+            </h2>
+            
+            <div className="prose prose-lg max-w-none space-y-6 text-muted-foreground">
+              <p className="text-lg leading-relaxed">
+                Villa Olimpia si trova in una <strong>posizione privilegiata</strong> nel cuore della 
+                <strong> Costa Ionica Calabrese</strong>, a Capopiccolo, Isola di Capo Rizzuto. Questa 
+                zona della Calabria offre un mix unico di <strong>mare cristallino, storia millenaria 
+                e natura incontaminata</strong>, rendendola una delle destinazioni più affascinanti 
+                d'Italia.
+              </p>
+
+              <div className="space-y-4">
+                <h3 className="text-2xl font-playfair font-bold text-foreground mt-8 mb-4">
+                  Area Marina Protetta Capo Rizzuto
+                </h3>
+                <p className="leading-relaxed">
+                  A soli <strong>2 km da Villa Olimpia</strong> si estende l'<strong>Area Marina Protetta 
+                  Capo Rizzuto</strong>, una delle più grandi riserve marine d'Italia con oltre 14.000 
+                  ettari di mare protetto. I fondali sono ricchi di biodiversità: cernie, polpi, stelle 
+                  marine, gorgonie e una varietà incredibile di pesci colorati. Perfetta per 
+                  <strong> snorkeling e immersioni subacquee</strong>, la riserva offre anche escursioni 
+                  in barca e percorsi guidati per scoprire la vita marina.
+                </p>
+
+                <h3 className="text-2xl font-playfair font-bold text-foreground mt-8 mb-4">
+                  Le Castella e il Castello Aragonese
+                </h3>
+                <p className="leading-relaxed">
+                  A <strong>8 minuti di auto</strong> (3 km) da Villa Olimpia si trova <strong>Le Castella</strong>, 
+                  uno dei borghi più suggestivi della Calabria. Il <strong>Castello Aragonese</strong>, 
+                  costruito nel XV secolo su un isolotto collegato alla terraferma, è uno dei simboli 
+                  più fotografati della costa ionica. Il borgo marinaro offre tre calette sabbiose 
+                  perfette per famiglie e ristoranti specializzati in pesce fresco del giorno. La 
+                  <strong> Spiaggia dei Gigli</strong>, con la vista del castello sullo sfondo, crea 
+                  un'atmosfera unica e romantica.
+                </p>
+
+                <h3 className="text-2xl font-playfair font-bold text-foreground mt-8 mb-4">
+                  Spiagge e Calette della Costa Ionica
+                </h3>
+                <p className="leading-relaxed">
+                  La <strong>Spiaggia dei Gigli</strong> è a soli <strong>500 metri da Villa Olimpia</strong>, 
+                  raggiungibile in 7 minuti a piedi. Bandiera Blu per la qualità delle acque, offre sabbia 
+                  fine e acque cristalline perfette per famiglie. Le <strong>spiagge di Capopiccolo</strong>, 
+                  nell'Area Marina Protetta, sono ideali per snorkeling grazie ai fondali ricchi di vita 
+                  marina. Le famose <strong>Spiagge Rosse</strong>, a 10 minuti di auto, devono il loro 
+                  nome alle falesie di arenaria rossa che creano un contrasto spettacolare con l'azzurro 
+                  del mare.
+                </p>
+
+                <h3 className="text-2xl font-playfair font-bold text-foreground mt-8 mb-4">
+                  Storia e Cultura: Crotone e i Dintorni
+                </h3>
+                <p className="leading-relaxed">
+                  <strong>Crotone</strong>, a 15 km da Villa Olimpia, è una delle città della Magna Grecia 
+                  più importanti, fondata nel 708 a.C. Il <strong>Museo Archeologico Nazionale</strong> ospita 
+                  tesori unici, tra cui l'Hera Lacinia, una delle statue greche più belle al mondo. 
+                  Passeggia nel centro storico, visita il Castello Carlo V affacciato sul mare, e scopri 
+                  la storia di Pitagora che qui fondò la sua scuola. Il lungomare di 5 km è perfetto per 
+                  passeggiate romantiche al tramonto.
+                </p>
+
+                <h3 className="text-2xl font-playfair font-bold text-foreground mt-8 mb-4">
+                  Natura e Avventura: Valli Cupe e Sila
+                </h3>
+                <p className="leading-relaxed">
+                  A <strong>35 minuti da Villa Olimpia</strong> si trovano le <strong>Valli Cupe</strong>, 
+                  uno dei canyon più spettacolari della Calabria. Sentieri di trekking mozzafiato attraverso 
+                  gole profonde, cascate nascoste e una natura incontaminata con oltre 50 specie di uccelli. 
+                  La <strong>Sila Piccola</strong>, a 40 minuti, offre laghi cristallini, boschi di pini 
+                  larici e sentieri panoramici. D'estate perfetta per escursioni e mountain bike, in 
+                  inverno (dicembre-marzo) anche neve e sci di fondo.
+                </p>
+
+                <h3 className="text-2xl font-playfair font-bold text-foreground mt-8 mb-4">
+                  Enogastronomia Calabrese
+                </h3>
+                <p className="leading-relaxed">
+                  La Calabria è famosa per la sua <strong>cucina tradizionale</strong> e i suoi vini. 
+                  Nei ristoranti della zona potrai gustare <strong>pesce fresco del giorno</strong>, 
+                  specialità calabresi come la 'nduja, i peperoncini, i formaggi locali e i vini 
+                  del territorio. Molti ristoranti hanno terrazze con vista sul mare e sul castello, 
+                  creando un'atmosfera indimenticabile.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Attractions */}
       <section className="py-20 bg-secondary/30">
         <div className="container mx-auto px-4">

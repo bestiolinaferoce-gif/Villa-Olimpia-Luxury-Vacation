@@ -80,3 +80,4 @@ Il sito sarà disponibile su: http://localhost:3001
 
 **Netlify è più semplice e affidabile di Vercel per questo progetto!** 🚀
 
+
