@@ -146,3 +146,25 @@
   }
 }
 
+/* Fix per portal positioning */
+nextjs-portal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* Radix UI Portal container */
+[data-radix-portal] {
+  position: fixed;
+  z-index: 50;
+}
+
+/* Ensure portals don't interfere with layout */
+[data-radix-portal] > * {
+  pointer-events: auto;
+}
+

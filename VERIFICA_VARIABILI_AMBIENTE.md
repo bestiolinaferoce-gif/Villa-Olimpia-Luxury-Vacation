@@ -141,3 +141,17 @@ Se dopo aver seguito tutti i passaggi nulla funziona:
    - Screenshot degli errori nella console
    - URL del sito Vercel
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+

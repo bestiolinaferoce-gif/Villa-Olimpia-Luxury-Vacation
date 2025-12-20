@@ -60,8 +60,8 @@ const validateEmailConfig = (): { valid: boolean; missing: string[]; config: Ret
     missing.push('PUBLIC_KEY')
   }
   
-  // Log sempre per debug (anche in produzione per capire il problema)
-  if (missing.length > 0) {
+  // Log solo in sviluppo per debug
+  if (missing.length > 0 && process.env.NODE_ENV === 'development') {
     console.error('❌ EmailJS - Variabili mancanti:', missing)
     console.error('📋 Config attuale:', {
       serviceId: config.serviceId ? `${config.serviceId.substring(0, 10)}...` : 'MISSING',
@@ -162,17 +162,20 @@ Oppure contattaci direttamente via WhatsApp o email.`
           templateParams,
           publicKey
         )
-      } catch (sendError: any) {
+      } catch (sendError: unknown) {
         // Gestione specifica errori EmailJS
-        if (sendError?.status === 400) {
-          throw new Error('Errore 400: Verifica che Service ID e Template ID siano corretti su EmailJS Dashboard.')
-        } else if (sendError?.status === 401 || sendError?.status === 403) {
-          throw new Error('Errore 401/403: Verifica che la Public Key sia corretta e valida su EmailJS Dashboard.')
-        } else if (sendError?.text) {
-          throw new Error(`EmailJS Error: ${sendError.text}`)
-        } else {
-          throw sendError
+        const error = sendError as { status?: number; message?: string; text?: string }
+        if (error && typeof error === 'object') {
+          if (error.status === 400) {
+            throw new Error('Errore 400: Verifica che Service ID e Template ID siano corretti su EmailJS Dashboard.')
+          } else if (error.status === 401 || error.status === 403) {
+            throw new Error('Errore 401/403: Verifica che la Public Key sia corretta e valida su EmailJS Dashboard.')
+          } else if (error.text) {
+            throw new Error(`EmailJS Error: ${error.text}`)
+          }
         }
+        // Fallback: re-throw error originale se non gestito
+        throw sendError instanceof Error ? sendError : new Error('Errore sconosciuto durante invio email')
       }
       
       // Log rimosso per produzione
@@ -186,7 +189,9 @@ Oppure contattaci direttamente via WhatsApp o email.`
       reset() // Reset form after successful submission
     } catch (error) {
       // Log sempre per debug (anche in produzione)
-      console.error('❌ Errore invio email EmailJS:', error)
+      if (process.env.NODE_ENV === 'development') {
+        console.error('❌ Errore invio email EmailJS:', error)
+      }
       
       setIsSubmitting(false)
       

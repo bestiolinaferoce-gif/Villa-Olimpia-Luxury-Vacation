@@ -163,3 +163,17 @@ NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=abc123xyz789
 
 **Hai bisogno di aiuto?** Controlla la console del browser (F12) per eventuali errori!
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+

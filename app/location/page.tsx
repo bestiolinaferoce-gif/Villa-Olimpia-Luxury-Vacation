@@ -1,7 +1,9 @@
 "use client"
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { MapPin, Car, Plane, Train, Ship } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { MapPin, Car, Plane, Train, Ship, Calendar } from "lucide-react"
+import Link from "next/link"
 import { VILLA_OLIMPIA_LOCATION } from "@/lib/location-data"
 import dynamic from "next/dynamic"
 
@@ -167,6 +169,67 @@ export default function LocationPage() {
                 </CardHeader>
               </Card>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Internal Links - Esplora e Prenota */}
+      <section className="py-20 bg-gradient-to-br from-primary/5 via-ocean/5 to-primary/10">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <Card className="border-2 border-primary/20 hover:shadow-xl transition-shadow">
+                <CardHeader>
+                  <CardTitle>Prenota il tuo soggiorno</CardTitle>
+                  <CardDescription>
+                    Scegli tra i nostri 9 appartamenti di lusso con piscina privata e terrazza vista mare
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-2 text-sm text-muted-foreground mb-4">
+                    <li>• <strong className="text-foreground">9 appartamenti</strong> eleganti e moderni</li>
+                    <li>• <strong className="text-foreground">Piscina privata</strong> per ogni appartamento</li>
+                    <li>• <strong className="text-foreground">Vista mare</strong> panoramica</li>
+                    <li>• <strong className="text-foreground">100 metri</strong> dalla Spiaggia dei Gigli</li>
+                    <li>• <strong className="text-foreground">WiFi gratuito</strong> e parcheggio incluso</li>
+                  </ul>
+                  <Link 
+                    href="/appartamenti"
+                    className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-semibold ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-gradient-to-r from-[#FFC107] to-[#FFA000] text-white hover:from-[#FFD54F] hover:to-[#FFC107] shadow-lg w-full h-10 px-4 py-2"
+                  >
+                    <Calendar className="mr-2 h-4 w-4" />
+                    Vedi tutti gli appartamenti
+                  </Link>
+                </CardContent>
+              </Card>
+
+              <Card className="border-2 border-primary/20 hover:shadow-xl transition-shadow">
+                <CardHeader>
+                  <CardTitle>Esplora i sapori del territorio</CardTitle>
+                  <CardDescription>
+                    Cantine storiche Cirò DOC, ristoranti eccellenza e prodotti tipici calabresi
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-2 text-sm text-muted-foreground mb-4">
+                    <li>• <strong className="text-foreground">Degustazioni vini</strong> nelle cantine Cirò DOC</li>
+                    <li>• <strong className="text-foreground">Ristoranti pesce fresco</strong> a pochi km</li>
+                    <li>• <strong className="text-foreground">Agriturismi</strong> con prodotti km zero</li>
+                    <li>• <strong className="text-foreground">Prodotti tipici</strong> 'Nduja, cipolla rossa, bergamotto</li>
+                    <li>• <strong className="text-foreground">Olio extravergine</strong> da frantoi tradizionali</li>
+                  </ul>
+                  <Button 
+                    variant="default" 
+                    className="w-full bg-primary hover:bg-primary/90"
+                    asChild
+                  >
+                    <Link href="/enogastronomia">
+                      Scopri l'enogastronomia calabrese
+                    </Link>
+                  </Button>
+                </CardContent>
+              </Card>
+            </div>
           </div>
         </div>
       </section>

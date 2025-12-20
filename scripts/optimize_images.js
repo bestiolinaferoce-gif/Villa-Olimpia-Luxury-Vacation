@@ -151,3 +151,13 @@ fs.writeFileSync('/tmp/optimization_report.json', JSON.stringify({
 
 console.log('Report salvato: /tmp/optimization_report.json');
 
+
+
+
+
+
+
+
+
+
+

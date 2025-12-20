@@ -6,8 +6,8 @@ import { getApartmentMetadata } from "@/lib/metadata"
 import { getApartmentSEO } from "@/data/apartments-seo"
 import { getApartmentContent } from "@/data/apartment-content"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Bed, Users, Bath, MapPin, Calendar, Star } from "lucide-react"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Bed, Users, Bath, MapPin, Calendar, Star, UtensilsCrossed } from "lucide-react"
 import Link from "next/link"
 import ApartmentGallery from "@/components/apartment-gallery"
 import { AvailabilityCalendar } from "@/components/availability-calendar"
@@ -372,6 +372,63 @@ export default async function ApartmentDetailPage({ params }: PageProps) {
           </div>
         </div>
       </div>
+
+      {/* Location Links Section */}
+      <section className="py-16 bg-gradient-to-br from-primary/5 via-ocean/5 to-primary/10">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+            <Card className="hover:shadow-xl transition-shadow border-2 border-primary/20">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-3">
+                  <MapPin className="h-6 w-6 text-primary" />
+                  Scopri cosa vedere nei dintorni
+                </CardTitle>
+                <CardDescription>
+                  Esplora le attrazioni e le spiagge vicino a Villa Olimpia. A soli 100 metri dalla Spiaggia dei Gigli Bandiera Blu.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-2 text-sm text-muted-foreground mb-4">
+                  <li>• <strong className="text-foreground">Spiaggia dei Gigli</strong> - Bandiera Blu a 100m</li>
+                  <li>• <strong className="text-foreground">Area Marina Protetta</strong> - Snorkeling e immersioni</li>
+                  <li>• <strong className="text-foreground">Le Castella</strong> - Castello aragonese (8 km)</li>
+                  <li>• <strong className="text-foreground">Valli Cupe</strong> - Riserva naturale con cascate</li>
+                </ul>
+                <Button variant="outline" className="w-full" asChild>
+                  <Link href="/location">
+                    Esplora tutte le attrazioni della Calabria
+                  </Link>
+                </Button>
+              </CardContent>
+            </Card>
+
+            <Card className="hover:shadow-xl transition-shadow border-2 border-primary/20">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-3">
+                  <UtensilsCrossed className="h-6 w-6 text-ocean" />
+                  Dove mangiare e cosa assaggiare
+                </CardTitle>
+                <CardDescription>
+                  Ristoranti eccellenza, cantine storiche Cirò DOC e prodotti tipici calabresi nei dintorni.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-2 text-sm text-muted-foreground mb-4">
+                  <li>• <strong className="text-foreground">Cantine Cirò DOC</strong> - Degustazioni vini storici</li>
+                  <li>• <strong className="text-foreground">Ristoranti pesce fresco</strong> - Cucina calabrese autentica</li>
+                  <li>• <strong className="text-foreground">Agriturismi km zero</strong> - Sapori genuini</li>
+                  <li>• <strong className="text-foreground">Prodotti tipici</strong> - 'Nduja, cipolla rossa, bergamotto</li>
+                </ul>
+                <Button variant="outline" className="w-full" asChild>
+                  <Link href="/location">
+                    Scopri i sapori del territorio
+                  </Link>
+                </Button>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
 
       {/* Schema Markup JSON-LD per SEO OTA */}
       <script

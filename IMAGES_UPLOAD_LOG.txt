@@ -127,3 +127,13 @@ Backup directory: backup_images_20251210_000114/
 4. ⏭️ Verifica visualizzazione
 5. ⏭️ Commit e deploy
 
+
+
+
+
+
+
+
+
+
+

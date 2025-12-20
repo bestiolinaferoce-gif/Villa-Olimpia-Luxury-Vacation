@@ -144,3 +144,17 @@ Il form di prenotazione ora invia automaticamente le email a `Villaolimpiacapori
 **Data configurazione:** Dicembre 2024  
 **Stato:** ✅ Funzionante
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+

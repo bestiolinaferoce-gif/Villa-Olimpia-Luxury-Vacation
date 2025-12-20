@@ -1,15 +1,13 @@
 "use client"
 
 import { HeroSectionPremium } from "@/components/hero-section-premium"
+import ParallaxHero from "@/components/parallax-hero"
 import { ApartmentCard } from "@/components/apartment-card"
-import { Testimonials } from "@/components/testimonials"
-import { WhyChooseUs } from "@/components/why-choose-us"
 import { StatsSection } from "@/components/stats-section"
 import { ScrollReveal } from "@/components/animations/scroll-reveal"
 import { SectionDivider } from "@/components/animations/section-divider"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { WeatherWidget } from "@/components/weather-widget"
 import { UrgencyBanner } from "@/components/conversion/urgency-banner"
 import { TrustBadges } from "@/components/conversion/trust-badges"
 import { SocialProof } from "@/components/conversion/social-proof"
@@ -19,6 +17,7 @@ import { Star, Wifi, Car, Waves, Utensils, Shield, Umbrella, MapPin, Sparkles } 
 import { getFeaturedApartments } from "@/data/apartments"
 import { motion } from "framer-motion"
 import dynamic from "next/dynamic"
+import { useI18n } from "@/components/i18n-provider"
 
 // Lazy load componenti pesanti
 const HomeGallery = dynamic(() => import("@/components/home-gallery").then(mod => ({ default: mod.HomeGallery })), {
@@ -31,47 +30,15 @@ const HowToReachUs = dynamic(() => import("@/components/how-to-reach-us").then(m
   ssr: false
 })
 
-const services = [
-  {
-    icon: Wifi,
-    title: "WiFi Gratuito",
-    description: "Connessione internet ad alta velocità in tutti gli appartamenti",
-  },
-  {
-    icon: Car,
-    title: "Parcheggio",
-    description: "Parcheggio privato disponibile per tutti gli ospiti",
-  },
-  {
-    icon: Waves,
-    title: "Vista Mare",
-    description: "Tutti gli appartamenti offrono una vista mozzafiato sul mare",
-  },
-  {
-    icon: Utensils,
-    title: "Cucina Attrezzata",
-    description: "Cucine completamente attrezzate per preparare i tuoi pasti",
-  },
-  {
-    icon: Shield,
-    title: "Sicurezza",
-    description: "Sistema di sicurezza 24/7 e cassaforte in ogni appartamento",
-  },
-  {
-    icon: Star,
-    title: "Servizio Premium",
-    description: "Assistenza dedicata per rendere il tuo soggiorno indimenticabile",
-  },
-]
-
 function CTAButtons() {
+  const { t } = useI18n()
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: 0.4, duration: 0.8 }}
-      className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+      className="flex justify-center items-center"
     >
       <motion.div
         whileHover={{ scale: 1.05, y: -2 }}
@@ -80,28 +47,60 @@ function CTAButtons() {
         <Button
           variant="luxury"
           size="lg"
-          className="text-lg px-8 py-6 group shadow-xl !border-2 !border-white"
+          className="text-xl px-10 py-7 group shadow-2xl !border-2 !border-white font-semibold"
           style={{ borderWidth: '2px', borderStyle: 'solid', borderColor: 'white' }}
           asChild
         >
           <Link href="/contatti">
             <span className="group-hover:translate-x-1 transition-transform inline-block">
-              Prenota Ora
+              {t.home.cta.bookVacation}
             </span>
-            <svg className="w-5 h-5 ml-2 inline-block group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg className="w-6 h-6 ml-3 inline-block group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
             </svg>
           </Link>
         </Button>
       </motion.div>
-      {/* Weather Widget nella sezione CTA */}
-      <WeatherWidget position="cta" />
     </motion.div>
   )
 }
 
 export default function HomePage() {
+  const { t } = useI18n()
   const featuredApartments = getFeaturedApartments()
+
+  const services = [
+    {
+      icon: Wifi,
+      title: t.home.services.items.wifi.title,
+      description: t.home.services.items.wifi.description,
+    },
+    {
+      icon: Car,
+      title: t.home.services.items.parking.title,
+      description: t.home.services.items.parking.description,
+    },
+    {
+      icon: Waves,
+      title: t.home.services.items.seaView.title,
+      description: t.home.services.items.seaView.description,
+    },
+    {
+      icon: Utensils,
+      title: t.home.services.items.kitchen.title,
+      description: t.home.services.items.kitchen.description,
+    },
+    {
+      icon: Shield,
+      title: t.home.services.items.security.title,
+      description: t.home.services.items.security.description,
+    },
+    {
+      icon: Star,
+      title: t.home.services.items.premium.title,
+      description: t.home.services.items.premium.description,
+    },
+  ]
 
   return (
     <>
@@ -116,14 +115,13 @@ export default function HomePage() {
             <div className="text-center mb-12">
               <div className="inline-flex items-center gap-2 bg-primary/10 px-4 py-2 rounded-full mb-4">
                 <Sparkles className="h-4 w-4 text-primary" />
-                <span className="text-sm font-semibold text-primary">Più Prenotati</span>
+                <span className="text-sm font-semibold text-primary">{t.home.featured.mostBooked}</span>
               </div>
               <h2 className="text-4xl md:text-5xl font-playfair font-bold mb-4">
-                I Nostri Appartamenti
+                {t.home.featured.title}
               </h2>
-              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                Scopri le nostre <Link href="/appartamenti" className="text-primary hover:underline font-semibold">9 unità lussuose</Link>, ognuna con caratteristiche
-                uniche e <Link href="/location" className="text-primary hover:underline font-semibold">vista mozzafiato</Link> sul mare Ionio
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                {t.home.featured.description}
               </p>
             </div>
           </ScrollReveal>
@@ -154,7 +152,7 @@ export default function HomePage() {
                 <Button variant="luxury" size="lg" asChild className="group">
                   <Link href="/appartamenti">
                     <span className="group-hover:translate-x-1 transition-transform inline-block">
-                      Vedi Tutti gli Appartamenti
+                      {t.home.featured.viewAll}
                     </span>
                     <svg className="w-5 h-5 ml-2 inline-block group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
@@ -175,10 +173,10 @@ export default function HomePage() {
         <div className="container mx-auto px-4">
           <ScrollReveal>
             <h2 className="text-4xl md:text-5xl font-playfair font-bold text-center mb-4">
-              Perché Scegliere Villa Olimpia
+              {t.home.whyChoose.title}
             </h2>
             <p className="text-center text-muted-foreground text-lg mb-12 max-w-2xl mx-auto">
-              Scopri cosa ci rende la scelta perfetta per la tua vacanza
+              {t.home.whyChoose.subtitle}
             </p>
           </ScrollReveal>
 
@@ -186,18 +184,18 @@ export default function HomePage() {
             {[
               {
                 icon: Umbrella,
-                title: "Posizione Privilegiata",
-                text: "A meno di 100 metri dalla splendida Spiaggia dei Gigli, nell'Area Marina Protetta"
+                title: t.home.whyChoose.items.privilegedLocation.title,
+                text: t.home.whyChoose.items.privilegedLocation.text
               },
               {
                 icon: Waves,
-                title: "Piscina Privata",
-                text: "Grande piscina condivisa con solarium e gazebo per il relax"
+                title: t.home.whyChoose.items.privatePool.title,
+                text: t.home.whyChoose.items.privatePool.text
               },
               {
                 icon: Sparkles,
-                title: "Comfort Premium",
-                text: "9 appartamenti moderni con tutti i comfort per una vacanza perfetta"
+                title: t.home.whyChoose.items.premiumComfort.title,
+                text: t.home.whyChoose.items.premiumComfort.text
               }
             ].map((item, i) => {
               const IconComponent = item.icon
@@ -241,13 +239,10 @@ export default function HomePage() {
           <ScrollReveal>
             <div className="text-center mb-12">
               <h2 className="text-4xl md:text-5xl font-playfair font-bold mb-4">
-                Servizi e Comfort
+                {t.home.services.title}
               </h2>
-              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                Tutto ciò di cui hai bisogno per un soggiorno indimenticabile.{" "}
-                <Link href="/servizi" className="text-primary hover:underline font-semibold">Scopri tutti i servizi inclusi</Link>{" "}
-                e{" "}
-                <Link href="/location" className="text-primary hover:underline font-semibold">la nostra location privilegiata</Link>.
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                {t.home.services.description}
               </p>
             </div>
           </ScrollReveal>
@@ -302,7 +297,7 @@ export default function HomePage() {
                 transition={{ duration: 0.6 }}
                 className="text-4xl md:text-5xl font-playfair font-bold mb-4"
               >
-                Recensioni dei Nostri Ospiti
+                {t.home.reviews.title}
               </motion.h2>
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
@@ -311,18 +306,13 @@ export default function HomePage() {
                 transition={{ delay: 0.2, duration: 0.6 }}
                 className="text-lg text-muted-foreground max-w-2xl mx-auto mb-6"
               >
-                Leggi cosa dicono i nostri ospiti su Villa Olimpia. Valutazione media{" "}
-                <span className="font-bold text-primary text-xl">4.9/5</span> stelle basata su{" "}
-                <span className="font-bold text-primary text-xl">150+</span> recensioni.{" "}
-                <Link href="/recensioni" className="text-primary hover:underline font-semibold">Leggi tutte le recensioni</Link>{" "}
-                o{" "}
-                <Link href="/contatti" className="text-primary hover:underline font-semibold">contattaci per prenotare</Link>.
+                {t.home.reviews.description} <span className="font-bold text-primary text-xl">{t.home.reviews.descriptionRating}</span> {t.home.reviews.descriptionStars} <span className="font-bold text-primary text-xl">{t.home.reviews.descriptionCount}</span> {t.home.reviews.descriptionReviews}
               </motion.p>
-              <div className="inline-flex items-center gap-2 bg-yellow-400/20 px-6 py-3 rounded-full border border-yellow-400/30 mb-6">
+              <div className="inline-flex items-center gap-2 bg-yellow-400/20 px-6 py-3 rounded-full border border-yellow-400/30 mb-8">
                 <Star className="h-5 w-5 text-yellow-500 fill-yellow-500" />
-                <span className="text-lg font-bold text-gray-900">4.9/5 su Google</span>
+                <span className="text-lg font-bold text-gray-900">4.9/5</span>
                 <span className="text-sm text-muted-foreground">•</span>
-                <span className="text-sm font-semibold text-gray-700">150+ Recensioni</span>
+                <span className="text-sm font-semibold text-gray-700">{t.home.reviews.verifiedCount}</span>
               </div>
               <motion.div
                 whileHover={{ scale: 1.05 }}
@@ -331,7 +321,7 @@ export default function HomePage() {
                 <Button variant="luxury" size="lg" asChild className="group">
                   <Link href="/recensioni">
                     <span className="group-hover:translate-x-1 transition-transform inline-block">
-                      Leggi tutte le 150+ Recensioni
+                      {t.home.reviews.readMore}
                     </span>
                     <svg className="w-5 h-5 ml-2 inline-block group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
@@ -344,25 +334,16 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 🏊 SEZIONE PISCINA - PRIORITÀ MASSIMA */}
+      {/* Gallery */}
       <HomeGallery />
-
-      {/* Testimonials */}
-      <Testimonials />
 
       {/* Social Proof */}
       <SocialProof />
 
-      {/* Territorio e Mete Turistiche */}
-      <TerritorySection />
-
-      {/* Why Choose Us */}
-      <WhyChooseUs />
-
       {/* Separatore elegante */}
       <SectionDivider />
 
-      {/* Come Raggiungerci - Sezione Ultra Moderna */}
+      {/* Come Raggiungerci */}
       <section className="py-20 md:py-24 bg-gradient-to-br from-primary/5 via-ocean/5 to-primary/10">
         <div className="container mx-auto px-4 max-w-4xl">
           <ScrollReveal>
@@ -374,7 +355,7 @@ export default function HomePage() {
                 transition={{ duration: 0.8 }}
                 className="text-4xl md:text-5xl font-playfair font-bold mb-4"
               >
-                Come Raggiungerci
+                {t.home.howToReach.title}
               </motion.h2>
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
@@ -383,7 +364,7 @@ export default function HomePage() {
                 transition={{ delay: 0.2, duration: 0.8 }}
                 className="text-lg text-muted-foreground max-w-2xl mx-auto"
               >
-                Scopri tutti i modi per raggiungere Villa Olimpia. Informazioni complete su aeroporti, treni e percorsi in auto.
+                {t.home.howToReach.subtitle}
               </motion.p>
             </div>
           </ScrollReveal>
@@ -400,9 +381,9 @@ export default function HomePage() {
         <div className="container mx-auto px-4 max-w-4xl">
           <ScrollReveal>
             <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-playfair font-bold mb-4">Domande Frequenti</h2>
+              <h2 className="text-4xl md:text-5xl font-playfair font-bold mb-4">{t.home.faq.title}</h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Trova rapidamente le risposte alle domande più comuni
+                {t.home.faq.description}
               </p>
             </div>
           </ScrollReveal>
@@ -410,20 +391,20 @@ export default function HomePage() {
           <div className="space-y-6">
             {[
               {
-                q: "Quanto dista Villa Olimpia dalla spiaggia?",
-                a: "Siamo a meno di 100 metri dalla splendida Spiaggia dei Gigli, raggiungibile in 1 minuto a piedi."
+                q: t.home.faq.items.beachDistance.q,
+                a: t.home.faq.items.beachDistance.a
               },
               {
-                q: "È incluso il parcheggio?",
-                a: "Sì, ogni appartamento ha un posto auto riservato gratuito all'interno della proprietà."
+                q: t.home.faq.items.parking.q,
+                a: t.home.faq.items.parking.a
               },
               {
-                q: "La piscina è condivisa?",
-                a: "Sì, la grande piscina è condivisa tra tutti gli ospiti degli appartamenti, con ampio solarium e gazebo."
+                q: t.home.faq.items.pool.q,
+                a: t.home.faq.items.pool.a
               },
               {
-                q: "Come funziona il check-in?",
-                a: "Il check-in è dalle 15:00 e il check-out entro le 10:00. Siamo flessibili per esigenze particolari, contattateci!"
+                q: t.home.faq.items.checkIn.q,
+                a: t.home.faq.items.checkIn.a
               }
             ].map((faq, i) => (
               <ScrollReveal key={i} delay={i * 0.1}>
@@ -489,7 +470,7 @@ export default function HomePage() {
                 <Button variant="luxury" size="lg" asChild className="group">
                   <Link href="/faq">
                     <span className="group-hover:translate-x-1 transition-transform inline-block">
-                      Vedi tutte le FAQ
+                      {t.home.faq.viewAll}
                     </span>
                     <svg className="w-5 h-5 ml-2 inline-block group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
@@ -508,17 +489,17 @@ export default function HomePage() {
           <ScrollReveal>
             <div className="text-center mb-8">
               <h3 className="text-2xl font-playfair font-bold text-foreground mb-2">
-                Certificazioni e Partner
+                {t.home.trustBadges.title}
               </h3>
               <p className="text-muted-foreground">
-                Prenota con fiducia sulle piattaforme più sicure
+                {t.home.trustBadges.subtitle}
               </p>
             </div>
             <div className="flex justify-center items-center gap-8 md:gap-12 flex-wrap">
               {[
-                { label: "Certificato da", name: "Booking.com", color: "text-primary", icon: "🏆" },
-                { label: "Superhost", name: "Airbnb", color: "text-primary", icon: "⭐" },
-                { label: "Area Protetta", name: "Capo Rizzuto", color: "text-turquoise", icon: "🌊" }
+                { label: t.home.trustBadges.items.booking.label, name: t.home.trustBadges.items.booking.name, color: "text-primary", icon: "🏆" },
+                { label: t.home.trustBadges.items.airbnb.label, name: t.home.trustBadges.items.airbnb.name, color: "text-primary", icon: "⭐" },
+                { label: t.home.trustBadges.items.protected.label, name: t.home.trustBadges.items.protected.name, color: "text-turquoise", icon: "🌊" }
               ].map((badge, i) => (
                 <motion.div
                   key={i}
@@ -539,23 +520,6 @@ export default function HomePage() {
                 </motion.div>
               ))}
             </div>
-            <div className="text-center mt-8">
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Button variant="outline" size="lg" asChild className="group">
-                  <Link href="/contatti">
-                    <span className="group-hover:translate-x-1 transition-transform inline-block">
-                      Prenota su Booking.com
-                    </span>
-                    <svg className="w-5 h-5 ml-2 inline-block group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                    </svg>
-                  </Link>
-                </Button>
-              </motion.div>
-            </div>
           </ScrollReveal>
         </div>
       </section>
@@ -570,13 +534,13 @@ export default function HomePage() {
             {/* Trust Badges */}
             <div className="flex items-center justify-center gap-4 mb-6 flex-wrap">
               <div className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full border border-white/30">
-                <span className="text-white text-sm font-semibold">✅ Certificato Booking.com</span>
+                <span className="text-white text-sm font-semibold">✅ {t.home.trustBadges.badges.certified}</span>
               </div>
               <div className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full border border-white/30">
-                <span className="text-white text-sm font-semibold">🏆 Superhost Airbnb</span>
+                <span className="text-white text-sm font-semibold">🏆 {t.home.trustBadges.badges.superhost}</span>
               </div>
               <div className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full border border-white/30">
-                <span className="text-white text-sm font-semibold">🔒 Prenotazione Sicura</span>
+                <span className="text-white text-sm font-semibold">🔒 {t.home.trustBadges.badges.secure}</span>
               </div>
             </div>
 
@@ -587,7 +551,7 @@ export default function HomePage() {
               transition={{ duration: 0.8 }}
               className="text-4xl md:text-5xl font-playfair font-bold mb-4"
             >
-              Pronto per la Tua Vacanza?
+              {t.home.cta.title}
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -596,8 +560,7 @@ export default function HomePage() {
               transition={{ delay: 0.2, duration: 0.8 }}
               className="text-xl mb-6 max-w-2xl mx-auto text-white/90"
             >
-              Prenota il tuo appartamento e vivi un&apos;esperienza indimenticabile
-              nella splendida Calabria
+              {t.home.cta.description}
             </motion.p>
             
             {/* Badge Prenota Direttamente */}
@@ -609,7 +572,7 @@ export default function HomePage() {
               className="mb-6"
             >
               <div className="inline-flex items-center gap-2 bg-green-500/90 backdrop-blur-sm px-6 py-3 rounded-full border border-green-300/50 shadow-lg">
-                <span className="text-white text-base font-bold">💰 Prenota Direttamente e Risparmia fino al 15%</span>
+                <span className="text-white text-base font-bold">💰 {t.home.cta.saveUpTo}</span>
               </div>
             </motion.div>
 
@@ -620,4 +583,3 @@ export default function HomePage() {
     </>
   )
 }
-

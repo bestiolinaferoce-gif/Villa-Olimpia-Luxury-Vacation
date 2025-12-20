@@ -147,3 +147,17 @@ Dopo il deploy, testa:
 
 **Il codice è su GitHub! Ora configura le variabili ambiente su Vercel e fai il deploy!** 🚀
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+

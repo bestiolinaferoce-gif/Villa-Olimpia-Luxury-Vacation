@@ -223,3 +223,17 @@ Il sito ora ha:
 
 **Prossimo Step**: Quando avrai le foto pronte, possiamo procedere con l'integrazione.
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+

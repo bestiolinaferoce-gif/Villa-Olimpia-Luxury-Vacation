@@ -73,14 +73,17 @@ export function WeatherWidget({ position = 'hero' }: WeatherWidgetProps = {}) {
         setError(false)
         
         // Open-Meteo API (gratuito, no API key richiesta)
+        // Timeout aumentato per connessioni internazionali (Abu Dhabi, etc.)
         const controller = new AbortController()
-        const timeoutId = setTimeout(() => controller.abort(), 5000) // Ridotto a 5 secondi
+        const timeoutId = setTimeout(() => controller.abort(), 15000) // 15 secondi per connessioni lente
         
         const response = await fetch(
           `https://api.open-meteo.com/v1/forecast?latitude=${LAT}&longitude=${LON}&current=temperature_2m,relative_humidity_2m,weather_code,wind_speed_10m,visibility&timezone=Europe/Rome&forecast_days=1`,
           { 
             signal: controller.signal,
-            cache: 'no-cache' // Usiamo la nostra cache
+            cache: 'no-cache', // Usiamo la nostra cache
+            // Aggiungi timeout per connessioni lente
+            keepalive: false
           }
         )
         
@@ -121,7 +124,9 @@ export function WeatherWidget({ position = 'hero' }: WeatherWidgetProps = {}) {
       } catch (err) {
         // Silently handle errors - don't log in production
         if (process.env.NODE_ENV === "development") {
-          console.error('Weather fetch error:', err)
+          if (process.env.NODE_ENV === 'development') {
+            console.error('Weather fetch error:', err)
+          }
         }
         setError(true)
         // Fallback con dati realistici per Capo Rizzuto

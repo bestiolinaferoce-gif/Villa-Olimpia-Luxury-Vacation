@@ -1,7 +1,11 @@
+"use client"
+
 import Link from "next/link"
 import { Phone, Mail, MapPin, Facebook, Instagram } from "lucide-react"
+import { useI18n } from "@/components/i18n-provider"
 
 export function Footer() {
+  const { t } = useI18n()
   return (
     <footer className="bg-secondary/30 border-t">
       <div className="container mx-auto px-4 py-12 md:py-16">
@@ -9,11 +13,10 @@ export function Footer() {
           {/* Brand */}
           <div className="space-y-4">
             <h3 className="text-2xl font-playfair font-bold text-primary">
-              Villa Olimpia
+              {t.footer.brand.title}
             </h3>
             <p className="text-sm text-muted-foreground">
-              Il tuo rifugio di lusso in Calabria. 9 appartamenti eleganti con piscina privata, 
-              a soli 100m dalla splendida Spiaggia dei Gigli.
+              {t.footer.brand.description}
             </p>
             <div className="flex space-x-4">
               <a
@@ -35,14 +38,14 @@ export function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-semibold mb-4">Link Rapidi</h4>
+            <h4 className="font-semibold mb-4">{t.footer.quickLinks}</h4>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link
                   href="/"
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
-                  Home
+                  {t.nav.home}
                 </Link>
               </li>
               <li>
@@ -50,7 +53,7 @@ export function Footer() {
                   href="/appartamenti"
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
-                  Gli Appartamenti
+                  {t.nav.apartments}
                 </Link>
               </li>
               <li>
@@ -58,7 +61,7 @@ export function Footer() {
                   href="/location"
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
-                  La Location
+                  {t.nav.location}
                 </Link>
               </li>
               <li>
@@ -66,7 +69,7 @@ export function Footer() {
                   href="/servizi"
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
-                  Servizi e Comfort
+                  {t.nav.services}
                 </Link>
               </li>
               <li>
@@ -74,7 +77,7 @@ export function Footer() {
                   href="/contatti"
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
-                  Contatti
+                  {t.nav.contacts}
                 </Link>
               </li>
               <li>
@@ -82,7 +85,7 @@ export function Footer() {
                   href="/faq"
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
-                  FAQ
+                  {t.nav.faq}
                 </Link>
               </li>
             </ul>
@@ -90,7 +93,7 @@ export function Footer() {
 
           {/* SEO Local Pages */}
           <div>
-            <h4 className="font-semibold mb-4">Scopri Capo Rizzuto</h4>
+            <h4 className="font-semibold mb-4">{t.footer.discover}</h4>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link
@@ -145,7 +148,7 @@ export function Footer() {
 
           {/* Contact Info */}
           <div>
-            <h4 className="font-semibold mb-4">Contatti</h4>
+            <h4 className="font-semibold mb-4">{t.footer.contact}</h4>
             <ul className="space-y-3 text-sm text-muted-foreground">
               <li className="flex items-start gap-2">
                 <Phone className="h-4 w-4 mt-0.5 flex-shrink-0" />
@@ -182,9 +185,9 @@ export function Footer() {
 
           {/* Prenota Ora - AGGIUNTO */}
           <div>
-            <h4 className="font-semibold mb-4">Prenota Ora</h4>
+            <h4 className="font-semibold mb-4">{t.footer.bookNow}</h4>
             <p className="text-sm text-muted-foreground mb-4">
-              Contattaci via WhatsApp per disponibilità e preventivi personalizzati
+              {t.footer.bookNowDescription}
             </p>
             <a
               href="https://wa.me/393335773390?text=Vorrei%20informazioni%20su%20Villa%20Olimpia"
@@ -192,14 +195,14 @@ export function Footer() {
               rel="noopener noreferrer"
               className="inline-block bg-[#25D366] text-white px-6 py-3 rounded-full text-sm font-semibold hover:bg-[#20BA5A] transition-colors"
             >
-              💬 WhatsApp
+              💬 {t.footer.whatsapp}
             </a>
           </div>
         </div>
 
         <div className="mt-12 pt-8 border-t text-center text-sm text-muted-foreground">
           <p>
-            &copy; {new Date().getFullYear()} Villa Olimpia - Tutti i diritti riservati | Capo Rizzuto, Calabria
+            &copy; {new Date().getFullYear()} {t.footer.brand.title} - {t.footer.copyright} | Capo Rizzuto, Calabria
           </p>
         </div>
       </div>

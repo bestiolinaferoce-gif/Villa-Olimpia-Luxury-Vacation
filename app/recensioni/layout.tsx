@@ -1,4 +1,4 @@
-import { reviews, getAverageRating } from "@/data/reviews-detailed"
+import { reviews, getAverageRating } from "@/data/reviews-complete"
 
 export default function RecensioniLayout({
   children,

@@ -1,16 +1,21 @@
 "use client"
 
 import { useState, useMemo } from "react"
-import { reviews, Review } from "@/data/reviews-detailed"
+import { reviews, Review } from "@/data/reviews-complete"
 import { ReviewCard } from "./review-card"
 import { ReviewStats } from "./review-stats"
 import { ReviewFilters } from "./review-filters"
+import { ReviewFiltersAdvanced } from "./review-filters-advanced"
 import { Button } from "@/components/ui/button"
+import { Star } from "lucide-react"
 
 const REVIEWS_PER_PAGE = 9
 
 export function ReviewsSection() {
   const [selectedRating, setSelectedRating] = useState<number | null>(null)
+  const [selectedSource, setSelectedSource] = useState<string | null>(null)
+  const [selectedLocale, setSelectedLocale] = useState<string | null>(null)
+  const [sortBy, setSortBy] = useState<"date" | "rating">("date")
   const [currentPage, setCurrentPage] = useState(1)
 
   const filteredReviews = useMemo(() => {
@@ -20,21 +25,44 @@ export function ReviewsSection() {
     
     let filtered = [...reviews]
     
+    // Filtro per rating
     if (selectedRating !== null) {
       filtered = filtered.filter((review) => review.rating === selectedRating)
     }
     
-    // Ordina per data (più recenti prima)
+    // Filtro per source
+    if (selectedSource) {
+      filtered = filtered.filter((review) => review.source === selectedSource)
+    }
+    
+    // Filtro per locale
+    if (selectedLocale) {
+      filtered = filtered.filter((review) => review.locale === selectedLocale)
+    }
+    
+    // Ordina
     filtered.sort((a, b) => {
-      try {
-        return new Date(b.date).getTime() - new Date(a.date).getTime()
-      } catch {
-        return 0
+      if (sortBy === "date") {
+        try {
+          return new Date(b.date).getTime() - new Date(a.date).getTime()
+        } catch {
+          return 0
+        }
+      } else {
+        // Ordina per rating (più alto prima), poi per data
+        if (b.rating !== a.rating) {
+          return b.rating - a.rating
+        }
+        try {
+          return new Date(b.date).getTime() - new Date(a.date).getTime()
+        } catch {
+          return 0
+        }
       }
     })
     
     return filtered
-  }, [selectedRating])
+  }, [selectedRating, selectedSource, selectedLocale, sortBy])
 
   const paginatedReviews = useMemo(() => {
     const start = (currentPage - 1) * REVIEWS_PER_PAGE
@@ -45,28 +73,60 @@ export function ReviewsSection() {
 
   const handleRatingChange = (rating: number | null) => {
     setSelectedRating(rating)
-    setCurrentPage(1) // Reset alla prima pagina
+    setCurrentPage(1)
+  }
+
+  const handleSourceChange = (source: string | null) => {
+    setSelectedSource(source)
+    setCurrentPage(1)
+  }
+
+  const handleLocaleChange = (locale: string | null) => {
+    setSelectedLocale(locale)
+    setCurrentPage(1)
+  }
+
+  const handleSortChange = (sort: "date" | "rating") => {
+    setSortBy(sort)
+    setCurrentPage(1)
   }
 
   return (
-    <section className="py-20 bg-background">
+    <section className="py-20 bg-gradient-to-b from-background via-primary/5 to-background">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-playfair font-bold mb-4">
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center gap-2 bg-primary/10 px-4 py-2 rounded-full mb-6">
+            <Star className="h-5 w-5 text-primary fill-primary" />
+            <span className="text-sm font-semibold text-primary uppercase tracking-wide">Recensioni Verificate</span>
+          </div>
+          <h2 className="text-5xl md:text-6xl lg:text-7xl font-playfair font-bold mb-6 bg-gradient-to-r from-primary via-ocean to-primary bg-clip-text text-transparent">
             Cosa Dicono i Nostri Ospiti
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Leggi le recensioni di chi ha già soggiornato a Villa Olimpia
+          <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto font-light">
+            Esperienze reali di chi ha già soggiornato a Villa Olimpia
           </p>
+          <div className="mt-8 flex items-center justify-center gap-4 text-sm text-muted-foreground">
+            <span>✓ Booking.com</span>
+            <span>•</span>
+            <span>✓ Airbnb</span>
+            <span>•</span>
+            <span>✓ Google</span>
+          </div>
         </div>
 
         {/* Stats */}
         <ReviewStats />
 
-        {/* Filters */}
-        <ReviewFilters
+        {/* Advanced Filters */}
+        <ReviewFiltersAdvanced
           selectedRating={selectedRating}
+          selectedSource={selectedSource}
+          selectedLocale={selectedLocale}
+          sortBy={sortBy}
           onRatingChange={handleRatingChange}
+          onSourceChange={handleSourceChange}
+          onLocaleChange={handleLocaleChange}
+          onSortChange={handleSortChange}
         />
 
         {/* Reviews Grid */}

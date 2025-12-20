@@ -392,3 +392,13 @@ La cartella foto è stata:
 **Generato automaticamente il 10 Dicembre 2025**  
 **Sistema di gestione foto Villa Olimpia v2.0**
 
+
+
+
+
+
+
+
+
+
+

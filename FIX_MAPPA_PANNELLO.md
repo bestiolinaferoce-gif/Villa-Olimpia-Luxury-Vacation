@@ -55,3 +55,17 @@ npm run dev:clean
 
 **Il pannello è ora laterale e non copre più il centro della mappa!** 🎉
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+

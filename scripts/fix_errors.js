@@ -124,3 +124,13 @@ if (needsApartment.length > 0) {
 fs.writeFileSync('/tmp/corrections.json', JSON.stringify(corrections, null, 2));
 console.log('\nReport correzioni salvato: /tmp/corrections.json');
 
+
+
+
+
+
+
+
+
+
+

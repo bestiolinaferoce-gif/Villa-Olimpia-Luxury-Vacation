@@ -161,3 +161,17 @@ Riavvia il server e testa la mappa su `/location`! 🚀
 **Data configurazione:** Dicembre 2024  
 **Stato:** ✅ Configurato (da testare dopo riavvio server)
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+

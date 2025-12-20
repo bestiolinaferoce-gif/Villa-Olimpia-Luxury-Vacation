@@ -1,37 +1,21 @@
 "use client"
 
-import { useState, useEffect } from "react"
 import { Clock, Users, Calendar } from "lucide-react"
 import { motion } from "framer-motion"
 
+// ✅ VALORI STATICI - nessun Math.random() per evitare hydration mismatch
+const STATIC_URGENCY = {
+  viewers: 7,
+  recentBooking: "Geranio",
+} as const
+
 export function UrgencyBanner() {
-  const [viewers, setViewers] = useState(0)
-  const [recentBooking, setRecentBooking] = useState<string | null>(null)
-
-  useEffect(() => {
-    // Simula viewer attivi (potrebbe essere integrato con analytics reali)
-    setViewers(Math.floor(Math.random() * 8) + 3)
-    
-    // Simula prenotazione recente
-    const apartments = ["Geranio", "Azalea", "Gardenia", "Orchidea"]
-    const randomApt = apartments[Math.floor(Math.random() * apartments.length)]
-    setRecentBooking(randomApt)
-
-    // Aggiorna ogni 30 secondi
-    const interval = setInterval(() => {
-      setViewers(Math.floor(Math.random() * 8) + 3)
-    }, 30000)
-
-    return () => clearInterval(interval)
-  }, [])
-
+  // ✅ Usa sempre valori statici - nessun calcolo dinamico
   const urgencyMessages = [
-    { icon: Users, text: `${viewers} persone stanno visualizzando questa pagina`, color: "text-amber-600" },
+    { icon: Users, text: `${STATIC_URGENCY.viewers} persone stanno visualizzando questa pagina`, color: "text-amber-600" },
     { icon: Clock, text: "Ultima prenotazione: 2 ore fa", color: "text-green-600" },
     { icon: Calendar, text: "Solo 3 appartamenti disponibili per questa settimana", color: "text-red-600" },
   ]
-
-  if (!recentBooking) return null
 
   return (
     <motion.div

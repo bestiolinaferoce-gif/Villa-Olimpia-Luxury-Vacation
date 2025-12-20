@@ -23,3 +23,13 @@ print(f"\n{'='*60}")
 print(f"ELIMINATI {deleted_count} DUPLICATI")
 print(f"{'='*60}")
 
+
+
+
+
+
+
+
+
+
+

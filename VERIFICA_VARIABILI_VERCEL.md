@@ -155,3 +155,17 @@ Con queste informazioni posso aiutarti a risolvere il problema specifico.
 
 Se aggiungi o modifichi una variabile ambiente su Vercel, devi SEMPRE fare un **Redeploy** per applicare le modifiche.
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+

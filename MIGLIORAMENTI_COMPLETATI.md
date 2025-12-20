@@ -182,3 +182,17 @@ Mentre tu modificavi le foto, ho completato autonomamente questi miglioramenti:
 3. Verificare che tutto funzioni correttamente
 4. Fare il deploy finale
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+

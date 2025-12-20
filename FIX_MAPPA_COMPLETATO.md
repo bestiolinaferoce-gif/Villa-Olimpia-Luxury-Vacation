@@ -99,3 +99,17 @@ Dopo aver aggiunto le variabili ambiente su Vercel e fatto il redeploy:
 - La mappa viene caricata solo quando necessario (lazy loading)
 - Compatibile con Next.js 16 e React 18
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+

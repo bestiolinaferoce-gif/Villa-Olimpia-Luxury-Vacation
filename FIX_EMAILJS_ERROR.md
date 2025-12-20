@@ -83,3 +83,17 @@ Google richiede permessi specifici per inviare email. Se durante l'autorizzazion
 
 **Procedi con Step 1: Disconnetti e riconnetti Gmail!** 🔄
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+

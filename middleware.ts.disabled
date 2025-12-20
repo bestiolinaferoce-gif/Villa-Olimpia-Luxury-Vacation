@@ -1,0 +1,72 @@
+import { NextResponse } from 'next/server'
+import type { NextRequest } from 'next/server'
+import { locales, defaultLocale } from './lib/i18n/config'
+
+// Middleware per gestione multilingua
+// Ottimizzato per connessioni internazionali (Abu Dhabi, etc.)
+// ATTENZIONE: Attualmente il routing multilingua non è implementato
+export function middleware(request: NextRequest) {
+  try {
+    const pathname = request.nextUrl.pathname
+    
+    // Skip middleware completamente per file statici e route API
+    // Questo evita overhead su connessioni lente
+    if (
+      pathname.startsWith('/_next') ||
+      pathname.startsWith('/api') ||
+      pathname.startsWith('/images') ||
+      pathname.includes('.') ||
+      pathname === '/favicon.ico'
+    ) {
+      return NextResponse.next()
+    }
+
+    // Per connessioni internazionali, facciamo solo pass-through minimo
+    // Il sistema multilingua funziona client-side tramite I18nProvider
+    // Nessun redirect o elaborazione pesante per evitare timeout
+    
+    return NextResponse.next()
+  } catch (error) {
+    // In caso di errore (timeout, network issues), passa comunque la richiesta
+    // Meglio un sito funzionante senza middleware che un sito bloccato
+    console.warn('Middleware error (ignored for network resilience):', error)
+    return NextResponse.next()
+  }
+}
+
+// Funzione helper per rilevare lingua (preparata per futuro)
+function getLocale(request: NextRequest): string | null {
+  const acceptLanguage = request.headers.get('accept-language')
+  if (!acceptLanguage) return null
+
+  // Parse Accept-Language header
+  const languages = acceptLanguage
+    .split(',')
+    .map((lang) => lang.split(';')[0].trim().toLowerCase())
+    .map((lang) => lang.split('-')[0]) // Get language code only
+
+  // Find first matching locale
+  for (const lang of languages) {
+    if (locales.includes(lang as any)) {
+      return lang
+    }
+  }
+
+  return null
+}
+
+export const config = {
+  matcher: [
+    /*
+     * Match all request paths except for the ones starting with:
+     * - api (API routes)
+     * - _next/static (static files)
+     * - _next/image (image optimization files)
+     * - favicon.ico (favicon file)
+     * - images (image files)
+     * - files with extensions (e.g. .png, .jpg, etc.)
+     */
+    '/((?!api|_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico|css|js|woff|woff2|ttf|eot)).*)',
+  ],
+}
+

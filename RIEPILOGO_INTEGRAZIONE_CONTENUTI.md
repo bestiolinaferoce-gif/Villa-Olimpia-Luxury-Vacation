@@ -146,3 +146,17 @@ Quando i contenuti saranno pronti, con un solo comando avrai:
 **Status**: ✅ Sistema pronto e funzionante  
 **Prossimo step**: Popolare i file con contenuti reali
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+

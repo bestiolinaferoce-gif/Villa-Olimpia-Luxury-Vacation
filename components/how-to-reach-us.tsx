@@ -18,6 +18,7 @@ import {
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { VILLA_OLIMPIA_LOCATION } from "@/lib/location-data"
+import Image from "next/image"
 
 interface Airline {
   name: string
@@ -124,63 +125,78 @@ export function HowToReachUs() {
 
   return (
     <>
-      {/* Pulsante Principale - Ultra Moderno e Colorato */}
+      {/* Pulsante Principale - GRANDE, CHIARO E DEFINITO */}
       <div className="w-full">
         <motion.button
           onClick={() => setIsOpen(true)}
-          whileHover={{ scale: 1.02, y: -2 }}
-          whileTap={{ scale: 0.98 }}
-          className="w-full relative overflow-hidden group"
+          whileHover={{ scale: 1.03, y: -4 }}
+          whileTap={{ scale: 0.97 }}
+          className="w-full relative overflow-hidden group rounded-3xl min-h-[200px] md:min-h-[250px] shadow-2xl border-4 border-white/50"
         >
-          {/* Background Gradient Animato */}
-          <div className="absolute inset-0 bg-gradient-to-r from-primary via-ocean to-primary rounded-2xl animate-shimmer" />
+          {/* Background Image Premium */}
+          <div className="absolute inset-0">
+            <Image
+              src="/images/villa/location/spiaggia-dei-gigli.jpg"
+              alt="Come raggiungere Villa Olimpia - Capo Rizzuto Calabria"
+              fill
+              className="object-cover group-hover:scale-110 transition-transform duration-700"
+              sizes="100vw"
+              priority
+            />
+            {/* Overlay gradient per leggibilità migliore */}
+            <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-ocean/90 to-primary/95" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20" />
+          </div>
           
-          {/* Contenuto */}
-          <div className="relative z-10 flex items-center justify-between p-6 md:p-8 bg-white/10 backdrop-blur-md border-2 border-white/30 rounded-2xl shadow-2xl">
-            <div className="flex items-center gap-4 md:gap-6">
-              {/* Icona Animata */}
+          {/* Background Gradient Animato Overlay - più visibile */}
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/60 via-ocean/60 to-primary/60 rounded-3xl animate-shimmer opacity-70" />
+          
+          {/* Contenuto - PIÙ GRANDE E CHIARO */}
+          <div className="relative z-10 flex items-center justify-between p-8 md:p-12 rounded-3xl min-h-[200px] md:min-h-[250px]">
+            <div className="flex items-center gap-6 md:gap-8 flex-1">
+              {/* Icona Animata - PIÙ GRANDE */}
               <motion.div
                 animate={{ rotate: [0, 10, -10, 0] }}
                 transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
                 className="flex-shrink-0"
               >
-                <div className="w-16 h-16 md:w-20 md:h-20 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center border-2 border-white/40">
-                  <Navigation className="w-8 h-8 md:w-10 md:h-10 text-white" />
+                <div className="w-20 h-20 md:w-28 md:h-28 bg-white/40 backdrop-blur-lg rounded-3xl flex items-center justify-center border-4 border-white/80 shadow-2xl">
+                  <Navigation className="w-12 h-12 md:w-16 md:h-16 text-white drop-shadow-2xl" />
                 </div>
               </motion.div>
               
-              {/* Testo */}
-              <div className="text-left">
-                <h3 className="text-xl md:text-2xl lg:text-3xl font-playfair font-bold text-white mb-1 drop-shadow-lg">
+              {/* Testo - PIÙ GRANDE E LEGGIBILE */}
+              <div className="text-left flex-1">
+                <h3 className="text-3xl md:text-5xl lg:text-6xl font-playfair font-bold text-white mb-3 drop-shadow-2xl">
                   Come Raggiungerci
                 </h3>
-                <p className="text-sm md:text-base text-white/90 drop-shadow-md">
+                <p className="text-lg md:text-xl lg:text-2xl text-white/95 drop-shadow-xl font-medium mb-4">
                   Scopri tutti i modi per raggiungere Villa Olimpia
                 </p>
-                <div className="flex items-center gap-4 mt-2 text-xs md:text-sm text-white/80">
-                  <span className="flex items-center gap-1">
-                    <Plane className="w-4 h-4" />
+                <div className="flex items-center gap-6 md:gap-8 mt-4 text-base md:text-lg text-white/90 font-semibold">
+                  <span className="flex items-center gap-2 bg-white/20 px-4 py-2 rounded-full backdrop-blur-sm">
+                    <Plane className="w-5 h-5 md:w-6 md:h-6" />
                     Aereo
                   </span>
-                  <span className="flex items-center gap-1">
-                    <Train className="w-4 h-4" />
+                  <span className="flex items-center gap-2 bg-white/20 px-4 py-2 rounded-full backdrop-blur-sm">
+                    <Train className="w-5 h-5 md:w-6 md:h-6" />
                     Treno
                   </span>
-                  <span className="flex items-center gap-1">
-                    <Car className="w-4 h-4" />
+                  <span className="flex items-center gap-2 bg-white/20 px-4 py-2 rounded-full backdrop-blur-sm">
+                    <Car className="w-5 h-5 md:w-6 md:h-6" />
                     Auto
                   </span>
                 </div>
               </div>
             </div>
             
-            {/* Freccia */}
+            {/* Freccia - PIÙ GRANDE */}
             <motion.div
-              animate={{ x: [0, 5, 0] }}
+              animate={{ x: [0, 8, 0] }}
               transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
               className="flex-shrink-0"
             >
-              <ArrowRight className="w-6 h-6 md:w-8 md:h-8 text-white" />
+              <ArrowRight className="w-10 h-10 md:w-14 md:h-14 text-white drop-shadow-2xl" />
             </motion.div>
           </div>
         </motion.button>
@@ -205,7 +221,7 @@ export function HowToReachUs() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="fixed top-4 left-4 right-4 bottom-4 md:top-1/2 md:left-1/2 md:right-auto md:bottom-auto md:-translate-x-1/2 md:-translate-y-1/2 z-[110] md:max-w-5xl md:w-[90vw] md:max-h-[90vh] flex flex-col bg-white rounded-3xl shadow-2xl border-2 border-primary/20 overflow-hidden"
+              className="fixed top-4 left-4 right-4 bottom-4 md:top-[5vh] md:left-1/2 md:right-auto md:bottom-auto md:-translate-x-1/2 md:translate-y-0 z-[110] md:max-w-5xl md:w-[90vw] md:max-h-[90vh] flex flex-col bg-white rounded-3xl shadow-2xl border-2 border-primary/20 overflow-hidden"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Header Gradient */}

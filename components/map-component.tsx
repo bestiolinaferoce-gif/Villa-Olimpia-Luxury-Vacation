@@ -81,7 +81,7 @@ export function MapComponent() {
   }, [])
 
   const onError = useCallback((error: Error) => {
-    // Log solo in sviluppo
+    // Silenzioso in produzione per evitare console errors
     if (process.env.NODE_ENV === 'development') {
       console.error('Google Maps LoadScript Error:', error)
     }

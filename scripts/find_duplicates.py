@@ -117,3 +117,13 @@ existing_dir = "/Users/francesconigro/Desktop/ViviCalabria.com/public/images/vil
 
 duplicates, new_files = find_duplicates(uploaded_dir, existing_dir)
 
+
+
+
+
+
+
+
+
+
+

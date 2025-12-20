@@ -16,10 +16,34 @@ import { Button } from "@/components/ui/button"
 import { Menu, X } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
 import { LanguageSelector } from "@/components/language-selector"
+import { useI18n } from "@/components/i18n-provider"
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
+  
+  // Safe i18n usage with fallback
+  let t: any
+  try {
+    const i18n = useI18n()
+    t = i18n.t
+  } catch (error) {
+    // Fallback se I18nProvider non disponibile
+    t = {
+      nav: {
+        home: "Home",
+        apartments: "Gli Appartamenti",
+        location: "La Location",
+        services: "Servizi",
+        reviews: "Recensioni",
+        faq: "FAQ",
+        contacts: "Contatti",
+      },
+      common: {
+        bookNow: "Prenota Ora",
+      }
+    }
+  }
 
   useEffect(() => {
     if (typeof window === 'undefined') return
@@ -32,13 +56,13 @@ export function Header() {
   }, [])
 
   const navItems = [
-    { href: "/", label: "Home" },
-    { href: "/appartamenti", label: "Gli Appartamenti" },
-    { href: "/location", label: "La Location" },
-    { href: "/servizi", label: "Servizi" },
-    { href: "/recensioni", label: "Recensioni" },
-    { href: "/faq", label: "FAQ" },
-    { href: "/contatti", label: "Contatti" },
+    { href: "/", label: t.nav.home },
+    { href: "/appartamenti", label: t.nav.apartments },
+    { href: "/location", label: t.nav.location },
+    { href: "/servizi", label: t.nav.services },
+    { href: "/recensioni", label: t.nav.reviews },
+    { href: "/faq", label: t.nav.faq },
+    { href: "/contatti", label: t.nav.contacts },
   ]
 
   return (
@@ -105,7 +129,7 @@ export function Header() {
               `}
               asChild
             >
-              <Link href="/contatti">Prenota Ora</Link>
+              <Link href="/contatti">{t.common.bookNow}</Link>
             </Button>
           </div>
 
@@ -154,7 +178,7 @@ export function Header() {
                 </div>
                 <Button variant="luxury" className="w-full" asChild>
                   <Link href="/contatti" onClick={() => setIsMenuOpen(false)}>
-                    Prenota Ora
+                    {t.common.bookNow}
                   </Link>
                 </Button>
               </div>

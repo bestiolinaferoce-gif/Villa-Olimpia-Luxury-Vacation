@@ -175,3 +175,17 @@ Dopo l'importazione riuscita:
 - ✅ SEO ottimizzato con descrizioni complete
 - ✅ Descrizioni OTA pronte per Booking/Airbnb
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+

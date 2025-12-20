@@ -166,3 +166,17 @@ fs.writeFileSync(OUTPUT_FILE, tsContent, 'utf-8')
 console.log(`\n✅ Contenuti importati in: ${OUTPUT_FILE}`)
 console.log(`📊 Appartamenti aggiornati: ${Object.keys(APARTMENT_MAP).length}`)
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+

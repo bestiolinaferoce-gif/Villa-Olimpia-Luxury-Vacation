@@ -605,3 +605,12 @@ components/locations/
 **PROSSIMO STEP:** Attendere approvazione, poi procedere con FASE 1 - Definizione Luoghi e Categorizzazione.
 
 
+
+
+
+
+
+
+
+
+

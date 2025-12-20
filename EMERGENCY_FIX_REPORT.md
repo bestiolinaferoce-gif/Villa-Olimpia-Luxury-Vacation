@@ -150,3 +150,12 @@ const MapComponent = dynamic(() => import("@/components/map-component"), {
 **APPROACH**: Fix minimi, solo ciò che era rotto.
 
 
+
+
+
+
+
+
+
+
+

@@ -11,6 +11,11 @@ import { TouchOptimizer } from "@/components/mobile/touch-optimizer"
 import { DirectionsProvider } from "@/components/directions-context"
 import { ErrorBoundary } from "@/components/error-boundary"
 import { defaultMetadata } from "@/lib/metadata"
+import { GoogleAnalytics } from "@/components/analytics/google-analytics"
+import { AutoOptimizer } from "@/components/auto-optimizer"
+import FloatingBooking from "@/components/floating-booking"
+import NewsletterPopup from "@/components/newsletter-popup"
+import { I18nProvider } from "@/components/i18n-provider"
 
 const inter = Inter({ 
   subsets: ["latin"],
@@ -34,10 +39,22 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="it" className={`${inter.variable} ${playfair.variable}`}>
+    <html lang="it" className={`${inter.variable} ${playfair.variable}`} suppressHydrationWarning>
       <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
         <link rel="icon" href="/favicon.ico" />
         <link rel="canonical" href="https://villaolimpia.com" />
+        
+        {/* Performance - Preconnect */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://www.google.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://maps.googleapis.com" crossOrigin="anonymous" />
+        
+        {/* DNS Prefetch */}
+        <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        
         {/* Hreflang tags per multilingua */}
         <link rel="alternate" hrefLang="it" href="https://villaolimpia.com/it" />
         <link rel="alternate" hrefLang="en" href="https://villaolimpia.com/en" />
@@ -46,6 +63,16 @@ export default function RootLayout({
         <link rel="alternate" hrefLang="es" href="https://villaolimpia.com/es" />
         <link rel="alternate" hrefLang="fr" href="https://villaolimpia.com/fr" />
         <link rel="alternate" hrefLang="x-default" href="https://villaolimpia.com" />
+        {/* Meta tags Airbnb */}
+        <meta property="og:type" content="lodging" />
+        <meta property="business:contact_data:locality" content="Isola di Capo Rizzuto" />
+        <meta property="business:contact_data:region" content="Calabria" />
+        <meta property="business:contact_data:country_name" content="Italia" />
+        <meta property="place:location:latitude" content="38.913856" />
+        <meta property="place:location:longitude" content="17.0754964" />
+        {/* Meta tags Facebook/Meta */}
+        <meta property="business:contact_data:street_address" content="Località Capopiccolo snc" />
+        <meta property="business:contact_data:postal_code" content="88841" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -119,6 +146,48 @@ export default function RootLayout({
                   "@type": "LocationFeatureSpecification",
                   name: "Terrazza privata",
                   value: true
+                },
+                {
+                  "@type": "LocationFeatureSpecification",
+                  name: "Spiaggia Bandiera Blu a 100m",
+                  value: true
+                },
+                {
+                  "@type": "LocationFeatureSpecification",
+                  name: "Area Marina Protetta nelle vicinanze",
+                  value: true
+                }
+              ],
+              nearbyAttraction: [
+                {
+                  "@type": "TouristAttraction",
+                  name: "Spiaggia dei Gigli",
+                  description: "Spiaggia Bandiera Blu",
+                  distance: "100 metri"
+                },
+                {
+                  "@type": "TouristAttraction",
+                  name: "Area Marina Protetta Capo Rizzuto",
+                  description: "Riserva marina protetta",
+                  distance: "2 km"
+                },
+                {
+                  "@type": "TouristAttraction",
+                  name: "Le Castella",
+                  description: "Castello aragonese patrimonio storico",
+                  distance: "8 km"
+                },
+                {
+                  "@type": "TouristAttraction",
+                  name: "Valli Cupe",
+                  description: "Riserva naturale con cascate",
+                  distance: "65 km"
+                },
+                {
+                  "@type": "TouristAttraction",
+                  name: "Spiagge Rosse Bandiera Blu",
+                  description: "Spiagge con sabbia colorata",
+                  distance: "12 km"
                 }
               ],
               checkInTime: "15:00",
@@ -128,18 +197,24 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={inter.className}>
+      <body className={inter.className} suppressHydrationWarning>
         <ErrorBoundary>
-          <DirectionsProvider>
-            <PreloadResources />
-            <TouchOptimizer />
-            <Header />
-            <main className="min-h-screen">{children}</main>
-            <Footer />
-            <CookieConsent />
-            <ScrollToTop />
-            <WhatsAppButton />
-          </DirectionsProvider>
+          {/* FIX HYDRATION: I18nProvider gestisce correttamente SSR/client mismatch */}
+          <I18nProvider>
+            <AutoOptimizer />
+            <FloatingBooking />
+            <NewsletterPopup />
+            <DirectionsProvider>
+              <PreloadResources />
+              <TouchOptimizer />
+              <Header />
+              <main className="min-h-screen">{children}</main>
+              <Footer />
+              <CookieConsent />
+              <ScrollToTop />
+              <WhatsAppButton />
+            </DirectionsProvider>
+          </I18nProvider>
         </ErrorBoundary>
       </body>
     </html>

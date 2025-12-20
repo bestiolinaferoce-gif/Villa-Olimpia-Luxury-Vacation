@@ -58,3 +58,17 @@ console.log('\n⚠️  Per Google Maps API Key:');
 console.log('   Devi aggiungere manualmente: NEXT_PUBLIC_GOOGLE_MAPS_API_KEY');
 console.log('   Oppure dimmi il valore e lo aggiungo io!\n');
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+

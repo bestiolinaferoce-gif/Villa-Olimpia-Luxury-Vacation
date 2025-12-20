@@ -2,7 +2,7 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Star } from "lucide-react"
-import { getAverageRating, getRatingDistribution, reviews } from "@/data/reviews-detailed"
+import { getAverageRating, getRatingDistribution, reviews } from "@/data/reviews-complete"
 
 export function ReviewStats() {
   const averageRating = getAverageRating()
@@ -25,7 +25,7 @@ export function ReviewStats() {
                   key={i}
                   className={`h-5 w-5 ${
                     i < Math.round(averageRating)
-                      ? "fill-gold text-gold"
+                      ? "fill-amber-500 text-amber-500"
                       : "fill-muted text-muted-foreground"
                   }`}
                 />

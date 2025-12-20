@@ -212,3 +212,13 @@ Il selettore lingua è solo l'**interfaccia**. Per funzionare serve:
 **Data:** 2024-12-10
 **Status:** ✅ **TUTTO CORRETTO E FUNZIONANTE**
 
+
+
+
+
+
+
+
+
+
+

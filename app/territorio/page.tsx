@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { MapPin, Clock, TrendingUp, Mountain, Waves, Castle, Camera, Ship, Coffee, Map as MapIcon } from "lucide-react"
+import { MapPin, Clock, TrendingUp, Mountain, Waves, Castle, Camera, Ship, Coffee, Map as MapIcon, Info } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { Breadcrumb } from "@/components/breadcrumb"
@@ -11,6 +11,17 @@ export const metadata: Metadata = genMeta({
   title: "Territorio e Attrazioni - Scopri la Calabria",
   description: "Esplora le meraviglie del territorio calabrese: Valli Cupe, Castello di Santa Severina, Sila Piccola, spiagge rosse e Le Castella. A pochi minuti da Villa Olimpia.",
   path: "/territorio",
+  keywords: [
+    "valli cupe calabria",
+    "castello santa severina",
+    "sila piccola calabria",
+    "capo rizzuto attrazioni",
+    "le castella calabria",
+    "calabria turismo",
+    "riserva marina capo rizzuto",
+    "crotone calabria",
+    "spiagge rosse capo rizzuto"
+  ]
 })
 
 const destinations = [
@@ -319,15 +330,9 @@ export default function TerritorioPage() {
                   </CardHeader>
                   
                   <CardContent>
-                    <p className="text-muted-foreground mb-3">
+                    <p className="text-muted-foreground mb-4">
                       {destination.description}
                     </p>
-                    
-                    {destination.fullDescription && (
-                      <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
-                        {destination.fullDescription}
-                      </p>
-                    )}
                     
                     {destination.highlights && destination.highlights.length > 0 && (
                       <div className="mb-4">
@@ -357,6 +362,195 @@ export default function TerritorioPage() {
                 </Card>
               )
             })}
+          </div>
+        </div>
+      </section>
+
+      {/* Valli Cupe UNESCO - SEZIONE PREMIUM */}
+      <section className="py-20 bg-gradient-to-br from-green-50 to-blue-50">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <div className="inline-block bg-yellow-100 text-yellow-800 px-4 py-2 rounded-full font-semibold mb-4">
+                🏆 Patrimonio UNESCO
+              </div>
+              <h2 className="text-4xl md:text-5xl font-bold mb-6">
+                Valli Cupe - Canyon Spettacolare
+              </h2>
+              <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+                A soli 25 km da Villa Olimpia, uno dei canyon più affascinanti d'Italia, 
+                Patrimonio dell'Umanità UNESCO
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-8 items-center mb-12">
+              <div className="relative h-96 rounded-2xl overflow-hidden shadow-2xl">
+                <Image
+                  src="/images/villa/gallery/night-1.jpg"
+                  fill
+                  className="object-cover"
+                  alt="Valli Cupe Canyon Patrimonio UNESCO"
+                />
+              </div>
+
+              <div className="space-y-6">
+                <div>
+                  <h3 className="text-2xl font-bold mb-3">Un Canyon nella Sila Piccola</h3>
+                  <p className="text-lg leading-relaxed">
+                    <strong>Le Valli Cupe</strong> sono un'area naturale di straordinaria bellezza 
+                    situata nel cuore della Sila Piccola, tra i comuni di Sersale e Zagarise. 
+                    Questo canyon profondo fino a 200 metri, scavato nei millenni dal torrente Uria, 
+                    è stato riconosciuto <strong>Patrimonio dell'Umanità UNESCO</strong> per la sua 
+                    eccezionale biodiversità e valore geologico.
+                  </p>
+                </div>
+
+                <div className="bg-white p-6 rounded-lg shadow-lg">
+                  <h4 className="font-bold mb-3 text-lg">🌿 Biodiversità Unica</h4>
+                  <ul className="space-y-2 text-sm">
+                    <li className="flex items-start gap-2">
+                      <span className="text-green-600 mt-1">✓</span>
+                      <span><strong>148 specie botaniche</strong> rare, alcune endemiche</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-green-600 mt-1">✓</span>
+                      <span><strong>Felci preistoriche</strong> risalenti a 65 milioni di anni fa</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-green-600 mt-1">✓</span>
+                      <span><strong>Microclima unico</strong> con temperature costanti 12-15°C</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-green-600 mt-1">✓</span>
+                      <span><strong>Cascate spettacolari</strong> alte fino a 80 metri</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            {/* Percorsi Trekking */}
+            <div className="grid md:grid-cols-3 gap-6 mb-12">
+              <div className="bg-white p-6 rounded-xl shadow-lg">
+                <div className="text-3xl mb-3">🥾</div>
+                <h4 className="font-bold text-lg mb-2">Sentiero Facile</h4>
+                <p className="text-sm text-muted-foreground mb-3">
+                  3 km • 1h 30min • Adatto a tutti
+                </p>
+                <p className="text-sm">
+                  Passeggiata panoramica sul bordo del canyon con 3 punti di osservazione. 
+                  Ideale per famiglie con bambini.
+                </p>
+              </div>
+
+              <div className="bg-white p-6 rounded-xl shadow-lg border-2 border-primary">
+                <div className="text-3xl mb-3">⛰️</div>
+                <h4 className="font-bold text-lg mb-2">Sentiero Medio</h4>
+                <p className="text-sm text-muted-foreground mb-3">
+                  8 km • 4h • Discreto allenamento
+                </p>
+                <p className="text-sm">
+                  Discesa nel canyon, attraversamento ponti tibetani, risalita cascate. 
+                  Guida obbligatoria, caschetto fornito.
+                </p>
+                <div className="mt-3 bg-primary/10 text-primary text-xs px-2 py-1 rounded inline-block">
+                  PIÙ POPOLARE
+                </div>
+              </div>
+
+              <div className="bg-white p-6 rounded-xl shadow-lg">
+                <div className="text-3xl mb-3">🧗</div>
+                <h4 className="font-bold text-lg mb-2">Sentiero Avanzato</h4>
+                <p className="text-sm text-muted-foreground mb-3">
+                  15 km • 7h • Esperti
+                </p>
+                <p className="text-sm">
+                  Percorso completo del canyon con torrentismo, calate su corda, 
+                  grotte nascoste. Attrezzatura tecnica necessaria.
+                </p>
+              </div>
+            </div>
+
+            {/* Info Pratiche */}
+            <div className="bg-primary text-primary-foreground p-8 rounded-2xl">
+              <div className="grid md:grid-cols-3 gap-8 text-center">
+                <div>
+                  <MapPin className="w-8 h-8 mx-auto mb-3" />
+                  <div className="font-bold mb-1">Distanza</div>
+                  <div>25 km da Villa Olimpia</div>
+                  <div className="text-sm opacity-90">30 minuti in auto</div>
+                </div>
+                <div>
+                  <Clock className="w-8 h-8 mx-auto mb-3" />
+                  <div className="font-bold mb-1">Periodo Migliore</div>
+                  <div>Aprile - Ottobre</div>
+                  <div className="text-sm opacity-90">Clima ideale 15-22°C</div>
+                </div>
+                <div>
+                  <Info className="w-8 h-8 mx-auto mb-3" />
+                  <div className="font-bold mb-1">Prenotazione</div>
+                  <div>Obbligatoria</div>
+                  <div className="text-sm opacity-90">Guide autorizzate</div>
+                </div>
+              </div>
+
+              <div className="text-center mt-8">
+                <Button size="lg" variant="secondary" asChild>
+                  <Link href="/contatti">
+                    Organizziamo l'Escursione per Te
+                  </Link>
+                </Button>
+              </div>
+            </div>
+
+            {/* Curiosità */}
+            <div className="mt-12 bg-white p-8 rounded-2xl shadow-lg">
+              <h3 className="text-2xl font-bold mb-6 text-center">
+                💎 Curiosità sulle Valli Cupe
+              </h3>
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="flex gap-4">
+                  <div className="text-4xl">🎬</div>
+                  <div>
+                    <h4 className="font-semibold mb-2">Location Cinematografica</h4>
+                    <p className="text-sm text-muted-foreground">
+                      Le Valli Cupe sono state set di numerosi film e documentari naturalistici, 
+                      tra cui produzioni BBC e National Geographic.
+                    </p>
+                  </div>
+                </div>
+                <div className="flex gap-4">
+                  <div className="text-4xl">🦎</div>
+                  <div>
+                    <h4 className="font-semibold mb-2">Fauna Protetta</h4>
+                    <p className="text-sm text-muted-foreground">
+                      Habitat del tritone crestato, salamandre rare, e oltre 40 specie di uccelli 
+                      protetti tra cui il falco pellegrino.
+                    </p>
+                  </div>
+                </div>
+                <div className="flex gap-4">
+                  <div className="text-4xl">🌊</div>
+                  <div>
+                    <h4 className="font-semibold mb-2">Cascate Tutto l'Anno</h4>
+                    <p className="text-sm text-muted-foreground">
+                      A differenza di altri canyon mediterranei, le cascate delle Valli Cupe 
+                      sono attive 365 giorni l'anno grazie alle sorgenti perenni.
+                    </p>
+                  </div>
+                </div>
+                <div className="flex gap-4">
+                  <div className="text-4xl">🏛️</div>
+                  <div>
+                    <h4 className="font-semibold mb-2">Storia Millenaria</h4>
+                    <p className="text-sm text-muted-foreground">
+                      Resti di insediamenti rupestri bizantini (IX-X sec.) nelle grotte naturali 
+                      del canyon, visitabili con guide specializzate.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -415,5 +609,4 @@ export default function TerritorioPage() {
     </div>
   )
 }
-
 

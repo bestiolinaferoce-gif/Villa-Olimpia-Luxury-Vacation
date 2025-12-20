@@ -209,3 +209,17 @@ NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=AIzaSyAbCdEfGhIjKlMnOpQrStUvWxYz1234567
 
 Quando hai l'API Key, incollala qui e la aggiungo al file `.env.local` automaticamente!
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+

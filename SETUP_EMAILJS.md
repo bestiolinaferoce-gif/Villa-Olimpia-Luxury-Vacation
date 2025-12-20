@@ -170,3 +170,17 @@ Se dopo questi step il form non funziona:
 - **EmailJS Docs:** https://www.emailjs.com/docs/
 - **Vercel Environment Variables:** https://vercel.com/docs/concepts/projects/environment-variables
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+

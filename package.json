@@ -6,6 +6,8 @@
     "dev": "next dev -p 3001",
     "dev:clean": "lsof -ti:3001 | xargs kill -9 2>/dev/null || true && next dev -p 3001",
     "dev:3000": "next dev",
+    "dev:vpn": "next dev -p 3001 -H 0.0.0.0",
+    "dev:8080": "next dev -p 8080",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -36,7 +38,7 @@
     "sharp": "^0.34.5",
     "swiper": "^12.0.3",
     "tailwind-merge": "^2.5.0",
-    "yet-another-react-lightbox": "^3.26.0",
+    "yet-another-react-lightbox": "^3.27.0",
     "zod": "^3.23.0"
   },
   "devDependencies": {

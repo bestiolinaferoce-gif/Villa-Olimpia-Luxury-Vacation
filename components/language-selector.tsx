@@ -1,33 +1,28 @@
 "use client"
 
-import { useState, useRef, useEffect } from "react"
+import { useState, useRef, useEffect, useMemo } from "react"
 import { Globe, Check } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
-import { usePathname, useRouter } from "next/navigation"
+import { useI18n } from "@/components/i18n-provider"
+import { locales, localeNames, localeFlags, type Locale } from "@/lib/i18n/config"
 
-const languages = [
-  { code: "it", name: "Italiano", flag: "🇮🇹" },
-  { code: "en", name: "English", flag: "🇬🇧" },
-  { code: "de", name: "Deutsch", flag: "🇩🇪" },
-  { code: "nl", name: "Nederlands", flag: "🇳🇱" },
-  { code: "es", name: "Español", flag: "🇪🇸" },
-  { code: "fr", name: "Français", flag: "🇫🇷" },
-]
+const languages = locales.map(code => ({
+  code,
+  name: localeNames[code],
+  flag: localeFlags[code],
+}))
 
 export function LanguageSelector() {
   const [isOpen, setIsOpen] = useState(false)
-  const [currentLang, setCurrentLang] = useState("it")
+  const { locale, setLocale } = useI18n()
   const dropdownRef = useRef<HTMLDivElement>(null)
-  const pathname = usePathname()
-  const router = useRouter()
 
   useEffect(() => {
-    // Rileva lingua corrente dal pathname
-    const langFromPath = pathname.split('/')[1]
-    if (languages.some(l => l.code === langFromPath)) {
-      setCurrentLang(langFromPath)
+    // Update document language when locale changes
+    if (typeof document !== 'undefined') {
+      document.documentElement.lang = locale
     }
-  }, [pathname])
+  }, [locale])
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -45,32 +40,29 @@ export function LanguageSelector() {
     }
   }, [isOpen])
 
-  const handleLanguageChange = (langCode: string) => {
-    setCurrentLang(langCode)
+  const handleLanguageChange = (langCode: Locale) => {
+    setLocale(langCode)
     setIsOpen(false)
     
-    // Salva preferenza
+    // Show success notification
     if (typeof window !== 'undefined') {
-      localStorage.setItem('preferred-language', langCode)
+      const langName = localeNames[langCode]
       
-      // Mostra notifica che la traduzione è in arrivo
-      const langName = languages.find(l => l.code === langCode)?.name || langCode
-      
-      // Crea toast notification semplice
+      // Create toast notification
       const toast = document.createElement('div')
-      toast.className = 'fixed bottom-4 right-4 z-[200] bg-primary text-white px-6 py-4 rounded-lg shadow-2xl border-2 border-white/30 backdrop-blur-sm'
+      toast.className = 'fixed bottom-4 right-4 z-[200] bg-primary text-white px-6 py-4 rounded-lg shadow-2xl border-2 border-white/30 backdrop-blur-sm animate-in fade-in slide-in-from-bottom-4'
       toast.innerHTML = `
         <div class="flex items-center gap-3">
           <span class="text-2xl">🌐</span>
           <div>
             <p class="font-semibold">Lingua: ${langName}</p>
-            <p class="text-sm text-white/90">Traduzione completa in arrivo</p>
+            <p class="text-sm text-white/90">Traduzione applicata</p>
           </div>
         </div>
       `
       document.body.appendChild(toast)
       
-      // Rimuovi dopo 3 secondi
+      // Remove after 3 seconds
       setTimeout(() => {
         toast.style.opacity = '0'
         toast.style.transform = 'translateY(20px)'
@@ -78,12 +70,12 @@ export function LanguageSelector() {
         setTimeout(() => toast.remove(), 300)
       }, 3000)
     }
-    
-    // TODO: Quando routing multilingua sarà pronto, decommentare:
-    // router.push(`/${langCode}${pathname}`)
   }
 
-  const currentLanguage = languages.find(l => l.code === currentLang) || languages[0]
+  const currentLanguage = useMemo(() => 
+    languages.find(l => l.code === locale) || languages[0],
+    [locale]
+  )
 
   return (
     <div className="relative" ref={dropdownRef}>
@@ -114,14 +106,14 @@ export function LanguageSelector() {
                   key={lang.code}
                   onClick={() => handleLanguageChange(lang.code)}
                   className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all text-left ${
-                    currentLang === lang.code
+                    locale === lang.code
                       ? "bg-primary/10 text-primary font-semibold"
                       : "hover:bg-primary/5 text-gray-700"
                   }`}
                 >
                   <span className="text-xl">{lang.flag}</span>
                   <span className="flex-1 text-sm">{lang.name}</span>
-                  {currentLang === lang.code && (
+                  {locale === lang.code && (
                     <Check className="w-4 h-4 text-primary" />
                   )}
                 </button>
@@ -129,7 +121,7 @@ export function LanguageSelector() {
             </div>
             <div className="px-4 py-2 bg-primary/5 border-t border-primary/10">
               <p className="text-xs text-muted-foreground text-center">
-                Multilingua in arrivo
+                ✓ Traduzione attiva
               </p>
             </div>
           </motion.div>

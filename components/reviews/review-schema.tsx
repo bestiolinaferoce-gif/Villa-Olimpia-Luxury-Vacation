@@ -1,4 +1,4 @@
-import { Review } from "@/data/reviews-detailed"
+import { Review } from "@/data/reviews-complete"
 
 export function ReviewSchema({ review }: { review: Review }) {
   const schema = {

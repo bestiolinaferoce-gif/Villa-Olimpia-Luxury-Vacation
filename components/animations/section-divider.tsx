@@ -19,7 +19,7 @@ export function SectionDivider({ variant = "default", className = "" }: SectionD
     accent: {
       iconBg: "from-gold/20 to-accent/20",
       iconBorder: "border-gold/30",
-      iconColor: "text-gold",
+      iconColor: "text-amber-500",
       lineColor: "via-gold/20"
     },
     minimal: {

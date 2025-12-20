@@ -286,3 +286,12 @@ NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
 **Prossimo step:** Configurare `NEXT_PUBLIC_GA_MEASUREMENT_ID` e testare in produzione.
 
 
+
+
+
+
+
+
+
+
+

@@ -79,3 +79,17 @@ Se non sono configurate, aggiungile dopo il deploy e fai un redeploy.
 
 **Il deploy è in corso! Attendi 3-5 minuti e verifica su Netlify Dashboard.** 🚀
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+

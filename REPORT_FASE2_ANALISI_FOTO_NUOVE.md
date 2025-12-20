@@ -217,3 +217,13 @@ Total file: ~50+ foto
 
 **PRONTO PER FASE 3: Strategia rinominazione**
 
+
+
+
+
+
+
+
+
+
+

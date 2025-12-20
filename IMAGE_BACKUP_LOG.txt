@@ -19,3 +19,13 @@ Tutti i file delle 9 cartelle appartamenti sono stati salvati.
 Per ripristinare:
 cp -r backup_images_20251210_000114/appartamenti/* public/images/villa/appartamenti/
 
+
+
+
+
+
+
+
+
+
+

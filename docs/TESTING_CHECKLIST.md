@@ -500,3 +500,12 @@
 *Nota: Alcuni test richiedono pagine dettaglio location e sezione enogastronomia ancora da implementare (FASE 1-5)*
 
 
+
+
+
+
+
+
+
+
+

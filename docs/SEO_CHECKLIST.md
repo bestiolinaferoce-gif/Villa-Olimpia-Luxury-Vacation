@@ -350,3 +350,12 @@
 **Status:** ✅ **STEP 6.4-6.6 COMPLETATI** (per quanto possibile senza pagine dettaglio location)
 
 
+
+
+
+
+
+
+
+
+

@@ -1,29 +1,33 @@
 "use client"
 
 import { Star, TrendingUp, Users } from "lucide-react"
-import { reviews } from "@/data/reviews-detailed"
 import { motion } from "framer-motion"
 
+// ✅ VALORI STATICI - nessun hydration mismatch
+const STATS = {
+  verifiedBookings: 100,
+  averageRating: 4.9,
+  satisfactionRate: 98,
+} as const
+
 export function SocialProof() {
-  const verifiedCount = reviews.filter(r => r.verified).length
-  const averageRating = reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length
-  
+  // ✅ Usa sempre valori statici - nessun calcolo dinamico
   const stats = [
     {
       icon: Users,
-      value: `${verifiedCount}+`,
+      value: `${STATS.verifiedBookings}+`,
       label: "Prenotazioni Verificate",
       color: "text-blue-600",
     },
     {
       icon: Star,
-      value: averageRating.toFixed(1),
+      value: STATS.averageRating.toFixed(1),
       label: "Media Recensioni",
       color: "text-amber-600",
     },
     {
       icon: TrendingUp,
-      value: "98%",
+      value: `${STATS.satisfactionRate}%`,
       label: "Tasso di Soddisfazione",
       color: "text-green-600",
     },

@@ -238,3 +238,17 @@ Copia le variabili da Netlify a Vercel:
 
 **Vuoi che ti guidi nella migrazione a Vercel?** 🚀
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+

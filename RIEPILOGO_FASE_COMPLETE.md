@@ -195,3 +195,17 @@ Dopo aver configurato le variabili su Vercel e fatto il redeploy:
 
 Il codice è pronto. Configura le variabili su Vercel seguendo `VERCEL_SETUP.md` e tutto funzionerà!
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -117,3 +117,17 @@ Vercel rileva automaticamente Next.js, quindi la maggior parte della configurazi
 
 **Pronto per iniziare? Segui gli step sopra!** 🚀
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+

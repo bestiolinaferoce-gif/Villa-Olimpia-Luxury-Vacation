@@ -4,59 +4,25 @@ import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { poolImages } from '@/lib/pool-images'
 
 // Foto disponibili dalla gallery e location
 // AGGIUNTO: Tutte le foto importate, con priorità alla piscina
 const galleryImages = [
-  // PISCINA - Prima sezione (priorità)
-  {
-    src: '/images/villa/gallery/pool-2.jpg',
-    alt: 'Piscina Villa Olimpia - Grande piscina condivisa con solarium e vista mare',
+  // PISCINA - Prima sezione (priorità) - usando mapping centralizzato
+  ...poolImages.all.map((src, idx) => ({
+    src,
+    alt: `Piscina Villa Olimpia - Piscina privata 12x6m con solarium e vista mare${idx > 0 ? ` - Vista ${idx + 1}` : ''}`,
     category: 'Piscina'
-  },
-  {
-    src: '/images/villa/gallery/pool-3.jpg',
-    alt: 'Piscina Villa Olimpia - Vista panoramica della piscina',
-    category: 'Piscina'
-  },
-  {
-    src: '/images/villa/gallery/piscina-villa-olimpia.jpg',
-    alt: 'Piscina Villa Olimpia',
-    category: 'Piscina'
-  },
-  {
-    src: '/images/villa/gallery/piscina-villa-olimpia-3.jpg',
-    alt: 'Piscina Villa Olimpia - Vista panoramica',
-    category: 'Piscina'
-  },
-  {
-    src: '/images/villa/gallery/piscina.jpg',
-    alt: 'Piscina Villa Olimpia',
-    category: 'Piscina'
-  },
+  })),
   // RELAX - Gazebo e aree relax
   {
-    src: '/images/villa/gallery/gazebo-2.jpg',
+    src: '/images/villa/gallery/gazebo_olimpia_2.jpg',
     alt: 'Gazebo Villa Olimpia',
     category: 'Relax'
   },
   {
-    src: '/images/villa/gallery/gazebo-3.jpg',
-    alt: 'Gazebo Villa Olimpia - Area relax',
-    category: 'Relax'
-  },
-  {
-    src: '/images/villa/gallery/gazebo-night.jpg',
-    alt: 'Gazebo Villa Olimpia di notte',
-    category: 'Relax'
-  },
-  {
-    src: '/images/villa/gallery/gazebo-olimpia-2.jpg',
-    alt: 'Gazebo Villa Olimpia',
-    category: 'Relax'
-  },
-  {
-    src: '/images/villa/gallery/gazebo-notte-olimpia.jpg',
+    src: '/images/villa/gallery/gazebo_notte_olimpia.jpg',
     alt: 'Gazebo Villa Olimpia di notte',
     category: 'Relax'
   },
@@ -103,33 +69,18 @@ const galleryImages = [
   },
   // VILLA - Esterni e facciate (solo foto esistenti)
   {
-    src: '/images/villa/gallery/exterior-1.jpg',
+    src: '/images/villa/gallery/esterni_villa_olimpia.jpg',
     alt: 'Esterni Villa Olimpia',
     category: 'Villa'
   },
   {
-    src: '/images/villa/gallery/exterior-2.jpg',
+    src: '/images/villa/hero/facciata_villa_olimpia_.jpg',
     alt: 'Facciata Villa Olimpia',
     category: 'Villa'
   },
   {
-    src: '/images/villa/gallery/exterior-3.jpg',
-    alt: 'Villa Olimpia',
-    category: 'Villa'
-  },
-  {
-    src: '/images/villa/gallery/exterior-4.jpg',
-    alt: 'Esterni Villa Olimpia - Vista panoramica',
-    category: 'Villa'
-  },
-  {
-    src: '/images/villa/gallery/entrance.jpg',
-    alt: 'Ingresso Villa Olimpia',
-    category: 'Villa'
-  },
-  {
-    src: '/images/villa/gallery/entrance-2.jpg',
-    alt: 'Ingresso Villa Olimpia - Vista frontale',
+    src: '/images/villa/hero/facciata_esterna_villa_olimpia___3_.jpg',
+    alt: 'Facciata esterna Villa Olimpia',
     category: 'Villa'
   },
   {
@@ -138,33 +89,18 @@ const galleryImages = [
     category: 'Villa'
   },
   {
-    src: '/images/villa/gallery/night-2.jpg',
+    src: '/images/villa/gallery/villa_olimpia_notte___2_.jpg',
     alt: 'Villa Olimpia di notte - Illuminazione',
     category: 'Villa'
   },
   {
-    src: '/images/villa/gallery/esterni-villa-olimpia.jpg',
-    alt: 'Esterni Villa Olimpia',
-    category: 'Villa'
-  },
-  {
-    src: '/images/villa/gallery/facciata-villa-olimpia.jpg',
-    alt: 'Facciata Villa Olimpia',
-    category: 'Villa'
-  },
-  {
-    src: '/images/villa/gallery/facciata-esterna-villa-olimpia-3.jpg',
-    alt: 'Facciata esterna Villa Olimpia',
-    category: 'Villa'
-  },
-  {
-    src: '/images/villa/gallery/ingresso-villa-olimpia.jpg',
+    src: '/images/villa/hero/ingresso_villa_olimpia.jpg',
     alt: 'Ingresso Villa Olimpia',
     category: 'Villa'
   },
   {
-    src: '/images/villa/gallery/villa-olimpia-notte-2.jpg',
-    alt: 'Villa Olimpia di notte',
+    src: '/images/villa/hero/facciata_esterna_villa_olimpia_notte.jpg',
+    alt: 'Facciata esterna Villa Olimpia di notte',
     category: 'Villa'
   }
 ].filter(img => img.src) // Filtra solo immagini valide

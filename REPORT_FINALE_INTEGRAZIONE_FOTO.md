@@ -262,3 +262,13 @@ Tutte le 34 nuove foto sono state:
 **Generato automaticamente il 10 Dicembre 2025**
 **Sistema di integrazione foto Villa Olimpia**
 
+
+
+
+
+
+
+
+
+
+

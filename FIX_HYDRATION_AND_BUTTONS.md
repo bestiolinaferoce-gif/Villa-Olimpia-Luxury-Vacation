@@ -113,3 +113,12 @@ Tutti i fix sono stati applicati. Eseguire `npm run dev` e testare:
 2. Pagina `/enogastronomia` - verificare che i bottoni siano funzionanti
 
 
+
+
+
+
+
+
+
+
+

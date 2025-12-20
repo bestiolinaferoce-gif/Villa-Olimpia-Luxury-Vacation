@@ -116,3 +116,17 @@ Netlify dovrebbe fare il deploy automatico perché:
 
 **Il codice è su GitHub! Netlify farà il deploy automatico, ma aggiungi le variabili ambiente prima!** 🚀
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+

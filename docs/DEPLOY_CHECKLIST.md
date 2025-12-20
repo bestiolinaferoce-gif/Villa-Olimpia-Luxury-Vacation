@@ -413,3 +413,12 @@ git push origin hotfix/critical-issue
 *Nota: Alcune verifiche richiedono pagine dettaglio location e sezione enogastronomia ancora da implementare*
 
 
+
+
+
+
+
+
+
+
+

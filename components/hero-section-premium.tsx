@@ -8,8 +8,11 @@ import Link from "next/link"
 import { CounterAnimation } from "@/components/animations/counter-animation"
 import { WeatherWidget } from "@/components/weather-widget"
 import Image from "next/image"
+import { poolImages } from "@/lib/pool-images"
+import { useI18n } from "@/components/i18n-provider"
 
 export function HeroSectionPremium() {
+  const { t } = useI18n()
   const ref = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -36,7 +39,7 @@ export function HeroSectionPremium() {
             }}
           />
           
-          {/* Immagine di sfondo - Piscina di notte - Ottimizzata */}
+          {/* Immagine di sfondo - Ripristinata foto precedente */}
           <div className="absolute inset-0">
             <Image
               src="/images/villa/gallery/night-1.jpg"
@@ -95,7 +98,7 @@ export function HeroSectionPremium() {
             <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
             </svg>
-            <span className="text-white text-sm font-medium">Area Marina Protetta Capo Rizzuto</span>
+            <span className="text-white text-sm font-medium">{t.home.hero.protectedArea}</span>
           </motion.div>
 
           {/* Main Title */}
@@ -106,7 +109,7 @@ export function HeroSectionPremium() {
             className="text-5xl md:text-7xl lg:text-8xl font-playfair font-bold leading-tight"
             style={{ textShadow: "0 2px 4px rgba(0,0,0,0.3)" }}
           >
-            Villa Olimpia
+            {t.home.hero.title}
           </motion.h1>
 
           {/* Subtitle */}
@@ -117,7 +120,7 @@ export function HeroSectionPremium() {
             className="text-xl md:text-2xl lg:text-3xl text-white font-light max-w-3xl mx-auto"
             style={{ textShadow: "0 2px 4px rgba(0,0,0,0.3)" }}
           >
-            Esperienza di lusso nella splendida Spiaggia dei Gigli
+            {t.home.hero.subtitle}
           </motion.p>
 
           {/* Stats Counter */}
@@ -131,14 +134,14 @@ export function HeroSectionPremium() {
               <div className="text-3xl md:text-4xl font-bold">
                 <CounterAnimation end={9} />
               </div>
-              <div className="text-sm md:text-base text-white/80 mt-1">Appartamenti</div>
+              <div className="text-sm md:text-base text-white/80 mt-1">{t.home.hero.apartments}</div>
             </div>
             <div className="w-px h-12 bg-white/30" />
             <div className="text-center">
               <div className="text-3xl md:text-4xl font-bold">
                 <CounterAnimation end={150} suffix="+" />
               </div>
-              <div className="text-sm md:text-base text-white/80 mt-1">Ospiti Felici</div>
+              <div className="text-sm md:text-base text-white/80 mt-1">{t.home.hero.happyGuests}</div>
             </div>
             <div className="w-px h-12 bg-white/30" />
             <div className="text-center">
@@ -148,7 +151,7 @@ export function HeroSectionPremium() {
                 <CounterAnimation end={9} />
                 <Star className="h-5 w-5 text-yellow-400 fill-yellow-400 ml-1" />
               </div>
-              <div className="text-sm md:text-base text-white/80 mt-1">Rating</div>
+              <div className="text-sm md:text-base text-white/80 mt-1">{t.home.hero.rating}</div>
             </div>
           </motion.div>
 
@@ -160,16 +163,16 @@ export function HeroSectionPremium() {
             className="flex items-center gap-4 justify-center mt-6 flex-wrap"
           >
             <div className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full border border-white/30">
-              <span className="text-white text-sm font-semibold">⭐ 4.9/5 Rating</span>
+              <span className="text-white text-sm font-semibold">⭐ {t.home.hero.ratingValue}</span>
             </div>
             <div className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full border border-white/30">
-              <span className="text-white text-sm font-semibold">🏖️ 100 metri dalla spiaggia</span>
+              <span className="text-white text-sm font-semibold">🏖️ {t.home.hero.beachDistance}</span>
             </div>
             <div className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full border border-white/30">
-              <span className="text-white text-sm font-semibold">🏊 Piscina Privata</span>
+              <span className="text-white text-sm font-semibold">🏊 {t.home.hero.privatePool}</span>
             </div>
             <div className="bg-yellow-400/90 backdrop-blur-sm px-4 py-2 rounded-full border border-yellow-300/50 shadow-lg">
-              <span className="text-gray-900 text-sm font-bold">✅ Prenotato da 150+ ospiti nel 2024</span>
+              <span className="text-gray-900 text-sm font-bold">✅ {t.home.hero.bookedBy}</span>
             </div>
             {/* Weather Widget integrato nei badge - visibile solo su desktop */}
             <div className="hidden lg:block">
@@ -185,7 +188,7 @@ export function HeroSectionPremium() {
             className="mt-4"
           >
             <div className="inline-flex items-center gap-2 bg-green-500/90 backdrop-blur-sm px-4 py-2 rounded-full border border-green-300/50 shadow-lg">
-              <span className="text-white text-sm font-bold">💰 Prenota Direttamente e Risparmia</span>
+              <span className="text-white text-sm font-bold">💰 {t.home.hero.bookDirectly}</span>
             </div>
           </motion.div>
 
@@ -194,28 +197,28 @@ export function HeroSectionPremium() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.9, duration: 0.8 }}
-            className="flex flex-wrap items-center justify-center gap-4 pt-6"
+            className="flex flex-wrap items-center justify-center gap-4 pt-6 z-10 relative"
           >
             <Button
               size="lg"
-              className="text-lg px-8 py-6 group bg-[#FFC107] text-gray-900 hover:bg-[#FFD54F] shadow-xl font-semibold !border-2 !border-white hover:scale-105 transition-transform"
+              className="text-lg px-8 py-6 group bg-[#FFC107] text-gray-900 hover:bg-[#FFD54F] shadow-xl font-semibold !border-2 !border-white hover:scale-105 transition-transform z-10 relative"
               style={{ borderWidth: '2px', borderStyle: 'solid', borderColor: 'white' }}
               asChild
             >
-              <Link href="/appartamenti">
+              <Link href="/contatti#prenota">
                 <Calendar className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform" />
-                Scopri gli Appartamenti
+                {t.home.hero.bookStay}
               </Link>
             </Button>
             <Button
               size="lg"
-              className="text-lg px-8 py-6 bg-white/20 backdrop-blur-sm text-white !border-2 !border-white hover:bg-white/30 group font-semibold hover:scale-105 transition-transform"
+              className="text-lg px-8 py-6 bg-white/20 backdrop-blur-sm text-white !border-2 !border-white hover:bg-white/30 group font-semibold hover:scale-105 transition-transform z-10 relative"
               style={{ borderWidth: '2px', borderStyle: 'solid', borderColor: 'white' }}
               asChild
             >
-              <Link href="/location">
+              <Link href="/appartamenti">
                 <MapPin className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform" />
-                La Location
+                {t.home.hero.discoverApartments}
               </Link>
             </Button>
           </motion.div>
@@ -239,7 +242,7 @@ export function HeroSectionPremium() {
             }
           }}
         >
-          <span className="text-sm font-medium">Scorri</span>
+          <span className="text-sm font-medium">{t.home.hero.scroll}</span>
           <ArrowDown className="h-6 w-6" />
         </motion.div>
       </motion.div>

@@ -277,3 +277,17 @@ Prima di integrare con il sito web, verifica:
 
 **Pro Tip**: Salva questa guida negli snippet di Cursor per accesso rapido!
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+

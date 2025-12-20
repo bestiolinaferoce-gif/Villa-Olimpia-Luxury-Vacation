@@ -277,3 +277,13 @@ Le 15 foto esterne vanno in:
    - FASE 5: Copia e rinominazione
    - FASE 6: Aggiornamento `apartments.ts`
 
+
+
+
+
+
+
+
+
+
+

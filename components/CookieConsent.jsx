@@ -21,8 +21,10 @@ function disableTracking() {
 }
 
 export function CookieConsent() {
+  // FIX HYDRATION: Inizia sempre con valori di default per SSR
   const [showBanner, setShowBanner] = useState(false)
   const [showModal, setShowModal] = useState(false)
+  const [mounted, setMounted] = useState(false)
   const [cookiePreferences, setCookiePreferences] = useState({
     analytics: false,
     marketing: false,
@@ -30,6 +32,9 @@ export function CookieConsent() {
   })
 
   useEffect(() => {
+    // FIX HYDRATION: Set mounted AFTER component mounts to avoid SSR/client mismatch
+    setMounted(true)
+    
     // Solo nel browser
     if (typeof window === 'undefined') return
     
@@ -42,7 +47,7 @@ export function CookieConsent() {
         // Load saved preferences
         try {
           const savedPrefs = JSON.parse(consent)
-          if (savedPrefs.preferences) {
+          if (savedPrefs && typeof savedPrefs === 'object' && savedPrefs.preferences) {
             setCookiePreferences(savedPrefs.preferences)
             applyTrackingPreferences(savedPrefs.preferences)
           } else if (savedPrefs === "accepted") {
@@ -62,6 +67,7 @@ export function CookieConsent() {
   }, [])
 
   const applyTrackingPreferences = (prefs) => {
+    if (!prefs || typeof prefs !== 'object') return
     if (prefs.analytics || prefs.marketing) {
       enableTracking()
     } else {
@@ -132,7 +138,7 @@ export function CookieConsent() {
     }))
   }
 
-  if (!showBanner) return null
+  if (!mounted || !showBanner) return null
 
   return (
     <>

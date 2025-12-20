@@ -71,3 +71,13 @@ npm run build
 **Next.js Version:** 16.0.7
 **Status:** ✅ Risolto
 
+
+
+
+
+
+
+
+
+
+

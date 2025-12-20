@@ -105,3 +105,17 @@ NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=la_tua_public_key
 
 Dimmi quando hai il Template ID e la Public Key, così configuriamo il `.env.local` insieme! 🚀
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
