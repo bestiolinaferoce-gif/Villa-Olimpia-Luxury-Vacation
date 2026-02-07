@@ -1,11 +1,8 @@
-const createNextIntlPlugin = require('next-intl/plugin');
-const withNextIntl = createNextIntlPlugin('./i18n/request.ts');
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // Ottimizzazioni per Vercel
   reactStrictMode: true,
-  
+
   // Configurazione immagini ottimizzata (Next.js 16+ compatibile)
   images: {
     // Remote patterns per immagini esterne
@@ -23,12 +20,12 @@ const nextConfig = {
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
-  
+
   // Compressione
   compress: true,
-  
+
   // Note: swcMinify è sempre abilitato in Next.js 16+, non serve specificarlo
-  
+
   // Headers di sicurezza e caching
   async headers() {
     return [
@@ -80,11 +77,11 @@ const nextConfig = {
       },
     ]
   },
-  
+
   // Ottimizzazioni bundle
   experimental: {
     optimizePackageImports: ['lucide-react', 'framer-motion'],
   },
 }
 
-module.exports = withNextIntl(nextConfig)
+module.exports = nextConfig

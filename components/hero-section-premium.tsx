@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useRef } from "react"
-import { motion, useScroll, useTransform } from "framer-motion"
+import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { ArrowDown, Calendar, MapPin, Star } from "lucide-react"
 import Link from "next/link"
@@ -14,6 +14,7 @@ import { useI18n } from "@/components/i18n-provider"
 export function HeroSectionPremium() {
   const { t } = useI18n()
   const ref = useRef<HTMLDivElement>(null)
+  const shouldReduceMotion = useReducedMotion()
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"],
@@ -27,7 +28,7 @@ export function HeroSectionPremium() {
     <section ref={ref} className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background elegante con gradiente mediterraneo */}
       <motion.div
-        style={{ y, scale, opacity }}
+        style={shouldReduceMotion ? undefined : { y, scale, opacity }}
         className="absolute inset-0 -z-10"
       >
         <div className="relative w-full h-full">
@@ -46,6 +47,7 @@ export function HeroSectionPremium() {
               alt="Villa Olimpia - Piscina di notte"
               fill
               priority
+              fetchPriority="high"
               quality={75}
               className="object-cover"
               sizes="100vw"
@@ -79,12 +81,8 @@ export function HeroSectionPremium() {
           {/* Badge Area Marina Protetta con animazione floating */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ 
-              opacity: 1, 
-              scale: 1,
-              y: [0, -10, 0]
-            }}
-            transition={{ 
+            animate={shouldReduceMotion ? { opacity: 1, scale: 1 } : { opacity: 1, scale: 1, y: [0, -10, 0] }}
+            transition={shouldReduceMotion ? { delay: 0.2, duration: 0.5 } : { 
               delay: 0.2, 
               duration: 0.5,
               y: {
@@ -171,7 +169,7 @@ export function HeroSectionPremium() {
             <div className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full border border-white/30">
               <span className="text-white text-sm font-semibold">🏊 {t.home.hero.privatePool}</span>
             </div>
-            <div className="bg-yellow-400/90 backdrop-blur-sm px-4 py-2 rounded-full border border-yellow-300/50 shadow-lg">
+            <div className="bg-yellow-400/90 backdrop-blur-sm px-4 py-2 rounded-full border border-yellow-300/50 shadow-lg animate-float-soft">
               <span className="text-gray-900 text-sm font-bold">✅ {t.home.hero.bookedBy}</span>
             </div>
             {/* Weather Widget integrato nei badge - visibile solo su desktop */}
@@ -233,8 +231,8 @@ export function HeroSectionPremium() {
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10"
       >
         <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+          animate={shouldReduceMotion ? undefined : { y: [0, 10, 0] }}
+          transition={shouldReduceMotion ? undefined : { duration: 2, repeat: Infinity, ease: "easeInOut" }}
           className="flex flex-col items-center gap-2 text-white/80 cursor-pointer"
           onClick={() => {
             if (typeof window !== 'undefined') {
@@ -249,4 +247,3 @@ export function HeroSectionPremium() {
     </section>
   )
 }
-

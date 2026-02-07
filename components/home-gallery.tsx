@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
-import { motion } from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { poolImages } from '@/lib/pool-images'
 
@@ -108,17 +108,19 @@ const galleryImages = [
 export function HomeGallery() {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [imageErrors, setImageErrors] = useState<Set<number>>(new Set())
+  const shouldReduceMotion = useReducedMotion()
 
   // Auto-scroll continuo
   useEffect(() => {
     if (galleryImages.length === 0) return
+    if (shouldReduceMotion) return
     
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % galleryImages.length)
     }, 4000) // Cambia immagine ogni 4 secondi
 
     return () => clearInterval(interval)
-  }, [galleryImages.length])
+  }, [galleryImages.length, shouldReduceMotion])
 
   const handleImageError = (index: number) => {
     setImageErrors(prev => new Set(prev).add(index))
@@ -164,7 +166,7 @@ export function HomeGallery() {
                   opacity: idx === currentIndex ? 1 : 0,
                   scale: idx === currentIndex ? 1 : 1.1
                 }}
-                transition={{ duration: 0.5 }}
+                transition={{ duration: shouldReduceMotion ? 0.1 : 0.5 }}
                 className={`absolute inset-0 ${idx === currentIndex ? 'z-10' : 'z-0'}`}
               >
                 <Image
@@ -243,6 +245,7 @@ export function HomeGallery() {
                 fill
                 className="object-cover"
                 sizes="(max-width: 768px) 33vw, 20vw"
+                loading="lazy"
               />
             </button>
           ))}
@@ -260,4 +263,3 @@ export function HomeGallery() {
     </section>
   )
 }
-

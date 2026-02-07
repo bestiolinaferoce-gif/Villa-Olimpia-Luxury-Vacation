@@ -103,6 +103,35 @@
   }
 }
 
+/* Content-visibility per render più veloce su sezioni lunghe */
+.cv-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 1000px;
+}
+
+/* Micro-animazioni leggere (CSS only) */
+@keyframes float-soft {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.animate-float-soft {
+  animation: float-soft 6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-float-soft {
+    animation: none;
+  }
+}
+
 /* Animazione scroll orizzontale per banner */
 @keyframes scroll-horizontal {
   0% {

@@ -1,19 +1,14 @@
-import createMiddleware from 'next-intl/middleware';
-import { locales, defaultLocale } from './i18n/request';
+// Middleware disabilitato - internazionalizzazione non ancora attiva
+// Per riattivare, ripristinare la configurazione next-intl
 
-export default createMiddleware({
-  locales,
-  defaultLocale,
-  localePrefix: 'always' // Tutti gli URL con prefisso /locale
-});
+import { NextResponse } from 'next/server';
+import type { NextRequest } from 'next/server';
+
+export function middleware(request: NextRequest) {
+  return NextResponse.next();
+}
 
 export const config = {
-  // Match all pathnames except for
-  // - api routes
-  // - _next (Next.js internals)
-  // - _vercel (Vercel internals)
-  // - files with an extension (e.g. .ico)
-  matcher: ['/((?!api|_next|_vercel|.*\\..*).*)']
+  // Non intercettare nessuna route
+  matcher: []
 };
-
-

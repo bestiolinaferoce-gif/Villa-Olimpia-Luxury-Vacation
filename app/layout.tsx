@@ -94,18 +94,6 @@ export default function RootLayout({
               priceRange: "€€",
               image: "https://villaolimpia.com/og-image.jpg",
               numberOfRooms: 9,
-              starRating: {
-                "@type": "Rating",
-                ratingValue: "4.9",
-                bestRating: "5"
-              },
-              aggregateRating: {
-                "@type": "AggregateRating",
-                ratingValue: "4.9",
-                reviewCount: "150",
-                bestRating: "5",
-                worstRating: "1"
-              },
               amenityFeature: [
                 {
                   "@type": "LocationFeatureSpecification",
