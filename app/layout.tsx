@@ -55,13 +55,8 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         
-        {/* Hreflang tags per multilingua */}
-        <link rel="alternate" hrefLang="it" href="https://villaolimpia.com/it" />
-        <link rel="alternate" hrefLang="en" href="https://villaolimpia.com/en" />
-        <link rel="alternate" hrefLang="de" href="https://villaolimpia.com/de" />
-        <link rel="alternate" hrefLang="nl" href="https://villaolimpia.com/nl" />
-        <link rel="alternate" hrefLang="es" href="https://villaolimpia.com/es" />
-        <link rel="alternate" hrefLang="fr" href="https://villaolimpia.com/fr" />
+        {/* Hreflang tag - solo italiano per ora */}
+        <link rel="alternate" hrefLang="it" href="https://villaolimpia.com" />
         <link rel="alternate" hrefLang="x-default" href="https://villaolimpia.com" />
         {/* Meta tags Airbnb */}
         <meta property="og:type" content="lodging" />

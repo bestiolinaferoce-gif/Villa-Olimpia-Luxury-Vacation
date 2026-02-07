@@ -119,3 +119,4 @@ Dimmi quando hai il Template ID e la Public Key, così configuriamo il `.env.loc
 
 
 
+
