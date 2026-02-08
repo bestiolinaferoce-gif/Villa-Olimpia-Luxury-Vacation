@@ -17,24 +17,32 @@ export function ReviewStats() {
           <CardTitle className="text-2xl font-playfair">Valutazione Media</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="flex items-center gap-2 mb-2">
-            <span className="text-4xl font-bold text-primary">{averageRating}</span>
-            <div className="flex gap-1">
-              {[...Array(5)].map((_, i) => (
-                <Star
-                  key={i}
-                  className={`h-5 w-5 ${
-                    i < Math.round(averageRating)
-                      ? "fill-amber-500 text-amber-500"
-                      : "fill-muted text-muted-foreground"
-                  }`}
-                />
-              ))}
-            </div>
-          </div>
-          <p className="text-sm text-muted-foreground">
-            Basato su {totalReviews} recensioni
-          </p>
+          {totalReviews > 0 ? (
+            <>
+              <div className="flex items-center gap-2 mb-2">
+                <span className="text-4xl font-bold text-primary">{averageRating}</span>
+                <div className="flex gap-1">
+                  {[...Array(5)].map((_, i) => (
+                    <Star
+                      key={i}
+                      className={`h-5 w-5 ${
+                        i < Math.round(averageRating)
+                          ? "fill-amber-500 text-amber-500"
+                          : "fill-muted text-muted-foreground"
+                      }`}
+                    />
+                  ))}
+                </div>
+              </div>
+              <p className="text-sm text-muted-foreground">
+                Basato su {totalReviews} recensioni
+              </p>
+            </>
+          ) : (
+            <p className="text-sm text-muted-foreground">
+              Dati in aggiornamento con fonti OTA verificate.
+            </p>
+          )}
         </CardContent>
       </Card>
 
@@ -46,7 +54,7 @@ export function ReviewStats() {
         <CardContent>
           <div className="text-4xl font-bold text-primary mb-2">{totalReviews}</div>
           <p className="text-sm text-muted-foreground">
-            Recensioni verificate e generate
+            Recensioni pubbliche verificate (OTA)
           </p>
         </CardContent>
       </Card>
@@ -57,29 +65,34 @@ export function ReviewStats() {
           <CardTitle className="text-2xl font-playfair">Distribuzione</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="space-y-2">
-            {[5, 4, 3, 2, 1].map((rating) => {
-              const count = distribution[rating as keyof typeof distribution]
-              const percentage = (count / totalReviews) * 100
-              return (
-                <div key={rating} className="flex items-center gap-2">
-                  <span className="text-sm w-12">{rating} stelle</span>
-                  <div className="flex-1 h-2 bg-secondary rounded-full overflow-hidden">
-                    <div
-                      className="h-full bg-primary transition-all"
-                      style={{ width: `${percentage}%` }}
-                    />
+          {totalReviews > 0 ? (
+            <div className="space-y-2">
+              {[5, 4, 3, 2, 1].map((rating) => {
+                const count = distribution[rating as keyof typeof distribution]
+                const percentage = (count / totalReviews) * 100
+                return (
+                  <div key={rating} className="flex items-center gap-2">
+                    <span className="text-sm w-12">{rating} stelle</span>
+                    <div className="flex-1 h-2 bg-secondary rounded-full overflow-hidden">
+                      <div
+                        className="h-full bg-primary transition-all"
+                        style={{ width: `${percentage}%` }}
+                      />
+                    </div>
+                    <span className="text-sm text-muted-foreground w-8 text-right">
+                      {count}
+                    </span>
                   </div>
-                  <span className="text-sm text-muted-foreground w-8 text-right">
-                    {count}
-                  </span>
-                </div>
-              )
-            })}
-          </div>
+                )
+              })}
+            </div>
+          ) : (
+            <p className="text-sm text-muted-foreground">
+              Distribuzione disponibile dopo l'import delle recensioni OTA.
+            </p>
+          )}
         </CardContent>
       </Card>
     </div>
   )
 }
-

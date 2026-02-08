@@ -29,10 +29,10 @@
       "apartments": "Appartementen",
       "happyGuests": "Blije Gasten",
       "rating": "Beoordeling",
-      "ratingValue": "4.9/5 Beoordeling",
+      "ratingValue": "Uitstekende beoordeling",
       "beachDistance": "100 meter van het strand",
       "privatePool": "Privé Zwembad",
-      "bookedBy": "Geboekt door 150+ gasten in 2024",
+      "bookedBy": "Geboekt door veel gasten in 2024",
       "bookDirectly": "Boek direct en bespaar",
       "bookStay": "Boek uw verblijf",
       "discoverApartments": "Ontdek Appartementen",
@@ -99,11 +99,11 @@
       "title": "Beoordelingen van Onze Gasten",
       "subtitle": "Geverifieerde beoordelingen",
       "description": "Gemiddelde beoordeling",
-      "descriptionRating": "4.9/5",
+      "descriptionRating": "Uitstekend",
       "descriptionStars": "sterren gebaseerd op",
-      "descriptionCount": "100+",
-      "descriptionReviews": "geverifieerde beoordelingen van Booking.com, Airbnb en Google.",
-      "verifiedCount": "100+ Geverifieerde Beoordelingen",
+      "descriptionCount": "veel",
+      "descriptionReviews": "geverifieerde beoordelingen online.",
+      "verifiedCount": "Geverifieerde Beoordelingen",
       "readMore": "Lees Beoordelingen"
     },
     "howToReach": {
@@ -234,5 +234,4 @@
     "copyright": "Alle rechten voorbehouden"
   }
 }
-
 

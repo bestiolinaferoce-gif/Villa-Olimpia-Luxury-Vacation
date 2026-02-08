@@ -2,7 +2,7 @@ import { MetadataRoute } from "next"
 import { apartments } from "@/data/apartments"
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://villaolimpia.com"
+  const baseUrl = "https://villaolimpiacaporizzuto.com"
 
   const apartmentRoutes = apartments.map((apartment) => ({
     url: `${baseUrl}/appartamenti/apartment-${apartment.id}`,
@@ -75,4 +75,3 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...apartmentRoutes,
   ]
 }
-

@@ -29,10 +29,10 @@
       "apartments": "Wohnungen",
       "happyGuests": "Zufriedene Gäste",
       "rating": "Bewertung",
-      "ratingValue": "4.9/5 Bewertung",
+      "ratingValue": "Ausgezeichnete Bewertung",
       "beachDistance": "100 Meter vom Strand",
       "privatePool": "Privater Pool",
-      "bookedBy": "Von 150+ Gästen im Jahr 2024 gebucht",
+      "bookedBy": "Von vielen Gästen im Jahr 2024 gebucht",
       "bookDirectly": "Direkt buchen und sparen",
       "bookStay": "Buchen Sie Ihren Aufenthalt",
       "discoverApartments": "Wohnungen entdecken",
@@ -99,11 +99,11 @@
       "title": "Bewertungen unserer Gäste",
       "subtitle": "Verifizierte Bewertungen",
       "description": "Durchschnittliche Bewertung",
-      "descriptionRating": "4.9/5",
+      "descriptionRating": "Ausgezeichnet",
       "descriptionStars": "Sterne basierend auf",
-      "descriptionCount": "100+",
-      "descriptionReviews": "verifizierten Bewertungen von Booking.com, Airbnb und Google.",
-      "verifiedCount": "100+ Verifizierte Bewertungen",
+      "descriptionCount": "vielen",
+      "descriptionReviews": "verifizierten Bewertungen online.",
+      "verifiedCount": "Verifizierte Bewertungen",
       "readMore": "Bewertungen lesen"
     },
     "howToReach": {
@@ -234,5 +234,4 @@
     "copyright": "Alle Rechte vorbehalten"
   }
 }
-
 

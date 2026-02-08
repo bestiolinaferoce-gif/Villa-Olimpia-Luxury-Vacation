@@ -105,29 +105,44 @@ export function ReviewsSection() {
           <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto font-light">
             Esperienze reali di chi ha già soggiornato a Villa Olimpia
           </p>
-          <div className="mt-8 flex items-center justify-center gap-4 text-sm text-muted-foreground">
-            <span>✓ Booking.com</span>
-            <span>•</span>
-            <span>✓ Airbnb</span>
-            <span>•</span>
-            <span>✓ Google</span>
-          </div>
+          {reviews.length > 0 && (
+            <div className="mt-8 flex items-center justify-center gap-4 text-sm text-muted-foreground">
+              <span>✓ Booking.com</span>
+              <span>•</span>
+              <span>✓ Airbnb</span>
+              <span>•</span>
+              <span>✓ Google</span>
+            </div>
+          )}
         </div>
 
         {/* Stats */}
         <ReviewStats />
 
-        {/* Advanced Filters */}
-        <ReviewFiltersAdvanced
-          selectedRating={selectedRating}
-          selectedSource={selectedSource}
-          selectedLocale={selectedLocale}
-          sortBy={sortBy}
-          onRatingChange={handleRatingChange}
-          onSourceChange={handleSourceChange}
-          onLocaleChange={handleLocaleChange}
-          onSortChange={handleSortChange}
-        />
+        {reviews.length > 0 ? (
+          <ReviewFiltersAdvanced
+            selectedRating={selectedRating}
+            selectedSource={selectedSource}
+            selectedLocale={selectedLocale}
+            sortBy={sortBy}
+            onRatingChange={handleRatingChange}
+            onSourceChange={handleSourceChange}
+            onLocaleChange={handleLocaleChange}
+            onSortChange={handleSortChange}
+          />
+        ) : (
+          <div className="text-center mb-10">
+            <p className="text-muted-foreground">
+              Stiamo importando le recensioni pubbliche dalle principali OTA (Booking, Airbnb, Google).
+              Se vuoi verifiche immediate, contattaci e ti inviamo i link ufficiali.
+            </p>
+            <div className="mt-4">
+              <Button variant="luxury" asChild>
+                <a href="/contatti">Contattaci per le recensioni</a>
+              </Button>
+            </div>
+          </div>
+        )}
 
         {/* Reviews Grid */}
         {paginatedReviews.length > 0 ? (
@@ -183,4 +198,3 @@ export function ReviewsSection() {
     </section>
   )
 }
-

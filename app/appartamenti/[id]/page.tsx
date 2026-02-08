@@ -274,14 +274,10 @@ export default async function ApartmentDetailPage({ params }: PageProps) {
                     <p className="text-muted-foreground">Dalle 15:00 / Entro le 10:00</p>
                   </div>
                   <div>
-                    <p className="font-semibold text-foreground mb-1">⭐ Valutazione Media</p>
-                    <p className="text-muted-foreground flex items-center gap-1">
+                    <p className="font-semibold text-foreground mb-1">⭐ Recensioni</p>
+                    <p className="text-muted-foreground flex items-center gap-2">
                       <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-                      <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-                      <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-                      <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-                      <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-                      <span className="ml-1">4.9/5 (35+ recensioni)</span>
+                      <span>Recensioni verificate online</span>
                     </p>
                   </div>
                 </div>
@@ -440,8 +436,8 @@ export default async function ApartmentDetailPage({ params }: PageProps) {
             "name": `Appartamento ${apartment.name} - Villa Olimpia`,
             "description": apartment.fullDescription || apartment.description,
             "image": apartment.image.startsWith("/") 
-              ? `https://villaolimpia.com${apartment.image}` 
-              : "https://villaolimpia.com/og-image.jpg",
+              ? `https://villaolimpiacaporizzuto.com${apartment.image}` 
+              : "https://villaolimpiacaporizzuto.com/og-image.jpg",
             "address": {
               "@type": "PostalAddress",
               "streetAddress": VILLA_OLIMPIA_LOCATION.address.street,
@@ -466,16 +462,10 @@ export default async function ApartmentDetailPage({ params }: PageProps) {
             })),
             "priceRange": `€${apartment.price}/notte`,
             "telephone": VILLA_OLIMPIA_LOCATION.contact.phone,
-            "url": `https://villaolimpia.com/appartamenti/apartment-${apartment.id}`,
-            "aggregateRating": {
-              "@type": "AggregateRating",
-              "ratingValue": "4.9",
-              "reviewCount": "35"
-            }
+            "url": `https://villaolimpiacaporizzuto.com/appartamenti/apartment-${apartment.id}`
           })
         }}
       />
     </div>
   )
 }
-

@@ -5,7 +5,7 @@ import { Breadcrumb } from "@/components/breadcrumb"
 
 export const metadata = {
   title: "Recensioni - Villa Olimpia",
-  description: `Leggi le recensioni dei nostri ospiti. Valutazione media ${getAverageRating()}/5 stelle basata su ${reviews.length} recensioni. Esperienze reali di chi ha soggiornato a Villa Olimpia, Capo Rizzuto.`,
+  description: "Leggi le recensioni dei nostri ospiti. Stiamo importando le recensioni pubbliche dalle principali OTA. Esperienze reali di chi ha soggiornato a Villa Olimpia, Capo Rizzuto.",
 }
 
 export default function RecensioniPage() {

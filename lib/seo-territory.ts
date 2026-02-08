@@ -30,7 +30,7 @@ export const TERRITORY_SEO = {
       description: "9 appartamenti di lusso con piscina privata a Capo Rizzuto. Spiaggia dei Gigli Bandiera Blu, Area Marina Protetta, Valli Cupe e siti UNESCO nelle vicinanze.",
       images: [
         {
-          url: "https://villaolimpia.com/images/villa/location/spiaggia-dei-gigli.jpg",
+          url: "https://villaolimpiacaporizzuto.com/images/villa/location/spiaggia-dei-gigli.jpg",
           width: 1200,
           height: 630,
           alt: "Spiaggia dei Gigli Bandiera Blu - Villa Olimpia Capo Rizzuto"
@@ -44,7 +44,7 @@ export const TERRITORY_SEO = {
       card: "summary_large_image",
       title: "Villa Olimpia | Vacanze Premium in Calabria",
       description: "9 appartamenti di lusso con piscina. Spiaggia Bandiera Blu, Area Marina Protetta, Valli Cupe e siti UNESCO.",
-      images: ["https://villaolimpia.com/images/villa/location/spiaggia-dei-gigli.jpg"]
+      images: ["https://villaolimpiacaporizzuto.com/images/villa/location/spiaggia-dei-gigli.jpg"]
     }
   },
 
@@ -123,10 +123,10 @@ export const TERRITORY_SEO = {
   facebook: {
     ogTags: {
       "og:type": "website",
-      "og:url": "https://villaolimpia.com",
+      "og:url": "https://villaolimpiacaporizzuto.com",
       "og:title": "Villa Olimpia | Vacanze Premium in Calabria",
       "og:description": "9 appartamenti di lusso con piscina privata. Spiaggia Bandiera Blu, Area Marina Protetta, siti UNESCO. Capo Rizzuto, Calabria.",
-      "og:image": "https://villaolimpia.com/images/villa/location/spiaggia-dei-gigli.jpg",
+      "og:image": "https://villaolimpiacaporizzuto.com/images/villa/location/spiaggia-dei-gigli.jpg",
       "og:image:width": "1200",
       "og:image:height": "630",
       "og:image:alt": "Spiaggia dei Gigli Bandiera Blu - Villa Olimpia Capo Rizzuto",
@@ -148,7 +148,7 @@ export const TERRITORY_SEO = {
     "@type": "LodgingBusiness",
     "name": "Villa Olimpia",
     "description": "9 appartamenti di lusso con piscina privata a Capo Rizzuto, Calabria. Vicino a Spiaggia dei Gigli Bandiera Blu, Area Marina Protetta, Valli Cupe e siti UNESCO.",
-    "url": "https://villaolimpia.com",
+    "url": "https://villaolimpiacaporizzuto.com",
     "telephone": "+393290479193",
     "address": {
       "@type": "PostalAddress",
@@ -165,8 +165,8 @@ export const TERRITORY_SEO = {
     },
     "priceRange": "€€",
     "image": [
-      "https://villaolimpia.com/images/villa/hero/facciata-esterna-villa-olimpia-notte.jpg",
-      "https://villaolimpia.com/images/villa/location/spiaggia-dei-gigli.jpg"
+      "https://villaolimpiacaporizzuto.com/images/villa/hero/facciata-esterna-villa-olimpia-notte.jpg",
+      "https://villaolimpiacaporizzuto.com/images/villa/location/spiaggia-dei-gigli.jpg"
     ],
     "numberOfRooms": 9,
     "starRating": {

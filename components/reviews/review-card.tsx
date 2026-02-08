@@ -68,21 +68,19 @@ export function ReviewCard({ review, index }: ReviewCardProps) {
                 </p>
               </div>
             </div>
-            {review.source !== "Generated" && (
-              <div className="flex flex-col items-end gap-1">
-                <span className="text-xs bg-primary/10 text-primary px-2 py-1 rounded font-semibold">
-                  {review.source === "Booking" && "🏨"}
-                  {review.source === "Airbnb" && "🏡"}
-                  {review.source === "Google" && "🔍"}
-                  {review.source === "Tripadvisor" && "⭐"}
-                  {" "}
-                  {review.source}
-                </span>
-                {review.verified && (
-                  <span className="text-[10px] text-green-600 font-medium">✓ Verificata</span>
-                )}
-              </div>
-            )}
+            <div className="flex flex-col items-end gap-1">
+              <span className="text-xs bg-primary/10 text-primary px-2 py-1 rounded font-semibold">
+                {review.source === "Booking" && "🏨"}
+                {review.source === "Airbnb" && "🏡"}
+                {review.source === "Google" && "🔍"}
+                {review.source === "Tripadvisor" && "⭐"}
+                {" "}
+                {review.source}
+              </span>
+              {review.verified && (
+                <span className="text-[10px] text-green-600 font-medium">✓ Verificata</span>
+              )}
+            </div>
           </div>
 
           {/* Rating */}
@@ -115,4 +113,3 @@ export function ReviewCard({ review, index }: ReviewCardProps) {
     </motion.div>
   )
 }
-

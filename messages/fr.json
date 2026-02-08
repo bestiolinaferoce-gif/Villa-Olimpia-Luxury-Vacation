@@ -29,10 +29,10 @@
       "apartments": "Appartements",
       "happyGuests": "Clients Heureux",
       "rating": "Note",
-      "ratingValue": "4.9/5 Note",
+      "ratingValue": "Excellente note",
       "beachDistance": "100 mètres de la plage",
       "privatePool": "Piscine Privée",
-      "bookedBy": "Réservé par 150+ clients en 2024",
+      "bookedBy": "Réservé par de nombreux clients en 2024",
       "bookDirectly": "Réservez directement et économisez",
       "bookStay": "Réservez votre séjour",
       "discoverApartments": "Découvrir les Appartements",
@@ -99,11 +99,11 @@
       "title": "Avis de Nos Clients",
       "subtitle": "Avis vérifiés",
       "description": "Note moyenne",
-      "descriptionRating": "4.9/5",
+      "descriptionRating": "Excellent",
       "descriptionStars": "étoiles basée sur",
-      "descriptionCount": "100+",
-      "descriptionReviews": "avis vérifiés de Booking.com, Airbnb et Google.",
-      "verifiedCount": "100+ Avis Vérifiés",
+      "descriptionCount": "de nombreuses",
+      "descriptionReviews": "avis vérifiés en ligne.",
+      "verifiedCount": "Avis Vérifiés",
       "readMore": "Lire les Avis"
     },
     "howToReach": {
@@ -234,5 +234,4 @@
     "copyright": "Tous droits réservés"
   }
 }
-
 

@@ -42,12 +42,12 @@ export const metadata: Metadata = {
   ...defaultMetadata,
   alternates: {
     languages: {
-      'it': 'https://villaolimpia.com/it',
-      'en': 'https://villaolimpia.com/en',
-      'de': 'https://villaolimpia.com/de',
-      'fr': 'https://villaolimpia.com/fr',
-      'nl': 'https://villaolimpia.com/nl',
-      'x-default': 'https://villaolimpia.com',
+      'it': 'https://villaolimpiacaporizzuto.com/it',
+      'en': 'https://villaolimpiacaporizzuto.com/en',
+      'de': 'https://villaolimpiacaporizzuto.com/de',
+      'fr': 'https://villaolimpiacaporizzuto.com/fr',
+      'nl': 'https://villaolimpiacaporizzuto.com/nl',
+      'x-default': 'https://villaolimpiacaporizzuto.com',
     },
   },
 }
@@ -75,7 +75,7 @@ export default async function LocaleLayout({
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
         <link rel="icon" href="/favicon.ico" />
-        <link rel="canonical" href={`https://villaolimpia.com/${locale}`} />
+        <link rel="canonical" href={`https://villaolimpiacaporizzuto.com/${locale}`} />
         
         {/* Performance - Preconnect */}
         <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="anonymous" />
@@ -88,12 +88,12 @@ export default async function LocaleLayout({
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         
         {/* Hreflang tags per multilingua */}
-        <link rel="alternate" hrefLang="it" href="https://villaolimpia.com/it" />
-        <link rel="alternate" hrefLang="en" href="https://villaolimpia.com/en" />
-        <link rel="alternate" hrefLang="de" href="https://villaolimpia.com/de" />
-        <link rel="alternate" hrefLang="fr" href="https://villaolimpia.com/fr" />
-        <link rel="alternate" hrefLang="nl" href="https://villaolimpia.com/nl" />
-        <link rel="alternate" hrefLang="x-default" href="https://villaolimpia.com" />
+        <link rel="alternate" hrefLang="it" href="https://villaolimpiacaporizzuto.com/it" />
+        <link rel="alternate" hrefLang="en" href="https://villaolimpiacaporizzuto.com/en" />
+        <link rel="alternate" hrefLang="de" href="https://villaolimpiacaporizzuto.com/de" />
+        <link rel="alternate" hrefLang="fr" href="https://villaolimpiacaporizzuto.com/fr" />
+        <link rel="alternate" hrefLang="nl" href="https://villaolimpiacaporizzuto.com/nl" />
+        <link rel="alternate" hrefLang="x-default" href="https://villaolimpiacaporizzuto.com" />
         
         {/* Meta tags Airbnb */}
         <meta property="og:type" content="lodging" />
@@ -117,7 +117,7 @@ export default async function LocaleLayout({
                 : locale === 'en'
                 ? "9 luxury apartments with private pool in Capo Rizzuto, Calabria. 100 meters from Spiaggia dei Gigli, Capo Rizzuto Marine Protected Area."
                 : "9 luxury apartments with private pool in Capo Rizzuto, Calabria.",
-              url: `https://villaolimpia.com/${locale}`,
+              url: `https://villaolimpiacaporizzuto.com/${locale}`,
               telephone: "+393290479193",
               address: {
                 "@type": "PostalAddress",
@@ -133,20 +133,8 @@ export default async function LocaleLayout({
                 longitude: 17.0754964,
               },
               priceRange: "€€",
-              image: "https://villaolimpia.com/og-image.jpg",
+              image: "https://villaolimpiacaporizzuto.com/og-image.jpg",
               numberOfRooms: 9,
-              starRating: {
-                "@type": "Rating",
-                ratingValue: "4.9",
-                bestRating: "5"
-              },
-              aggregateRating: {
-                "@type": "AggregateRating",
-                ratingValue: "4.9",
-                reviewCount: "150",
-                bestRating: "5",
-                worstRating: "1"
-              },
               amenityFeature: [
                 {
                   "@type": "LocationFeatureSpecification",
@@ -255,4 +243,3 @@ export default async function LocaleLayout({
     </html>
   )
 }
-

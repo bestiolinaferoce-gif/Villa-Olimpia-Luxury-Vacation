@@ -164,10 +164,10 @@ export default function TerminiPage() {
                 <p className="mt-2">
                   <strong>Email:</strong>{" "}
                   <a
-                    href="mailto:info@villaolimpia.com"
+                    href="mailto:villaolimpiacaporizzuto@gmail.com"
                     className="text-primary hover:underline"
                   >
-                    info@villaolimpia.com
+                    villaolimpiacaporizzuto@gmail.com
                   </a>
                 </p>
                 <p>

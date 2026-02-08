@@ -313,7 +313,7 @@ export default function HomePage() {
               </motion.p>
               <div className="inline-flex items-center gap-2 bg-yellow-400/20 px-6 py-3 rounded-full border border-yellow-400/30 mb-8">
                 <Star className="h-5 w-5 text-yellow-500 fill-yellow-500" />
-                <span className="text-lg font-bold text-gray-900">4.9/5</span>
+                <span className="text-lg font-bold text-gray-900">{t('reviews.descriptionRating')}</span>
                 <span className="text-sm text-muted-foreground">•</span>
                 <span className="text-sm font-semibold text-gray-700">{t('reviews.verifiedCount')}</span>
               </div>
@@ -586,5 +586,4 @@ export default function HomePage() {
     </>
   )
 }
-
 

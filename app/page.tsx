@@ -1,7 +1,6 @@
 "use client"
 
 import { HeroSectionPremium } from "@/components/hero-section-premium"
-import ParallaxHero from "@/components/parallax-hero"
 import { ApartmentCard } from "@/components/apartment-card"
 import { StatsSection } from "@/components/stats-section"
 import { ScrollReveal } from "@/components/animations/scroll-reveal"
@@ -11,7 +10,6 @@ import { Button } from "@/components/ui/button"
 import { UrgencyBanner } from "@/components/conversion/urgency-banner"
 import { TrustBadges } from "@/components/conversion/trust-badges"
 import { SocialProof } from "@/components/conversion/social-proof"
-import { TerritorySection } from "@/components/territory-section"
 import Link from "next/link"
 import { Star, Wifi, Car, Waves, Utensils, Shield, Umbrella, MapPin, Sparkles } from "lucide-react"
 import { getFeaturedApartments } from "@/data/apartments"
@@ -109,7 +107,7 @@ export default function HomePage() {
       <TrustBadges />
 
       {/* Featured Apartments */}
-      <section className="py-20 bg-background">
+      <section className="py-20 bg-background cv-auto">
         <div className="container mx-auto px-4">
           <ScrollReveal>
             <div className="text-center mb-12">
@@ -169,7 +167,7 @@ export default function HomePage() {
       <SectionDivider />
 
       {/* Perché Sceglierci */}
-      <section className="py-24 bg-gradient-to-br from-primary/5 via-background to-ocean/5">
+      <section className="py-24 bg-gradient-to-br from-primary/5 via-background to-ocean/5 cv-auto">
         <div className="container mx-auto px-4">
           <ScrollReveal>
             <h2 className="text-4xl md:text-5xl font-playfair font-bold text-center mb-4">
@@ -234,7 +232,7 @@ export default function HomePage() {
       </section>
 
       {/* Services */}
-      <section className="py-20 bg-secondary/30">
+      <section className="py-20 bg-secondary/30 cv-auto">
         <div className="container mx-auto px-4">
           <ScrollReveal>
             <div className="text-center mb-12">
@@ -286,7 +284,7 @@ export default function HomePage() {
       <StatsSection />
 
       {/* Reviews Preview */}
-      <section className="py-20 bg-background">
+      <section className="py-20 bg-background cv-auto">
         <div className="container mx-auto px-4">
           <ScrollReveal>
             <div className="text-center mb-12">
@@ -310,7 +308,7 @@ export default function HomePage() {
               </motion.p>
               <div className="inline-flex items-center gap-2 bg-yellow-400/20 px-6 py-3 rounded-full border border-yellow-400/30 mb-8">
                 <Star className="h-5 w-5 text-yellow-500 fill-yellow-500" />
-                <span className="text-lg font-bold text-gray-900">4.9/5</span>
+                <span className="text-lg font-bold text-gray-900">{t.home.reviews.descriptionRating}</span>
                 <span className="text-sm text-muted-foreground">•</span>
                 <span className="text-sm font-semibold text-gray-700">{t.home.reviews.verifiedCount}</span>
               </div>
@@ -344,7 +342,7 @@ export default function HomePage() {
       <SectionDivider />
 
       {/* Come Raggiungerci */}
-      <section className="py-20 md:py-24 bg-gradient-to-br from-primary/5 via-ocean/5 to-primary/10">
+      <section className="py-20 md:py-24 bg-gradient-to-br from-primary/5 via-ocean/5 to-primary/10 cv-auto">
         <div className="container mx-auto px-4 max-w-4xl">
           <ScrollReveal>
             <div className="text-center mb-12">
@@ -377,7 +375,7 @@ export default function HomePage() {
       <SectionDivider />
 
       {/* FAQ Section Premium */}
-      <section className="py-24 bg-gradient-to-b from-background via-primary/5 to-background">
+      <section className="py-24 bg-gradient-to-b from-background via-primary/5 to-background cv-auto">
         <div className="container mx-auto px-4 max-w-4xl">
           <ScrollReveal>
             <div className="text-center mb-16">
@@ -484,7 +482,7 @@ export default function HomePage() {
       </section>
 
       {/* Trust Badges Premium */}
-      <section className="py-16 bg-gradient-to-br from-muted/30 via-background to-primary/5">
+      <section className="py-16 bg-gradient-to-br from-muted/30 via-background to-primary/5 cv-auto">
         <div className="container mx-auto px-4">
           <ScrollReveal>
             <div className="text-center mb-8">
@@ -528,7 +526,7 @@ export default function HomePage() {
       <SectionDivider variant="accent" />
 
       {/* CTA Section Premium */}
-      <section className="py-24 bg-gradient-to-br from-ocean via-primary to-ocean/80 text-white relative overflow-hidden">
+      <section className="py-24 bg-gradient-to-br from-ocean via-primary to-ocean/80 text-white relative overflow-hidden cv-auto">
         <div className="container mx-auto px-4 text-center relative z-10">
           <ScrollReveal delay={0.2}>
             {/* Trust Badges */}

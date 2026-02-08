@@ -113,10 +113,10 @@ export default function PrivacyPage() {
                 <p>
                   Per esercitare questi diritti, contattaci all&apos;indirizzo:
                   <a
-                    href="mailto:info@villaolimpia.com"
+                    href="mailto:villaolimpiacaporizzuto@gmail.com"
                     className="text-primary hover:underline ml-2"
                   >
-                    info@villaolimpia.com
+                    villaolimpiacaporizzuto@gmail.com
                   </a>
                 </p>
               </CardContent>
@@ -146,10 +146,10 @@ export default function PrivacyPage() {
                 <p className="mt-2">
                   <strong>Email:</strong>{" "}
                   <a
-                    href="mailto:info@villaolimpia.com"
+                    href="mailto:villaolimpiacaporizzuto@gmail.com"
                     className="text-primary hover:underline"
                   >
-                    info@villaolimpia.com
+                    villaolimpiacaporizzuto@gmail.com
                   </a>
                 </p>
                 <p>

@@ -202,7 +202,7 @@ export function TerritorySection() {
               "position": index + 1,
               "name": dest.name,
               "description": dest.description,
-              "image": `https://villaolimpia.com${dest.image}`,
+              "image": `https://villaolimpiacaporizzuto.com${dest.image}`,
               "address": {
                 "@type": "PostalAddress",
                 "addressLocality": "Capo Rizzuto",

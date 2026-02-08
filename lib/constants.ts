@@ -3,9 +3,9 @@
 export const SITE_CONFIG = {
   name: "Villa Olimpia",
   description: "Luxury Vacation Rentals in Calabria, Italy",
-  url: "https://villaolimpia.com",
+  url: "https://villaolimpiacaporizzuto.com",
   phone: "+393491234567",
-  email: "info@villaolimpia.com",
+  email: "villaolimpiacaporizzuto@gmail.com",
   address: {
     street: "Via della Costa",
     city: "Isola di Capo Rizzuto",

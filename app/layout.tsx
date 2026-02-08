@@ -43,7 +43,7 @@ export default function RootLayout({
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
         <link rel="icon" href="/favicon.ico" />
-        <link rel="canonical" href="https://villaolimpia.com" />
+        <link rel="canonical" href="https://villaolimpiacaporizzuto.com" />
         
         {/* Performance - Preconnect */}
         <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="anonymous" />
@@ -56,8 +56,8 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         
         {/* Hreflang tag - solo italiano per ora */}
-        <link rel="alternate" hrefLang="it" href="https://villaolimpia.com" />
-        <link rel="alternate" hrefLang="x-default" href="https://villaolimpia.com" />
+        <link rel="alternate" hrefLang="it" href="https://villaolimpiacaporizzuto.com" />
+        <link rel="alternate" hrefLang="x-default" href="https://villaolimpiacaporizzuto.com" />
         {/* Meta tags Airbnb */}
         <meta property="og:type" content="lodging" />
         <meta property="business:contact_data:locality" content="Isola di Capo Rizzuto" />
@@ -76,7 +76,7 @@ export default function RootLayout({
               "@type": "LodgingBusiness",
               name: "Villa Olimpia",
               description: "9 appartamenti di lusso con piscina privata a Capo Rizzuto, Calabria. A 100 metri dalla Spiaggia dei Gigli, Area Marina Protetta Capo Rizzuto.",
-              url: "https://villaolimpia.com",
+              url: "https://villaolimpiacaporizzuto.com",
               telephone: "+393290479193",
               address: {
                 "@type": "PostalAddress",
@@ -92,7 +92,7 @@ export default function RootLayout({
                 longitude: 17.0754964,
               },
               priceRange: "€€",
-              image: "https://villaolimpia.com/og-image.jpg",
+              image: "https://villaolimpiacaporizzuto.com/og-image.jpg",
               numberOfRooms: 9,
               amenityFeature: [
                 {

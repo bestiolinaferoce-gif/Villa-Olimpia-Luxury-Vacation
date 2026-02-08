@@ -15,7 +15,7 @@ const schemaOrg = {
   "@context": "https://schema.org",
   "@type": "LodgingBusiness",
   "name": "Villa Olimpia",
-  "image": "https://villaolimpia.com/images/villa-olimpia-main.jpg",
+  "image": "https://villaolimpiacaporizzuto.com/images/villa-olimpia-main.jpg",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "Località Capopiccolo snc",

@@ -29,10 +29,10 @@
       "apartments": "Apartments",
       "happyGuests": "Happy Guests",
       "rating": "Rating",
-      "ratingValue": "4.9/5 Rating",
+      "ratingValue": "Excellent rating",
       "beachDistance": "100 meters from the beach",
       "privatePool": "Private Pool",
-      "bookedBy": "Booked by 150+ guests in 2024",
+      "bookedBy": "Booked by many guests in 2024",
       "bookDirectly": "Book Directly and Save",
       "bookStay": "Book your stay",
       "discoverApartments": "Discover Apartments",
@@ -99,11 +99,11 @@
       "title": "Reviews from Our Guests",
       "subtitle": "Verified reviews",
       "description": "Average rating",
-      "descriptionRating": "4.9/5",
+      "descriptionRating": "Excellent",
       "descriptionStars": "stars based on",
-      "descriptionCount": "100+",
-      "descriptionReviews": "verified reviews from Booking.com, Airbnb and Google.",
-      "verifiedCount": "100+ Verified Reviews",
+      "descriptionCount": "many",
+      "descriptionReviews": "verified reviews available online.",
+      "verifiedCount": "Verified Reviews",
       "readMore": "Read Reviews"
     },
     "howToReach": {
@@ -234,5 +234,4 @@
     "copyright": "All rights reserved"
   }
 }
-
 

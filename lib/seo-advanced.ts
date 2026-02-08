@@ -3,16 +3,16 @@
 
 export const SEO_CONFIG = {
   // Base URL
-  baseUrl: "https://villaolimpia.com",
+  baseUrl: "https://villaolimpiacaporizzuto.com",
   
   // Sitemap avanzata con hreflang
   hreflang: {
-    it: "https://villaolimpia.com/it",
-    en: "https://villaolimpia.com/en",
-    de: "https://villaolimpia.com/de",
-    nl: "https://villaolimpia.com/nl",
-    es: "https://villaolimpia.com/es",
-    fr: "https://villaolimpia.com/fr",
+    it: "https://villaolimpiacaporizzuto.com/it",
+    en: "https://villaolimpiacaporizzuto.com/en",
+    de: "https://villaolimpiacaporizzuto.com/de",
+    nl: "https://villaolimpiacaporizzuto.com/nl",
+    es: "https://villaolimpiacaporizzuto.com/es",
+    fr: "https://villaolimpiacaporizzuto.com/fr",
   },
 
   // Structured Data avanzato
@@ -21,12 +21,12 @@ export const SEO_CONFIG = {
     lodgingBusiness: {
       "@context": "https://schema.org",
       "@type": "LodgingBusiness",
-      "@id": "https://villaolimpia.com/#lodging",
+      "@id": "https://villaolimpiacaporizzuto.com/#lodging",
       name: "Villa Olimpia",
       description: "9 appartamenti di lusso con piscina privata a Capo Rizzuto, Calabria",
-      url: "https://villaolimpia.com",
+      url: "https://villaolimpiacaporizzuto.com",
       telephone: "+393290479193",
-      email: "info@villaolimpia.com",
+      email: "villaolimpiacaporizzuto@gmail.com",
       priceRange: "€€",
       starRating: {
         "@type": "Rating",
@@ -71,9 +71,9 @@ export const SEO_CONFIG = {
     localBusiness: {
       "@context": "https://schema.org",
       "@type": "LocalBusiness",
-      "@id": "https://villaolimpia.com/#localbusiness",
+      "@id": "https://villaolimpiacaporizzuto.com/#localbusiness",
       name: "Villa Olimpia",
-      image: "https://villaolimpia.com/og-image.jpg",
+      image: "https://villaolimpiacaporizzuto.com/og-image.jpg",
       address: {
         "@type": "PostalAddress",
         streetAddress: "Località Capopiccolo snc",

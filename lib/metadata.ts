@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import { apartments } from "@/data/apartments"
 import { VILLA_OLIMPIA_LOCATION } from "@/lib/location-data"
 
-const baseUrl = "https://villaolimpia.com"
+const baseUrl = "https://villaolimpiacaporizzuto.com"
 const siteName = "Villa Olimpia"
 
 export function generateMetadata({
@@ -183,4 +183,3 @@ export const defaultMetadata: Metadata = {
     canonical: baseUrl,
   },
 }
-

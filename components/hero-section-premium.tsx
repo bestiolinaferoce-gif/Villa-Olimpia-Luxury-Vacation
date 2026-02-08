@@ -136,20 +136,16 @@ export function HeroSectionPremium() {
             </div>
             <div className="w-px h-12 bg-white/30" />
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold">
-                <CounterAnimation end={150} suffix="+" />
-              </div>
-              <div className="text-sm md:text-base text-white/80 mt-1">{t.home.hero.happyGuests}</div>
+              <div className="text-3xl md:text-4xl font-bold">100m</div>
+              <div className="text-sm md:text-base text-white/80 mt-1">{t.home.hero.beachDistance}</div>
             </div>
             <div className="w-px h-12 bg-white/30" />
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold flex items-center justify-center gap-1">
-                <CounterAnimation end={4} />
-                <span className="text-yellow-400">.</span>
-                <CounterAnimation end={9} />
-                <Star className="h-5 w-5 text-yellow-400 fill-yellow-400 ml-1" />
+              <div className="text-3xl md:text-4xl font-bold flex items-center justify-center gap-2">
+                <Star className="h-6 w-6 text-yellow-400 fill-yellow-400" />
+                <span>Piscina</span>
               </div>
-              <div className="text-sm md:text-base text-white/80 mt-1">{t.home.hero.rating}</div>
+              <div className="text-sm md:text-base text-white/80 mt-1">{t.home.hero.privatePool}</div>
             </div>
           </motion.div>
 
