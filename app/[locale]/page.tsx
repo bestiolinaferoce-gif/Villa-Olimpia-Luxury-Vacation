@@ -17,7 +17,7 @@ import { Star, Wifi, Car, Waves, Utensils, Shield, Umbrella, MapPin, Sparkles } 
 import { getFeaturedApartments } from "@/data/apartments"
 import { motion } from "framer-motion"
 import dynamic from "next/dynamic"
-import { useTranslations, useLocale } from 'next-intl'
+import { useTranslations } from 'next-intl'
 
 // Lazy load componenti pesanti
 const HomeGallery = dynamic(() => import("@/components/home-gallery").then(mod => ({ default: mod.HomeGallery })), {
@@ -32,8 +32,7 @@ const HowToReachUs = dynamic(() => import("@/components/how-to-reach-us").then(m
 
 function CTAButtons() {
   const t = useTranslations('home')
-  const locale = useLocale()
-  
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -53,7 +52,7 @@ function CTAButtons() {
           style={{ borderWidth: '2px', borderStyle: 'solid', borderColor: 'white' }}
           asChild
         >
-          <Link href={`/${locale}/contatti`}>
+          <Link href="/contatti">
             <span className="group-hover:translate-x-1 transition-transform inline-block">
               {t('cta.bookVacation')}
             </span>
@@ -69,7 +68,6 @@ function CTAButtons() {
 
 export default function HomePage() {
   const t = useTranslations('home')
-  const locale = useLocale()
   const featuredApartments = getFeaturedApartments()
 
   const services = [
@@ -153,7 +151,7 @@ export default function HomePage() {
                 whileTap={{ scale: 0.95 }}
               >
                 <Button variant="luxury" size="lg" asChild className="group">
-                  <Link href={`/${locale}/appartamenti`}>
+                  <Link href="/appartamenti">
                     <span className="group-hover:translate-x-1 transition-transform inline-block">
                       {t('featured.viewAll')}
                     </span>
@@ -322,7 +320,7 @@ export default function HomePage() {
                 whileTap={{ scale: 0.95 }}
               >
                 <Button variant="luxury" size="lg" asChild className="group">
-                  <Link href={`/${locale}/recensioni`}>
+                  <Link href="/recensioni">
                     <span className="group-hover:translate-x-1 transition-transform inline-block">
                       {t('reviews.readMore')}
                     </span>
@@ -471,7 +469,7 @@ export default function HomePage() {
                 whileTap={{ scale: 0.95 }}
               >
                 <Button variant="luxury" size="lg" asChild className="group">
-                  <Link href={`/${locale}/faq`}>
+                  <Link href="/faq">
                     <span className="group-hover:translate-x-1 transition-transform inline-block">
                       {t('faq.viewAll')}
                     </span>
