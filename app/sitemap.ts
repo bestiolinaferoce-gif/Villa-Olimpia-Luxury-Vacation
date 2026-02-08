@@ -72,6 +72,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.7,
     },
+    // Pagine SEO territorio
+    { url: `${baseUrl}/capo-rizzuto`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.8 },
+    { url: `${baseUrl}/le-castella`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.7 },
+    { url: `${baseUrl}/spiagge-capo-rizzuto`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.7 },
+    { url: `${baseUrl}/area-marina-protetta`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.7 },
+    { url: `${baseUrl}/cosa-fare-capo-rizzuto`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.7 },
+    { url: `${baseUrl}/ciro-wine-tour`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.6 },
     ...apartmentRoutes,
   ]
 }

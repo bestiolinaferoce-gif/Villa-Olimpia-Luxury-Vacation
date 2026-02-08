@@ -5,6 +5,6 @@ Allow: /
 Disallow: /_next/
 Disallow: /api/
 
-# Sitemap location (temporary Netlify domain)
-Sitemap: https://rainbow-clafoutis-de443f.netlify.app/sitemap.xml
+# Sitemap (dominio ufficiale)
+Sitemap: https://villaolimpiacaporizzuto.com/sitemap.xml
 
