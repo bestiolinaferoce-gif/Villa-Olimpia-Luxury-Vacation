@@ -17,6 +17,7 @@ import { DirectionsProvider } from "@/components/directions-context"
 import { ErrorBoundary } from "@/components/error-boundary"
 import { defaultMetadata } from "@/lib/metadata"
 import { GoogleAnalytics } from "@/components/analytics/google-analytics"
+import { GoogleTagManager } from "@/components/analytics/google-tag-manager"
 import { AutoOptimizer } from "@/components/auto-optimizer"
 import FloatingBooking from "@/components/floating-booking"
 import NewsletterPopup from "@/components/newsletter-popup"
@@ -52,7 +53,6 @@ export const metadata: Metadata = {
     },
   },
 }
-const GTM_ID = "GTM-K5NQGHBD"
 
 export default async function LocaleLayout({
   children,
@@ -85,9 +85,13 @@ export default async function LocaleLayout({
         <link rel="preconnect" href="https://www.google.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://maps.googleapis.com" crossOrigin="anonymous" />
         
-        {/* DNS Prefetch */}
+        {/* DNS Prefetch per Analytics */}
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        
+        {/* Google Tag Manager e Google Analytics */}
+        <GoogleTagManager />
+        <GoogleAnalytics />
         
         {/* Hreflang tags per multilingua */}
         <link rel="alternate" hrefLang="it" href="https://villaolimpiacaporizzuto.com/it" />
@@ -241,25 +245,8 @@ export default async function LocaleLayout({
             }),
           }}
         />
-        <Script id="gtm-script" strategy="afterInteractive">
-          {`
-            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-            })(window,document,'script','dataLayer','${GTM_ID}');
-          `}
-        </Script>
       </head>
       <body className={inter.className} suppressHydrationWarning>
-        <noscript>
-          <iframe
-            src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
-            height="0"
-            width="0"
-            style={{ display: "none", visibility: "hidden" }}
-          />
-        </noscript>
         <ErrorBoundary>
           <NextIntlClientProvider messages={messages}>
             <AutoOptimizer />

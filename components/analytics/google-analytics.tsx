@@ -2,58 +2,77 @@
 
 import { useEffect } from "react"
 import Script from "next/script"
-import { usePathname, useSearchParams } from "next/navigation"
+import { usePathname } from "next/navigation"
 
 // Google Analytics 4 Measurement ID
 const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || ""
 
 export function GoogleAnalytics() {
   const pathname = usePathname()
-  const searchParams = useSearchParams()
 
   useEffect(() => {
-    if (!GA_MEASUREMENT_ID) {
-      console.warn("Google Analytics Measurement ID not configured")
+    // Inizializza dataLayer se non esiste
+    if (typeof window !== "undefined") {
+      window.dataLayer = window.dataLayer || []
+    }
+  }, [])
+
+  useEffect(() => {
+    if (!GA_MEASUREMENT_ID || GA_MEASUREMENT_ID === "G-XXXXXXXXXX") {
+      if (process.env.NODE_ENV === "development") {
+        console.warn("Google Analytics Measurement ID not configured. Set NEXT_PUBLIC_GA_MEASUREMENT_ID")
+      }
       return
     }
 
     // Track page view on route change
-    if (window.gtag && pathname) {
-      const url = pathname + (searchParams?.toString() ? `?${searchParams.toString()}` : "")
+    if (typeof window !== "undefined" && window.gtag && pathname) {
+      const url = pathname + (window.location.search || "")
       window.gtag("config", GA_MEASUREMENT_ID, {
         page_path: url,
         page_title: document.title,
       })
     }
-  }, [pathname, searchParams])
+  }, [pathname])
 
-  if (!GA_MEASUREMENT_ID) {
+  // Non renderizzare nulla se GA_MEASUREMENT_ID non è configurato
+  if (!GA_MEASUREMENT_ID || GA_MEASUREMENT_ID === "G-XXXXXXXXXX") {
     return null
   }
 
   return (
     <>
+      {/* Google Analytics 4 - Script di caricamento */}
       <Script
-        id="ga4-script"
+        id="ga4-script-loader"
         src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
         strategy="afterInteractive"
       />
-      <Script id="ga4-init" strategy="afterInteractive">
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){window.dataLayer.push(arguments);}
-          window.gtag = window.gtag || gtag;
-          gtag('consent', 'default', {
-            ad_storage: 'denied',
-            analytics_storage: 'denied',
-            functionality_storage: 'granted',
-            personalization_storage: 'denied',
-            security_storage: 'granted'
-          });
-          gtag('js', new Date());
-          gtag('config', '${GA_MEASUREMENT_ID}', { send_page_view: true });
-        `}
-      </Script>
+      {/* Google Analytics 4 - Inizializzazione */}
+      <Script
+        id="ga4-init"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            window.gtag = gtag;
+            gtag('js', new Date());
+            gtag('consent', 'default', {
+              'ad_storage': 'denied',
+              'analytics_storage': 'denied',
+              'functionality_storage': 'granted',
+              'personalization_storage': 'denied',
+              'security_storage': 'granted'
+            });
+            gtag('config', '${GA_MEASUREMENT_ID}', {
+              'send_page_view': true,
+              'anonymize_ip': true,
+              'cookie_flags': 'SameSite=None;Secure'
+            });
+          `,
+        }}
+      />
     </>
   )
 }
