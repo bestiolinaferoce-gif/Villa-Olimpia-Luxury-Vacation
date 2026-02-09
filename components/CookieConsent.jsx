@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
+import { setConsentMode } from "@/components/analytics/google-analytics"
 
 // Placeholder tracking functions
 function enableTracking() {
@@ -19,6 +20,9 @@ function disableTracking() {
     // console.log("Tracking disabled") // Rimosso per produzione
   }
 }
+
+const STORAGE_KEY = "cookieConsent"
+const EVENT_OPEN_COOKIE_PREFS = "open-cookie-preferences"
 
 export function CookieConsent() {
   // FIX HYDRATION: Inizia sempre con valori di default per SSR
@@ -40,7 +44,7 @@ export function CookieConsent() {
     
     // Check if consent has been given
     try {
-      const consent = localStorage.getItem("cookieConsent")
+      const consent = localStorage.getItem(STORAGE_KEY)
       if (!consent) {
         setShowBanner(true)
       } else {
@@ -52,7 +56,9 @@ export function CookieConsent() {
             applyTrackingPreferences(savedPrefs.preferences)
           } else if (savedPrefs === "accepted") {
             // Legacy: all cookies accepted
-            setCookiePreferences({ analytics: true, marketing: true, functional: true })
+            const allAccepted = { analytics: true, marketing: true, functional: true }
+            setCookiePreferences(allAccepted)
+            setConsentMode(allAccepted)
             enableTracking()
           }
         } catch (e) {
@@ -68,6 +74,7 @@ export function CookieConsent() {
 
   const applyTrackingPreferences = (prefs) => {
     if (!prefs || typeof prefs !== 'object') return
+    setConsentMode(prefs)
     if (prefs.analytics || prefs.marketing) {
       enableTracking()
     } else {
@@ -84,12 +91,13 @@ export function CookieConsent() {
     setCookiePreferences(allAccepted)
     if (typeof window !== 'undefined') {
       try {
-        localStorage.setItem("cookieConsent", JSON.stringify({ preferences: allAccepted }))
+        localStorage.setItem(STORAGE_KEY, JSON.stringify({ preferences: allAccepted }))
       } catch (e) {
         // localStorage non disponibile
       }
     }
     setShowBanner(false)
+    setConsentMode(allAccepted)
     enableTracking()
   }
 
@@ -102,12 +110,13 @@ export function CookieConsent() {
     setCookiePreferences(allRejected)
     if (typeof window !== 'undefined') {
       try {
-        localStorage.setItem("cookieConsent", JSON.stringify({ preferences: allRejected }))
+        localStorage.setItem(STORAGE_KEY, JSON.stringify({ preferences: allRejected }))
       } catch (e) {
         // localStorage non disponibile
       }
     }
     setShowBanner(false)
+    setConsentMode(allRejected)
     disableTracking()
   }
 
@@ -119,7 +128,7 @@ export function CookieConsent() {
     if (typeof window !== 'undefined') {
       try {
         localStorage.setItem(
-          "cookieConsent",
+          STORAGE_KEY,
           JSON.stringify({ preferences: cookiePreferences })
         )
       } catch (e) {
@@ -130,6 +139,16 @@ export function CookieConsent() {
     setShowModal(false)
     applyTrackingPreferences(cookiePreferences)
   }
+
+  useEffect(() => {
+    if (typeof window === "undefined") return
+    const handler = () => {
+      setShowBanner(true)
+      setShowModal(true)
+    }
+    window.addEventListener(EVENT_OPEN_COOKIE_PREFS, handler)
+    return () => window.removeEventListener(EVENT_OPEN_COOKIE_PREFS, handler)
+  }, [])
 
   const togglePreference = (type) => {
     setCookiePreferences((prev) => ({
@@ -355,4 +374,3 @@ export function CookieConsent() {
     </>
   )
 }
-

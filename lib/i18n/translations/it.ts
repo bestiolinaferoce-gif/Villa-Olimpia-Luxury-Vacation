@@ -137,6 +137,15 @@ export const it = {
         },
       },
     },
+    googleWidget: {
+      badge: 'Recensioni Google',
+      title: 'Dicono di noi su Google',
+      subtitle: 'Recensioni reali e sempre aggiornate per una scelta senza sorprese.',
+      ratingNote: 'Valutazioni verificate',
+      cardTitle: 'Google Reviews',
+      cardSubtitle: "Leggi tutte le recensioni e scopri l'esperienza degli ospiti.",
+      cta: 'Apri su Google',
+    },
     trustBadges: {
       title: 'Certificazioni e Partner',
       subtitle: 'Prenota con fiducia sulle piattaforme più sicure',
@@ -244,7 +253,6 @@ export const it = {
     copyright: 'Tutti i diritti riservati',
   },
 }
-
 
 
 

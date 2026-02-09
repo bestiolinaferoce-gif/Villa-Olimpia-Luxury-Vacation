@@ -1,84 +1,61 @@
 import { MetadataRoute } from "next"
 import { apartments } from "@/data/apartments"
+import { locales } from "@/i18n/request"
+
+const baseUrl = "https://villaolimpiacaporizzuto.com"
+const lastModified = new Date()
+
+const staticRoutes: Array<{
+  path: string
+  priority: number
+  changeFrequency: "daily" | "weekly" | "monthly" | "yearly"
+}> = [
+  { path: "", priority: 1.0, changeFrequency: "weekly" },
+  { path: "/appartamenti", priority: 0.95, changeFrequency: "weekly" },
+  { path: "/recensioni", priority: 0.9, changeFrequency: "weekly" },
+  { path: "/contatti", priority: 0.9, changeFrequency: "monthly" },
+  { path: "/prenota", priority: 0.9, changeFrequency: "monthly" },
+  { path: "/location", priority: 0.85, changeFrequency: "monthly" },
+  { path: "/utm", priority: 0.6, changeFrequency: "monthly" },
+  { path: "/territorio", priority: 0.85, changeFrequency: "monthly" },
+  { path: "/enogastronomia", priority: 0.8, changeFrequency: "monthly" },
+  { path: "/servizi", priority: 0.8, changeFrequency: "monthly" },
+  { path: "/gallery", priority: 0.75, changeFrequency: "monthly" },
+  { path: "/faq", priority: 0.7, changeFrequency: "monthly" },
+  { path: "/capo-rizzuto", priority: 0.8, changeFrequency: "monthly" },
+  { path: "/le-castella", priority: 0.75, changeFrequency: "monthly" },
+  { path: "/spiagge-capo-rizzuto", priority: 0.75, changeFrequency: "monthly" },
+  { path: "/area-marina-protetta", priority: 0.75, changeFrequency: "monthly" },
+  { path: "/cosa-fare-capo-rizzuto", priority: 0.75, changeFrequency: "monthly" },
+  { path: "/ciro-wine-tour", priority: 0.7, changeFrequency: "monthly" },
+  { path: "/privacy", priority: 0.3, changeFrequency: "yearly" },
+  { path: "/termini", priority: 0.3, changeFrequency: "yearly" },
+  { path: "/cookie-policy", priority: 0.25, changeFrequency: "yearly" },
+  { path: "/privacy-policy", priority: 0.25, changeFrequency: "yearly" },
+  { path: "/termini-condizioni", priority: 0.25, changeFrequency: "yearly" },
+]
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://villaolimpiacaporizzuto.com"
-
-  const apartmentRoutes = apartments.map((apartment) => ({
-    url: `${baseUrl}/appartamenti/apartment-${apartment.id}`,
-    lastModified: new Date(),
-    changeFrequency: "monthly" as const,
-    priority: apartment.premium ? 0.9 : 0.8,
+  const pages: MetadataRoute.Sitemap = staticRoutes.map((route) => ({
+    url: `${baseUrl}${route.path}`,
+    lastModified,
+    changeFrequency: route.changeFrequency,
+    priority: route.priority,
   }))
 
-  return [
-    {
-      url: baseUrl,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 1,
-    },
-    {
-      url: `${baseUrl}/appartamenti`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/location`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/territorio`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/enogastronomia`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/recensioni`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/servizi`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/contatti`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/faq`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.6,
-    },
-    {
-      url: `${baseUrl}/gallery`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    // Pagine SEO territorio
-    { url: `${baseUrl}/capo-rizzuto`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.8 },
-    { url: `${baseUrl}/le-castella`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.7 },
-    { url: `${baseUrl}/spiagge-capo-rizzuto`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.7 },
-    { url: `${baseUrl}/area-marina-protetta`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.7 },
-    { url: `${baseUrl}/cosa-fare-capo-rizzuto`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.7 },
-    { url: `${baseUrl}/ciro-wine-tour`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.6 },
-    ...apartmentRoutes,
-  ]
+  const localePages: MetadataRoute.Sitemap = locales.map((locale) => ({
+    url: `${baseUrl}/${locale}`,
+    lastModified,
+    changeFrequency: "weekly",
+    priority: locale === "it" ? 0.9 : 0.75,
+  }))
+
+  const apartmentPages: MetadataRoute.Sitemap = apartments.map((apartment) => ({
+    url: `${baseUrl}/appartamenti/apartment-${apartment.id}`,
+    lastModified,
+    changeFrequency: "monthly",
+    priority: apartment.premium ? 0.9 : 0.82,
+  }))
+
+  return [...pages, ...localePages, ...apartmentPages]
 }

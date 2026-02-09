@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect } from "react"
+import Script from "next/script"
 import { usePathname, useSearchParams } from "next/navigation"
 
 // Google Analytics 4 Measurement ID
@@ -14,27 +15,6 @@ export function GoogleAnalytics() {
     if (!GA_MEASUREMENT_ID) {
       console.warn("Google Analytics Measurement ID not configured")
       return
-    }
-
-    // Initialize GA4
-    if (typeof window !== "undefined" && !window.gtag) {
-      // Load gtag script
-      const script1 = document.createElement("script")
-      script1.async = true
-      script1.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`
-      document.head.appendChild(script1)
-
-      // Initialize gtag
-      window.dataLayer = window.dataLayer || []
-      function gtag(...args: any[]) {
-        window.dataLayer.push(args)
-      }
-      window.gtag = gtag
-      gtag("js", new Date())
-      gtag("config", GA_MEASUREMENT_ID, {
-        page_path: window.location.pathname,
-        send_page_view: true,
-      })
     }
 
     // Track page view on route change
@@ -51,7 +31,31 @@ export function GoogleAnalytics() {
     return null
   }
 
-  return null
+  return (
+    <>
+      <Script
+        id="ga4-script"
+        src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+        strategy="afterInteractive"
+      />
+      <Script id="ga4-init" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){window.dataLayer.push(arguments);}
+          window.gtag = window.gtag || gtag;
+          gtag('consent', 'default', {
+            ad_storage: 'denied',
+            analytics_storage: 'denied',
+            functionality_storage: 'granted',
+            personalization_storage: 'denied',
+            security_storage: 'granted'
+          });
+          gtag('js', new Date());
+          gtag('config', '${GA_MEASUREMENT_ID}', { send_page_view: true });
+        `}
+      </Script>
+    </>
+  )
 }
 
 // Custom event tracking functions
@@ -67,6 +71,28 @@ export function trackEvent(
       event_label: label,
       value: value,
     })
+  }
+}
+
+// Consent Mode helper
+export function setConsentMode(prefs: { analytics?: boolean; marketing?: boolean; functional?: boolean }) {
+  if (typeof window === "undefined") return
+  const analyticsGranted = prefs?.analytics ? "granted" : "denied"
+  const marketingGranted = prefs?.marketing ? "granted" : "denied"
+  const functionalGranted = prefs?.functional ? "granted" : "denied"
+  const payload = {
+    ad_storage: marketingGranted,
+    analytics_storage: analyticsGranted,
+    functionality_storage: functionalGranted,
+    personalization_storage: marketingGranted,
+    security_storage: "granted",
+  } as const
+
+  if (window.gtag) {
+    window.gtag("consent", "update", payload)
+  } else {
+    window.dataLayer = window.dataLayer || []
+    window.dataLayer.push(["consent", "update", payload])
   }
 }
 
@@ -118,8 +144,6 @@ declare global {
     gtag: (...args: any[]) => void
   }
 }
-
-
 
 
 

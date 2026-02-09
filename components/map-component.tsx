@@ -1,5 +1,10 @@
 "use client"
 
+/**
+ * @deprecated Non usato nella pagina Location (posizione esatta rimossa).
+ * La pagina Location usa ora LocationMapModern (mappa digitale senza coordinate esatte).
+ * Mantenuto per eventuale riuso in altre pagine o rollback.
+ */
 import { useState, useCallback, useEffect } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { MapPin, Navigation, Route, ExternalLink } from "lucide-react"

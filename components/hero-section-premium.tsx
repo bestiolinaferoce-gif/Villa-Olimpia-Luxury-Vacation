@@ -25,7 +25,7 @@ export function HeroSectionPremium() {
   const scale = useTransform(scrollYProgress, [0, 1], [1, 1.2])
 
   return (
-    <section ref={ref} className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section ref={ref} className="relative min-h-[100svh] sm:min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background elegante con gradiente mediterraneo */}
       <motion.div
         style={shouldReduceMotion ? undefined : { y, scale, opacity }}
@@ -43,7 +43,7 @@ export function HeroSectionPremium() {
           {/* Immagine di sfondo - Ripristinata foto precedente */}
           <div className="absolute inset-0">
             <Image
-              src="/images/villa/gallery/night-1.jpg"
+              src="/images/villa/gallery/Esterni_Piscina_Notte_01.jpg"
               alt="Villa Olimpia - Piscina di notte"
               fill
               priority
@@ -71,7 +71,7 @@ export function HeroSectionPremium() {
 
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 text-center text-white">
+      <div className="relative z-10 container mx-auto px-4 sm:px-6 text-center text-white">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -91,12 +91,12 @@ export function HeroSectionPremium() {
                 ease: "easeInOut"
               }
             }}
-            className="inline-flex items-center gap-2 bg-blue-600/80 backdrop-blur-sm px-4 py-2 rounded-full mb-4"
+            className="inline-flex items-center gap-2 bg-blue-600/80 backdrop-blur-sm px-3 py-2 sm:px-4 rounded-full mb-4"
           >
             <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
             </svg>
-            <span className="text-white text-sm font-medium">{t.home.hero.protectedArea}</span>
+            <span className="text-white text-xs sm:text-sm font-medium">{t.home.hero.protectedArea}</span>
           </motion.div>
 
           {/* Main Title */}
@@ -104,7 +104,7 @@ export function HeroSectionPremium() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.8 }}
-            className="text-5xl md:text-7xl lg:text-8xl font-playfair font-bold leading-tight"
+            className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-playfair font-bold leading-tight"
             style={{ textShadow: "0 2px 4px rgba(0,0,0,0.3)" }}
           >
             {t.home.hero.title}
@@ -115,7 +115,7 @@ export function HeroSectionPremium() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.8 }}
-            className="text-xl md:text-2xl lg:text-3xl text-white font-light max-w-3xl mx-auto"
+            className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-white font-light max-w-3xl mx-auto"
             style={{ textShadow: "0 2px 4px rgba(0,0,0,0.3)" }}
           >
             {t.home.hero.subtitle}
@@ -126,26 +126,26 @@ export function HeroSectionPremium() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.7, duration: 0.8 }}
-            className="flex flex-wrap items-center justify-center gap-6 md:gap-12 pt-8"
+            className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 md:gap-12 pt-6 sm:pt-8"
           >
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold">
+              <div className="text-2xl sm:text-3xl md:text-4xl font-bold">
                 <CounterAnimation end={9} />
               </div>
-              <div className="text-sm md:text-base text-white/80 mt-1">{t.home.hero.apartments}</div>
+              <div className="text-xs sm:text-sm md:text-base text-white/80 mt-1">{t.home.hero.apartments}</div>
             </div>
-            <div className="w-px h-12 bg-white/30" />
+            <div className="hidden md:block w-px h-12 bg-white/30" />
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold">100m</div>
-              <div className="text-sm md:text-base text-white/80 mt-1">{t.home.hero.beachDistance}</div>
+              <div className="text-2xl sm:text-3xl md:text-4xl font-bold">100m</div>
+              <div className="text-xs sm:text-sm md:text-base text-white/80 mt-1">{t.home.hero.beachDistance}</div>
             </div>
-            <div className="w-px h-12 bg-white/30" />
+            <div className="hidden md:block w-px h-12 bg-white/30" />
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold flex items-center justify-center gap-2">
-                <Star className="h-6 w-6 text-yellow-400 fill-yellow-400" />
+              <div className="text-2xl sm:text-3xl md:text-4xl font-bold flex items-center justify-center gap-2">
+                <Star className="h-5 w-5 sm:h-6 sm:w-6 text-yellow-400 fill-yellow-400" />
                 <span>Piscina</span>
               </div>
-              <div className="text-sm md:text-base text-white/80 mt-1">{t.home.hero.privatePool}</div>
+              <div className="text-xs sm:text-sm md:text-base text-white/80 mt-1">{t.home.hero.privatePool}</div>
             </div>
           </motion.div>
 
@@ -154,19 +154,19 @@ export function HeroSectionPremium() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1 }}
-            className="flex items-center gap-4 justify-center mt-6 flex-wrap"
+            className="flex items-center gap-3 sm:gap-4 justify-center mt-6 flex-wrap"
           >
-            <div className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full border border-white/30">
-              <span className="text-white text-sm font-semibold">⭐ {t.home.hero.ratingValue}</span>
+            <div className="bg-white/20 backdrop-blur-sm px-3 py-2 sm:px-4 rounded-full border border-white/30">
+              <span className="text-white text-xs sm:text-sm font-semibold">⭐ {t.home.hero.ratingValue}</span>
             </div>
-            <div className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full border border-white/30">
-              <span className="text-white text-sm font-semibold">🏖️ {t.home.hero.beachDistance}</span>
+            <div className="bg-white/20 backdrop-blur-sm px-3 py-2 sm:px-4 rounded-full border border-white/30">
+              <span className="text-white text-xs sm:text-sm font-semibold">🏖️ {t.home.hero.beachDistance}</span>
             </div>
-            <div className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full border border-white/30">
-              <span className="text-white text-sm font-semibold">🏊 {t.home.hero.privatePool}</span>
+            <div className="bg-white/20 backdrop-blur-sm px-3 py-2 sm:px-4 rounded-full border border-white/30">
+              <span className="text-white text-xs sm:text-sm font-semibold">🏊 {t.home.hero.privatePool}</span>
             </div>
-            <div className="bg-yellow-400/90 backdrop-blur-sm px-4 py-2 rounded-full border border-yellow-300/50 shadow-lg animate-float-soft">
-              <span className="text-gray-900 text-sm font-bold">✅ {t.home.hero.bookedBy}</span>
+            <div className="bg-yellow-400/90 backdrop-blur-sm px-3 py-2 sm:px-4 rounded-full border border-yellow-300/50 shadow-lg animate-float-soft">
+              <span className="text-gray-900 text-xs sm:text-sm font-bold">✅ {t.home.hero.bookedBy}</span>
             </div>
             {/* Weather Widget integrato nei badge - visibile solo su desktop */}
             <div className="hidden lg:block">
@@ -181,8 +181,8 @@ export function HeroSectionPremium() {
             transition={{ delay: 0.85, duration: 0.5 }}
             className="mt-4"
           >
-            <div className="inline-flex items-center gap-2 bg-green-500/90 backdrop-blur-sm px-4 py-2 rounded-full border border-green-300/50 shadow-lg">
-              <span className="text-white text-sm font-bold">💰 {t.home.hero.bookDirectly}</span>
+            <div className="inline-flex items-center gap-2 bg-green-500/90 backdrop-blur-sm px-3 py-2 sm:px-4 rounded-full border border-green-300/50 shadow-lg">
+              <span className="text-white text-xs sm:text-sm font-bold">💰 {t.home.hero.bookDirectly}</span>
             </div>
           </motion.div>
 
@@ -191,22 +191,22 @@ export function HeroSectionPremium() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.9, duration: 0.8 }}
-            className="flex flex-wrap items-center justify-center gap-4 pt-6 z-10 relative"
+            className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 pt-6 z-10 relative"
           >
             <Button
               size="lg"
-              className="text-lg px-8 py-6 group bg-[#FFC107] text-gray-900 hover:bg-[#FFD54F] shadow-xl font-semibold !border-2 !border-white hover:scale-105 transition-transform z-10 relative"
+              className="w-full sm:w-auto text-base sm:text-lg px-6 py-4 sm:px-8 sm:py-6 group bg-[#FFC107] text-gray-900 hover:bg-[#FFD54F] shadow-xl font-semibold !border-2 !border-white hover:scale-105 transition-transform z-10 relative"
               style={{ borderWidth: '2px', borderStyle: 'solid', borderColor: 'white' }}
               asChild
             >
-              <Link href="/contatti#prenota">
+              <Link href="/contatti?source=hero_cta#prenota">
                 <Calendar className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform" />
                 {t.home.hero.bookStay}
               </Link>
             </Button>
             <Button
               size="lg"
-              className="text-lg px-8 py-6 bg-white/20 backdrop-blur-sm text-white !border-2 !border-white hover:bg-white/30 group font-semibold hover:scale-105 transition-transform z-10 relative"
+              className="w-full sm:w-auto text-base sm:text-lg px-6 py-4 sm:px-8 sm:py-6 bg-white/20 backdrop-blur-sm text-white !border-2 !border-white hover:bg-white/30 group font-semibold hover:scale-105 transition-transform z-10 relative"
               style={{ borderWidth: '2px', borderStyle: 'solid', borderColor: 'white' }}
               asChild
             >

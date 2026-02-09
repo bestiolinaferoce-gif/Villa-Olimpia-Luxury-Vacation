@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react"
 import { MessageCircle, Phone, X } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
+import { SITE_CONFIG } from "@/lib/constants"
 
 export function WhatsAppButton() {
   const [isVisible, setIsVisible] = useState(false)
@@ -41,12 +42,12 @@ export function WhatsAppButton() {
 
   const whatsappNumbers = [
     {
-      number: "393335773390",
+      number: SITE_CONFIG.whatsappPrimary,
       display: "+39 333 577 3390",
       label: "Numero Principale"
     },
     {
-      number: "393290479193",
+      number: SITE_CONFIG.whatsappSecondary,
       display: "+39 329 047 9193",
       label: "Numero Secondario"
     }

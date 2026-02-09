@@ -32,7 +32,7 @@ const stats = [
 
 export function StatsSection() {
   return (
-    <section className="py-24 bg-gradient-to-br from-primary via-ocean to-primary/90 text-white relative overflow-hidden">
+    <section className="py-16 sm:py-20 md:py-24 bg-gradient-to-br from-primary via-ocean to-primary/90 text-white relative overflow-hidden">
       {/* Animated background gradient overlay */}
       <motion.div
         animate={{
@@ -50,7 +50,7 @@ export function StatsSection() {
         className="absolute inset-0 opacity-50"
       />
       <div className="container mx-auto px-4 relative z-10">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
           {stats.map((stat, index) => (
             <motion.div
               key={index}
@@ -85,9 +85,9 @@ export function StatsSection() {
                     repeat: Infinity,
                     delay: index * 0.3
                   }}
-                  className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center border-2 border-white/30"
+                  className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center border-2 border-white/30"
                 >
-                  <stat.icon className="h-8 w-8" />
+                  <stat.icon className="h-7 w-7 sm:h-8 sm:w-8" />
                 </motion.div>
               </motion.div>
               <motion.div
@@ -95,12 +95,12 @@ export function StatsSection() {
                 whileInView={{ scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.15 + 0.3, duration: 0.5, type: "spring" }}
-                className="text-4xl md:text-5xl font-playfair font-bold mb-2"
+                className="text-3xl sm:text-4xl md:text-5xl font-playfair font-bold mb-2"
               >
                 {stat.value}
               </motion.div>
-              <div className="text-lg font-semibold mb-1">{stat.label}</div>
-              <div className="text-sm text-white/80">{stat.description}</div>
+              <div className="text-base sm:text-lg font-semibold mb-1">{stat.label}</div>
+              <div className="text-xs sm:text-sm text-white/80">{stat.description}</div>
             </motion.div>
           ))}
         </div>
@@ -108,5 +108,4 @@ export function StatsSection() {
     </section>
   )
 }
-
 

@@ -88,6 +88,7 @@ export default async function ApartmentDetailPage({ params }: PageProps) {
 
   const seoData = getApartmentSEO(apartmentId)
   const content = getApartmentContent(apartmentId)
+  const contactHref = `/contatti?source=apartment_detail&apartment=${encodeURIComponent(apartment.name)}&guests=${apartment.guests}#prenota`
 
   return (
     <div className="min-h-screen pt-20">
@@ -136,9 +137,9 @@ export default async function ApartmentDetailPage({ params }: PageProps) {
 
             {/* Short Description */}
             {content && (
-              <Card>
+              <Card className="bg-gradient-to-br from-amber-50/80 to-background border-amber-200/50 dark:from-amber-950/20 dark:to-background dark:border-amber-800/30">
                 <CardHeader>
-                  <CardTitle>Descrizione</CardTitle>
+                  <CardTitle className="text-amber-900 dark:text-amber-100">Descrizione</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground leading-relaxed text-base mb-6">
@@ -150,9 +151,9 @@ export default async function ApartmentDetailPage({ params }: PageProps) {
 
             {/* Full Premium Description */}
             {content && (
-              <Card>
+              <Card className="bg-gradient-to-br from-teal-50/80 to-background border-teal-200/50 dark:from-teal-950/20 dark:to-background dark:border-teal-800/30">
                 <CardHeader>
-                  <CardTitle>Descrizione Completa</CardTitle>
+                  <CardTitle className="text-teal-900 dark:text-teal-100">Descrizione Completa</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="prose prose-lg max-w-none">
@@ -166,15 +167,15 @@ export default async function ApartmentDetailPage({ params }: PageProps) {
 
             {/* Feature Bullets */}
             {content && content.featureBullets.length > 0 && (
-              <Card>
+              <Card className="bg-gradient-to-br from-emerald-50/80 to-background border-emerald-200/50 dark:from-emerald-950/20 dark:to-background dark:border-emerald-800/30">
                 <CardHeader>
-                  <CardTitle>Punti di Forza</CardTitle>
+                  <CardTitle className="text-emerald-900 dark:text-emerald-100">Punti di Forza</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <ul className="space-y-3">
                     {content.featureBullets.map((feature, index) => (
                       <li key={index} className="flex items-start gap-3">
-                        <span className="text-primary mt-1">•</span>
+                        <span className="text-emerald-600 dark:text-emerald-400 mt-1">•</span>
                         <span className="text-muted-foreground">{feature}</span>
                       </li>
                     ))}
@@ -185,15 +186,15 @@ export default async function ApartmentDetailPage({ params }: PageProps) {
 
             {/* Perfect For */}
             {content && content.perfectFor.length > 0 && (
-              <Card>
+              <Card className="bg-gradient-to-br from-violet-50/80 to-background border-violet-200/50 dark:from-violet-950/20 dark:to-background dark:border-violet-800/30">
                 <CardHeader>
-                  <CardTitle>Perfetto per…</CardTitle>
+                  <CardTitle className="text-violet-900 dark:text-violet-100">Perfetto per…</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <ul className="space-y-3">
                     {content.perfectFor.map((item, index) => (
                       <li key={index} className="flex items-start gap-3">
-                        <span className="text-primary mt-1">•</span>
+                        <span className="text-violet-600 dark:text-violet-400 mt-1">•</span>
                         <span className="text-muted-foreground">{item}</span>
                       </li>
                     ))}
@@ -204,9 +205,9 @@ export default async function ApartmentDetailPage({ params }: PageProps) {
 
             {/* SEO Paragraph */}
             {content && (
-              <Card className="bg-gradient-to-br from-blue-50 to-primary/5 border-primary/20">
+              <Card className="bg-gradient-to-br from-sky-50 to-primary/5 border-sky-200/50 dark:from-sky-950/20 dark:to-background dark:border-sky-800/30">
                 <CardHeader>
-                  <CardTitle>Informazioni Dettagliate</CardTitle>
+                  <CardTitle className="text-sky-900 dark:text-sky-100">Informazioni Dettagliate</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground leading-relaxed">
@@ -218,9 +219,9 @@ export default async function ApartmentDetailPage({ params }: PageProps) {
 
             {/* Technical Summary */}
             {content && (
-              <Card>
+              <Card className="bg-gradient-to-br from-slate-50/80 to-background border-slate-200/50 dark:from-slate-900/20 dark:to-background dark:border-slate-700/30">
                 <CardHeader>
-                  <CardTitle>Dati Tecnici</CardTitle>
+                  <CardTitle className="text-slate-800 dark:text-slate-200">Dati Tecnici</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -250,10 +251,10 @@ export default async function ApartmentDetailPage({ params }: PageProps) {
             )}
 
             {/* SEO Info Box per OTA */}
-            <Card className="bg-gradient-to-br from-blue-50 to-primary/5 border-primary/20">
+            <Card className="bg-gradient-to-br from-blue-50 to-primary/5 border-blue-200/50 dark:from-blue-950/20 dark:border-blue-800/30">
               <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <MapPin className="h-5 w-5 text-primary" />
+                <CardTitle className="flex items-center gap-2 text-blue-900 dark:text-blue-100">
+                  <MapPin className="h-5 w-5 text-blue-600 dark:text-blue-400" />
                   Informazioni per la Prenotazione
                 </CardTitle>
               </CardHeader>
@@ -289,9 +290,9 @@ export default async function ApartmentDetailPage({ params }: PageProps) {
           {/* Sidebar */}
           <div className="space-y-6">
             {/* Booking Card */}
-            <Card className="sticky top-24">
+            <Card className="sticky top-24 bg-gradient-to-br from-primary/5 to-background border-primary/20 shadow-lg">
               <CardHeader>
-                <CardTitle>Prenota</CardTitle>
+                <CardTitle className="text-primary">Prenota</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="text-center">
@@ -324,10 +325,10 @@ export default async function ApartmentDetailPage({ params }: PageProps) {
                   </div>
                 </div>
 
-                <AvailabilityCalendar />
+                <AvailabilityCalendar apartmentId={apartment.id} />
 
                 <Button variant="luxury" className="w-full" size="lg" asChild>
-                  <Link href="/contatti">Richiedi Prenotazione</Link>
+                  <Link href={contactHref}>Richiedi Prenotazione</Link>
                 </Button>
 
                 <div className="space-y-2">
@@ -346,9 +347,9 @@ export default async function ApartmentDetailPage({ params }: PageProps) {
             </Card>
 
             {/* Quick Info */}
-            <Card>
+            <Card className="bg-gradient-to-br from-amber-50/60 to-background border-amber-200/40 dark:from-amber-950/15 dark:border-amber-800/20">
               <CardHeader>
-                <CardTitle>Informazioni Rapide</CardTitle>
+                <CardTitle className="text-amber-900 dark:text-amber-100">Informazioni Rapide</CardTitle>
               </CardHeader>
               <CardContent className="space-y-3">
                 <div className="flex items-center gap-3">

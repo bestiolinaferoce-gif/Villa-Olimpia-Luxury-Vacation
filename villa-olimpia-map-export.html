@@ -1,0 +1,415 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Villa Olimpia — Mappa Interattiva (Export)</title>
+  <style>
+    :root {
+      --font-playfair: "Playfair Display", "Times New Roman", serif;
+      --font-inter: "Inter", "Helvetica Neue", Arial, sans-serif;
+      --bg: #f7fafc;
+      --bg-2: #eef2f7;
+      --card: #ffffff;
+      --ink: #0f172a;
+      --muted: #64748b;
+      --ring: #fbbf24;
+      --shadow: 0 18px 50px rgba(15,23,42,0.18);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: var(--font-inter);
+      color: var(--ink);
+      background: linear-gradient(180deg, #f8fafc 0%, #ffffff 40%, #f1f5f9 100%);
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 20px 56px;
+    }
+    .hero {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+    .title {
+      font-family: var(--font-playfair);
+      font-size: clamp(28px, 2.8vw, 44px);
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      margin: 0;
+    }
+    .subtitle {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .tabs {
+      display: inline-flex;
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 999px;
+      padding: 6px;
+      gap: 6px;
+      box-shadow: 0 8px 20px rgba(15,23,42,0.08);
+    }
+    .tab {
+      border: 0;
+      background: transparent;
+      padding: 10px 20px;
+      border-radius: 999px;
+      font-weight: 600;
+      cursor: pointer;
+      color: #64748b;
+      transition: all 180ms ease;
+    }
+    .tab.active {
+      background: #0f172a;
+      color: #fff;
+      box-shadow: 0 8px 20px rgba(15,23,42,0.25);
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 240px;
+      gap: 20px;
+      align-items: start;
+      margin-top: 18px;
+    }
+    @media (max-width: 960px) {
+      .layout { grid-template-columns: 1fr; }
+    }
+
+    .map-wrap {
+      background: radial-gradient(120% 120% at 70% 20%, #ffffff 0%, #e2e8f0 40%, #f8fafc 100%);
+      border-radius: 26px;
+      border: 1px solid #e2e8f0;
+      padding: 16px;
+      box-shadow: var(--shadow);
+    }
+
+    .map {
+      position: relative;
+      width: 100%;
+      padding-top: 62%; /* ground floor default ratio */
+      border-radius: 20px;
+      background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+      overflow: hidden;
+      border: 1px solid rgba(148,163,184,0.35);
+    }
+    .map.primo { padding-top: 32%; }
+
+    .apt {
+      position: absolute;
+      border-radius: 18px;
+      padding: 16px;
+      color: #fff;
+      cursor: pointer;
+      transition: transform 160ms ease, filter 160ms ease;
+      box-shadow: 0 12px 30px rgba(15,23,42,0.2);
+      border: 2px solid rgba(255,255,255,0.6);
+      backdrop-filter: blur(2px);
+    }
+    .apt:hover { transform: scale(1.01); }
+    .apt.active { outline: 3px solid var(--ring); outline-offset: 3px; }
+
+    .apt-name {
+      font-family: var(--font-playfair);
+      font-weight: 700;
+      font-size: clamp(14px, 1.6vw, 18px);
+      margin: 0 0 6px 0;
+    }
+    .apt-meta {
+      font-size: 12px;
+      opacity: 0.92;
+    }
+    .badge {
+      position: absolute;
+      top: 8px;
+      right: 10px;
+      background: #fbbf24;
+      color: #78350f;
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .legend {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 20px;
+      padding: 16px;
+      box-shadow: 0 12px 28px rgba(15,23,42,0.08);
+    }
+    .legend h3 {
+      margin: 0 0 10px 0;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #64748b;
+    }
+    .legend button {
+      width: 100%;
+      border: 0;
+      background: transparent;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 8px;
+      border-radius: 10px;
+      cursor: pointer;
+      text-align: left;
+      transition: background 160ms ease;
+    }
+    .legend button:hover { background: #f8fafc; }
+    .legend .swatch {
+      width: 14px;
+      height: 14px;
+      border-radius: 4px;
+      border: 1px solid #fff;
+      box-shadow: 0 2px 6px rgba(15,23,42,0.2);
+    }
+    .legend .small {
+      margin-left: auto;
+      font-size: 10px;
+      color: #94a3b8;
+    }
+
+    .panel {
+      margin-top: 16px;
+      background: #fff;
+      border-radius: 22px;
+      border: 2px solid transparent;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      display: none;
+    }
+    .panel.active { display: block; }
+    .panel-header {
+      padding: 16px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: #fff;
+    }
+    .panel-title {
+      font-family: var(--font-playfair);
+      font-size: 20px;
+      font-weight: 700;
+      margin: 0;
+    }
+    .panel-body { padding: 18px; }
+    .panel-stats {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    @media (min-width: 700px) {
+      .panel-stats { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    }
+    .stat {
+      background: #f8fafc;
+      border: 1px solid #eef2f7;
+      border-radius: 12px;
+      padding: 10px;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+    .stat b { font-size: 16px; }
+    .amenities {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+    }
+    @media (min-width: 800px) { .amenities { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+    .amenity {
+      background: #f8fafc;
+      border-radius: 10px;
+      padding: 8px;
+      font-size: 12px;
+      border: 1px solid #e2e8f0;
+    }
+
+    .price {
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid #eef2f7;
+      color: #64748b;
+    }
+
+    .hint { margin-top: 10px; font-size: 11px; color: #94a3b8; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="hero">
+      <h1 class="title">Villa Olimpia — Mappa Interattiva</h1>
+      <p class="subtitle">Esporta e condividi: clicca un appartamento per le schede dettagliate.</p>
+      <div class="tabs" role="tablist">
+        <button class="tab active" data-floor="terra" role="tab">Piano Terra (6)</button>
+        <button class="tab" data-floor="primo" role="tab">Primo Piano (3)</button>
+      </div>
+    </div>
+
+    <div class="layout">
+      <div>
+        <div class="map-wrap">
+          <div id="map" class="map terra" aria-label="Mappa interattiva"></div>
+        </div>
+        <div id="panel" class="panel"></div>
+      </div>
+
+      <div class="legend" id="legend">
+        <h3>Legenda</h3>
+        <div id="legend-list"></div>
+        <p class="hint">Clicca un nome per aprire la scheda.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const COLORS = {
+      fiordaliso: { main: '#4A8FE7', hover: '#3B7AD4' },
+      orchidea:   { main: '#9B6AB8', hover: '#8A59A7' },
+      tulipano:   { main: '#E06060', hover: '#CC4C4C' },
+      frangipane: { main: '#D9A030', hover: '#C48E20' },
+      giglio:     { main: '#E07BA0', hover: '#CC6790' },
+      lavanda:    { main: '#8B7EC0', hover: '#7A6DB0' },
+      geranio:    { main: '#D44D4D', hover: '#C03A3A' },
+      gardenia:   { main: '#4BAA82', hover: '#3B9A72' },
+      azalea:     { main: '#E06899', hover: '#CC5488' },
+    };
+
+    const APARTMENTS = [
+      { id: 'fiordaliso', name: 'Fiordaliso', floor: 'terra', sqm: 50, guests: 4, bedrooms: 1, bathrooms: 1, layout: { x: 0, y: 0, w: 50, h: 52 }, amenities: ['Terrazza','Vista Piscina','Giardino','Barbecue','Aria Condizionata','WiFi','Cucina','Smart TV','Biancheria','Kit Bagno'], highlight: 'Vista diretta piscina', price: 130 },
+      { id: 'orchidea', name: 'Orchidea', floor: 'terra', sqm: 48, guests: 4, bedrooms: 1, bathrooms: 2, layout: { x: 50, y: 0, w: 50, h: 30 }, amenities: ['Vista Mare','Vista Panoramica','Living Spazioso','Aria Condizionata','WiFi','Cucina','Smart TV','Biancheria'], highlight: 'Terrazza panoramica vista mare', price: 140 },
+      { id: 'tulipano', name: 'Tulipano', floor: 'terra', sqm: 47, guests: 4, bedrooms: 1, bathrooms: 1, layout: { x: 50, y: 30, w: 50, h: 22 }, amenities: ['Accesso Diretto','Vista Piscina','Patio Privato','Aria Condizionata','WiFi','Cucina','Smart TV','Biancheria','Ideale Famiglie'], highlight: 'Accesso diretto giardino e patio', price: 125 },
+      { id: 'frangipane', name: 'Frangipane', floor: 'terra', sqm: 45, guests: 6, bedrooms: 2, bathrooms: 1, layout: { x: 0, y: 52, w: 34, h: 48 }, amenities: ['Terrazza','Vista Giardino','Cucina','Aria Condizionata','WiFi','Smart TV','Biancheria','Kit Bagno'], highlight: 'Unico PT con 2 camere doppie', price: 120 },
+      { id: 'giglio', name: 'Giglio', floor: 'terra', sqm: 46, guests: 6, bedrooms: 2, bathrooms: 1, layout: { x: 34, y: 52, w: 32, h: 48 }, amenities: ['Cucina','Aria Condizionata','WiFi','Smart TV','Biancheria','Kit Bagno','Patio Privato','Giardino'], highlight: 'Camera + letto 1½ piazza', price: 135 },
+      { id: 'lavanda', name: 'Lavanda', floor: 'terra', sqm: 45, guests: 4, bedrooms: 1, bathrooms: 1, layout: { x: 66, y: 52, w: 34, h: 48 }, amenities: ['Terrazza','Vista Giardino','Zona Tranquilla','Aria Condizionata','WiFi','Cucina','Smart TV','Biancheria','Kit Bagno'], highlight: 'Veranda privata, massima privacy', price: 120 },
+      { id: 'geranio', name: 'Geranio', floor: 'primo', sqm: 65, guests: 6, bedrooms: 2, bathrooms: 2, premium: true, layout: { x: 0, y: 0, w: 35, h: 100 }, amenities: ['Vista Panoramica','Vista Mare','Vista Giardino','Living Spazioso','Cucina','Aria Condizionata','WiFi','Smart TV'], highlight: 'Il più grande e completo — 2 balconi panoramici', price: 200 },
+      { id: 'gardenia', name: 'Gardenia', floor: 'primo', sqm: 52, guests: 4, bedrooms: 1, bathrooms: 1, layout: { x: 35, y: 0, w: 30, h: 100 }, amenities: ['Vista Mare','Living Spazioso','Cucina','Aria Condizionata','WiFi','Smart TV','Biancheria','Kit Bagno'], highlight: 'Balcone vista mare Ionio', price: 150 },
+      { id: 'azalea', name: 'Azalea', floor: 'primo', sqm: 50, guests: 4, bedrooms: 1, bathrooms: 1, layout: { x: 65, y: 0, w: 35, h: 100 }, amenities: ['Vista Panoramica','Vista Mare','Design Moderno','Cucina','Aria Condizionata','WiFi','Smart TV','Biancheria','Kit Bagno'], highlight: 'Terrazza privata con tramonto spettacolare', price: 145 },
+    ];
+
+    const map = document.getElementById('map');
+    const panel = document.getElementById('panel');
+    const legendList = document.getElementById('legend-list');
+    const tabs = Array.from(document.querySelectorAll('.tab'));
+
+    let activeFloor = 'terra';
+    let selectedId = null;
+
+    function renderMap() {
+      map.classList.toggle('terra', activeFloor === 'terra');
+      map.classList.toggle('primo', activeFloor === 'primo');
+      map.innerHTML = '';
+
+      const apartments = APARTMENTS.filter(a => a.floor === activeFloor);
+      apartments.forEach(apt => {
+        const c = COLORS[apt.id];
+        const el = document.createElement('div');
+        el.className = 'apt' + (apt.id === selectedId ? ' active' : '');
+        el.style.left = apt.layout.x + '%';
+        el.style.top = apt.layout.y + '%';
+        el.style.width = apt.layout.w + '%';
+        el.style.height = apt.layout.h + '%';
+        el.style.background = `linear-gradient(135deg, ${c.main} 0%, ${c.hover} 100%)`;
+
+        el.innerHTML = `
+          ${apt.premium ? '<div class="badge">★ Premium</div>' : ''}
+          <div class="apt-name">${apt.name}</div>
+          <div class="apt-meta">${apt.sqm} mq · ${apt.guests} ospiti · ${apt.bedrooms} camere · ${apt.bathrooms} bagni</div>
+        `;
+
+        el.addEventListener('click', () => selectApartment(apt.id));
+        map.appendChild(el);
+      });
+    }
+
+    function renderLegend() {
+      legendList.innerHTML = '';
+      APARTMENTS.forEach(apt => {
+        const c = COLORS[apt.id];
+        const btn = document.createElement('button');
+        btn.innerHTML = `
+          <span class="swatch" style="background:${c.main}"></span>
+          <span>${apt.name}</span>
+          <span class="small">${apt.sqm} mq</span>
+        `;
+        btn.addEventListener('click', () => {
+          if (apt.floor !== activeFloor) {
+            activeFloor = apt.floor;
+            updateTabs();
+            renderMap();
+          }
+          selectApartment(apt.id);
+        });
+        legendList.appendChild(btn);
+      });
+    }
+
+    function selectApartment(id) {
+      selectedId = selectedId === id ? null : id;
+      renderMap();
+      renderPanel();
+    }
+
+    function renderPanel() {
+      if (!selectedId) {
+        panel.className = 'panel';
+        panel.innerHTML = '';
+        return;
+      }
+      const apt = APARTMENTS.find(a => a.id === selectedId);
+      const c = COLORS[apt.id];
+      panel.className = 'panel active';
+      panel.style.borderColor = c.main;
+      panel.innerHTML = `
+        <div class="panel-header" style="background: linear-gradient(135deg, ${c.main}, ${c.hover});">
+          <h3 class="panel-title">${apt.name}</h3>
+          <button aria-label="Chiudi" style="border:0;background:rgba(255,255,255,0.2);color:#fff;width:32px;height:32px;border-radius:999px;cursor:pointer;">✕</button>
+        </div>
+        <div class="panel-body">
+          <div style="margin-bottom:10px;font-size:13px;color:#334155;">${apt.highlight || ''}</div>
+          <div class="panel-stats">
+            <div class="stat"><span>📐</span><div><b>${apt.sqm}</b> mq</div></div>
+            <div class="stat"><span>👥</span><div><b>${apt.guests}</b> ospiti</div></div>
+            <div class="stat"><span>🛏️</span><div><b>${apt.bedrooms}</b> camere</div></div>
+            <div class="stat"><span>🚿</span><div><b>${apt.bathrooms}</b> bagni</div></div>
+          </div>
+          <div class="amenities">
+            ${apt.amenities.map(a => `<div class="amenity">${a}</div>`).join('')}
+          </div>
+          <div class="price">da <b style="color:#0f172a;font-size:20px;">€${apt.price}</b>/notte</div>
+        </div>
+      `;
+      panel.querySelector('button').addEventListener('click', () => {
+        selectedId = null;
+        renderMap();
+        renderPanel();
+      });
+    }
+
+    function updateTabs() {
+      tabs.forEach(t => t.classList.toggle('active', t.dataset.floor === activeFloor));
+    }
+
+    tabs.forEach(t => t.addEventListener('click', () => {
+      activeFloor = t.dataset.floor;
+      selectedId = null;
+      updateTabs();
+      renderMap();
+      renderPanel();
+    }));
+
+    renderLegend();
+    renderMap();
+  </script>
+</body>
+</html>

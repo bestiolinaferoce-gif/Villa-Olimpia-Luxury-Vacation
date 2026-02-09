@@ -9,6 +9,7 @@ import { SectionDivider } from "@/components/animations/section-divider"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { UrgencyBanner } from "@/components/conversion/urgency-banner"
+import { CampaignBanner } from "@/components/conversion/campaign-banner"
 import { TrustBadges } from "@/components/conversion/trust-badges"
 import { SocialProof } from "@/components/conversion/social-proof"
 import { TerritorySection } from "@/components/territory-section"
@@ -106,6 +107,7 @@ export default function HomePage() {
   return (
     <>
       <UrgencyBanner />
+      <CampaignBanner />
       <HeroSectionPremium />
       <TrustBadges />
 
@@ -484,6 +486,50 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Google Reviews Widget */}
+      <section className="py-16 bg-gradient-to-br from-primary/5 via-background to-ocean/10">
+        <div className="container mx-auto px-4">
+          <ScrollReveal>
+            <div className="grid items-center gap-10 md:grid-cols-[1.1fr_0.9fr]">
+              <div className="text-center md:text-left">
+                <div className="inline-flex items-center gap-2 bg-primary/10 px-4 py-2 rounded-full mb-4">
+                  <MapPin className="h-4 w-4 text-primary" />
+                  <span className="text-sm font-semibold text-primary">{t('googleWidget.badge')}</span>
+                </div>
+                <h3 className="text-2xl sm:text-3xl md:text-4xl font-playfair font-bold text-foreground mb-3">
+                  {t('googleWidget.title')}
+                </h3>
+                <p className="text-muted-foreground text-lg leading-relaxed">
+                  {t('googleWidget.subtitle')}
+                </p>
+                <div className="mt-6 flex items-center gap-3 justify-center md:justify-start">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="h-5 w-5 text-amber-400 fill-amber-400" />
+                  ))}
+                  <span className="text-xs sm:text-sm text-muted-foreground">{t('googleWidget.ratingNote')}</span>
+                </div>
+              </div>
+              <div className="relative">
+                <div className="absolute -inset-2 rounded-3xl bg-gradient-to-br from-primary/20 via-transparent to-ocean/20 blur-2xl" />
+                <Card className="relative border-2 border-primary/20 bg-white/80 backdrop-blur-xl shadow-2xl">
+                  <CardHeader>
+                    <CardTitle className="text-2xl font-playfair">{t('googleWidget.cardTitle')}</CardTitle>
+                    <CardDescription>{t('googleWidget.cardSubtitle')}</CardDescription>
+                  </CardHeader>
+                  <CardContent className="pt-0">
+                    <Button variant="luxury" size="lg" asChild className="w-full">
+                      <Link href="https://share.google/PiZFmmmLBkJaf856R" target="_blank" rel="noopener noreferrer">
+                        {t('googleWidget.cta')}
+                      </Link>
+                    </Button>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
       {/* Trust Badges Premium */}
       <section className="py-16 bg-gradient-to-br from-muted/30 via-background to-primary/5">
         <div className="container mx-auto px-4">
@@ -584,4 +630,3 @@ export default function HomePage() {
     </>
   )
 }
-

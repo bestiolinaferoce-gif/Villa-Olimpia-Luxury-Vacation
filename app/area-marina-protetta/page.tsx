@@ -29,7 +29,7 @@ export default function AreaMarinaProtettaPage() {
         </div>
       </section>
 
-      <section className="py-20 bg-background">
+      <section className="py-20 bg-gradient-to-b from-[#f5fbff] to-[#e6f4ff]">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-playfair font-bold mb-6">
@@ -105,7 +105,7 @@ export default function AreaMarinaProtettaPage() {
                   </p>
                   <p className="text-muted-foreground">
                     <strong>Dove:</strong> Le zone A e B dell'area protetta sono accessibili per snorkeling. 
-                    Consigliamo di partire dalla spiaggia di Capopiccolo, a soli 500m da Villa Olimpia.
+                    Consigliamo di partire dalla spiaggia di Capopiccolo, a soli meno di 100 m da Villa Olimpia.
                   </p>
                 </CardContent>
               </Card>
@@ -155,7 +155,7 @@ export default function AreaMarinaProtettaPage() {
       </section>
 
       {/* Marine Life */}
-      <section className="py-20 bg-background">
+      <section className="py-20 bg-gradient-to-b from-[#f5fbff] to-[#e6f4ff]">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-playfair font-bold mb-8 text-center">
@@ -215,13 +215,13 @@ export default function AreaMarinaProtettaPage() {
             <div className="grid md:grid-cols-2 gap-6">
               {[
                 "A soli 2km dall'ingresso dell'Area Marina Protetta",
-                "A 500m dalla spiaggia di Capopiccolo (punto di accesso)",
+                "A meno di 100 m dalla spiaggia di Capopiccolo (punto di accesso)",
                 "Parcheggio gratuito per attrezzatura subacquea",
                 "Spazio per asciugare mute e attrezzatura",
                 "Cucina completa per preparare pranzi al sacco",
                 "WiFi gratuito per prenotare immersioni online",
               ].map((item, i) => (
-                <div key={i} className="flex items-center gap-3 p-4 bg-white rounded-lg shadow-sm">
+                <div key={i} className="flex items-center gap-3 p-4 bg-white/90 rounded-lg shadow-sm border border-primary/10">
                   <Waves className="h-5 w-5 text-primary flex-shrink-0" />
                   <p className="text-lg">{item}</p>
                 </div>

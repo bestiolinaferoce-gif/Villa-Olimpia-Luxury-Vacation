@@ -4,24 +4,28 @@ export const SITE_CONFIG = {
   name: "Villa Olimpia",
   description: "Luxury Vacation Rentals in Calabria, Italy",
   url: "https://villaolimpiacaporizzuto.com",
-  phone: "+393491234567",
+  phone: "+393290479193",
   email: "villaolimpiacaporizzuto@gmail.com",
   address: {
-    street: "Via della Costa",
+    street: "Località Capopiccolo snc",
     city: "Isola di Capo Rizzuto",
     region: "Calabria",
-    postalCode: "89861",
+    postalCode: "88841",
     country: "Italia",
   },
   coordinates: {
-    lat: 38.9600,
-    lng: 17.0900,
+    lat: 38.913856,
+    lng: 17.0754964,
   },
   social: {
-    facebook: "#",
-    instagram: "#",
-    whatsapp: "https://wa.me/393491234567",
+    facebook: "https://www.facebook.com/villaolimpiacaporizzuto",
+    instagram: "https://www.instagram.com/villaolimpiacaporizzuto",
+    whatsapp: "https://wa.me/393335773390",
   },
+  /** Numero principale per CTA WhatsApp (senza +) */
+  whatsappPrimary: "393335773390",
+  /** Numero secondario (senza +) */
+  whatsappSecondary: "393290479193",
   businessHours: {
     weekdays: "9:00 - 20:00",
     saturday: "9:00 - 18:00",
@@ -41,4 +45,3 @@ export const SEO_KEYWORDS = [
   "capo rizzuto luxury accommodation",
   "calabria holiday rental",
 ] as const
-

@@ -3,6 +3,8 @@
 import Link from "next/link"
 import { Phone, Mail, MapPin, Facebook, Instagram } from "lucide-react"
 import { useI18n } from "@/components/i18n-provider"
+import { SITE_CONFIG } from "@/lib/constants"
+import { CookiePreferencesTrigger } from "@/components/cookie-preferences-trigger"
 
 export function Footer() {
   const { t } = useI18n()
@@ -20,16 +22,20 @@ export function Footer() {
             </p>
             <div className="flex space-x-4">
               <a
-                href="#"
+                href={SITE_CONFIG.social.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-primary transition-colors"
-                aria-label="Facebook"
+                aria-label="Facebook Villa Olimpia"
               >
                 <Facebook className="h-5 w-5" />
               </a>
               <a
-                href="#"
+                href={SITE_CONFIG.social.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-primary transition-colors"
-                aria-label="Instagram"
+                aria-label="Instagram Villa Olimpia"
               >
                 <Instagram className="h-5 w-5" />
               </a>
@@ -86,6 +92,14 @@ export function Footer() {
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
                   {t.nav.faq}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/utm"
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                >
+                  UTM Builder
                 </Link>
               </li>
             </ul>
@@ -190,7 +204,7 @@ export function Footer() {
               {t.footer.bookNowDescription}
             </p>
             <a
-              href="https://wa.me/393335773390?text=Vorrei%20informazioni%20su%20Villa%20Olimpia"
+              href={`${SITE_CONFIG.social.whatsapp}?text=${encodeURIComponent("Vorrei informazioni su Villa Olimpia")}`}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block bg-[#25D366] text-white px-6 py-3 rounded-full text-sm font-semibold hover:bg-[#20BA5A] transition-colors"
@@ -200,13 +214,23 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t text-center text-sm text-muted-foreground">
+        <div className="mt-12 pt-8 border-t text-center text-sm text-muted-foreground space-y-2">
           <p>
             &copy; {new Date().getFullYear()} {t.footer.brand.title} - {t.footer.copyright} | Capo Rizzuto, Calabria
+          </p>
+          <p className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1">
+            <Link href="/privacy" className="hover:text-primary transition-colors">Privacy</Link>
+            <span aria-hidden>·</span>
+            <Link href="/cookie-policy" className="hover:text-primary transition-colors">Cookie</Link>
+            <span aria-hidden>·</span>
+            <CookiePreferencesTrigger className="hover:text-primary transition-colors">
+              Preferenze cookie
+            </CookiePreferencesTrigger>
+            <span aria-hidden>·</span>
+            <Link href="/termini" className="hover:text-primary transition-colors">Termini e condizioni</Link>
           </p>
         </div>
       </div>
     </footer>
   )
 }
-

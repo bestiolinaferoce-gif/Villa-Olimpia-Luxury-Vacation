@@ -98,8 +98,10 @@ ${health.fixes.length > 0 ? 'FIXES:\n' + health.fixes.map(f => `  ✅ ${f}`).joi
   return health
 }
 
-// Esegui se chiamato direttamente
-if (require.main === module) {
+// Esegui se chiamato direttamente (CJS o ESM/tsx)
+const isMain = typeof require !== 'undefined' && require.main === module
+  || (typeof process !== 'undefined' && process.argv[1]?.includes('auto-monitor'))
+if (isMain) {
   runHealthCheck()
     .then(generateReport)
     .then(health => {

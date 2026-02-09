@@ -5,11 +5,23 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Calendar, X } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
+import { useMemo } from "react"
 
 export default function FloatingBooking() {
   const [show, setShow] = useState(false)
   const [expanded, setExpanded] = useState(false)
   const [mounted, setMounted] = useState(false)
+  const [checkIn, setCheckIn] = useState("")
+  const [checkOut, setCheckOut] = useState("")
+  const [guests, setGuests] = useState("2")
+  const today = useMemo(() => new Date().toISOString().split("T")[0], [])
+
+  const contactHref = useMemo(() => {
+    const params = new URLSearchParams({ source: "floating_widget", guests })
+    if (checkIn) params.set("checkIn", checkIn)
+    if (checkOut) params.set("checkOut", checkOut)
+    return `/contatti?${params.toString()}#prenota`
+  }, [checkIn, checkOut, guests])
 
   useEffect(() => {
     setMounted(true)
@@ -49,15 +61,29 @@ export default function FloatingBooking() {
                 </button>
               </div>
               <div className="space-y-3">
-                <input type="date" className="w-full px-4 py-2 border rounded-lg" placeholder="Check-in" />
-                <input type="date" className="w-full px-4 py-2 border rounded-lg" placeholder="Check-out" />
-                <select className="w-full px-4 py-2 border rounded-lg">
-                  <option>2 ospiti</option>
-                  <option>4 ospiti</option>
-                  <option>6 ospiti</option>
+                <input
+                  type="date"
+                  min={today}
+                  value={checkIn}
+                  onChange={(e) => setCheckIn(e.target.value)}
+                  className="w-full px-4 py-2 border rounded-lg"
+                  placeholder="Check-in"
+                />
+                <input
+                  type="date"
+                  min={today}
+                  value={checkOut}
+                  onChange={(e) => setCheckOut(e.target.value)}
+                  className="w-full px-4 py-2 border rounded-lg"
+                  placeholder="Check-out"
+                />
+                <select value={guests} onChange={(e) => setGuests(e.target.value)} className="w-full px-4 py-2 border rounded-lg">
+                  <option value="2">2 ospiti</option>
+                  <option value="4">4 ospiti</option>
+                  <option value="6">6 ospiti</option>
                 </select>
                 <Button className="w-full" size="lg" asChild>
-                  <Link href="/contatti#prenota">Richiedi Disponibilità</Link>
+                  <Link href={contactHref}>Richiedi Disponibilità</Link>
                 </Button>
               </div>
             </motion.div>
@@ -67,5 +93,3 @@ export default function FloatingBooking() {
     </AnimatePresence>
   )
 }
-
-

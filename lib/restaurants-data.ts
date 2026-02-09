@@ -28,6 +28,7 @@ export interface Restaurant {
   parking?: string
   creditCards?: boolean
   tags?: string[]
+  featured?: boolean
 }
 
 // Helper per filtrare solo ristoranti premium (rating >= 4.5)
@@ -44,6 +45,7 @@ export const restaurants: Restaurant[] = [
     rating: 4.7,
     reviewCount: 487,
     priceRange: '€€',
+    featured: true,
     cuisine: 'Pesce e Cucina Tradizionale Calabrese',
     description: 'Ristorante di pesce con vista mozzafiato sul Castello Aragonese di Le Castella. Cucina tradizionale calabrese con pesce fresco del giorno. Gestione familiare dal 1985, ambiente accogliente e informale.',
     specialties: [

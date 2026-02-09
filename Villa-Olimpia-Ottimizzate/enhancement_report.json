@@ -1,0 +1,69 @@
+{
+  "project": "Villa Olimpia",
+  "total_processed": 14,
+  "target_resolution": "2048x1536",
+  "jpeg_quality": 92,
+  "aspect_ratio": "4:3",
+  "optimized_for": [
+    "Airbnb",
+    "Booking.com"
+  ],
+  "files": [
+    {
+      "name": "villa-olimpia-bedroom-1.jpg",
+      "size_kb": 1123.8
+    },
+    {
+      "name": "villa-olimpia-bedroom-1_2.jpg",
+      "size_kb": 1123.8
+    },
+    {
+      "name": "villa-olimpia-bedroom-1_3.jpg",
+      "size_kb": 460.6
+    },
+    {
+      "name": "villa-olimpia-bedroom-1_4.jpg",
+      "size_kb": 460.6
+    },
+    {
+      "name": "villa-olimpia-bedroom-1_5.jpg",
+      "size_kb": 619.1
+    },
+    {
+      "name": "villa-olimpia-bedroom-1_6.jpg",
+      "size_kb": 619.1
+    },
+    {
+      "name": "villa-olimpia-bedroom-2.jpg",
+      "size_kb": 705.9
+    },
+    {
+      "name": "villa-olimpia-bedroom-2_2.jpg",
+      "size_kb": 705.9
+    },
+    {
+      "name": "villa-olimpia-bedroom-3.jpg",
+      "size_kb": 773.4
+    },
+    {
+      "name": "villa-olimpia-bedroom-3_2.jpg",
+      "size_kb": 773.4
+    },
+    {
+      "name": "villa-olimpia-bedroom-4.jpg",
+      "size_kb": 696.2
+    },
+    {
+      "name": "villa-olimpia-bedroom-4_2.jpg",
+      "size_kb": 696.2
+    },
+    {
+      "name": "villa-olimpia-bedroom-4_3.jpg",
+      "size_kb": 703.0
+    },
+    {
+      "name": "villa-olimpia-bedroom-4_4.jpg",
+      "size_kb": 703.0
+    }
+  ]
+}

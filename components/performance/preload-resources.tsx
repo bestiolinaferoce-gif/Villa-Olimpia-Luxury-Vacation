@@ -14,7 +14,7 @@ export function PreloadResources() {
     const link = document.createElement('link')
     link.rel = 'preload'
     link.as = 'image'
-    link.href = '/images/villa/gallery/night-1.jpg'
+    link.href = '/images/villa/gallery/Esterni_Piscina_Notte_01.jpg'
     link.fetchPriority = 'high'
     document.head.appendChild(link)
 
@@ -23,5 +23,4 @@ export function PreloadResources() {
 
   return null
 }
-
 

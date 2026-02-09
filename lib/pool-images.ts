@@ -6,15 +6,17 @@
 
 export const poolImages = {
   // Foto principali (usando path esistenti in public/images/villa/gallery/)
-  main: '/images/villa/gallery/piscina_villa_olimpia_.jpg',
-  panoramic: '/images/villa/gallery/piscina.jpg',
-  sunset: '/images/villa/gallery/piscina_villa_olimpia___3_.jpg',
+  main: '/images/villa/gallery/Esterni_Piscina_Giorno_01.jpg',
+  panoramic: '/images/villa/gallery/Esterni_Piscina_Giardino_01.jpg',
+  sunset: '/images/villa/gallery/Esterni_Piscina_Notte_01.jpg',
   
   // Array completo per gallery (tutte le foto piscina disponibili)
   all: [
-    '/images/villa/gallery/piscina_villa_olimpia_.jpg',
-    '/images/villa/gallery/piscina.jpg',
-    '/images/villa/gallery/piscina_villa_olimpia___3_.jpg',
+    '/images/villa/gallery/Esterni_Piscina_Diurna_01.jpg',
+    '/images/villa/gallery/Esterni_Piscina_Giorno_01.jpg',
+    '/images/villa/gallery/Esterni_Piscina_Giorno_02.jpg',
+    '/images/villa/gallery/Esterni_Piscina_Giardino_01.jpg',
+    '/images/villa/gallery/Esterni_Piscina_Notte_01.jpg',
   ].filter(Boolean), // Rimuove undefined se alcune foto non esistono
 } as const
 

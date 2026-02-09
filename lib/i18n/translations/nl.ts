@@ -116,6 +116,15 @@ export const nl = {
         },
       },
     },
+    googleWidget: {
+      badge: 'Google Reviews',
+      title: 'Wat gasten op Google zeggen',
+      subtitle: 'Echte, actuele reviews voor een zekere keuze.',
+      ratingNote: 'Gecontroleerde beoordelingen',
+      cardTitle: 'Google Reviews',
+      cardSubtitle: 'Lees alle reviews en bekijk de gastenervaring.',
+      cta: 'Openen op Google',
+    },
     trustBadges: {
       title: 'Certificeringen en Partners',
       subtitle: 'Boek met vertrouwen op de veiligste platforms',
@@ -207,7 +216,6 @@ export const nl = {
     copyright: 'Alle rechten voorbehouden',
   },
 }
-
 
 
 

@@ -1,3 +1,10 @@
-# Vercel ignore file
-.next
-node_modules
+backup_images_20251210_000114/
+backup_images_20251211_221908/
+backup_images_20251211_222237/
+.netlify/
+docs/
+scripts/
+*.md
+*.txt
+*.log
+tmp_availability_rotated.png

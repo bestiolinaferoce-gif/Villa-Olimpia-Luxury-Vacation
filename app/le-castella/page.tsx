@@ -29,7 +29,7 @@ export default function LeCastellaPage() {
         </div>
       </section>
 
-      <section className="py-20 bg-background">
+      <section className="py-20 bg-gradient-to-b from-[#f8fbff] to-[#e8f5ff]">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-playfair font-bold mb-6">
@@ -145,7 +145,7 @@ export default function LeCastellaPage() {
       </section>
 
       {/* Why Stay at Villa Olimpia */}
-      <section className="py-20 bg-background">
+      <section className="py-20 bg-gradient-to-b from-[#f8fbff] to-[#e8f5ff]">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-playfair font-bold mb-6 text-center">
@@ -160,10 +160,10 @@ export default function LeCastellaPage() {
                 "9 appartamenti con piscina condivisa",
                 "Parcheggio gratuito per la tua auto",
                 "WiFi fibra gratuito",
-                "A 500m dalla Spiaggia dei Gigli",
+                "A meno di 100 m dalla Spiaggia dei Gigli",
                 "Posizione strategica per esplorare la Calabria",
               ].map((item, i) => (
-                <div key={i} className="flex items-center gap-3 p-4 bg-white rounded-lg shadow-sm">
+                <div key={i} className="flex items-center gap-3 p-4 bg-white/90 rounded-lg shadow-sm border border-primary/10">
                   <div className="w-2 h-2 rounded-full bg-primary" />
                   <p className="text-lg">{item}</p>
                 </div>

@@ -49,7 +49,7 @@ function CTAButtons() {
           style={{ borderWidth: '2px', borderStyle: 'solid', borderColor: 'white' }}
           asChild
         >
-          <Link href="/contatti">
+          <Link href="/contatti?source=home_main_cta#prenota">
             <span className="group-hover:translate-x-1 transition-transform inline-block">
               {t.home.cta.bookVacation}
             </span>
@@ -476,6 +476,50 @@ export default function HomePage() {
                   </Link>
                 </Button>
               </motion.div>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* Google Reviews Widget */}
+      <section className="py-16 bg-gradient-to-br from-primary/5 via-background to-ocean/10 cv-auto">
+        <div className="container mx-auto px-4">
+          <ScrollReveal>
+            <div className="grid items-center gap-10 md:grid-cols-[1.1fr_0.9fr]">
+              <div className="text-center md:text-left">
+                <div className="inline-flex items-center gap-2 bg-primary/10 px-4 py-2 rounded-full mb-4">
+                  <MapPin className="h-4 w-4 text-primary" />
+                  <span className="text-sm font-semibold text-primary">{t.home.googleWidget.badge}</span>
+                </div>
+                <h3 className="text-2xl sm:text-3xl md:text-4xl font-playfair font-bold text-foreground mb-3">
+                  {t.home.googleWidget.title}
+                </h3>
+                <p className="text-muted-foreground text-lg leading-relaxed">
+                  {t.home.googleWidget.subtitle}
+                </p>
+                <div className="mt-6 flex items-center gap-3 justify-center md:justify-start">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="h-5 w-5 text-amber-400 fill-amber-400" />
+                  ))}
+                  <span className="text-xs sm:text-sm text-muted-foreground">{t.home.googleWidget.ratingNote}</span>
+                </div>
+              </div>
+              <div className="relative">
+                <div className="absolute -inset-2 rounded-3xl bg-gradient-to-br from-primary/20 via-transparent to-ocean/20 blur-2xl" />
+                <Card className="relative border-2 border-primary/20 bg-white/80 backdrop-blur-xl shadow-2xl">
+                  <CardHeader>
+                    <CardTitle className="text-2xl font-playfair">{t.home.googleWidget.cardTitle}</CardTitle>
+                    <CardDescription>{t.home.googleWidget.cardSubtitle}</CardDescription>
+                  </CardHeader>
+                  <CardContent className="pt-0">
+                    <Button variant="luxury" size="lg" asChild className="w-full">
+                      <Link href="https://share.google/PiZFmmmLBkJaf856R" target="_blank" rel="noopener noreferrer">
+                        {t.home.googleWidget.cta}
+                      </Link>
+                    </Button>
+                  </CardContent>
+                </Card>
+              </div>
             </div>
           </ScrollReveal>
         </div>

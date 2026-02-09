@@ -137,6 +137,15 @@ export const en = {
         },
       },
     },
+    googleWidget: {
+      badge: 'Google Reviews',
+      title: 'What guests say on Google',
+      subtitle: 'Real, up-to-date reviews for a confident choice.',
+      ratingNote: 'Verified ratings',
+      cardTitle: 'Google Reviews',
+      cardSubtitle: 'Read all reviews and see the guest experience.',
+      cta: 'Open on Google',
+    },
     trustBadges: {
       title: 'Certifications and Partners',
       subtitle: 'Book with confidence on the safest platforms',
@@ -244,7 +253,6 @@ export const en = {
     copyright: 'All rights reserved',
   },
 }
-
 
 
 

@@ -116,6 +116,15 @@ export const fr = {
         },
       },
     },
+    googleWidget: {
+      badge: 'Avis Google',
+      title: 'Ce que disent nos hôtes sur Google',
+      subtitle: 'Avis réels et à jour pour un choix serein.',
+      ratingNote: 'Notes vérifiées',
+      cardTitle: 'Avis Google',
+      cardSubtitle: "Lisez tous les avis et découvrez l'expérience des hôtes.",
+      cta: 'Ouvrir sur Google',
+    },
     trustBadges: {
       title: 'Certifications et Partenaires',
       subtitle: 'Réservez en toute confiance sur les plateformes les plus sûres',
@@ -207,7 +216,6 @@ export const fr = {
     copyright: 'Tous droits réservés',
   },
 }
-
 
 
 

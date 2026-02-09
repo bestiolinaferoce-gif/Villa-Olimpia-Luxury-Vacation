@@ -174,12 +174,18 @@ export default function EnogastronomiaPage() {
 
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {[
-              { name: '\'Nduja', desc: 'Salume spalmabile piccante a base di carne di maiale e peperoncino calabrese.', zone: 'Vibo Valentia', icon: UtensilsCrossed, gradient: 'from-red-900 to-orange-900' },
-              { name: 'Pecorino Crotonese DOP', desc: 'Formaggio di pecora stagionato, dal sapore intenso e leggermente piccante.', zone: 'Altopiano Silano', icon: ChefHat, gradient: 'from-yellow-800 to-yellow-600' },
-              { name: 'Bergamotto', desc: 'Agrume unico al mondo, coltivato esclusivamente in Calabria.', zone: 'Reggio Calabria', icon: Grape, gradient: 'from-green-700 to-green-500' },
-              { name: 'Cipolla Rossa di Tropea IGP', desc: 'Dolce e croccante, ideale cruda in insalata o cotta per marmellate.', zone: 'Costa degli Dei', icon: UtensilsCrossed, gradient: 'from-purple-700 to-pink-600' },
-              { name: 'Liquirizia', desc: 'La migliore liquirizia al mondo. Prodotta dalle radici di Glycyrrhiza glabra.', zone: 'Piana di Sibari', icon: Grape, gradient: 'from-amber-900 to-amber-700' },
-              { name: 'Soppressata Calabrese DOP', desc: 'Salume stagionato di carne di maiale, aromatizzato con pepe nero e peperoncino.', zone: 'Tutta la Calabria', icon: ChefHat, gradient: 'from-red-800 to-red-600' },
+              { name: '\'Nduja', desc: 'Salume spalmabile piccante a base di carne di maiale e peperoncino calabrese. Si spalma su pane, pasta o pizza. Spilimbergo di Spilinga è la patria storica.', zone: 'Vibo Valentia', icon: UtensilsCrossed, gradient: 'from-red-900 to-orange-900' },
+              { name: 'Pecorino Crotonese DOP', desc: 'Formaggio di pecora stagionato, dal sapore intenso e leggermente piccante. Prodotto sull\'altopiano della Sila con latte di ovini allevati al pascolo.', zone: 'Altopiano Silano', icon: ChefHat, gradient: 'from-yellow-800 to-yellow-600' },
+              { name: 'Bergamotto', desc: 'Agrume unico al mondo, coltivato esclusivamente nella fascia costiera reggina. Essenziale per profumi e per la cucina; la scorcia candita è una prelibatezza.', zone: 'Reggio Calabria', icon: Grape, gradient: 'from-green-700 to-green-500' },
+              { name: 'Cipolla Rossa di Tropea IGP', desc: 'Dolce e croccante, ideale cruda in insalata o cotta per marmellate e conserve. Simbolo della Costa degli Dei e della cucina calabrese.', zone: 'Costa degli Dei', icon: UtensilsCrossed, gradient: 'from-purple-700 to-pink-600' },
+              { name: 'Liquirizia', desc: 'La migliore liquirizia al mondo. Prodotta dalle radici di Glycyrrhiza glabra nella Piana di Sibari. Amarelli e Corrado sono tra i marchi storici.', zone: 'Piana di Sibari', icon: Grape, gradient: 'from-amber-900 to-amber-700' },
+              { name: 'Soppressata Calabrese DOP', desc: 'Salume stagionato di carne di maiale magra e grasso, aromatizzato con pepe nero e peperoncino. Consumata a fette con pane e vino Cirò.', zone: 'Tutta la Calabria', icon: ChefHat, gradient: 'from-red-800 to-red-600' },
+              { name: 'Caciocavallo Silano DOP', desc: 'Formaggio a pasta filata dalla forma a pera, stagionato in coppia. Sapore dolce e delicato quando giovane, più piccante se stagionato.', zone: 'Sila', icon: ChefHat, gradient: 'from-amber-700 to-amber-500' },
+              { name: 'Fichi di Cosenza DOP', desc: 'Fichi secchi della varietà Dottato, spesso farciti con mandorle e aromatizzati. Tipici del Cosentino, perfetti a fine pasto o in dolci.', zone: 'Provincia di Cosenza', icon: Grape, gradient: 'from-violet-800 to-purple-600' },
+              { name: 'Clementine di Calabria IGP', desc: 'Agrumi dolci e senza semi, raccolti da ottobre a febbraio. La Piana di Sibari e la Locride sono le zone di produzione principali.', zone: 'Piana di Sibari, Locride', icon: Grape, gradient: 'from-orange-600 to-yellow-500' },
+              { name: 'Sardella', desc: 'Crema di neonata di pesce (sardine o alici) con peperoncino, finocchietto e olio. Si spalma su crostini o condisce la pasta; specialità della costa ionica.', zone: 'Crotone, Catanzaro', icon: UtensilsCrossed, gradient: 'from-slate-700 to-slate-500' },
+              { name: 'Capocollo di Calabria DOP', desc: 'Salume ricavato dalla parte superiore della lonza di maiale, stagionato con peperoncino e spezie. Sapore dolce e aromatico.', zone: 'Tutta la Calabria', icon: ChefHat, gradient: 'from-rose-800 to-red-700' },
+              { name: 'Pitta \'mpigliata', desc: 'Dolce natalizio a spirale di pasta fillo ripiena di noci, uva passa, cioccolato e spezie. Tipico della provincia di Reggio Calabria.', zone: 'Reggio Calabria', icon: UtensilsCrossed, gradient: 'from-amber-800 to-orange-600' },
             ].map((product, i) => {
               const IconComponent = product.icon
               return (
@@ -237,7 +243,7 @@ export default function EnogastronomiaPage() {
       */}
 
       {/* Ristoranti Consigliati - Grid Cards */}
-      <section className="py-20 bg-gradient-to-b from-white to-slate-50">
+      <section className="py-20 bg-gradient-to-b from-white via-amber-50/40 to-rose-50/40">
         <div className="container mx-auto px-4 max-w-7xl">
           <AnimatedSection>
             <div className="text-center mb-12">
@@ -255,6 +261,20 @@ export default function EnogastronomiaPage() {
           </AnimatedSection>
 
           <EnogastronomiaRestaurantsGrid />
+        </div>
+      </section>
+
+      {/* Spazio Sponsor (discreto, in fondo pagina) */}
+      <section className="py-12 bg-gradient-to-br from-slate-50 via-white to-amber-50/30">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <div className="text-center border border-primary/10 rounded-2xl bg-white/70 backdrop-blur-sm p-6">
+            <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-2">
+              Partner & Sponsor
+            </p>
+            <p className="text-sm text-gray-600">
+              Spazio dedicato a partner selezionati — presto disponibile.
+            </p>
+          </div>
         </div>
       </section>
 

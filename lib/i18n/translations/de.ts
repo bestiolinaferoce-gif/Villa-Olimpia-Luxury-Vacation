@@ -116,6 +116,15 @@ export const de = {
         },
       },
     },
+    googleWidget: {
+      badge: 'Google-Bewertungen',
+      title: 'Was Gäste auf Google sagen',
+      subtitle: 'Echte, aktuelle Bewertungen für eine sichere Entscheidung.',
+      ratingNote: 'Verifizierte Bewertungen',
+      cardTitle: 'Google Bewertungen',
+      cardSubtitle: 'Alle Rezensionen lesen und Gästeerfahrungen sehen.',
+      cta: 'Auf Google öffnen',
+    },
     trustBadges: {
       title: 'Zertifizierungen und Partner',
       subtitle: 'Buchen Sie mit Vertrauen auf den sichersten Plattformen',
@@ -207,7 +216,6 @@ export const de = {
     copyright: 'Alle Rechte vorbehalten',
   },
 }
-
 
 
 

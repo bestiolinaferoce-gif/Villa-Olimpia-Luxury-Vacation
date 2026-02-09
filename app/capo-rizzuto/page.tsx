@@ -69,7 +69,7 @@ export default function CapoRizzutoPage() {
         </section>
 
         {/* Why Choose Section */}
-        <section className="py-20 bg-background">
+        <section className="py-20 bg-gradient-to-b from-[#f8fbff] to-[#e8f5ff]">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl md:text-4xl font-playfair font-bold mb-8 text-center">
@@ -79,14 +79,14 @@ export default function CapoRizzutoPage() {
                 {[
                   { icon: Umbrella, text: "9 appartamenti indipendenti (2-6 ospiti)" },
                   { icon: Waves, text: "Piscina 12x6m con area relax" },
-                  { icon: MapPin, text: "A 500m dalle spiagge di Capopiccolo" },
+                  { icon: MapPin, text: "A meno di 100 m dalle spiagge di Capopiccolo" },
                   { icon: Car, text: "8 minuti da Le Castella" },
                   { icon: Wifi, text: "WiFi fibra gratuito" },
                   { icon: Car, text: "Parcheggio privato custodito" },
                 ].map((item, i) => {
                   const Icon = item.icon
                   return (
-                    <div key={i} className="flex items-start gap-4 p-4 bg-white rounded-lg shadow-sm">
+                    <div key={i} className="flex items-start gap-4 p-4 bg-white/90 rounded-lg shadow-sm border border-primary/10">
                       <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
                         <Icon className="h-6 w-6 text-primary" />
                       </div>
@@ -183,7 +183,7 @@ export default function CapoRizzutoPage() {
         </section>
 
         {/* Location Section */}
-        <section className="py-20 bg-background">
+        <section className="py-20 bg-gradient-to-b from-[#f8fbff] to-[#e8f5ff]">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl md:text-4xl font-playfair font-bold mb-6 text-center">
@@ -195,12 +195,12 @@ export default function CapoRizzutoPage() {
               </p>
               <div className="grid md:grid-cols-2 gap-6 mb-12">
                 {[
-                  { emoji: "🏖️", text: "Raggiungere la spiaggia a piedi in 7 minuti (500m)" },
+                  { emoji: "🏖️", text: "Raggiungere la spiaggia a piedi in 7 minuti (meno di 100 m)" },
                   { emoji: "🏰", text: "Visitare il Castello Aragonese di Le Castella (3km - 8 min auto)" },
                   { emoji: "🐠", text: "Fare snorkeling nell'Area Marina Protetta (2km)" },
                   { emoji: "🍷", text: "Degustare vini DOC a Cirò (30km)" },
                 ].map((item, i) => (
-                  <div key={i} className="flex items-start gap-4 p-4 bg-white rounded-lg shadow-sm">
+                  <div key={i} className="flex items-start gap-4 p-4 bg-white/90 rounded-lg shadow-sm border border-primary/10">
                     <span className="text-3xl">{item.emoji}</span>
                     <p className="text-lg">{item.text}</p>
                   </div>

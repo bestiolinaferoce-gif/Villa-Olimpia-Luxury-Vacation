@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Villa Olimpia - Interactive Floor Plan</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+            background: linear-gradient(to bottom, #f8fafc, #ffffff);
+            padding: 2.5rem 1rem;
+            color: #1e293b;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1536px;
+            margin: 0 auto;
+        }
+
+        .section {
+            width: 100%;
+            padding: 2.5rem 1.5rem;
+        }
+
+        .content {
+            max-width: 80rem;
+            margin: 0 auto;
+        }
+
+        /* Tab Navigation */
+        .tabs-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .tabs {
+            display: inline-flex;
+            background: white;
+            border-radius: 9999px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e2e8f0;
+            padding: 0.25rem;
+            gap: 0;
+        }
+
+        .tab-button {
+            padding: 0.625rem 1.75rem;
+            border: none;
+            background: transparent;
+            color: #64748b;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 9999px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            outline: none;
+            display: flex;
+            align-items: center;
+            gap: 0.375rem;
+        }
+
+        .tab-button:hover {
+            color: #334155;
+            background-color: #f1f5f9;
+        }
+
+        .tab-button.active {
+            background-color: #1e293b;
+            color: #ffffff;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .tab-count {
+            font-size: 0.75rem;
+            font-weight: 500;
+            margin-left: 0.375rem;
+            opacity: 0.75;
+        }
+
+        /* Main Layout */
+        .map-layout {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            align-items: flex-start;
+        }
+
+        @media (min-width: 1024px) {
+            .map-layout {
+                flex-direction: row;
+            }
+        }
+
+        /* SVG Map Container */
+        .map-container {
+            flex: 1;
+            width: 100%;
+            min-width: 0;
+        }
+
+        .map-box {
+            background: linear-gradient(to bottom right, #f1f5f9, rgba(191, 219, 254, 0.2), #f1f5f9);
+            border-radius: 1rem;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            padding: 1rem;
+        }
+
+        svg {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .apartment-rect {
+            cursor: pointer;
+            transition: fill 0.2s ease, transform 0.15s ease;
+        }
+
+        .apartment-rect:hover {
+            filter: brightness(1.05);
+        }
+
+        .apartment-rect.selected {
+            filter: brightness(1.08);
+        }
+
+        /* Legend Sidebar */
+        .legend-container {
+            width: 100%;
+        }
+
+        @media (min-width: 1024px) {
+            .legend-container {
+                width: 14rem;
+                flex-shrink: 0;
+            }
+        }
+
+        .legend-box {
+            background: white;
+            border-radius: 1rem;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            padding: 1.25rem;
+            position: sticky;
+            top: 1.5rem;
+        }
+
+        .legend-title {
+            font-size: 0.875rem;
+            font-weight: 700;
+            color: #475569;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+        }
+
+        .legend-items {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.625rem;
+            padding: 0.375rem 0.625rem;
+            border-radius: 0.5rem;
+            text-align: left;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: #475569;
+            width: 100%;
+        }
+
+        .legend-item:hover {
+            background-color: #f8fafc;
+        }
+
+        .legend-item.selected {
+            box-shadow: inset 0 0 0 2px #fbbf24;
+            background-color: rgba(251, 191, 36, 0.05);
+        }
+
+        .legend-item.inactive {
+            opacity: 0.5;
+        }
+
+        .legend-swatch {
+            width: 1rem;
+            height: 1rem;
+            border-radius: 0.25rem;
+            border: 1px solid white;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+            flex-shrink: 0;
+        }
+
+        .legend-name {
+            flex: 1;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .legend-size {
+            font-size: 0.625rem;
+            color: #94a3b8;
+            white-space: nowrap;
+            margin-left: auto;
+        }
+
+        .legend-divider {
+            margin-top: 0.75rem;
+            padding-top: 0.75rem;
+            border-top: 1px solid #f1f5f9;
+        }
+
+        .legend-pool {
+            display: flex;
+            align-items: center;
+            gap: 0.625rem;
+            padding: 0.25rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: #475569;
+        }
+
+        .legend-hint {
+            margin-top: 1rem;
+            padding-top: 0.75rem;
+            border-top: 1px solid #f1f5f9;
+            font-size: 0.6875rem;
+            color: #94a3b8;
+            line-height: 1.5;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .section {
+                padding: 1.5rem 1rem;
+            }
+
+            .tab-button {
+                padding: 0.5rem 1rem;
+                font-size: 0.875rem;
+            }
+
+            .map-box {
+                padding: 0.75rem;
+            }
+
+            .legend-box {
+                padding: 1rem;
+            }
+        }
+
+        /* Tooltip on hover */
+        .apartment-tooltip {
+            position: absolute;
+            background: rgba(30, 41, 59, 0.95);
+            color: white;
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.375rem;
+            font-size: 0.75rem;
+            pointer-events: none;
+            z-index: 1000;
+            white-space: nowrap;
+            display: none;
+        }
+
+        .apartment-tooltip.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <section class="section">
+            <div class="content">
+
+                <!-- Floor Tabs -->
+                <div class="tabs-container">
+                    <div class="tabs">
+                        <button class="tab-button active" data-floor="terra">
+                            Piano Terra
+                            <span class="tab-count">(6)</span>
+                        </button>
+                        <button class="tab-button" data-floor="primo">
+                            Primo Piano
+                            <span class="tab-count">(3)</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Map + Legend Layout -->
+                <div class="map-layout">
+
+                    <!-- SVG Map Container -->
+                    <div class="map-container">
+                        <div class="map-box">
+                            <svg id="villa-map" viewBox="0 0 1000 600" role="img" aria-label="Villa Olimpia - Piano Terra">
+                                <defs>
+                                    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                                        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(148,163,184,0.08)" stroke-width="1" />
+                                    </pattern>
+                                </defs>
+
+                                <!-- Background -->
+                                <rect width="1000" height="600" fill="url(#grid)" />
+
+                                <!-- Stairs Indicator (for terra) -->
+                                <g id="stairs-group" opacity="0.45">
+                                    <rect x="470" y="253" width="60" height="44" rx="6" fill="#94A3B8" />
+                                    <line x1="482" y1="241" x2="518" y2="241" stroke="#E2E8F0" stroke-width="1.5" />
+                                    <line x1="482" y1="249" x2="518" y2="249" stroke="#E2E8F0" stroke-width="1.5" />
+                                    <line x1="482" y1="257" x2="518" y2="257" stroke="#E2E8F0" stroke-width="1.5" />
+                                    <line x1="482" y1="265" x2="518" y2="265" stroke="#E2E8F0" stroke-width="1.5" />
+                                    <text x="500" y="313" text-anchor="middle" fill="#64748B" font-size="10" font-family="system-ui, -apple-system, sans-serif">Scale</text>
+                                </g>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- Legend Sidebar -->
+                    <div class="legend-container">
+                        <div class="legend-box">
+                            <h3 class="legend-title">Legenda</h3>
+
+                            <div class="legend-items" id="legend-items">
+                                <!-- Populated by JavaScript -->
+                            </div>
+
+                            <div class="legend-divider">
+                                <div class="legend-pool">
+                                    <span class="legend-swatch" style="background-color: #38BDF8;"></span>
+                                    <span>Piscina</span>
+                                </div>
+                            </div>
+
+                            <p class="legend-hint">
+                                👆 Clicca un appartamento per esplorare
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+    </div>
+
+    <!-- Tooltip -->
+    <div class="apartment-tooltip" id="tooltip"></div>
+
+    <script>
+        // Color palette - exactly as in React component
+        const COLORS = {
+            fiordaliso: { main: '#4A8FE7', hover: '#3B7AD4', text: '#FFFFFF', accent: '#D6E4F7' },
+            orchidea:   { main: '#9B6AB8', hover: '#8A59A7', text: '#FFFFFF', accent: '#E4D5F0' },
+            tulipano:   { main: '#E06060', hover: '#CC4C4C', text: '#FFFFFF', accent: '#F5D5D5' },
+            frangipane: { main: '#D9A030', hover: '#C48E20', text: '#FFFFFF', accent: '#F5E6C0' },
+            giglio:     { main: '#E07BA0', hover: '#CC6790', text: '#FFFFFF', accent: '#F5D5E3' },
+            lavanda:    { main: '#8B7EC0', hover: '#7A6DB0', text: '#FFFFFF', accent: '#DDD5EE' },
+            geranio:    { main: '#D44D4D', hover: '#C03A3A', text: '#FFFFFF', accent: '#F0CCCC' },
+            gardenia:   { main: '#4BAA82', hover: '#3B9A72', text: '#FFFFFF', accent: '#CCF0E0' },
+            azalea:     { main: '#E06899', hover: '#CC5488', text: '#FFFFFF', accent: '#F5D0E0' },
+        };
+
+        const POOL_COLOR = { main: '#38BDF8', hover: '#22A8E8', light: '#BAE6FD', wave: '#7DD3FC' };
+
+        // Apartment data - exactly as in React component
+        const PIANO_TERRA = [
+            { id: 'fiordaliso', name: 'Fiordaliso', floor: 'terra', sqm: 50, guests: 4, bedrooms: 1, bathrooms: 1, x: 20, y: 20, w: 420, h: 155 },
+            { id: 'orchidea', name: 'Orchidea', floor: 'terra', sqm: 48, guests: 4, bedrooms: 1, bathrooms: 1, x: 560, y: 20, w: 420, h: 155 },
+            { id: 'tulipano', name: 'Tulipano', floor: 'terra', sqm: 47, guests: 4, bedrooms: 1, bathrooms: 1, x: 560, y: 205, w: 420, h: 140 },
+            { id: 'frangipane', name: 'Frangipane', floor: 'terra', sqm: 45, guests: 6, bedrooms: 2, bathrooms: 1, x: 20, y: 405, w: 304, h: 175 },
+            { id: 'giglio', name: 'Giglio', floor: 'terra', sqm: 46, guests: 6, bedrooms: 2, bathrooms: 1, x: 348, y: 405, w: 312, h: 175 },
+            { id: 'lavanda', name: 'Lavanda', floor: 'terra', sqm: 45, guests: 4, bedrooms: 1, bathrooms: 1, x: 684, y: 405, w: 296, h: 175 },
+        ];
+
+        const PRIMO_PIANO = [
+            { id: 'geranio', name: 'Geranio', floor: 'primo', sqm: 65, guests: 6, bedrooms: 2, bathrooms: 2, premium: true, x: 20, y: 20, w: 370, h: 260 },
+            { id: 'gardenia', name: 'Gardenia', floor: 'primo', sqm: 52, guests: 4, bedrooms: 1, bathrooms: 1, x: 414, y: 20, w: 270, h: 260 },
+            { id: 'azalea', name: 'Azalea', floor: 'primo', sqm: 50, guests: 4, bedrooms: 1, bathrooms: 1, x: 708, y: 20, w: 272, h: 260 },
+        ];
+
+        const POOL = { x: 20, y: 205, w: 420, h: 140 };
+
+        // State
+        let currentFloor = 'terra';
+        let selectedApartment = null;
+
+        // Initialize
+        function init() {
+            setupTabButtons();
+            renderMap();
+            renderLegend();
+        }
+
+        // Tab button handlers
+        function setupTabButtons() {
+            document.querySelectorAll('.tab-button').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    currentFloor = btn.dataset.floor;
+                    selectedApartment = null;
+                    renderMap();
+                    renderLegend();
+                });
+            });
+        }
+
+        // Render SVG map
+        function renderMap() {
+            const svg = document.getElementById('villa-map');
+            const apartments = currentFloor === 'terra' ? PIANO_TERRA : PRIMO_PIANO;
+            const viewBox = currentFloor === 'terra' ? '0 0 1000 600' : '0 0 1000 300';
+            const title = currentFloor === 'terra' ? 'Piano Terra' : 'Primo Piano';
+
+            svg.setAttribute('viewBox', viewBox);
+            svg.setAttribute('aria-label', `Villa Olimpia - ${title}`);
+
+            // Clear existing apartments (keep grid and stairs/pool)
+            const groups = svg.querySelectorAll('g[data-apt-id]');
+            groups.forEach(g => g.remove());
+
+            // Remove pool group if switching to primo
+            if (currentFloor === 'primo') {
+                const poolGroup = svg.querySelector('[id="pool-group"]');
+                if (poolGroup) poolGroup.remove();
+            } else {
+                // Add pool for terra
+                if (!svg.querySelector('[id="pool-group"]')) {
+                    addPoolToSVG(svg);
+                }
+            }
+
+            // Add apartment groups
+            apartments.forEach(apt => {
+                addApartmentToSVG(svg, apt);
+            });
+
+            // Adjust stairs visibility
+            const stairsGroup = svg.querySelector('#stairs-group');
+            if (stairsGroup) {
+                stairsGroup.style.display = currentFloor === 'terra' ? 'block' : 'none';
+            }
+        }
+
+        // Add apartment to SVG
+        function addApartmentToSVG(svg, apt) {
+            const c = COLORS[apt.id];
+            const r = 10;
+
+            const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+            g.setAttribute('data-apt-id', apt.id);
+            g.setAttribute('class', 'apartment-rect');
+            g.setAttribute('role', 'button');
+            g.setAttribute('tabindex', '0');
+
+            // Selection glow
+            if (selectedApartment === apt.id) {
+                const glow = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+                glow.setAttribute('x', apt.x - 4);
+                glow.setAttribute('y', apt.y - 4);
+                glow.setAttribute('width', apt.w + 8);
+                glow.setAttribute('height', apt.h + 8);
+                glow.setAttribute('rx', r + 4);
+                glow.setAttribute('fill', 'none');
+                glow.setAttribute('stroke', '#FBBF24');
+                glow.setAttribute('stroke-width', '3');
+                glow.setAttribute('opacity', '0.9');
+                g.appendChild(glow);
+            }
+
+            // Shadow
+            const shadow = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+            shadow.setAttribute('x', apt.x + 3);
+            shadow.setAttribute('y', apt.y + 3);
+            shadow.setAttribute('width', apt.w);
+            shadow.setAttribute('height', apt.h);
+            shadow.setAttribute('rx', r);
+            shadow.setAttribute('fill', 'rgba(0,0,0,0.12)');
+            g.appendChild(shadow);
+
+            // Main rect
+            const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+            rect.setAttribute('x', apt.x);
+            rect.setAttribute('y', apt.y);
+            rect.setAttribute('width', apt.w);
+            rect.setAttribute('height', apt.h);
+            rect.setAttribute('rx', r);
+            rect.setAttribute('fill', c.main);
+            rect.setAttribute('stroke', selectedApartment === apt.id ? '#FBBF24' : 'rgba(255,255,255,0.25)');
+            rect.setAttribute('stroke-width', selectedApartment === apt.id ? '2.5' : '1');
+            g.appendChild(rect);
+
+            // Premium badge
+            if (apt.premium) {
+                const badge = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+                badge.setAttribute('x', apt.x + apt.w - 78);
+                badge.setAttribute('y', apt.y + 8);
+                badge.setAttribute('width', '68');
+                badge.setAttribute('height', '22');
+                badge.setAttribute('rx', '11');
+                badge.setAttribute('fill', 'rgba(251,191,36,0.9)');
+                g.appendChild(badge);
+
+                const badgeText = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+                badgeText.setAttribute('x', apt.x + apt.w - 44);
+                badgeText.setAttribute('y', apt.y + 23);
+                badgeText.setAttribute('text-anchor', 'middle');
+                badgeText.setAttribute('fill', '#78350F');
+                badgeText.setAttribute('font-size', '11');
+                badgeText.setAttribute('font-weight', '700');
+                badgeText.setAttribute('font-family', 'system-ui, -apple-system, sans-serif');
+                badgeText.textContent = '★ Premium';
+                g.appendChild(badgeText);
+            }
+
+            // Apartment name
+            const nameText = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+            nameText.setAttribute('x', apt.x + apt.w / 2);
+            nameText.setAttribute('y', apt.y + apt.h * 0.35);
+            nameText.setAttribute('text-anchor', 'middle');
+            nameText.setAttribute('fill', c.text);
+            nameText.setAttribute('font-size', apt.w < 310 ? '18' : '20');
+            nameText.setAttribute('font-weight', '700');
+            nameText.setAttribute('font-family', 'system-ui, -apple-system, sans-serif');
+            nameText.textContent = apt.name;
+            g.appendChild(nameText);
+
+            // Size
+            const sizeText = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+            sizeText.setAttribute('x', apt.x + apt.w / 2);
+            sizeText.setAttribute('y', apt.y + apt.h * 0.52);
+            sizeText.setAttribute('text-anchor', 'middle');
+            sizeText.setAttribute('fill', c.text);
+            sizeText.setAttribute('font-size', '13');
+            sizeText.setAttribute('font-weight', '500');
+            sizeText.setAttribute('opacity', '0.95');
+            sizeText.setAttribute('font-family', 'system-ui, -apple-system, sans-serif');
+            sizeText.textContent = `${apt.sqm} mq`;
+            g.appendChild(sizeText);
+
+            // Info text
+            const infoText = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+            infoText.setAttribute('x', apt.x + apt.w / 2);
+            infoText.setAttribute('y', apt.y + apt.h * 0.68);
+            infoText.setAttribute('text-anchor', 'middle');
+            infoText.setAttribute('fill', c.text);
+            infoText.setAttribute('font-size', '12');
+            infoText.setAttribute('opacity', '0.88');
+            infoText.setAttribute('font-family', 'system-ui, -apple-system, sans-serif');
+            infoText.textContent = `${apt.guests} ospiti · ${apt.bedrooms} ${apt.bedrooms === 1 ? 'camera' : 'camere'} · ${apt.bathrooms} ${apt.bathrooms === 1 ? 'bagno' : 'bagni'}`;
+            g.appendChild(infoText);
+
+            // Events
+            g.addEventListener('click', () => selectApartment(apt.id));
+            g.addEventListener('mouseenter', () => {
+                rect.setAttribute('fill', c.hover);
+                if (selectedApartment !== apt.id) {
+                    rect.setAttribute('stroke-width', '1.5');
+                }
+            });
+            g.addEventListener('mouseleave', () => {
+                rect.setAttribute('fill', c.main);
+                if (selectedApartment !== apt.id) {
+                    rect.setAttribute('stroke-width', '1');
+                }
+            });
+
+            svg.appendChild(g);
+        }
+
+        // Add pool to SVG
+        function addPoolToSVG(svg) {
+            const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+            g.setAttribute('id', 'pool-group');
+
+            // Pool shadow
+            const shadow = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+            shadow.setAttribute('x', POOL.x + 3);
+            shadow.setAttribute('y', POOL.y + 3);
+            shadow.setAttribute('width', POOL.w);
+            shadow.setAttribute('height', POOL.h);
+            shadow.setAttribute('rx', '14');
+            shadow.setAttribute('fill', 'rgba(0,0,0,0.08)');
+            g.appendChild(shadow);
+
+            // Pool body
+            const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+            rect.setAttribute('x', POOL.x);
+            rect.setAttribute('y', POOL.y);
+            rect.setAttribute('width', POOL.w);
+            rect.setAttribute('height', POOL.h);
+            rect.setAttribute('rx', '14');
+            rect.setAttribute('fill', POOL_COLOR.main);
+            rect.setAttribute('stroke', POOL_COLOR.wave);
+            rect.setAttribute('stroke-width', '2');
+            rect.setAttribute('opacity', '0.85');
+            g.appendChild(rect);
+
+            // Water waves
+            const waves = [0.3, 0.5, 0.7];
+            waves.forEach((ratio, i) => {
+                const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+                const y = POOL.y + POOL.h * ratio;
+                const d = `M ${POOL.x + 30} ${y}
+                          Q ${POOL.x + POOL.w * 0.25} ${y - 6},
+                            ${POOL.x + POOL.w * 0.5} ${y}
+                          Q ${POOL.x + POOL.w * 0.75} ${y + 6},
+                            ${POOL.x + POOL.w - 30} ${y}`;
+                path.setAttribute('d', d);
+                path.setAttribute('fill', 'none');
+                path.setAttribute('stroke', 'rgba(255,255,255,0.35)');
+                path.setAttribute('stroke-width', '1.5');
+                path.setAttribute('stroke-linecap', 'round');
+                g.appendChild(path);
+            });
+
+            // Pool icon
+            const icon = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+            icon.setAttribute('x', POOL.x + POOL.w / 2);
+            icon.setAttribute('y', POOL.y + POOL.h * 0.42);
+            icon.setAttribute('text-anchor', 'middle');
+            icon.setAttribute('font-size', '26');
+            icon.textContent = '🏊';
+            g.appendChild(icon);
+
+            // Pool label
+            const label = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+            label.setAttribute('x', POOL.x + POOL.w / 2);
+            label.setAttribute('y', POOL.y + POOL.h * 0.67);
+            label.setAttribute('text-anchor', 'middle');
+            label.setAttribute('fill', '#0C4A6E');
+            label.setAttribute('font-size', '15');
+            label.setAttribute('font-weight', '600');
+            label.setAttribute('font-family', 'system-ui, -apple-system, sans-serif');
+            label.textContent = 'Piscina Condivisa';
+            g.appendChild(label);
+
+            svg.insertBefore(g, svg.querySelector('g[data-apt-id]') || svg.lastChild);
+        }
+
+        // Select apartment
+        function selectApartment(aptId) {
+            selectedApartment = selectedApartment === aptId ? null : aptId;
+            renderMap();
+            renderLegend();
+
+            // Update legend highlight
+            updateLegendHighlight();
+        }
+
+        // Render legend
+        function renderLegend() {
+            const container = document.getElementById('legend-items');
+            container.innerHTML = '';
+
+            const allApts = [...PIANO_TERRA, ...PRIMO_PIANO];
+            allApts.forEach(apt => {
+                const isCurrentFloor = apt.floor === currentFloor;
+                const isSelected = selectedApartment === apt.id;
+                const c = COLORS[apt.id];
+
+                const btn = document.createElement('button');
+                btn.className = `legend-item ${isSelected ? 'selected' : ''} ${isCurrentFloor ? '' : 'inactive'}`;
+                btn.innerHTML = `
+                    <span class="legend-swatch" style="background-color: ${c.main};"></span>
+                    <span class="legend-name">${apt.name}</span>
+                    <span class="legend-size">${apt.sqm}mq</span>
+                `;
+
+                btn.addEventListener('click', () => {
+                    if (apt.floor !== currentFloor) {
+                        currentFloor = apt.floor;
+                        document.querySelectorAll('.tab-button').forEach(b => {
+                            b.classList.toggle('active', b.dataset.floor === currentFloor);
+                        });
+                    }
+                    selectApartment(apt.id);
+                    renderMap();
+                    renderLegend();
+                });
+
+                container.appendChild(btn);
+            });
+        }
+
+        // Update legend highlight
+        function updateLegendHighlight() {
+            document.querySelectorAll('.legend-item').forEach(item => {
+                const isSelected = item.querySelector('.legend-name').textContent === 
+                    [...PIANO_TERRA, ...PRIMO_PIANO].find(a => a.id === selectedApartment)?.name;
+                item.classList.toggle('selected', isSelected);
+            });
+        }
+
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>

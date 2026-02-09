@@ -3,7 +3,8 @@ import { ApartmentCard } from "@/components/apartment-card"
 import { apartments } from "@/data/apartments"
 import { Sparkles, MapPin, Home, Waves, Car, Wifi } from "lucide-react"
 import { SectionDivider } from "@/components/animations/section-divider"
-import { MapReveal } from "@/components/apartments/map-reveal"
+import { MapExpand } from "@/components/apartments/map-expand"
+import { LocalSeoSection } from "@/components/seo/local-seo-section"
 
 export default function AppartamentiPage() {
   const pianoTerra = apartments.filter((apt) => apt.floor === "Piano Terra")
@@ -82,8 +83,10 @@ export default function AppartamentiPage() {
         </div>
       </section>
 
-      {/* Interactive Map (lazy reveal) */}
-      <MapReveal />
+      <LocalSeoSection />
+
+      {/* Mappa interattiva Villa Olimpia (posizioni e capienze da istruzioni) */}
+      <MapExpand language="it" />
 
       {/* Separatore elegante */}
       <SectionDivider />

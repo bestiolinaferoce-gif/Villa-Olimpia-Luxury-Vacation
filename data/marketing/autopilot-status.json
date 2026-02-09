@@ -1,0 +1,13 @@
+{
+  "generatedAt": "2026-02-08T14:51:26.029Z",
+  "envPath": "/Users/francesconigro/Desktop/ViviCalabria.com/.env.local",
+  "linksPath": "/Users/francesconigro/Desktop/ViviCalabria.com/data/marketing/campaign-links-always_on_2026_02.txt",
+  "leadsDir": "/Users/francesconigro/Desktop/ViviCalabria.com/data/leads",
+  "missingExternalConfig": [
+    "RESEND_API_KEY",
+    "LEADS_FROM_EMAIL",
+    "WHATSAPP_ACCESS_TOKEN",
+    "WHATSAPP_PHONE_NUMBER_ID"
+  ],
+  "ready": false
+}

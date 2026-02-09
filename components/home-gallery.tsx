@@ -17,13 +17,13 @@ const galleryImages = [
   })),
   // RELAX - Gazebo e aree relax
   {
-    src: '/images/villa/gallery/gazebo_olimpia_2.jpg',
-    alt: 'Gazebo Villa Olimpia',
+    src: '/images/villa/gallery/Esterni_Gazebo_01.jpg',
+    alt: 'Gazebo Villa Olimpia - Area relax',
     category: 'Relax'
   },
   {
-    src: '/images/villa/gallery/gazebo_notte_olimpia.jpg',
-    alt: 'Gazebo Villa Olimpia di notte',
+    src: '/images/villa/gallery/Esterni_Portico_Giardino_01.jpg',
+    alt: 'Portico e giardino Villa Olimpia',
     category: 'Relax'
   },
   // TERRITORIO - Spiaggia
@@ -69,8 +69,8 @@ const galleryImages = [
   },
   // VILLA - Esterni e facciate (solo foto esistenti)
   {
-    src: '/images/villa/gallery/esterni_villa_olimpia.jpg',
-    alt: 'Esterni Villa Olimpia',
+    src: '/images/villa/gallery/Esterni_Facciata_Giorno_01.jpg',
+    alt: 'Esterni Villa Olimpia - Facciata di giorno',
     category: 'Villa'
   },
   {
@@ -84,12 +84,12 @@ const galleryImages = [
     category: 'Villa'
   },
   {
-    src: '/images/villa/gallery/night-1.jpg',
+    src: '/images/villa/gallery/Esterni_Facciata_Notte_01.jpg',
     alt: 'Villa Olimpia di notte',
     category: 'Villa'
   },
   {
-    src: '/images/villa/gallery/villa_olimpia_notte___2_.jpg',
+    src: '/images/villa/gallery/Esterni_Facciata_Notte_02.jpg',
     alt: 'Villa Olimpia di notte - Illuminazione',
     category: 'Villa'
   },

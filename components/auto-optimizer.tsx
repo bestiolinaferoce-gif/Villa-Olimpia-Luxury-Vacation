@@ -68,7 +68,7 @@ export function AutoOptimizer() {
     // 3. Preload risorse critiche
     const preloadCriticalResources = () => {
       const criticalLinks = [
-        '/images/villa/gallery/night-1.jpg',
+        '/images/villa/gallery/Esterni_Piscina_Notte_01.jpg',
         '/images/villa/hero/facciata_villa_olimpia_.jpg'
       ]
       
@@ -94,7 +94,6 @@ export function AutoOptimizer() {
 
   return null // Componente invisibile
 }
-
 
 
 

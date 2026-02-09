@@ -43,7 +43,7 @@ export function CookieBanner() {
                 sito. Continuando a navigare, accetti il nostro utilizzo dei
                 cookie.{" "}
                 <a
-                  href="/cookie"
+                  href="/cookie-policy"
                   className="text-primary hover:underline"
                 >
                   Maggiori informazioni

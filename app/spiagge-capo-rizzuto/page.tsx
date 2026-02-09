@@ -7,7 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 
 export const metadata: Metadata = generateMetadata({
   title: "Migliori Spiagge Capo Rizzuto | Villa Olimpia | Spiaggia dei Gigli",
-  description: "Scopri le migliori spiagge di Capo Rizzuto: Spiaggia dei Gigli, Capopiccolo, Le Castella. Villa Olimpia a 500m dalla spiaggia Bandiera Blu.",
+  description: "Scopri le migliori spiagge di Capo Rizzuto: Spiaggia dei Gigli, Capopiccolo, Le Castella. Villa Olimpia a meno di 100 m dalla spiaggia Bandiera Blu.",
   path: "/spiagge-capo-rizzuto",
 })
 
@@ -29,7 +29,7 @@ export default function SpiaggeCapoRizzutoPage() {
         </div>
       </section>
 
-      <section className="py-20 bg-background">
+      <section className="py-20 bg-gradient-to-b from-[#f5fbff] to-[#e6f4ff]">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-playfair font-bold mb-8 text-center">
@@ -45,7 +45,7 @@ export default function SpiaggeCapoRizzutoPage() {
                   </div>
                   <CardDescription className="flex items-center gap-2">
                     <MapPin className="h-4 w-4" />
-                    A 500m da Villa Olimpia - Bandiera Blu
+                    A meno di 100 m da Villa Olimpia - Bandiera Blu
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -183,7 +183,7 @@ export default function SpiaggeCapoRizzutoPage() {
       </section>
 
       {/* Why Villa Olimpia */}
-      <section className="py-20 bg-background">
+      <section className="py-20 bg-gradient-to-b from-[#f5fbff] to-[#e6f4ff]">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-playfair font-bold mb-6 text-center">
@@ -194,14 +194,14 @@ export default function SpiaggeCapoRizzutoPage() {
             </p>
             <div className="grid md:grid-cols-2 gap-6">
               {[
-                "A 500m dalla Spiaggia dei Gigli (7 minuti a piedi)",
+                "A meno di 100 m dalla Spiaggia dei Gigli (1 minuto a piedi)",
                 "Parcheggio gratuito per raggiungere le altre spiagge",
                 "Piscina privata per relax dopo la spiaggia",
                 "WiFi gratuito per condividere le tue foto",
                 "Cucina completa per pranzi al sacco",
                 "Posizione centrale per esplorare tutta la costa",
               ].map((item, i) => (
-                <div key={i} className="flex items-center gap-3 p-4 bg-white rounded-lg shadow-sm">
+                <div key={i} className="flex items-center gap-3 p-4 bg-white/90 rounded-lg shadow-sm border border-primary/10">
                   <Umbrella className="h-5 w-5 text-primary flex-shrink-0" />
                   <p className="text-lg">{item}</p>
                 </div>

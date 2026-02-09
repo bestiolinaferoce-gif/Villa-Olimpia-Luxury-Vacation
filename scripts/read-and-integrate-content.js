@@ -29,9 +29,9 @@ const APARTMENT_MAP = {
   'Fiordaliso': 2,
   'Orchidea': 3,
   'Tulipano': 4,
-  'Geranio': 5,
-  'Giglio': 6,
-  'Lavanda': 7,
+  'Giglio': 5,
+  'Lavanda': 6,
+  'Geranio': 7,
   'Gardenia': 8,
   'Azalea': 9,
 }
@@ -242,4 +242,3 @@ fs.writeFileSync(OUTPUT_FILE, tsContent, 'utf-8')
 console.log(`✅ Contenuti importati in: ${OUTPUT_FILE}`)
 console.log(`📊 Appartamenti aggiornati: ${Object.keys(APARTMENT_MAP).length}`)
 console.log('\n🎉 Importazione completata!')
-

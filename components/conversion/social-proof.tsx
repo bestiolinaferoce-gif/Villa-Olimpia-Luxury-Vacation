@@ -34,13 +34,13 @@ export function SocialProof() {
   ]
 
   return (
-    <div className="py-12 bg-gradient-to-r from-primary/5 via-background to-primary/5">
+    <div className="py-10 sm:py-12 bg-gradient-to-r from-primary/5 via-background to-primary/5">
       <div className="container mx-auto px-4">
         <div className="text-center mb-8">
-          <h3 className="text-2xl font-playfair font-bold mb-2">
+          <h3 className="text-xl sm:text-2xl font-playfair font-bold mb-2">
             Cosa Dicono i Nostri Ospiti
           </h3>
-          <p className="text-muted-foreground">
+          <p className="text-sm sm:text-base text-muted-foreground">
             Migliaia di ospiti soddisfatti in tutta Europa
           </p>
         </div>
@@ -53,18 +53,18 @@ export function SocialProof() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
-              className="text-center p-6 rounded-xl bg-white/80 backdrop-blur-sm border border-primary/10"
+              className="text-center p-5 sm:p-6 rounded-xl bg-white/80 backdrop-blur-sm border border-primary/10"
             >
               <stat.icon className={`h-10 w-10 mx-auto mb-3 ${stat.color}`} />
-              <div className={`text-4xl font-bold mb-2 ${stat.color}`}>
+              <div className={`text-3xl sm:text-4xl font-bold mb-2 ${stat.color}`}>
                 {stat.value}
               </div>
-              <div className="text-sm text-muted-foreground">{stat.label}</div>
+              <div className="text-xs sm:text-sm text-muted-foreground">{stat.label}</div>
             </motion.div>
           ))}
         </div>
 
-        <div className="flex flex-wrap justify-center gap-4 items-center text-sm">
+        <div className="flex flex-wrap justify-center gap-3 sm:gap-4 items-center text-xs sm:text-sm">
           <div className="flex items-center gap-2">
             <Star className="h-5 w-5 text-amber-500 fill-amber-500" />
             <span className="font-semibold">Certificato Airbnb Superhost</span>
@@ -82,4 +82,3 @@ export function SocialProof() {
     </div>
   )
 }
-

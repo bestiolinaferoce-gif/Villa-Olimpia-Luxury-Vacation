@@ -62,7 +62,7 @@ export function Header() {
     { href: "/servizi", label: t.nav.services },
     { href: "/recensioni", label: t.nav.reviews },
     { href: "/faq", label: t.nav.faq },
-    { href: "/contatti", label: t.nav.contacts },
+    { href: "/contatti?source=header_menu", label: t.nav.contacts },
   ]
 
   return (
@@ -129,7 +129,7 @@ export function Header() {
               `}
               asChild
             >
-              <Link href="/contatti">{t.common.bookNow}</Link>
+              <Link href="/contatti?source=header_cta#prenota">{t.common.bookNow}</Link>
             </Button>
           </div>
 
@@ -177,7 +177,7 @@ export function Header() {
                   <LanguageSelector />
                 </div>
                 <Button variant="luxury" className="w-full" asChild>
-                  <Link href="/contatti" onClick={() => setIsMenuOpen(false)}>
+                  <Link href="/contatti?source=header_mobile_cta#prenota" onClick={() => setIsMenuOpen(false)}>
                     {t.common.bookNow}
                   </Link>
                 </Button>
@@ -189,4 +189,3 @@ export function Header() {
     </header>
   )
 }
-

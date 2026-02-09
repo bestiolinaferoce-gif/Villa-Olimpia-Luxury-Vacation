@@ -92,7 +92,7 @@ export const premiumRestaurants: Restaurant[] = [
     id: 'da-annibale',
     name: 'Ristorante Da Annibale',
     location: 'Capopiccolo',
-    distance: '500m da Villa Olimpia',
+    distance: 'meno di 100 m da Villa Olimpia',
     rating: 4.4,
     reviewCount: 198,
     priceRange: '€€',

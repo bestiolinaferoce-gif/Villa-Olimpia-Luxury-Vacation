@@ -1,314 +1,106 @@
 import { Metadata } from "next"
-import { Button } from "@/components/ui/button"
+import Image from "next/image"
 import Link from "next/link"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { generateMetadata } from "@/lib/metadata"
-import { MapPin, Clock, Camera, Utensils, Waves, Mountain } from "lucide-react"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Camera, Clock, MapPin, Mountain, Utensils, Waves } from "lucide-react"
 
 export const metadata: Metadata = generateMetadata({
   title: "Cosa Fare a Capo Rizzuto | Attrazioni e Attività | Villa Olimpia",
-  description: "Cosa fare a Capo Rizzuto: spiagge, Le Castella, Area Marina Protetta, enogastronomia, escursioni. Guida completa alle attività e attrazioni.",
+  description:
+    "Cosa fare a Capo Rizzuto: spiagge, Le Castella, Area Marina Protetta, enogastronomia, escursioni. Guida completa alle attività e attrazioni.",
   path: "/cosa-fare-capo-rizzuto",
 })
 
+const highlights = [
+  {
+    icon: Waves,
+    title: "Mare e Spiagge",
+    image: "/images/villa/gallery/Esterni_Spiaggia_Estiva_01.jpg",
+    text: "Spiaggia dei Gigli a meno di 100 metri, snorkeling a Capopiccolo e tramonti su Le Castella.",
+  },
+  {
+    icon: Camera,
+    title: "Borghi e Cultura",
+    image: "/images/villa/gallery/Esterni_LeCastella_01.jpg",
+    text: "Castello Aragonese, borgo marinaro e centro storico di Isola di Capo Rizzuto.",
+  },
+  {
+    icon: Utensils,
+    title: "Food Locale",
+    image: "/images/villa/gallery/Esterni_Giardino_Overview_01.jpg",
+    text: "Pesce fresco, sapori calabresi e cene con vista tra costa e borghi.",
+  },
+  {
+    icon: Mountain,
+    title: "Natura Attiva",
+    image: "/images/villa/gallery/Esterni_Piscina_Giardino_01.jpg",
+    text: "Escursioni tra costa, riserva marina e percorsi nell'entroterra calabrese.",
+  },
+]
+
+const gallery = [
+  "/images/villa/gallery/Esterni_Spiaggia_01.jpg",
+  "/images/villa/gallery/Esterni_Spiaggia_Tramonto_01.jpg",
+  "/images/villa/gallery/Esterni_LeCastella_01.jpg",
+  "/images/villa/gallery/Esterni_Giardino_Overview_01.jpg",
+]
+
 export default function CosaFareCapoRizzutoPage() {
   return (
-    <div className="min-h-screen pt-20">
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-ocean/10 to-primary/10 py-16">
+    <div className="min-h-screen pt-20 bg-[#f6fbff]">
+      <section className="relative overflow-hidden py-24">
+        <div className="absolute inset-0">
+          <Image
+            src="/images/villa/gallery/Esterni_Spiaggia_Estiva_01.jpg"
+            alt="Esperienze a Capo Rizzuto"
+            fill
+            className="object-cover"
+            priority
+            sizes="100vw"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#031422]/80 via-[#031422]/60 to-[#031422]/85" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(20,184,166,0.35),_transparent_55%)]" />
+        </div>
+        <div className="relative container mx-auto px-4 text-center text-white">
+          <h1 className="text-4xl md:text-6xl font-playfair font-bold mb-6">Cosa Fare a Capo Rizzuto</h1>
+          <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto">
+            Attività vere, luoghi iconici e itinerari facili da vivere partendo da Villa Olimpia.
+          </p>
+        </div>
+      </section>
+
+      <section className="py-16 bg-gradient-to-b from-[#f6fbff] to-[#e7f6ff]">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-playfair font-bold mb-6">
-              Cosa Fare a Capo Rizzuto
-            </h1>
-            <p className="text-xl text-muted-foreground mb-8">
-              Scopri tutte le attività e le attrazioni che rendono Capo Rizzuto una delle destinazioni 
-              più affascinanti della Calabria. Dalle spiagge alle escursioni, dall'enogastronomia alla cultura.
-            </p>
+          <div className="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto">
+            {highlights.map((item, index) => (
+              <Card key={item.title} className="overflow-hidden border-0 shadow-xl bg-white/90 backdrop-blur">
+                <div className="relative h-44">
+                  <Image src={item.image} alt={item.title} fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/65 to-black/10" />
+                  <div className="absolute bottom-4 left-4 flex items-center gap-2 text-white">
+                    <item.icon className="h-5 w-5" />
+                    <span className="font-semibold">{item.title}</span>
+                  </div>
+                </div>
+                <CardContent className="pt-5">
+                  <p className="text-muted-foreground">{item.text}</p>
+                </CardContent>
+              </Card>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Activities Grid */}
-      <section className="py-20 bg-background">
+      <section className="py-16 bg-[#062035] text-white">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-playfair font-bold mb-12 text-center">
-              Attrazioni e Attività Principali
-            </h2>
-            
-            <div className="grid md:grid-cols-2 gap-8">
-              {/* Spiagge */}
-              <Card className="hover:shadow-xl transition-shadow">
-                <CardHeader>
-                  <div className="flex items-center gap-3 mb-2">
-                    <Waves className="h-8 w-8 text-primary" />
-                    <CardTitle className="text-2xl">Spiagge e Mare</CardTitle>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-3 text-muted-foreground">
-                    <li className="flex items-start gap-2">
-                      <span className="text-primary">•</span>
-                      <span><strong>Spiaggia dei Gigli:</strong> A 500m da Villa Olimpia, Bandiera Blu</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-primary">•</span>
-                      <span><strong>Capopiccolo:</strong> Spiagge nell'Area Marina Protetta</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-primary">•</span>
-                      <span><strong>Le Castella:</strong> Spiaggia con vista sul castello (8 min)</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-primary">•</span>
-                      <span><strong>Spiagge Rosse:</strong> Sabbia colorata unica (12 km)</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-primary">•</span>
-                      <span><strong>Snorkeling e Immersioni:</strong> Area Marina Protetta</span>
-                    </li>
-                  </ul>
-                </CardContent>
-              </Card>
-
-              {/* Cultura e Storia */}
-              <Card className="hover:shadow-xl transition-shadow">
-                <CardHeader>
-                  <div className="flex items-center gap-3 mb-2">
-                    <Camera className="h-8 w-8 text-primary" />
-                    <CardTitle className="text-2xl">Cultura e Storia</CardTitle>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-3 text-muted-foreground">
-                    <li className="flex items-start gap-2">
-                      <span className="text-primary">•</span>
-                      <span><strong>Castello Aragonese:</strong> Fortezza del XV secolo a Le Castella</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-primary">•</span>
-                      <span><strong>Isola di Capo Rizzuto:</strong> Centro storico con vicoli caratteristici</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-primary">•</span>
-                      <span><strong>Crotone:</strong> Museo Archeologico e centro antico (15 km)</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-primary">•</span>
-                      <span><strong>Roccelletta di Borgia:</strong> Scavi archeologici (40 km)</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-primary">•</span>
-                      <span><strong>Chiese e Santuari:</strong> Architettura religiosa calabrese</span>
-                    </li>
-                  </ul>
-                </CardContent>
-              </Card>
-
-              {/* Enogastronomia */}
-              <Card className="hover:shadow-xl transition-shadow">
-                <CardHeader>
-                  <div className="flex items-center gap-3 mb-2">
-                    <Utensils className="h-8 w-8 text-primary" />
-                    <CardTitle className="text-2xl">Enogastronomia</CardTitle>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-3 text-muted-foreground">
-                    <li className="flex items-start gap-2">
-                      <span className="text-primary">•</span>
-                      <span><strong>Pesce Fresco:</strong> Ristoranti con pesce del giorno</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-primary">•</span>
-                      <span><strong>Vini DOC Cirò:</strong> Degustazioni nelle cantine (30 km)</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-primary">•</span>
-                      <span><strong>Prodotti Tipici:</strong> 'Nduja, peperoncino, formaggi locali</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-primary">•</span>
-                      <span><strong>Mercati Locali:</strong> Prodotti freschi e artigianato</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-primary">•</span>
-                      <span><strong>Cucina Calabrese:</strong> Piatti tradizionali autentici</span>
-                    </li>
-                  </ul>
-                </CardContent>
-              </Card>
-
-              {/* Escursioni */}
-              <Card className="hover:shadow-xl transition-shadow">
-                <CardHeader>
-                  <div className="flex items-center gap-3 mb-2">
-                    <Mountain className="h-8 w-8 text-primary" />
-                    <CardTitle className="text-2xl">Escursioni e Natura</CardTitle>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-3 text-muted-foreground">
-                    <li className="flex items-start gap-2">
-                      <span className="text-primary">•</span>
-                      <span><strong>Valli Cupe:</strong> Riserva naturale con cascate (65 km)</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-primary">•</span>
-                      <span><strong>Sila:</strong> Parco Nazionale, trekking e natura (80 km)</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-primary">•</span>
-                      <span><strong>Sentieri Costieri:</strong> Passeggiate lungo la costa</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-primary">•</span>
-                      <span><strong>Osservazione Uccelli:</strong> Zone umide e lagune</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-primary">•</span>
-                      <span><strong>Fotografia Naturalistica:</strong> Parchi e riserve</span>
-                    </li>
-                  </ul>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Daily Itineraries */}
-      <section className="py-20 bg-secondary/30">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-playfair font-bold mb-8 text-center">
-              Itinerari Consigliati
-            </h2>
-            
-            <div className="space-y-6">
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-xl">Giornata al Mare</CardTitle>
-                  <CardDescription>Perfetta per famiglie</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-3">
-                    <div className="flex items-start gap-3">
-                      <Clock className="h-5 w-5 text-primary mt-1" />
-                      <div>
-                        <p className="font-semibold">Mattina (9:00-13:00)</p>
-                        <p className="text-muted-foreground">Spiaggia dei Gigli: relax, bagni, giochi sulla spiaggia</p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <Clock className="h-5 w-5 text-primary mt-1" />
-                      <div>
-                        <p className="font-semibold">Pomeriggio (15:00-18:00)</p>
-                        <p className="text-muted-foreground">Piscina Villa Olimpia o snorkeling a Capopiccolo</p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <Utensils className="h-5 w-5 text-primary mt-1" />
-                      <div>
-                        <p className="font-semibold">Sera</p>
-                        <p className="text-muted-foreground">Cena in ristorante tipico a Le Castella con vista castello</p>
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-xl">Giornata Culturale</CardTitle>
-                  <CardDescription>Per amanti della storia</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-3">
-                    <div className="flex items-start gap-3">
-                      <MapPin className="h-5 w-5 text-primary mt-1" />
-                      <div>
-                        <p className="font-semibold">Mattina</p>
-                        <p className="text-muted-foreground">Visita al Castello Aragonese di Le Castella (8 min da Villa Olimpia)</p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <MapPin className="h-5 w-5 text-primary mt-1" />
-                      <div>
-                        <p className="font-semibold">Pomeriggio</p>
-                        <p className="text-muted-foreground">Museo Archeologico di Crotone e centro storico (15 km)</p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <Utensils className="h-5 w-5 text-primary mt-1" />
-                      <div>
-                        <p className="font-semibold">Sera</p>
-                        <p className="text-muted-foreground">Passeggiata nel centro storico di Isola di Capo Rizzuto</p>
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-xl">Giornata Attiva</CardTitle>
-                  <CardDescription>Per sportivi e avventurieri</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-3">
-                    <div className="flex items-start gap-3">
-                      <Waves className="h-5 w-5 text-primary mt-1" />
-                      <div>
-                        <p className="font-semibold">Mattina</p>
-                        <p className="text-muted-foreground">Immersione subacquea o snorkeling nell'Area Marina Protetta</p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <Mountain className="h-5 w-5 text-primary mt-1" />
-                      <div>
-                        <p className="font-semibold">Pomeriggio</p>
-                        <p className="text-muted-foreground">Escursione a Valli Cupe o trekking nella Sila</p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <Utensils className="h-5 w-5 text-primary mt-1" />
-                      <div>
-                        <p className="font-semibold">Sera</p>
-                        <p className="text-muted-foreground">Relax in piscina e cena con prodotti locali</p>
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Why Villa Olimpia */}
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-playfair font-bold mb-6 text-center">
-              Perché Scegliere Villa Olimpia come Base
-            </h2>
-            <p className="text-lg text-muted-foreground mb-8 text-center">
-              Villa Olimpia è perfettamente posizionata per esplorare tutto ciò che Capo Rizzuto ha da offrire:
-            </p>
-            <div className="grid md:grid-cols-2 gap-6">
-              {[
-                "Posizione centrale: tutte le attrazioni raggiungibili in pochi minuti",
-                "Parcheggio gratuito per esplorare la zona in auto",
-                "Piscina privata per relax dopo le escursioni",
-                "Cucina completa per preparare pranzi al sacco",
-                "WiFi gratuito per pianificare le attività",
-                "9 appartamenti per ogni esigenza (coppie, famiglie, gruppi)",
-              ].map((item, i) => (
-                <div key={i} className="flex items-center gap-3 p-4 bg-white rounded-lg shadow-sm">
-                  <MapPin className="h-5 w-5 text-primary flex-shrink-0" />
-                  <p className="text-lg">{item}</p>
+            <h2 className="text-3xl md:text-4xl font-playfair font-bold mb-10 text-center">Galleria Esperienze</h2>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {gallery.map((src, i) => (
+                <div key={src} className="relative h-56 rounded-2xl overflow-hidden border border-white/20">
+                  <Image src={src} alt={`Attività Capo Rizzuto ${i + 1}`} fill className="object-cover hover:scale-105 transition-transform duration-500" sizes="(max-width: 1024px) 50vw, 25vw" />
                 </div>
               ))}
             </div>
@@ -316,62 +108,57 @@ export default function CosaFareCapoRizzutoPage() {
         </div>
       </section>
 
-      {/* Related Links */}
-      <section className="py-16 bg-secondary/20">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <h3 className="text-2xl font-playfair font-bold mb-6 text-center">
-              Scopri di Più su Capo Rizzuto
-            </h3>
-            <div className="grid md:grid-cols-3 gap-4">
-              <Button variant="outline" asChild className="h-auto py-4">
-                <Link href="/capo-rizzuto">
-                  <div className="text-center">
-                    <p className="font-semibold">Appartamenti</p>
-                    <p className="text-sm text-muted-foreground">Capo Rizzuto</p>
-                  </div>
-                </Link>
-              </Button>
-              <Button variant="outline" asChild className="h-auto py-4">
-                <Link href="/le-castella">
-                  <div className="text-center">
-                    <p className="font-semibold">Le Castella</p>
-                    <p className="text-sm text-muted-foreground">Castello Aragonese</p>
-                  </div>
-                </Link>
-              </Button>
-              <Button variant="outline" asChild className="h-auto py-4">
-                <Link href="/spiagge-capo-rizzuto">
-                  <div className="text-center">
-                    <p className="font-semibold">Spiagge</p>
-                    <p className="text-sm text-muted-foreground">Migliori spiagge</p>
-                  </div>
-                </Link>
-              </Button>
-            </div>
+      <section className="py-16 bg-gradient-to-b from-[#fff7e6] to-[#ffecc7]">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <h2 className="text-3xl md:text-4xl font-playfair font-bold mb-10 text-center text-[#4b2f00]">Itinerari Rapidi</h2>
+          <div className="grid md:grid-cols-3 gap-5">
+            {[
+              {
+                title: "Mare",
+                icon: Clock,
+                text: "Mattina in spiaggia, pomeriggio in piscina, cena a Le Castella.",
+              },
+              {
+                title: "Storia",
+                icon: MapPin,
+                text: "Castello Aragonese, centro di Isola di Capo Rizzuto e passeggiata serale.",
+              },
+              {
+                title: "Natura",
+                icon: Mountain,
+                text: "Snorkeling nell'area marina e percorsi panoramici sulla costa ionica.",
+              },
+            ].map((item) => (
+              <Card key={item.title} className="border-[#f3d6a0] bg-white/95">
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2 text-[#4b2f00]">
+                    <item.icon className="h-5 w-5" />
+                    {item.title}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-[#6a4f26]">{item.text}</p>
+                </CardContent>
+              </Card>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-20 bg-gradient-to-br from-ocean via-primary to-ocean/80 text-white">
+      <section className="py-16 bg-gradient-to-r from-ocean via-primary to-ocean/80 text-white">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-playfair font-bold mb-6">
-            Inizia la Tua Avventura a Capo Rizzuto
-          </h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto text-white/90">
-            Prenota il tuo appartamento a Villa Olimpia e scopri tutto ciò che Capo Rizzuto ha da offrire.
+          <h2 className="text-3xl md:text-4xl font-playfair font-bold mb-4">Trasforma la Vacanza in Prenotazione</h2>
+          <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto">
+            Contattaci ora per disponibilità e preventivo personalizzato.
           </p>
-          <Button variant="luxury" size="lg" asChild className="group">
-            <Link href="/contatti">
-              <span className="group-hover:translate-x-1 transition-transform inline-block">
-                Verifica Disponibilità
-              </span>
-              <svg className="w-5 h-5 ml-2 inline-block group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-              </svg>
-            </Link>
-          </Button>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button variant="luxury" size="lg" asChild>
+              <Link href="/contatti">Richiedi Preventivo</Link>
+            </Button>
+            <Button size="lg" asChild className="bg-white text-primary hover:bg-white/90">
+              <Link href="/appartamenti">Scopri gli Appartamenti</Link>
+            </Button>
+          </div>
         </div>
       </section>
     </div>

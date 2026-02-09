@@ -20,7 +20,7 @@ export default function ParallaxHero() {
     <section ref={ref} className="relative h-screen overflow-hidden">
       <motion.div style={{ y }} className="absolute inset-0 -z-10">
         <Image
-          src="/images/villa/gallery/night-1.jpg"
+          src="/images/villa/gallery/Esterni_Piscina_Notte_01.jpg"
           fill
           className="object-cover"
           alt="Villa Olimpia Piscina"
@@ -57,7 +57,6 @@ export default function ParallaxHero() {
     </section>
   )
 }
-
 
 
 

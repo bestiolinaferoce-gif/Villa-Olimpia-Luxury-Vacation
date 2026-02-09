@@ -26,6 +26,8 @@ Ultimo aggiornamento: 2026-02-08
 
 ## Note operative
 - Foto appartamenti aggiornate in public/images/villa/appartamenti/*
+- Gallery e pool images allineate a file approvati (Esterni_*)
+- apartment-content riallineato agli ID corretti (Orchidea/Giglio/Geranio/Azalea)
 - JSON-LD: rimosse aggregateRating non verificabili
 - Recensioni: file dati pulito, in attesa di import OTA con fonti reali
 
@@ -40,3 +42,9 @@ Ultimo aggiornamento: 2026-02-08
 - /camere (redirect)
 - /sitemap.xml
 - /robots.txt
+
+
+## Aggiornamenti 2026-02-08
+- Planimetria importata: `/public/images/planimetria/piano-terra.png` e `/public/images/planimetria/primo-piano.png` (estratte da `planimetria Villa Olimpia(1).docx`).
+- Audit fotografico OTA disponibile in `/Users/francesconigro/Desktop/🏠 Villa Olimpia/Villa_Olimpia_Audit_Fotografico_OTA.docx` (110 foto approvate, 59 scartate).
+- Calendario disponibilita: struttura dati in `data/availability-aug-2026.ts`, UI in `components/availability-calendar.tsx` (da popolarsi con disponibilita reali).

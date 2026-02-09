@@ -42,11 +42,11 @@ const destinations = [
       "Microclima unico",
       "Guide disponibili"
     ],
-    image: "/images/territorio/valli-cupe.jpg",
+    image: "/images/villa/gallery/Esterni_Giardino_Overview_01.jpg",
     images: [
-      "/images/territorio/valli-cupe-1.jpg",
-      "/images/territorio/valli-cupe-2.jpg",
-      "/images/territorio/valli-cupe-3.jpg"
+      "/images/villa/gallery/Esterni_Giardino_Overview_01.jpg",
+      "/images/villa/gallery/Esterni_Piscina_Giardino_01.jpg",
+      "/images/villa/gallery/Esterni_Portico_Giardino_01.jpg"
     ],
     icon: Mountain,
     coordinates: { lat: 39.0667, lng: 16.7833 }
@@ -68,11 +68,11 @@ const destinations = [
       "Chiese bizantine",
       "Vista panoramica"
     ],
-    image: "/images/territorio/santa-severina.jpg",
+    image: "/images/villa/gallery/Esterni_LeCastella_01.jpg",
     images: [
-      "/images/territorio/santa-severina-1.jpg",
-      "/images/territorio/santa-severina-2.jpg",
-      "/images/territorio/santa-severina-3.jpg"
+      "/images/villa/gallery/Esterni_LeCastella_01.jpg",
+      "/images/villa/gallery/Esterni_Spiaggia_01.jpg",
+      "/images/villa/gallery/Esterni_Spiaggia_Tramonto_01.jpg"
     ],
     icon: Castle,
     coordinates: { lat: 39.1481, lng: 16.9133 }
@@ -94,11 +94,11 @@ const destinations = [
       "Sci di fondo (inverno)",
       "Caseifici DOP"
     ],
-    image: "/images/territorio/sila.jpg",
+    image: "/images/villa/location/beach-4.jpg",
     images: [
-      "/images/territorio/sila-1.jpg",
-      "/images/territorio/sila-2.jpg",
-      "/images/territorio/sila-3.jpg"
+      "/images/villa/location/beach-4.jpg",
+      "/images/villa/location/beach-5.jpg",
+      "/images/villa/location/beach-3.jpg"
     ],
     icon: Mountain,
     coordinates: { lat: 39.2667, lng: 16.5833 }
@@ -120,10 +120,10 @@ const destinations = [
       "Fondale basso",
       "Panorami unici"
     ],
-    image: "/images/territorio/spiagge-rosse.jpg",
+    image: "/images/villa/gallery/Esterni_Spiaggia_Estiva_01.jpg",
     images: [
-      "/images/territorio/spiagge-rosse-1.jpg",
-      "/images/territorio/spiagge-rosse-2.jpg"
+      "/images/villa/gallery/Esterni_Spiaggia_Estiva_01.jpg",
+      "/images/villa/gallery/Esterni_Spiaggia_Tramonto_01.jpg"
     ],
     icon: Waves,
     coordinates: { lat: 38.95, lng: 17.1 }
@@ -145,11 +145,11 @@ const destinations = [
       "Borgo marinaro caratteristico",
       "Panorami da cartolina"
     ],
-    image: "/images/territorio/le-castella.jpg",
+    image: "/images/villa/gallery/Esterni_LeCastella_01.jpg",
     images: [
-      "/images/territorio/le-castella-1.jpg",
-      "/images/territorio/le-castella-2.jpg",
-      "/images/territorio/le-castella-3.jpg"
+      "/images/villa/gallery/Esterni_LeCastella_01.jpg",
+      "/images/villa/gallery/Esterni_Spiaggia_01.jpg",
+      "/images/villa/gallery/Esterni_Spiaggia_Tramonto_01.jpg"
     ],
     icon: Castle,
     coordinates: { lat: 38.9167, lng: 17.0167 }
@@ -171,11 +171,11 @@ const destinations = [
       "Scuola di Pitagora",
       "Lungomare 5 km"
     ],
-    image: "/images/territorio/crotone.jpg",
+    image: "/images/villa/location/beach-2.jpg",
     images: [
-      "/images/territorio/crotone-1.jpg",
-      "/images/territorio/crotone-2.jpg",
-      "/images/territorio/crotone-3.jpg"
+      "/images/villa/location/beach-2.jpg",
+      "/images/villa/location/beach-3.jpg",
+      "/images/villa/location/beach-4.jpg"
     ],
     icon: Castle,
     coordinates: { lat: 39.0833, lng: 17.1167 }
@@ -197,11 +197,11 @@ const destinations = [
       "Escursioni in barca",
       "Biodiversità straordinaria"
     ],
-    image: "/images/territorio/riserva-marina.jpg",
+    image: "/images/villa/location/beach-3.jpg",
     images: [
-      "/images/territorio/riserva-marina-1.jpg",
-      "/images/territorio/riserva-marina-2.jpg",
-      "/images/territorio/riserva-marina-3.jpg"
+      "/images/villa/location/beach-3.jpg",
+      "/images/villa/location/beach-4.jpg",
+      "/images/villa/location/beach-5.jpg"
     ],
     icon: Waves,
     coordinates: { lat: 38.95, lng: 17.0833 }
@@ -223,10 +223,10 @@ const destinations = [
       "Arte e architettura",
       "Storia millenaria"
     ],
-    image: "/images/territorio/unesco.jpg",
+    image: "/images/villa/location/beach-5.jpg",
     images: [
-      "/images/territorio/unesco-1.jpg",
-      "/images/territorio/unesco-2.jpg"
+      "/images/villa/location/beach-5.jpg",
+      "/images/villa/location/beach-2.jpg"
     ],
     icon: Camera,
     coordinates: { lat: 39.0, lng: 17.0 }
@@ -242,17 +242,18 @@ export default function TerritorioPage() {
       ]} />
 
       {/* Hero Section */}
-      <section className="relative h-[60vh] min-h-[400px] overflow-hidden">
+      <section className="relative h-[60vh] min-h-[420px] overflow-hidden bg-[#061829]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/territorio/hero-calabria.jpg"
+            src="/images/villa/gallery/Esterni_Spiaggia_Estiva_01.jpg"
             alt="Vista panoramica Calabria - Territorio Villa Olimpia"
             fill
             className="object-cover"
             priority
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/70" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(14,165,233,0.35),_transparent_55%)]" />
         </div>
         <div className="relative z-10 h-full flex items-center justify-center text-center px-4">
           <div className="max-w-4xl">
@@ -267,9 +268,9 @@ export default function TerritorioPage() {
       </section>
 
       {/* Introduction */}
-      <section className="py-16 bg-background">
+      <section className="py-16 bg-gradient-to-b from-white via-sky-50/60 to-amber-50/40">
         <div className="container mx-auto px-4 max-w-4xl">
-          <div className="text-center mb-12">
+          <div className="text-center mb-12 bg-white/80 backdrop-blur-sm rounded-3xl p-10 shadow-xl border border-white/70">
             <h2 className="text-4xl font-playfair font-bold mb-4">
               Un Territorio da Esplorare
             </h2>
@@ -284,7 +285,7 @@ export default function TerritorioPage() {
       </section>
 
       {/* Destinations Grid */}
-      <section className="py-16 bg-muted/30">
+      <section className="py-16 bg-gradient-to-b from-white via-sky-50/50 to-amber-50/40">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-playfair font-bold text-center mb-12">
             Destinazioni Imperdibili
@@ -294,7 +295,8 @@ export default function TerritorioPage() {
             {destinations.map((destination, index) => {
               const Icon = destination.icon
               return (
-                <Card key={destination.id} className="overflow-hidden hover:shadow-xl transition-shadow">
+                <Card key={destination.id} className="group relative overflow-hidden border border-white/60 bg-white/80 backdrop-blur-sm shadow-lg hover:shadow-2xl transition-all">
+                  <div className="absolute inset-0 pointer-events-none bg-gradient-to-br from-amber-100/40 via-transparent to-sky-100/40 opacity-0 group-hover:opacity-100 transition-opacity" />
                   <div className="relative h-64">
                     <Image
                       src={destination.image}
@@ -304,19 +306,19 @@ export default function TerritorioPage() {
                       sizes="(max-width: 768px) 100vw, 50vw"
                     />
                     <div className="absolute top-4 left-4">
-                      <span className="bg-primary text-white px-3 py-1 rounded-full text-sm font-semibold">
+                      <span className="bg-gradient-to-r from-sky-500 to-cyan-500 text-white px-3 py-1 rounded-full text-sm font-semibold shadow-md">
                         {destination.category}
                       </span>
                     </div>
                     <div className="absolute top-4 right-4">
-                      <div className="bg-white/90 backdrop-blur-sm p-2 rounded-full">
-                        <Icon className="h-6 w-6 text-primary" />
+                      <div className="bg-white/90 backdrop-blur-sm p-2 rounded-full shadow-md">
+                        <Icon className="h-6 w-6 text-sky-600" />
                       </div>
                     </div>
                   </div>
                   
                   <CardHeader>
-                    <CardTitle className="text-2xl">{destination.name}</CardTitle>
+                    <CardTitle className="text-2xl text-slate-900">{destination.name}</CardTitle>
                     <CardDescription className="flex items-center gap-4 mt-2">
                       <span className="flex items-center gap-1">
                         <MapPin className="h-4 w-4" />
@@ -349,7 +351,7 @@ export default function TerritorioPage() {
                     )}
                     
                     <div className="flex items-center justify-between pt-4 border-t">
-                      <span className="text-sm font-semibold text-primary">
+                      <span className="text-sm font-semibold text-sky-700">
                         {destination.price}
                       </span>
                       <Button variant="outline" size="sm" asChild>
@@ -367,7 +369,7 @@ export default function TerritorioPage() {
       </section>
 
       {/* Valli Cupe UNESCO - SEZIONE PREMIUM */}
-      <section className="py-20 bg-gradient-to-br from-green-50 to-blue-50">
+      <section className="py-20 bg-gradient-to-br from-emerald-50 via-sky-50 to-amber-50">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
@@ -386,7 +388,7 @@ export default function TerritorioPage() {
             <div className="grid md:grid-cols-2 gap-8 items-center mb-12">
               <div className="relative h-96 rounded-2xl overflow-hidden shadow-2xl">
                 <Image
-                  src="/images/villa/gallery/night-1.jpg"
+                  src="/images/villa/gallery/Esterni_Giardino_Overview_01.jpg"
                   fill
                   className="object-cover"
                   alt="Valli Cupe Canyon Patrimonio UNESCO"
@@ -405,7 +407,7 @@ export default function TerritorioPage() {
                   </p>
                 </div>
 
-                <div className="bg-white p-6 rounded-lg shadow-lg">
+                <div className="bg-white/90 backdrop-blur-sm p-6 rounded-lg shadow-lg border border-white/70">
                   <h4 className="font-bold mb-3 text-lg">🌿 Biodiversità Unica</h4>
                   <ul className="space-y-2 text-sm">
                     <li className="flex items-start gap-2">
@@ -431,7 +433,7 @@ export default function TerritorioPage() {
 
             {/* Percorsi Trekking */}
             <div className="grid md:grid-cols-3 gap-6 mb-12">
-              <div className="bg-white p-6 rounded-xl shadow-lg">
+              <div className="bg-white/90 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-white/70">
                 <div className="text-3xl mb-3">🥾</div>
                 <h4 className="font-bold text-lg mb-2">Sentiero Facile</h4>
                 <p className="text-sm text-muted-foreground mb-3">
@@ -443,7 +445,7 @@ export default function TerritorioPage() {
                 </p>
               </div>
 
-              <div className="bg-white p-6 rounded-xl shadow-lg border-2 border-primary">
+              <div className="bg-white/95 backdrop-blur-sm p-6 rounded-xl shadow-lg border-2 border-sky-400/70">
                 <div className="text-3xl mb-3">⛰️</div>
                 <h4 className="font-bold text-lg mb-2">Sentiero Medio</h4>
                 <p className="text-sm text-muted-foreground mb-3">
@@ -458,7 +460,7 @@ export default function TerritorioPage() {
                 </div>
               </div>
 
-              <div className="bg-white p-6 rounded-xl shadow-lg">
+              <div className="bg-white/90 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-white/70">
                 <div className="text-3xl mb-3">🧗</div>
                 <h4 className="font-bold text-lg mb-2">Sentiero Avanzato</h4>
                 <p className="text-sm text-muted-foreground mb-3">
@@ -472,7 +474,7 @@ export default function TerritorioPage() {
             </div>
 
             {/* Info Pratiche */}
-            <div className="bg-primary text-primary-foreground p-8 rounded-2xl">
+            <div className="bg-gradient-to-r from-sky-500 via-cyan-500 to-emerald-500 text-white p-8 rounded-2xl shadow-xl">
               <div className="grid md:grid-cols-3 gap-8 text-center">
                 <div>
                   <MapPin className="w-8 h-8 mx-auto mb-3" />
@@ -609,4 +611,3 @@ export default function TerritorioPage() {
     </div>
   )
 }
-

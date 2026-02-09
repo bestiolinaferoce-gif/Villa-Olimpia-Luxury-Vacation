@@ -40,7 +40,7 @@ Crea un file `.env.local` nella root del progetto:
 ```env
 NEXT_PUBLIC_SITE_URL=http://localhost:3000
 NEXT_PUBLIC_PHONE=+393491234567
-NEXT_PUBLIC_EMAIL=info@villaolimpia.com
+NEXT_PUBLIC_EMAIL=villaolimpiacaporizzuto@gmail.com
 NEXT_PUBLIC_WHATSAPP=393491234567
 ```
 
