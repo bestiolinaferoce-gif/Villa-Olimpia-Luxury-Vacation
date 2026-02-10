@@ -23,7 +23,11 @@ export default function SpiaggeCapoRizzutoPage() {
             </h1>
             <p className="text-xl text-muted-foreground mb-8">
               Scopri le spiagge più belle della costa ionica calabrese, dalla Spiaggia dei Gigli 
-              alle calette incontaminate di Capopiccolo. Villa Olimpia è la base perfetta per la tua vacanza al mare.
+              alle calette incontaminate di Capopiccolo.{" "}
+              <Link href="/appartamenti" className="underline underline-offset-4 decoration-primary/60 hover:text-primary">
+                Villa Olimpia
+              </Link>{" "}
+              è la base perfetta per la tua vacanza al mare, a meno di 100 metri dalla spiaggia Bandiera Blu.
             </p>
           </div>
         </div>
@@ -52,7 +56,7 @@ export default function SpiaggeCapoRizzutoPage() {
                   <p className="text-lg text-muted-foreground mb-4">
                     La <strong>Spiaggia dei Gigli</strong> è una delle spiagge più famose della Calabria, 
                     caratterizzata da sabbia fine e acque cristalline. Raggiungibile a piedi da Villa Olimpia 
-                    in soli 7 minuti, è perfetta per famiglie grazie alla sua gradualità e alla presenza 
+                    in circa 1 minuto, è perfetta per famiglie grazie alla sua gradualità e alla presenza 
                     di servizi e stabilimenti balneari.
                   </p>
                   <div className="grid md:grid-cols-2 gap-4 mt-4">
@@ -190,7 +194,7 @@ export default function SpiaggeCapoRizzutoPage() {
               Perché Scegliere Villa Olimpia per le Spiagge di Capo Rizzuto
             </h2>
             <p className="text-lg text-muted-foreground mb-8 text-center">
-              Villa Olimpia è la base perfetta per esplorare tutte le spiagge della zona:
+              Villa Olimpia è la base perfetta per esplorare tutte le spiagge della zona, con appartamenti indipendenti e piscina condivisa:
             </p>
             <div className="grid md:grid-cols-2 gap-6">
               {[
@@ -255,10 +259,10 @@ export default function SpiaggeCapoRizzutoPage() {
             Prenota la Tua Vacanza al Mare
           </h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto text-white/90">
-            Scegli Villa Olimpia come base per scoprire le spiagge più belle della Calabria.
+            Scegli Villa Olimpia come base per scoprire le spiagge più belle della Calabria e prenota in modo diretto, senza commissioni di portali.
           </p>
           <Button variant="luxury" size="lg" asChild className="group">
-            <Link href="/contatti">
+            <Link href="/contatti?source=spiagge-page#prenota">
               <span className="group-hover:translate-x-1 transition-transform inline-block">
                 Verifica Disponibilità
               </span>

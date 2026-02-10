@@ -48,10 +48,12 @@ export default function LocationPage() {
         <div className="relative container mx-auto px-4 text-white max-w-4xl">
           <h1 className="text-4xl md:text-6xl font-playfair font-bold mb-5">La Location</h1>
           <p className="text-lg md:text-xl text-white/90 max-w-2xl">
-            Villa Olimpia è a Capopiccolo, nel cuore della costa ionica: mare cristallino, area marina protetta e Le Castella in pochi minuti.
+            Villa Olimpia è a Capopiccolo, sulla costa ionica calabrese: mare cristallino, Area Marina Protetta Capo
+            Rizzuto, fondali perfetti per famiglie e snorkeling, con Le Castella raggiungibile in pochi minuti.
           </p>
           <p className="text-sm md:text-base text-white/80 mt-4">
-            La Spiaggia dei Gigli è a meno di 100 metri dalla struttura.
+            La Spiaggia dei Gigli, Bandiera Blu, è a meno di 100 metri dagli appartamenti: si raggiunge in circa 1
+            minuto a piedi dal cancello di Villa Olimpia.
           </p>
         </div>
       </section>

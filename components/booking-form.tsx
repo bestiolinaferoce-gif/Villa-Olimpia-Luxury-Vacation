@@ -346,6 +346,11 @@ export function BookingForm() {
         {isSubmitting ? "Invio in corso..." : "Invia richiesta preventivo"}
       </Button>
 
+      <p className="text-xs text-muted-foreground">
+        Prenotando da questo form parli direttamente con Villa Olimpia: nessuna commissione di portale e migliore
+        tariffa disponibile sulle stesse date.
+      </p>
+
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
         <Button
           type="button"

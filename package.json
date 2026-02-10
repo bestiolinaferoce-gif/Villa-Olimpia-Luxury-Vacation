@@ -12,6 +12,7 @@
     "health-check": "npx tsx scripts/auto-monitor.ts",
     "check:apartments": "node scripts/check-apartment-integrity.js",
     "check:content": "node scripts/check-site-copy-consistency.js",
+    "verify:analytics": "node scripts/verify-analytics.js",
     "leads:report": "node scripts/leads-report.js",
     "leads:queue": "node scripts/leads-followup-queue.js",
     "marketing:links": "node scripts/generate-campaign-links.js",

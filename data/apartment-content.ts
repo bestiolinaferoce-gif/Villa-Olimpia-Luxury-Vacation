@@ -84,11 +84,11 @@ Cucina attrezzata, aria condizionata, WiFi, TV Smart; accesso a piscina condivis
     }
   },
   3: {
-    // ORCHIDEA - 48 mq, 4 ospiti, 1 camera, 1 bagno, terrazza vista mare
-    shortDescription: "Orchidea: 48 mq con terrazza panoramica vista mare Ionio, camera matrimoniale, zona living e bagno completo. Fino a 4 ospiti. Villa Olimpia Capopiccolo, Spiaggia dei Gigli a meno di 100 m.",
+    // ORCHIDEA - 48 mq, 4 ospiti, 1 camera, doppi servizi, terrazza vista mare
+    shortDescription: "Orchidea: 48 mq con terrazza panoramica vista mare Ionio, camera matrimoniale, zona living e doppi servizi. Fino a 4 ospiti. Villa Olimpia Capopiccolo, Spiaggia dei Gigli a meno di 100 m.",
     fullPremiumDescription: `Orchidea è un appartamento di 48 mq al piano terra di Villa Olimpia, in posizione alta a destra a Capopiccolo, Isola di Capo Rizzuto.
 
-Ospita fino a 4 persone con 1 camera matrimoniale, zona living con divano letto, cucina completa e 1 bagno completo.
+Ospita fino a 4 persone con 1 camera matrimoniale, zona living con divano letto, cucina completa e due bagni completi.
 
 La terrazza panoramica regala vista sul mare Ionio e sulla costa calabrese; accesso a piscina e giardino condivisi. A 100 m dalla Spiaggia dei Gigli, Area Marina Protetta Capo Rizzuto. Appartamento vista mare Calabria con indicizzazione SEO ideale.`,
     featureBullets: [
@@ -106,11 +106,11 @@ La terrazza panoramica regala vista sul mare Ionio e sulla costa calabrese; acce
       "Famiglie 2+2",
       "Soggiorni vista mare a Capo Rizzuto"
     ],
-    seoParagraph: "Orchidea è un appartamento vacanze 48 mq con terrazza vista mare a Capopiccolo, Isola di Capo Rizzuto. Camera matrimoniale, zona living con divano letto, cucina attrezzata e 1 bagno completo: villa con piscina in Calabria ideale per coppie e famiglie. A meno di 100 m dalla Spiaggia dei Gigli. Keywords: appartamento vista mare Capo Rizzuto, terrazza panoramica Calabria, vacanza Isola di Capo Rizzuto.",
+    seoParagraph: "Orchidea è un appartamento vacanze 48 mq con terrazza vista mare a Capopiccolo, Isola di Capo Rizzuto. Camera matrimoniale, zona living con divano letto, cucina attrezzata e due bagni completi: villa con piscina in Calabria ideale per coppie e famiglie che cercano un comfort extra. A meno di 100 m dalla Spiaggia dei Gigli. Keywords: appartamento vista mare Capo Rizzuto, terrazza panoramica Calabria, vacanza Isola di Capo Rizzuto, appartamento doppi servizi Calabria.",
     technicalSummary: {
       capacity: "4",
       rooms: "1 matrimoniale",
-      bathrooms: "1",
+      bathrooms: "2",
       outdoorArea: "Terrazza panoramica",
       floor: "Terra"
     }

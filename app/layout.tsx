@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { Inter, Playfair_Display } from "next/font/google"
 import Script from "next/script"
+import Link from "next/link"
 import "./globals.css"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
@@ -12,8 +13,8 @@ import { TouchOptimizer } from "@/components/mobile/touch-optimizer"
 import { DirectionsProvider } from "@/components/directions-context"
 import { ErrorBoundary } from "@/components/error-boundary"
 import { defaultMetadata } from "@/lib/metadata"
-import { GoogleAnalytics } from "@/components/analytics/google-analytics"
-import { GoogleTagManager } from "@/components/analytics/google-tag-manager"
+import { AnalyticsUnified } from "@/components/analytics/analytics-unified"
+import { AnalyticsPageView } from "@/components/analytics/analytics-pageview"
 import { AutoOptimizer } from "@/components/auto-optimizer"
 import FloatingBooking from "@/components/floating-booking"
 import NewsletterPopup from "@/components/newsletter-popup"
@@ -56,10 +57,6 @@ export default function RootLayout({
         {/* DNS Prefetch per Analytics */}
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-        
-        {/* Google Tag Manager e Google Analytics */}
-        <GoogleTagManager />
-        <GoogleAnalytics />
         
         {/* Hreflang tag - solo italiano per ora */}
         <link rel="alternate" hrefLang="it" href="https://villaolimpiacaporizzuto.com" />
@@ -206,6 +203,8 @@ export default function RootLayout({
         />
       </head>
       <body className={inter.className} suppressHydrationWarning>
+        <AnalyticsUnified />
+        <AnalyticsPageView />
         <ErrorBoundary>
           {/* FIX HYDRATION: I18nProvider gestisce correttamente SSR/client mismatch */}
           <I18nProvider>
@@ -213,6 +212,20 @@ export default function RootLayout({
             <FloatingBooking />
             <NewsletterPopup />
             <DirectionsProvider>
+              {/* Barra globale prenotazione diretta */}
+              <div className="bg-primary text-white text-xs sm:text-sm">
+                <div className="max-w-6xl mx-auto px-4 py-2 flex flex-col sm:flex-row items-center justify-between gap-2">
+                  <span className="text-center sm:text-left">
+                    Prenotazione diretta Villa Olimpia: nessuna commissione di portali e migliori tariffe sulle stesse date.
+                  </span>
+                  <Link
+                    href="/contatti?source=topbar#prenota"
+                    className="inline-flex items-center justify-center rounded-full bg-white text-primary px-4 py-1 text-xs sm:text-sm font-semibold hover:bg-white/90 transition-colors"
+                  >
+                    Verifica disponibilità
+                  </Link>
+                </div>
+              </div>
               <PreloadResources />
               <TouchOptimizer />
               <Header />

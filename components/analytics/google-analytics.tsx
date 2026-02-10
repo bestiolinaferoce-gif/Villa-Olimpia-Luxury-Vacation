@@ -7,48 +7,51 @@ import { usePathname } from "next/navigation"
 // Google Analytics 4 Measurement ID
 const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || ""
 
+const isGAEnabled = () =>
+  Boolean(GA_MEASUREMENT_ID && GA_MEASUREMENT_ID !== "G-XXXXXXXXXX")
+
+/** Esportato per verifiche e test: GA è configurato e abilitato? */
+export function isAnalyticsEnabled(): boolean {
+  return isGAEnabled()
+}
+
 export function GoogleAnalytics() {
   const pathname = usePathname()
 
   useEffect(() => {
-    // Inizializza dataLayer se non esiste
     if (typeof window !== "undefined") {
       window.dataLayer = window.dataLayer || []
     }
   }, [])
 
+  // Page view: un solo invio per route (no doppio al primo load)
   useEffect(() => {
-    if (!GA_MEASUREMENT_ID || GA_MEASUREMENT_ID === "G-XXXXXXXXXX") {
-      if (process.env.NODE_ENV === "development") {
-        console.warn("Google Analytics Measurement ID not configured. Set NEXT_PUBLIC_GA_MEASUREMENT_ID")
-      }
-      return
-    }
+    if (!isGAEnabled() || typeof window === "undefined" || !window.gtag || !pathname) return
 
-    // Track page view on route change
-    if (typeof window !== "undefined" && window.gtag && pathname) {
-      const url = pathname + (window.location.search || "")
-      window.gtag("config", GA_MEASUREMENT_ID, {
-        page_path: url,
-        page_title: document.title,
-      })
-    }
+    const pagePath = pathname + (window.location.search || "")
+    const pageLocation = window.location.origin + pagePath
+
+    window.gtag("config", GA_MEASUREMENT_ID, {
+      page_path: pagePath,
+      page_location: pageLocation,
+      page_title: document.title ?? undefined,
+    })
   }, [pathname])
 
-  // Non renderizzare nulla se GA_MEASUREMENT_ID non è configurato
-  if (!GA_MEASUREMENT_ID || GA_MEASUREMENT_ID === "G-XXXXXXXXXX") {
+  if (!isGAEnabled()) {
+    if (process.env.NODE_ENV === "development") {
+      console.warn("[GA] Measurement ID non configurato. Imposta NEXT_PUBLIC_GA_MEASUREMENT_ID")
+    }
     return null
   }
 
   return (
     <>
-      {/* Google Analytics 4 - Script di caricamento */}
       <Script
         id="ga4-script-loader"
         src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
         strategy="afterInteractive"
       />
-      {/* Google Analytics 4 - Inizializzazione */}
       <Script
         id="ga4-init"
         strategy="afterInteractive"
@@ -66,7 +69,7 @@ export function GoogleAnalytics() {
               'security_storage': 'granted'
             });
             gtag('config', '${GA_MEASUREMENT_ID}', {
-              'send_page_view': true,
+              'send_page_view': false,
               'anonymize_ip': true,
               'cookie_flags': 'SameSite=None;Secure'
             });
@@ -77,20 +80,19 @@ export function GoogleAnalytics() {
   )
 }
 
-// Custom event tracking functions
+// Custom event tracking (no-op se GA non abilitato o gtag non pronto)
 export function trackEvent(
   action: string,
   category: string,
   label?: string,
   value?: number
 ) {
-  if (typeof window !== "undefined" && window.gtag) {
-    window.gtag("event", action, {
-      event_category: category,
-      event_label: label,
-      value: value,
-    })
-  }
+  if (typeof window === "undefined" || !window.gtag) return
+  window.gtag("event", action, {
+    event_category: category,
+    event_label: label ?? undefined,
+    value: value ?? undefined,
+  })
 }
 
 // Consent Mode helper

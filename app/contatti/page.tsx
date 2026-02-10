@@ -4,16 +4,27 @@ import { Button } from "@/components/ui/button"
 import { Phone, Mail, MapPin, MessageCircle, Sparkles, Clock, Waves, Heart } from "lucide-react"
 import { Breadcrumb } from "@/components/breadcrumb"
 import { ShareKit } from "@/components/conversion/share-kit"
+import { TrackContactSource } from "@/components/analytics/track-contact-source"
+import { generateMetadata } from "@/lib/metadata"
 
-export const metadata = {
-  title: "Contatti - Villa Olimpia",
+export const metadata = generateMetadata({
+  title: "Contatti Villa Olimpia - Prenotazione diretta appartamenti Capo Rizzuto",
   description:
-    "Contattaci per prenotare il tuo appartamento a Villa Olimpia. Telefono, email, WhatsApp. Siamo disponibili per rispondere a tutte le tue domande e aiutarti a pianificare la tua vacanza perfetta in Calabria.",
-}
+    "Contatta Villa Olimpia per preventivi e prenotazioni dirette dei 9 appartamenti con piscina a Capopiccolo, Isola di Capo Rizzuto. Telefono, email e WhatsApp senza commissioni di portali.",
+  path: "/contatti",
+  keywords: [
+    "contatti Villa Olimpia",
+    "prenotazione diretta appartamenti Capo Rizzuto",
+    "preventivo vacanza Calabria mare",
+    "telefono Villa Olimpia Capo Rizzuto",
+    "email appartamenti Spiaggia dei Gigli",
+  ],
+})
 
 export default function ContattiPage() {
   return (
     <div className="min-h-screen pt-20">
+      <TrackContactSource />
       <Breadcrumb items={[{ label: "Contatti" }]} />
 
       <section className="relative overflow-hidden bg-gradient-to-br from-ocean/15 via-primary/10 to-amber-50 py-16">
@@ -31,7 +42,9 @@ export default function ContattiPage() {
               Prenota la tua vacanza a Villa Olimpia
             </h1>
             <p className="mt-4 text-lg text-slate-600">
-              Raccontaci le tue date e ti rispondiamo con un preventivo preciso. Piscina privata, giardino mediterraneo e mare a pochi passi.
+              Raccontaci le tue date e ti rispondiamo con un preventivo preciso. Prenotando qui hai il canale diretto
+              con Villa Olimpia, senza commissioni di portali, con piscina condivisa, giardino mediterraneo e mare a
+              pochi passi.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <div className="flex items-center gap-2 rounded-full bg-white/80 px-4 py-2 text-sm text-slate-700 shadow">

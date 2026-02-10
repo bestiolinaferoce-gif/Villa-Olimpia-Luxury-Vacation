@@ -1,10 +1,25 @@
 import Image from "next/image"
+import { generateMetadata } from "@/lib/metadata"
 import { ApartmentCard } from "@/components/apartment-card"
 import { apartments } from "@/data/apartments"
 import { Sparkles, MapPin, Home, Waves, Car, Wifi } from "lucide-react"
 import { SectionDivider } from "@/components/animations/section-divider"
 import { MapExpand } from "@/components/apartments/map-expand"
 import { LocalSeoSection } from "@/components/seo/local-seo-section"
+
+export const metadata = generateMetadata({
+  title: "Appartamenti Villa Olimpia Capo Rizzuto - 9 lodges con piscina a 100m dal mare",
+  description:
+    "Scopri i 9 appartamenti di Villa Olimpia a Capopiccolo, Isola di Capo Rizzuto: soluzioni da 2 a 6 ospiti con piscina condivisa, giardino e Spiaggia dei Gigli a meno di 100 metri.",
+  path: "/appartamenti",
+  keywords: [
+    "appartamenti Villa Olimpia",
+    "appartamenti Capo Rizzuto piscina",
+    "case vacanze Spiaggia dei Gigli",
+    "appartamenti Capopiccolo Isola di Capo Rizzuto",
+    "alloggi famiglia Calabria mare",
+  ],
+})
 
 export default function AppartamentiPage() {
   const pianoTerra = apartments.filter((apt) => apt.floor === "Piano Terra")
@@ -103,11 +118,33 @@ export default function AppartamentiPage() {
               Tutti gli Appartamenti
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Esplora tutti i nostri appartamenti e trova quello perfetto per la tua vacanza
+              Esplora tutti i nostri appartamenti e trova quello perfetto per la tua vacanza a Capopiccolo, nel
+              cuore dell&apos;Area Marina Protetta Capo Rizzuto, a meno di 100 metri dalla Spiaggia dei Gigli.
             </p>
           </div>
 
           <div className="space-y-12">
+            <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm mb-6">
+              <p className="text-base text-gray-700">
+                Tutti gli appartamenti di Villa Olimpia condividono piscina, giardino mediterraneo e accesso rapido a{" "}
+                <strong className="font-semibold">Spiaggia dei Gigli</strong>. Da qui raggiungi in pochi minuti{" "}
+                <strong className="font-semibold">Le Castella</strong>, l&apos;Area Marina Protetta Capo Rizzuto e le
+                principali attrazioni del territorio calabrese. Per maggiori dettagli sulla posizione puoi visitare le
+                pagine{" "}
+                <a href="/location" className="text-primary underline-offset-2 hover:underline">
+                  Location
+                </a>
+                ,{" "}
+                <a href="/spiagge-capo-rizzuto" className="text-primary underline-offset-2 hover:underline">
+                  Spiagge
+                </a>{" "}
+                e{" "}
+                <a href="/area-marina-protetta" className="text-primary underline-offset-2 hover:underline">
+                  Area Marina Protetta
+                </a>
+                .
+              </p>
+            </div>
             <div id="piano-terra" className="space-y-6">
               <h3 className="text-2xl md:text-3xl font-playfair font-bold text-gray-900">Piano Terra</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

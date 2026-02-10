@@ -87,11 +87,11 @@ A meno di 100 m dalla Spiaggia dei Gigli, Area Marina Protetta Capo Rizzuto. Pre
       "booking orchidea villa olimpia",
       "airbnb orchidea vista mare"
     ],
-    seoContent: `L'appartamento Orchidea di Villa Olimpia è un alloggio di 48 mq al piano terra, in posizione alta a destra a Capopiccolo, Isola di Capo Rizzuto. Ospita fino a 4 persone con 1 camera matrimoniale, zona living con divano letto, cucina completa e 1 bagno completo.
+    seoContent: `L'appartamento Orchidea di Villa Olimpia è un alloggio di 48 mq al piano terra, in posizione alta a destra a Capopiccolo, Isola di Capo Rizzuto. Ospita fino a 4 persone con 1 camera matrimoniale, zona living con divano letto, cucina completa e due bagni completi.
 
 La terrazza panoramica offre vista sul mare Ionio e sulla costa calabrese. Zona living spaziosa e luminosa; accesso a piscina e giardino condivisi. A 100 metri dalla Spiaggia dei Gigli, Area Marina Protetta Capo Rizzuto.
 
-Completamente attrezzato: cucina, aria condizionata, WiFi, TV Smart. Prezzo da €140/notte. Booking.com, Airbnb e prenotazione diretta. Keywords: appartamento vista mare Capo Rizzuto, terrazza panoramica Calabria, vacanza Isola di Capo Rizzuto.`,
+Completamente attrezzato: cucina, aria condizionata, WiFi, TV Smart e doppi servizi. Prezzo da €140/notte. Booking.com, Airbnb e prenotazione diretta. Keywords: appartamento vista mare Capo Rizzuto, terrazza panoramica Calabria, vacanza Isola di Capo Rizzuto, appartamento doppi servizi Calabria.`,
     bookingKeywords: [
       "Orchidea Villa Olimpia Booking",
       "sea view apartment Booking.com",

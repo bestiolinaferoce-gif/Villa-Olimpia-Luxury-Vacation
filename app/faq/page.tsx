@@ -1,10 +1,19 @@
 import { FAQSection } from "@/components/faq-section"
 import { Breadcrumb } from "@/components/breadcrumb"
+import { generateMetadata } from "@/lib/metadata"
 
-export const metadata = {
-  title: "FAQ - Villa Olimpia",
-  description: "Trova risposte alle domande più frequenti su Villa Olimpia, i nostri appartamenti e i servizi offerti. Check-in, check-out, parcheggio, WiFi e molto altro.",
-}
+export const metadata = generateMetadata({
+  title: "FAQ Villa Olimpia - Domande frequenti su appartamenti, servizi e prenotazioni",
+  description:
+    "Domande frequenti su Villa Olimpia a Capo Rizzuto: orari di check-in e check-out, cancellazioni, WiFi, parcheggio, distanza dalla Spiaggia dei Gigli e servizi per famiglie.",
+  path: "/faq",
+  keywords: [
+    "FAQ Villa Olimpia",
+    "domande frequenti appartamenti Capo Rizzuto",
+    "check-in check-out Spiaggia dei Gigli",
+    "parcheggio WiFi villa con piscina Calabria",
+  ],
+})
 
 // FAQ Schema Markup
 const faqSchema = {

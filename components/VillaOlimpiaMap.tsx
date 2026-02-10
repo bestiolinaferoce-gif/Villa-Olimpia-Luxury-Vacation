@@ -3,6 +3,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { trackMapInteraction } from '@/components/analytics/google-analytics';
+import { apartments } from '@/data/apartments';
 
 /* ═══════════════════════════════════════════════════════════════════════
    VILLA OLIMPIA — Interactive Floor Plan Map v3.0
@@ -209,12 +210,15 @@ const translations = {
 
 type Lang = keyof typeof translations;
 
-// Prices from apartments.ts
-const PRICES: Record<string, number> = {
-  fiordaliso: 130, orchidea: 140, tulipano: 125,
-  frangipane: 120, giglio: 135, lavanda: 120,
-  geranio: 200, gardenia: 150, azalea: 145,
-};
+// Prices derivati da data/apartments.ts (fonte canonica)
+const DEFAULT_PRICE = 120;
+
+const PRICES: Record<string, number> = apartments.reduce((map, apt) => {
+  // Gli id della mappa sono i nomi in minuscolo (es. "Fiordaliso" -> "fiordaliso")
+  const key = apt.name.toLowerCase();
+  map[key] = apt.price ?? DEFAULT_PRICE;
+  return map;
+}, {} as Record<string, number>);
 
 // ─── Icon component ───────────────────────────────────────────────────
 function AmenityIcon({ type, size = 18, color = 'currentColor' }: { type: AmenityType; size?: number; color?: string }) {

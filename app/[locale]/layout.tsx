@@ -16,8 +16,8 @@ import { TouchOptimizer } from "@/components/mobile/touch-optimizer"
 import { DirectionsProvider } from "@/components/directions-context"
 import { ErrorBoundary } from "@/components/error-boundary"
 import { defaultMetadata } from "@/lib/metadata"
-import { GoogleAnalytics } from "@/components/analytics/google-analytics"
-import { GoogleTagManager } from "@/components/analytics/google-tag-manager"
+import { AnalyticsUnified } from "@/components/analytics/analytics-unified"
+import { AnalyticsPageView } from "@/components/analytics/analytics-pageview"
 import { AutoOptimizer } from "@/components/auto-optimizer"
 import FloatingBooking from "@/components/floating-booking"
 import NewsletterPopup from "@/components/newsletter-popup"
@@ -88,10 +88,6 @@ export default async function LocaleLayout({
         {/* DNS Prefetch per Analytics */}
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-        
-        {/* Google Tag Manager e Google Analytics */}
-        <GoogleTagManager />
-        <GoogleAnalytics />
         
         {/* Hreflang tags per multilingua */}
         <link rel="alternate" hrefLang="it" href="https://villaolimpiacaporizzuto.com/it" />
@@ -247,6 +243,8 @@ export default async function LocaleLayout({
         />
       </head>
       <body className={inter.className} suppressHydrationWarning>
+        <AnalyticsUnified />
+        <AnalyticsPageView />
         <ErrorBoundary>
           <NextIntlClientProvider messages={messages}>
             <AutoOptimizer />
