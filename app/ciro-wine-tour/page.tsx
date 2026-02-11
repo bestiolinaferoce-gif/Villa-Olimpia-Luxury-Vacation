@@ -22,7 +22,7 @@ export default function CiroWineTourPage() {
               Tour Enogastronomici Cirò
             </h1>
             <p className="text-xl text-muted-foreground mb-8">
-              Scopri i vini DOC di Cirò, tra i più antichi e prestigiosi d'Italia. Degustazioni, 
+              Scopri i vini DOC di Cirò, tra i più antichi e prestigiosi d&apos;Italia. Degustazioni, 
               visite alle cantine e abbinamenti con la cucina calabrese tradizionale.
             </p>
           </div>
@@ -37,8 +37,8 @@ export default function CiroWineTourPage() {
               Il Vino DOC Cirò: Storia e Tradizione
             </h2>
             <p className="text-lg text-muted-foreground mb-6">
-              Il <strong>Cirò DOC</strong> è uno dei vini più antichi d'Italia, con una storia che risale 
-              all'epoca della Magna Grecia. Prodotto nella zona di Cirò, a soli 30 km da Villa Olimpia, 
+              Il <strong>Cirò DOC</strong> è uno dei vini più antichi d&apos;Italia, con una storia che risale 
+              all&apos;epoca della Magna Grecia. Prodotto nella zona di Cirò, a soli 30 km da Villa Olimpia, 
               questo vino è diventato un simbolo della tradizione enologica calabrese.
             </p>
             <p className="text-lg text-muted-foreground mb-8">
@@ -108,7 +108,7 @@ export default function CiroWineTourPage() {
                 <CardContent>
                   <p className="text-lg text-muted-foreground mb-4">
                     Molte cantine della zona di Cirò offrono <strong>visite guidate</strong> dove potrai 
-                    scoprire i processi di produzione, dalla vendemmia all'imbottigliamento. Le cantine 
+                    scoprire i processi di produzione, dalla vendemmia all&apos;imbottigliamento. Le cantine 
                     storiche spesso si trovano in edifici suggestivi con cantine scavate nella roccia.
                   </p>
                   <p className="text-muted-foreground">
@@ -142,7 +142,7 @@ export default function CiroWineTourPage() {
                 <CardContent>
                   <p className="text-lg text-muted-foreground mb-4">
                     Alcune cantine organizzano <strong>pranzi e cene</strong> dove i vini Cirò DOC vengono 
-                    abbinati a piatti della tradizione calabrese. Un'esperienza completa che unisce 
+                    abbinati a piatti della tradizione calabrese. Un&apos;esperienza completa che unisce 
                     enologia e gastronomia locale.
                   </p>
                   <p className="text-muted-foreground">
@@ -231,7 +231,7 @@ export default function CiroWineTourPage() {
                   <ul className="space-y-2 text-sm text-muted-foreground">
                     <li>• Carne alla griglia</li>
                     <li>• Formaggi stagionati</li>
-                    <li>• 'Nduja e salumi calabresi</li>
+                    <li>• &apos;Nduja e salumi calabresi</li>
                     <li>• Pasta al sugo di carne</li>
                   </ul>
                 </CardContent>

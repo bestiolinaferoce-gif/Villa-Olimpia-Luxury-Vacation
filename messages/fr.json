@@ -227,7 +227,7 @@
     "send": "Envoyer",
     "sending": "Envoi en cours...",
     "success": "Message envoyé avec succès !",
-    "error": "Errore lors de l'envoi du message"
+    "error": "Erreur lors de l'envoi du message"
   },
   "footer": {
     "brand": {

@@ -150,7 +150,7 @@ export function HomeGallery() {
             🏊‍♂️ La Nostra Piscina
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Un'oasi di relax immersa nel verde della Calabria. Piscina privata con solarium attrezzato, 
+            Un&apos;oasi di relax immersa nel verde della Calabria. Piscina privata con solarium attrezzato, 
             perfetta per momenti di puro relax sotto il sole calabrese.
           </p>
         </div>

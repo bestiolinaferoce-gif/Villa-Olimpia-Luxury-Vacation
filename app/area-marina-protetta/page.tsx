@@ -22,7 +22,7 @@ export default function AreaMarinaProtettaPage() {
               Area Marina Protetta Capo Rizzuto
             </h1>
             <p className="text-xl text-muted-foreground mb-8">
-              Esplora una delle riserve marine più importanti d'Italia. L'Area Marina Protetta Capo Rizzuto 
+              Esplora una delle riserve marine più importanti d&apos;Italia. L&apos;Area Marina Protetta Capo Rizzuto 
               offre fondali spettacolari ricchi di biodiversità, perfetti per snorkeling e immersioni.
             </p>
           </div>
@@ -33,17 +33,17 @@ export default function AreaMarinaProtettaPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-playfair font-bold mb-6">
-              Cos'è l'Area Marina Protetta Capo Rizzuto
+              Cos&apos;è l&apos;Area Marina Protetta Capo Rizzuto
             </h2>
             <p className="text-lg text-muted-foreground mb-6">
-              L'<strong>Area Marina Protetta Capo Rizzuto</strong> è stata istituita nel 1991 ed è una delle 
-              più grandi riserve marine d'Italia, estendendosi per oltre 14.000 ettari lungo la costa ionica calabrese. 
+              L&apos;<strong>Area Marina Protetta Capo Rizzuto</strong> è stata istituita nel 1991 ed è una delle 
+              più grandi riserve marine d&apos;Italia, estendendosi per oltre 14.000 ettari lungo la costa ionica calabrese. 
               La riserva protegge un ecosistema marino unico, caratterizzato da fondali ricchi di biodiversità.
             </p>
             <p className="text-lg text-muted-foreground mb-8">
-              L'area è divisa in tre zone con diversi livelli di protezione, permettendo attività sostenibili 
+              L&apos;area è divisa in tre zone con diversi livelli di protezione, permettendo attività sostenibili 
               come snorkeling, immersioni guidate e pesca sportiva regolamentata, garantendo al contempo la 
-              conservazione dell'ambiente marino.
+              conservazione dell&apos;ambiente marino.
             </p>
 
             <div className="grid md:grid-cols-3 gap-6 mb-12">
@@ -87,7 +87,7 @@ export default function AreaMarinaProtettaPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-playfair font-bold mb-8 text-center">
-              Attività nell'Area Marina Protetta
+              Attività nell&apos;Area Marina Protetta
             </h2>
             <div className="space-y-6">
               <Card>
@@ -99,12 +99,12 @@ export default function AreaMarinaProtettaPage() {
                 </CardHeader>
                 <CardContent>
                   <p className="text-lg text-muted-foreground mb-4">
-                    L'Area Marina Protetta è perfetta per lo <strong>snorkeling</strong>. I fondali poco profondi 
+                    L&apos;Area Marina Protetta è perfetta per lo <strong>snorkeling</strong>. I fondali poco profondi 
                     e le acque cristalline permettono di osservare una grande varietà di pesci colorati, stelle marine, 
                     ricci di mare e altre creature marine senza bisogno di attrezzatura subacquea complessa.
                   </p>
                   <p className="text-muted-foreground">
-                    <strong>Dove:</strong> Le zone A e B dell'area protetta sono accessibili per snorkeling. 
+                    <strong>Dove:</strong> Le zone A e B dell&apos;area protetta sono accessibili per snorkeling. 
                     Consigliamo di partire dalla spiaggia di Capopiccolo, a soli meno di 100 m da Villa Olimpia.
                   </p>
                 </CardContent>
@@ -119,7 +119,7 @@ export default function AreaMarinaProtettaPage() {
                 </CardHeader>
                 <CardContent>
                   <p className="text-lg text-muted-foreground mb-4">
-                    Per gli appassionati di <strong>immersioni subacquee</strong>, l'Area Marina Protetta offre 
+                    Per gli appassionati di <strong>immersioni subacquee</strong>, l&apos;Area Marina Protetta offre 
                     siti di immersione spettacolari. I fondali rocciosi ospitano gorgonie, spugne colorate, 
                     cernie, dentici e molte altre specie marine.
                   </p>
@@ -143,7 +143,7 @@ export default function AreaMarinaProtettaPage() {
                 </CardHeader>
                 <CardContent>
                   <p className="text-lg text-muted-foreground">
-                    L'Area Marina Protetta regolamenta la <strong>pesca sportiva</strong> per garantire la 
+                    L&apos;Area Marina Protetta regolamenta la <strong>pesca sportiva</strong> per garantire la 
                     sostenibilità. La pesca è consentita nelle zone B e C con permessi specifici. Le acque 
                     ricche di pesce offrono ottime opportunità per catture di cernie, dentici, orate e spigole.
                   </p>
@@ -207,14 +207,14 @@ export default function AreaMarinaProtettaPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-playfair font-bold mb-6 text-center">
-              Perché Scegliere Villa Olimpia per l'Area Marina Protetta
+              Perché Scegliere Villa Olimpia per l&apos;Area Marina Protetta
             </h2>
             <p className="text-lg text-muted-foreground mb-8 text-center">
-              Villa Olimpia è la base perfetta per esplorare l'Area Marina Protetta:
+              Villa Olimpia è la base perfetta per esplorare l&apos;Area Marina Protetta:
             </p>
             <div className="grid md:grid-cols-2 gap-6">
               {[
-                "A soli 2km dall'ingresso dell'Area Marina Protetta",
+                "A soli 2km dall&apos;ingresso dell&apos;Area Marina Protetta",
                 "A meno di 100 m dalla spiaggia di Capopiccolo (punto di accesso)",
                 "Parcheggio gratuito per attrezzatura subacquea",
                 "Spazio per asciugare mute e attrezzatura",
@@ -275,7 +275,7 @@ export default function AreaMarinaProtettaPage() {
             Prenota la Tua Vacanza Subacquea
           </h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto text-white/90">
-            Scegli Villa Olimpia come base per esplorare l'Area Marina Protetta Capo Rizzuto.
+            Scegli Villa Olimpia come base per esplorare l&apos;Area Marina Protetta Capo Rizzuto.
           </p>
           <Button variant="luxury" size="lg" asChild className="group">
             <Link href="/contatti">

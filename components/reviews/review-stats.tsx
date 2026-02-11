@@ -88,7 +88,7 @@ export function ReviewStats() {
             </div>
           ) : (
             <p className="text-sm text-muted-foreground">
-              Distribuzione disponibile dopo l'import delle recensioni OTA.
+              Distribuzione disponibile dopo l&apos;import delle recensioni OTA.
             </p>
           )}
         </CardContent>

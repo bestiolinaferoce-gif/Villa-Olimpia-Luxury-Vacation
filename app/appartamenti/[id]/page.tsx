@@ -414,7 +414,7 @@ export default async function ApartmentDetailPage({ params }: PageProps) {
                   <li>• <strong className="text-foreground">Cantine Cirò DOC</strong> - Degustazioni vini storici</li>
                   <li>• <strong className="text-foreground">Ristoranti pesce fresco</strong> - Cucina calabrese autentica</li>
                   <li>• <strong className="text-foreground">Agriturismi km zero</strong> - Sapori genuini</li>
-                  <li>• <strong className="text-foreground">Prodotti tipici</strong> - 'Nduja, cipolla rossa, bergamotto</li>
+                  <li>• <strong className="text-foreground">Prodotti tipici</strong> - &apos;Nduja, cipolla rossa, bergamotto</li>
                 </ul>
                 <Button variant="outline" className="w-full" asChild>
                   <Link href="/location">

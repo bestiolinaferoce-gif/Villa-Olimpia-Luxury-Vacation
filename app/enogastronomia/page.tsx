@@ -53,7 +53,7 @@ export default function EnogastronomiaPage() {
           <p className="text-lg text-gray-700 leading-relaxed mb-6">
             La Calabria è una terra di sapori autentici e genuini, dove la tradizione enogastronomica 
             si tramanda di generazione in generazione. Da <Link href="/" className="text-primary hover:underline font-semibold">Villa Olimpia</Link>, a pochi chilometri dal territorio 
-            di Cirò, culla del <strong>vino più antico d'Italia</strong>, potrete scoprire un patrimonio gastronomico 
+            di Cirò, culla del <strong>vino più antico d&apos;Italia</strong>, potrete scoprire un patrimonio gastronomico 
             ricchissimo fatto di vini pregiati, oli extravergine DOP, formaggi artigianali e prodotti 
             della terra coltivati con passione. Scopri anche le <Link href="/territorio" className="text-primary hover:underline font-semibold">bellezze naturali del territorio calabrese</Link>.
           </p>
@@ -79,8 +79,8 @@ export default function EnogastronomiaPage() {
                 Vino Cirò DOC
               </h2>
               <p className="text-lg text-gray-700 leading-relaxed mb-6">
-                Il <strong>Cirò DOC</strong> è considerato il vino più antico d'Italia, celebrato 
-                già nell'antica Grecia come "vino degli dei". Prodotto nei vigneti che si estendono 
+                Il <strong>Cirò DOC</strong> è considerato il vino più antico d&apos;Italia, celebrato 
+                già nell&apos;antica Grecia come &quot;vino degli dei&quot;. Prodotto nei vigneti che si estendono 
                 tra Cirò e Cirò Marina, a soli 30 km da Villa Olimpia, questo vino si distingue per 
                 il suo carattere robusto e aromatico.
               </p>
@@ -132,10 +132,10 @@ export default function EnogastronomiaPage() {
               <Grape className="w-12 h-12 text-primary mb-4" />
               <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">Olio Extravergine DOP</h2>
               <p className="text-lg text-gray-700 leading-relaxed mb-6">
-                L'<strong>Olio Extravergine di Oliva DOP Calabria</strong> è un'eccellenza riconosciuta
+                L&apos;<strong>Olio Extravergine di Oliva DOP Calabria</strong> è un&apos;eccellenza riconosciuta
                 in tutto il mondo. Prodotto dalle cultivar autoctone Carolea, Dolce di Rossano e
                 Grossa di Gerace, si caratterizza per il suo gusto fruttato, leggermente piccante
-                e dall'aroma intenso.
+                e dall&apos;aroma intenso.
               </p>
               <ul className="space-y-3 mb-6">
                 <li className="flex items-center gap-3 bg-gray-50 p-3 rounded-lg">
@@ -282,7 +282,7 @@ export default function EnogastronomiaPage() {
       <section className="py-20 bg-gradient-to-br from-red-900 via-purple-900 to-pink-900 text-white">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Vivi l'Esperienza Enogastronomica Calabrese
+            Vivi l&apos;Esperienza Enogastronomica Calabrese
           </h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto opacity-90">
             Prenota il tuo soggiorno a Villa Olimpia e scopri i sapori autentici

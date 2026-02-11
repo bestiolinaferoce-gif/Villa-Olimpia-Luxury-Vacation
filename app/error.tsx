@@ -31,7 +31,7 @@ export default function Error({
                 Qualcosa è Andato Storto
               </CardTitle>
               <CardDescription className="text-lg">
-                Si è verificato un errore imprevisto. Ci scusiamo per l'inconveniente.
+                Si è verificato un errore imprevisto. Ci scusiamo per l&apos;inconveniente.
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">

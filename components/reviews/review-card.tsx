@@ -99,7 +99,7 @@ export function ReviewCard({ review, index }: ReviewCardProps) {
 
           {/* Review Text */}
           <p className="text-base leading-relaxed text-foreground font-light">
-            "{review.text}"
+            &quot;{review.text}&quot;
           </p>
 
           {/* Apartment if specified */}

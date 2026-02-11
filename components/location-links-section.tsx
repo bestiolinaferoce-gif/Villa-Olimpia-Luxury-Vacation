@@ -115,7 +115,7 @@ export function LocationLinksSection({ variant = "full" }: LocationLinksSectionP
                   <li>• <strong className="text-foreground">Cantine Cirò DOC</strong> - Degustazioni vini storici</li>
                   <li>• <strong className="text-foreground">Ristoranti pesce fresco</strong> - Cucina calabrese autentica</li>
                   <li>• <strong className="text-foreground">Agriturismi km zero</strong> - Sapori genuini del territorio</li>
-                  <li>• <strong className="text-foreground">Prodotti tipici</strong> - 'Nduja, cipolla rossa, bergamotto</li>
+                  <li>• <strong className="text-foreground">Prodotti tipici</strong> - &apos;Nduja, cipolla rossa, bergamotto</li>
                   <li>• <strong className="text-foreground">Olio extravergine</strong> - Frantoi tradizionali</li>
                 </ul>
                 <Button variant="luxury" className="w-full" asChild>

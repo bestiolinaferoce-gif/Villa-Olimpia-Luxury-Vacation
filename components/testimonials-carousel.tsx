@@ -97,7 +97,7 @@ export default function TestimonialsCarousel() {
                     <Star key={i} className="w-5 h-5 fill-amber-500 text-amber-500" />
                   ))}
                 </div>
-                <p className="text-lg mb-6 italic leading-relaxed">"{testimonial.text}"</p>
+                <p className="text-lg mb-6 italic leading-relaxed">&quot;{testimonial.text}&quot;</p>
                 <div className="flex items-center justify-between pt-4 border-t">
                   <div>
                     <div className="font-bold">{testimonial.name}</div>

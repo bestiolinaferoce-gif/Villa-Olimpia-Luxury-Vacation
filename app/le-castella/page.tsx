@@ -37,7 +37,7 @@ export default function LeCastellaPage() {
             </h2>
             <p className="text-lg text-muted-foreground mb-6">
               Le Castella è una frazione di Isola di Capo Rizzuto, famosa per il suo <strong>Castello Aragonese</strong>, 
-              un'imponente fortezza costruita su un'isoletta collegata alla terraferma. Questo simbolo della Calabria 
+              un&apos;imponente fortezza costruita su un&apos;isoletta collegata alla terraferma. Questo simbolo della Calabria 
               domina il panorama della Spiaggia dei Gigli ed è uno dei luoghi più fotografati della costa ionica.
             </p>
             <p className="text-lg text-muted-foreground mb-8">
@@ -95,11 +95,11 @@ export default function LeCastellaPage() {
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground mb-4">
-                    Esplora l'interno del castello, sali sulle torri per ammirare il panorama mozzafiato sul mare Ionio, 
+                    Esplora l&apos;interno del castello, sali sulle torri per ammirare il panorama mozzafiato sul mare Ionio, 
                     e scopri la storia di questa fortezza che ha resistito a secoli di battaglie.
                   </p>
                   <p className="text-sm text-muted-foreground">
-                    <strong>Orari:</strong> Aperto tutto l'anno, orari variabili per stagione. Consigliata prenotazione in alta stagione.
+                    <strong>Orari:</strong> Aperto tutto l&apos;anno, orari variabili per stagione. Consigliata prenotazione in alta stagione.
                   </p>
                 </CardContent>
               </Card>
@@ -110,8 +110,8 @@ export default function LeCastellaPage() {
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground">
-                    La spiaggia di Le Castella, conosciuta come "Spiaggia dei Gigli", è una delle più belle della Calabria. 
-                    Sabbia fine, acque cristalline e la vista del castello sullo sfondo creano un'atmosfera unica.
+                    La spiaggia di Le Castella, conosciuta come &quot;Spiaggia dei Gigli&quot;, è una delle più belle della Calabria. 
+                    Sabbia fine, acque cristalline e la vista del castello sullo sfondo creano un&apos;atmosfera unica.
                   </p>
                 </CardContent>
               </Card>
@@ -122,7 +122,7 @@ export default function LeCastellaPage() {
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground">
-                    Le acque intorno a Le Castella fanno parte dell'Area Marina Protetta Capo Rizzuto. 
+                    Le acque intorno a Le Castella fanno parte dell&apos;Area Marina Protetta Capo Rizzuto. 
                     I fondali sono ricchi di vita marina e perfetti per snorkeling e immersioni.
                   </p>
                 </CardContent>

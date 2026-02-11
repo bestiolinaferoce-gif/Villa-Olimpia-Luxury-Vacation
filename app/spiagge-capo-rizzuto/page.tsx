@@ -82,8 +82,8 @@ export default function SpiaggeCapoRizzutoPage() {
                 </CardHeader>
                 <CardContent>
                   <p className="text-lg text-muted-foreground mb-4">
-                    Le spiagge di <strong>Capopiccolo</strong> si trovano nell'Area Marina Protetta Capo Rizzuto, 
-                    una delle riserve marine più importanti d'Italia. Le acque sono cristalline e i fondali ricchi 
+                    Le spiagge di <strong>Capopiccolo</strong> si trovano nell&apos;Area Marina Protetta Capo Rizzuto, 
+                    una delle riserve marine più importanti d&apos;Italia. Le acque sono cristalline e i fondali ricchi 
                     di vita marina, perfetti per snorkeling e immersioni.
                   </p>
                   <div className="grid md:grid-cols-2 gap-4 mt-4">

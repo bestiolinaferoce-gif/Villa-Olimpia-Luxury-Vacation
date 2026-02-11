@@ -58,8 +58,12 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         
-        {/* Hreflang tag - solo italiano per ora */}
+        {/* Hreflang tags - tutte le lingue */}
         <link rel="alternate" hrefLang="it" href="https://villaolimpiacaporizzuto.com" />
+        <link rel="alternate" hrefLang="en" href="https://villaolimpiacaporizzuto.com/en" />
+        <link rel="alternate" hrefLang="de" href="https://villaolimpiacaporizzuto.com/de" />
+        <link rel="alternate" hrefLang="fr" href="https://villaolimpiacaporizzuto.com/fr" />
+        <link rel="alternate" hrefLang="nl" href="https://villaolimpiacaporizzuto.com/nl" />
         <link rel="alternate" hrefLang="x-default" href="https://villaolimpiacaporizzuto.com" />
         {/* Meta tags Airbnb */}
         <meta property="og:type" content="lodging" />

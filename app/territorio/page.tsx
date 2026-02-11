@@ -380,8 +380,8 @@ export default function TerritorioPage() {
                 Valli Cupe - Canyon Spettacolare
               </h2>
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                A soli 25 km da Villa Olimpia, uno dei canyon più affascinanti d'Italia, 
-                Patrimonio dell'Umanità UNESCO
+                A soli 25 km da Villa Olimpia, uno dei canyon più affascinanti d&apos;Italia, 
+                Patrimonio dell&apos;Umanità UNESCO
               </p>
             </div>
 
@@ -399,10 +399,10 @@ export default function TerritorioPage() {
                 <div>
                   <h3 className="text-2xl font-bold mb-3">Un Canyon nella Sila Piccola</h3>
                   <p className="text-lg leading-relaxed">
-                    <strong>Le Valli Cupe</strong> sono un'area naturale di straordinaria bellezza 
+                    <strong>Le Valli Cupe</strong> sono un&apos;area naturale di straordinaria bellezza 
                     situata nel cuore della Sila Piccola, tra i comuni di Sersale e Zagarise. 
                     Questo canyon profondo fino a 200 metri, scavato nei millenni dal torrente Uria, 
-                    è stato riconosciuto <strong>Patrimonio dell'Umanità UNESCO</strong> per la sua 
+                    è stato riconosciuto <strong>Patrimonio dell&apos;Umanità UNESCO</strong> per la sua 
                     eccezionale biodiversità e valore geologico.
                   </p>
                 </div>
@@ -499,7 +499,7 @@ export default function TerritorioPage() {
               <div className="text-center mt-8">
                 <Button size="lg" variant="secondary" asChild>
                   <Link href="/contatti">
-                    Organizziamo l'Escursione per Te
+                    Organizziamo l&apos;Escursione per Te
                   </Link>
                 </Button>
               </div>
@@ -534,10 +534,10 @@ export default function TerritorioPage() {
                 <div className="flex gap-4">
                   <div className="text-4xl">🌊</div>
                   <div>
-                    <h4 className="font-semibold mb-2">Cascate Tutto l'Anno</h4>
+                    <h4 className="font-semibold mb-2">Cascate Tutto l&apos;Anno</h4>
                     <p className="text-sm text-muted-foreground">
                       A differenza di altri canyon mediterranei, le cascate delle Valli Cupe 
-                      sono attive 365 giorni l'anno grazie alle sorgenti perenni.
+                      sono attive 365 giorni l&apos;anno grazie alle sorgenti perenni.
                     </p>
                   </div>
                 </div>
