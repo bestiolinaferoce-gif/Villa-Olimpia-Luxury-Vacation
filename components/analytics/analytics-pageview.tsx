@@ -8,7 +8,7 @@ const GA_MEASUREMENT_ID =
   process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID !== "" &&
   process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID !== "G-XXXXXXXXXX"
     ? process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID
-    : "G-NW2FHPE98G"
+    : "G-FHYFT8YKNF"
 
 /**
  * Invia page_view a GA4 quando cambia la route (navigazione client-side).

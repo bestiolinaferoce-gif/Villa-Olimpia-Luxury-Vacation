@@ -35,7 +35,7 @@ async function checkTags() {
     const gtmScript = body.match(/googletagmanager\.com\/gtm\.js[^"']*/);
     
     // Cerca Google Analytics
-    const gaFound = body.includes('G-NW2FHPE98G') || body.includes('googletagmanager.com/gtag/js');
+    const gaFound = body.includes('G-FHYFT8YKNF') || body.includes('googletagmanager.com/gtag/js');
     const gaScript = body.match(/googletagmanager\.com\/gtag\/js[^"']*/);
     
     console.log('📊 Risultati verifica:\n');

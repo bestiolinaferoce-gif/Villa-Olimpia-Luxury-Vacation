@@ -52,7 +52,7 @@ async function verifyEnvVars(token) {
     const envs = response.data.envs || [];
     
     const required = {
-      'NEXT_PUBLIC_GA_MEASUREMENT_ID': 'G-NW2FHPE98G',
+      'NEXT_PUBLIC_GA_MEASUREMENT_ID': 'G-FHYFT8YKNF',
       'NEXT_PUBLIC_GTM_ID': 'GTM-K5NQGHBD'
     };
     

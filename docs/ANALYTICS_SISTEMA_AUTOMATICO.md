@@ -8,7 +8,7 @@
 
 1. **Script nel `<head>`** – Gli script erano iniettati nel head come componenti client: in Next.js possono caricarsi tardi o in ordine sbagliato. Ora sono nel **body** con `strategy="beforeInteractive"` e si caricano subito.
 2. **Consenso predefinito "denied"** – Con `analytics_storage: 'denied'` Google Analytics non inviava dati finché l’utente non accettava i cookie. Ora il default è **`analytics_storage: 'granted'`** così le visite vengono tracciate subito. Se l’utente rifiuta i cookie, il banner chiama `setConsentMode` e il tracciamento viene disattivato.
-3. **ID non disponibili a build time** – Se le variabili d’ambiente non erano pronte in build, gli ID non c’erano. Ora sono definiti **valori di fallback** nel codice (GTM-K5NQGHBD e G-NW2FHPE98G), quindi i tag funzionano anche senza env.
+3. **ID non disponibili a build time** – Se le variabili d’ambiente non erano pronte in build, gli ID non c’erano. Ora sono definiti **valori di fallback** nel codice (GTM-K5NQGHBD e G-FHYFT8YKNF), quindi i tag funzionano anche senza env.
 
 ### Componenti
 
@@ -78,7 +78,7 @@ Per il tracciamento e la verifica descritta sopra non serve.
 Sono già configurate:
 
 - `NEXT_PUBLIC_GTM_ID` = GTM-K5NQGHBD  
-- `NEXT_PUBLIC_GA_MEASUREMENT_ID` = G-NW2FHPE98G  
+- `NEXT_PUBLIC_GA_MEASUREMENT_ID` = G-FHYFT8YKNF  
 
 Anche senza queste variabili, il sistema usa gli ID di fallback nel codice e i tag funzionano.
 
