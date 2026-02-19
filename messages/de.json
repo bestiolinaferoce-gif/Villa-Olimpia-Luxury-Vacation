@@ -171,6 +171,16 @@
       "description": "Buchen Sie Ihre Wohnung und erleben Sie einen unvergesslichen Aufenthalt im wunderschönen Kalabrien",
       "saveUpTo": "Direkt buchen und bis zu 15% sparen",
       "bookVacation": "Buchen Sie Ihren Urlaub"
+    },
+    "juneJuly": {
+      "title": "Warum Juni und Juli in Villa Olimpia",
+      "subtitle": "Warmes Meer, weniger Menschen, perfekte Temperatur. Kalabrien im Frühsommer ist ideal für Familien und Paare.",
+      "reasons": {
+        "family": "Perfekt für Familien mit Kindern",
+        "couples": "Ideal für Paare und romantische Reisen",
+        "territory": "Lokale Erlebnisse: Weinproben, Meeresschutzgebiet, Le Castella"
+      },
+      "cta": "Verfügbarkeit Juni/Juli prüfen"
     }
   },
   "apartments": {

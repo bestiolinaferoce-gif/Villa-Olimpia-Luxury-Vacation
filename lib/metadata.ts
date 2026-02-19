@@ -1,6 +1,5 @@
 import type { Metadata } from "next"
 import { apartments } from "@/data/apartments"
-import { VILLA_OLIMPIA_LOCATION } from "@/lib/location-data"
 
 const baseUrl = "https://villaolimpiacaporizzuto.com"
 const siteName = "Villa Olimpia"
@@ -22,9 +21,9 @@ export function generateMetadata({
 }): Metadata {
   const url = `${baseUrl}${path}`
   const imageUrl = image.startsWith("http") ? image : `${baseUrl}${image}`
-  
+
   // Ensure description is 155-160 characters for optimal SEO
-  const optimizedDescription = description.length > 160 
+  const optimizedDescription = description.length > 160
     ? description.substring(0, 157) + "..."
     : description
 
@@ -62,7 +61,7 @@ export function generateMetadata({
 
 export function getApartmentMetadata(apartmentId: number): Metadata {
   const apartment = apartments.find((apt) => apt.id === apartmentId)
-  
+
   if (!apartment) {
     return generateMetadata({
       title: "Appartamento Non Trovato",
@@ -74,7 +73,7 @@ export function getApartmentMetadata(apartmentId: number): Metadata {
   // SEO ottimizzato per OTA (Booking.com, Airbnb, etc.)
   const seoTitle = `Appartamento ${apartment.name} - Villa Olimpia | ${apartment.floor} | ${apartment.guests} Ospiti | Capopiccolo, Isola di Capo Rizzuto`
   const seoDescription = `Affitta l'appartamento ${apartment.name} a Villa Olimpia, ${apartment.floor} ${apartment.size} per ${apartment.guests} ospiti. ${apartment.bedrooms} camere, ${apartment.bathrooms} bagni. ${apartment.features.slice(0, 3).join(', ')}. A meno di 100 metri dalla Spiaggia dei Gigli, Area Marina Protetta Capo Rizzuto. Prenota ora su Booking.com, Airbnb o contattaci direttamente per disponibilità e preventivi personalizzati.`
-  
+
   const keywords = [
     `appartamento ${apartment.name.toLowerCase()} villa olimpia`,
     `affitto ${apartment.name.toLowerCase()} capopiccolo`,
@@ -118,11 +117,18 @@ export function getApartmentMetadata(apartmentId: number): Metadata {
 export const defaultMetadata: Metadata = {
   metadataBase: new URL(baseUrl),
     title: {
-      default: `${siteName} | 9 Appartamenti con Piscina a Capo Rizzuto Calabria`,
+      default: `${siteName} | Appartamenti con Piscina Capo Rizzuto — Giugno e Luglio 2026`,
       template: `%s | ${siteName}`,
     },
-  description: "9 appartamenti di lusso con piscina privata a Capo Rizzuto, Calabria. A meno di 100 metri dalla splendida Spiaggia dei Gigli. Prenota ora la tua vacanza perfetta nell'Area Marina Protetta Capo Rizzuto. WiFi gratuito, parcheggio, vista mare. Disponibilità e preventivi personalizzati.",
+  description: "Villa Olimpia: 9 appartamenti con piscina privata a Capo Rizzuto, Calabria. Disponibilità Giugno e Luglio 2026 a tariffe vantaggiose. A 100m dalla Spiaggia dei Gigli, Area Marina Protetta. Prenota direttamente senza commissioni.",
   keywords: [
+    // June/July primary intent
+    "vacanze giugno calabria piscina",
+    "affitto giugno capo rizzuto",
+    "vacanze luglio calabria mare",
+    "appartamento luglio capo rizzuto piscina",
+    "offerta giugno villa piscina calabria",
+    // Core
     "appartamenti vacanze Calabria piscina",
     "villa piscina Capo Rizzuto",
     "affitto casa mare Calabria",
@@ -139,6 +145,7 @@ export const defaultMetadata: Metadata = {
     "Le Castella alloggio",
     "Riserva Marina Capo Rizzuto",
     "villa olimpia",
+    "villa olimpia capo rizzuto",
     "affitto vacanze calabria",
     "calabria luxury villa",
     "capopiccolo apartments",
@@ -162,21 +169,21 @@ export const defaultMetadata: Metadata = {
     locale: "it_IT",
     url: baseUrl,
     siteName,
-    title: `${siteName} - Luxury Vacation Rentals in Calabria`,
-    description: "Experience luxury vacation rentals in Calabria, Italy. Stunning apartments with sea views in Capopiccolo, Isola di Capo Rizzuto.",
+    title: `${siteName} — Appartamenti con Piscina a Capo Rizzuto | Giugno e Luglio 2026`,
+    description: "9 appartamenti con piscina privata a Capo Rizzuto. Tariffe vantaggiose Giugno e Luglio 2026. Spiaggia dei Gigli a 100m. Prenota direttamente senza commissioni.",
     images: [
       {
         url: `${baseUrl}/og-image.jpg`,
         width: 1200,
         height: 630,
-        alt: `${siteName} - Luxury Vacation Rentals`,
+        alt: `${siteName} - Appartamenti con Piscina Capo Rizzuto Calabria`,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: `${siteName} - Luxury Vacation Rentals in Calabria`,
-    description: "Experience luxury vacation rentals in Calabria, Italy.",
+    title: `${siteName} — Appartamenti con Piscina Capo Rizzuto | Giugno e Luglio 2026`,
+    description: "9 appartamenti con piscina a Capo Rizzuto. Tariffe vantaggiose Giugno/Luglio 2026. Prenota ora!",
     images: [`${baseUrl}/og-image.jpg`],
   },
   alternates: {

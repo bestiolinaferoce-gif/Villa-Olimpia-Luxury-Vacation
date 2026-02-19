@@ -10,9 +10,11 @@ import { Button } from "@/components/ui/button"
 import { UrgencyBanner } from "@/components/conversion/urgency-banner"
 import { TrustBadges } from "@/components/conversion/trust-badges"
 import { SocialProof } from "@/components/conversion/social-proof"
+import { JuneJulySection } from "@/components/conversion/june-july-section"
 import Link from "next/link"
-import { Star, Wifi, Car, Waves, Utensils, Shield, Umbrella, MapPin, Sparkles } from "lucide-react"
+import { Star, Wifi, Car, Waves, Utensils, Shield, Umbrella, MapPin, Sparkles, ArrowRight } from "lucide-react"
 import { getFeaturedApartments } from "@/data/apartments"
+import { SITE_CONFIG } from "@/lib/constants"
 import { motion } from "framer-motion"
 import dynamic from "next/dynamic"
 import { useI18n } from "@/components/i18n-provider"
@@ -36,7 +38,7 @@ function CTAButtons() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: 0.4, duration: 0.8 }}
-      className="flex justify-center items-center"
+      className="flex flex-col sm:flex-row justify-center items-center gap-4"
     >
       <motion.div
         whileHover={{ scale: 1.05, y: -2 }}
@@ -45,7 +47,7 @@ function CTAButtons() {
         <Button
           variant="luxury"
           size="lg"
-          className="text-xl px-10 py-7 group shadow-2xl !border-2 !border-white font-semibold"
+          className="text-lg sm:text-xl px-8 sm:px-10 py-6 sm:py-7 group shadow-2xl !border-2 !border-white font-semibold"
           style={{ borderWidth: '2px', borderStyle: 'solid', borderColor: 'white' }}
           asChild
         >
@@ -53,10 +55,23 @@ function CTAButtons() {
             <span className="group-hover:translate-x-1 transition-transform inline-block">
               {t.home.cta.bookVacation}
             </span>
-            <svg className="w-6 h-6 ml-3 inline-block group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-            </svg>
+            <ArrowRight className="w-5 h-5 ml-2 inline-block group-hover:translate-x-1 transition-transform" />
           </Link>
+        </Button>
+      </motion.div>
+      <motion.div
+        whileHover={{ scale: 1.05, y: -2 }}
+        whileTap={{ scale: 0.95 }}
+      >
+        <Button
+          size="lg"
+          className="text-base px-6 py-5 bg-white/20 backdrop-blur-sm text-white !border-2 !border-white hover:bg-white/30 font-semibold"
+          style={{ borderWidth: '2px', borderStyle: 'solid', borderColor: 'white' }}
+          asChild
+        >
+          <a href="https://wa.me/393335773390?text=Ciao!%20Vorrei%20informazioni%20su%20Villa%20Olimpia%20per%20Giugno/Luglio" target="_blank" rel="noopener noreferrer">
+            WhatsApp diretto
+          </a>
         </Button>
       </motion.div>
     </motion.div>
@@ -100,11 +115,20 @@ export default function HomePage() {
     },
   ]
 
+  const faqs = [
+    { q: t.home.faq.items.pool.q, a: t.home.faq.items.pool.a },
+    { q: t.home.faq.items.beachDistance.q, a: t.home.faq.items.beachDistance.a },
+    { q: t.home.faq.items.parking.q, a: t.home.faq.items.parking.a },
+  ]
+
   return (
     <>
       <UrgencyBanner />
       <HeroSectionPremium />
       <TrustBadges />
+
+      {/* === JUNE/JULY CONVERSION ENGINE — Primary conversion section === */}
+      <JuneJulySection />
 
       {/* Featured Apartments */}
       <section className="py-20 bg-background cv-auto">
@@ -152,9 +176,7 @@ export default function HomePage() {
                     <span className="group-hover:translate-x-1 transition-transform inline-block">
                       {t.home.featured.viewAll}
                     </span>
-                    <svg className="w-5 h-5 ml-2 inline-block group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                    </svg>
+                    <ArrowRight className="w-5 h-5 ml-2 inline-block group-hover:translate-x-1 transition-transform" />
                   </Link>
                 </Button>
               </motion.div>
@@ -204,7 +226,7 @@ export default function HomePage() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.2, duration: 0.6 }}
-                    whileHover={{ 
+                    whileHover={{
                       y: -12,
                       scale: 1.03,
                       transition: { duration: 0.3, ease: "easeOut" }
@@ -212,7 +234,7 @@ export default function HomePage() {
                     className="text-center p-8 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer group border-2 border-transparent hover:border-primary/20"
                   >
                     <motion.div
-                      whileHover={{ 
+                      whileHover={{
                         scale: 1.15,
                         rotate: [0, -5, 5, 0],
                         transition: { duration: 0.4 }
@@ -240,37 +262,30 @@ export default function HomePage() {
                 {t.home.services.title}
               </h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                {t.home.services.description}
+                {t.home.services.subtitle}
               </p>
             </div>
           </ScrollReveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
             {services.map((service, index) => {
               const IconComponent = service.icon
               return (
                 <ScrollReveal key={index} delay={index * 0.1}>
                   <motion.div
-                    whileHover={{ 
-                      y: -8,
-                      scale: 1.03,
-                      transition: { duration: 0.3 }
-                    }}
+                    whileHover={{ y: -8, scale: 1.02, transition: { duration: 0.3 } }}
+                    className="group"
                   >
-                    <Card className="text-center hover:shadow-xl transition-all duration-300 cursor-pointer group h-full">
+                    <Card className="h-full hover:shadow-xl transition-all duration-300 border-2 border-transparent hover:border-primary/20 bg-white/80 backdrop-blur-sm">
                       <CardHeader>
-                        <motion.div
-                          whileHover={{ 
-                            scale: 1.1,
-                            rotate: 5
-                          }}
-                          className="mx-auto w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors"
-                        >
-                          <IconComponent className="h-8 w-8 text-primary group-hover:text-primary/80 transition-colors" />
-                        </motion.div>
-                        <CardTitle className="group-hover:text-primary transition-colors">{service.title}</CardTitle>
-                        <CardDescription>{service.description}</CardDescription>
+                        <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-primary/10 to-ocean/10 group-hover:from-primary/20 group-hover:to-ocean/20 transition-all flex items-center justify-center mb-3">
+                          <IconComponent className="h-7 w-7 text-primary group-hover:scale-110 transition-transform" />
+                        </div>
+                        <CardTitle className="text-lg group-hover:text-primary transition-colors">{service.title}</CardTitle>
                       </CardHeader>
+                      <CardContent>
+                        <CardDescription className="text-sm leading-relaxed">{service.description}</CardDescription>
+                      </CardContent>
                     </Card>
                   </motion.div>
                 </ScrollReveal>
@@ -280,59 +295,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Stats Section */}
-      <StatsSection />
-
-      {/* Reviews Preview */}
-      <section className="py-20 bg-background cv-auto">
-        <div className="container mx-auto px-4">
-          <ScrollReveal>
-            <div className="text-center mb-12">
-              <motion.h2
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-                className="text-4xl md:text-5xl font-playfair font-bold mb-4"
-              >
-                {t.home.reviews.title}
-              </motion.h2>
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2, duration: 0.6 }}
-                className="text-lg text-muted-foreground max-w-2xl mx-auto mb-6"
-              >
-                {t.home.reviews.description} <span className="font-bold text-primary text-xl">{t.home.reviews.descriptionRating}</span> {t.home.reviews.descriptionStars} <span className="font-bold text-primary text-xl">{t.home.reviews.descriptionCount}</span> {t.home.reviews.descriptionReviews}
-              </motion.p>
-              <div className="inline-flex items-center gap-2 bg-yellow-400/20 px-6 py-3 rounded-full border border-yellow-400/30 mb-8">
-                <Star className="h-5 w-5 text-yellow-500 fill-yellow-500" />
-                <span className="text-lg font-bold text-gray-900">{t.home.reviews.descriptionRating}</span>
-                <span className="text-sm text-muted-foreground">•</span>
-                <span className="text-sm font-semibold text-gray-700">{t.home.reviews.verifiedCount}</span>
-              </div>
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Button variant="luxury" size="lg" asChild className="group">
-                  <Link href="/recensioni">
-                    <span className="group-hover:translate-x-1 transition-transform inline-block">
-                      {t.home.reviews.readMore}
-                    </span>
-                    <svg className="w-5 h-5 ml-2 inline-block group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                    </svg>
-                  </Link>
-                </Button>
-              </motion.div>
-            </div>
-          </ScrollReveal>
-        </div>
-      </section>
-
-      {/* Gallery */}
+      {/* Pool Gallery Lazy */}
       <HomeGallery />
 
       {/* Social Proof */}
@@ -341,116 +304,44 @@ export default function HomePage() {
       {/* Separatore elegante */}
       <SectionDivider />
 
-      {/* Come Raggiungerci */}
-      <section className="py-20 md:py-24 bg-gradient-to-br from-primary/5 via-ocean/5 to-primary/10 cv-auto">
-        <div className="container mx-auto px-4 max-w-4xl">
+      {/* How to Reach Us */}
+      <HowToReachUs />
+
+      {/* FAQ preview */}
+      <section className="py-20 bg-background cv-auto">
+        <div className="container mx-auto px-4">
           <ScrollReveal>
             <div className="text-center mb-12">
-              <motion.h2
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
-                className="text-4xl md:text-5xl font-playfair font-bold mb-4"
-              >
-                {t.home.howToReach.title}
-              </motion.h2>
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2, duration: 0.8 }}
-                className="text-lg text-muted-foreground max-w-2xl mx-auto"
-              >
-                {t.home.howToReach.subtitle}
-              </motion.p>
-            </div>
-          </ScrollReveal>
-          
-          <HowToReachUs />
-        </div>
-      </section>
-
-      {/* Separatore elegante */}
-      <SectionDivider />
-
-      {/* FAQ Section Premium */}
-      <section className="py-24 bg-gradient-to-b from-background via-primary/5 to-background cv-auto">
-        <div className="container mx-auto px-4 max-w-4xl">
-          <ScrollReveal>
-            <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-playfair font-bold mb-4">{t.home.faq.title}</h2>
+              <h2 className="text-4xl md:text-5xl font-playfair font-bold mb-4">
+                {t.home.faq.title}
+              </h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                {t.home.faq.description}
+                {t.home.faq.subtitle}
               </p>
             </div>
           </ScrollReveal>
 
-          <div className="space-y-6">
-            {[
-              {
-                q: t.home.faq.items.beachDistance.q,
-                a: t.home.faq.items.beachDistance.a
-              },
-              {
-                q: t.home.faq.items.parking.q,
-                a: t.home.faq.items.parking.a
-              },
-              {
-                q: t.home.faq.items.pool.q,
-                a: t.home.faq.items.pool.a
-              },
-              {
-                q: t.home.faq.items.checkIn.q,
-                a: t.home.faq.items.checkIn.a
-              }
-            ].map((faq, i) => (
-              <ScrollReveal key={i} delay={i * 0.1}>
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1, duration: 0.5 }}
-                  whileHover={{ 
-                    scale: 1.02,
-                    y: -4,
-                    transition: { duration: 0.3 }
-                  }}
-                >
-                  <Card className="group border-2 border-transparent hover:border-primary/30 bg-white/80 backdrop-blur-sm shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden">
-                    <motion.details
-                      className="cursor-pointer"
-                    >
-                      <CardHeader className="pb-4">
-                        <summary className="font-playfair font-bold text-lg text-foreground group-hover:text-primary transition-colors flex items-center justify-between list-none">
+          <div className="max-w-3xl mx-auto space-y-4">
+            {faqs.map((faq, index) => (
+              <ScrollReveal key={index} delay={index * 0.1}>
+                <motion.div whileHover={{ scale: 1.01 }}>
+                  <Card className="overflow-hidden hover:shadow-lg transition-all duration-300 border-2 border-transparent hover:border-primary/10">
+                    <motion.details className="group">
+                      <CardHeader className="cursor-pointer select-none">
+                        <summary className="text-base md:text-lg font-semibold text-foreground group-hover:text-primary transition-colors flex items-center justify-between list-none">
                           <span className="flex-1 pr-4">{faq.q}</span>
-                          <motion.div
-                            animate={{ rotate: 0 }}
-                            transition={{ duration: 0.3 }}
-                            className="flex-shrink-0"
+                          <motion.svg
+                            className="w-6 h-6 text-muted-foreground group-hover:text-primary transition-colors shrink-0"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
                           >
-                            <motion.svg
-                              className="w-6 h-6 text-muted-foreground group-hover:text-primary transition-colors"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              stroke="currentColor"
-                              whileHover={{ rotate: 180 }}
-                              transition={{ duration: 0.3 }}
-                            >
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                            </motion.svg>
-                          </motion.div>
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                          </motion.svg>
                         </summary>
                       </CardHeader>
                       <CardContent className="pt-0">
-                        <motion.p
-                          initial={{ opacity: 0, height: 0 }}
-                          animate={{ opacity: 1, height: "auto" }}
-                          transition={{ duration: 0.3 }}
-                          className="text-muted-foreground leading-relaxed"
-                        >
-                          {faq.a}
-                        </motion.p>
+                        <p className="text-muted-foreground leading-relaxed">{faq.a}</p>
                       </CardContent>
                     </motion.details>
                   </Card>
@@ -461,21 +352,14 @@ export default function HomePage() {
 
           <ScrollReveal delay={0.6}>
             <div className="text-center mt-8">
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Button variant="luxury" size="lg" asChild className="group">
-                  <Link href="/faq">
-                    <span className="group-hover:translate-x-1 transition-transform inline-block">
-                      {t.home.faq.viewAll}
-                    </span>
-                    <svg className="w-5 h-5 ml-2 inline-block group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                    </svg>
-                  </Link>
-                </Button>
-              </motion.div>
+              <Button variant="luxury" size="lg" asChild className="group">
+                <Link href="/faq">
+                  <span className="group-hover:translate-x-1 transition-transform inline-block">
+                    {t.home.faq.viewAll}
+                  </span>
+                  <ArrowRight className="w-5 h-5 ml-2 inline-block group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </Button>
             </div>
           </ScrollReveal>
         </div>
@@ -513,7 +397,7 @@ export default function HomePage() {
                   </CardHeader>
                   <CardContent className="pt-0">
                     <Button variant="luxury" size="lg" asChild className="w-full">
-                      <Link href="https://share.google/PiZFmmmLBkJaf856R" target="_blank" rel="noopener noreferrer">
+                      <Link href={SITE_CONFIG.social.googleReviews} target="_blank" rel="noopener noreferrer">
                         {t.home.googleWidget.cta}
                       </Link>
                     </Button>
@@ -549,7 +433,7 @@ export default function HomePage() {
                   whileInView={{ opacity: 1, y: 0, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.15, duration: 0.6, type: "spring" }}
-                  whileHover={{ 
+                  whileHover={{
                     scale: 1.15,
                     y: -8,
                     transition: { duration: 0.3, ease: "easeOut" }
@@ -569,7 +453,7 @@ export default function HomePage() {
       {/* Separatore elegante */}
       <SectionDivider variant="accent" />
 
-      {/* CTA Section Premium */}
+      {/* CTA Section Premium — June/July focused */}
       <section className="py-24 bg-gradient-to-br from-ocean via-primary to-ocean/80 text-white relative overflow-hidden cv-auto">
         <div className="container mx-auto px-4 text-center relative z-10">
           <ScrollReveal delay={0.2}>
@@ -600,11 +484,22 @@ export default function HomePage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2, duration: 0.8 }}
-              className="text-xl mb-6 max-w-2xl mx-auto text-white/90"
+              className="text-xl mb-4 max-w-2xl mx-auto text-white/90"
             >
               {t.home.cta.description}
             </motion.p>
-            
+
+            {/* June/July specific CTA line */}
+            <motion.p
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3, duration: 0.6 }}
+              className="text-base mb-6 text-white/80"
+            >
+              Giugno e Luglio a tariffe vantaggiose — disponibilità limitata, prenota ora.
+            </motion.p>
+
             {/* Badge Prenota Direttamente */}
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}

@@ -20,7 +20,8 @@
     "whatsapp:test": "node scripts/whatsapp-template-test.js",
     "autopilot:setup": "node scripts/autopilot-bootstrap.js",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "eslint app components lib --ext .ts,.tsx --max-warnings 999",
+    "lint:next": "next lint"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",

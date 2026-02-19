@@ -171,6 +171,16 @@
       "description": "Réservez votre appartement et vivez une expérience inoubliable dans la magnifique Calabre",
       "saveUpTo": "Réservez directement et économisez jusqu'à 15%",
       "bookVacation": "Réservez Vos Vacances"
+    },
+    "juneJuly": {
+      "title": "Pourquoi juin et juillet à Villa Olimpia",
+      "subtitle": "Mer chaude, moins de monde, température parfaite. La Calabre au début de l'été est idéale pour les familles et les couples.",
+      "reasons": {
+        "family": "Parfait pour les familles avec enfants",
+        "couples": "Idéal pour les couples et les séjours romantiques",
+        "territory": "Expériences locales: dégustations de vin, zone marine protégée, Le Castella"
+      },
+      "cta": "Vérifier disponibilité juin/juillet"
     }
   },
   "apartments": {

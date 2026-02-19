@@ -171,6 +171,16 @@
       "description": "Boek uw appartement en beleef een onvergetelijk verblijf in het prachtige Calabrië",
       "saveUpTo": "Boek direct en bespaar tot 15%",
       "bookVacation": "Boek Uw Vakantie"
+    },
+    "juneJuly": {
+      "title": "Waarom juni en juli bij Villa Olimpia",
+      "subtitle": "Warme zee, minder drukte, perfecte temperatuur. Calabrië in de vroege zomer is ideaal voor gezinnen en koppels.",
+      "reasons": {
+        "family": "Perfect voor gezinnen met kinderen",
+        "couples": "Ideaal voor koppels en romantische reizen",
+        "territory": "Lokale ervaringen: wijnproeverijen, beschermd zeereservaat, Le Castella"
+      },
+      "cta": "Beschikbaarheid juni/juli controleren"
     }
   },
   "apartments": {

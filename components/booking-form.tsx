@@ -347,8 +347,8 @@ export function BookingForm() {
       </Button>
 
       <p className="text-xs text-muted-foreground">
-        Prenotando da questo form parli direttamente con Villa Olimpia: nessuna commissione di portale e migliore
-        tariffa disponibile sulle stesse date.
+        Prenotando da questo form parli direttamente con Villa Olimpia: nessuna commissione di portali e migliore
+        tariffa disponibile sulle stesse date. Soggiorni di 7+ notti: sconto dedicato. Cancellazione flessibile fino a 30 giorni prima dell&apos;arrivo.
       </p>
 
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">

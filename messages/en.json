@@ -171,6 +171,16 @@
       "description": "Book your apartment and experience an unforgettable stay in beautiful Calabria",
       "saveUpTo": "Book Directly and Save up to 15%",
       "bookVacation": "Book Your Vacation"
+    },
+    "juneJuly": {
+      "title": "Why June and July at Villa Olimpia",
+      "subtitle": "Warm sea, less crowd, perfect temperature. Calabria in early summer is ideal for families and couples.",
+      "reasons": {
+        "family": "Perfect for families with children",
+        "couples": "Ideal for couples and romantic getaways",
+        "territory": "Local experiences: wine tastings, Marine Protected Area, Le Castella"
+      },
+      "cta": "Check availability June/July"
     }
   },
   "apartments": {

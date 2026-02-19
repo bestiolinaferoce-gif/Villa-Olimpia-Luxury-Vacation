@@ -10,12 +10,15 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button"
 import { UrgencyBanner } from "@/components/conversion/urgency-banner"
 import { CampaignBanner } from "@/components/conversion/campaign-banner"
+import { JuneJulyBanner } from "@/components/conversion/june-july-banner"
+import { JuneJulySection } from "@/components/conversion/june-july-section"
 import { TrustBadges } from "@/components/conversion/trust-badges"
 import { SocialProof } from "@/components/conversion/social-proof"
 import { TerritorySection } from "@/components/territory-section"
 import Link from "next/link"
 import { Star, Wifi, Car, Waves, Utensils, Shield, Umbrella, MapPin, Sparkles } from "lucide-react"
 import { getFeaturedApartments } from "@/data/apartments"
+import { SITE_CONFIG } from "@/lib/constants"
 import { motion } from "framer-motion"
 import dynamic from "next/dynamic"
 import { useTranslations } from 'next-intl'
@@ -107,9 +110,13 @@ export default function HomePage() {
   return (
     <>
       <UrgencyBanner />
+      <JuneJulyBanner />
       <CampaignBanner />
       <HeroSectionPremium />
       <TrustBadges />
+
+      {/* === JUNE/JULY CONVERSION ENGINE === */}
+      <JuneJulySection />
 
       {/* Featured Apartments */}
       <section className="py-20 bg-background">
@@ -163,6 +170,33 @@ export default function HomePage() {
                   </Link>
                 </Button>
               </motion.div>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* Separatore elegante */}
+      <SectionDivider />
+
+      {/* Perché Giugno e Luglio - Conversion Block */}
+      <section className="py-16 bg-gradient-to-r from-primary/10 via-ocean/10 to-primary/10 border-y border-primary/20">
+        <div className="container mx-auto px-4">
+          <ScrollReveal>
+            <div className="text-center mb-8">
+              <h2 className="text-3xl md:text-4xl font-playfair font-bold text-primary mb-2">
+                {t('juneJuly.title')}
+              </h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto mb-6">
+                {t('juneJuly.subtitle')}
+              </p>
+              <div className="flex flex-wrap justify-center gap-4 mb-6">
+                <span className="inline-flex items-center gap-1 bg-white px-3 py-1 rounded-full text-sm font-medium shadow-sm">{t('juneJuly.reasons.family')}</span>
+                <span className="inline-flex items-center gap-1 bg-white px-3 py-1 rounded-full text-sm font-medium shadow-sm">{t('juneJuly.reasons.couples')}</span>
+                <span className="inline-flex items-center gap-1 bg-white px-3 py-1 rounded-full text-sm font-medium shadow-sm">{t('juneJuly.reasons.territory')}</span>
+              </div>
+              <Button variant="luxury" size="lg" asChild>
+                <Link href="/contatti?source=june_july_section#prenota">{t('juneJuly.cta')}</Link>
+              </Button>
             </div>
           </ScrollReveal>
         </div>
@@ -518,7 +552,7 @@ export default function HomePage() {
                   </CardHeader>
                   <CardContent className="pt-0">
                     <Button variant="luxury" size="lg" asChild className="w-full">
-                      <Link href="https://share.google/PiZFmmmLBkJaf856R" target="_blank" rel="noopener noreferrer">
+                      <Link href={SITE_CONFIG.social.googleReviews} target="_blank" rel="noopener noreferrer">
                         {t('googleWidget.cta')}
                       </Link>
                     </Button>

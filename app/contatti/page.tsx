@@ -59,6 +59,14 @@ export default function ContattiPage() {
                 <Heart className="h-4 w-4 text-primary" />
                 Perfetto per famiglie
               </div>
+              <div className="flex items-center gap-2 rounded-full bg-emerald-50 px-4 py-2 text-sm text-slate-700 shadow border border-emerald-200">
+                <span className="text-emerald-600 font-semibold">✓</span>
+                Cancellazione flessibile fino a 30 giorni prima
+              </div>
+              <div className="flex items-center gap-2 rounded-full bg-amber-50 px-4 py-2 text-sm text-slate-700 shadow border border-amber-200">
+                <span className="text-amber-600 font-semibold">−</span>
+                Sconto soggiorni 7+ notti (Giugno/Luglio)
+              </div>
             </div>
           </div>
         </div>

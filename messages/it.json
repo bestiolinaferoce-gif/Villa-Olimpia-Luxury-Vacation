@@ -171,6 +171,16 @@
       "description": "Prenota il tuo appartamento e vivi un'esperienza indimenticabile nella splendida Calabria",
       "saveUpTo": "Prenota Direttamente e Risparmia fino al 15%",
       "bookVacation": "Prenota la Tua Vacanza"
+    },
+    "juneJuly": {
+      "title": "Perché Giugno e Luglio a Villa Olimpia",
+      "subtitle": "Mare caldo, meno affollamento, temperatura perfetta. La Calabria in primavera-estate è ideale per famiglie e coppie.",
+      "reasons": {
+        "family": "Perfetto per famiglie con bambini",
+        "couples": "Ideale per coppie e viaggi romantici",
+        "territory": "Esperienze locali: degustazioni vino, Area Marina Protetta, Le Castella"
+      },
+      "cta": "Verifica disponibilità Giugno/Luglio"
     }
   },
   "apartments": {

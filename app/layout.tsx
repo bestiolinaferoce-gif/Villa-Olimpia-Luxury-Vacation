@@ -20,14 +20,14 @@ import FloatingBooking from "@/components/floating-booking"
 import NewsletterPopup from "@/components/newsletter-popup"
 import { I18nProvider } from "@/components/i18n-provider"
 
-const inter = Inter({ 
+const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
   display: "swap",
   preload: true,
 })
 
-const playfair = Playfair_Display({ 
+const playfair = Playfair_Display({
   subsets: ["latin"],
   variable: "--font-playfair",
   display: "swap",
@@ -45,19 +45,19 @@ export default function RootLayout({
     <html lang="it" className={`${inter.variable} ${playfair.variable}`} suppressHydrationWarning>
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.png" type="image/png" />
         <link rel="canonical" href="https://villaolimpiacaporizzuto.com" />
-        
+
         {/* Performance - Preconnect */}
         <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://www.google.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://maps.googleapis.com" crossOrigin="anonymous" />
-        
+
         {/* DNS Prefetch per Analytics */}
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-        
+
         {/* Hreflang tags - tutte le lingue */}
         <link rel="alternate" hrefLang="it" href="https://villaolimpiacaporizzuto.com" />
         <link rel="alternate" hrefLang="en" href="https://villaolimpiacaporizzuto.com/en" />
@@ -82,7 +82,7 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "LodgingBusiness",
               name: "Villa Olimpia",
-              description: "9 appartamenti di lusso con piscina privata a Capo Rizzuto, Calabria. A 100 metri dalla Spiaggia dei Gigli, Area Marina Protetta Capo Rizzuto.",
+              description: "9 appartamenti di lusso con piscina privata a Capo Rizzuto, Calabria. A 100 metri dalla Spiaggia dei Gigli, Area Marina Protetta Capo Rizzuto. Disponibilità Giugno e Luglio 2026.",
               url: "https://villaolimpiacaporizzuto.com",
               telephone: "+393290479193",
               address: {
@@ -104,104 +104,41 @@ export default function RootLayout({
                 "https://www.instagram.com/villaolimpiacaporizzuto"
               ],
               areaServed: [
-                {
-                  "@type": "AdministrativeArea",
-                  name: "Isola di Capo Rizzuto"
-                },
-                {
-                  "@type": "AdministrativeArea",
-                  name: "Le Castella"
-                },
-                {
-                  "@type": "AdministrativeArea",
-                  name: "Calabria"
-                }
+                { "@type": "AdministrativeArea", name: "Isola di Capo Rizzuto" },
+                { "@type": "AdministrativeArea", name: "Le Castella" },
+                { "@type": "AdministrativeArea", name: "Calabria" }
               ],
               priceRange: "€€",
               image: "https://villaolimpiacaporizzuto.com/og-image.jpg",
               numberOfRooms: 9,
               amenityFeature: [
-                {
-                  "@type": "LocationFeatureSpecification",
-                  name: "Piscina privata",
-                  value: true
-                },
-                {
-                  "@type": "LocationFeatureSpecification",
-                  name: "Parcheggio gratuito",
-                  value: true
-                },
-                {
-                  "@type": "LocationFeatureSpecification",
-                  name: "Wi-Fi gratuito",
-                  value: true
-                },
-                {
-                  "@type": "LocationFeatureSpecification",
-                  name: "Aria condizionata",
-                  value: true
-                },
-                {
-                  "@type": "LocationFeatureSpecification",
-                  name: "Cucina attrezzata",
-                  value: true
-                },
-                {
-                  "@type": "LocationFeatureSpecification",
-                  name: "Vista mare",
-                  value: true
-                },
-                {
-                  "@type": "LocationFeatureSpecification",
-                  name: "Terrazza privata",
-                  value: true
-                },
-                {
-                  "@type": "LocationFeatureSpecification",
-                  name: "Spiaggia Bandiera Blu a 100m",
-                  value: true
-                },
-                {
-                  "@type": "LocationFeatureSpecification",
-                  name: "Area Marina Protetta nelle vicinanze",
-                  value: true
-                }
+                { "@type": "LocationFeatureSpecification", name: "Piscina privata", value: true },
+                { "@type": "LocationFeatureSpecification", name: "Parcheggio gratuito", value: true },
+                { "@type": "LocationFeatureSpecification", name: "Wi-Fi gratuito", value: true },
+                { "@type": "LocationFeatureSpecification", name: "Aria condizionata", value: true },
+                { "@type": "LocationFeatureSpecification", name: "Cucina attrezzata", value: true },
+                { "@type": "LocationFeatureSpecification", name: "Vista mare", value: true },
+                { "@type": "LocationFeatureSpecification", name: "Terrazza privata", value: true },
+                { "@type": "LocationFeatureSpecification", name: "Spiaggia Bandiera Blu a 100m", value: true },
+                { "@type": "LocationFeatureSpecification", name: "Area Marina Protetta nelle vicinanze", value: true }
               ],
               nearbyAttraction: [
-                {
-                  "@type": "TouristAttraction",
-                  name: "Spiaggia dei Gigli",
-                  description: "Spiaggia Bandiera Blu",
-                  distance: "100 metri"
-                },
-                {
-                  "@type": "TouristAttraction",
-                  name: "Area Marina Protetta Capo Rizzuto",
-                  description: "Riserva marina protetta",
-                  distance: "2 km"
-                },
-                {
-                  "@type": "TouristAttraction",
-                  name: "Le Castella",
-                  description: "Castello aragonese patrimonio storico",
-                  distance: "8 km"
-                },
-                {
-                  "@type": "TouristAttraction",
-                  name: "Valli Cupe",
-                  description: "Riserva naturale con cascate",
-                  distance: "65 km"
-                },
-                {
-                  "@type": "TouristAttraction",
-                  name: "Spiagge Rosse Bandiera Blu",
-                  description: "Spiagge con sabbia colorata",
-                  distance: "12 km"
-                }
+                { "@type": "TouristAttraction", name: "Spiaggia dei Gigli", description: "Spiaggia Bandiera Blu", distance: "100 metri" },
+                { "@type": "TouristAttraction", name: "Area Marina Protetta Capo Rizzuto", description: "Riserva marina protetta", distance: "2 km" },
+                { "@type": "TouristAttraction", name: "Le Castella", description: "Castello aragonese patrimonio storico", distance: "8 km" },
+                { "@type": "TouristAttraction", name: "Valli Cupe", description: "Riserva naturale con cascate", distance: "65 km" },
+                { "@type": "TouristAttraction", name: "Spiagge Rosse Bandiera Blu", description: "Spiagge con sabbia colorata", distance: "12 km" }
               ],
               checkInTime: "15:00",
               checkOutTime: "10:00",
-              petsAllowed: false
+              petsAllowed: false,
+              availableAtOrFrom: {
+                "@type": "Offer",
+                name: "Giugno e Luglio 2026 — Tariffe vantaggiose",
+                description: "Prenota direttamente per Giugno e Luglio 2026. Tariffe migliori rispetto ai portali.",
+                priceCurrency: "EUR",
+                availability: "https://schema.org/LimitedAvailability"
+              }
             }),
           }}
         />
@@ -216,15 +153,15 @@ export default function RootLayout({
             <FloatingBooking />
             <NewsletterPopup />
             <DirectionsProvider>
-              {/* Barra globale prenotazione diretta */}
-              <div className="bg-primary text-white text-xs sm:text-sm">
+              {/* Barra globale prenotazione diretta — June/July focused */}
+              <div className="bg-primary text-white text-xs sm:text-sm" role="banner">
                 <div className="max-w-6xl mx-auto px-4 py-2 flex flex-col sm:flex-row items-center justify-between gap-2">
                   <span className="text-center sm:text-left">
-                    Prenotazione diretta Villa Olimpia: nessuna commissione di portali e migliori tariffe sulle stesse date.
+                    <strong>Giugno e Luglio 2026:</strong> prenota direttamente — nessuna commissione, miglior tariffa garantita.
                   </span>
                   <Link
                     href="/contatti?source=topbar#prenota"
-                    className="inline-flex items-center justify-center rounded-full bg-white text-primary px-4 py-1 text-xs sm:text-sm font-semibold hover:bg-white/90 transition-colors"
+                    className="inline-flex items-center justify-center rounded-full bg-white text-primary px-4 py-1 text-xs sm:text-sm font-semibold hover:bg-white/90 transition-colors whitespace-nowrap"
                   >
                     Verifica disponibilità
                   </Link>
