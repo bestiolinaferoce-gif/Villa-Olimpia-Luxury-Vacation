@@ -65,5 +65,8 @@
     "tailwindcss-animate": "^1.0.7",
     "typescript": "^5.5.0",
     "vercel": "^49.1.2"
+  },
+  "engines": {
+    "node": "20.x"
   }
 }
