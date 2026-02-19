@@ -21,6 +21,7 @@ export const SITE_CONFIG = {
     facebook: "https://www.facebook.com/villaolimpiacaporizzuto",
     instagram: "https://www.instagram.com/villaolimpiacaporizzuto",
     whatsapp: "https://wa.me/393335773390",
+    googleReviews: "https://www.google.com/search?q=Villa+Olimpia+Capo+Rizzuto+recensioni",
   },
   /** Numero principale per CTA WhatsApp (senza +) */
   whatsappPrimary: "393335773390",
