@@ -173,10 +173,10 @@ export default function TerminiPage() {
                 <p>
                   <strong>Telefono:</strong>{" "}
                   <a
-                    href="tel:+393491234567"
+                    href="tel:+393290479193"
                     className="text-primary hover:underline"
                   >
-                    +39 349 123 4567
+                    +39 329 047 9193
                   </a>
                 </p>
               </CardContent>
