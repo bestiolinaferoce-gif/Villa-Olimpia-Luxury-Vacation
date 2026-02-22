@@ -21,6 +21,7 @@ import { AnalyticsUnified } from "@/components/analytics/analytics-unified"
 import { AutoOptimizer } from "@/components/auto-optimizer"
 import FloatingBooking from "@/components/floating-booking"
 import NewsletterPopup from "@/components/newsletter-popup"
+import { getAverageRating, reviews } from "@/data/reviews-complete"
 
 const inter = Inter({ 
   subsets: ["latin"],
@@ -174,6 +175,15 @@ export default async function LocaleLayout({
               priceRange: "€€",
               image: "https://villaolimpiacaporizzuto.com/og-image.jpg",
               numberOfRooms: 9,
+              ...(getAverageRating() > 0 && reviews.length > 0 ? {
+                aggregateRating: {
+                  "@type": "AggregateRating",
+                  ratingValue: String(getAverageRating()),
+                  reviewCount: reviews.length,
+                  bestRating: 5,
+                  worstRating: 1
+                }
+              } : {}),
               amenityFeature: [
                 {
                   "@type": "LocationFeatureSpecification",

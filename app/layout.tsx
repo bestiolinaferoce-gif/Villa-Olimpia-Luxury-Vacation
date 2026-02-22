@@ -18,6 +18,7 @@ import { AutoOptimizer } from "@/components/auto-optimizer"
 import FloatingBooking from "@/components/floating-booking"
 import NewsletterPopup from "@/components/newsletter-popup"
 import { I18nProvider } from "@/components/i18n-provider"
+import { getAverageRating, reviews } from "@/data/reviews-complete"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -128,6 +129,15 @@ export default function RootLayout({
               priceRange: "€€",
               image: "https://villaolimpiacaporizzuto.com/og-image.jpg",
               numberOfRooms: 9,
+              ...(getAverageRating() > 0 && reviews.length > 0 ? {
+                aggregateRating: {
+                  "@type": "AggregateRating",
+                  ratingValue: String(getAverageRating()),
+                  reviewCount: reviews.length,
+                  bestRating: 5,
+                  worstRating: 1
+                }
+              } : {}),
               amenityFeature: [
                 { "@type": "LocationFeatureSpecification", name: "Piscina privata", value: true },
                 { "@type": "LocationFeatureSpecification", name: "Parcheggio gratuito", value: true },
