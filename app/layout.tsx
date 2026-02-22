@@ -65,6 +65,7 @@ export default function RootLayout({
         <link rel="canonical" href="https://villaolimpiacaporizzuto.com" />
 
         {/* Performance - Preconnect */}
+                <link rel="preload" as="image" href="/images/villa/gallery/Esterni_Piscina_Notte_01.jpg" fetchPriority="high" />
         <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://www.google.com" crossOrigin="anonymous" />
