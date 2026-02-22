@@ -12,13 +12,6 @@ const GTM_ID =
     ? process.env.NEXT_PUBLIC_GTM_ID
     : "GTM-K5NQGHBD"
 
-const GA_MEASUREMENT_ID =
-  typeof process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID !== "undefined" &&
-  process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID !== "" &&
-  process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID !== "G-XXXXXXXXXX"
-    ? process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID
-    : "G-FHYFT8YKNF"
-
 export function AnalyticsUnified() {
   return (
     <>
@@ -44,36 +37,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           style={{ display: "none", visibility: "hidden" }}
         />
       </noscript>
-
-      {/* 2. Google Analytics 4 - gtag.js + config con consenso attivo di default */}
-      <Script
-        id="ga4-loader-unified"
-        src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
-        strategy="afterInteractive"
-      />
-      <Script
-        id="ga4-config-unified"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{
-          __html: `
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-window.gtag = gtag;
-gtag('js', new Date());
-gtag('consent', 'default', {
-  'ad_storage': 'denied',
-  'analytics_storage': 'granted',
-  'functionality_storage': 'granted',
-  'personalization_storage': 'denied',
-  'security_storage': 'granted'
-});
-gtag('config', '${GA_MEASUREMENT_ID}', {
-  send_page_view: true,
-  anonymize_ip: true
-});
-          `.trim(),
-        }}
-      />
     </>
   )
 }

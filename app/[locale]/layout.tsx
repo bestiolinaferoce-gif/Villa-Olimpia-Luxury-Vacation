@@ -18,7 +18,6 @@ import { DirectionsProvider } from "@/components/directions-context"
 import { ErrorBoundary } from "@/components/error-boundary"
 import { defaultMetadata } from "@/lib/metadata"
 import { AnalyticsUnified } from "@/components/analytics/analytics-unified"
-import { AnalyticsPageView } from "@/components/analytics/analytics-pageview"
 import { AutoOptimizer } from "@/components/auto-optimizer"
 import FloatingBooking from "@/components/floating-booking"
 import NewsletterPopup from "@/components/newsletter-popup"
@@ -245,7 +244,6 @@ export default async function LocaleLayout({
       </head>
       <body className={inter.className} suppressHydrationWarning>
         <AnalyticsUnified />
-        <AnalyticsPageView />
         <ErrorBoundary>
           <NextIntlClientProvider messages={messages}>
             <AutoOptimizer />
