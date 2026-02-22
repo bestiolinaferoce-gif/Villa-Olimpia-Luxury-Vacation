@@ -27,8 +27,6 @@ const staticRoutes: Array<{
   { path: "/area-marina-protetta", priority: 0.75, changeFrequency: "monthly" },
   { path: "/cosa-fare-capo-rizzuto", priority: 0.75, changeFrequency: "monthly" },
   { path: "/ciro-wine-tour", priority: 0.7, changeFrequency: "monthly" },
-  { path: "/privacy", priority: 0.3, changeFrequency: "yearly" },
-  { path: "/termini", priority: 0.3, changeFrequency: "yearly" },
   { path: "/cookie-policy", priority: 0.25, changeFrequency: "yearly" },
   { path: "/privacy-policy", priority: 0.25, changeFrequency: "yearly" },
   { path: "/termini-condizioni", priority: 0.25, changeFrequency: "yearly" },

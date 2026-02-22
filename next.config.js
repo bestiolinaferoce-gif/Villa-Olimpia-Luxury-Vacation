@@ -90,6 +90,8 @@ const nextConfig = {
         destination: "https://villaolimpiacaporizzuto.com/:path*",
         permanent: true,
       },
+      { source: "/privacy", destination: "/privacy-policy", permanent: true },
+      { source: "/termini", destination: "/termini-condizioni", permanent: true },
     ];
   },
 
