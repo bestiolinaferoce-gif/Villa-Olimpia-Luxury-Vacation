@@ -81,6 +81,18 @@ const nextConfig = {
     ]
   },
 
+  // Redirect www -> non-www per consistenza canonical (SEO)
+  async redirects() {
+    return [
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "www.villaolimpiacaporizzuto.com" }],
+        destination: "https://villaolimpiacaporizzuto.com/:path*",
+        permanent: true,
+      },
+    ];
+  },
+
   // Ottimizzazioni bundle
   experimental: {
     optimizePackageImports: ['lucide-react', 'framer-motion'],
