@@ -81,15 +81,9 @@ const nextConfig = {
     ]
   },
 
-  // Redirect www -> non-www per consistenza canonical (SEO)
+  // Redirect pagine legali (NO www redirect - conflitto con Vercel domain)
   async redirects() {
     return [
-      {
-        source: "/:path*",
-        has: [{ type: "host", value: "www.villaolimpiacaporizzuto.com" }],
-        destination: "https://villaolimpiacaporizzuto.com/:path*",
-        permanent: true,
-      },
       { source: "/privacy", destination: "/privacy-policy", permanent: true },
       { source: "/termini", destination: "/termini-condizioni", permanent: true },
     ];
