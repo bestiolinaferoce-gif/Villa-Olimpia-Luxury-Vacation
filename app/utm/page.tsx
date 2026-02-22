@@ -6,6 +6,7 @@ import { Sparkles } from "lucide-react"
 export const metadata = {
   title: "UTM Builder - Villa Olimpia",
   description: "Genera link tracciati per campagne marketing a costo zero.",
+  robots: { index: false, follow: false },
 }
 
 export default function UtmPage() {

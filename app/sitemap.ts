@@ -16,7 +16,6 @@ const staticRoutes: Array<{
   { path: "/contatti", priority: 0.9, changeFrequency: "monthly" },
   { path: "/prenota", priority: 0.9, changeFrequency: "monthly" },
   { path: "/location", priority: 0.85, changeFrequency: "monthly" },
-  { path: "/utm", priority: 0.6, changeFrequency: "monthly" },
   { path: "/territorio", priority: 0.85, changeFrequency: "monthly" },
   { path: "/enogastronomia", priority: 0.8, changeFrequency: "monthly" },
   { path: "/servizi", priority: 0.8, changeFrequency: "monthly" },
