@@ -94,14 +94,6 @@ export function Footer() {
                   {t.nav.faq}
                 </Link>
               </li>
-              <li>
-                <Link
-                  href="/utm"
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                >
-                  UTM Builder
-                </Link>
-              </li>
             </ul>
           </div>
 
