@@ -102,8 +102,8 @@ export default function ContattiPage() {
                   <div>
                     <p className="font-medium">Telefono</p>
                     <div className="space-y-1">
-                      <a href="tel:+393290479193" className="block text-muted-foreground hover:text-primary">
-                        +39 329 047 9193
+                      <a href="tel:+393335773390" className="block text-muted-foreground hover:text-primary">
+                        +39 333 577 3390
                       </a>
                       <a href="tel:+393335773390" className="block text-muted-foreground hover:text-primary">
                         +39 333 577 3390
@@ -175,9 +175,9 @@ export default function ContattiPage() {
                   </a>
                 </Button>
                 <Button variant="outline" className="w-full" asChild>
-                  <a href="https://wa.me/393290479193" target="_blank" rel="noopener noreferrer">
+                  <a href="https://wa.me/393335773390" target="_blank" rel="noopener noreferrer">
                     <MessageCircle className="mr-2 h-5 w-5" />
-                    WhatsApp: 329 047 9193
+                    WhatsApp: 333 577 3390
                   </a>
                 </Button>
               </CardContent>

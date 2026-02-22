@@ -155,10 +155,10 @@ export default function PrivacyPage() {
                 <p>
                   <strong>Telefono:</strong>{" "}
                   <a
-                    href="tel:+393290479193"
+                    href="tel:+393335773390"
                     className="text-primary hover:underline"
                   >
-                    +39 329 047 9193
+                    +39 333 577 3390
                   </a>
                 </p>
               </CardContent>

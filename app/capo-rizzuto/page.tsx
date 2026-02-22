@@ -29,7 +29,7 @@ const schemaOrg = {
     "latitude": "38.913856",
     "longitude": "17.0754964"
   },
-  "telephone": "+393290479193",
+  "telephone": "+393335773390",
   "priceRange": "€€",
   "starRating": {
     "@type": "Rating",

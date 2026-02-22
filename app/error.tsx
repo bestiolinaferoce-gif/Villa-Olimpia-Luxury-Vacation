@@ -79,7 +79,7 @@ export default function Error({
                     </Link>
                   </Button>
                   <Button variant="outline" size="sm" asChild>
-                    <a href="https://wa.me/393290479193" target="_blank" rel="noopener noreferrer">
+                    <a href="https://wa.me/393335773390" target="_blank" rel="noopener noreferrer">
                       <Phone className="mr-2 h-4 w-4" />
                       WhatsApp
                     </a>

@@ -4,7 +4,7 @@ export const SITE_CONFIG = {
   name: "Villa Olimpia",
   description: "Luxury Vacation Rentals in Calabria, Italy",
   url: "https://villaolimpiacaporizzuto.com",
-  phone: "+393290479193",
+  phone: "+393335773390",
   email: "villaolimpiacaporizzuto@gmail.com",
   address: {
     street: "Località Capopiccolo snc",
@@ -26,7 +26,7 @@ export const SITE_CONFIG = {
   /** Numero principale per CTA WhatsApp (senza +) */
   whatsappPrimary: "393335773390",
   /** Numero secondario (senza +) */
-  whatsappSecondary: "393290479193",
+  whatsappSecondary: "393335773390",
   businessHours: {
     weekdays: "9:00 - 20:00",
     saturday: "9:00 - 18:00",

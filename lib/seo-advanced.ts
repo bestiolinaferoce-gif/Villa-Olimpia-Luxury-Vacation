@@ -25,7 +25,7 @@ export const SEO_CONFIG = {
       name: "Villa Olimpia",
       description: "9 appartamenti di lusso con piscina privata a Capo Rizzuto, Calabria",
       url: "https://villaolimpiacaporizzuto.com",
-      telephone: "+393290479193",
+      telephone: "+393335773390",
       email: "villaolimpiacaporizzuto@gmail.com",
       priceRange: "€€",
       starRating: {

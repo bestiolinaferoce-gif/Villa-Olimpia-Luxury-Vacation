@@ -338,8 +338,8 @@ export default async function ApartmentDetailPage({ params }: PageProps) {
                     </a>
                   </Button>
                   <Button variant="outline" className="w-full" asChild>
-                    <a href="https://wa.me/393290479193" target="_blank" rel="noopener noreferrer">
-                      WhatsApp: 329 047 9193
+                    <a href="https://wa.me/393335773390" target="_blank" rel="noopener noreferrer">
+                      WhatsApp: 333 577 3390
                     </a>
                   </Button>
                 </div>

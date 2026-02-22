@@ -168,10 +168,10 @@ export function Footer() {
                 <Phone className="h-4 w-4 mt-0.5 flex-shrink-0" />
                 <div className="space-y-1">
                   <a
-                    href="tel:+393290479193"
+                    href="tel:+393335773390"
                     className="hover:text-primary transition-colors block"
                   >
-                    +39 329 047 9193
+                    +39 333 577 3390
                   </a>
                   <a
                     href="tel:+393335773390"

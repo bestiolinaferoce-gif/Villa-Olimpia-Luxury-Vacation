@@ -149,7 +149,7 @@ export const TERRITORY_SEO = {
     "name": "Villa Olimpia",
     "description": "9 appartamenti di lusso con piscina privata a Capo Rizzuto, Calabria. Vicino a Spiaggia dei Gigli Bandiera Blu, Area Marina Protetta, Valli Cupe e siti UNESCO.",
     "url": "https://villaolimpiacaporizzuto.com",
-    "telephone": "+393290479193",
+    "telephone": "+393335773390",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Località Capopiccolo snc",

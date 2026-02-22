@@ -139,7 +139,7 @@ export default async function LocaleLayout({
                 ? "9 luxury apartments with private pool in Capo Rizzuto, Calabria. 100 meters from Spiaggia dei Gigli, Capo Rizzuto Marine Protected Area."
                 : "9 luxury apartments with private pool in Capo Rizzuto, Calabria.",
               url: `https://villaolimpiacaporizzuto.com/${locale}`,
-              telephone: "+393290479193",
+              telephone: "+393335773390",
               address: {
                 "@type": "PostalAddress",
                 streetAddress: "Località Capopiccolo snc",

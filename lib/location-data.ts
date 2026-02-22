@@ -24,10 +24,10 @@ export const VILLA_OLIMPIA_LOCATION = {
     directions: "https://www.google.com/maps/dir/?api=1&destination=38.913856,17.0754964",
   },
   contact: {
-    phone: "+39 329 047 9193",
+    phone: "+39 333 577 3390",
     phone2: "+39 333 577 3390",
     email: "info@villaolimpia.it",
-    whatsapp: "393290479193",
+    whatsapp: "393335773390",
   },
   // Distanze da punti di interesse (aggiornate per Capo Rizzuto)
   distances: {
