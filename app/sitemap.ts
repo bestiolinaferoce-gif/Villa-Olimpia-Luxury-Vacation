@@ -34,7 +34,6 @@ const staticRoutes: Array<{
   { path: "/faq", priority: 0.7, changeFrequency: "monthly", lastMod: DATE_CONTENT },
   // Legali — URL reali verificati (no /cookie-policy, no /privacy-policy che non esistono)
   { path: "/privacy", priority: 0.2, changeFrequency: "yearly", lastMod: DATE_LEGAL },
-  { path: "/termini", priority: 0.2, changeFrequency: "yearly", lastMod: DATE_LEGAL },
   { path: "/termini-condizioni", priority: 0.2, changeFrequency: "yearly", lastMod: DATE_LEGAL },
 ]
 
