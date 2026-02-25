@@ -70,21 +70,21 @@ export function getApartmentMetadata(apartmentId: number): Metadata {
     })
   }
 
-  // SEO ottimizzato per OTA (Booking.com, Airbnb, etc.)
-  const seoTitle = `Appartamento ${apartment.name} - Villa Olimpia | ${apartment.floor} | ${apartment.guests} Ospiti | Capopiccolo, Isola di Capo Rizzuto`
-  const seoDescription = `Affitta l'appartamento ${apartment.name} a Villa Olimpia, ${apartment.floor} ${apartment.size} per ${apartment.guests} ospiti. ${apartment.bedrooms} camere, ${apartment.bathrooms} bagni. ${apartment.features.slice(0, 3).join(', ')}. A meno di 100 metri dalla Spiaggia dei Gigli, Area Marina Protetta Capo Rizzuto. Prenota ora su Booking.com, Airbnb o contattaci direttamente per disponibilità e preventivi personalizzati.`
+  // SEO ottimizzato per prenotazione diretta — nessun riferimento a OTA
+  const seoTitle = `${apartment.name} — Villa Olimpia Capo Rizzuto | ${apartment.guests} ospiti | Piscina`
+  const seoDescription = `Appartamento ${apartment.name} a Villa Olimpia: ${apartment.floor}, ${apartment.size}, ${apartment.guests} ospiti. ${apartment.bedrooms} camere, ${apartment.bathrooms} bagni. ${apartment.features.slice(0, 2).join(', ')}. 100m dalla Spiaggia dei Gigli. Prenota direttamente — tariffe migliori garantite.`
 
   const keywords = [
     `appartamento ${apartment.name.toLowerCase()} villa olimpia`,
     `affitto ${apartment.name.toLowerCase()} capopiccolo`,
-    `vacation rental ${apartment.name.toLowerCase()} calabria`,
+    `${apartment.name.toLowerCase()} capo rizzuto piscina`,
     `appartamento ${apartment.floor.toLowerCase()} isola capo rizzuto`,
     `${apartment.guests} ospiti capopiccolo`,
-    `booking ${apartment.name.toLowerCase()} villa olimpia`,
-    `airbnb ${apartment.name.toLowerCase()} calabria`,
-    `appartamento vista mare ${apartment.name.toLowerCase()}`,
+    `prenotazione diretta villa olimpia`,
+    `appartamento vista mare capo rizzuto`,
     `vacation rental ${apartment.size} capo rizzuto`,
-    `luxury apartment ${apartment.name.toLowerCase()} calabria`
+    `luxury apartment ${apartment.name.toLowerCase()} calabria`,
+    `affitto settimanale capo rizzuto mare`
   ]
 
   return {

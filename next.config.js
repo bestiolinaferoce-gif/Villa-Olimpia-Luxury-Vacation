@@ -81,11 +81,23 @@ const nextConfig = {
     ]
   },
 
-  // Redirect pagine legali (NO www redirect - conflitto con Vercel domain)
+  // Redirect 301 permanenti
   async redirects() {
     return [
-      { source: "/privacy", destination: "/privacy-policy", permanent: true },
+      // FIX CRITICO: /privacy-policy non esiste come route — la route reale è /privacy
+      // Rimosso redirect /privacy → /privacy-policy (causava loop 404)
+      // /termini → /termini-condizioni (route .jsx esiste)
       { source: "/termini", destination: "/termini-condizioni", permanent: true },
+      // Route duplicate inglese → italiane (301 permanente per SEO)
+      { source: "/apartments", destination: "/appartamenti", permanent: true },
+      { source: "/apartments/:path*", destination: "/appartamenti/:path*", permanent: true },
+      { source: "/rooms", destination: "/appartamenti", permanent: true },
+      { source: "/camere", destination: "/appartamenti", permanent: true },
+      { source: "/home", destination: "/", permanent: true },
+      // Protezione URL interni da crawling diretto
+      { source: "/utm", destination: "/", permanent: false },
+      { source: "/verifica-analytics", destination: "/", permanent: false },
+      { source: "/preview-mappa", destination: "/", permanent: false },
     ];
   },
 

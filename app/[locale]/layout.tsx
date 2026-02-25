@@ -116,8 +116,7 @@ export default async function LocaleLayout({
         <link rel="alternate" hrefLang="nl" href="https://villaolimpiacaporizzuto.com/nl" />
         <link rel="alternate" hrefLang="x-default" href="https://villaolimpiacaporizzuto.com" />
         
-        {/* Meta tags Airbnb */}
-        <meta property="og:type" content="lodging" />
+        {/* Meta tag posizione */}
         <meta property="business:contact_data:locality" content="Isola di Capo Rizzuto" />
         <meta property="business:contact_data:region" content="Calabria" />
         <meta property="business:contact_data:country_name" content={locale === 'en' ? 'Italy' : locale === 'de' ? 'Italien' : locale === 'fr' ? 'Italie' : locale === 'nl' ? 'Italië' : 'Italia'} />
@@ -131,7 +130,8 @@ export default async function LocaleLayout({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "LodgingBusiness",
+              "@type": ["LodgingBusiness", "VacationRental"],
+              "@id": `https://villaolimpiacaporizzuto.com/${locale}#business`,
               name: "Villa Olimpia",
               description: locale === 'it' 
                 ? "9 appartamenti di lusso con piscina privata a Capo Rizzuto, Calabria. A 100 metri dalla Spiaggia dei Gigli, Area Marina Protetta Capo Rizzuto."
@@ -178,7 +178,7 @@ export default async function LocaleLayout({
               ...(getAverageRating() > 0 && reviews.length > 0 ? {
                 aggregateRating: {
                   "@type": "AggregateRating",
-                  ratingValue: String(getAverageRating()),
+                  ratingValue: Math.round(getAverageRating() * 10) / 10,
                   reviewCount: reviews.length,
                   bestRating: 5,
                   worstRating: 1

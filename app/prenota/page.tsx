@@ -3,12 +3,20 @@ import { BookingForm } from "@/components/booking-form"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Sparkles, Shield, Clock, Waves, MessageCircle } from "lucide-react"
+import { generateMetadata } from "@/lib/metadata"
 
-export const metadata = {
-  title: "Prenota ora - Villa Olimpia",
+export const metadata = generateMetadata({
+  title: "Prenota Villa Olimpia — Tariffe Dirette Capo Rizzuto",
   description:
-    "Richiedi disponibilita e preventivo per Villa Olimpia a Capopiccolo. Risposta entro 24h e proposta su misura.",
-}
+    "Prenota direttamente Villa Olimpia a Capopiccolo, Isola di Capo Rizzuto. Tariffe migliori garantite, nessuna commissione. Risposta entro 24h, disponibilità Giugno e Luglio 2026.",
+  path: "/prenota",
+  keywords: [
+    "prenota villa olimpia",
+    "prenotazione diretta appartamento capo rizzuto",
+    "tariffa migliore garantita capo rizzuto",
+    "disponibilità giugno luglio 2026 calabria",
+  ],
+})
 
 export default function PrenotaPage() {
   return (
