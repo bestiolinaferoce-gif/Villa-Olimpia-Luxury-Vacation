@@ -24,3 +24,19 @@ export async function saveRequest(req: PublicBookingRequest): Promise<void> {
 export async function getAllRequests(): Promise<PublicBookingRequest[]> {
   return ensureDataFile()
 }
+
+export async function getRequestById(id: string): Promise<PublicBookingRequest | null> {
+  const requests = await ensureDataFile()
+  return requests.find((r) => r.id === id) ?? null
+}
+
+export async function updateRequestStatus(
+  id: string,
+  status: PublicBookingRequest["status"]
+): Promise<void> {
+  const requests = await ensureDataFile()
+  const idx = requests.findIndex((r) => r.id === id)
+  if (idx < 0) return
+  requests[idx] = { ...requests[idx], status }
+  await writeFile(FILE_PATH, JSON.stringify(requests, null, 2))
+}

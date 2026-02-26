@@ -60,3 +60,5 @@ build-output.log
 # Local Netlify folder
 .netlify
 /data/public-requests.json
+
+/data/booking-board.json
