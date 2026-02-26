@@ -4,9 +4,9 @@
  */
 import { writeFile, readFile, mkdir } from "fs/promises"
 import path from "path"
+import { DATA_DIR } from "@/lib/data-path"
 import type { Booking } from "./types"
 
-const DATA_DIR = path.join(process.cwd(), "data")
 const FILE_PATH = path.join(DATA_DIR, "booking-board.json")
 
 async function ensureFile(): Promise<Booking[]> {

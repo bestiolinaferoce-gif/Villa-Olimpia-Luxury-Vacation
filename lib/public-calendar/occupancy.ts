@@ -1,5 +1,6 @@
 import { readFile } from "fs/promises"
 import path from "path"
+import { ICAL_CACHE_DIR } from "@/lib/data-path"
 import { getAllBookings } from "./bookingBoardStore"
 
 export type OccupiedRange = {
@@ -8,7 +9,6 @@ export type OccupiedRange = {
   source: "booking_board" | "airbnb" | "booking_com";
 }
 
-const ICAL_CACHE_DIR = path.join(process.cwd(), "data", "ical-cache")
 
 function dedupeRanges(ranges: OccupiedRange[]): OccupiedRange[] {
   const seen = new Set<string>()

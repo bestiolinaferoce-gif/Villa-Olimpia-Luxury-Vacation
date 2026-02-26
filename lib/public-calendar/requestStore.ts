@@ -1,8 +1,8 @@
 import { writeFile, readFile, mkdir } from "fs/promises"
 import path from "path"
+import { DATA_DIR } from "@/lib/data-path"
 import type { PublicBookingRequest } from "./types"
 
-const DATA_DIR = path.join(process.cwd(), "data")
 const FILE_PATH = path.join(DATA_DIR, "public-requests.json")
 
 async function ensureDataFile(): Promise<PublicBookingRequest[]> {

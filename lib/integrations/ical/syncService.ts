@@ -1,10 +1,9 @@
 import { writeFile, mkdir } from "fs/promises"
 import path from "path"
+import { ICAL_CACHE_DIR } from "@/lib/data-path"
 import { parseICalFeed } from "./parser"
 import { getICalUrlsForLodge } from "./lodgeICalMap"
 import type { OccupiedRange } from "@/lib/public-calendar/occupancy"
-
-const CACHE_DIR = path.join(process.cwd(), "data", "ical-cache")
 
 export async function syncICalForLodge(
   lodgeId: string
@@ -28,8 +27,8 @@ export async function syncICalForLodge(
     allRanges.push(...ranges)
   }
 
-  await mkdir(CACHE_DIR, { recursive: true }).catch(() => {})
-  const cachePath = path.join(CACHE_DIR, `${lodgeId}.json`)
+  await mkdir(ICAL_CACHE_DIR, { recursive: true }).catch(() => {})
+  const cachePath = path.join(ICAL_CACHE_DIR, `${lodgeId}.json`)
   const cacheContent = {
     lodgeId,
     updatedAt: new Date().toISOString(),
