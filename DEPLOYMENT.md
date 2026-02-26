@@ -32,3 +32,16 @@
 ## Cron Vercel
 
 Il cron `*/15 * * * *` chiama `/api/ical-sync` ogni 15 minuti. L'header `x-vercel-cron: 1` sostituisce il token in produzione.
+
+## Rollback (predeploy/audit-fixes)
+
+Per annullare i fix dell'audit:
+```bash
+git revert cf62f86 592a252 8371e39 --no-commit
+git commit -m "revert: audit fixes (rollback)"
+```
+
+Per tornare al branch precedente senza merge:
+```bash
+git checkout feature/public-booking-system
+```
