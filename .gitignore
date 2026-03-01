@@ -64,3 +64,7 @@ build-output.log
 /data/booking-board.json
 
 /data/ical-cache/
+
+# Local reports and Lighthouse artifacts
+_reports_local/
+lighthouse-*.json

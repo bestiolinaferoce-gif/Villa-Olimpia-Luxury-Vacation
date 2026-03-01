@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import { apartments } from "@/data/apartments"
 
-export const BASE_URL = "https://www.villaolimpiacaporizzuto.com"
+export const BASE_URL = "https://villaolimpiacaporizzuto.com"
 const baseUrl = BASE_URL
 const siteName = "Villa Olimpia"
 
