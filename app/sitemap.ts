@@ -31,8 +31,10 @@ const staticRoutes: Array<{
   { path: "/cosa-fare-capo-rizzuto", priority: 0.75, changeFrequency: "monthly", lastMod: DATE_CONTENT },
   { path: "/ciro-wine-tour", priority: 0.7, changeFrequency: "monthly", lastMod: DATE_CONTENT },
   { path: "/faq", priority: 0.7, changeFrequency: "monthly", lastMod: DATE_CONTENT },
-  // Legali — URL reali verificati (no /cookie-policy, no /privacy-policy che non esistono)
+  // Legali — route attive verificate al 2026-03-01
   { path: "/privacy", priority: 0.2, changeFrequency: "yearly", lastMod: DATE_LEGAL },
+  { path: "/privacy-policy", priority: 0.2, changeFrequency: "yearly", lastMod: DATE_LEGAL },
+  { path: "/cookie-policy", priority: 0.2, changeFrequency: "yearly", lastMod: DATE_LEGAL },
   { path: "/termini-condizioni", priority: 0.2, changeFrequency: "yearly", lastMod: DATE_LEGAL },
 ]
 

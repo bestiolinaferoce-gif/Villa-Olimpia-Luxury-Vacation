@@ -1,4 +1,4 @@
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 import { Inter, Playfair_Display } from "next/font/google"
 import Script from "next/script"
 import Link from "next/link"
@@ -36,6 +36,12 @@ const playfair = Playfair_Display({
 
 export const metadata: Metadata = defaultMetadata
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+}
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -61,7 +67,7 @@ export default function RootLayout({
     `,
           }}
         />
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+        {/* viewport gestito tramite export const viewport (Next.js App Router) */}
         <link rel="icon" href="/favicon.png" type="image/png" />
 
         {/* Performance - Preconnect */}

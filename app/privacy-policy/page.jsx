@@ -1,6 +1,11 @@
+import { BASE_URL } from "@/lib/metadata"
+
 export const metadata = {
   title: "Privacy Policy | Villa Olimpia",
   description: "Informativa Privacy GDPR di Villa Olimpia.",
+  alternates: {
+    canonical: `${BASE_URL}/privacy-policy`,
+  },
 }
 
 export default function PrivacyPolicyPage() {

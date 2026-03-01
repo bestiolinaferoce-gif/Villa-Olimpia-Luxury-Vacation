@@ -1,6 +1,11 @@
+import { BASE_URL } from "@/lib/metadata"
+
 export const metadata = {
   title: "Termini e Condizioni | Villa Olimpia",
   description: "Condizioni di utilizzo, regole della struttura, policy di prenotazione e responsabilità di Villa Olimpia.",
+  alternates: {
+    canonical: `${BASE_URL}/termini-condizioni`,
+  },
 }
 
 export default function TerminiCondizioniPage() {

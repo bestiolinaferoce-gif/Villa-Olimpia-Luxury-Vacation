@@ -1,8 +1,12 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { BASE_URL } from "@/lib/metadata"
 
 export const metadata = {
   title: "Privacy Policy - Villa Olimpia",
   description: "Informativa sulla privacy di Villa Olimpia. Scopri come trattiamo i tuoi dati personali.",
+  alternates: {
+    canonical: `${BASE_URL}/privacy`,
+  },
 }
 
 export default function PrivacyPage() {
