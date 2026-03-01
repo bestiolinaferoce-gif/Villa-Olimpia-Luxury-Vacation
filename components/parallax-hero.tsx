@@ -23,8 +23,9 @@ export default function ParallaxHero() {
           src="/images/villa/gallery/Esterni_Piscina_Notte_01.jpg"
           fill
           className="object-cover"
-          alt="Villa Olimpia Piscina"
+          alt="Villa Olimpia - Piscina privata 12x6m a Capo Rizzuto"
           priority
+          sizes="100vw"
         />
       </motion.div>
       
