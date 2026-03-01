@@ -368,7 +368,7 @@ export function DirectionsWidget({ showBadge = true }: DirectionsWidgetProps = {
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
               className="fixed top-4 left-4 right-4 bottom-4 md:top-[5vh] md:left-1/2 md:right-auto md:bottom-auto md:-translate-x-1/2 md:translate-y-0 z-[70] md:max-w-4xl md:w-[90vw] md:max-h-[90vh] flex flex-col bg-white rounded-2xl shadow-2xl border-2 border-primary/20 overflow-hidden"
-              onClick={(e) => e.stopPropagation()}
+              onClick={(e: React.MouseEvent) => e.stopPropagation()}
             >
               {/* Header */}
               <div className="sticky top-0 bg-gradient-to-r from-primary to-ocean text-white p-6 rounded-t-2xl flex items-center justify-between z-10">

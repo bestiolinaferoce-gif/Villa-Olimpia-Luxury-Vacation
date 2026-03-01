@@ -222,7 +222,7 @@ export function HowToReachUs() {
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
               className="fixed top-4 left-4 right-4 bottom-4 md:top-[5vh] md:left-1/2 md:right-auto md:bottom-auto md:-translate-x-1/2 md:translate-y-0 z-[110] md:max-w-5xl md:w-[90vw] md:max-h-[90vh] flex flex-col bg-white rounded-3xl shadow-2xl border-2 border-primary/20 overflow-hidden"
-              onClick={(e) => e.stopPropagation()}
+              onClick={(e: React.MouseEvent) => e.stopPropagation()}
             >
               {/* Header Gradient */}
               <div className="sticky top-0 z-20 bg-gradient-to-r from-primary via-ocean to-primary p-6 md:p-8 rounded-t-3xl flex items-center justify-between">
