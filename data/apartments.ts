@@ -16,6 +16,7 @@ export interface Apartment {
   description?: string
   fullDescription?: string
   price?: number
+  active?: boolean
 }
 
 export const apartments: Apartment[] = [

@@ -1,8 +1,8 @@
 import { MetadataRoute } from "next"
 import { apartments } from "@/data/apartments"
 import { locales } from "@/i18n/request"
+import { BASE_URL } from "@/lib/metadata"
 
-const baseUrl = "https://villaolimpiacaporizzuto.com"
 const lastModified = new Date()
 
 const staticRoutes: Array<{
@@ -34,21 +34,21 @@ const staticRoutes: Array<{
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const pages: MetadataRoute.Sitemap = staticRoutes.map((route) => ({
-    url: `${baseUrl}${route.path}`,
+    url: `${BASE_URL}${route.path}`,
     lastModified,
     changeFrequency: route.changeFrequency,
     priority: route.priority,
   }))
 
   const localePages: MetadataRoute.Sitemap = locales.map((locale) => ({
-    url: `${baseUrl}/${locale}`,
+    url: `${BASE_URL}/${locale}`,
     lastModified,
     changeFrequency: "weekly",
     priority: locale === "it" ? 0.9 : 0.75,
   }))
 
-  const apartmentPages: MetadataRoute.Sitemap = apartments.map((apartment) => ({
-    url: `${baseUrl}/appartamenti/apartment-${apartment.id}`,
+  const apartmentPages: MetadataRoute.Sitemap = apartments.filter((a) => a.active !== false).map((apartment) => ({
+    url: `${BASE_URL}/appartamenti/apartment-${apartment.id}`,
     lastModified,
     changeFrequency: "monthly",
     priority: apartment.premium ? 0.9 : 0.82,

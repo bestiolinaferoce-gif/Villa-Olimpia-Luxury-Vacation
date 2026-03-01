@@ -1,7 +1,7 @@
 import { MetadataRoute } from "next"
+import { BASE_URL } from "@/lib/metadata"
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = "https://villaolimpiacaporizzuto.com"
   
   return {
     rules: [
@@ -16,7 +16,7 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/api/", "/admin/", "/_next/"],
       },
     ],
-    sitemap: `${baseUrl}/sitemap.xml`,
-    host: baseUrl,
+    sitemap: `${BASE_URL}/sitemap.xml`,
+    host: BASE_URL,
   }
 }
