@@ -20,8 +20,8 @@ import { defaultMetadata, BASE_URL } from "@/lib/metadata"
 import { AnalyticsUnified } from "@/components/analytics/analytics-unified"
 import { WebVitalsReporter } from "@/components/analytics/web-vitals-reporter"
 import { AutoOptimizer } from "@/components/auto-optimizer"
-import FloatingBooking from "@/components/floating-booking"
-import NewsletterPopup from "@/components/newsletter-popup"
+import { LazyOverlays } from "@/components/lazy-overlays"
+
 import { getAverageRating, reviews } from "@/data/reviews-complete"
 
 const inter = Inter({ 
@@ -277,8 +277,7 @@ export default async function LocaleLayout({
         <ErrorBoundary>
           <NextIntlClientProvider messages={messages}>
             <AutoOptimizer />
-            <FloatingBooking />
-            <NewsletterPopup />
+            <LazyOverlays />
             <DirectionsProvider>
               <div className="bg-primary text-white text-xs sm:text-sm">
                 <div className="max-w-6xl mx-auto px-4 py-2 flex flex-col sm:flex-row items-center justify-between gap-2">
