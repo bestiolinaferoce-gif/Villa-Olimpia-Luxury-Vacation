@@ -87,6 +87,8 @@ export function MapComponent() {
     }
   }
 
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-expect-error google maps global loaded by LoadScript
   const onLoad = useCallback((map: google.maps.Map) => {
     setIsMapLoaded(true)
     setMapError(false)

@@ -50,7 +50,7 @@ export default function NewsletterPopup() {
           <motion.div
             initial={{ scale: 0.9 }}
             animate={{ scale: 1 }}
-            onClick={(e) => e.stopPropagation()}
+            onClick={(e: React.MouseEvent) => e.stopPropagation()}
             className="bg-white rounded-2xl p-8 max-w-md w-full shadow-2xl relative"
           >
             <button onClick={handleClose} className="absolute top-4 right-4 hover:opacity-70">

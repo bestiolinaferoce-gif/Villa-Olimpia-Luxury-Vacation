@@ -3,6 +3,7 @@ import { z } from "zod"
 import { appendFile, mkdir } from "fs/promises"
 import path from "path"
 import { buildEnrichedLead, leadPriorityTag, type EnrichedLead } from "@/lib/lead-automation"
+import { DATA_DIR } from "@/lib/data-path"
 
 const leadSchema = z.object({
   name: z.string().min(2).max(120),
@@ -282,7 +283,7 @@ async function persistLeadToFile(lead: EnrichedLead) {
   try {
     const baseDir = process.env.LEADS_STORE_DIR
       ? path.resolve(process.env.LEADS_STORE_DIR)
-      : path.join(process.cwd(), "data", "leads")
+      : path.join(DATA_DIR, "leads")
     await mkdir(baseDir, { recursive: true })
     const month = lead.receivedAt.slice(0, 7) // YYYY-MM
     const filePath = path.join(baseDir, `inbox-${month}.ndjson`)

@@ -84,6 +84,8 @@ export default function RestaurantsMapPremium() {
                     <text x="20" y="26" font-size="20" fill="white" text-anchor="middle">🏠</text>
                   </svg>
                 `),
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-expect-error google maps global loaded by LoadScript
                 scaledSize: new google.maps.Size(40, 40),
               }}
               title="Villa Olimpia"
@@ -102,6 +104,8 @@ export default function RestaurantsMapPremium() {
                       <text x="18" y="24" font-size="16" fill="white" text-anchor="middle">🍴</text>
                     </svg>
                   `),
+                  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                  // @ts-expect-error google maps global loaded by LoadScript
                   scaledSize: new google.maps.Size(36, 36),
                 }}
                 title={restaurant.name}
@@ -227,7 +231,7 @@ export default function RestaurantsMapPremium() {
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              onClick={(e) => e.stopPropagation()}
+              onClick={(e: React.MouseEvent) => e.stopPropagation()}
               className="fixed inset-4 md:inset-auto md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 bg-white rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-2xl z-50"
             >
               {/* Header */}
