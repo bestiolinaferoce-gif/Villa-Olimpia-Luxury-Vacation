@@ -85,6 +85,7 @@ export default function RestaurantsMapPremium() {
                   </svg>
                 `),
                 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-expect-error google maps global loaded by LoadScript
                 scaledSize: new google.maps.Size(40, 40),
               }}
               title="Villa Olimpia"
@@ -104,6 +105,7 @@ export default function RestaurantsMapPremium() {
                     </svg>
                   `),
                   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                  // @ts-expect-error google maps global loaded by LoadScript
                   scaledSize: new google.maps.Size(36, 36),
                 }}
                 title={restaurant.name}
