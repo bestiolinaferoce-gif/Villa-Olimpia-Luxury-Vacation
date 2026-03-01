@@ -120,7 +120,7 @@ export function HomeGallery() {
     }, 4000) // Cambia immagine ogni 4 secondi
 
     return () => clearInterval(interval)
-  }, [galleryImages.length, shouldReduceMotion])
+  }, [shouldReduceMotion])
 
   const handleImageError = (index: number) => {
     setImageErrors(prev => new Set(prev).add(index))

@@ -166,6 +166,7 @@ export function DirectionsWidget({ showBadge = true }: DirectionsWidgetProps = {
         maximumAge: 0,
       }
     )
+  // eslint-disable-next-line react-hooks/exhaustive-deps -- calculateRoutes defined below
   }, [])
 
   // Calcolo percorsi usando OpenRouteService (gratuito)
@@ -273,12 +274,14 @@ export function DirectionsWidget({ showBadge = true }: DirectionsWidgetProps = {
           "_blank",
           "noopener,noreferrer"
         )
+  // eslint-disable-next-line react-hooks/exhaustive-deps -- calculateRoutes defined below
       } else {
         window.open(
           `https://www.google.com/maps/dir/?api=1&destination=${DESTINATION.lat},${DESTINATION.lng}`,
           "_blank",
           "noopener,noreferrer"
         )
+  // eslint-disable-next-line react-hooks/exhaustive-deps -- calculateRoutes defined below
       }
     }
   }
@@ -292,6 +295,7 @@ export function DirectionsWidget({ showBadge = true }: DirectionsWidgetProps = {
       const response = await fetch(
         `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(manualAddress)}&limit=1`
       )
+  // eslint-disable-next-line react-hooks/exhaustive-deps -- calculateRoutes defined below
       const data = await response.json()
 
       if (data.length > 0) {

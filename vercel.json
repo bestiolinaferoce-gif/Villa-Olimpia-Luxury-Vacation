@@ -73,5 +73,11 @@
         }
       ]
     }
+  ],
+  "crons": [
+    {
+      "path": "/api/ical-sync",
+      "schedule": "*/15 * * * *"
+    }
   ]
 }

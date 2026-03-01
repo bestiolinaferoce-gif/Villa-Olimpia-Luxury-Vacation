@@ -1,8 +1,7 @@
 import { MetadataRoute } from "next"
 import { apartments } from "@/data/apartments"
 import { locales } from "@/i18n/request"
-
-const baseUrl = "https://villaolimpiacaporizzuto.com"
+import { BASE_URL } from "@/lib/metadata"
 
 // Date statiche per categoria — non cambiano ad ogni build (risparmio crawl budget)
 const DATE_CORE = new Date("2025-12-01")
@@ -39,7 +38,7 @@ const staticRoutes: Array<{
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const pages: MetadataRoute.Sitemap = staticRoutes.map((route) => ({
-    url: `${baseUrl}${route.path}`,
+    url: `${BASE_URL}${route.path}`,
     lastModified: route.lastMod,
     changeFrequency: route.changeFrequency,
     priority: route.priority,
@@ -47,20 +46,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // Pagine localizzate con hreflang alternates
   const localePages: MetadataRoute.Sitemap = locales.map((locale) => ({
-    url: `${baseUrl}/${locale}`,
+    url: `${BASE_URL}/${locale}`,
     lastModified: DATE_CORE,
     changeFrequency: "weekly" as const,
     priority: locale === "it" ? 0.9 : 0.75,
     alternates: {
       languages: Object.fromEntries(
-        locales.map((l) => [l, `${baseUrl}/${l}`])
+        locales.map((l) => [l, `${BASE_URL}/${l}`])
       ),
     },
   }))
 
-  // Pagine appartamenti
-  const apartmentPages: MetadataRoute.Sitemap = apartments.map((apartment) => ({
-    url: `${baseUrl}/appartamenti/apartment-${apartment.id}`,
+  // Pagine appartamenti (solo attivi)
+  const apartmentPages: MetadataRoute.Sitemap = apartments.filter((a) => a.active !== false).map((apartment) => ({
+    url: `${BASE_URL}/appartamenti/apartment-${apartment.id}`,
     lastModified: DATE_CORE,
     changeFrequency: "monthly" as const,
     priority: apartment.premium ? 0.9 : 0.82,

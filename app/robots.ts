@@ -1,8 +1,7 @@
 import { MetadataRoute } from "next"
+import { BASE_URL } from "@/lib/metadata"
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = "https://villaolimpiacaporizzuto.com"
-
   // Pagine interne/tool + route duplicate che NON devono essere indicizzate
   const internalDisallow = [
     "/api/",
@@ -38,7 +37,7 @@ export default function robots(): MetadataRoute.Robots {
         disallow: internalDisallow,
       },
     ],
-    sitemap: `${baseUrl}/sitemap.xml`,
-    host: baseUrl,
+    sitemap: `${BASE_URL}/sitemap.xml`,
+    host: BASE_URL,
   }
 }
