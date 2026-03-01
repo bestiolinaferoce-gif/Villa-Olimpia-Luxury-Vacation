@@ -2,7 +2,7 @@ import { notFound } from "next/navigation"
 import Image from "next/image"
 import { getApartmentById, apartments } from "@/data/apartments"
 // FIX: Import esplicito per risolvere problemi di routing
-import { getApartmentMetadata } from "@/lib/metadata"
+import { getApartmentMetadata, BASE_URL } from "@/lib/metadata"
 import { getApartmentSEO } from "@/data/apartments-seo"
 import { getApartmentContent } from "@/data/apartment-content"
 import { Button } from "@/components/ui/button"
@@ -436,9 +436,9 @@ export default async function ApartmentDetailPage({ params }: PageProps) {
             "@type": "Accommodation",
             "name": `Appartamento ${apartment.name} - Villa Olimpia`,
             "description": apartment.fullDescription || apartment.description,
-            "image": apartment.image.startsWith("/") 
-              ? `https://villaolimpiacaporizzuto.com${apartment.image}` 
-              : "https://villaolimpiacaporizzuto.com/og-image.jpg",
+            "image": apartment.image.startsWith("/")
+              ? `${BASE_URL}${apartment.image}`
+              : `${BASE_URL}/og-image.jpg`,
             "address": {
               "@type": "PostalAddress",
               "streetAddress": VILLA_OLIMPIA_LOCATION.address.street,
@@ -463,7 +463,7 @@ export default async function ApartmentDetailPage({ params }: PageProps) {
             })),
             "priceRange": `€${apartment.price}/notte`,
             "telephone": VILLA_OLIMPIA_LOCATION.contact.phone,
-            "url": `https://villaolimpiacaporizzuto.com/appartamenti/apartment-${apartment.id}`
+            "url": `${BASE_URL}/appartamenti/apartment-${apartment.id}`
           })
         }}
       />

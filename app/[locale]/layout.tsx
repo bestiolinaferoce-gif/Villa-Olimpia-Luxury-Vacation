@@ -16,7 +16,7 @@ import { PreloadResources } from "@/components/performance/preload-resources"
 import { TouchOptimizer } from "@/components/mobile/touch-optimizer"
 import { DirectionsProvider } from "@/components/directions-context"
 import { ErrorBoundary } from "@/components/error-boundary"
-import { defaultMetadata } from "@/lib/metadata"
+import { defaultMetadata, BASE_URL } from "@/lib/metadata"
 import { AnalyticsUnified } from "@/components/analytics/analytics-unified"
 import { AutoOptimizer } from "@/components/auto-optimizer"
 import FloatingBooking from "@/components/floating-booking"
@@ -45,12 +45,12 @@ export const metadata: Metadata = {
   ...defaultMetadata,
   alternates: {
     languages: {
-      'it': 'https://villaolimpiacaporizzuto.com/it',
-      'en': 'https://villaolimpiacaporizzuto.com/en',
-      'de': 'https://villaolimpiacaporizzuto.com/de',
-      'fr': 'https://villaolimpiacaporizzuto.com/fr',
-      'nl': 'https://villaolimpiacaporizzuto.com/nl',
-      'x-default': 'https://villaolimpiacaporizzuto.com',
+      'it': `${BASE_URL}/it`,
+      'en': `${BASE_URL}/en`,
+      'de': `${BASE_URL}/de`,
+      'fr': `${BASE_URL}/fr`,
+      'nl': `${BASE_URL}/nl`,
+      'x-default': BASE_URL,
     },
   },
 }
@@ -95,7 +95,7 @@ export default async function LocaleLayout({
         />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
         <link rel="icon" href="/favicon.png" type="image/png" />
-        <link rel="canonical" href={`https://villaolimpiacaporizzuto.com/${locale}`} />
+        <link rel="canonical" href={`${BASE_URL}/${locale}`} />
         
         {/* Performance - Preconnect */}
                 <link rel="preload" as="image" href="/images/villa/gallery/Esterni_Piscina_Notte_01.jpg" fetchPriority="high" />
@@ -109,12 +109,12 @@ export default async function LocaleLayout({
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         
         {/* Hreflang tags per multilingua */}
-        <link rel="alternate" hrefLang="it" href="https://villaolimpiacaporizzuto.com/it" />
-        <link rel="alternate" hrefLang="en" href="https://villaolimpiacaporizzuto.com/en" />
-        <link rel="alternate" hrefLang="de" href="https://villaolimpiacaporizzuto.com/de" />
-        <link rel="alternate" hrefLang="fr" href="https://villaolimpiacaporizzuto.com/fr" />
-        <link rel="alternate" hrefLang="nl" href="https://villaolimpiacaporizzuto.com/nl" />
-        <link rel="alternate" hrefLang="x-default" href="https://villaolimpiacaporizzuto.com" />
+        <link rel="alternate" hrefLang="it" href={`${BASE_URL}/it`} />
+        <link rel="alternate" hrefLang="en" href={`${BASE_URL}/en`} />
+        <link rel="alternate" hrefLang="de" href={`${BASE_URL}/de`} />
+        <link rel="alternate" hrefLang="fr" href={`${BASE_URL}/fr`} />
+        <link rel="alternate" hrefLang="nl" href={`${BASE_URL}/nl`} />
+        <link rel="alternate" hrefLang="x-default" href={BASE_URL} />
         
         {/* Meta tag posizione */}
         <meta property="business:contact_data:locality" content="Isola di Capo Rizzuto" />
@@ -131,14 +131,14 @@ export default async function LocaleLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": ["LodgingBusiness", "VacationRental"],
-              "@id": `https://villaolimpiacaporizzuto.com/${locale}#business`,
+              "@id": `${BASE_URL}/${locale}#business`,
               name: "Villa Olimpia",
               description: locale === 'it' 
                 ? "9 appartamenti di lusso con piscina privata a Capo Rizzuto, Calabria. A 100 metri dalla Spiaggia dei Gigli, Area Marina Protetta Capo Rizzuto."
                 : locale === 'en'
                 ? "9 luxury apartments with private pool in Capo Rizzuto, Calabria. 100 meters from Spiaggia dei Gigli, Capo Rizzuto Marine Protected Area."
                 : "9 luxury apartments with private pool in Capo Rizzuto, Calabria.",
-              url: `https://villaolimpiacaporizzuto.com/${locale}`,
+              url: `${BASE_URL}/${locale}`,
               telephone: "+393335773390",
               address: {
                 "@type": "PostalAddress",
@@ -173,7 +173,7 @@ export default async function LocaleLayout({
                 }
               ],
               priceRange: "€€",
-              image: "https://villaolimpiacaporizzuto.com/og-image.jpg",
+              image: `${BASE_URL}/og-image.jpg`,
               numberOfRooms: 9,
               ...(getAverageRating() > 0 && reviews.length > 0 ? {
                 aggregateRating: {

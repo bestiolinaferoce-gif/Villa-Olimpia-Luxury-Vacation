@@ -12,7 +12,7 @@ import { PreloadResources } from "@/components/performance/preload-resources"
 import { TouchOptimizer } from "@/components/mobile/touch-optimizer"
 import { DirectionsProvider } from "@/components/directions-context"
 import { ErrorBoundary } from "@/components/error-boundary"
-import { defaultMetadata } from "@/lib/metadata"
+import { defaultMetadata, BASE_URL } from "@/lib/metadata"
 import { AnalyticsUnified } from "@/components/analytics/analytics-unified"
 import { AutoOptimizer } from "@/components/auto-optimizer"
 import FloatingBooking from "@/components/floating-booking"
@@ -76,12 +76,12 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
 
         {/* Hreflang tags - tutte le lingue */}
-        <link rel="alternate" hrefLang="it" href="https://villaolimpiacaporizzuto.com" />
-        <link rel="alternate" hrefLang="en" href="https://villaolimpiacaporizzuto.com/en" />
-        <link rel="alternate" hrefLang="de" href="https://villaolimpiacaporizzuto.com/de" />
-        <link rel="alternate" hrefLang="fr" href="https://villaolimpiacaporizzuto.com/fr" />
-        <link rel="alternate" hrefLang="nl" href="https://villaolimpiacaporizzuto.com/nl" />
-        <link rel="alternate" hrefLang="x-default" href="https://villaolimpiacaporizzuto.com" />
+        <link rel="alternate" hrefLang="it" href={BASE_URL} />
+        <link rel="alternate" hrefLang="en" href={`${BASE_URL}/en`} />
+        <link rel="alternate" hrefLang="de" href={`${BASE_URL}/de`} />
+        <link rel="alternate" hrefLang="fr" href={`${BASE_URL}/fr`} />
+        <link rel="alternate" hrefLang="nl" href={`${BASE_URL}/nl`} />
+        <link rel="alternate" hrefLang="x-default" href={BASE_URL} />
         {/* Meta tag posizione per Facebook/Meta */}
         <meta property="business:contact_data:locality" content="Isola di Capo Rizzuto" />
         <meta property="business:contact_data:region" content="Calabria" />
@@ -97,10 +97,10 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": ["LodgingBusiness", "VacationRental"],
-              "@id": "https://villaolimpiacaporizzuto.com/#business",
+              "@id": `${BASE_URL}/#business`,
               name: "Villa Olimpia",
               description: "9 appartamenti di lusso con piscina privata a Capo Rizzuto, Calabria. A 100 metri dalla Spiaggia dei Gigli, Area Marina Protetta Capo Rizzuto. Disponibilità Giugno e Luglio 2026.",
-              url: "https://villaolimpiacaporizzuto.com",
+              url: BASE_URL,
               telephone: "+393335773390",
               address: {
                 "@type": "PostalAddress",
@@ -126,7 +126,7 @@ export default function RootLayout({
                 { "@type": "AdministrativeArea", name: "Calabria" }
               ],
               priceRange: "€€",
-              image: "https://villaolimpiacaporizzuto.com/og-image.jpg",
+              image: `${BASE_URL}/og-image.jpg`,
               numberOfRooms: 9,
               ...(getAverageRating() > 0 && reviews.length > 0 ? {
                 aggregateRating: {

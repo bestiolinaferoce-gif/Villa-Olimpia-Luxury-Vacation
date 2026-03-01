@@ -1,7 +1,7 @@
 import { Metadata } from "next"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
-import { generateMetadata } from "@/lib/metadata"
+import { generateMetadata, BASE_URL } from "@/lib/metadata"
 import { Check, MapPin, Waves, Car, Wifi, Umbrella } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 
@@ -15,7 +15,7 @@ const schemaOrg = {
   "@context": "https://schema.org",
   "@type": "LodgingBusiness",
   "name": "Villa Olimpia",
-  "image": "https://villaolimpiacaporizzuto.com/images/villa-olimpia-main.jpg",
+  "image": `${BASE_URL}/images/villa-olimpia-main.jpg`,
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "Località Capopiccolo snc",
