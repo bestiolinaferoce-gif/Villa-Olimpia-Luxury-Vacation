@@ -81,12 +81,8 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
 
-        {/* Hreflang tags - tutte le lingue */}
+        {/* Hreflang tags - solo italiano (multilingua non ancora attivo) */}
         <link rel="alternate" hrefLang="it" href={BASE_URL} />
-        <link rel="alternate" hrefLang="en" href={`${BASE_URL}/en`} />
-        <link rel="alternate" hrefLang="de" href={`${BASE_URL}/de`} />
-        <link rel="alternate" hrefLang="fr" href={`${BASE_URL}/fr`} />
-        <link rel="alternate" hrefLang="nl" href={`${BASE_URL}/nl`} />
         <link rel="alternate" hrefLang="x-default" href={BASE_URL} />
         {/* Meta tag posizione per Facebook/Meta */}
         <meta property="business:contact_data:locality" content="Isola di Capo Rizzuto" />

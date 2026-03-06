@@ -1,6 +1,5 @@
 import { MetadataRoute } from "next"
 import { apartments } from "@/data/apartments"
-import { locales } from "@/i18n/request"
 import { BASE_URL } from "@/lib/metadata"
 
 // Date statiche per categoria — non cambiano ad ogni build (risparmio crawl budget)
@@ -33,7 +32,6 @@ const staticRoutes: Array<{
   { path: "/faq", priority: 0.7, changeFrequency: "monthly", lastMod: DATE_CONTENT },
   // Legali — route attive verificate al 2026-03-01
   { path: "/privacy", priority: 0.2, changeFrequency: "yearly", lastMod: DATE_LEGAL },
-  { path: "/privacy-policy", priority: 0.2, changeFrequency: "yearly", lastMod: DATE_LEGAL },
   { path: "/cookie-policy", priority: 0.2, changeFrequency: "yearly", lastMod: DATE_LEGAL },
   { path: "/termini-condizioni", priority: 0.2, changeFrequency: "yearly", lastMod: DATE_LEGAL },
 ]
@@ -46,19 +44,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: route.priority,
   }))
 
-  // Pagine localizzate con hreflang alternates
-  const localePages: MetadataRoute.Sitemap = locales.map((locale) => ({
-    url: `${BASE_URL}/${locale}`,
-    lastModified: DATE_CORE,
-    changeFrequency: "weekly" as const,
-    priority: locale === "it" ? 0.9 : 0.75,
-    alternates: {
-      languages: Object.fromEntries(
-        locales.map((l) => [l, `${BASE_URL}/${l}`])
-      ),
-    },
-  }))
-
   // Pagine appartamenti (solo attivi)
   const apartmentPages: MetadataRoute.Sitemap = apartments.filter((a) => a.active !== false).map((apartment) => ({
     url: `${BASE_URL}/appartamenti/apartment-${apartment.id}`,
@@ -67,5 +52,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: apartment.premium ? 0.9 : 0.82,
   }))
 
-  return [...pages, ...localePages, ...apartmentPages]
+  return [...pages, ...apartmentPages]
 }
