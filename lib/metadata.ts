@@ -92,7 +92,7 @@ export function getApartmentMetadata(apartmentId: number): Metadata {
     ...generateMetadata({
       title: seoTitle,
       description: seoDescription,
-      path: `/appartamenti/apartment-${apartment.id}`,
+      path: `/appartamenti/${apartment.name.toLowerCase()}`,
       image: apartment.image.startsWith("/") ? apartment.image : undefined,
       type: "article",
     }),

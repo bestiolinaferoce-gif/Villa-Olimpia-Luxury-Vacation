@@ -35,6 +35,24 @@ const nextConfig = {
       // FIX CRITICO: /privacy-policy non esiste come route — la route reale è /privacy
       // Rimosso redirect /privacy → /privacy-policy (causava loop 404)
       // /termini → /termini-condizioni (route .jsx esiste)
+            { source: "/appartamenti/apartment-1", destination: "/appartamenti/frangipane", permanent: true },
+      { source: "/appartamenti/apartment-2", destination: "/appartamenti/fiordaliso", permanent: true },
+      { source: "/appartamenti/apartment-3", destination: "/appartamenti/orchidea", permanent: true },
+      { source: "/appartamenti/apartment-4", destination: "/appartamenti/tulipano", permanent: true },
+      { source: "/appartamenti/apartment-5", destination: "/appartamenti/giglio", permanent: true },
+      { source: "/appartamenti/apartment-6", destination: "/appartamenti/lavanda", permanent: true },
+      { source: "/appartamenti/apartment-7", destination: "/appartamenti/geranio", permanent: true },
+      { source: "/appartamenti/apartment-8", destination: "/appartamenti/gardenia", permanent: true },
+      { source: "/appartamenti/apartment-9", destination: "/appartamenti/azalea", permanent: true },
+      { source: "/appartamenti/1", destination: "/appartamenti/frangipane", permanent: true },
+      { source: "/appartamenti/2", destination: "/appartamenti/fiordaliso", permanent: true },
+      { source: "/appartamenti/3", destination: "/appartamenti/orchidea", permanent: true },
+      { source: "/appartamenti/4", destination: "/appartamenti/tulipano", permanent: true },
+      { source: "/appartamenti/5", destination: "/appartamenti/giglio", permanent: true },
+      { source: "/appartamenti/6", destination: "/appartamenti/lavanda", permanent: true },
+      { source: "/appartamenti/7", destination: "/appartamenti/geranio", permanent: true },
+      { source: "/appartamenti/8", destination: "/appartamenti/gardenia", permanent: true },
+      { source: "/appartamenti/9", destination: "/appartamenti/azalea", permanent: true },
       { source: "/termini", destination: "/termini-condizioni", permanent: true },
       // Route duplicate inglese → italiane (301 permanente per SEO)
       { source: "/apartments", destination: "/appartamenti", permanent: true },

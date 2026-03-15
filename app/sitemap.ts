@@ -46,7 +46,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // Pagine appartamenti (solo attivi)
   const apartmentPages: MetadataRoute.Sitemap = apartments.filter((a) => a.active !== false).map((apartment) => ({
-    url: `${BASE_URL}/appartamenti/apartment-${apartment.id}`,
+    url: `${BASE_URL}/appartamenti/${apartment.name.toLowerCase()}`,
     lastModified: DATE_CORE,
     changeFrequency: "monthly" as const,
     priority: apartment.premium ? 0.9 : 0.82,

@@ -22,13 +22,8 @@ interface PageProps {
 
 // FIX: Genera staticamente tutte le pagine per evitare 404
 export async function generateStaticParams() {
-  // Genera per tutti i formati possibili
-  const params = apartments.flatMap((apartment) => [
-    { id: `apartment-${apartment.id}` }, // Formato principale
-    { id: String(apartment.id) }, // Formato numerico
-    { id: apartment.name.toLowerCase() }, // Formato nome
-  ])
-  return params
+  // SEO Round 2: solo slug canonici (nome), redirect 301 per vecchi URL
+  return apartments.map((apartment) => ({ id: apartment.name.toLowerCase() }))
 }
 
 export async function generateMetadata({ params }: PageProps) {
@@ -463,7 +458,7 @@ export default async function ApartmentDetailPage({ params }: PageProps) {
             })),
             "priceRange": `€${apartment.price}/notte`,
             "telephone": VILLA_OLIMPIA_LOCATION.contact.phone,
-            "url": `${BASE_URL}/appartamenti/apartment-${apartment.id}`
+            "url": `${BASE_URL}/appartamenti/${apartment.name.toLowerCase()}`
           })
         }}
       />

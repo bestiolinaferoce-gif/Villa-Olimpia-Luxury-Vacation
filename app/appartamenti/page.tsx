@@ -151,7 +151,7 @@ export default function AppartamentiPage() {
                 {pianoTerra.map((apartment) => (
                   <ApartmentCard
                     key={apartment.id}
-                    id={`apartment-${apartment.id}`}
+                    id={apartment.name.toLowerCase()}
                     name={apartment.name}
                     description={apartment.description || apartment.fullDescription || ""}
                     image={apartment.image}
@@ -170,7 +170,7 @@ export default function AppartamentiPage() {
                 {primoPiano.map((apartment) => (
                   <ApartmentCard
                     key={apartment.id}
-                    id={`apartment-${apartment.id}`}
+                    id={apartment.name.toLowerCase()}
                     name={apartment.name}
                     description={apartment.description || apartment.fullDescription || ""}
                     image={apartment.image}
