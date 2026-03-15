@@ -2,7 +2,7 @@ import { MetadataRoute } from "next"
 import { BASE_URL } from "@/lib/metadata"
 
 export default function robots(): MetadataRoute.Robots {
-  // Pagine interne/tool + route duplicate che NON devono essere indicizzate
+  // Pagine interne/tool — NON indicizzare
   const internalDisallow = [
     "/api/",
     "/admin/",
@@ -10,11 +10,6 @@ export default function robots(): MetadataRoute.Robots {
     "/utm/",
     "/verifica-analytics/",
     "/preview-mappa/",
-    // Route duplicate in inglese — servono redirect 301, non indicizzazione
-    "/apartments/",
-    "/rooms/",
-    "/camere/",
-    "/home/",
   ]
 
   return {
@@ -24,13 +19,11 @@ export default function robots(): MetadataRoute.Robots {
         allow: "/",
         disallow: internalDisallow,
       },
-      // Regola dedicata Googlebot (esplicita per GSC)
       {
         userAgent: "Googlebot",
         allow: "/",
         disallow: internalDisallow,
       },
-      // Bingbot
       {
         userAgent: "Bingbot",
         allow: "/",

@@ -99,9 +99,9 @@ export function ReviewsSection() {
             <Star className="h-5 w-5 text-primary fill-primary" />
             <span className="text-sm font-semibold text-primary uppercase tracking-wide">Recensioni Verificate</span>
           </div>
-          <h2 className="text-5xl md:text-6xl lg:text-7xl font-playfair font-bold mb-6 bg-gradient-to-r from-primary via-ocean to-primary bg-clip-text text-transparent">
-            Cosa Dicono i Nostri Ospiti
-          </h2>
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-playfair font-bold mb-6 bg-gradient-to-r from-primary via-ocean to-primary bg-clip-text text-transparent">
+            Recensioni Villa Olimpia — Cosa dicono i nostri ospiti
+          </h1>
           <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto font-light">
             Esperienze reali di chi ha già soggiornato a Villa Olimpia
           </p>

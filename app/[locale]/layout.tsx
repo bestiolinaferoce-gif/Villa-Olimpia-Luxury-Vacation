@@ -95,6 +95,11 @@ export default async function LocaleLayout({
           }}
         />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <link rel="icon" href="/favicon.png" type="image/png" />
         <link rel="canonical" href={`${BASE_URL}/${locale}`} />
         {process.env.NEXT_PUBLIC_GSC_VERIFICATION && (
@@ -103,15 +108,10 @@ export default async function LocaleLayout({
         
         {/* Performance - Preconnect */}
                 <link rel="preload" as="image" href="/images/villa/gallery/Esterni_Piscina_Notte_01.jpg" fetchPriority="high" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://www.google.com" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://maps.googleapis.com" crossOrigin="anonymous" />
-        
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
         {/* DNS Prefetch per Analytics */}
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-        
         {/* Hreflang tags per multilingua */}
         <link rel="alternate" hrefLang="it" href={`${BASE_URL}/it`} />
         <link rel="alternate" hrefLang="en" href={`${BASE_URL}/en`} />
