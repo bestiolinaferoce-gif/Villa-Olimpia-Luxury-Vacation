@@ -1,3 +1,7 @@
+/**
+ * POST pubblico: richieste disponibilità dalla barra sticky.
+ * Richiede in produzione: RESEND_API_KEY e LEADS_TO_EMAIL (vedi .env.example e npm run verify:lead-email).
+ */
 import { NextRequest, NextResponse } from "next/server"
 import { z } from "zod"
 import {

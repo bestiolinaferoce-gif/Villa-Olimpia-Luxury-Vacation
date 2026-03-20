@@ -121,6 +121,16 @@ export function HeroSectionPremium() {
             {t.home.hero.subtitle}
           </motion.p>
 
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.58, duration: 0.7 }}
+            className="text-sm sm:text-base md:text-lg text-white/95 font-medium max-w-2xl mx-auto leading-relaxed"
+            style={{ textShadow: "0 1px 3px rgba(0,0,0,0.35)" }}
+          >
+            {t.home.hero.valueProp}
+          </motion.p>
+
           {/* Stats Counter */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -195,22 +205,23 @@ export function HeroSectionPremium() {
           >
             <Button
               size="lg"
-              className="w-full sm:w-auto text-base sm:text-lg px-6 py-4 sm:px-8 sm:py-6 group bg-[#FFC107] text-gray-900 hover:bg-[#FFD54F] shadow-xl font-semibold !border-2 !border-white hover:scale-105 transition-transform z-10 relative"
+              className="w-full sm:w-auto text-base sm:text-lg px-6 py-4 sm:px-8 sm:py-6 group bg-[#FFC107] text-gray-900 hover:bg-[#FFD54F] shadow-xl font-bold !border-2 !border-white hover:scale-105 transition-transform z-10 relative ring-2 ring-white/40 ring-offset-2 ring-offset-transparent"
               style={{ borderWidth: '2px', borderStyle: 'solid', borderColor: 'white' }}
               asChild
             >
-              <Link href="/contatti?source=hero_cta#prenota">
+              <Link href="/contatti?source=hero_cta#prenota" className="inline-flex items-center justify-center">
                 <Calendar className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform" />
                 {t.home.hero.bookStay}
               </Link>
             </Button>
             <Button
               size="lg"
-              className="w-full sm:w-auto text-base sm:text-lg px-6 py-4 sm:px-8 sm:py-6 bg-white/20 backdrop-blur-sm text-white !border-2 !border-white hover:bg-white/30 group font-semibold hover:scale-105 transition-transform z-10 relative"
+              variant="outline"
+              className="w-full sm:w-auto text-base sm:text-lg px-6 py-4 sm:px-8 sm:py-6 bg-white/10 backdrop-blur-md text-white !border-2 !border-white/90 hover:bg-white/20 group font-semibold hover:scale-105 transition-transform z-10 relative"
               style={{ borderWidth: '2px', borderStyle: 'solid', borderColor: 'white' }}
               asChild
             >
-              <Link href="/appartamenti">
+              <Link href="/appartamenti" className="inline-flex items-center justify-center">
                 <MapPin className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform" />
                 {t.home.hero.discoverApartments}
               </Link>

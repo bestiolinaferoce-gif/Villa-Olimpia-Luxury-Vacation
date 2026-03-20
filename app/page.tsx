@@ -18,6 +18,7 @@ import { SITE_CONFIG } from "@/lib/constants"
 import { motion } from "framer-motion"
 import dynamic from "next/dynamic"
 import { useI18n } from "@/components/i18n-provider"
+import { buildWhatsAppUrlFromText } from "@/lib/booking-contact"
 
 // Lazy load componenti pesanti
 const HomeGallery = dynamic(() => import("@/components/home-gallery").then(mod => ({ default: mod.HomeGallery })), {
@@ -69,8 +70,14 @@ function CTAButtons() {
           style={{ borderWidth: '2px', borderStyle: 'solid', borderColor: 'white' }}
           asChild
         >
-          <a href="https://wa.me/393335773390?text=Ciao!%20Vorrei%20informazioni%20su%20Villa%20Olimpia%20per%20Giugno/Luglio" target="_blank" rel="noopener noreferrer">
-            WhatsApp diretto
+          <a
+            href={buildWhatsAppUrlFromText(
+              "Richiesta disponibilità Villa Olimpia:\nDate: \nOspiti: \nAppartamento: \nFonte: sito ufficiale (home CTA)"
+            )}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            WhatsApp rapido
           </a>
         </Button>
       </motion.div>

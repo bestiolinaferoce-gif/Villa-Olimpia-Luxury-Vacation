@@ -25,7 +25,7 @@ const badges = [
   {
     icon: Heart,
     title: "Superhost",
-    description: "Airbnb & Booking.com",
+    description: "Anche sui principali portali di prenotazione",
     color: "text-red-600",
   },
   {

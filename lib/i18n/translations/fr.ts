@@ -22,8 +22,9 @@ export const fr = {
   },
   home: {
     hero: {
-      title: 'Villa Olimpia',
-      subtitle: 'Expérience de luxe sur la magnifique Spiaggia dei Gigli',
+      title: 'Villa Olimpia — Capo Rizzuto',
+      subtitle: 'Lodges de luxe à 100 m de la Spiaggia dei Gigli, aire marine protégée',
+      valueProp: 'Réservez sur le site officiel — sans commission d’intermédiaire.',
       description: 'À moins de 100 mètres de la magnifique Spiaggia dei Gigli, dans l\'Aire Marine Protégée Capo Rizzuto',
       protectedArea: 'Aire Marine Protégée Capo Rizzuto',
       apartments: 'Appartements',
@@ -34,7 +35,7 @@ export const fr = {
       privatePool: 'Piscine Privée',
       bookedBy: 'Réservé par 150+ clients en 2024',
       bookDirectly: 'Réservez directement et économisez',
-      bookStay: 'Réservez votre séjour',
+      bookStay: 'Vérifier la disponibilité',
       discoverApartments: 'Découvrir les Appartements',
       scroll: 'Défiler',
       cta: 'Réservez vos vacances',
@@ -143,7 +144,7 @@ export const fr = {
       title: 'Prêt pour Vos Vacances?',
       description: 'Réservez votre appartement et vivez une expérience inoubliable dans la magnifique Calabre',
       saveUpTo: 'Réservez directement et économisez jusqu\'à 15%',
-      bookVacation: 'Réservez Vos Vacances',
+      bookVacation: 'Vérifier la disponibilité',
     },
   },
   apartments: {

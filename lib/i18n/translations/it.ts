@@ -25,8 +25,9 @@ export const it = {
   // Homepage
   home: {
     hero: {
-      title: 'Villa Olimpia',
-      subtitle: 'Esperienza di lusso nella splendida Spiaggia dei Gigli',
+      title: 'Villa Olimpia — Capo Rizzuto',
+      subtitle: 'Lodge di lusso a 100 m dalla Spiaggia dei Gigli, Area Marina Protetta',
+      valueProp: 'Prenotazione diretta sul sito ufficiale: nessuna commissione di portale.',
       description: 'A meno di 100 metri dalla splendida Spiaggia dei Gigli, nell\'Area Marina Protetta Capo Rizzuto',
       protectedArea: 'Area Marina Protetta Capo Rizzuto',
       apartments: 'Appartamenti',
@@ -37,7 +38,7 @@ export const it = {
       privatePool: 'Piscina Privata',
       bookedBy: 'Prenotato da 150+ ospiti nel 2024',
       bookDirectly: 'Prenota Direttamente e Risparmia',
-      bookStay: 'Prenota il tuo soggiorno',
+      bookStay: 'Verifica disponibilità',
       discoverApartments: 'Scopri gli Appartamenti',
       scroll: 'Scorri',
       cta: 'Prenota la tua vacanza',
@@ -173,7 +174,7 @@ export const it = {
       title: 'Pronto per la Tua Vacanza?',
       description: 'Prenota il tuo appartamento e vivi un\'esperienza indimenticabile nella splendida Calabria',
       saveUpTo: 'Prenota Direttamente e Risparmia fino al 15%',
-      bookVacation: 'Prenota la Tua Vacanza',
+      bookVacation: 'Verifica disponibilità',
     },
   },
   // Apartments
