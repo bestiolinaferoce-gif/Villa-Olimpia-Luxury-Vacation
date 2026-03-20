@@ -12,6 +12,11 @@ import { Calendar, Users, Mail, MessageSquare, AlertCircle, CheckCircle2 } from 
 import { apartments } from "@/data/apartments"
 import { trackBookingInitiation, trackEvent } from "@/components/analytics/google-analytics"
 import { useSearchParams } from "next/navigation"
+import {
+  buildMailtoAvailabilityFallback,
+  buildOfficialAvailabilityMessage,
+  buildWhatsAppUrlFromText,
+} from "@/lib/booking-contact"
 
 const bookingSchema = z.object({
   name: z.string().min(2, "Il nome deve contenere almeno 2 caratteri"),
@@ -71,50 +76,54 @@ export function BookingForm() {
 
   const buildMailto = (data: BookingFormData) => {
     const source = data.source || "Diretta"
-    const subject = encodeURIComponent(`Richiesta Preventivo - ${data.name}`)
-    const body = encodeURIComponent(
-      [
-        `Nome: ${data.name}`,
-        `Email: ${data.email}`,
-        `Telefono: ${data.phone}`,
-        `Agenzia: ${data.agency || "Non indicata"}`,
-        `Fonte lead: ${source}`,
-        `UTM Source: ${data.utmSource || "N/D"}`,
-        `UTM Medium: ${data.utmMedium || "N/D"}`,
-        `UTM Campaign: ${data.utmCampaign || "N/D"}`,
-        `Check-in: ${data.checkIn}`,
-        `Check-out: ${data.checkOut}`,
-        `Ospiti: ${data.guests}`,
-        `Appartamento preferito: ${data.apartment || "Non specificato"}`,
-        `Messaggio: ${data.message || "Nessun messaggio aggiuntivo"}`,
-      ].join("\n")
-    )
-
-    return `mailto:villaolimpiacaporizzuto@gmail.com?subject=${subject}&body=${body}`
+    const subject = `Richiesta Preventivo - ${data.name}`
+    const official = buildOfficialAvailabilityMessage({
+      checkIn: data.checkIn,
+      checkOut: data.checkOut,
+      guests: data.guests,
+      apartment: data.apartment,
+      sourceLabel: "sito ufficiale",
+    })
+    const body = [
+      official,
+      "",
+      "Dettagli aggiuntivi:",
+      `Nome: ${data.name}`,
+      `Email: ${data.email}`,
+      `Telefono: ${data.phone}`,
+      `Agenzia: ${data.agency || "Non indicata"}`,
+      `Fonte lead: ${source}`,
+      `UTM Source: ${data.utmSource || "N/D"}`,
+      `UTM Medium: ${data.utmMedium || "N/D"}`,
+      `UTM Campaign: ${data.utmCampaign || "N/D"}`,
+      `Messaggio: ${data.message || "Nessun messaggio aggiuntivo"}`,
+    ].join("\n")
+    return buildMailtoAvailabilityFallback(subject, body)
   }
 
   const buildWhatsAppUrl = (data: BookingFormData) => {
     const source = data.source || "Diretta"
-    const text = encodeURIComponent(
-      [
-        "Ciao, vorrei un preventivo per Villa Olimpia.",
-        `Nome: ${data.name}`,
-        `Email: ${data.email}`,
-        `Telefono: ${data.phone}`,
-        `Agenzia: ${data.agency || "Non indicata"}`,
-        `Fonte lead: ${source}`,
-        `UTM Source: ${data.utmSource || "N/D"}`,
-        `UTM Medium: ${data.utmMedium || "N/D"}`,
-        `UTM Campaign: ${data.utmCampaign || "N/D"}`,
-        `Check-in: ${data.checkIn}`,
-        `Check-out: ${data.checkOut}`,
-        `Ospiti: ${data.guests}`,
-        `Appartamento: ${data.apartment || "Nessuna preferenza"}`,
-        `Messaggio: ${data.message || "Nessun messaggio aggiuntivo"}`,
-      ].join("\n")
-    )
-
-    return `https://wa.me/393335773390?text=${text}`
+    const official = buildOfficialAvailabilityMessage({
+      checkIn: data.checkIn,
+      checkOut: data.checkOut,
+      guests: data.guests,
+      apartment: data.apartment,
+      sourceLabel: "sito ufficiale",
+    })
+    const extra = [
+      "",
+      "Dettagli contatto:",
+      `Nome: ${data.name}`,
+      `Email: ${data.email}`,
+      `Telefono: ${data.phone}`,
+      `Agenzia: ${data.agency || "Non indicata"}`,
+      `Fonte lead: ${source}`,
+      `UTM Source: ${data.utmSource || "N/D"}`,
+      `UTM Medium: ${data.utmMedium || "N/D"}`,
+      `UTM Campaign: ${data.utmCampaign || "N/D"}`,
+      `Messaggio: ${data.message || "Nessun messaggio aggiuntivo"}`,
+    ].join("\n")
+    return buildWhatsAppUrlFromText(`${official}\n${extra}`)
   }
 
   const onSubmit = async (data: BookingFormData) => {
@@ -343,7 +352,7 @@ export function BookingForm() {
       )}
 
       <Button type="submit" variant="luxury" className="w-full" disabled={isSubmitting}>
-        {isSubmitting ? "Invio in corso..." : "Invia richiesta preventivo"}
+        {isSubmitting ? "Invio in corso..." : "Verifica disponibilità"}
       </Button>
 
       <p className="text-xs text-muted-foreground">
@@ -358,7 +367,12 @@ export function BookingForm() {
           className="w-full"
           asChild
         >
-          <a href="mailto:villaolimpiacaporizzuto@gmail.com">
+          <a
+            href={buildMailtoAvailabilityFallback(
+              "Informazioni Villa Olimpia",
+              "Richiesta disponibilità Villa Olimpia:\n(scrivi date e ospiti)"
+            )}
+          >
             <Mail className="mr-2 h-4 w-4" />
             Invia via Email
           </a>
@@ -369,7 +383,13 @@ export function BookingForm() {
           className="w-full"
           asChild
         >
-          <a href="https://wa.me/393335773390" target="_blank" rel="noopener noreferrer">
+          <a
+            href={buildWhatsAppUrlFromText(
+              "Richiesta disponibilità Villa Olimpia:\nDate: \nOspiti: \nAppartamento: \nFonte: sito ufficiale"
+            )}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <MessageSquare className="mr-2 h-4 w-4" />
             Scrivi su WhatsApp
           </a>
