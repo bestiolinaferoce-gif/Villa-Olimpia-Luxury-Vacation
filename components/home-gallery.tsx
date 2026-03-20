@@ -131,6 +131,11 @@ export function HomeGallery() {
   // AGGIUNTO: Se non ci sono immagini valide, usa tutte le immagini disponibili
   const imagesToShow = validImages.length > 0 ? validImages : galleryImages
 
+  useEffect(() => {
+    if (imagesToShow.length === 0) return
+    setCurrentIndex((i) => (i >= imagesToShow.length ? 0 : i))
+  }, [imagesToShow.length])
+
   if (imagesToShow.length === 0) {
     return (
       <section id="gallery-home" className="py-20 bg-gradient-to-b from-white to-blue-50">
@@ -158,37 +163,38 @@ export function HomeGallery() {
         {/* Carousel principale */}
         <div className="relative max-w-5xl mx-auto mb-8">
           <div className="relative h-96 md:h-[500px] rounded-2xl overflow-hidden shadow-2xl bg-gray-100">
-            {imagesToShow.map((image, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0 }}
-                animate={{ 
-                  opacity: idx === currentIndex ? 1 : 0,
-                  scale: idx === currentIndex ? 1 : 1.1
-                }}
-                transition={{ duration: shouldReduceMotion ? 0.1 : 0.5 }}
-                className={`absolute inset-0 ${idx === currentIndex ? 'z-10' : 'z-0'}`}
-              >
-                <Image
-                  src={image.src}
-                  alt={image.alt}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 80vw"
-                  priority={idx === 0}
-                  onError={() => handleImageError(idx)}
-                />
-                {/* Overlay con categoria */}
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent p-6">
-                  <div className="text-white">
-                    <span className="text-sm font-medium bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full">
-                      {image.category}
-                    </span>
-                    <p className="text-lg font-semibold mt-2">{image.alt}</p>
+            {(() => {
+              const image = imagesToShow[currentIndex]
+              return (
+                <motion.div
+                  key={image.src}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: shouldReduceMotion ? 0.1 : 0.45 }}
+                  className="absolute inset-0 z-10"
+                >
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 80vw"
+                    priority={currentIndex === 0}
+                    placeholder="blur"
+                    blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAiIGhlaWdodD0iMTAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIj48c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjZTBlMGUwIi8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjZjVmNWY1Ii8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkKSIvPjwvc3ZnPg=="
+                    onError={() => handleImageError(currentIndex)}
+                  />
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent p-6">
+                    <div className="text-white">
+                      <span className="text-sm font-medium bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full">
+                        {image.category}
+                      </span>
+                      <p className="text-lg font-semibold mt-2">{image.alt}</p>
+                    </div>
                   </div>
-                </div>
-              </motion.div>
-            ))}
+                </motion.div>
+              )
+            })()}
           </div>
 
           {/* Navigation arrows */}

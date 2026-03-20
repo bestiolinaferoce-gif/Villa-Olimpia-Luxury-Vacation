@@ -165,6 +165,7 @@ export default function RestaurantsMapPremium() {
                         <Image
                           src={restaurant.logo}
                           fill
+                          sizes="64px"
                           className="object-cover"
                           alt={`${restaurant.name} logo`}
                           onError={(e) => {
@@ -248,6 +249,7 @@ export default function RestaurantsMapPremium() {
                       <Image
                         src={selectedRestaurant.logo}
                         fill
+                        sizes="96px"
                         className="object-cover"
                         alt={`${selectedRestaurant.name} logo`}
                         onError={(e) => {

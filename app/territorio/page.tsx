@@ -390,8 +390,10 @@ export default function TerritorioPage() {
                 <Image
                   src="/images/villa/gallery/Esterni_Giardino_Overview_01.jpg"
                   fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover"
                   alt="Valli Cupe Canyon Patrimonio UNESCO"
+                  loading="lazy"
                 />
               </div>
 

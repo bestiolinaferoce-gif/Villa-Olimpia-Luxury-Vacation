@@ -114,6 +114,7 @@ export function ImageGallery({ images, title }: ImageGalleryProps) {
                     src={images[selectedIndex]}
                     alt={`Gallery image ${selectedIndex + 1}`}
                     fill
+                    sizes="90vw"
                     className="object-contain"
                     priority
                     onError={(e) => {

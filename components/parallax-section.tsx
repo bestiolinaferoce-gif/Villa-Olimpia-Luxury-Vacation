@@ -32,10 +32,11 @@ export default function ParallaxSection({
         <Image
           src={image}
           fill
+          sizes="100vw"
           className="object-cover"
           alt={alt}
           priority
-          quality={90}
+          quality={85}
         />
       </motion.div>
       <motion.div 
