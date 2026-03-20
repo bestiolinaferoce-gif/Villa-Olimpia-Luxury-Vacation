@@ -104,4 +104,8 @@ npm run build
 
 Tutti i diritti riservati - Villa Olimpia
 
+## 📈 Analytics e tracking
 
+- Variabili: vedi `.env.example` (`NEXT_PUBLIC_GTM_ID`, `NEXT_PUBLIC_GA_MEASUREMENT_ID`, `NEXT_PUBLIC_META_PIXEL_ID` opzionale).
+- Documentazione: `docs/TRACKING.md`.
+- Verifica: `npm run verify:analytics` (opzionale: `SITE_URL=...` per controllare l'HTML deployato).

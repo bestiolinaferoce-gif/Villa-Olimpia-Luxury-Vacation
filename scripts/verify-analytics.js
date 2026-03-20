@@ -18,7 +18,7 @@ function loadEnvLocal() {
       const content = fs.readFileSync(envPath, "utf8");
       const out = {};
       content.split("\n").forEach((line) => {
-        const m = line.match(/^NEXT_PUBLIC_(GA_MEASUREMENT_ID|GTM_ID)=(.+)$/);
+        const m = line.match(/^NEXT_PUBLIC_(GA_MEASUREMENT_ID|GTM_ID|META_PIXEL_ID)=(.+)$/);
         if (m) out["NEXT_PUBLIC_" + m[1]] = m[2].replace(/^["']|["']$/g, "").trim();
       });
       return out;
@@ -44,11 +44,19 @@ async function main() {
   const envLocal = loadEnvLocal();
   const gaId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || envLocal.NEXT_PUBLIC_GA_MEASUREMENT_ID || "";
   const gtmId = process.env.NEXT_PUBLIC_GTM_ID || envLocal.NEXT_PUBLIC_GTM_ID || "GTM-K5NQGHBD";
+  const metaPixelId =
+    process.env.NEXT_PUBLIC_META_PIXEL_ID || envLocal.NEXT_PUBLIC_META_PIXEL_ID || "";
   const siteUrl = process.env.SITE_URL || "";
 
   console.log("Verifica Google Analytics / GTM\n");
   console.log("  NEXT_PUBLIC_GA_MEASUREMENT_ID:", gaId || "(non impostato)");
   console.log("  NEXT_PUBLIC_GTM_ID:", gtmId || "(non impostato)");
+  console.log(
+    "  NEXT_PUBLIC_META_PIXEL_ID:",
+    metaPixelId && /^\d{10,20}$/.test(metaPixelId)
+      ? metaPixelId + " (OK formato)"
+      : metaPixelId || "(non impostato — pixel non caricato)",
+  );
   if (siteUrl) console.log("  SITE_URL (verifica HTML):", siteUrl);
   console.log("");
 

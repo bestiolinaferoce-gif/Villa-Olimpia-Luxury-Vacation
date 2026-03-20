@@ -14,6 +14,7 @@ import { DirectionsProvider } from "@/components/directions-context"
 import { ErrorBoundary } from "@/components/error-boundary"
 import { defaultMetadata, BASE_URL } from "@/lib/metadata"
 import { AnalyticsUnified } from "@/components/analytics/analytics-unified"
+import { MetaPixelOptional } from "@/components/analytics/meta-pixel"
 import { AutoOptimizer } from "@/components/auto-optimizer"
 import FloatingBooking from "@/components/floating-booking"
 import NewsletterPopup from "@/components/newsletter-popup"
@@ -173,6 +174,7 @@ export default function RootLayout({
       </head>
       <body className={inter.className} suppressHydrationWarning>
         <AnalyticsUnified />
+        <MetaPixelOptional />
         <ErrorBoundary>
           {/* FIX HYDRATION: I18nProvider gestisce correttamente SSR/client mismatch */}
           <I18nProvider>

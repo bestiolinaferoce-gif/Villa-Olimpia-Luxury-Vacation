@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { setConsentMode } from "@/components/analytics/google-analytics"
+import { dispatchCookieConsentUpdated } from "@/lib/cookie-consent-events"
 
 // Placeholder tracking functions
 function enableTracking() {
@@ -54,12 +55,14 @@ export function CookieConsent() {
           if (savedPrefs && typeof savedPrefs === 'object' && savedPrefs.preferences) {
             setCookiePreferences(savedPrefs.preferences)
             applyTrackingPreferences(savedPrefs.preferences)
+            dispatchCookieConsentUpdated()
           } else if (savedPrefs === "accepted") {
             // Legacy: all cookies accepted
             const allAccepted = { analytics: true, marketing: true, functional: true }
             setCookiePreferences(allAccepted)
             setConsentMode(allAccepted)
             enableTracking()
+            dispatchCookieConsentUpdated()
           }
         } catch (e) {
           // Invalid stored data, show banner again
@@ -99,6 +102,7 @@ export function CookieConsent() {
     setShowBanner(false)
     setConsentMode(allAccepted)
     enableTracking()
+    dispatchCookieConsentUpdated()
   }
 
   const handleReject = () => {
@@ -118,6 +122,7 @@ export function CookieConsent() {
     setShowBanner(false)
     setConsentMode(allRejected)
     disableTracking()
+    dispatchCookieConsentUpdated()
   }
 
   const handleCustomize = () => {
@@ -138,6 +143,7 @@ export function CookieConsent() {
     setShowBanner(false)
     setShowModal(false)
     applyTrackingPreferences(cookiePreferences)
+    dispatchCookieConsentUpdated()
   }
 
   useEffect(() => {
