@@ -2,17 +2,25 @@ import { generateMetadata } from "@/lib/metadata"
 import { Breadcrumb } from "@/components/breadcrumb"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
+import { BlogArticleJsonLd } from "@/components/seo/blog-article-json-ld"
 
 export const metadata = generateMetadata({
   title: "Vacanze in famiglia a Capo Rizzuto: perché è il posto perfetto con i bambini",
   description: "Stai pianificando una vacanza in famiglia in Calabria? Scopri perché Capo Rizzuto è la destinazione ideale per famiglie con bambini: mare sicuro, natura protetta e tutto a portata di mano.",
   path: "/blog/vacanze-famiglia-capo-rizzuto-bambini",
+  type: "article",
   keywords: ["vacanze famiglia calabria", "capo rizzuto bambini", "spiagge calabria bambini", "villa vacanze piscina famiglie calabria"],
 })
 
 export default function ArticlePage() {
   return (
     <div className="min-h-screen pt-20">
+      <BlogArticleJsonLd
+        title="Vacanze in famiglia a Capo Rizzuto: perché è il posto perfetto con i bambini"
+        description="Stai pianificando una vacanza in famiglia in Calabria? Scopri perché Capo Rizzuto è la destinazione ideale per famiglie con bambini: mare sicuro, natura protetta e tutto a portata di mano."
+        path="/blog/vacanze-famiglia-capo-rizzuto-bambini"
+        datePublished="2026-03-16"
+      />
       <Breadcrumb items={[{ label: "Blog", href: "/blog" }, { label: "Vacanze in famiglia" }]} />
 
       <section className="bg-gradient-to-br from-ocean/10 to-primary/10 py-16">

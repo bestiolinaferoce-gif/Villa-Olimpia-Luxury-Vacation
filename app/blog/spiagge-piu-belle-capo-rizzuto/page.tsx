@@ -2,17 +2,25 @@ import { generateMetadata } from "@/lib/metadata"
 import { Breadcrumb } from "@/components/breadcrumb"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
+import { BlogArticleJsonLd } from "@/components/seo/blog-article-json-ld"
 
 export const metadata = generateMetadata({
   title: "Le 10 spiagge più belle vicino a Isola di Capo Rizzuto",
   description: "Scopri le 10 spiagge più belle dell'Isola di Capo Rizzuto e della Costa Ionica calabrese: sabbia dorata, acque cristalline e natura incontaminata nell'Area Marina Protetta.",
   path: "/blog/spiagge-piu-belle-capo-rizzuto",
+  type: "article",
   keywords: ["spiagge capo rizzuto", "spiaggia dei gigli", "spiagge area marina protetta", "spiagge calabria ionica"],
 })
 
 export default function ArticlePage() {
   return (
     <div className="min-h-screen pt-20">
+      <BlogArticleJsonLd
+        title="Le 10 spiagge più belle vicino a Isola di Capo Rizzuto"
+        description="Scopri le 10 spiagge più belle dell'Isola di Capo Rizzuto e della Costa Ionica calabrese: sabbia dorata, acque cristalline e natura incontaminata nell'Area Marina Protetta."
+        path="/blog/spiagge-piu-belle-capo-rizzuto"
+        datePublished="2026-03-16"
+      />
       <Breadcrumb items={[{ label: "Blog", href: "/blog" }, { label: "Le 10 spiagge più belle" }]} />
 
       <section className="bg-gradient-to-br from-ocean/10 to-primary/10 py-16">

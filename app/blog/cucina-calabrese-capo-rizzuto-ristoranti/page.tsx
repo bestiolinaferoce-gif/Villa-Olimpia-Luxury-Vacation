@@ -2,17 +2,25 @@ import { generateMetadata } from "@/lib/metadata"
 import { Breadcrumb } from "@/components/breadcrumb"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
+import { BlogArticleJsonLd } from "@/components/seo/blog-article-json-ld"
 
 export const metadata = generateMetadata({
   title: "Cucina calabrese a Capo Rizzuto: ristoranti, piatti tipici e i nostri posti del cuore",
   description: "Guida alla gastronomia calabrese di Capo Rizzuto: i migliori ristoranti di pesce, i piatti tipici da assaggiare e i consigli dello staff di Villa Olimpia.",
   path: "/blog/cucina-calabrese-capo-rizzuto-ristoranti",
+  type: "article",
   keywords: ["ristoranti capo rizzuto", "cucina calabrese", "pesce fresco isola capo rizzuto", "cosa mangiare calabria"],
 })
 
 export default function ArticlePage() {
   return (
     <div className="min-h-screen pt-20">
+      <BlogArticleJsonLd
+        title="Cucina calabrese a Capo Rizzuto: ristoranti, piatti tipici e i nostri posti del cuore"
+        description="Guida alla gastronomia calabrese di Capo Rizzuto: i migliori ristoranti di pesce, i piatti tipici da assaggiare e i consigli dello staff di Villa Olimpia."
+        path="/blog/cucina-calabrese-capo-rizzuto-ristoranti"
+        datePublished="2026-03-16"
+      />
       <Breadcrumb items={[{ label: "Blog", href: "/blog" }, { label: "Cucina calabrese" }]} />
 
       <section className="bg-gradient-to-br from-ocean/10 to-primary/10 py-16">

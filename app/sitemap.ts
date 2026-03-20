@@ -1,6 +1,7 @@
 import { MetadataRoute } from "next"
 import { apartments } from "@/data/apartments"
 import { BASE_URL } from "@/lib/metadata"
+import { BLOG_POSTS, BLOG_LAST_MOD } from "@/data/blog-posts"
 
 // Date statiche per categoria — non cambiano ad ogni build (risparmio crawl budget)
 const DATE_CORE = new Date("2025-12-01")
@@ -52,5 +53,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: apartment.premium ? 0.9 : 0.82,
   }))
 
-  return [...pages, ...apartmentPages]
+  const blogIndex: MetadataRoute.Sitemap = [
+    {
+      url: `${BASE_URL}/blog`,
+      lastModified: BLOG_LAST_MOD,
+      changeFrequency: "weekly" as const,
+      priority: 0.72,
+    },
+  ]
+
+  const blogArticles: MetadataRoute.Sitemap = BLOG_POSTS.map((post) => ({
+    url: `${BASE_URL}/blog/${post.slug}`,
+    lastModified: BLOG_LAST_MOD,
+    changeFrequency: "monthly" as const,
+    priority: 0.68,
+  }))
+
+  return [...pages, ...apartmentPages, ...blogIndex, ...blogArticles]
 }

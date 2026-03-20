@@ -2,17 +2,25 @@ import { generateMetadata } from "@/lib/metadata"
 import { Breadcrumb } from "@/components/breadcrumb"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
+import { BlogArticleJsonLd } from "@/components/seo/blog-article-json-ld"
 
 export const metadata = generateMetadata({
   title: "Prenotazione diretta vs Airbnb e Booking: perché conviene prenotare direttamente a Villa Olimpia",
   description: "Scopri tutti i vantaggi di prenotare direttamente su villaolimpiacaporizzuto.com invece di usare Airbnb o Booking.com. Prezzo migliore garantito e servizio personalizzato.",
   path: "/blog/prenotazione-diretta-villa-olimpia-vantaggi",
+  type: "article",
   keywords: ["prenotazione diretta villa olimpia", "affitto vacanze capo rizzuto", "villa olimpia booking airbnb", "appartamenti capo rizzuto prezzo migliore"],
 })
 
 export default function ArticlePage() {
   return (
     <div className="min-h-screen pt-20">
+      <BlogArticleJsonLd
+        title="Prenotazione diretta vs Airbnb e Booking: perché conviene prenotare direttamente a Villa Olimpia"
+        description="Scopri tutti i vantaggi di prenotare direttamente su villaolimpiacaporizzuto.com invece di usare Airbnb o Booking.com. Prezzo migliore garantito e servizio personalizzato."
+        path="/blog/prenotazione-diretta-villa-olimpia-vantaggi"
+        datePublished="2026-03-16"
+      />
       <Breadcrumb items={[{ label: "Blog", href: "/blog" }, { label: "Prenotazione diretta" }]} />
 
       <section className="bg-gradient-to-br from-ocean/10 to-primary/10 py-16">

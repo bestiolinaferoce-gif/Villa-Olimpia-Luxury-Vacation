@@ -2,17 +2,25 @@ import { generateMetadata } from "@/lib/metadata"
 import { Breadcrumb } from "@/components/breadcrumb"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
+import { BlogArticleJsonLd } from "@/components/seo/blog-article-json-ld"
 
 export const metadata = generateMetadata({
   title: "Castello Aragonese di Le Castella: guida completa per la visita",
   description: "Tutto quello che devi sapere per visitare il Castello Aragonese di Le Castella: storia, orari, prezzi e consigli pratici. A 5 minuti da Villa Olimpia, Isola di Capo Rizzuto.",
   path: "/blog/castello-aragonese-le-castella-guida",
+  type: "article",
   keywords: ["castello le castella", "le castella cosa vedere", "castello aragonese capo rizzuto", "cosa fare isola capo rizzuto"],
 })
 
 export default function ArticlePage() {
   return (
     <div className="min-h-screen pt-20">
+      <BlogArticleJsonLd
+        title="Castello Aragonese di Le Castella: guida completa per la visita"
+        description="Tutto quello che devi sapere per visitare il Castello Aragonese di Le Castella: storia, orari, prezzi e consigli pratici. A 5 minuti da Villa Olimpia, Isola di Capo Rizzuto."
+        path="/blog/castello-aragonese-le-castella-guida"
+        datePublished="2026-03-16"
+      />
       <Breadcrumb items={[{ label: "Blog", href: "/blog" }, { label: "Castello Aragonese Le Castella" }]} />
 
       <section className="bg-gradient-to-br from-ocean/10 to-primary/10 py-16">
