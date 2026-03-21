@@ -51,19 +51,22 @@ export function SeasonalStickyBar({ targetMonth }: SeasonalStickyBarProps) {
 
   useEffect(() => {
     if (!mounted || closed) return
-    let scrollPct = 0
+    let showTimer: number | undefined
     const onScroll = () => {
       const el = document.documentElement
       const max = el.scrollHeight - el.clientHeight
-      scrollPct = max <= 0 ? 1 : el.scrollTop / max
+      const scrollPct = max <= 0 ? 1 : el.scrollTop / max
       if (scrollPct >= 0.2) {
-        window.setTimeout(() => setVisible(true), 3000)
+        showTimer = window.setTimeout(() => setVisible(true), 3000)
         window.removeEventListener("scroll", onScroll)
       }
     }
     window.addEventListener("scroll", onScroll, { passive: true })
     onScroll()
-    return () => window.removeEventListener("scroll", onScroll)
+    return () => {
+      window.removeEventListener("scroll", onScroll)
+      if (showTimer !== undefined) window.clearTimeout(showTimer)
+    }
   }, [mounted, closed])
 
   useEffect(() => {
