@@ -16,11 +16,11 @@ import { defaultMetadata, BASE_URL } from "@/lib/metadata"
 import { AnalyticsUnified } from "@/components/analytics/analytics-unified"
 import { MetaPixelOptional } from "@/components/analytics/meta-pixel"
 import { AutoOptimizer } from "@/components/auto-optimizer"
+import { SeasonalRootOverlays } from "@/components/seasonal/SeasonalRootOverlays"
 import FloatingBooking from "@/components/floating-booking"
 import NewsletterPopup from "@/components/newsletter-popup"
 import { I18nProvider } from "@/components/i18n-provider"
 import { getAverageRating, reviews } from "@/data/reviews-complete"
-
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
@@ -179,6 +179,7 @@ export default function RootLayout({
           {/* FIX HYDRATION: I18nProvider gestisce correttamente SSR/client mismatch */}
           <I18nProvider>
             <AutoOptimizer />
+            <SeasonalRootOverlays />
             <FloatingBooking />
             <NewsletterPopup />
             <DirectionsProvider>

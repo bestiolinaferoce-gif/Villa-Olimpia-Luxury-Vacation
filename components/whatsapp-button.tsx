@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react"
 import { MessageCircle, Phone, X } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
 import { SITE_CONFIG } from "@/lib/constants"
+import { SEASONAL_CONFIG, getCurrentSeasonalMonth } from "@/lib/seasonalConfig"
 
 export function WhatsAppButton() {
   const [isVisible, setIsVisible] = useState(false)
@@ -38,7 +39,9 @@ export function WhatsAppButton() {
     }
   }, [isMenuOpen])
 
-  const message = encodeURIComponent("Ciao! Vorrei informazioni su Villa Olimpia")
+  const month = getCurrentSeasonalMonth()
+  const cfg = month === "other" ? SEASONAL_CONFIG.other : SEASONAL_CONFIG[month]
+  const message = encodeURIComponent(cfg.whatsappMessage)
 
   const whatsappNumbers = [
     {

@@ -6,7 +6,10 @@
     "services": "Services",
     "reviews": "Reviews",
     "faq": "FAQ",
-    "contacts": "Contact"
+    "contacts": "Contact",
+    "seasonMaggio": "May 2026",
+    "seasonGiugno": "June 2026",
+    "seasonLuglio": "July 2026"
   },
   "common": {
     "bookNow": "Book Now",

@@ -17,6 +17,10 @@ const staticRoutes: Array<{
   { path: "", priority: 1.0, changeFrequency: "weekly", lastMod: DATE_CORE },
   { path: "/appartamenti", priority: 0.95, changeFrequency: "weekly", lastMod: DATE_CORE },
   { path: "/prenota", priority: 0.95, changeFrequency: "monthly", lastMod: DATE_CORE },
+  { path: "/maggio-2026", priority: 0.9, changeFrequency: "weekly", lastMod: DATE_CORE },
+  { path: "/giugno-2026", priority: 0.9, changeFrequency: "weekly", lastMod: DATE_CORE },
+  { path: "/luglio-2026", priority: 0.9, changeFrequency: "weekly", lastMod: DATE_CORE },
+
   { path: "/contatti", priority: 0.9, changeFrequency: "monthly", lastMod: DATE_CORE },
   { path: "/recensioni", priority: 0.9, changeFrequency: "weekly", lastMod: DATE_CORE },
   { path: "/location", priority: 0.85, changeFrequency: "monthly", lastMod: DATE_CONTENT },

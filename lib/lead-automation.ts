@@ -28,6 +28,8 @@ export interface LeadPayload {
   utmMedium?: string
   utmCampaign?: string
   landingPage?: string
+  seasonalMonth?: string
+  marketingOptIn?: boolean
 }
 
 export interface EnrichedLead extends LeadPayload {

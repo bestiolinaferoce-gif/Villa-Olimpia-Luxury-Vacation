@@ -4,6 +4,8 @@ import { appendFile, mkdir } from "fs/promises"
 import path from "path"
 import { buildEnrichedLead, leadPriorityTag, type EnrichedLead } from "@/lib/lead-automation"
 import { DATA_DIR } from "@/lib/data-path"
+import { buildSeasonalAutoReplyHtml } from "@/lib/seasonal-auto-reply-html"
+import { SEASONAL_CONFIG, type SeasonalMonth } from "@/lib/seasonalConfig"
 
 const leadSchema = z.object({
   name: z.string().min(2).max(120),
@@ -21,6 +23,8 @@ const leadSchema = z.object({
   utmMedium: z.string().max(120).optional().or(z.literal("")),
   utmCampaign: z.string().max(160).optional().or(z.literal("")),
   landingPage: z.string().max(400).optional().or(z.literal("")),
+  seasonalMonth: z.enum(["maggio", "giugno", "luglio", "other"]).optional(),
+  marketingOptIn: z.boolean().optional(),
 })
 
 type LeadPayload = z.infer<typeof leadSchema>
@@ -78,6 +82,8 @@ function buildTextEmail(lead: EnrichedLead) {
     `UTM Medium: ${lead.utmMedium || "N/D"}`,
     `UTM Campaign: ${lead.utmCampaign || "N/D"}`,
     `Landing page: ${lead.landingPage || "N/D"}`,
+    `Tag stagionale: ${lead.seasonalMonth || "N/D"}`,
+    `Opt-in marketing: ${lead.marketingOptIn === true ? "si" : lead.marketingOptIn === false ? "no" : "N/D"}`,
     `Notti: ${lead.stayNights}`,
     `Giorni al check-in: ${lead.daysToCheckIn}`,
     `Check-in: ${lead.checkIn}`,
@@ -144,7 +150,15 @@ async function sendAutoReplyToGuest(lead: EnrichedLead) {
   if (!enabled) return { ok: false as const, reason: "autoresponder_disabled" }
   if (!apiKey) return { ok: false as const, reason: "missing_resend_key" }
 
-  const subject = "Richiesta ricevuta - Villa Olimpia"
+  const sm = lead.seasonalMonth
+  const seasonalKey: SeasonalMonth | "other" | undefined =
+    sm === "maggio" || sm === "giugno" || sm === "luglio" ? sm : sm === "other" ? "other" : undefined
+
+  const subject =
+    seasonalKey && seasonalKey !== "other"
+      ? SEASONAL_CONFIG[seasonalKey].emailSubject
+      : "Richiesta ricevuta - Villa Olimpia"
+
   const text = [
     `Ciao ${lead.name},`,
     "",
@@ -155,13 +169,29 @@ async function sendAutoReplyToGuest(lead: EnrichedLead) {
     `- Check-out: ${lead.checkOut}`,
     `- Ospiti: ${lead.guests}`,
     `- Appartamento: ${lead.apartment || "Nessuna preferenza"}`,
+    seasonalKey && seasonalKey !== "other" ? `- Mese stagionale: ${seasonalKey}` : "",
+    typeof lead.marketingOptIn === "boolean" ? `- Opt-in marketing: ${lead.marketingOptIn ? "si" : "no"}` : "",
     "",
     "Per urgenze puoi scriverci su WhatsApp:",
     "- +39 333 577 3390",
     "",
     "Grazie,",
     "Villa Olimpia",
-  ].join("\n")
+  ]
+    .filter(Boolean)
+    .join("\n")
+
+  const html =
+    seasonalKey && seasonalKey !== "other"
+      ? buildSeasonalAutoReplyHtml({
+          name: lead.name,
+          month: seasonalKey,
+          checkIn: lead.checkIn,
+          checkOut: lead.checkOut,
+          guests: lead.guests,
+          apartment: lead.apartment,
+        })
+      : null
 
   const response = await fetch("https://api.resend.com/emails", {
     method: "POST",
@@ -174,6 +204,7 @@ async function sendAutoReplyToGuest(lead: EnrichedLead) {
       to: lead.email,
       subject,
       text,
+      ...(html ? { html } : {}),
     }),
   })
 

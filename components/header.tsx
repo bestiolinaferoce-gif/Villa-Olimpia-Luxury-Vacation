@@ -17,6 +17,7 @@ import { Menu, X } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
 import { LanguageSelector } from "@/components/language-selector"
 import { useI18n } from "@/components/i18n-provider"
+import { seasonalLandingPath } from "@/lib/seasonalConfig"
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -38,6 +39,9 @@ export function Header() {
         reviews: "Recensioni",
         faq: "FAQ",
         contacts: "Contatti",
+        seasonMaggio: "Maggio 2026",
+        seasonGiugno: "Giugno 2026",
+        seasonLuglio: "Luglio 2026",
       },
       common: {
         bookNow: "Prenota Ora",
@@ -63,6 +67,9 @@ export function Header() {
     { href: "/recensioni", label: t.nav.reviews },
     { href: "/faq", label: t.nav.faq },
     { href: "/contatti?source=header_menu", label: t.nav.contacts },
+    { href: seasonalLandingPath("maggio"), label: t.nav.seasonMaggio },
+    { href: seasonalLandingPath("giugno"), label: t.nav.seasonGiugno },
+    { href: seasonalLandingPath("luglio"), label: t.nav.seasonLuglio },
   ]
 
   return (
