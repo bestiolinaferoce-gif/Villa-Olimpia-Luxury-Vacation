@@ -77,7 +77,12 @@
   "redirects": [
     {
       "source": "/:path*",
-      "has": [{ "type": "host", "value": "villaolimpiacaporizzuto.com" }],
+      "has": [
+        {
+          "type": "host",
+          "value": "villaolimpiacaporizzuto.com"
+        }
+      ],
       "destination": "https://www.villaolimpiacaporizzuto.com/:path*",
       "permanent": true
     }
@@ -85,7 +90,7 @@
   "crons": [
     {
       "path": "/api/ical-sync",
-      "schedule": "*/15 * * * *"
+      "schedule": "0 6 * * *"
     }
   ]
 }
