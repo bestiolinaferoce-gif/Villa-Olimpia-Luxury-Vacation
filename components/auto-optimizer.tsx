@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect } from 'react'
+import { PUBLIC_IMAGE_FALLBACK_GENERIC } from "@/lib/public-image-fallbacks"
 
 /**
  * Componente che monitora e ottimizza automaticamente il sito
@@ -14,7 +15,7 @@ export function AutoOptimizer() {
       if (img && !img.dataset.fallbackApplied) {
         img.dataset.fallbackApplied = 'true'
         // Fallback a placeholder
-        img.src = '/images/placeholder.jpg'
+        img.src = PUBLIC_IMAGE_FALLBACK_GENERIC
         img.onerror = null // Evita loop infiniti
       }
     }

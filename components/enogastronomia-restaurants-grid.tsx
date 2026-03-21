@@ -1,5 +1,6 @@
 'use client'
 
+import { PUBLIC_IMAGE_FALLBACK_RESTAURANT } from "@/lib/public-image-fallbacks"
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { Star, MapPin, Phone, Award } from 'lucide-react'
@@ -23,7 +24,7 @@ export function EnogastronomiaRestaurantsGrid() {
           <div className="grid md:grid-cols-2 gap-0">
             <div className="relative h-72 md:h-auto min-h-[280px]">
               <Image
-                src={featured.image || '/images/ristoranti/placeholder.jpg'}
+                src={featured.image || PUBLIC_IMAGE_FALLBACK_RESTAURANT}
                 fill
                 className="object-cover"
                 alt={featured.name}
@@ -80,7 +81,7 @@ export function EnogastronomiaRestaurantsGrid() {
           {/* Immagine con overlay */}
           <div className="relative h-56 overflow-hidden">
             <Image
-              src={restaurant.image || '/images/ristoranti/placeholder.jpg'}
+              src={restaurant.image || PUBLIC_IMAGE_FALLBACK_RESTAURANT}
               fill
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               className="object-cover group-hover:scale-110 transition-transform duration-500"

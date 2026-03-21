@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { LEGACY_APARTMENT_PLACEHOLDER_PATH } from "@/lib/public-image-fallbacks"
 import Image from 'next/image'
 import Lightbox from 'yet-another-react-lightbox'
 import 'yet-another-react-lightbox/styles.css'
@@ -17,7 +18,7 @@ export default function ApartmentGallery({ images, alt }: GalleryProps) {
   const [currentIndex, setCurrentIndex] = useState(0)
 
   // Filtra solo immagini che esistono (non placeholder vuoti)
-  const validImages = images.filter(img => img && img !== '/images/villa/appartamenti/placeholder.jpg')
+  const validImages = images.filter(img => img && img !== LEGACY_APARTMENT_PLACEHOLDER_PATH)
 
   if (validImages.length === 0) {
     return (

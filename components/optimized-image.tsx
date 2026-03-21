@@ -2,6 +2,7 @@
 
 import Image from 'next/image'
 import { useState } from 'react'
+import { PUBLIC_IMAGE_FALLBACK_APARTMENT } from "@/lib/public-image-fallbacks"
 
 interface OptimizedImageProps {
   src: string
@@ -28,7 +29,7 @@ export default function OptimizedImage({
   const [error, setError] = useState(false)
 
   // Placeholder se l'immagine non esiste
-  const placeholderSrc = '/images/placeholder-apartment.jpg'
+  const placeholderSrc = PUBLIC_IMAGE_FALLBACK_APARTMENT
 
   const imageSrc = error ? placeholderSrc : src
 
