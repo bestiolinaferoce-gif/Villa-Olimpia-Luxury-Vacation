@@ -18,6 +18,10 @@ import { trackEvent } from "@/components/analytics/google-analytics"
 const SESSION_EXIT = "exit_modal_shown_v1"
 const LS_LEAD = "lead_submitted_v1"
 
+/** Timer lungo solo su viewport stretti: su desktop resta solo l'uscita mouse verso l'alto (meno invasivo). */
+const MOBILE_TIMER_MS = 40_000
+const MOBILE_MAX_WIDTH_PX = 768
+
 const MONTH_OPTIONS: Array<{ value: SeasonalMonth; label: string }> = [
   { value: "maggio", label: "Maggio" },
   { value: "giugno", label: "Giugno" },
@@ -49,24 +53,7 @@ export function ExitIntentModal() {
       return
     }
 
-    const mobileTimer = window.setTimeout(() => {
-      try {
-        if (sessionStorage.getItem(SESSION_EXIT) === "1") return
-        if (localStorage.getItem(LS_LEAD) === "1") return
-      } catch {
-        /* ignore */
-      }
-      setOpen(true)
-      trackEvent("exit_intent_shown", "Conversion", "timer_40s")
-      try {
-        sessionStorage.setItem(SESSION_EXIT, "1")
-      } catch {
-        /* ignore */
-      }
-    }, 40000)
-
-    const onLeave = (e: MouseEvent) => {
-      if (e.clientY > 0) return
+    const showOnce = (source: "timer_40s" | "mouse_top") => {
       try {
         if (sessionStorage.getItem(SESSION_EXIT) === "1") return
         if (localStorage.getItem(LS_LEAD) === "1") return
@@ -74,7 +61,7 @@ export function ExitIntentModal() {
         return
       }
       setOpen(true)
-      trackEvent("exit_intent_shown", "Conversion", "mouse_top")
+      trackEvent("exit_intent_shown", "Conversion", source)
       try {
         sessionStorage.setItem(SESSION_EXIT, "1")
       } catch {
@@ -82,9 +69,20 @@ export function ExitIntentModal() {
       }
     }
 
+    const mq = window.matchMedia(`(max-width: ${MOBILE_MAX_WIDTH_PX}px)`)
+    let mobileTimer: number | undefined
+    if (mq.matches) {
+      mobileTimer = window.setTimeout(() => showOnce("timer_40s"), MOBILE_TIMER_MS)
+    }
+
+    const onLeave = (e: MouseEvent) => {
+      if (e.clientY > 0) return
+      showOnce("mouse_top")
+    }
+
     document.addEventListener("mouseout", onLeave)
     return () => {
-      window.clearTimeout(mobileTimer)
+      if (mobileTimer !== undefined) window.clearTimeout(mobileTimer)
       document.removeEventListener("mouseout", onLeave)
     }
   }, [])
