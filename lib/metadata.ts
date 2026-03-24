@@ -109,12 +109,27 @@ export function getApartmentMetadata(apartmentId: number): Metadata {
     type: "article",
   })
 
+  const ogFromBase =
+    baseMeta.other &&
+    typeof baseMeta.other === "object" &&
+    "og:image:width" in baseMeta.other &&
+    "og:image:height" in baseMeta.other
+      ? {
+          "og:image:width": String(
+            (baseMeta.other as Record<string, string>)["og:image:width"],
+          ),
+          "og:image:height": String(
+            (baseMeta.other as Record<string, string>)["og:image:height"],
+          ),
+        }
+      : {}
+
   return {
     ...baseMeta,
     keywords,
     // Schema markup per OTA
     other: {
-      ...(baseMeta.other && typeof baseMeta.other === "object" ? baseMeta.other : {}),
+      ...ogFromBase,
       "booking:property_type": "Apartment",
       "booking:capacity": apartment.guests.toString(),
       "booking:bedrooms": apartment.bedrooms.toString(),
