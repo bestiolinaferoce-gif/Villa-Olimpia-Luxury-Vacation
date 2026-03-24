@@ -85,15 +85,21 @@ export default function RootLayout({
         {/* Hreflang tags - solo italiano (multilingua non ancora attivo) */}
         <link rel="alternate" hrefLang="it" href={BASE_URL} />
         <link rel="alternate" hrefLang="x-default" href={BASE_URL} />
-        {/* Meta tag posizione per Facebook/Meta */}
+        {/* Meta tag posizione e contatti Facebook / Open Graph */}
+        <meta property="place:location:latitude" content="38.9136" />
+        <meta property="place:location:longitude" content="17.0836" />
+        <meta property="business:contact_data:street_address" content="Località Capo Piccolo" />
         <meta property="business:contact_data:locality" content="Isola di Capo Rizzuto" />
-        <meta property="business:contact_data:region" content="Calabria" />
-        <meta property="business:contact_data:country_name" content="Italia" />
-        <meta property="place:location:latitude" content="38.913856" />
-        <meta property="place:location:longitude" content="17.0754964" />
-        {/* Meta tags Facebook/Meta */}
-        <meta property="business:contact_data:street_address" content="Località Capopiccolo snc" />
+        <meta property="business:contact_data:region" content="KR" />
         <meta property="business:contact_data:postal_code" content="88841" />
+        <meta property="business:contact_data:country_name" content="IT" />
+        <meta property="og:latitude" content="38.9136" />
+        <meta property="og:longitude" content="17.0836" />
+        <meta property="og:street-address" content="Località Capo Piccolo" />
+        <meta property="og:locality" content="Isola di Capo Rizzuto" />
+        <meta property="og:region" content="KR" />
+        <meta property="og:postal-code" content="88841" />
+        <meta property="og:country-name" content="IT" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -102,23 +108,24 @@ export default function RootLayout({
               "@type": ["LodgingBusiness", "VacationRental"],
               "@id": `${BASE_URL}/#business`,
               name: "Villa Olimpia",
-              description: "9 appartamenti di lusso con piscina privata a Capo Rizzuto, Calabria. A 100 metri dalla Spiaggia dei Gigli, Area Marina Protetta Capo Rizzuto. Disponibilità Giugno e Luglio 2026.",
+              description:
+                "9 appartamenti di lusso con piscina privata a Capopiccolo, nel cuore dell'Area Marina Protetta di Capo Rizzuto. A 100 metri dalla Spiaggia dei Gigli (Bandiera Blu), con terrazza, aria condizionata e cucina attrezzata.",
               url: BASE_URL,
               telephone: "+393335773390",
               address: {
                 "@type": "PostalAddress",
-                streetAddress: "Località Capopiccolo snc",
+                streetAddress: "Località Capo Piccolo",
                 addressLocality: "Isola di Capo Rizzuto",
-                addressRegion: "Calabria",
+                addressRegion: "KR",
                 postalCode: "88841",
                 addressCountry: "IT",
               },
               geo: {
                 "@type": "GeoCoordinates",
-                latitude: 38.913856,
-                longitude: 17.0754964,
+                latitude: 38.9136,
+                longitude: 17.0836,
               },
-              hasMap: "https://www.google.com/maps/search/?api=1&query=38.913856,17.0754964",
+              hasMap: "https://www.google.com/maps/search/?api=1&query=38.9136,17.0836",
               sameAs: [
                 "https://www.facebook.com/villaolimpiacaporizzuto",
                 "https://www.instagram.com/villaolimpiacaporizzuto"
@@ -129,8 +136,15 @@ export default function RootLayout({
                 { "@type": "AdministrativeArea", name: "Calabria" }
               ],
               priceRange: "€€",
-              image: `${BASE_URL}/og-image.jpg`,
+              image: [
+                `${BASE_URL}/og-image.jpg`,
+                `${BASE_URL}/images/villa/gallery/Esterni_Piscina_Notte_01.jpg`,
+              ],
               numberOfRooms: 9,
+              starRating: {
+                "@type": "Rating",
+                ratingValue: "5",
+              },
               ...(getAverageRating() > 0 && reviews.length > 0 ? {
                 aggregateRating: {
                   "@type": "AggregateRating",

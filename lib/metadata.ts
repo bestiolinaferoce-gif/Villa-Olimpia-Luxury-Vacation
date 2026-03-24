@@ -4,6 +4,7 @@ import { apartments } from "@/data/apartments"
 export const BASE_URL = "https://villaolimpiacaporizzuto.com"
 const baseUrl = BASE_URL
 const siteName = "Villa Olimpia"
+const openGraphSiteName = "Villa Olimpia Capo Rizzuto"
 
 export function generateMetadata({
   title,
@@ -36,7 +37,7 @@ export function generateMetadata({
       title: `${title} | ${siteName}`,
       description: optimizedDescription,
       url,
-      siteName,
+      siteName: openGraphSiteName,
       images: [
         {
           url: imageUrl,
@@ -169,7 +170,7 @@ export const defaultMetadata: Metadata = {
     type: "website",
     locale: "it_IT",
     url: baseUrl,
-    siteName,
+    siteName: openGraphSiteName,
     title: `${siteName} — Appartamenti con Piscina a Capo Rizzuto | Giugno e Luglio 2026`,
     description: "9 appartamenti con piscina privata a Capo Rizzuto. Tariffe vantaggiose Giugno e Luglio 2026. Spiaggia dei Gigli a 100m. Prenota direttamente senza commissioni.",
     images: [
