@@ -16,6 +16,11 @@ export default function RecensioniLayout({
     reviewCount: totalReviews,
     bestRating: 5,
     worstRating: 1,
+    itemReviewed: {
+      "@type": ["LodgingBusiness", "VacationRental"],
+      name: "Villa Olimpia Capo Rizzuto",
+      url: "https://www.villaolimpiacaporizzuto.com/",
+    },
   }
 
   return (

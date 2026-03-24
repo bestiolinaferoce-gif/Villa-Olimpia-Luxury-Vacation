@@ -6,6 +6,14 @@ const baseUrl = BASE_URL
 const siteName = "Villa Olimpia"
 const openGraphSiteName = "Villa Olimpia Capo Rizzuto"
 
+const OG_IMAGE_W = 1200
+const OG_IMAGE_H = 630
+
+const ogImageDimensions = {
+  "og:image:width": String(OG_IMAGE_W),
+  "og:image:height": String(OG_IMAGE_H),
+} as const
+
 export function generateMetadata({
   title,
   description,
@@ -23,6 +31,8 @@ export function generateMetadata({
 }): Metadata {
   const url = `${baseUrl}${path}`
   const imageUrl = image.startsWith("http") ? image : `${baseUrl}${image}`
+  const usesDefaultOgImage =
+    image === "/og-image.jpg" || imageUrl === `${baseUrl}/og-image.jpg`
 
   // Ensure description is 155-160 characters for optimal SEO
   const optimizedDescription = description.length > 160
@@ -41,8 +51,9 @@ export function generateMetadata({
       images: [
         {
           url: imageUrl,
-          width: 1200,
-          height: 630,
+          ...(usesDefaultOgImage
+            ? { width: OG_IMAGE_W, height: OG_IMAGE_H }
+            : {}),
           alt: title,
         },
       ],
@@ -58,6 +69,7 @@ export function generateMetadata({
     alternates: {
       canonical: url,
     },
+    ...(usesDefaultOgImage ? { other: { ...ogImageDimensions } } : {}),
   }
 }
 
@@ -89,30 +101,33 @@ export function getApartmentMetadata(apartmentId: number): Metadata {
     `affitto settimanale capo rizzuto mare`
   ]
 
+  const baseMeta = generateMetadata({
+    title: seoTitle,
+    description: seoDescription,
+    path: `/appartamenti/${apartment.name.toLowerCase()}`,
+    image: apartment.image.startsWith("/") ? apartment.image : undefined,
+    type: "article",
+  })
+
   return {
-    ...generateMetadata({
-      title: seoTitle,
-      description: seoDescription,
-      path: `/appartamenti/${apartment.name.toLowerCase()}`,
-      image: apartment.image.startsWith("/") ? apartment.image : undefined,
-      type: "article",
-    }),
+    ...baseMeta,
     keywords,
     // Schema markup per OTA
     other: {
-      'booking:property_type': 'Apartment',
-      'booking:capacity': apartment.guests.toString(),
-      'booking:bedrooms': apartment.bedrooms.toString(),
-      'booking:bathrooms': apartment.bathrooms.toString(),
-      'booking:size': apartment.size,
-      'booking:floor': apartment.floor,
-      'booking:price': apartment.price?.toString() || '120',
-      'booking:currency': 'EUR',
-      'booking:location': 'Capopiccolo, Isola di Capo Rizzuto, Calabria, Italy',
-      'og:type': 'product',
-      'product:price:amount': apartment.price?.toString() || '120',
-      'product:price:currency': 'EUR',
-    }
+      ...(baseMeta.other && typeof baseMeta.other === "object" ? baseMeta.other : {}),
+      "booking:property_type": "Apartment",
+      "booking:capacity": apartment.guests.toString(),
+      "booking:bedrooms": apartment.bedrooms.toString(),
+      "booking:bathrooms": apartment.bathrooms.toString(),
+      "booking:size": apartment.size,
+      "booking:floor": apartment.floor,
+      "booking:price": apartment.price?.toString() || "120",
+      "booking:currency": "EUR",
+      "booking:location": "Capopiccolo, Isola di Capo Rizzuto, Calabria, Italy",
+      "og:type": "product",
+      "product:price:amount": apartment.price?.toString() || "120",
+      "product:price:currency": "EUR",
+    },
   }
 }
 
@@ -176,8 +191,8 @@ export const defaultMetadata: Metadata = {
     images: [
       {
         url: `${baseUrl}/og-image.jpg`,
-        width: 1200,
-        height: 630,
+        width: OG_IMAGE_W,
+        height: OG_IMAGE_H,
         alt: `${siteName} - Appartamenti con Piscina Capo Rizzuto Calabria`,
       },
     ],
@@ -191,4 +206,5 @@ export const defaultMetadata: Metadata = {
   alternates: {
     canonical: baseUrl,
   },
+  other: { ...ogImageDimensions },
 }
