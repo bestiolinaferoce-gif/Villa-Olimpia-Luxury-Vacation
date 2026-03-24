@@ -161,6 +161,22 @@ export default function RootLayout({
               checkInTime: "15:00",
               checkOutTime: "10:00",
               petsAllowed: false,
+              identifier: {
+                "@type": "PropertyValue",
+                name: "ID struttura",
+                value: "villa-olimpia-capo-rizzuto"
+              },
+              containsPlace: [
+                { "@type": "Accommodation", name: "Appartamento Frangipane", url: `${BASE_URL}/appartamenti/1` },
+                { "@type": "Accommodation", name: "Appartamento Fiordaliso", url: `${BASE_URL}/appartamenti/2` },
+                { "@type": "Accommodation", name: "Appartamento Orchidea", url: `${BASE_URL}/appartamenti/3` },
+                { "@type": "Accommodation", name: "Appartamento Tulipano", url: `${BASE_URL}/appartamenti/4` },
+                { "@type": "Accommodation", name: "Appartamento Giglio", url: `${BASE_URL}/appartamenti/5` },
+                { "@type": "Accommodation", name: "Appartamento Lavanda", url: `${BASE_URL}/appartamenti/6` },
+                { "@type": "Accommodation", name: "Appartamento Geranio", url: `${BASE_URL}/appartamenti/7` },
+                { "@type": "Accommodation", name: "Appartamento Gardenia", url: `${BASE_URL}/appartamenti/8` },
+                { "@type": "Accommodation", name: "Appartamento Azalea", url: `${BASE_URL}/appartamenti/9` }
+              ],
               availableAtOrFrom: {
                 "@type": "Offer",
                 name: "Giugno e Luglio 2026 — Tariffe vantaggiose",
