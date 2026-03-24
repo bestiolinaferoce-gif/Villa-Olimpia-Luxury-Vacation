@@ -128,21 +128,23 @@ export function getApartmentMetadata(apartmentId: number): Metadata {
     ...baseMeta,
     keywords,
     // Schema markup per OTA
-    other: {
-      ...ogFromBase,
-      "booking:property_type": "Apartment",
-      "booking:capacity": apartment.guests.toString(),
-      "booking:bedrooms": apartment.bedrooms.toString(),
-      "booking:bathrooms": apartment.bathrooms.toString(),
-      "booking:size": apartment.size,
-      "booking:floor": apartment.floor,
-      "booking:price": apartment.price?.toString() || "120",
-      "booking:currency": "EUR",
-      "booking:location": "Capopiccolo, Isola di Capo Rizzuto, Calabria, Italy",
-      "og:type": "product",
-      "product:price:amount": apartment.price?.toString() || "120",
-      "product:price:currency": "EUR",
-    },
+    other: Object.assign(
+      {
+        "booking:property_type": "Apartment",
+        "booking:capacity": apartment.guests.toString(),
+        "booking:bedrooms": apartment.bedrooms.toString(),
+        "booking:bathrooms": apartment.bathrooms.toString(),
+        "booking:size": apartment.size,
+        "booking:floor": String(apartment.floor),
+        "booking:price": apartment.price?.toString() || "120",
+        "booking:currency": "EUR",
+        "booking:location": "Capopiccolo, Isola di Capo Rizzuto, Calabria, Italy",
+        "og:type": "product",
+        "product:price:amount": apartment.price?.toString() || "120",
+        "product:price:currency": "EUR",
+      },
+      ogFromBase,
+    ) as Metadata["other"],
   }
 }
 
