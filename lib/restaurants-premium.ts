@@ -104,7 +104,7 @@ export const premiumRestaurants: Restaurant[] = [
       'Verdure grigliate dell\'orto',
       'Tiramisù fatto in casa'
     ],
-    phone: '+39 0962 794XXX',
+    phone: '',
     googleMapsUrl: 'https://maps.app.goo.gl/gHI012',
     logo: '/images/ristoranti/da-annibale-logo.jpg',
     coordinates: { lat: 38.9678, lng: 17.0989 }
@@ -126,7 +126,7 @@ export const premiumRestaurants: Restaurant[] = [
       'Spaghetti vongole veraci',
       'Insalata di mare'
     ],
-    phone: '+39 0962 796XXX',
+    phone: '',
     googleMapsUrl: 'https://maps.app.goo.gl/jKL345',
     logo: '/images/ristoranti/lido-bahama-logo.jpg',
     coordinates: { lat: 38.9555, lng: 17.0822 }

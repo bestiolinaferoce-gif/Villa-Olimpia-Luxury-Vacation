@@ -336,17 +336,19 @@ export default function RestaurantsMapPremium() {
                     </a>
                   </Button>
 
-                  <Button 
-                    variant="outline" 
-                    asChild
-                    className="w-full"
-                    size="lg"
-                  >
-                    <a href={`tel:${selectedRestaurant.phone}`}>
-                      <Phone className="w-5 h-5 mr-2" />
-                      Chiama
-                    </a>
-                  </Button>
+                  {selectedRestaurant.phone ? (
+                    <Button
+                      variant="outline"
+                      asChild
+                      className="w-full"
+                      size="lg"
+                    >
+                      <a href={`tel:${selectedRestaurant.phone}`}>
+                        <Phone className="w-5 h-5 mr-2" />
+                        Chiama
+                      </a>
+                    </Button>
+                  ) : null}
 
                   {selectedRestaurant.website && (
                     <Button 
