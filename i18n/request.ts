@@ -6,15 +6,16 @@ export type Locale = (typeof locales)[number];
 export const defaultLocale: Locale = 'it';
 
 export default getRequestConfig(async ({ locale }: { locale?: string }) => {
-  // Valida che il locale richiesto sia supportato
-  if (!locale || !locales.includes(locale as Locale)) {
+  // Locale assente (es. richieste fuori da [locale]): usa default, non 404 sull'intero sito
+  if (locale && !locales.includes(locale as Locale)) {
     notFound();
   }
 
-  // Carica i messaggi dal file JSON corrispondente
+  const resolved = (locale && locales.includes(locale as Locale) ? locale : defaultLocale) as Locale
+
   return {
-    locale: (locale ?? defaultLocale) as Locale,
-    messages: (await import(`../messages/${locale ?? defaultLocale}.json`)).default
+    locale: resolved,
+    messages: (await import(`../messages/${resolved}.json`)).default,
   };
 });
 
