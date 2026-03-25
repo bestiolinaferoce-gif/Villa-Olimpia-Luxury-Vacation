@@ -26,7 +26,7 @@ export const SITE_CONFIG = {
   /** Numero principale per CTA WhatsApp (senza +) */
   whatsappPrimary: "393335773390",
   /** Numero secondario (senza +) */
-  whatsappSecondary: "393335773390",
+  whatsappSecondary: "393290479193",
   businessHours: {
     weekdays: "9:00 - 20:00",
     saturday: "9:00 - 18:00",

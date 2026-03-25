@@ -105,8 +105,8 @@ export default function ContattiPage() {
                       <a href="tel:+393335773390" className="block text-muted-foreground hover:text-primary">
                         +39 333 577 3390
                       </a>
-                      <a href="tel:+393335773390" className="block text-muted-foreground hover:text-primary">
-                        +39 333 577 3390
+                      <a href="tel:+393290479193" className="block text-muted-foreground hover:text-primary">
+                        +39 329 047 9193
                       </a>
                     </div>
                   </div>

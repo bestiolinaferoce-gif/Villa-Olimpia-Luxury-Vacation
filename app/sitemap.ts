@@ -4,9 +4,9 @@ import { BASE_URL } from "@/lib/metadata"
 import { BLOG_POSTS, BLOG_LAST_MOD } from "@/data/blog-posts"
 
 // Date statiche per categoria — non cambiano ad ogni build (risparmio crawl budget)
-const DATE_CORE = new Date("2025-12-01")
+const DATE_CORE = new Date("2026-03-25")
 const DATE_LEGAL = new Date("2025-06-01")
-const DATE_CONTENT = new Date("2025-11-01")
+const DATE_CONTENT = new Date("2026-03-25")
 
 const staticRoutes: Array<{
   path: string

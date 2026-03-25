@@ -166,10 +166,10 @@ export function Footer() {
                     +39 333 577 3390
                   </a>
                   <a
-                    href="tel:+393335773390"
+                    href="tel:+393290479193"
                     className="hover:text-primary transition-colors block"
                   >
-                    +39 333 577 3390
+                    +39 329 047 9193
                   </a>
                 </div>
               </li>
@@ -219,7 +219,7 @@ export function Footer() {
               Preferenze cookie
             </CookiePreferencesTrigger>
             <span aria-hidden>·</span>
-            <Link href="/termini" className="hover:text-primary transition-colors">Termini e condizioni</Link>
+            <Link href="/termini-condizioni" className="hover:text-primary transition-colors">Termini e condizioni</Link>
           </p>
         </div>
       </div>
