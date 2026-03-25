@@ -30,7 +30,7 @@ export default function ArticlePage() {
               Cucina calabrese a Capo Rizzuto: ristoranti, piatti tipici e i nostri posti del cuore
             </h1>
             <p className="text-xl text-muted-foreground">
-              La Calabria non è solo mare. È anche una delle regioni italiane con la tradizione gastronomica più ricca e autentica. Chi soggiorna a Capo Rizzuto ha la fortuna di trovarsi dove il pesce fresco dell'Ionio incontra i sapori forti della cucina contadina calabrese.
+              La Calabria non è solo mare. È anche una delle regioni italiane con la tradizione gastronomica più ricca e autentica. Chi soggiorna a Capo Rizzuto ha la fortuna di trovarsi dove il pesce fresco dell&apos;Ionio incontra i sapori forti della cucina contadina calabrese.
             </p>
           </div>
         </div>
@@ -44,8 +44,8 @@ export default function ArticlePage() {
               <ul className="list-disc list-inside text-lg text-muted-foreground space-y-3">
                 <li><strong>Pesce spada alla calabrese</strong> — marinatura con cipolla, pomodoro, olive, capperi e peperoncino.</li>
                 <li><strong>Alici di Menaica</strong> — presidio Slow Food, pescate con tecnica tradizionale. Marinate, fritte o su crostini.</li>
-                <li><strong>'Nduja di Spilinga</strong> — salsa di peperoncino e carne di maiale spalmabile. La versione locale è molto più intensa di quella industriale.</li>
-                <li><strong>Spaghetti ai ricci di mare</strong> — i ricci dell'Area Marina Protetta sono tra i migliori d'Italia. Un piatto indimenticabile.</li>
+                <li><strong>&apos;Nduja di Spilinga</strong> — salsa di peperoncino e carne di maiale spalmabile. La versione locale è molto più intensa di quella industriale.</li>
+                <li><strong>Spaghetti ai ricci di mare</strong> — i ricci dell&apos;Area Marina Protetta sono tra i migliori d&apos;Italia. Un piatto indimenticabile.</li>
                 <li><strong>Fileja al ragù di capra</strong> — pasta tipica calabrese lavorata a mano, abbinata a ragù di capra con erbe aromatiche.</li>
                 <li><strong>Pecorino crotonese DOP</strong> — stagionato, saporito, leggermente piccante. Da portare a casa come souvenir.</li>
               </ul>
@@ -60,7 +60,7 @@ export default function ArticlePage() {
                 <strong>Per il pesce fresco</strong> — sul lungomare di Le Castella, dove le materie prime arrivano dai pescherecci ogni mattina.
               </p>
               <p className="text-lg text-muted-foreground">
-                <strong>Per la cucina di terra</strong> — nelle masserie dell'entroterra: pasta fatta a mano, carni locali, verdure dell'orto.
+                <strong>Per la cucina di terra</strong> — nelle masserie dell&apos;entroterra: pasta fatta a mano, carni locali, verdure dell&apos;orto.
               </p>
             </div>
 

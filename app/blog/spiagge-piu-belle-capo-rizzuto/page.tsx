@@ -30,7 +30,7 @@ export default function ArticlePage() {
               Le 10 spiagge più belle vicino a Isola di Capo Rizzuto
             </h1>
             <p className="text-xl text-muted-foreground">
-              Se state cercando le spiagge più belle della Calabria, siete nel posto giusto. L'Isola di Capo Rizzuto e la sua Area Marina Protetta custodiscono alcuni dei tratti di costa più spettacolari dell'intero Mar Mediterraneo.
+              Se state cercando le spiagge più belle della Calabria, siete nel posto giusto. L&apos;Isola di Capo Rizzuto e la sua Area Marina Protetta custodiscono alcuni dei tratti di costa più spettacolari dell&apos;intero Mar Mediterraneo.
             </p>
           </div>
         </div>
@@ -48,7 +48,7 @@ export default function ArticlePage() {
               <p className="text-lg text-muted-foreground mb-4">
                 Partiamo dalla più vicina: la Spiaggia dei Gigli dista meno di un minuto a piedi da Villa Olimpia. Sabbia finissima color miele, acque basse e trasparenti, ideali per famiglie con bambini piccoli. Il nome viene dai gigli marini selvatici che in primavera fioriscono lungo il bordo della spiaggia. In estate è frequentata ma mai caotica — la sua dimensione contenuta la mantiene raccolta e piacevole.
               </p>
-              <p className="text-muted-foreground font-medium">Ideale per: famiglie, bambini, chi vuole il mare a due passi dall'alloggio.</p>
+              <p className="text-muted-foreground font-medium">Ideale per: famiglie, bambini, chi vuole il mare a due passi dall&apos;alloggio.</p>
             </div>
 
             <div>
@@ -62,7 +62,7 @@ export default function ArticlePage() {
             <div>
               <h2 className="text-2xl md:text-3xl font-playfair font-bold mb-4">3. Spiaggia di Capo Rizzuto — La più panoramica</h2>
               <p className="text-lg text-muted-foreground mb-4">
-                Raggiungibile in pochi minuti d'auto, la spiaggia di Capo Rizzuto si estende su un lungo litorale sabbioso con vista sul promontorio e sul mare aperto. L'area è attrezzata con lidi e servizi, ma conserva tratti liberi dove stendere l'asciugamano lontano dalla folla.
+                Raggiungibile in pochi minuti d&apos;auto, la spiaggia di Capo Rizzuto si estende su un lungo litorale sabbioso con vista sul promontorio e sul mare aperto. L&apos;area è attrezzata con lidi e servizi, ma conserva tratti liberi dove stendere l&apos;asciugamano lontano dalla folla.
               </p>
               <p className="text-muted-foreground font-medium">Ideale per: giornate lunghe, famiglie numerose, chi ama i servizi da spiaggia.</p>
             </div>
@@ -70,15 +70,15 @@ export default function ArticlePage() {
             <div>
               <h2 className="text-2xl md:text-3xl font-playfair font-bold mb-4">4. Le Castella — Spiaggia con vista sul Castello</h2>
               <p className="text-lg text-muted-foreground mb-4">
-                La spiaggia di Le Castella è forse la più fotogenica di tutta la zona: ci si nuota davanti all'antico Castello Aragonese che sorge su un isolotto collegato alla terra da una sottile lingua di sabbia. L'acqua è cristallina, la storia è ovunque. Dista circa 5 minuti in auto da Villa Olimpia.
+                La spiaggia di Le Castella è forse la più fotogenica di tutta la zona: ci si nuota davanti all&apos;antico Castello Aragonese che sorge su un isolotto collegato alla terra da una sottile lingua di sabbia. L&apos;acqua è cristallina, la storia è ovunque. Dista circa 5 minuti in auto da Villa Olimpia.
               </p>
               <p className="text-muted-foreground font-medium">Ideale per: fotografia, coppie, chi vuole unire cultura e mare.</p>
             </div>
 
             <div>
-              <h2 className="text-2xl md:text-3xl font-playfair font-bold mb-4">5. Caporizzuto — Spiaggia selvaggia nell'Area Marina Protetta</h2>
+              <h2 className="text-2xl md:text-3xl font-playfair font-bold mb-4">5. Caporizzuto — Spiaggia selvaggia nell&apos;Area Marina Protetta</h2>
               <p className="text-lg text-muted-foreground mb-4">
-                Una delle spiagge più autentiche della zona: nessun lido, nessun stabilimento, solo natura. L'Area Marina Protetta di Capo Rizzuto protegge questi fondali da anni e il risultato è visibile: le acque sono tra le più pulite d'Italia, la posidonia è rigogliosa, i pesci abbondano.
+                Una delle spiagge più autentiche della zona: nessun lido, nessun stabilimento, solo natura. L&apos;Area Marina Protetta di Capo Rizzuto protegge questi fondali da anni e il risultato è visibile: le acque sono tra le più pulite d&apos;Italia, la posidonia è rigogliosa, i pesci abbondano.
               </p>
               <p className="text-muted-foreground font-medium">Ideale per: amanti della natura, snorkeling, immersioni, fotografia subacquea.</p>
             </div>
@@ -94,7 +94,7 @@ export default function ArticlePage() {
             <div>
               <h2 className="text-2xl md:text-3xl font-playfair font-bold mb-4">7. Spiaggia di Capo Colonna — Storia e mare</h2>
               <p className="text-lg text-muted-foreground mb-4">
-                Nei pressi del famoso Tempio di Hera Lacinia, la spiaggia di Capo Colonna regala un'atmosfera unica: ci si bagna a pochi metri da uno dei siti archeologici più importanti della Magna Grecia.
+                Nei pressi del famoso Tempio di Hera Lacinia, la spiaggia di Capo Colonna regala un&apos;atmosfera unica: ci si bagna a pochi metri da uno dei siti archeologici più importanti della Magna Grecia.
               </p>
               <p className="text-muted-foreground font-medium">Ideale per: appassionati di storia, escursioni culturali, tramonti indimenticabili.</p>
             </div>
@@ -102,7 +102,7 @@ export default function ArticlePage() {
             <div>
               <h2 className="text-2xl md:text-3xl font-playfair font-bold mb-4">8. Spiaggia di Crotone Lido — Attrezzata e comoda</h2>
               <p className="text-lg text-muted-foreground mb-4">
-                Per chi vuole una giornata al mare con tutti i comfort — ombrellone, lettino, bar, ristorante — il lido di Crotone offre spiagge ben organizzate e acqua pulita, a circa 15 minuti d'auto da Villa Olimpia.
+                Per chi vuole una giornata al mare con tutti i comfort — ombrellone, lettino, bar, ristorante — il lido di Crotone offre spiagge ben organizzate e acqua pulita, a circa 15 minuti d&apos;auto da Villa Olimpia.
               </p>
               <p className="text-muted-foreground font-medium">Ideale per: famiglie con bambini piccoli, chi non vuole rinunciare ai servizi.</p>
             </div>
@@ -126,7 +126,7 @@ export default function ArticlePage() {
             <div className="pt-8 border-t">
               <h2 className="text-2xl md:text-3xl font-playfair font-bold mb-4">La base perfetta per esplorare tutte queste spiagge</h2>
               <p className="text-lg text-muted-foreground mb-6">
-                La posizione di Villa Olimpia a Capo Piccolo è strategica: la Spiaggia dei Gigli e la Spiaggia della Caletta sono letteralmente a un minuto a piedi, mentre tutte le altre spiagge di questa lista sono raggiungibili in meno di 45 minuti d'auto.
+                La posizione di Villa Olimpia a Capo Piccolo è strategica: la Spiaggia dei Gigli e la Spiaggia della Caletta sono letteralmente a un minuto a piedi, mentre tutte le altre spiagge di questa lista sono raggiungibili in meno di 45 minuti d&apos;auto.
               </p>
               <p className="text-lg text-muted-foreground mb-6">
                 I nostri lodge indipendenti, la piscina privata e il personale sempre disponibile fanno di Villa Olimpia la base ideale per esplorare il meglio della Costa Ionica calabrese.

@@ -84,7 +84,6 @@ export default function RestaurantsMapPremium() {
                     <text x="20" y="26" font-size="20" fill="white" text-anchor="middle">🏠</text>
                   </svg>
                 `),
-                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                 scaledSize: new google.maps.Size(40, 40),
               }}
               title="Villa Olimpia"
@@ -103,7 +102,6 @@ export default function RestaurantsMapPremium() {
                       <text x="18" y="24" font-size="16" fill="white" text-anchor="middle">🍴</text>
                     </svg>
                   `),
-                  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                   scaledSize: new google.maps.Size(36, 36),
                 }}
                 title={restaurant.name}

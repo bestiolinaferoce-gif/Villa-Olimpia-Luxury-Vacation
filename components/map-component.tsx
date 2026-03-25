@@ -87,8 +87,6 @@ export function MapComponent() {
     }
   }
 
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-
   const onLoad = useCallback((map: google.maps.Map) => {
     setIsMapLoaded(true)
     setMapError(false)

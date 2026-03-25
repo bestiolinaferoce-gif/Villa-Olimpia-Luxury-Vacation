@@ -30,7 +30,7 @@ export default function ArticlePage() {
               Vacanze in famiglia a Capo Rizzuto: perché è il posto perfetto con i bambini
             </h1>
             <p className="text-xl text-muted-foreground">
-              Organizzare una vacanza con bambini non è sempre semplice. Capo Rizzuto, nell'Area Marina Protetta della Costa Ionica calabrese, risponde perfettamente a tutte le esigenze.
+              Organizzare una vacanza con bambini non è sempre semplice. Capo Rizzuto, nell&apos;Area Marina Protetta della Costa Ionica calabrese, risponde perfettamente a tutte le esigenze.
             </p>
           </div>
         </div>
@@ -42,7 +42,7 @@ export default function ArticlePage() {
             <div>
               <h2 className="text-2xl md:text-3xl font-playfair font-bold mb-4">1. Il mare più sicuro per i bambini</h2>
               <p className="text-lg text-muted-foreground mb-4">
-                L'Area Marina Protetta di Capo Rizzuto è una delle riserve marine più grandi d'Italia. Le acque sono monitorate, pulite e certificate — bandiera blu da anni. Le spiagge di questa zona hanno fondali che digradano dolcemente, con profondità basse per decine di metri dalla riva.
+                L&apos;Area Marina Protetta di Capo Rizzuto è una delle riserve marine più grandi d&apos;Italia. Le acque sono monitorate, pulite e certificate — bandiera blu da anni. Le spiagge di questa zona hanno fondali che digradano dolcemente, con profondità basse per decine di metri dalla riva.
               </p>
               <p className="text-lg text-muted-foreground">
                 La Spiaggia dei Gigli, a meno di un minuto a piedi da Villa Olimpia, è uno degli esempi più belli: acqua tiepida, trasparente e bassissima per tutta la zona di balneazione.
@@ -66,15 +66,15 @@ export default function ArticlePage() {
             <div>
               <h2 className="text-2xl md:text-3xl font-playfair font-bold mb-4">4. La piscina privata</h2>
               <p className="text-lg text-muted-foreground">
-                La piscina privata di Villa Olimpia è ad uso esclusivo degli ospiti. L'area solarium attrezzata permette ai genitori di rilassarsi mentre i bambini nuotano. Per i più piccoli, alternare mare e piscina è il modo perfetto per riempire le giornate estive.
+                La piscina privata di Villa Olimpia è ad uso esclusivo degli ospiti. L&apos;area solarium attrezzata permette ai genitori di rilassarsi mentre i bambini nuotano. Per i più piccoli, alternare mare e piscina è il modo perfetto per riempire le giornate estive.
               </p>
             </div>
 
             <div>
               <h2 className="text-2xl md:text-3xl font-playfair font-bold mb-4">5. Attività per bambini di ogni età</h2>
               <ul className="list-disc list-inside text-lg text-muted-foreground space-y-2">
-                <li>Snorkeling nell'Area Marina Protetta dai 6 anni in su</li>
-                <li>Visita al Castello di Le Castella a 5 minuti d'auto — un luogo magico per i bambini</li>
+                <li>Snorkeling nell&apos;Area Marina Protetta dai 6 anni in su</li>
+                <li>Visita al Castello di Le Castella a 5 minuti d&apos;auto — un luogo magico per i bambini</li>
                 <li>Escursioni in barca con avvistamento di delfini</li>
                 <li>Gelaterie e mercati locali per la scoperta del cibo calabrese</li>
               </ul>

@@ -87,7 +87,7 @@ export default function BlogPage() {
                           <Button asChild variant="outline" size="sm" className="mt-4">
                             <Link href={`/blog/${article.slug}`}>
                               <BookOpen className="h-4 w-4 mr-2" />
-                              Leggi l'articolo
+                              Leggi l&apos;articolo
                             </Link>
                           </Button>
                         </div>

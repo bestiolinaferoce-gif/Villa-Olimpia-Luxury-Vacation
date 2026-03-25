@@ -30,7 +30,7 @@ export default function ArticlePage() {
               Prenotazione diretta vs Airbnb e Booking: perché conviene prenotare direttamente a Villa Olimpia
             </h1>
             <p className="text-xl text-muted-foreground">
-              Siamo presenti su Airbnb e Booking.com — ci aiutano a farci trovare. Ma c'è qualcosa che i portali non ti dicono: prenotare direttamente da noi conviene di più, per te e per noi.
+              Siamo presenti su Airbnb e Booking.com — ci aiutano a farci trovare. Ma c&apos;è qualcosa che i portali non ti dicono: prenotare direttamente da noi conviene di più, per te e per noi.
             </p>
           </div>
         </div>

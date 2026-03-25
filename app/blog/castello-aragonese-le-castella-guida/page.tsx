@@ -30,7 +30,7 @@ export default function ArticlePage() {
               Castello Aragonese di Le Castella: guida completa per la visita
             </h1>
             <p className="text-xl text-muted-foreground">
-              Il Castello Aragonese di Le Castella è un'antica fortezza medievale che sorge su un isolotto collegato alla terraferma da un sottile istmo, circondata per tre lati dal mare cristallino dell'Area Marina Protetta di Capo Rizzuto. Si trova a soli 5 minuti d'auto da Villa Olimpia.
+              Il Castello Aragonese di Le Castella è un&apos;antica fortezza medievale che sorge su un isolotto collegato alla terraferma da un sottile istmo, circondata per tre lati dal mare cristallino dell&apos;Area Marina Protetta di Capo Rizzuto. Si trova a soli 5 minuti d&apos;auto da Villa Olimpia.
             </p>
           </div>
         </div>
@@ -42,7 +42,7 @@ export default function ArticlePage() {
             <div>
               <h2 className="text-2xl md:text-3xl font-playfair font-bold mb-4">La storia</h2>
               <p className="text-lg text-muted-foreground">
-                Le origini risalgono all'epoca greca. La struttura attuale è prevalentemente medievale: costruita tra il XIV e il XVI secolo durante il dominio aragonese. Nel 1574 fu attaccata dalle flotte ottomane di Uluc Alì. Restaurata in epoca moderna, è oggi uno dei monumenti più visitati della Calabria.
+                Le origini risalgono all&apos;epoca greca. La struttura attuale è prevalentemente medievale: costruita tra il XIV e il XVI secolo durante il dominio aragonese. Nel 1574 fu attaccata dalle flotte ottomane di Uluc Alì. Restaurata in epoca moderna, è oggi uno dei monumenti più visitati della Calabria.
               </p>
             </div>
 
