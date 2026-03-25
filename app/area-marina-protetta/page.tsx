@@ -1,4 +1,5 @@
 import { Metadata } from "next"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { generateMetadata } from "@/lib/metadata"
@@ -25,6 +26,17 @@ export default function AreaMarinaProtettaPage() {
               Esplora una delle riserve marine più importanti d&apos;Italia. L&apos;Area Marina Protetta Capo Rizzuto 
               offre fondali spettacolari ricchi di biodiversità, perfetti per snorkeling e immersioni.
             </p>
+            <div className="relative w-full max-w-5xl mx-auto mt-4 overflow-hidden rounded-2xl shadow-lg ring-1 ring-black/5">
+              <Image
+                src="/images/territorio/area-marina-protetta-capo-rizzuto.jpg"
+                alt="Area Marina Protetta di Capo Rizzuto"
+                width={1200}
+                height={630}
+                priority
+                className="h-auto w-full object-cover rounded-2xl"
+                sizes="(max-width: 768px) 100vw, 896px"
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -77,6 +89,17 @@ export default function AreaMarinaProtettaPage() {
                   <p className="text-muted-foreground">specie marine</p>
                 </CardContent>
               </Card>
+            </div>
+
+            <div className="relative w-full overflow-hidden rounded-2xl shadow-md ring-1 ring-black/5 mt-12">
+              <Image
+                src="/images/territorio/tramonto-area-marina-protetta.jpg"
+                alt="Tramonto sull&apos;Area Marina Protetta di Capo Rizzuto"
+                width={1200}
+                height={630}
+                className="h-auto w-full object-cover rounded-2xl"
+                sizes="(max-width: 768px) 100vw, 896px"
+              />
             </div>
           </div>
         </div>

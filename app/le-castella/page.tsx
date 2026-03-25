@@ -1,4 +1,5 @@
 import { Metadata } from "next"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { generateMetadata } from "@/lib/metadata"
@@ -25,6 +26,17 @@ export default function LeCastellaPage() {
               Scopri Le Castella, uno dei borghi più suggestivi della Calabria, e soggiorna a Villa Olimpia, 
               a soli 8 minuti di auto dal famoso Castello Aragonese.
             </p>
+            <div className="relative w-full max-w-5xl mx-auto mt-4 overflow-hidden rounded-2xl shadow-lg ring-1 ring-black/5">
+              <Image
+                src="/images/territorio/castello-aragonese-le-castella.jpg"
+                alt="Castello Aragonese di Le Castella"
+                width={1200}
+                height={630}
+                priority
+                className="h-auto w-full object-cover rounded-2xl"
+                sizes="(max-width: 768px) 100vw, 896px"
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -76,6 +88,29 @@ export default function LeCastellaPage() {
                   <p className="text-muted-foreground">Bandiera Blu</p>
                 </CardContent>
               </Card>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-6 mt-12">
+              <div className="relative overflow-hidden rounded-xl shadow-md ring-1 ring-black/5">
+                <Image
+                  src="/images/territorio/castello-aragonese-le-castella-2.jpg"
+                  alt="Castello Aragonese Le Castella vista mare"
+                  width={1200}
+                  height={630}
+                  className="h-auto w-full object-cover rounded-xl"
+                  sizes="(max-width: 768px) 100vw, 448px"
+                />
+              </div>
+              <div className="relative overflow-hidden rounded-xl shadow-md ring-1 ring-black/5">
+                <Image
+                  src="/images/territorio/tramonto-castello-aragonese-le-castella.jpg"
+                  alt="Tramonto al Castello di Le Castella"
+                  width={1200}
+                  height={630}
+                  className="h-auto w-full object-cover rounded-xl"
+                  sizes="(max-width: 768px) 100vw, 448px"
+                />
+              </div>
             </div>
           </div>
         </div>

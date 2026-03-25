@@ -1,4 +1,5 @@
 import { Metadata } from "next"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { generateMetadata } from "@/lib/metadata"
@@ -29,6 +30,17 @@ export default function SpiaggeCapoRizzutoPage() {
               </Link>{" "}
               è la base perfetta per la tua vacanza al mare, a meno di 100 metri dalla spiaggia Bandiera Blu.
             </p>
+            <div className="relative w-full max-w-5xl mx-auto mt-4 overflow-hidden rounded-2xl shadow-lg ring-1 ring-black/5">
+              <Image
+                src="/images/territorio/spiaggia-capopiccolo.jpg"
+                alt="Spiaggia di Capopiccolo Capo Rizzuto"
+                width={1200}
+                height={630}
+                priority
+                className="h-auto w-full object-cover rounded-2xl"
+                sizes="(max-width: 768px) 100vw, 896px"
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -86,6 +98,28 @@ export default function SpiaggeCapoRizzutoPage() {
                     una delle riserve marine più importanti d&apos;Italia. Le acque sono cristalline e i fondali ricchi 
                     di vita marina, perfetti per snorkeling e immersioni.
                   </p>
+                  <div className="grid md:grid-cols-2 gap-4 mt-6">
+                    <div className="relative overflow-hidden rounded-xl shadow-md ring-1 ring-black/5">
+                      <Image
+                        src="/images/territorio/spiaggia-capopiccolo-lato-interno.jpg"
+                        alt="Spiaggia di Capopiccolo vista interna"
+                        width={1200}
+                        height={630}
+                        className="h-auto w-full object-cover rounded-xl"
+                        sizes="(max-width: 768px) 100vw, 400px"
+                      />
+                    </div>
+                    <div className="relative overflow-hidden rounded-xl shadow-md ring-1 ring-black/5">
+                      <Image
+                        src="/images/territorio/spiaggia-capopiccolo-3.jpg"
+                        alt="Acque cristalline Capopiccolo Capo Rizzuto"
+                        width={1200}
+                        height={630}
+                        className="h-auto w-full object-cover rounded-xl"
+                        sizes="(max-width: 768px) 100vw, 400px"
+                      />
+                    </div>
+                  </div>
                   <div className="grid md:grid-cols-2 gap-4 mt-4">
                     <div className="p-3 bg-primary/5 rounded-lg">
                       <p className="font-semibold mb-1">Attività</p>
