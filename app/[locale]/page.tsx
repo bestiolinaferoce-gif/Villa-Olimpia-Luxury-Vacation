@@ -7,9 +7,6 @@ import { ScrollReveal } from "@/components/animations/scroll-reveal"
 import { SectionDivider } from "@/components/animations/section-divider"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { UrgencyBanner } from "@/components/conversion/urgency-banner"
-import { CampaignBanner } from "@/components/conversion/campaign-banner"
-import { JuneJulyBanner } from "@/components/conversion/june-july-banner"
 import { JuneJulySection } from "@/components/conversion/june-july-section"
 import { TrustBadges } from "@/components/conversion/trust-badges"
 import { SocialProof } from "@/components/conversion/social-proof"
@@ -107,9 +104,6 @@ export default function HomePage() {
 
   return (
     <>
-      <UrgencyBanner />
-      <JuneJulyBanner />
-      <CampaignBanner />
       <HeroSectionPremium />
       <TrustBadges />
 

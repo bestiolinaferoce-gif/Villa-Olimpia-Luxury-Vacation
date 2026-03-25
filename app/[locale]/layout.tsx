@@ -6,7 +6,6 @@ import { NextIntlClientProvider } from 'next-intl'
 import { getMessages } from 'next-intl/server'
 import { notFound } from 'next/navigation'
 import { locales } from '@/i18n/request'
-import Link from "next/link"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { CookieConsent } from "@/components/CookieConsent"
@@ -282,19 +281,6 @@ export default async function LocaleLayout({
             <AutoOptimizer />
             <LazyOverlays />
             <DirectionsProvider>
-              <div className="bg-primary text-white text-xs sm:text-sm">
-                <div className="max-w-6xl mx-auto px-4 py-2 flex flex-col sm:flex-row items-center justify-between gap-2">
-                  <span className="text-center sm:text-left">
-                    Prenotazione diretta Villa Olimpia: nessuna commissione di portali e migliori tariffe sulle stesse date.
-                  </span>
-                  <Link
-                    href="/contatti?source=topbar#prenota"
-                    className="inline-flex items-center justify-center rounded-full bg-white text-primary px-4 py-1 text-xs sm:text-sm font-semibold hover:bg-white/90 transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-primary"
-                  >
-                    Verifica disponibilità
-                  </Link>
-                </div>
-              </div>
               <PreloadResources />
               <TouchOptimizer />
               <Header />

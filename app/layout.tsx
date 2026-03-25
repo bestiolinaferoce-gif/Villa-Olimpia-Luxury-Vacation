@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next"
 import { Inter, Playfair_Display } from "next/font/google"
 import Script from "next/script"
-import Link from "next/link"
 import "./globals.css"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
@@ -213,20 +212,6 @@ export default function RootLayout({
             <FloatingBooking />
             <NewsletterPopup />
             <DirectionsProvider>
-              {/* Barra globale prenotazione diretta — June/July focused */}
-              <div className="bg-primary text-white text-xs sm:text-sm" role="banner">
-                <div className="max-w-6xl mx-auto px-4 py-2 flex flex-col sm:flex-row items-center justify-between gap-2">
-                  <span className="text-center sm:text-left">
-                    <strong>Giugno e Luglio 2026:</strong> prenota direttamente — nessuna commissione, miglior tariffa garantita.
-                  </span>
-                  <Link
-                    href="/contatti?source=topbar#prenota"
-                    className="inline-flex items-center justify-center rounded-full bg-white text-primary px-4 py-1 text-xs sm:text-sm font-semibold hover:bg-white/90 transition-colors whitespace-nowrap"
-                  >
-                    Verifica disponibilità
-                  </Link>
-                </div>
-              </div>
               <PreloadResources />
               <TouchOptimizer />
               <Header />

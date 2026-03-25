@@ -39,13 +39,10 @@ export function Header() {
         reviews: "Recensioni",
         faq: "FAQ",
         contacts: "Contatti",
-        seasonMaggio: "Maggio 2026",
-        seasonGiugno: "Giugno 2026",
-        seasonLuglio: "Luglio 2026",
       },
       common: {
         bookNow: "Prenota Ora",
-      }
+      },
     }
   }
 
@@ -59,7 +56,7 @@ export function Header() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  const navItems = [
+  const coreNavItems = [
     { href: "/", label: t.nav.home },
     { href: "/appartamenti", label: t.nav.apartments },
     { href: "/location", label: t.nav.location },
@@ -67,10 +64,13 @@ export function Header() {
     { href: "/recensioni", label: t.nav.reviews },
     { href: "/faq", label: t.nav.faq },
     { href: "/contatti?source=header_menu", label: t.nav.contacts },
-    { href: seasonalLandingPath("maggio"), label: t.nav.seasonMaggio },
-    { href: seasonalLandingPath("giugno"), label: t.nav.seasonGiugno },
-    { href: seasonalLandingPath("luglio"), label: t.nav.seasonLuglio },
   ]
+
+  const seasonLinks = [
+    { href: seasonalLandingPath("maggio"), label: "Maggio" },
+    { href: seasonalLandingPath("giugno"), label: "Giugno" },
+    { href: seasonalLandingPath("luglio"), label: "Luglio" },
+  ] as const
 
   return (
     <header
@@ -95,13 +95,13 @@ export function Header() {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-3">
-            {navItems.map((item) => (
+          <nav className="hidden lg:flex items-center gap-2 xl:gap-3">
+            {coreNavItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
                 className={`
-                  text-sm font-semibold px-4 py-2 rounded-lg transition-all duration-300
+                  text-sm font-semibold px-3 py-2 rounded-lg transition-all duration-300
                   relative group
                   ${isScrolled 
                     ? "text-gray-800 bg-white border-2 border-gray-300 hover:border-primary hover:text-primary hover:bg-white shadow-md" 
@@ -112,7 +112,6 @@ export function Header() {
                 <span className={`relative z-10 ${
                   isScrolled ? "" : "drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]"
                 }`}>{item.label}</span>
-                {/* Effetto hover sottile */}
                 <span className={`absolute inset-0 rounded-lg transition-all duration-300 ${
                   isScrolled 
                     ? "bg-primary/10 opacity-0 group-hover:opacity-100" 
@@ -120,6 +119,35 @@ export function Header() {
                 }`} />
               </Link>
             ))}
+            <div
+              className={`flex items-center gap-0.5 rounded-lg px-2 py-1.5 ${
+                isScrolled
+                  ? "border border-gray-200 bg-white/90 shadow-sm"
+                  : "border border-white/40 bg-white/15 backdrop-blur-md"
+              }`}
+              role="group"
+              aria-label="Prenotazione per mese"
+            >
+              {seasonLinks.map((s, i) => (
+                <span key={s.href} className="flex items-center">
+                  {i > 0 ? (
+                    <span className={`mx-0.5 text-[10px] select-none ${isScrolled ? "text-gray-300" : "text-white/40"}`} aria-hidden>
+                      ·
+                    </span>
+                  ) : null}
+                  <Link
+                    href={s.href}
+                    className={`text-xs font-semibold px-2 py-1 rounded-md transition-colors ${
+                      isScrolled
+                        ? "text-gray-700 hover:bg-primary/10 hover:text-primary"
+                        : "text-white/95 hover:bg-white/20 drop-shadow-[0_1px_2px_rgba(0,0,0,0.4)]"
+                    }`}
+                  >
+                    {s.label}
+                  </Link>
+                </span>
+              ))}
+            </div>
           </nav>
 
           {/* CTA Buttons e Language Selector */}
@@ -169,7 +197,7 @@ export function Header() {
             className="lg:hidden border-t bg-background/95 backdrop-blur-md"
           >
             <nav className="container mx-auto px-4 py-6 space-y-3">
-              {navItems.map((item) => (
+              {coreNavItems.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
@@ -179,6 +207,21 @@ export function Header() {
                   {item.label}
                 </Link>
               ))}
+              <p className="px-1 pt-2 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                Tariffe per mese
+              </p>
+              <div className="grid grid-cols-3 gap-2">
+                {seasonLinks.map((s) => (
+                  <Link
+                    key={s.href}
+                    href={s.href}
+                    className="text-center text-sm font-semibold px-2 py-3 rounded-lg bg-primary/5 border border-primary/20 text-primary hover:bg-primary/10"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {s.label}
+                  </Link>
+                ))}
+              </div>
               <div className="pt-4 space-y-3 border-t">
                 <div className="px-4">
                   <LanguageSelector />
