@@ -7,10 +7,25 @@ import { Waves, MapPin, Star, Umbrella } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 
 export const metadata: Metadata = generateMetadata({
-  title: "Migliori Spiagge Capo Rizzuto | Villa Olimpia | Spiaggia dei Gigli",
-  description: "Scopri le migliori spiagge di Capo Rizzuto: Spiaggia dei Gigli, Capopiccolo, Le Castella. Villa Olimpia a meno di 100 m dalla spiaggia Bandiera Blu.",
+  title: "Migliori Spiagge di Capo Rizzuto e Capopiccolo | Villa Olimpia",
+  description: "Scopri le migliori spiagge di Capo Rizzuto: Spiaggia dei Gigli, Capopiccolo, Le Castella e Area Marina Protetta. Villa Olimpia si trova a meno di 100 metri dal mare.",
   path: "/spiagge-capo-rizzuto",
 })
+
+const capopiccoloImages = [
+  {
+    src: "/images/territory/spiaggia-capopiccolo.jpg",
+    alt: "Spiaggia di Capopiccolo nell'Area Marina Protetta di Capo Rizzuto",
+  },
+  {
+    src: "/images/territory/spiaggia-capopiccolo-lato-interno.jpg",
+    alt: "Cala di Capopiccolo con mare cristallino vicino Villa Olimpia",
+  },
+  {
+    src: "/images/territory/spiaggia-capopiccolo-panorama.jpg",
+    alt: "Panorama di Capopiccolo a Isola di Capo Rizzuto",
+  },
+]
 
 export default function SpiaggeCapoRizzutoPage() {
   return (
@@ -30,9 +45,13 @@ export default function SpiaggeCapoRizzutoPage() {
               </Link>{" "}
               è la base perfetta per la tua vacanza al mare, a meno di 100 metri dalla spiaggia Bandiera Blu.
             </p>
-            <div className="relative w-full max-w-5xl mx-auto mt-4 overflow-hidden rounded-2xl shadow-lg ring-1 ring-black/5">
+            <p className="text-base text-muted-foreground max-w-3xl mx-auto">
+              Questa guida ti aiuta a scegliere tra le spiagge di Capopiccolo, Le Castella e l&apos;Area Marina Protetta di Capo Rizzuto,
+              con consigli pratici per famiglie, snorkeling e giornate di relax vicino a Villa Olimpia.
+            </p>
+            <div className="relative w-full max-w-5xl mx-auto mt-6 overflow-hidden rounded-2xl shadow-lg ring-1 ring-black/5">
               <Image
-                src="/images/territorio/spiaggia-capopiccolo.jpg"
+                src="/images/territory/spiaggia-capopiccolo.jpg"
                 alt="Spiaggia di Capopiccolo Capo Rizzuto"
                 width={1200}
                 height={630}
@@ -51,6 +70,23 @@ export default function SpiaggeCapoRizzutoPage() {
             <h2 className="text-3xl md:text-4xl font-playfair font-bold mb-8 text-center">
               Spiagge da Non Perdere
             </h2>
+
+            <div className="grid gap-4 md:grid-cols-3 mb-10">
+              {capopiccoloImages.map((image) => (
+                <div key={image.src} className="relative overflow-hidden rounded-2xl border border-primary/10 shadow-sm bg-white">
+                  <div className="relative aspect-[4/3]">
+                    <Image
+                      src={image.src}
+                      alt={image.alt}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                    />
+                  </div>
+                  <p className="px-4 py-3 text-sm text-muted-foreground">{image.alt}</p>
+                </div>
+              ))}
+            </div>
             
             <div className="space-y-8 mb-12">
               <Card>
@@ -98,27 +134,18 @@ export default function SpiaggeCapoRizzutoPage() {
                     una delle riserve marine più importanti d&apos;Italia. Le acque sono cristalline e i fondali ricchi 
                     di vita marina, perfetti per snorkeling e immersioni.
                   </p>
-                  <div className="grid md:grid-cols-2 gap-4 mt-6">
-                    <div className="relative overflow-hidden rounded-xl shadow-md ring-1 ring-black/5">
-                      <Image
-                        src="/images/territorio/spiaggia-capopiccolo-lato-interno.jpg"
-                        alt="Spiaggia di Capopiccolo vista interna"
-                        width={1200}
-                        height={630}
-                        className="h-auto w-full object-cover rounded-xl"
-                        sizes="(max-width: 768px) 100vw, 400px"
-                      />
-                    </div>
-                    <div className="relative overflow-hidden rounded-xl shadow-md ring-1 ring-black/5">
-                      <Image
-                        src="/images/territorio/spiaggia-capopiccolo-3.jpg"
-                        alt="Acque cristalline Capopiccolo Capo Rizzuto"
-                        width={1200}
-                        height={630}
-                        className="h-auto w-full object-cover rounded-xl"
-                        sizes="(max-width: 768px) 100vw, 400px"
-                      />
-                    </div>
+                  <div className="grid gap-4 md:grid-cols-3 mb-4">
+                    {capopiccoloImages.map((image) => (
+                      <div key={`card-${image.src}`} className="relative aspect-[4/3] overflow-hidden rounded-xl">
+                        <Image
+                          src={image.src}
+                          alt={image.alt}
+                          fill
+                          className="object-cover"
+                          sizes="(max-width: 768px) 100vw, 33vw"
+                        />
+                      </div>
+                    ))}
                   </div>
                   <div className="grid md:grid-cols-2 gap-4 mt-4">
                     <div className="p-3 bg-primary/5 rounded-lg">
@@ -146,6 +173,15 @@ export default function SpiaggeCapoRizzutoPage() {
                     La spiaggia di <strong>Le Castella</strong> offre una vista spettacolare sul Castello Aragonese. 
                     Sabbia dorata e acque turchesi la rendono una delle spiagge più fotografate della Calabria.
                   </p>
+                  <div className="relative aspect-[16/9] overflow-hidden rounded-2xl mb-4">
+                    <Image
+                      src="/images/territory/tramonto-castello-aragonese-le-castella.jpg"
+                      alt="Castello Aragonese di Le Castella al tramonto visto dalla costa"
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 1024px) 100vw, 60vw"
+                    />
+                  </div>
                   <div className="grid md:grid-cols-2 gap-4 mt-4">
                     <div className="p-3 bg-primary/5 rounded-lg">
                       <p className="font-semibold mb-1">Vista</p>

@@ -7,10 +7,25 @@ import { MapPin, Clock, Camera, Waves } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 
 export const metadata: Metadata = generateMetadata({
-  title: "Vacanze Le Castella | Villa Olimpia | Appartamenti vicino Castello Aragonese",
-  description: "Prenota vacanze a Le Castella, Calabria. Villa Olimpia a 8 minuti dal Castello Aragonese. Appartamenti con piscina, WiFi, parcheggio. Spiaggia dei Gigli.",
+  title: "Le Castella e Castello Aragonese | Villa Olimpia vicino Capopiccolo",
+  description: "Scopri Le Castella e il Castello Aragonese durante il soggiorno a Villa Olimpia. Appartamenti con piscina a Capopiccolo, a pochi minuti da una delle mete più belle della Calabria.",
   path: "/le-castella",
 })
+
+const leCastellaImages = [
+  {
+    src: "/images/territory/castello-aragonese-le-castella.jpg",
+    alt: "Castello Aragonese di Le Castella visto dalla spiaggia",
+  },
+  {
+    src: "/images/territory/castello-aragonese-le-castella-2.jpg",
+    alt: "Vista del Castello Aragonese di Le Castella dalla costa",
+  },
+  {
+    src: "/images/territory/tramonto-castello-aragonese-le-castella.jpg",
+    alt: "Castello Aragonese di Le Castella al tramonto",
+  },
+]
 
 export default function LeCastellaPage() {
   return (
@@ -26,9 +41,13 @@ export default function LeCastellaPage() {
               Scopri Le Castella, uno dei borghi più suggestivi della Calabria, e soggiorna a Villa Olimpia, 
               a soli 8 minuti di auto dal famoso Castello Aragonese.
             </p>
-            <div className="relative w-full max-w-5xl mx-auto mt-4 overflow-hidden rounded-2xl shadow-lg ring-1 ring-black/5">
+            <p className="text-base text-muted-foreground max-w-3xl mx-auto">
+              Una pagina utile per chi cerca cosa vedere a Le Castella, dove fare una passeggiata sul mare e perché scegliere Capopiccolo
+              come base strategica per visitare la costa ionica calabrese.
+            </p>
+            <div className="relative w-full max-w-5xl mx-auto mt-6 overflow-hidden rounded-2xl shadow-lg ring-1 ring-black/5">
               <Image
-                src="/images/territorio/castello-aragonese-le-castella.jpg"
+                src="/images/territory/castello-aragonese-le-castella.jpg"
                 alt="Castello Aragonese di Le Castella"
                 width={1200}
                 height={630}
@@ -56,6 +75,23 @@ export default function LeCastellaPage() {
               Il castello, risalente al XV secolo, è stato utilizzato come fortezza difensiva contro le incursioni 
               saracene e oggi è una delle attrazioni turistiche più visitate della Calabria.
             </p>
+
+            <div className="grid gap-4 md:grid-cols-3 mb-12">
+              {leCastellaImages.map((image) => (
+                <div key={image.src} className="overflow-hidden rounded-2xl border border-primary/10 bg-white shadow-sm">
+                  <div className="relative aspect-[4/3]">
+                    <Image
+                      src={image.src}
+                      alt={image.alt}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                    />
+                  </div>
+                  <p className="px-4 py-3 text-sm text-muted-foreground">{image.alt}</p>
+                </div>
+              ))}
+            </div>
 
             <div className="grid md:grid-cols-3 gap-6 mb-12">
               <Card>
@@ -89,29 +125,6 @@ export default function LeCastellaPage() {
                 </CardContent>
               </Card>
             </div>
-
-            <div className="grid md:grid-cols-2 gap-6 mt-12">
-              <div className="relative overflow-hidden rounded-xl shadow-md ring-1 ring-black/5">
-                <Image
-                  src="/images/territorio/castello-aragonese-le-castella-2.jpg"
-                  alt="Castello Aragonese Le Castella vista mare"
-                  width={1200}
-                  height={630}
-                  className="h-auto w-full object-cover rounded-xl"
-                  sizes="(max-width: 768px) 100vw, 448px"
-                />
-              </div>
-              <div className="relative overflow-hidden rounded-xl shadow-md ring-1 ring-black/5">
-                <Image
-                  src="/images/territorio/tramonto-castello-aragonese-le-castella.jpg"
-                  alt="Tramonto al Castello di Le Castella"
-                  width={1200}
-                  height={630}
-                  className="h-auto w-full object-cover rounded-xl"
-                  sizes="(max-width: 768px) 100vw, 448px"
-                />
-              </div>
-            </div>
           </div>
         </div>
       </section>
@@ -129,6 +142,15 @@ export default function LeCastellaPage() {
                   <CardTitle>Visita il Castello Aragonese</CardTitle>
                 </CardHeader>
                 <CardContent>
+                  <div className="relative aspect-[16/9] overflow-hidden rounded-2xl mb-4">
+                    <Image
+                      src="/images/territory/castello-aragonese-le-castella-2.jpg"
+                      alt="Vista del Castello Aragonese di Le Castella dalla costa ionica"
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 1024px) 100vw, 60vw"
+                    />
+                  </div>
                   <p className="text-muted-foreground mb-4">
                     Esplora l&apos;interno del castello, sali sulle torri per ammirare il panorama mozzafiato sul mare Ionio, 
                     e scopri la storia di questa fortezza che ha resistito a secoli di battaglie.

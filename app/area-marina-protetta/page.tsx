@@ -7,10 +7,21 @@ import { Waves, Fish, MapPin, Shield, Eye } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 
 export const metadata: Metadata = generateMetadata({
-  title: "Diving Capo Rizzuto | Area Marina Protetta | Villa Olimpia",
-  description: "Scopri l'Area Marina Protetta Capo Rizzuto: snorkeling, immersioni, diving. Villa Olimpia a 2km dalla riserva marina. Fondali ricchi di vita.",
+  title: "Area Marina Protetta Capo Rizzuto e Snorkeling | Villa Olimpia",
+  description: "Scopri l'Area Marina Protetta di Capo Rizzuto: snorkeling, immersioni, fondali trasparenti e spiagge di Capopiccolo. Villa Olimpia è una base ideale vicino al mare.",
   path: "/area-marina-protetta",
 })
+
+const marineImages = [
+  {
+    src: "/images/territory/area-marina-protetta-capo-rizzuto.jpg",
+    alt: "Area Marina Protetta di Capo Rizzuto con acque cristalline",
+  },
+  {
+    src: "/images/territory/tramonto-area-marina-protetta.jpg",
+    alt: "Tramonto sull'Area Marina Protetta di Capo Rizzuto",
+  },
+]
 
 export default function AreaMarinaProtettaPage() {
   return (
@@ -26,9 +37,13 @@ export default function AreaMarinaProtettaPage() {
               Esplora una delle riserve marine più importanti d&apos;Italia. L&apos;Area Marina Protetta Capo Rizzuto 
               offre fondali spettacolari ricchi di biodiversità, perfetti per snorkeling e immersioni.
             </p>
-            <div className="relative w-full max-w-5xl mx-auto mt-4 overflow-hidden rounded-2xl shadow-lg ring-1 ring-black/5">
+            <p className="text-base text-muted-foreground max-w-3xl mx-auto">
+              Se stai cercando dove fare snorkeling a Capo Rizzuto o quali spiagge visitare vicino a Capopiccolo,
+              qui trovi i motivi per cui questa zona è una delle più forti del sito in ottica esperienza e ricerca locale.
+            </p>
+            <div className="relative w-full max-w-5xl mx-auto mt-6 overflow-hidden rounded-2xl shadow-lg ring-1 ring-black/5">
               <Image
-                src="/images/territorio/area-marina-protetta-capo-rizzuto.jpg"
+                src="/images/territory/area-marina-protetta-capo-rizzuto.jpg"
                 alt="Area Marina Protetta di Capo Rizzuto"
                 width={1200}
                 height={630}
@@ -37,42 +52,6 @@ export default function AreaMarinaProtettaPage() {
                 sizes="(max-width: 768px) 100vw, 896px"
               />
             </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4 max-w-4xl">
-          <h2 className="text-3xl font-playfair font-bold mb-6">
-            Area Marina Protetta Capo Rizzuto — La più Grande d&apos;Italia
-          </h2>
-          <p className="text-lg text-stone-600 mb-4 leading-relaxed">
-            L&apos;<strong>Area Marina Protetta di Capo Rizzuto</strong> è la più grande area marina protetta
-            d&apos;Italia, con oltre 14.000 ettari di mare cristallino, fondali di posidonia oceanica, grotte
-            sottomarine e una biodiversità unica nel Mediterraneo. Istituita nel 1991, oggi è Sito Natura 2000 e
-            Zona Speciale di Conservazione.
-          </p>
-          <p className="text-lg text-stone-600 mb-4 leading-relaxed">
-            Villa Olimpia si trova a <strong>100 metri dalla Spiaggia dei Gigli</strong>, una delle spiagge più belle
-            dell&apos;Area Marina Protetta, insignita della <strong>Bandiera Blu</strong> per la qualità delle acque e
-            dei servizi.
-          </p>
-          <p className="text-lg text-stone-600 mb-8 leading-relaxed">
-            Nelle acque dell&apos;Area Marina Protetta vivono tartarughe Caretta caretta, cernie, barracuda, polpi,
-            razze e oltre 200 specie di pesci. Lo snorkeling e il diving qui sono tra i migliori del Mediterraneo.
-          </p>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-8">
-            {[
-              { val: '14.000', label: 'ettari protetti' },
-              { val: '1991', label: 'anno di istituzione' },
-              { val: '200+', label: 'specie marine' },
-              { val: '100m', label: 'da Villa Olimpia' },
-            ].map((s) => (
-              <div key={s.val} className="text-center p-4 bg-ocean/5 rounded-xl">
-                <div className="text-3xl font-playfair font-bold text-ocean">{s.val}</div>
-                <div className="text-sm text-stone-500 mt-1">{s.label}</div>
-              </div>
-            ))}
           </div>
         </div>
       </section>
@@ -93,6 +72,23 @@ export default function AreaMarinaProtettaPage() {
               come snorkeling, immersioni guidate e pesca sportiva regolamentata, garantendo al contempo la 
               conservazione dell&apos;ambiente marino.
             </p>
+
+            <div className="grid gap-4 md:grid-cols-2 mb-12">
+              {marineImages.map((image) => (
+                <div key={image.src} className="overflow-hidden rounded-2xl border border-primary/10 bg-white shadow-sm">
+                  <div className="relative aspect-[16/10]">
+                    <Image
+                      src={image.src}
+                      alt={image.alt}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                    />
+                  </div>
+                  <p className="px-4 py-3 text-sm text-muted-foreground">{image.alt}</p>
+                </div>
+              ))}
+            </div>
 
             <div className="grid md:grid-cols-3 gap-6 mb-12">
               <Card>
@@ -126,17 +122,6 @@ export default function AreaMarinaProtettaPage() {
                 </CardContent>
               </Card>
             </div>
-
-            <div className="relative w-full overflow-hidden rounded-2xl shadow-md ring-1 ring-black/5 mt-12">
-              <Image
-                src="/images/territorio/tramonto-area-marina-protetta.jpg"
-                alt="Tramonto sull&apos;Area Marina Protetta di Capo Rizzuto"
-                width={1200}
-                height={630}
-                className="h-auto w-full object-cover rounded-2xl"
-                sizes="(max-width: 768px) 100vw, 896px"
-              />
-            </div>
           </div>
         </div>
       </section>
@@ -157,6 +142,15 @@ export default function AreaMarinaProtettaPage() {
                   </div>
                 </CardHeader>
                 <CardContent>
+                  <div className="relative aspect-[16/9] overflow-hidden rounded-2xl mb-4">
+                    <Image
+                      src="/images/territory/area-marina-protetta-capo-rizzuto.jpg"
+                      alt="Fondali e acque trasparenti nell'Area Marina Protetta di Capo Rizzuto"
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 1024px) 100vw, 60vw"
+                    />
+                  </div>
                   <p className="text-lg text-muted-foreground mb-4">
                     L&apos;Area Marina Protetta è perfetta per lo <strong>snorkeling</strong>. I fondali poco profondi 
                     e le acque cristalline permettono di osservare una grande varietà di pesci colorati, stelle marine, 

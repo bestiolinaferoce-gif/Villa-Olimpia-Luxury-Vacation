@@ -8,8 +8,8 @@ import { Breadcrumb } from "@/components/breadcrumb"
 import { generateMetadata as genMeta } from "@/lib/metadata"
 
 export const metadata: Metadata = genMeta({
-  title: "Territorio e Attrazioni - Scopri la Calabria",
-  description: "Esplora le meraviglie del territorio calabrese: Valli Cupe, Castello di Santa Severina, Sila Piccola, spiagge rosse e Le Castella. A pochi minuti da Villa Olimpia.",
+  title: "Territorio, spiagge e attrazioni vicino Villa Olimpia in Calabria",
+  description: "Scopri cosa vedere vicino Villa Olimpia: Capopiccolo, Le Castella, Area Marina Protetta Capo Rizzuto, spiagge, borghi e natura della Calabria ionica.",
   path: "/territorio",
   keywords: [
     "valli cupe calabria",
@@ -68,11 +68,11 @@ const destinations = [
       "Chiese bizantine",
       "Vista panoramica"
     ],
-    image: "/images/villa/gallery/Esterni_LeCastella_01.jpg",
+    image: "/images/territory/castello-aragonese-le-castella.jpg",
     images: [
-      "/images/villa/gallery/Esterni_LeCastella_01.jpg",
-      "/images/villa/gallery/Esterni_Spiaggia_01.jpg",
-      "/images/villa/gallery/Esterni_Spiaggia_Tramonto_01.jpg"
+      "/images/territory/castello-aragonese-le-castella.jpg",
+      "/images/territory/castello-aragonese-le-castella-2.jpg",
+      "/images/territory/tramonto-castello-aragonese-le-castella.jpg"
     ],
     icon: Castle,
     coordinates: { lat: 39.1481, lng: 16.9133 }
@@ -197,11 +197,11 @@ const destinations = [
       "Escursioni in barca",
       "Biodiversità straordinaria"
     ],
-    image: "/images/villa/location/beach-3.jpg",
+    image: "/images/territory/area-marina-protetta-capo-rizzuto.jpg",
     images: [
-      "/images/villa/location/beach-3.jpg",
-      "/images/villa/location/beach-4.jpg",
-      "/images/villa/location/beach-5.jpg"
+      "/images/territory/area-marina-protetta-capo-rizzuto.jpg",
+      "/images/territory/tramonto-area-marina-protetta.jpg",
+      "/images/territory/spiaggia-capopiccolo-panorama.jpg"
     ],
     icon: Waves,
     coordinates: { lat: 38.95, lng: 17.0833 }
@@ -245,7 +245,7 @@ export default function TerritorioPage() {
       <section className="relative h-[60vh] min-h-[420px] overflow-hidden bg-[#061829]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/villa/gallery/Esterni_Spiaggia_Estiva_01.jpg"
+            src="/images/territory/spiaggia-capopiccolo-panorama.jpg"
             alt="Vista panoramica Calabria - Territorio Villa Olimpia"
             fill
             className="object-cover"

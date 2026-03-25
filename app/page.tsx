@@ -30,6 +30,11 @@ const HowToReachUs = dynamic(() => import("@/components/how-to-reach-us").then(m
   ssr: false
 })
 
+const TerritorySection = dynamic(() => import("@/components/territory-section").then(mod => ({ default: mod.TerritorySection })), {
+  loading: () => <div className="h-96 bg-gradient-to-br from-ocean/10 to-primary/10 animate-pulse rounded-lg" />,
+  ssr: false
+})
+
 function CTAButtons() {
   const { t } = useI18n()
   return (
@@ -311,6 +316,9 @@ export default function HomePage() {
 
       {/* How to Reach Us */}
       <HowToReachUs />
+
+      {/* Territorio e attrazioni */}
+      <TerritorySection />
 
       {/* FAQ preview */}
       <section className="py-20 bg-background cv-auto">

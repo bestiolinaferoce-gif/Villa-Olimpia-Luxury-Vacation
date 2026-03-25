@@ -28,43 +28,43 @@ const galleryImages = [
   },
   // TERRITORIO - Spiaggia
   {
-    src: '/images/villa/location/beach-2.jpg',
-    alt: 'Spiaggia dei Gigli',
+    src: '/images/territory/spiaggia-capopiccolo.jpg',
+    alt: 'Spiaggia di Capopiccolo nell Area Marina Protetta di Capo Rizzuto',
     category: 'Territorio'
   },
   {
-    src: '/images/villa/location/beach-3.jpg',
-    alt: 'Spiaggia dei Gigli',
+    src: '/images/territory/spiaggia-capopiccolo-lato-interno.jpg',
+    alt: 'Cala di Capopiccolo con mare cristallino vicino Villa Olimpia',
     category: 'Territorio'
   },
   {
-    src: '/images/villa/location/beach-4.jpg',
-    alt: 'Spiaggia dei Gigli - Vista panoramica',
+    src: '/images/territory/spiaggia-capopiccolo-panorama.jpg',
+    alt: 'Panorama di Capopiccolo a Isola di Capo Rizzuto',
     category: 'Territorio'
   },
   {
-    src: '/images/villa/location/beach-5.jpg',
-    alt: 'Spiaggia dei Gigli - Costa calabrese',
+    src: '/images/territory/area-marina-protetta-capo-rizzuto.jpg',
+    alt: 'Area Marina Protetta di Capo Rizzuto con acque cristalline',
     category: 'Territorio'
   },
   {
-    src: '/images/villa/location/beach-night.jpg',
-    alt: 'Spiaggia dei Gigli notturna',
+    src: '/images/territory/tramonto-area-marina-protetta.jpg',
+    alt: 'Tramonto sull Area Marina Protetta di Capo Rizzuto',
     category: 'Territorio'
   },
   {
-    src: '/images/villa/location/spiaggia-dei-gigli.jpg',
-    alt: 'Spiaggia dei Gigli',
+    src: '/images/territory/castello-aragonese-le-castella.jpg',
+    alt: 'Castello Aragonese di Le Castella visto dalla spiaggia',
     category: 'Territorio'
   },
   {
-    src: '/images/villa/location/spiaggia-dei-gigli-2.jpg',
-    alt: 'Spiaggia dei Gigli',
+    src: '/images/territory/castello-aragonese-le-castella-2.jpg',
+    alt: 'Vista del Castello Aragonese di Le Castella dalla costa',
     category: 'Territorio'
   },
   {
-    src: '/images/villa/location/spiaggia-dei-gigli-notturna.jpg',
-    alt: 'Spiaggia dei Gigli notturna',
+    src: '/images/territory/tramonto-castello-aragonese-le-castella.jpg',
+    alt: 'Castello Aragonese di Le Castella al tramonto',
     category: 'Territorio'
   },
   // VILLA - Esterni e facciate (solo foto esistenti)
@@ -152,11 +152,11 @@ export function HomeGallery() {
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-playfair font-bold mb-4 text-gray-900">
-            🏊‍♂️ La Nostra Piscina
+            🏊‍♂️ Piscina E Territorio
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Un&apos;oasi di relax immersa nel verde della Calabria. Piscina privata con solarium attrezzato, 
-            perfetta per momenti di puro relax sotto il sole calabrese.
+            Dalla piscina privata alle spiagge di Capopiccolo, fino a Le Castella e all&apos;Area Marina Protetta:
+            scopri in un colpo d&apos;occhio i motivi per cui Villa Olimpia e la sua posizione fanno davvero la differenza.
           </p>
         </div>
 
@@ -260,9 +260,8 @@ export function HomeGallery() {
         {/* Descrizione Piscina - AGGIUNTO: Testo completo */}
         <div className="mt-12 text-center max-w-3xl mx-auto">
           <p className="text-lg leading-relaxed text-gray-700">
-            Immergiti nelle acque cristalline della nostra splendida piscina privata, circondata da un&apos;area solarium 
-            attrezzata con lettini e ombrelloni. Il luogo perfetto per momenti di puro relax sotto il sole della Calabria, 
-            ideale per famiglie e per chi cerca tranquillità e comfort durante la propria vacanza.
+            Villa Olimpia unisce il comfort degli appartamenti e della piscina a una posizione privilegiata:
+            a pochi passi dal mare di Capopiccolo e a pochi minuti da Le Castella, una base ideale per vivere il meglio della costa ionica calabrese.
           </p>
         </div>
       </div>
