@@ -41,6 +41,42 @@ export default function AreaMarinaProtettaPage() {
         </div>
       </section>
 
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4 max-w-4xl">
+          <h2 className="text-3xl font-playfair font-bold mb-6">
+            Area Marina Protetta Capo Rizzuto — La più Grande d&apos;Italia
+          </h2>
+          <p className="text-lg text-stone-600 mb-4 leading-relaxed">
+            L&apos;<strong>Area Marina Protetta di Capo Rizzuto</strong> è la più grande area marina protetta
+            d&apos;Italia, con oltre 14.000 ettari di mare cristallino, fondali di posidonia oceanica, grotte
+            sottomarine e una biodiversità unica nel Mediterraneo. Istituita nel 1991, oggi è Sito Natura 2000 e
+            Zona Speciale di Conservazione.
+          </p>
+          <p className="text-lg text-stone-600 mb-4 leading-relaxed">
+            Villa Olimpia si trova a <strong>100 metri dalla Spiaggia dei Gigli</strong>, una delle spiagge più belle
+            dell&apos;Area Marina Protetta, insignita della <strong>Bandiera Blu</strong> per la qualità delle acque e
+            dei servizi.
+          </p>
+          <p className="text-lg text-stone-600 mb-8 leading-relaxed">
+            Nelle acque dell&apos;Area Marina Protetta vivono tartarughe Caretta caretta, cernie, barracuda, polpi,
+            razze e oltre 200 specie di pesci. Lo snorkeling e il diving qui sono tra i migliori del Mediterraneo.
+          </p>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-8">
+            {[
+              { val: '14.000', label: 'ettari protetti' },
+              { val: '1991', label: 'anno di istituzione' },
+              { val: '200+', label: 'specie marine' },
+              { val: '100m', label: 'da Villa Olimpia' },
+            ].map((s) => (
+              <div key={s.val} className="text-center p-4 bg-ocean/5 rounded-xl">
+                <div className="text-3xl font-playfair font-bold text-ocean">{s.val}</div>
+                <div className="text-sm text-stone-500 mt-1">{s.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="py-20 bg-gradient-to-b from-[#f5fbff] to-[#e6f4ff]">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">

@@ -38,7 +38,7 @@ export const premiumRestaurants: Restaurant[] = [
     ],
     phone: '+39 0962 795333',
     website: 'https://www.ristorantemicomare.it',
-    googleMapsUrl: 'https://maps.app.goo.gl/xYz123',
+    googleMapsUrl: 'https://www.google.com/maps/search/Ristorante+Micomare+Capo+Rizzuto',
     logo: '/images/ristoranti/micomare-logo.jpg',
     coordinates: { lat: 38.9632, lng: 17.0955 }
   },
@@ -60,7 +60,7 @@ export const premiumRestaurants: Restaurant[] = [
       'Dolci della casa'
     ],
     phone: '+39 0962 795123',
-    googleMapsUrl: 'https://maps.app.goo.gl/aBC456',
+    googleMapsUrl: 'https://www.google.com/maps/search/Ristorante+Da+Mimmo+Le+Castella',
     logo: '/images/ristoranti/da-mimmo-logo.jpg',
     coordinates: { lat: 38.9012, lng: 17.0234 }
   },
@@ -83,7 +83,7 @@ export const premiumRestaurants: Restaurant[] = [
     ],
     phone: '+39 0962 795456',
     website: 'https://www.ristorantearagosta.it',
-    googleMapsUrl: 'https://maps.app.goo.gl/dEF789',
+    googleMapsUrl: 'https://www.google.com/maps/search/L%27Aragosta+Ristorante+Le+Castella',
     logo: '/images/ristoranti/aragosta-logo.jpg',
     coordinates: { lat: 38.9045, lng: 17.0267 }
   },
@@ -105,7 +105,7 @@ export const premiumRestaurants: Restaurant[] = [
       'Tiramisù fatto in casa'
     ],
     phone: '',
-    googleMapsUrl: 'https://maps.app.goo.gl/gHI012',
+    googleMapsUrl: 'https://www.google.com/maps/search/Ristorante+Capopiccolo+Isola+Capo+Rizzuto',
     logo: '/images/ristoranti/da-annibale-logo.jpg',
     coordinates: { lat: 38.9678, lng: 17.0989 }
   },
@@ -127,10 +127,34 @@ export const premiumRestaurants: Restaurant[] = [
       'Insalata di mare'
     ],
     phone: '',
-    googleMapsUrl: 'https://maps.app.goo.gl/jKL345',
+    googleMapsUrl: 'https://www.google.com/maps/search/Lido+Bahama+Capo+Rizzuto',
     logo: '/images/ristoranti/lido-bahama-logo.jpg',
     coordinates: { lat: 38.9555, lng: 17.0822 }
-  }
+  },
+
+  {
+    id: 'ruris',
+    name: 'Ruris Ristorante',
+    location: 'Isola di Capo Rizzuto',
+    distance: '8km da Villa Olimpia',
+    rating: 4.8,
+    reviewCount: 312,
+    priceRange: '€€€',
+    cuisine: 'Fine Dining - Guida Michelin',
+    description:
+      "L'unico ristorante Michelin nell'area di Capo Rizzuto. Chef Natale Pallone propone pesce dello Jonio in chiave contemporanea. Cantina con 200+ etichette, terrazza panoramica.",
+    specialties: [
+      'Crudo di gamberi rossi dello Jonio',
+      "Risotto all'astice con burrata",
+      'Filetto di dentice in crosta di pistacchi',
+      'Dessert al limone e basilico',
+    ],
+    phone: '+39 0962 791460',
+    website: 'https://www.ruris.it',
+    googleMapsUrl: 'https://www.google.com/maps/search/Ruris+Ristorante+Isola+di+Capo+Rizzuto',
+    logo: '/images/ristoranti/ruris-logo.jpg',
+    coordinates: { lat: 38.9321, lng: 17.0856 },
+  },
 ]
 
 // Helper functions
