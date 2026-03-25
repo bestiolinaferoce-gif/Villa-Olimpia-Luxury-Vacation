@@ -26,7 +26,7 @@ export const metadata: Metadata = genMeta({
     "cucina tradizionale calabrese",
     "tour enogastronomici calabria"
   ],
-  image: "/images/og/enogastronomia.jpg"
+  image: "/og-image.jpg",
 })
 
 export default function EnogastronomiaPage() {

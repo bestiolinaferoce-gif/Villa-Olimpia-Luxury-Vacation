@@ -66,10 +66,10 @@ export const IMAGE_PATHS = {
     esterni: "/images/gallery/esterni-villa.jpg",
   },
   
-  // SEO e Social
+  // SEO e Social (asset reali in public/)
   seo: {
-    ogImage: "/images/seo/og-image.jpg", // 1200x630px
-    favicon: "/images/seo/favicon.ico",
+    ogImage: "/og-image.jpg", // 1200x630px
+    favicon: "/favicon.png",
   },
 } as const
 
