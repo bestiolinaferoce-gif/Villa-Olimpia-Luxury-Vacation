@@ -45,7 +45,7 @@ export const restaurants: Restaurant[] = [
     rating: 4.7,
     reviewCount: 487,
     priceRange: '€€',
-    featured: true,
+    featured: false,
     cuisine: 'Pesce e Cucina Tradizionale Calabrese',
     description: 'Ristorante di pesce con vista mozzafiato sul Castello Aragonese di Le Castella. Cucina tradizionale calabrese con pesce fresco del giorno. Gestione familiare dal 1985, ambiente accogliente e informale.',
     specialties: [
@@ -199,6 +199,31 @@ export const restaurants: Restaurant[] = [
     phone: '+39 0962 793456',
     googleMapsUrl: 'https://goo.gl/maps/lidobahama-caporizzuto',
     image: '/images/ristoranti/lido-bahama.jpg'
+  },
+  {
+    id: 'ruris',
+    name: 'Ruris Ristorante',
+    location: 'Isola di Capo Rizzuto',
+    distance: '8km',
+    rating: 4.8,
+    reviewCount: 312,
+    priceRange: '€€€',
+    featured: true,
+    cuisine: 'Fine Dining — Guida Michelin',
+    description:
+      "Riferimento gourmet nell'area di Capo Rizzuto: pesce dello Jonio in chiave contemporanea, cantina con oltre 200 etichette e terrazza panoramica. Prenotazione consigliata.",
+    specialties: [
+      'Crudo di gamberi rossi dello Jonio',
+      "Risotto all'astice con burrata",
+      'Filetto di dentice in crosta di pistacchi',
+      'Dessert al limone e basilico',
+    ],
+    phone: '+39 0962 791460',
+    website: 'https://www.ruris.it',
+    googleMapsUrl: 'https://www.google.com/maps/search/Ruris+Ristorante+Isola+di+Capo+Rizzuto',
+    image: '/images/ristoranti/ruris-logo.jpg',
+    michelin: 'Segnalato Guida Michelin',
+    reservationRequired: true,
   },
 ]
 
