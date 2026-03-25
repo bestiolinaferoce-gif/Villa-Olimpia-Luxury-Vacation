@@ -34,13 +34,24 @@ const nextConfig = {
 
   // Note: swcMinify è sempre abilitato in Next.js 16+, non serve specificarlo
 
+  async headers() {
+    return [
+      {
+        source: "/:path*",
+        headers: [
+          { key: "X-Content-Type-Options", value: "nosniff" },
+          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+          { key: "X-DNS-Prefetch-Control", value: "on" },
+        ],
+      },
+    ]
+  },
+
   // Redirect 301 permanenti
   async redirects() {
     return [
-      // FIX CRITICO: /privacy-policy non esiste come route — la route reale è /privacy
-      // Rimosso redirect /privacy → /privacy-policy (causava loop 404)
-      // /termini → /termini-condizioni (route .jsx esiste)
-            { source: "/appartamenti/apartment-1", destination: "/appartamenti/frangipane", permanent: true },
+      { source: "/privacy-policy", destination: "/privacy", permanent: true },
+      { source: "/appartamenti/apartment-1", destination: "/appartamenti/frangipane", permanent: true },
       { source: "/appartamenti/apartment-2", destination: "/appartamenti/fiordaliso", permanent: true },
       { source: "/appartamenti/apartment-3", destination: "/appartamenti/orchidea", permanent: true },
       { source: "/appartamenti/apartment-4", destination: "/appartamenti/tulipano", permanent: true },

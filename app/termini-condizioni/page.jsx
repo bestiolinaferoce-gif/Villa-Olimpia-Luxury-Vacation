@@ -655,7 +655,7 @@ export default function TerminiCondizioniPage() {
                 <li>Comunicazioni relative al soggiorno</li>
               </ul>
               <p>
-                <strong>Informativa completa:</strong> <a href="/privacy-policy">Privacy Policy</a>
+                <strong>Informativa completa:</strong> <a href="/privacy">Privacy Policy</a>
               </p>
               <p>
                 <strong>Diritti:</strong> Accesso, rettifica, cancellazione, limitazione - francesconigro.kr@gmail.com

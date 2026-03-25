@@ -32,18 +32,18 @@ export const villaImages = {
   apartments: {
     frangipane: [
       "/images/villa/appartamenti/frangipane/main.jpg",
-      "/images/villa/appartamenti/frangipane/Frangipane_Living_01.jpg",
+      "/images/villa/appartamenti/frangipane/Frangipane_Living_Cucina_01.jpg",
       "/images/villa/appartamenti/frangipane/Frangipane_Camera_01.jpg",
     ],
     fiordaliso: [
-      "/images/villa/appartamenti/fiordaliso/main.jpg",
       "/images/villa/appartamenti/fiordaliso/Fiordaliso_Living_01.jpg",
-      "/images/villa/appartamenti/fiordaliso/Fiordaliso_Bagno_01.jpg",
+      "/images/villa/appartamenti/fiordaliso/Fiordaliso_Living_02.jpg",
+      "/images/villa/appartamenti/fiordaliso/Fiordaliso_Living_Cucina_01.jpg",
     ],
     orchidea: [
-      "/images/villa/appartamenti/orchidea/main.jpg",
       "/images/villa/appartamenti/orchidea/Orchidea_Living_02.jpg",
       "/images/villa/appartamenti/orchidea/Orchidea_Camera_01.jpg",
+      "/images/villa/appartamenti/orchidea/Orchidea_Cucina_Living_01.jpg",
     ],
     tulipano: [
       "/images/villa/appartamenti/tulipano/main.jpg",
@@ -52,28 +52,28 @@ export const villaImages = {
     ],
     giglio: [
       "/images/villa/appartamenti/giglio/main.jpg",
-      "/images/villa/appartamenti/giglio/Giglio_Living_01.jpg",
+      "/images/villa/appartamenti/giglio/Giglio_Living_03.jpg",
       "/images/villa/appartamenti/giglio/Giglio_Camera_01.jpg",
     ],
     lavanda: [
       "/images/villa/appartamenti/lavanda/main.jpg",
-      "/images/villa/appartamenti/lavanda/Lavanda_Living_01.jpg",
+      "/images/villa/appartamenti/lavanda/Lavanda_Living_02.jpg",
       "/images/villa/appartamenti/lavanda/Lavanda_Camera_01.jpg",
     ],
     geranio: [
       "/images/villa/appartamenti/geranio/main.jpg",
-      "/images/villa/appartamenti/geranio/Geranio_Camera_01.jpg",
+      "/images/villa/appartamenti/geranio/Geranio_Camera_02.jpg",
       "/images/villa/appartamenti/geranio/Geranio_Bagno_01.jpg",
     ],
     gardenia: [
       "/images/villa/appartamenti/gardenia/main.jpg",
-      "/images/villa/appartamenti/gardenia/Gardenia_Living_01.jpg",
       "/images/villa/appartamenti/gardenia/Gardenia_Camera_01.jpg",
+      "/images/villa/appartamenti/gardenia/Gardenia_Camera_02.jpg",
     ],
     azalea: [
-      "/images/villa/appartamenti/azalea/main.jpg",
       "/images/villa/appartamenti/azalea/Azalea_Living_01.jpg",
       "/images/villa/appartamenti/azalea/Azalea_Camera_01.jpg",
+      "/images/villa/appartamenti/azalea/Azalea_Camera_02.jpg",
     ],
   },
   

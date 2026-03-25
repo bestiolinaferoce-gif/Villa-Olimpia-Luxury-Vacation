@@ -15,13 +15,13 @@ export default function InteractiveRestaurantMap() {
     ? restaurants.find(r => r.id === selectedRestaurant)
     : null
 
-  // Google Maps embed URL (puoi creare una mappa personalizzata su Google My Maps)
-  // Per ora usiamo una mappa generica di Capo Rizzuto
-  const mapEmbedUrl = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3152.4567890123!2d17.0754964!3d38.913856!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzjCsDU0JzQ5LjkiTiAxN8KwMDQnMzEuOCJF!5e0!3m2!1sit!2sit!4v1234567890123!5m2!1sit!2sit"
+  // OpenStreetMap embed (nessuna API key): area Capopiccolo / Villa Olimpia ~38.9139, 17.0755
+  const mapEmbedUrl =
+    "https://www.openstreetmap.org/export/embed.html?bbox=17.055%2C38.900%2C17.095%2C38.930&layer=mapnik&marker=38.913856%2C17.0754964"
 
   return (
     <div className="relative w-full h-[600px] bg-muted/30 rounded-lg overflow-hidden border-2 border-primary/20 shadow-xl">
-      {/* Mappa (iframe Google Maps) */}
+      {/* Mappa (iframe OpenStreetMap, nessuna API key) */}
       <iframe
         src={mapEmbedUrl}
         width="100%"

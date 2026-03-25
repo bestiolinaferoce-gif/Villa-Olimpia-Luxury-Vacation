@@ -438,7 +438,7 @@ export default function CookiePolicyPage() {
               </p>
               <p><strong>Per approfondire:</strong></p>
               <ul>
-                <li>Privacy Policy completa: <a href="/privacy-policy">/privacy-policy</a></li>
+                <li>Privacy Policy completa: <a href="/privacy">/privacy</a></li>
                 <li>Autorità Garante Privacy: <a href="https://www.garanteprivacy.it" target="_blank" rel="noopener noreferrer">www.garanteprivacy.it</a></li>
               </ul>
 

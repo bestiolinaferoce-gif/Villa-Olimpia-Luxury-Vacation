@@ -165,7 +165,7 @@ export const TERRITORY_SEO = {
     },
     "priceRange": "€€",
     "image": [
-      "https://villaolimpiacaporizzuto.com/images/villa/hero/facciata-esterna-villa-olimpia-notte.jpg",
+      "https://villaolimpiacaporizzuto.com/images/villa/hero/facciata_esterna_villa_olimpia_notte.jpg",
       "https://villaolimpiacaporizzuto.com/images/villa/location/spiaggia-dei-gigli.jpg"
     ],
     "numberOfRooms": 9,
