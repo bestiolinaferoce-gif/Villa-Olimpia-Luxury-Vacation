@@ -1,5 +1,6 @@
 "use client"
 
+import VirtualTour from "@/components/virtual-tour"
 import { motion } from "framer-motion"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { 
@@ -279,6 +280,8 @@ export default function ServiziPage() {
           </div>
         </div>
       </section>
+
+      <VirtualTour />
 
       {/* Additional Info */}
       <section className="py-20">

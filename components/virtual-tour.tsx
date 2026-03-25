@@ -7,12 +7,20 @@ export default function VirtualTour() {
           Esplora Villa Olimpia come se fossi già qui
         </p>
         <div className="aspect-video max-w-6xl mx-auto rounded-2xl overflow-hidden shadow-2xl border-4 border-white/20">
-          {/* Placeholder - sostituisci con vero tour 360° */}
-          <div className="w-full h-full bg-gradient-to-br from-blue-900 to-purple-900 flex items-center justify-center">
-            <div className="text-center">
-              <div className="text-6xl mb-4">🏊</div>
-              <p className="text-2xl font-bold">Tour 360° Coming Soon</p>
-              <p className="text-white/60">Momento360 integration</p>
+          <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900">
+            <div className="max-w-lg px-6 text-center">
+              <div className="mb-4 text-6xl" aria-hidden>
+                🏊
+              </div>
+              <p className="text-2xl font-bold">Tour virtuale</p>
+              <p className="mt-3 text-base leading-relaxed text-white/75">
+                Stiamo preparando un percorso immersivo della villa e degli spazi esterni. Per vedere
+                foto e video aggiornati visita la{" "}
+                <a href="/gallery" className="font-semibold text-amber-300 underline-offset-4 hover:underline">
+                  galleria
+                </a>{" "}
+                o scrivici per una visita in videochiamata.
+              </p>
             </div>
           </div>
         </div>
