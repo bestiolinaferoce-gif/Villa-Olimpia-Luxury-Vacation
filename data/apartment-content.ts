@@ -53,12 +53,12 @@ La vicinanza alla Spiaggia dei Gigli e alle altre zone più interessanti dell'Ar
   },
   2: {
     // FIORDALISO - 50 mq, 4 ospiti, 1 camera, 1 bagno, balcone vista piscina
-    shortDescription: "Fiordaliso: 50 mq al piano terra con balcone vista piscina, camera matrimoniale e divano letto. Fino a 4 ospiti. Villa Olimpia Capopiccolo, Spiaggia dei Gigli a 100 m.",
-    fullPremiumDescription: `Il lodge Fiordaliso è la scelta giusta per chi cerca funzionalità, luminosità e un rapporto qualità-prezzo eccellente. Situato al piano terra, è caratterizzato da ambienti luminosi e ariosi, con grandi finestre che portano la luce del sole calabrese dentro ogni stanza fin dalle prime ore del mattino.
+    shortDescription: "Appartamento Fiordaliso a Capopiccolo con balcone vista piscina, ambienti luminosi e soluzione pratica per coppie e famiglie 2+2 vicino alla Spiaggia dei Gigli.",
+    fullPremiumDescription: `L'appartamento Fiordaliso di Villa Olimpia è una soluzione molto funzionale per chi desidera una vacanza a Capo Rizzuto con spazi luminosi, accesso comodo ai servizi della struttura e vicinanza reale al mare. Si trova al piano terra a Capopiccolo ed è adatto a coppie e famiglie 2+2 che vogliono muoversi con semplicità tra spiaggia, piscina e territorio.
 
-La dotazione è completa e moderna: camera matrimoniale, soggiorno con divano letto per due persone, bagno completo con box doccia, cucina completamente attrezzata con elettrodomestici di qualità e tutto il necessario per cucinare. Aria condizionata, Wi-Fi ad alta velocità, lavatrice e biancheria sanificata inclusi.
+Il balcone con vista sulla piscina è uno degli elementi che rendono Fiordaliso particolarmente piacevole per chi apprezza una vacanza rilassata e ben organizzata. La camera matrimoniale, la zona living con divano letto e la cucina attrezzata offrono una base pratica per soggiorni brevi o più lunghi.
 
-Il Fiordaliso si affaccia sul giardino di Villa Olimpia e ha accesso diretto alla piscina privata. Il barbecue del lodge permette cene all'aperto in totale autonomia. La Spiaggia dei Gigli e la Spiaggia della Caletta sono a meno di un minuto a piedi: due delle spiagge più belle e premiate dell'intera Costa Ionica calabrese.`,
+Per chi cerca un appartamento a Capo Rizzuto vicino alla Spiaggia dei Gigli e all'Area Marina Protetta, Fiordaliso rappresenta una scelta concreta e comoda. La posizione all'interno di Villa Olimpia aiuta a vivere il soggiorno senza complicazioni, con prenotazione diretta e accesso rapido alle principali attrazioni costiere della zona.`,
     featureBullets: [
       "Balcone con vista diretta sulla piscina",
       "Camera matrimoniale e divano letto (4 posti)",
@@ -74,7 +74,7 @@ Il Fiordaliso si affaccia sul giardino di Villa Olimpia e ha accesso diretto all
       "Famiglie 2+2",
       "Chi ama avere la piscina sotto gli occhi"
     ],
-    seoParagraph: "Fiordaliso è un appartamento vacanze 50 mq a Capopiccolo, Isola di Capo Rizzuto: villa con piscina in Calabria vicino al mare. Balcone vista piscina, camera matrimoniale, cucina attrezzata; ideale per coppie e famiglie 2+2. A 100 m dalla Spiaggia dei Gigli e dall'Area Marina Protetta. Keywords: appartamento vista piscina Capo Rizzuto, vacanza Calabria mare, prenotazione Villa Olimpia.",
+    seoParagraph: "Fiordaliso è un appartamento di Villa Olimpia a Capopiccolo, Isola di Capo Rizzuto, ideale per chi cerca un soggiorno vicino al mare con balcone vista piscina, ambienti luminosi e accesso rapido alla Spiaggia dei Gigli. È una soluzione adatta a coppie e famiglie 2+2 che vogliono vivere Capo Rizzuto in modo semplice, con prenotazione diretta e una base comoda nell'Area Marina Protetta.",
     technicalSummary: {
       capacity: "4",
       rooms: "1 matrimoniale",
@@ -85,12 +85,12 @@ Il Fiordaliso si affaccia sul giardino di Villa Olimpia e ha accesso diretto all
   },
   3: {
     // ORCHIDEA - 48 mq, 4 ospiti, 1 camera, doppi servizi, terrazza vista mare
-    shortDescription: "Orchidea: 48 mq con terrazza panoramica vista mare Ionio, camera matrimoniale, zona living e doppi servizi. Fino a 4 ospiti. Villa Olimpia Capopiccolo, Spiaggia dei Gigli a meno di 100 m.",
-    fullPremiumDescription: `Il lodge Orchidea è una soluzione accogliente e funzionale per coppie e piccole famiglie che cercano comfort, riservatezza e una posizione privilegiata sul mare. Situato al piano terra, offre facile accesso al giardino e alla piscina privata di Villa Olimpia.
+    shortDescription: "Appartamento Orchidea a Capopiccolo con terrazza panoramica vista mare e doppi servizi, ideale per coppie e famiglie che cercano più comfort vicino alla Spiaggia dei Gigli.",
+    fullPremiumDescription: `L'appartamento Orchidea di Villa Olimpia è una soluzione molto interessante per chi desidera una vacanza a Capo Rizzuto con vista mare, spazi ben distribuiti e un livello di comfort superiore. Situato a Capopiccolo, è adatto a coppie e famiglie che vogliono soggiornare vicino alla Spiaggia dei Gigli in un contesto curato e tranquillo.
 
-Gli arredi sono stati selezionati con cura, coniugando estetica moderna e praticità: camera matrimoniale, soggiorno con divano letto per due persone aggiuntive, bagno completo con box doccia, cucina completamente attrezzata con elettrodomestici di qualità. La televisione LED, il Wi-Fi ad alta velocità e l'aria condizionata in ogni ambiente completano una dotazione pensata per un soggiorno senza rinunce.
+Il punto distintivo di Orchidea è l'equilibrio tra terrazza panoramica, zona living luminosa e doppi servizi, un plus particolarmente utile per chi viaggia in più persone. La camera matrimoniale, il divano letto e la cucina completa permettono di vivere il soggiorno con maggiore libertà, sia nei momenti di relax sia nell'organizzazione delle giornate.
 
-A pochi passi dall'ingresso del lodge si trova il parcheggio riservato agli ospiti, un dettaglio pratico molto apprezzato. L'Orchidea è immersa in un contesto tranquillo e riservato, ideale per chi cerca una vacanza lontana dal caos, ma a meno di un minuto a piedi dalla Spiaggia dei Gigli e dalla Spiaggia della Caletta, tra le più belle dell'Area Marina Protetta di Capo Rizzuto.`,
+Per chi cerca un appartamento vista mare a Capo Rizzuto con accesso rapido alla piscina e all'Area Marina Protetta, Orchidea è una proposta solida. La posizione interna a Villa Olimpia consente di combinare mare, comfort e scoperta del territorio con grande semplicità.`,
     featureBullets: [
       "Terrazza panoramica con vista mare Ionio",
       "Bagno completo",
@@ -106,7 +106,7 @@ A pochi passi dall'ingresso del lodge si trova il parcheggio riservato agli ospi
       "Famiglie 2+2",
       "Soggiorni vista mare a Capo Rizzuto"
     ],
-    seoParagraph: "Orchidea è un appartamento vacanze 48 mq con terrazza vista mare a Capopiccolo, Isola di Capo Rizzuto. Camera matrimoniale, zona living con divano letto, cucina attrezzata e due bagni completi: villa con piscina in Calabria ideale per coppie e famiglie che cercano un comfort extra. A meno di 100 m dalla Spiaggia dei Gigli. Keywords: appartamento vista mare Capo Rizzuto, terrazza panoramica Calabria, vacanza Isola di Capo Rizzuto, appartamento doppi servizi Calabria.",
+    seoParagraph: "Orchidea è un appartamento di Villa Olimpia a Capopiccolo con terrazza panoramica vista mare e doppi servizi, ideale per chi cerca un soggiorno a Capo Rizzuto vicino alla Spiaggia dei Gigli e all'Area Marina Protetta. È una soluzione molto adatta a coppie e famiglie che vogliono più comfort, una vista aperta sul territorio e prenotazione diretta.",
     technicalSummary: {
       capacity: "4",
       rooms: "1 matrimoniale",
@@ -117,12 +117,12 @@ A pochi passi dall'ingresso del lodge si trova il parcheggio riservato agli ospi
   },
   4: {
     // TULIPANO - 47 mq, 4 ospiti, 1 camera, 1 bagno, accesso giardino e patio
-    shortDescription: "Tulipano: 47 mq con accesso diretto al giardino, patio privato e vista piscina. Camera matrimoniale e divano letto, 4 ospiti. Ideale per famiglie con bambini. Villa Olimpia Capopiccolo, Spiaggia dei Gigli a 100 m.",
-    fullPremiumDescription: `Il lodge Tulipano è la scelta più apprezzata dalle famiglie che soggiornano a Villa Olimpia, e non è difficile capire perché: nonostante la dimensione compatta da 4 posti letto, vanta la rara presenza di due bagni completi — un comfort che fa davvero la differenza quando si viaggia in famiglia, specialmente con bambini piccoli.
+    shortDescription: "Appartamento Tulipano a Capopiccolo con accesso diretto al giardino, patio privato e posizione ideale per famiglie che vogliono stare vicino alla piscina e alla Spiaggia dei Gigli.",
+    fullPremiumDescription: `L'appartamento Tulipano di Villa Olimpia è una soluzione molto apprezzata da chi viaggia in famiglia e cerca una vacanza a Capo Rizzuto semplice da vivere fin dal primo giorno. Situato al piano terra a Capopiccolo, offre accesso diretto al giardino e una posizione particolarmente comoda per muoversi tra piscina, spazi esterni e mare.
 
-Situato al piano terra, il Tulipano offre accesso diretto al giardino e alla piscina privata, senza scale né barriere: ideale per chi viaggia con bimbi piccoli o anziani. La camera matrimoniale è spaziosa e ben arredata; il soggiorno con divano letto per due persone completa la capienza. Cucina completamente attrezzata, aria condizionata in ogni ambiente, Wi-Fi ad alta velocità.
+Il patio privato e la vista sulla piscina rendono questa unità molto adatta a chi desidera tenere sotto controllo i ritmi della vacanza, soprattutto con bambini. La camera matrimoniale, la zona living con divano letto e la cucina attrezzata aiutano a organizzare il soggiorno in modo pratico e rilassato.
 
-Il Tulipano dispone di un barbecue privato, perfetto per le grigliate serali in totale autonomia. Insieme al grande barbecue comune del giardino di Villa Olimpia, le serate estive al Tulipano diventano momenti indimenticabili. La Spiaggia dei Gigli è a meno di un minuto a piedi: basta attraversare il cancello e si è già sul mare cristallino dell'Area Marina Protetta di Capo Rizzuto.`,
+Per chi cerca un appartamento a Capo Rizzuto vicino alla Spiaggia dei Gigli e con spazi esterni comodi, Tulipano è una scelta molto concreta. La combinazione tra piano terra, giardino e vicinanza all'Area Marina Protetta di Capo Rizzuto lo rende particolarmente funzionale per coppie e famiglie 2+2.`,
     featureBullets: [
       "Accesso diretto al giardino",
       "Patio privato con vista piscina",
@@ -138,7 +138,7 @@ Il Tulipano dispone di un barbecue privato, perfetto per le grigliate serali in 
       "Coppie",
       "Soggiorni week-end o settimanali"
     ],
-    seoParagraph: "Tulipano è un appartamento vacanze 47 mq con giardino a Capopiccolo, Isola di Capo Rizzuto. Patio privato, vista piscina e cucina completa: villa con piscina in Calabria ideale per famiglie. A 100 m dalla Spiaggia dei Gigli e Area Marina Protetta. Keywords: appartamento famiglia Capo Rizzuto, vacanza bambini Calabria, villa giardino Isola di Capo Rizzuto.",
+    seoParagraph: "Tulipano è un appartamento di Villa Olimpia a Capopiccolo con accesso diretto al giardino, patio privato e vicinanza alla piscina, ideale per chi cerca un soggiorno a Capo Rizzuto pratico e vicino al mare. È una soluzione adatta a coppie e famiglie 2+2 che vogliono vivere la Spiaggia dei Gigli e l'Area Marina Protetta con più comodità e prenotazione diretta.",
     technicalSummary: {
       capacity: "4",
       rooms: "1 matrimoniale",
@@ -149,12 +149,12 @@ Il Tulipano dispone di un barbecue privato, perfetto per le grigliate serali in 
   },
   5: {
     // GIGLIO - 46 mq, 6 ospiti, 2 camere (matrimoniale + letto da una piazza e mezza), 1 bagno
-    shortDescription: "Giglio: 46 mq con camera matrimoniale, camera con letto da una piazza e mezza e divano letto. Fino a 6 ospiti. Perfetto per famiglie. Villa Olimpia Capopiccolo, Spiaggia dei Gigli a meno di 100 m.",
-    fullPremiumDescription: `Il lodge Giglio si distingue per i suoi spazi generosi e per la cucina in muratura di grandi dimensioni, un elemento raro e molto apprezzato da chi ama cucinare durante le vacanze. Il soggiorno è ampio e ottimamente arredato, con ampie finestre che portano luce naturale in ogni angolo.
+    shortDescription: "Appartamento Giglio a Capopiccolo con due camere, gazebo esterno e soluzione comoda per famiglie o piccoli gruppi fino a 6 ospiti vicino alla Spiaggia dei Gigli.",
+    fullPremiumDescription: `L'appartamento Giglio di Villa Olimpia è pensato per chi desidera una vacanza a Capo Rizzuto con più posti letto, spazi ben distribuiti e una buona vivibilità anche nelle giornate trascorse in struttura. Situato al piano terra a Capopiccolo, è una soluzione adatta a famiglie e piccoli gruppi che vogliono combinare mare, relax e organizzazione pratica.
 
-La composizione è ideale per gruppi familiari o amici: camera matrimoniale con annessa cameretta con letto a piazza e mezza, più divano letto nel soggiorno per un totale di 6 posti letto. Il bagno completo è dotato di box doccia. Situato al piano terra, offre accesso diretto al giardino e al gazebo ad uso esclusivo — uno spazio esterno privato con arredi da esterno, perfetto per le serate estive.
+La presenza di due camere, della zona living con divano letto e degli spazi esterni con gazebo aiuta a vivere il soggiorno in modo più flessibile. Giglio è particolarmente interessante per chi viaggia con bambini o con più persone e cerca una base semplice da gestire durante tutta la vacanza.
 
-Il lodge Giglio è completato da un pratico ripostiglio, molto utile per famiglie che viaggiano con molto bagaglio o attrezzatura da spiaggia. La posizione nel cuore di Villa Olimpia garantisce tranquillità e riservatezza, a pochi passi dalla piscina privata e a meno di un minuto a piedi dalle spiagge più belle di Capo Piccolo.`,
+Per chi cerca un appartamento per 6 persone a Capo Rizzuto vicino alla Spiaggia dei Gigli e all'Area Marina Protetta, Giglio rappresenta una soluzione concreta e ben inserita nel contesto di Villa Olimpia. La vicinanza al mare e agli spazi comuni della struttura rafforza ulteriormente il suo valore.`,
     featureBullets: [
       "Camera matrimoniale + camera con letto da una piazza e mezza",
       "Divano letto matrimoniale in living",
@@ -170,7 +170,7 @@ Il lodge Giglio è completato da un pratico ripostiglio, molto utile per famigli
       "Gruppi piccoli",
       "Soggiorni medio-lunghi a Capo Rizzuto"
     ],
-    seoParagraph: "Giglio è un appartamento vacanze per 6 persone a Capopiccolo, Isola di Capo Rizzuto. Camera matrimoniale, camera con letto da una piazza e mezza e divano letto in living, con cucina moderna: villa con piscina in Calabria ideale per famiglie. A meno di 100 m dalla Spiaggia dei Gigli. Keywords: appartamento 6 posti Capo Rizzuto, vacanza famiglia Calabria, villa piscina Isola di Capo Rizzuto.",
+    seoParagraph: "Giglio è un appartamento di Villa Olimpia a Capopiccolo pensato per chi cerca un soggiorno a Capo Rizzuto per famiglie o piccoli gruppi fino a 6 ospiti. Con due camere, zona living, gazebo esterno e accesso rapido alla Spiaggia dei Gigli, è una soluzione pratica per vivere l'Area Marina Protetta con più spazio e prenotazione diretta.",
     technicalSummary: {
       capacity: "6",
       rooms: "Matrimoniale + una piazza e mezza",
@@ -181,12 +181,12 @@ Il lodge Giglio è completato da un pratico ripostiglio, molto utile per famigli
   },
   6: {
     // LAVANDA - 45 mq, 4 ospiti, 1 camera, 1 bagno, veranda/portico
-    shortDescription: "Lavanda: 45 mq con veranda e portico privati, vista giardino. Camera matrimoniale e divano letto, 4 ospiti. Posizione tranquilla. Villa Olimpia Capopiccolo, Spiaggia dei Gigli a 100 m.",
-    fullPremiumDescription: `Il lodge Lavanda è pensato per chi cerca una vacanza all'insegna del relax, dell'armonia e di uno stile elegante ma senza eccessi. Situato al piano terra, trasmette fin dal primo ingresso un'atmosfera calda e rilassante, grazie a un design curato nei dettagli e a colori naturali che richiamano la palette del Mediterraneo.
+    shortDescription: "Appartamento Lavanda a Capopiccolo con veranda e portico privati, ideale per coppie e piccole famiglie che cercano tranquillità vicino alla Spiaggia dei Gigli.",
+    fullPremiumDescription: `L'appartamento Lavanda di Villa Olimpia è una soluzione molto adatta a chi desidera una vacanza a Capo Rizzuto all'insegna della tranquillità, della privacy e di un contesto rilassato. Si trova al piano terra a Capopiccolo e offre una posizione più riservata rispetto ad altre unità, pur restando molto vicina al mare e agli spazi comuni della struttura.
 
-La composizione è essenziale e confortevole: camera matrimoniale, soggiorno con divano letto per due persone, bagno completo con box doccia, cucina completamente attrezzata. Ideale per coppie in cerca di privacy o per piccole famiglie che vogliono godersi la Calabria senza distrazioni.
+La veranda e il portico privati sono il punto di forza di Lavanda, perché permettono di vivere meglio i momenti all'aperto e di mantenere un ritmo più lento durante il soggiorno. Camera matrimoniale, zona living con divano letto e cucina attrezzata completano una soluzione adatta a coppie e piccole famiglie.
 
-Il lodge Lavanda ha accesso diretto al giardino di Villa Olimpia, alla piscina privata e al barbecue. Il mare è a meno di un minuto a piedi: la Spiaggia dei Gigli, con la sua sabbia dorata e le acque trasparenti dell'Area Marina Protetta, è il posto perfetto per iniziare ogni giornata con un bagno nell'Ionio.`,
+Per chi cerca un appartamento tranquillo a Capo Rizzuto vicino alla Spiaggia dei Gigli e all'Area Marina Protetta, Lavanda è una proposta molto equilibrata. La posizione interna a Villa Olimpia e la vicinanza al mare aiutano a costruire una vacanza semplice, rilassante e facile da organizzare.`,
     featureBullets: [
       "Veranda e portico privati con vista giardino",
       "Posizione tranquilla e riservata",
@@ -201,7 +201,7 @@ Il lodge Lavanda ha accesso diretto al giardino di Villa Olimpia, alla piscina p
       "Coppie",
       "Famiglie con 1–2 bambini"
     ],
-    seoParagraph: "Lavanda è un appartamento vacanze 45 mq a Capopiccolo, Isola di Capo Rizzuto. Veranda e portico privati, comfort moderni e accesso alla piscina: case vacanze Calabria vicino al mare. A 100 m dalla Spiaggia dei Gigli. Keywords: appartamento tranquillo Capo Rizzuto, veranda vista giardino Calabria, Villa Olimpia prenotazione.",
+    seoParagraph: "Lavanda è un appartamento di Villa Olimpia a Capopiccolo con veranda e portico privati, ideale per chi cerca un soggiorno tranquillo a Capo Rizzuto vicino al mare. È una soluzione adatta a coppie e piccole famiglie che vogliono vivere la Spiaggia dei Gigli e l'Area Marina Protetta con più privacy, comfort e prenotazione diretta.",
     technicalSummary: {
       capacity: "4",
       rooms: "1 matrimoniale",
