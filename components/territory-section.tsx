@@ -48,7 +48,7 @@ const destinations: TouristDestination[] = [
     imageAlt: "Spiaggia dei Gigli - Bandiera Blu Capo Rizzuto - Acque cristalline e sabbia dorata",
     highlights: ["Bandiera Blu 2024", "Sabbia dorata", "Acque cristalline", "Servizi completi", "Ristoranti sul mare"],
     bestTime: "Maggio - Ottobre",
-    link: "/location",
+    link: "/spiagge-capo-rizzuto",
     badges: ["bandiera-blu", "4k"],
     featured: true
   },
@@ -62,19 +62,21 @@ const destinations: TouristDestination[] = [
     imageAlt: "Area Marina Protetta Capo Rizzuto con acque cristalline e biodiversità marina",
     highlights: ["Riserva marina protetta", "Snorkeling", "Immersioni", "Biodiversità unica", "Fondali spettacolari"],
     bestTime: "Giugno - Settembre",
+    link: "/area-marina-protetta",
     badges: ["4k"],
     featured: true
   },
   {
-    name: "Spiagge Rosse - Bandiera Blu",
+    name: "Capopiccolo e Spiaggia dei Gigli",
     category: "spiaggia",
-    distance: "12 km",
-    driveTime: "15 minuti",
-    description: "Le famose Spiagge Rosse con sabbia colorata e acque turchesi. Bandiera Blu per qualità ambientale e servizi eccellenti. Una delle spiagge più fotografate della Calabria.",
-    image: "/images/villa/location/spiaggia-dei-gigli.jpg",
-    imageAlt: "Spiagge Rosse Bandiera Blu Capo Rizzuto - Sabbia colorata acque turchesi 4K",
-    highlights: ["Bandiera Blu", "Sabbia rossa caratteristica", "Acque turchesi", "Foto panoramiche", "Servizi premium"],
+    distance: "2 km",
+    driveTime: "5 minuti",
+    description: "Capopiccolo e la vicina Spiaggia dei Gigli offrono cale luminose, mare trasparente e scorci tra i più fotografati dell'Area Marina Protetta di Capo Rizzuto.",
+    image: "/images/territory/spiaggia-capopiccolo.jpg",
+    imageAlt: "Spiaggia di Capopiccolo vicino Villa Olimpia con mare cristallino e scogli sulla costa ionica",
+    highlights: ["Capopiccolo", "Spiaggia dei Gigli", "Mare cristallino", "Cale panoramiche", "Relax sul mare"],
     bestTime: "Giugno - Settembre",
+    link: "/spiagge-capo-rizzuto",
     badges: ["bandiera-blu", "4k"],
     featured: true
   },
@@ -101,6 +103,7 @@ const destinations: TouristDestination[] = [
     imageAlt: "Castello Aragonese di Le Castella al tramonto sulla costa ionica calabrese",
     highlights: ["Castello aragonese", "Visite guidate", "Panorami mozzafiato", "Ristoranti tipici", "Patrimonio storico"],
     bestTime: "Tutto l'anno",
+    link: "/le-castella",
     badges: ["4k"]
   },
   {

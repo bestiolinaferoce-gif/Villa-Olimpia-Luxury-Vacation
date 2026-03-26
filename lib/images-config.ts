@@ -69,7 +69,7 @@ export const IMAGE_PATHS = {
   // SEO e Social (asset reali in public/)
   seo: {
     ogImage: "/og-image.jpg", // 1200x630px
-    favicon: "/favicon.png",
+    favicon: "/favicon-villa-olimpia.svg",
   },
 } as const
 
@@ -94,5 +94,4 @@ Per ottimizzare le immagini:
    - Gallery: 1200x800px
    - Thumbnail: 400x300px
 `
-
 

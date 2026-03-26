@@ -69,7 +69,7 @@ export default function RootLayout({
           }}
         />
         {/* viewport gestito tramite export const viewport (Next.js App Router) */}
-        <link rel="icon" href="/favicon.png" type="image/png" />
+        <link rel="icon" href="/favicon-villa-olimpia.svg" type="image/svg+xml" />
 
         {/* Performance - Preconnect */}
                 <link rel="preload" as="image" href="/images/villa/gallery/Esterni_Piscina_Notte_01.jpg" fetchPriority="high" />

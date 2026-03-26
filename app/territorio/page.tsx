@@ -49,6 +49,7 @@ const destinations = [
       "/images/villa/gallery/Esterni_Portico_Giardino_01.jpg"
     ],
     icon: Mountain,
+    href: "/cosa-fare-capo-rizzuto",
     coordinates: { lat: 39.0667, lng: 16.7833 }
   },
   {
@@ -68,13 +69,14 @@ const destinations = [
       "Chiese bizantine",
       "Vista panoramica"
     ],
-    image: "/images/territory/castello-aragonese-le-castella.jpg",
+    image: "/images/villa/location/beach-2.jpg",
     images: [
-      "/images/territory/castello-aragonese-le-castella.jpg",
-      "/images/territory/castello-aragonese-le-castella-2.jpg",
-      "/images/territory/tramonto-castello-aragonese-le-castella.jpg"
+      "/images/villa/location/beach-2.jpg",
+      "/images/villa/location/beach-3.jpg",
+      "/images/villa/location/beach-4.jpg"
     ],
     icon: Castle,
+    href: "/cosa-fare-capo-rizzuto",
     coordinates: { lat: 39.1481, lng: 16.9133 }
   },
   {
@@ -101,31 +103,34 @@ const destinations = [
       "/images/villa/location/beach-3.jpg"
     ],
     icon: Mountain,
+    href: "/cosa-fare-capo-rizzuto",
     coordinates: { lat: 39.2667, lng: 16.5833 }
   },
   {
-    id: "spiagge-rosse",
-    name: "Spiagge Rosse di Capo Rizzuto",
+    id: "capopiccolo",
+    name: "Capopiccolo e Spiagge di Capo Rizzuto",
     category: "Mare e Spiaggia",
-    distance: "10 minuti",
+    distance: "5-10 minuti",
     duration: "Mezza giornata",
     difficulty: "Facile",
     price: "Gratuito",
-    description: "Le famose 'spiagge rosse' prendono il nome dalle falesie di arenaria rossa che creano un contrasto spettacolare con l'azzurro intenso del mare. A soli 10 minuti da Villa Olimpia.",
-    fullDescription: "Le falesie di arenaria rossa creano calette naturali con acque cristalline, perfette per lo snorkeling. Il contrasto tra il rosso delle rocce e l'azzurro del mare è unico al mondo, creando scenari fotografici mozzafiato.",
+    description: "Capopiccolo e le spiagge vicine a Villa Olimpia offrono calette luminose, mare trasparente e accessi comodi per chi cerca relax, snorkeling e scorci autentici della costa ionica.",
+    fullDescription: "A pochi minuti da Villa Olimpia si aprono alcune delle spiagge piu belle della zona, tra Capopiccolo, la Spiaggia dei Gigli e le altre cale dell'Area Marina Protetta. Le acque limpide, i colori del fondale e la vicinanza alla struttura le rendono perfette per giornate di mare senza stress.",
     highlights: [
-      "Falesie di arenaria rossa",
+      "Capopiccolo",
+      "Spiaggia dei Gigli",
       "Acque cristalline",
-      "Snorkeling eccellente",
-      "Fondale basso",
-      "Panorami unici"
+      "Snorkeling",
+      "Cale panoramiche"
     ],
-    image: "/images/villa/gallery/Esterni_Spiaggia_Estiva_01.jpg",
+    image: "/images/territory/spiaggia-capopiccolo.jpg",
     images: [
-      "/images/villa/gallery/Esterni_Spiaggia_Estiva_01.jpg",
-      "/images/villa/gallery/Esterni_Spiaggia_Tramonto_01.jpg"
+      "/images/territory/spiaggia-capopiccolo.jpg",
+      "/images/territory/spiaggia-capopiccolo-lato-interno.jpg",
+      "/images/territory/spiaggia-capopiccolo-panorama.jpg"
     ],
     icon: Waves,
+    href: "/spiagge-capo-rizzuto",
     coordinates: { lat: 38.95, lng: 17.1 }
   },
   {
@@ -145,13 +150,14 @@ const destinations = [
       "Borgo marinaro caratteristico",
       "Panorami da cartolina"
     ],
-    image: "/images/villa/gallery/Esterni_LeCastella_01.jpg",
+    image: "/images/territory/castello-aragonese-le-castella.jpg",
     images: [
-      "/images/villa/gallery/Esterni_LeCastella_01.jpg",
-      "/images/villa/gallery/Esterni_Spiaggia_01.jpg",
-      "/images/villa/gallery/Esterni_Spiaggia_Tramonto_01.jpg"
+      "/images/territory/castello-aragonese-le-castella.jpg",
+      "/images/territory/castello-aragonese-le-castella-2.jpg",
+      "/images/territory/tramonto-castello-aragonese-le-castella.jpg"
     ],
     icon: Castle,
+    href: "/le-castella",
     coordinates: { lat: 38.9167, lng: 17.0167 }
   },
   {
@@ -178,6 +184,7 @@ const destinations = [
       "/images/villa/location/beach-4.jpg"
     ],
     icon: Castle,
+    href: "/location",
     coordinates: { lat: 39.0833, lng: 17.1167 }
   },
   {
@@ -201,9 +208,10 @@ const destinations = [
     images: [
       "/images/territory/area-marina-protetta-capo-rizzuto.jpg",
       "/images/territory/tramonto-area-marina-protetta.jpg",
-      "/images/territory/spiaggia-capopiccolo-panorama.jpg"
+      "/images/territory/spiaggia-capopiccolo-lato-interno.jpg"
     ],
     icon: Waves,
+    href: "/area-marina-protetta",
     coordinates: { lat: 38.95, lng: 17.0833 }
   },
   {
@@ -229,6 +237,7 @@ const destinations = [
       "/images/villa/location/beach-2.jpg"
     ],
     icon: Camera,
+    href: "/cosa-fare-capo-rizzuto",
     coordinates: { lat: 39.0, lng: 17.0 }
   }
 ]
@@ -355,7 +364,7 @@ export default function TerritorioPage() {
                         {destination.price}
                       </span>
                       <Button variant="outline" size="sm" asChild>
-                        <Link href={`/territorio/${destination.id}`}>
+                        <Link href={destination.href ?? "/location"}>
                           Scopri di più
                         </Link>
                       </Button>
