@@ -75,7 +75,6 @@ export function BookingForm() {
   }, [searchParams, setValue])
 
   const buildMailto = (data: BookingFormData) => {
-    const source = data.source || "Diretta"
     const subject = `Richiesta Preventivo - ${data.name}`
     const official = buildOfficialAvailabilityMessage({
       checkIn: data.checkIn,
@@ -87,22 +86,17 @@ export function BookingForm() {
     const body = [
       official,
       "",
-      "Dettagli aggiuntivi:",
+      "Contatto:",
       `Nome: ${data.name}`,
       `Email: ${data.email}`,
       `Telefono: ${data.phone}`,
-      `Agenzia: ${data.agency || "Non indicata"}`,
-      `Fonte lead: ${source}`,
-      `UTM Source: ${data.utmSource || "N/D"}`,
-      `UTM Medium: ${data.utmMedium || "N/D"}`,
-      `UTM Campaign: ${data.utmCampaign || "N/D"}`,
-      `Messaggio: ${data.message || "Nessun messaggio aggiuntivo"}`,
+      ...(data.agency ? [`Agenzia: ${data.agency}`] : []),
+      ...(data.message ? ["", "Messaggio:", data.message] : []),
     ].join("\n")
     return buildMailtoAvailabilityFallback(subject, body)
   }
 
   const buildWhatsAppUrl = (data: BookingFormData) => {
-    const source = data.source || "Diretta"
     const official = buildOfficialAvailabilityMessage({
       checkIn: data.checkIn,
       checkOut: data.checkOut,
@@ -112,16 +106,12 @@ export function BookingForm() {
     })
     const extra = [
       "",
-      "Dettagli contatto:",
+      "Contatto:",
       `Nome: ${data.name}`,
       `Email: ${data.email}`,
       `Telefono: ${data.phone}`,
-      `Agenzia: ${data.agency || "Non indicata"}`,
-      `Fonte lead: ${source}`,
-      `UTM Source: ${data.utmSource || "N/D"}`,
-      `UTM Medium: ${data.utmMedium || "N/D"}`,
-      `UTM Campaign: ${data.utmCampaign || "N/D"}`,
-      `Messaggio: ${data.message || "Nessun messaggio aggiuntivo"}`,
+      ...(data.agency ? [`Agenzia: ${data.agency}`] : []),
+      ...(data.message ? ["", "Messaggio:", data.message] : []),
     ].join("\n")
     return buildWhatsAppUrlFromText(`${official}\n${extra}`)
   }
@@ -191,11 +181,11 @@ export function BookingForm() {
       <div className="rounded-2xl border border-emerald-200 bg-emerald-50 p-6 text-center">
         <div className="flex items-center justify-center gap-3 text-emerald-700">
           <CheckCircle2 className="h-6 w-6" />
-          <h3 className="text-xl font-semibold">Richiesta pronta</h3>
+          <h3 className="text-xl font-semibold">Richiesta inviata</h3>
         </div>
         <p className="mt-3 text-sm text-emerald-700/80">
-          Abbiamo ricevuto la tua richiesta. Se non vedi la mail in uscita, puoi inviarla via WhatsApp o
-          email con i pulsanti qui sotto.
+          Abbiamo ricevuto la tua richiesta e ti risponderemo il prima possibile. Se preferisci, puoi
+          contattarci anche via WhatsApp o email.
         </p>
         <Button
           variant="outline"
@@ -352,23 +342,22 @@ export function BookingForm() {
       )}
 
       <Button type="submit" variant="luxury" className="w-full" disabled={isSubmitting}>
-        {isSubmitting ? "Invio in corso..." : "Richiedi disponibilità diretta"}
+        {isSubmitting ? "Invio in corso..." : "Invia richiesta"}
       </Button>
 
-      <p className="text-xs text-muted-foreground">
-        Prenotando da questo form parli direttamente con Villa Olimpia: nessuna commissione di portali e migliore
-        tariffa disponibile sulle stesse date. Soggiorni di 7+ notti: sconto dedicato. Cancellazione flessibile fino a 30 giorni prima dell&apos;arrivo.
+      <p className="text-xs leading-relaxed text-muted-foreground">
+        Compila il form per ricevere una risposta chiara e un contatto diretto con Villa Olimpia.
       </p>
 
       <div className="grid grid-cols-1 gap-2 sm:grid-cols-3">
-        <div className="rounded-lg border border-emerald-200 bg-emerald-50 px-3 py-2 text-center text-xs font-medium text-emerald-800">
-          Nessuna commissione
+        <div className="rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-center text-xs font-medium text-slate-700">
+          Contatto diretto
         </div>
-        <div className="rounded-lg border border-sky-200 bg-sky-50 px-3 py-2 text-center text-xs font-medium text-sky-800">
-          Risposta entro 24h
+        <div className="rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-center text-xs font-medium text-slate-700">
+          Risposta rapida
         </div>
-        <div className="rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 text-center text-xs font-medium text-amber-800">
-          Tariffa diretta
+        <div className="rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-center text-xs font-medium text-slate-700">
+          Dettagli chiari
         </div>
       </div>
 
