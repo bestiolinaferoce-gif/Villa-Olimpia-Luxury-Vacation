@@ -5,19 +5,19 @@ import Link from "next/link"
 import { BlogArticleJsonLd } from "@/components/seo/blog-article-json-ld"
 
 export const metadata = generateMetadata({
-  title: "Castello Aragonese di Le Castella: guida completa per la visita",
-  description: "Tutto quello che devi sapere per visitare il Castello Aragonese di Le Castella: storia, orari, prezzi e consigli pratici. A 5 minuti da Villa Olimpia, Isola di Capo Rizzuto.",
+  title: "Castello Aragonese di Le Castella: Cosa Vedere e Come Organizzare la Visita",
+  description: "Scopri il Castello Aragonese di Le Castella, cosa vedere nei dintorni e perché visitarlo durante una vacanza a Capo Rizzuto. Guida utile partendo da Villa Olimpia.",
   path: "/blog/castello-aragonese-le-castella-guida",
   type: "article",
-  keywords: ["castello le castella", "le castella cosa vedere", "castello aragonese capo rizzuto", "cosa fare isola capo rizzuto"],
+  keywords: ["castello aragonese le castella", "le castella cosa vedere", "visitare le castella", "cosa vedere capo rizzuto", "dove soggiornare vicino le castella"],
 })
 
 export default function ArticlePage() {
   return (
     <div className="min-h-screen pt-20">
       <BlogArticleJsonLd
-        title="Castello Aragonese di Le Castella: guida completa per la visita"
-        description="Tutto quello che devi sapere per visitare il Castello Aragonese di Le Castella: storia, orari, prezzi e consigli pratici. A 5 minuti da Villa Olimpia, Isola di Capo Rizzuto."
+        title="Castello Aragonese di Le Castella: cosa vedere e come organizzare la visita"
+        description="Scopri il Castello Aragonese di Le Castella, cosa vedere nei dintorni e perché visitarlo durante una vacanza a Capo Rizzuto."
         path="/blog/castello-aragonese-le-castella-guida"
         datePublished="2026-03-16"
       />
@@ -27,10 +27,10 @@ export default function ArticlePage() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h1 className="text-4xl md:text-5xl font-playfair font-bold mb-6">
-              Castello Aragonese di Le Castella: guida completa per la visita
+              Castello Aragonese di Le Castella: cosa vedere e come organizzare la visita
             </h1>
             <p className="text-xl text-muted-foreground">
-              Il Castello Aragonese di Le Castella è un&apos;antica fortezza medievale che sorge su un isolotto collegato alla terraferma da un sottile istmo, circondata per tre lati dal mare cristallino dell&apos;Area Marina Protetta di Capo Rizzuto. Si trova a soli 5 minuti d&apos;auto da Villa Olimpia.
+              Il Castello Aragonese di Le Castella è uno dei luoghi più riconoscibili della costa ionica calabrese. Sorge su un isolotto collegato alla terraferma da un sottile istmo e rappresenta una delle visite più interessanti da fare durante una vacanza tra Capopiccolo, Le Castella e l&apos;Area Marina Protetta di Capo Rizzuto.
             </p>
           </div>
         </div>
@@ -39,50 +39,54 @@ export default function ArticlePage() {
       <section className="py-20 bg-gradient-to-b from-[#f5fbff] to-[#e6f4ff]">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto space-y-12">
+            <p className="text-lg text-muted-foreground">
+              Per chi soggiorna a Villa Olimpia, Le Castella è una delle escursioni più semplici e appaganti da inserire nel programma della vacanza. La visita al castello può essere abbinata al mare, a una passeggiata nel borgo e a una cena sul lungomare, trasformando anche una mezza giornata in un&apos;esperienza molto completa.
+            </p>
+
             <div>
               <h2 className="text-2xl md:text-3xl font-playfair font-bold mb-4">La storia</h2>
               <p className="text-lg text-muted-foreground">
-                Le origini risalgono all&apos;epoca greca. La struttura attuale è prevalentemente medievale: costruita tra il XIV e il XVI secolo durante il dominio aragonese. Nel 1574 fu attaccata dalle flotte ottomane di Uluc Alì. Restaurata in epoca moderna, è oggi uno dei monumenti più visitati della Calabria.
+                Le origini del sito affondano nell&apos;antichità, mentre la struttura che oggi caratterizza il castello è legata soprattutto al periodo medievale e aragonese. La sua posizione sul mare lo ha reso per secoli un punto strategico e difensivo, e ancora oggi questa collocazione contribuisce al suo fascino scenografico.
               </p>
             </div>
 
             <div>
               <h2 className="text-2xl md:text-3xl font-playfair font-bold mb-4">Cosa vedere</h2>
               <ul className="list-disc list-inside text-lg text-muted-foreground space-y-2">
-                <li>Torre principale — vista a 360° sul mare e sulla costa ionica</li>
-                <li>Cortile interno — eventi culturali in estate</li>
-                <li>Camminamenti sulle mura — percorsi panoramici</li>
-                <li>Museo interno — reperti storici e documentazione</li>
+                <li>La fortezza affacciata sul mare e il suggestivo istmo che la collega alla terraferma</li>
+                <li>I camminamenti panoramici con vista sulla costa ionica e sul borgo</li>
+                <li>Il contesto di Le Castella, tra spiaggia, porticciolo e passeggiata sul lungomare</li>
+                <li>Le prospettive fotografiche più belle al mattino e al tramonto</li>
               </ul>
             </div>
 
             <div>
-              <h2 className="text-2xl md:text-3xl font-playfair font-bold mb-4">Orari e prezzi (indicativi)</h2>
+              <h2 className="text-2xl md:text-3xl font-playfair font-bold mb-4">Quando visitarlo</h2>
               <p className="text-lg text-muted-foreground">
-                Aperto da giugno a settembre. Mattina 9:00–13:00, pomeriggio/sera 16:00–22:00. Biglietto a prezzo ridotto, bambini sotto i 6 anni gratis. Verificare aggiornamenti presso lo staff di Villa Olimpia.
+                Le Castella è piacevole in diversi momenti della giornata, ma il castello e il borgo danno il meglio soprattutto al mattino e nel tardo pomeriggio, quando la luce valorizza meglio il paesaggio. Per eventuali aperture, biglietti o iniziative stagionali, è sempre meglio verificare le informazioni aggiornate prima della visita.
               </p>
             </div>
 
             <div>
               <h2 className="text-2xl md:text-3xl font-playfair font-bold mb-4">La spiaggia di Le Castella</h2>
               <p className="text-lg text-muted-foreground">
-                Acque eccezionalmente chiare, fondale sabbioso, vista sul castello. Parte libera e zone attrezzate. Consigliamo il mattino presto o il tardo pomeriggio per trovare più spazio.
+                La spiaggia di Le Castella aggiunge alla visita una componente balneare molto interessante: mare chiaro, fondale sabbioso e una vista sul castello che rende questo tratto di costa particolarmente riconoscibile. È una scelta perfetta per chi vuole unire in una sola uscita mare, borgo e fotografia.
               </p>
             </div>
 
             <div>
               <h2 className="text-2xl md:text-3xl font-playfair font-bold mb-4">Come raggiungere Le Castella da Villa Olimpia</h2>
               <ul className="list-disc list-inside text-lg text-muted-foreground space-y-2">
-                <li>Auto: 5-7 minuti</li>
-                <li>Bicicletta: 20-25 minuti</li>
-                <li>A piedi: 25-30 minuti (solo mattino o sera)</li>
+                <li>In auto in pochi minuti, con un tragitto semplice lungo la costa</li>
+                <li>Ideale come escursione breve da abbinare a spiaggia o cena</li>
+                <li>Facile da inserire anche in una vacanza fatta di spostamenti ridotti</li>
               </ul>
             </div>
 
             <div className="pt-8 border-t">
               <h2 className="text-2xl md:text-3xl font-playfair font-bold mb-4">Il consiglio di Villa Olimpia</h2>
               <p className="text-lg text-muted-foreground mb-6">
-                Il tramonto dai camminamenti del castello, con il sole che scende sul mare ionico e tinge di arancione le antiche pietre, è uno spettacolo che vale da solo il viaggio in Calabria.
+                Se vuoi vivere bene Le Castella, ti consigliamo di non trattarla come una semplice sosta veloce. Dedicarle il tempo di una passeggiata, di una sosta in spiaggia e di un momento sul lungomare permette di apprezzare davvero una delle località più iconiche del territorio di Capo Rizzuto.
               </p>
               <div className="flex flex-wrap gap-4">
                 <Button asChild variant="default">
