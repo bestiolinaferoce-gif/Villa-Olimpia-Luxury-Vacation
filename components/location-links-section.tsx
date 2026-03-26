@@ -23,13 +23,13 @@ export function LocationLinksSection({ variant = "full" }: LocationLinksSectionP
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Button variant="outline" asChild>
-              <Link href="/location">
+              <Link href="/cosa-fare-capo-rizzuto">
                 <MapPin className="mr-2 h-4 w-4" />
                 Cosa Vedere nei Dintorni
               </Link>
             </Button>
             <Button variant="outline" asChild>
-              <Link href="/location">
+              <Link href="/enogastronomia">
                 <UtensilsCrossed className="mr-2 h-4 w-4" />
                 Dove Mangiare e Cosa Assaggiare
               </Link>
@@ -85,7 +85,7 @@ export function LocationLinksSection({ variant = "full" }: LocationLinksSectionP
                   <li>• <strong className="text-foreground">Crotone</strong> - Città storica Magna Grecia</li>
                 </ul>
                 <Button variant="luxury" className="w-full" asChild>
-                  <Link href="/location">
+                  <Link href="/cosa-fare-capo-rizzuto">
                     <Compass className="mr-2 h-4 w-4" />
                     Esplora tutte le Attrazioni
                   </Link>
@@ -119,7 +119,7 @@ export function LocationLinksSection({ variant = "full" }: LocationLinksSectionP
                   <li>• <strong className="text-foreground">Olio extravergine</strong> - Frantoi tradizionali</li>
                 </ul>
                 <Button variant="luxury" className="w-full" asChild>
-                  <Link href="/location">
+                  <Link href="/enogastronomia">
                     <Camera className="mr-2 h-4 w-4" />
                     Scopri i Sapori del Territorio
                   </Link>
@@ -132,7 +132,6 @@ export function LocationLinksSection({ variant = "full" }: LocationLinksSectionP
     </section>
   )
 }
-
 
 
 

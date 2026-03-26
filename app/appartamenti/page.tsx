@@ -6,6 +6,7 @@ import { Sparkles, MapPin, Home, Waves, Car, Wifi } from "lucide-react"
 import { SectionDivider } from "@/components/animations/section-divider"
 import { MapExpand } from "@/components/apartments/map-expand"
 import { LocalSeoSection } from "@/components/seo/local-seo-section"
+import Link from "next/link"
 
 export const metadata = generateMetadata({
   title: "Appartamenti Villa Olimpia Capo Rizzuto - 9 lodges con piscina a 100m dal mare",
@@ -170,17 +171,17 @@ export default function AppartamentiPage() {
                 <strong className="font-semibold">Le Castella</strong>, l&apos;Area Marina Protetta Capo Rizzuto e le
                 principali attrazioni del territorio calabrese. Per maggiori dettagli sulla posizione puoi visitare le
                 pagine{" "}
-                <a href="/location" className="text-primary underline-offset-2 hover:underline">
+                <Link href="/location" className="text-primary underline-offset-2 hover:underline">
                   Location
-                </a>
+                </Link>
                 ,{" "}
-                <a href="/spiagge-capo-rizzuto" className="text-primary underline-offset-2 hover:underline">
+                <Link href="/spiagge-capo-rizzuto" className="text-primary underline-offset-2 hover:underline">
                   Spiagge
-                </a>{" "}
+                </Link>{" "}
                 e{" "}
-                <a href="/area-marina-protetta" className="text-primary underline-offset-2 hover:underline">
+                <Link href="/area-marina-protetta" className="text-primary underline-offset-2 hover:underline">
                   Area Marina Protetta
-                </a>
+                </Link>
                 .
               </p>
             </div>

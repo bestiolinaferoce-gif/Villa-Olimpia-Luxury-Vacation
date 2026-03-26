@@ -452,8 +452,8 @@ export function TerritorySection() {
             </Button>
           </motion.div>
           <p className="text-sm text-muted-foreground mt-4">
-            Scopri tutte le <Link href="/location" className="text-primary hover:underline font-semibold">attrazioni della Calabria</Link>, 
-            i <Link href="/location" className="text-primary hover:underline font-semibold">ristoranti tipici</Link> e le attività nei dintorni di 
+            Scopri tutte le <Link href="/cosa-fare-capo-rizzuto" className="text-primary hover:underline font-semibold">attrazioni della Calabria</Link>, 
+            i <Link href="/enogastronomia" className="text-primary hover:underline font-semibold">ristoranti tipici</Link> e le attività nei dintorni di 
             <Link href="/appartamenti" className="text-primary hover:underline font-semibold"> Villa Olimpia</Link>
           </p>
         </div>
