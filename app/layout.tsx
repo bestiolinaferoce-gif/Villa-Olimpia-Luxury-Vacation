@@ -20,6 +20,7 @@ import FloatingBooking from "@/components/floating-booking"
 import NewsletterPopup from "@/components/newsletter-popup"
 import { I18nProvider } from "@/components/i18n-provider"
 import { getAverageRating, reviews } from "@/data/reviews-complete"
+import { apartments } from "@/data/apartments"
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
@@ -179,17 +180,11 @@ export default function RootLayout({
                 name: "ID struttura",
                 value: "villa-olimpia-capo-rizzuto"
               },
-              containsPlace: [
-                { "@type": "Accommodation", name: "Appartamento Frangipane", url: `${BASE_URL}/appartamenti/1` },
-                { "@type": "Accommodation", name: "Appartamento Fiordaliso", url: `${BASE_URL}/appartamenti/2` },
-                { "@type": "Accommodation", name: "Appartamento Orchidea", url: `${BASE_URL}/appartamenti/3` },
-                { "@type": "Accommodation", name: "Appartamento Tulipano", url: `${BASE_URL}/appartamenti/4` },
-                { "@type": "Accommodation", name: "Appartamento Giglio", url: `${BASE_URL}/appartamenti/5` },
-                { "@type": "Accommodation", name: "Appartamento Lavanda", url: `${BASE_URL}/appartamenti/6` },
-                { "@type": "Accommodation", name: "Appartamento Geranio", url: `${BASE_URL}/appartamenti/7` },
-                { "@type": "Accommodation", name: "Appartamento Gardenia", url: `${BASE_URL}/appartamenti/8` },
-                { "@type": "Accommodation", name: "Appartamento Azalea", url: `${BASE_URL}/appartamenti/9` }
-              ],
+              containsPlace: apartments.map((apartment) => ({
+                "@type": "Accommodation",
+                name: `Appartamento ${apartment.name}`,
+                url: `${BASE_URL}/appartamenti/${apartment.name.toLowerCase()}`
+              })),
               availableAtOrFrom: {
                 "@type": "Offer",
                 name: "Giugno e Luglio 2026 — Tariffe vantaggiose",
