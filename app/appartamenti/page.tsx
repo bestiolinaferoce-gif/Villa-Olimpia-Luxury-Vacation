@@ -9,9 +9,9 @@ import { LocalSeoSection } from "@/components/seo/local-seo-section"
 import Link from "next/link"
 
 export const metadata = generateMetadata({
-  title: "Appartamenti Villa Olimpia Capo Rizzuto - 9 lodges con piscina a 100m dal mare",
+  title: "Appartamenti a Capo Rizzuto con Piscina | Villa Olimpia Capopiccolo",
   description:
-    "Scopri i 9 appartamenti di Villa Olimpia a Capopiccolo, Isola di Capo Rizzuto: soluzioni da 2 a 6 ospiti con piscina condivisa, giardino e Spiaggia dei Gigli a meno di 100 metri.",
+    "Scopri gli appartamenti di Villa Olimpia a Capopiccolo, Capo Rizzuto: soluzioni per coppie, famiglie e piccoli gruppi con piscina, giardino e Spiaggia dei Gigli a pochi passi.",
   path: "/appartamenti",
   keywords: [
     "appartamenti Villa Olimpia",

@@ -83,21 +83,24 @@ export function getApartmentMetadata(apartmentId: number): Metadata {
     })
   }
 
-  // SEO ottimizzato per prenotazione diretta — nessun riferimento a OTA
-  const seoTitle = `${apartment.name} — Villa Olimpia Capo Rizzuto | ${apartment.guests} ospiti | Piscina`
-  const seoDescription = `Appartamento ${apartment.name} a Villa Olimpia: ${apartment.floor}, ${apartment.size}, ${apartment.guests} ospiti. ${apartment.bedrooms} camere, ${apartment.bathrooms} bagni. ${apartment.features.slice(0, 2).join(', ')}. 100m dalla Spiaggia dei Gigli. Prenota direttamente — tariffe migliori garantite.`
+  const bagnoLabel = apartment.bathrooms === 1 ? "bagno" : "bagni"
+  const cameraLabel = apartment.bedrooms === 1 ? "camera" : "camere"
+
+  const seoTitle = `Appartamento ${apartment.name} a Capo Rizzuto con Piscina | Villa Olimpia`
+  const seoDescription = `Scopri ${apartment.name} a Villa Olimpia, Capopiccolo: appartamento al ${apartment.floor.toLowerCase()} di ${apartment.size} per ${apartment.guests} ospiti, con ${apartment.bedrooms} ${cameraLabel} e ${apartment.bathrooms} ${bagnoLabel}. Vicino alla Spiaggia dei Gigli e all'Area Marina Protetta di Capo Rizzuto.`
 
   const keywords = [
     `appartamento ${apartment.name.toLowerCase()} villa olimpia`,
-    `affitto ${apartment.name.toLowerCase()} capopiccolo`,
+    `appartamento ${apartment.name.toLowerCase()} capopiccolo`,
+    `appartamento ${apartment.name.toLowerCase()} capo rizzuto`,
     `${apartment.name.toLowerCase()} capo rizzuto piscina`,
-    `appartamento ${apartment.floor.toLowerCase()} isola capo rizzuto`,
-    `${apartment.guests} ospiti capopiccolo`,
+    `appartamento ${apartment.floor.toLowerCase()} capo rizzuto`,
+    `appartamento ${apartment.guests} ospiti capopiccolo`,
     `prenotazione diretta villa olimpia`,
     `appartamento vista mare capo rizzuto`,
-    `vacation rental ${apartment.size} capo rizzuto`,
-    `luxury apartment ${apartment.name.toLowerCase()} calabria`,
-    `affitto settimanale capo rizzuto mare`
+    `spiaggia dei gigli appartamento`,
+    `area marina protetta capo rizzuto alloggio`,
+    `vacanza capo rizzuto vicino mare`
   ]
 
   const baseMeta = generateMetadata({
@@ -126,7 +129,6 @@ export function getApartmentMetadata(apartmentId: number): Metadata {
   return {
     ...baseMeta,
     keywords,
-    // Schema markup per OTA
     other: Object.assign(
       {
         "booking:property_type": "Apartment",
