@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { MapPin, Clock, TrendingUp, Mountain, Waves, Castle, Camera, Ship, Coffee, Map as MapIcon, Info } from "lucide-react"
+import { MapPin, Clock, TrendingUp, Mountain, Waves, Castle, Map as MapIcon, Info } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { Breadcrumb } from "@/components/breadcrumb"
@@ -9,18 +9,19 @@ import { generateMetadata as genMeta } from "@/lib/metadata"
 
 export const metadata: Metadata = genMeta({
   title: "Territorio, spiagge e attrazioni vicino Villa Olimpia in Calabria",
-  description: "Scopri cosa vedere vicino Villa Olimpia: Capopiccolo, Le Castella, Area Marina Protetta Capo Rizzuto, spiagge, borghi e natura della Calabria ionica.",
+  description: "Scopri cosa vedere vicino Villa Olimpia: Area Marina Protetta di Capo Rizzuto, Capopiccolo, Le Castella, Santa Severina e gite in giornata tra mare, borghi e natura.",
   path: "/territorio",
   keywords: [
     "valli cupe calabria",
     "castello santa severina",
-    "sila piccola calabria",
+    "santa severina cosa vedere",
+    "area marina protetta capo rizzuto",
     "capo rizzuto attrazioni",
     "le castella calabria",
     "calabria turismo",
     "riserva marina capo rizzuto",
-    "crotone calabria",
-    "spiagge rosse capo rizzuto"
+    "gite in giornata calabria ionica",
+    "spiaggia dei gigli"
   ]
 })
 
@@ -29,24 +30,22 @@ const destinations = [
     id: "valli-cupe",
     name: "Valli Cupe",
     category: "Natura e Trekking",
-    distance: "35 minuti",
-    duration: "3-4 ore",
+    distance: "circa 1h 15 min",
+    duration: "mezza giornata / giornata",
     difficulty: "Media",
-    price: "€5",
-    description: "Le Valli Cupe rappresentano uno dei canyon più spettacolari della Calabria. Situate a soli 35 minuti da Villa Olimpia, offrono sentieri di trekking mozzafiato attraverso gole profonde, cascate nascoste e una natura incontaminata.",
-    fullDescription: "Il percorso principale è adatto a tutti i livelli e permette di scoprire la straordinaria biodiversità della zona, con oltre 50 specie di uccelli e una vegetazione rigogliosa che crea un microclima unico. Le cascate naturali e le formazioni rocciose creano un paesaggio surreale, perfetto per fotografie indimenticabili.",
+    price: "ingressi e guide da verificare",
+    description: "Valli Cupe, nell'entroterra catanzarese, è una delle escursioni naturalistiche più suggestive della Calabria: gole, salti d'acqua, vegetazione fitta e percorsi da affrontare con scarpe adatte e tempi rilassati.",
+    fullDescription: "È una gita adatta a chi desidera alternare il mare della costa ionica a un'esperienza più verde e fresca nell'entroterra. Per alcuni itinerari è utile verificare in anticipo apertura, accessi e disponibilità di guide locali.",
     highlights: [
-      "Cascate naturali spettacolari",
-      "Sentieri per tutti i livelli",
-      "50+ specie di uccelli",
-      "Microclima unico",
-      "Guide disponibili"
+      "canyon e cascatelle",
+      "sentieri naturalistici",
+      "giornata fresca nell'entroterra",
+      "guide locali in stagione",
+      "ideale in primavera ed estate"
     ],
-    image: "/images/villa/gallery/Esterni_Giardino_Overview_01.jpg",
+    image: "/images/territory/valli-cupe-crocchio.jpg",
     images: [
-      "/images/villa/gallery/Esterni_Giardino_Overview_01.jpg",
-      "/images/villa/gallery/Esterni_Piscina_Giardino_01.jpg",
-      "/images/villa/gallery/Esterni_Portico_Giardino_01.jpg"
+      "/images/territory/valli-cupe-crocchio.jpg"
     ],
     icon: Mountain,
     href: "/cosa-fare-capo-rizzuto",
@@ -56,24 +55,22 @@ const destinations = [
     id: "castello-santa-severina",
     name: "Castello di Santa Severina",
     category: "Cultura e Storia",
-    distance: "40 minuti",
+    distance: "circa 50 minuti",
     duration: "2-3 ore",
     difficulty: "Facile",
-    price: "€7",
-    description: "Uno dei castelli più imponenti e meglio conservati della Calabria, il Castello di Santa Severina domina la vallata del fiume Neto da oltre mille anni. Il borgo medievale è considerato uno dei 'Borghi più belli d'Italia'.",
-    fullDescription: "Il castello normanno-bizantino offre una vista panoramica mozzafiato e ospita un museo che racconta la storia millenaria della fortezza. Il centro storico è un labirinto di vicoli medievali, chiese bizantine e palazzi nobiliari perfettamente conservati.",
+    price: "biglietto da verificare",
+    description: "Santa Severina è uno dei borghi storici più affascinanti dell'entroterra crotonese. Il castello domina la valle e la visita si abbina bene a una mezza giornata tra vicoli, panorama e identità storica calabrese.",
+    fullDescription: "È una gita molto adatta a chi durante la vacanza vuole affiancare al mare un momento culturale. Il borgo e il castello offrono una lettura diversa del territorio, più interna e autentica, a distanza gestibile da Villa Olimpia.",
     highlights: [
-      "Castello normanno-bizantino",
-      "Museo storico",
-      "Borgo medievale",
-      "Chiese bizantine",
-      "Vista panoramica"
+      "castello normanno",
+      "borgo storico",
+      "vista sulla valle",
+      "itinerario culturale",
+      "abbinabile a pranzo tipico"
     ],
-    image: "/images/villa/location/beach-2.jpg",
+    image: "/images/territory/castello-santa-severina.jpg",
     images: [
-      "/images/villa/location/beach-2.jpg",
-      "/images/villa/location/beach-3.jpg",
-      "/images/villa/location/beach-4.jpg"
+      "/images/territory/castello-santa-severina.jpg"
     ],
     icon: Castle,
     href: "/cosa-fare-capo-rizzuto",
@@ -87,8 +84,8 @@ const destinations = [
     duration: "Mezza giornata / Giornata intera",
     difficulty: "Varie",
     price: "Gratuito",
-    description: "A soli 40 minuti da Villa Olimpia, la Sila Piccola offre un'esperienza montana unica in Calabria. Laghi cristallini, boschi di pini larici, sentieri panoramici e una fauna ricchissima vi aspettano.",
-    fullDescription: "D'estate è perfetta per escursioni, mountain bike e pic-nic nei boschi. In inverno (dicembre-marzo) potete trovare anche neve e praticare sci di fondo. Il Parco Nazionale della Sila è patrimonio naturale di inestimabile valore, con laghi di montagna che riflettono i colori del cielo.",
+    description: "La Sila Piccola è una proposta sensata per chi desidera una giornata diversa dal mare: boschi, aria più fresca, sentieri e tavole tipiche dell'entroterra calabrese.",
+    fullDescription: "Non è un'escursione da improvvisare all'ultimo in piena estate senza programma, ma una buona alternativa per chi ama paesaggi montani, prodotti locali e tappe naturalistiche lontane dalla costa.",
     highlights: [
       "Laghi di montagna",
       "Trekking e mountain bike",
@@ -214,32 +211,6 @@ const destinations = [
     href: "/area-marina-protetta",
     coordinates: { lat: 38.95, lng: 17.0833 }
   },
-  {
-    id: "patrimonio-unesco",
-    name: "Patrimonio UNESCO Calabria",
-    category: "Cultura",
-    distance: "Varia",
-    duration: "Varia",
-    difficulty: "Facile",
-    price: "Varia",
-    description: "La Calabria ospita siti di inestimabile valore storico e culturale. Scopri le meraviglie riconosciute dall'UNESCO e i candidati al riconoscimento.",
-    fullDescription: "La Calabria è ricca di siti candidati UNESCO, tra cui i Bronzi di Riace (conservati a Reggio Calabria), le chiese bizantine del periodo normanno, e i centri storici medievali perfettamente conservati.",
-    highlights: [
-      "Chiese bizantine",
-      "Centri storici medievali",
-      "Tradizioni culturali",
-      "Arte e architettura",
-      "Storia millenaria"
-    ],
-    image: "/images/villa/location/beach-5.jpg",
-    images: [
-      "/images/villa/location/beach-5.jpg",
-      "/images/villa/location/beach-2.jpg"
-    ],
-    icon: Camera,
-    href: "/cosa-fare-capo-rizzuto",
-    coordinates: { lat: 39.0, lng: 17.0 }
-  }
 ]
 
 export default function TerritorioPage() {
@@ -284,10 +255,11 @@ export default function TerritorioPage() {
               Un Territorio da Esplorare
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Villa Olimpia si trova in una posizione privilegiata, perfetta punto di partenza 
-              per scoprire le infinite bellezze della Calabria. Dalle montagne della Sila alle 
-              spiagge cristalline, dai castelli medievali ai canyon naturali: ogni giorno una 
-              nuova avventura vi aspetta.
+              Villa Olimpia si trova in una posizione strategica all&apos;interno dell&apos;Area Marina
+              Protetta di Capo Rizzuto. Questo significa mare, calette e spiagge raggiungibili in
+              pochi minuti, ma anche la possibilità di organizzare escursioni in giornata verso
+              borghi storici, natura dell&apos;entroterra e mete adatte alle famiglie senza rinunciare
+              alla comodità della costa ionica.
             </p>
           </div>
         </div>
@@ -377,192 +349,191 @@ export default function TerritorioPage() {
         </div>
       </section>
 
-      {/* Valli Cupe UNESCO - SEZIONE PREMIUM */}
+      {/* Day Trips */}
       <section className="py-20 bg-gradient-to-br from-emerald-50 via-sky-50 to-amber-50">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <div className="inline-block bg-yellow-100 text-yellow-800 px-4 py-2 rounded-full font-semibold mb-4">
-                🏆 Patrimonio UNESCO
+              <div className="inline-block bg-sky-100 text-sky-800 px-4 py-2 rounded-full font-semibold mb-4">
+                Escursioni in giornata
               </div>
               <h2 className="text-4xl md:text-5xl font-bold mb-6">
-                Valli Cupe - Canyon Spettacolare
+                Dalla Costa all&apos;Entroterra, Senza Cambiare Base
               </h2>
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                A soli 25 km da Villa Olimpia, uno dei canyon più affascinanti d&apos;Italia, 
-                Patrimonio dell&apos;Umanità UNESCO
+                Il vero vantaggio di Villa Olimpia è poter vivere il mare dell&apos;Area Marina Protetta
+                e, nello stesso soggiorno, organizzare gite sensate verso borghi, natura e attività
+                per famiglie nel raggio di una giornata.
               </p>
             </div>
 
             <div className="grid md:grid-cols-2 gap-8 items-center mb-12">
               <div className="relative h-96 rounded-2xl overflow-hidden shadow-2xl">
                 <Image
-                  src="/images/villa/gallery/Esterni_Giardino_Overview_01.jpg"
+                  src="/images/territory/valli-cupe-crocchio.jpg"
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover"
-                  alt="Valli Cupe Canyon Patrimonio UNESCO"
+                  alt="Valli Cupe in Calabria, escursione naturalistica in giornata da Villa Olimpia"
                   loading="lazy"
                 />
               </div>
 
               <div className="space-y-6">
                 <div>
-                  <h3 className="text-2xl font-bold mb-3">Un Canyon nella Sila Piccola</h3>
+                  <h3 className="text-2xl font-bold mb-3">Escursioni credibili, senza promesse forzate</h3>
                   <p className="text-lg leading-relaxed">
-                    <strong>Le Valli Cupe</strong> sono un&apos;area naturale di straordinaria bellezza 
-                    situata nel cuore della Sila Piccola, tra i comuni di Sersale e Zagarise. 
-                    Questo canyon profondo fino a 200 metri, scavato nei millenni dal torrente Uria, 
-                    è stato riconosciuto <strong>Patrimonio dell&apos;Umanità UNESCO</strong> per la sua 
-                    eccezionale biodiversità e valore geologico.
+                    Da Villa Olimpia il cuore della vacanza resta il mare di Capopiccolo e
+                    dell&apos;Area Marina Protetta di Capo Rizzuto. Proprio per questo conviene valorizzare
+                    solo gite davvero sensate: <strong>Valli Cupe</strong> per la natura, <strong>Santa Severina</strong>
+                    per il borgo e il castello, e alcune proposte family-friendly da valutare
+                    in alta stagione.
                   </p>
                 </div>
 
                 <div className="bg-white/90 backdrop-blur-sm p-6 rounded-lg shadow-lg border border-white/70">
-                  <h4 className="font-bold mb-3 text-lg">🌿 Biodiversità Unica</h4>
+                  <h4 className="font-bold mb-3 text-lg">Perché questa impostazione funziona meglio</h4>
                   <ul className="space-y-2 text-sm">
                     <li className="flex items-start gap-2">
                       <span className="text-green-600 mt-1">✓</span>
-                      <span><strong>148 specie botaniche</strong> rare, alcune endemiche</span>
+                      <span>rafforza il posizionamento di Villa Olimpia come base strategica sulla costa</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-green-600 mt-1">✓</span>
-                      <span><strong>Felci preistoriche</strong> risalenti a 65 milioni di anni fa</span>
+                      <span>aiuta Google a capire il territorio reale, senza claim deboli o gonfiati</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-green-600 mt-1">✓</span>
-                      <span><strong>Microclima unico</strong> con temperature costanti 12-15°C</span>
+                      <span>dà al visitatore idee concrete per allungare il soggiorno e chiedere consigli diretti</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-green-600 mt-1">✓</span>
-                      <span><strong>Cascate spettacolari</strong> alte fino a 80 metri</span>
+                      <span>mantiene pulito il sito, evitando informazioni non verificate o giuridicamente deboli</span>
                     </li>
                   </ul>
                 </div>
               </div>
             </div>
 
-            {/* Percorsi Trekking */}
             <div className="grid md:grid-cols-3 gap-6 mb-12">
               <div className="bg-white/90 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-white/70">
-                <div className="text-3xl mb-3">🥾</div>
-                <h4 className="font-bold text-lg mb-2">Sentiero Facile</h4>
+                <div className="text-3xl mb-3">🌿</div>
+                <h4 className="font-bold text-lg mb-2">Valli Cupe</h4>
                 <p className="text-sm text-muted-foreground mb-3">
-                  3 km • 1h 30min • Adatto a tutti
+                  giornata natura • circa 1h 15 min
                 </p>
                 <p className="text-sm">
-                  Passeggiata panoramica sul bordo del canyon con 3 punti di osservazione. 
-                  Ideale per famiglie con bambini.
+                  Ideale per chi vuole aggiungere al soggiorno una giornata più verde e fresca,
+                  tra canyon, sentieri e paesaggi dell&apos;entroterra calabrese.
                 </p>
               </div>
 
               <div className="bg-white/95 backdrop-blur-sm p-6 rounded-xl shadow-lg border-2 border-sky-400/70">
-                <div className="text-3xl mb-3">⛰️</div>
-                <h4 className="font-bold text-lg mb-2">Sentiero Medio</h4>
+                <div className="text-3xl mb-3">🏰</div>
+                <h4 className="font-bold text-lg mb-2">Santa Severina</h4>
                 <p className="text-sm text-muted-foreground mb-3">
-                  8 km • 4h • Discreto allenamento
+                  borgo storico • circa 50 min
                 </p>
                 <p className="text-sm">
-                  Discesa nel canyon, attraversamento ponti tibetani, risalita cascate. 
-                  Guida obbligatoria, caschetto fornito.
+                  Una gita culturale molto adatta a chi ama castelli, panorama, centro storico e
+                  una Calabria diversa da quella solo balneare.
                 </p>
-                <div className="mt-3 bg-primary/10 text-primary text-xs px-2 py-1 rounded inline-block">
-                  PIÙ POPOLARE
-                </div>
               </div>
 
               <div className="bg-white/90 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-white/70">
-                <div className="text-3xl mb-3">🧗</div>
-                <h4 className="font-bold text-lg mb-2">Sentiero Avanzato</h4>
+                <div className="text-3xl mb-3">🎢</div>
+                <h4 className="font-bold text-lg mb-2">Odissea 2000</h4>
                 <p className="text-sm text-muted-foreground mb-3">
-                  15 km • 7h • Esperti
+                  family day • circa 1h 45 min
                 </p>
                 <p className="text-sm">
-                  Percorso completo del canyon con torrentismo, calate su corda, 
-                  grotte nascoste. Attrezzatura tecnica necessaria.
+                  Da considerare soprattutto per famiglie con bambini o ragazzi nelle giornate più
+                  calde, come alternativa ludica al mare.
                 </p>
               </div>
             </div>
 
-            {/* Info Pratiche */}
             <div className="bg-gradient-to-r from-sky-500 via-cyan-500 to-emerald-500 text-white p-8 rounded-2xl shadow-xl">
               <div className="grid md:grid-cols-3 gap-8 text-center">
                 <div>
                   <MapPin className="w-8 h-8 mx-auto mb-3" />
-                  <div className="font-bold mb-1">Distanza</div>
-                  <div>25 km da Villa Olimpia</div>
-                  <div className="text-sm opacity-90">30 minuti in auto</div>
+                  <div className="font-bold mb-1">Punto di forza</div>
+                  <div>Base sulla costa</div>
+                  <div className="text-sm opacity-90">con mare e servizi vicini</div>
                 </div>
                 <div>
                   <Clock className="w-8 h-8 mx-auto mb-3" />
-                  <div className="font-bold mb-1">Periodo Migliore</div>
-                  <div>Aprile - Ottobre</div>
-                  <div className="text-sm opacity-90">Clima ideale 15-22°C</div>
+                  <div className="font-bold mb-1">Escursioni utili</div>
+                  <div>Mezza giornata o giornata</div>
+                  <div className="text-sm opacity-90">senza cambiare struttura</div>
                 </div>
                 <div>
                   <Info className="w-8 h-8 mx-auto mb-3" />
-                  <div className="font-bold mb-1">Prenotazione</div>
-                  <div>Obbligatoria</div>
-                  <div className="text-sm opacity-90">Guide autorizzate</div>
+                  <div className="font-bold mb-1">Buona pratica</div>
+                  <div>Verifica orari e aperture</div>
+                  <div className="text-sm opacity-90">prima di partire</div>
                 </div>
               </div>
 
               <div className="text-center mt-8">
                 <Button size="lg" variant="secondary" asChild>
                   <Link href="/contatti">
-                    Organizziamo l&apos;Escursione per Te
+                    Chiedici un consiglio sul territorio
                   </Link>
                 </Button>
               </div>
             </div>
 
-            {/* Curiosità */}
             <div className="mt-12 bg-white p-8 rounded-2xl shadow-lg">
               <h3 className="text-2xl font-bold mb-6 text-center">
-                💎 Curiosità sulle Valli Cupe
+                Come valorizzare davvero questa posizione
               </h3>
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="flex gap-4">
-                  <div className="text-4xl">🎬</div>
-                  <div>
-                    <h4 className="font-semibold mb-2">Location Cinematografica</h4>
-                    <p className="text-sm text-muted-foreground">
-                      Le Valli Cupe sono state set di numerosi film e documentari naturalistici, 
-                      tra cui produzioni BBC e National Geographic.
-                    </p>
-                  </div>
-                </div>
-                <div className="flex gap-4">
-                  <div className="text-4xl">🦎</div>
-                  <div>
-                    <h4 className="font-semibold mb-2">Fauna Protetta</h4>
-                    <p className="text-sm text-muted-foreground">
-                      Habitat del tritone crestato, salamandre rare, e oltre 40 specie di uccelli 
-                      protetti tra cui il falco pellegrino.
-                    </p>
-                  </div>
-                </div>
-                <div className="flex gap-4">
                   <div className="text-4xl">🌊</div>
                   <div>
-                    <h4 className="font-semibold mb-2">Cascate Tutto l&apos;Anno</h4>
+                    <h4 className="font-semibold mb-2">Prima il mare dell&apos;Area Marina Protetta</h4>
                     <p className="text-sm text-muted-foreground">
-                      A differenza di altri canyon mediterranei, le cascate delle Valli Cupe 
-                      sono attive 365 giorni l&apos;anno grazie alle sorgenti perenni.
+                      La vacanza a Villa Olimpia parte dalla costa di Capopiccolo, dalla Spiaggia dei
+                      Gigli e dalle cale dell&apos;Area Marina Protetta di Capo Rizzuto.
                     </p>
                   </div>
                 </div>
                 <div className="flex gap-4">
-                  <div className="text-4xl">🏛️</div>
+                  <div className="text-4xl">🚗</div>
                   <div>
-                    <h4 className="font-semibold mb-2">Storia Millenaria</h4>
+                    <h4 className="font-semibold mb-2">Poi gite sensate e credibili</h4>
                     <p className="text-sm text-muted-foreground">
-                      Resti di insediamenti rupestri bizantini (IX-X sec.) nelle grotte naturali 
-                      del canyon, visitabili con guide specializzate.
+                      Santa Severina, Valli Cupe o un parco acquatico hanno senso solo come
+                      completamento del soggiorno, non come promessa principale.
+                    </p>
+                  </div>
+                </div>
+                <div className="flex gap-4">
+                  <div className="text-4xl">📍</div>
+                  <div>
+                    <h4 className="font-semibold mb-2">Base unica, più libertà</h4>
+                    <p className="text-sm text-muted-foreground">
+                      Questo approccio rafforza il messaggio più utile per l&apos;ospite: soggiornare sulla
+                      costa e decidere giorno per giorno cosa aggiungere all&apos;itinerario.
+                    </p>
+                  </div>
+                </div>
+                <div className="flex gap-4">
+                  <div className="text-4xl">ℹ️</div>
+                  <div>
+                    <h4 className="font-semibold mb-2">Informazioni da verificare sempre</h4>
+                    <p className="text-sm text-muted-foreground">
+                      Tempi di percorrenza, aperture e condizioni di visita possono cambiare:
+                      è bene considerarli come indicativi e aggiornabili.
                     </p>
                   </div>
                 </div>
               </div>
+              <p className="mt-6 text-xs text-muted-foreground">
+                Crediti immagini esterne: Valli Cupe, foto di Francesco Placco, licenza CC BY-SA 4.0 via Wikimedia Commons.
+                Castello di Santa Severina, foto di Drnico, pubblico dominio via Wikimedia Commons.
+              </p>
             </div>
           </div>
         </div>

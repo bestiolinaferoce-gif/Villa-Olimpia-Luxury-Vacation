@@ -19,9 +19,9 @@ const transportOptions = [
 ]
 
 const mediaStrip = [
-  "/images/villa/gallery/Esterni_Spiaggia_01.jpg",
-  "/images/villa/gallery/Esterni_LeCastella_01.jpg",
-  "/images/villa/gallery/Esterni_Spiaggia_Tramonto_01.jpg",
+  "/images/territory/spiaggia-capopiccolo.jpg",
+  "/images/territory/castello-aragonese-le-castella.jpg",
+  "/images/territory/castello-santa-severina.jpg",
 ]
 
 export default function LocationPage() {
@@ -49,7 +49,8 @@ export default function LocationPage() {
           <h1 className="text-4xl md:text-6xl font-playfair font-bold mb-5">La Location</h1>
           <p className="text-lg md:text-xl text-white/90 max-w-2xl">
             Villa Olimpia è a Capopiccolo, sulla costa ionica calabrese: mare cristallino, Area Marina Protetta Capo
-            Rizzuto, fondali perfetti per famiglie e snorkeling, con Le Castella raggiungibile in pochi minuti.
+            Rizzuto, fondali perfetti per famiglie e snorkeling, con Le Castella raggiungibile in pochi minuti e
+            la possibilità di organizzare escursioni in giornata verso borghi storici e natura dell&apos;entroterra.
           </p>
           <p className="text-sm md:text-base text-white/80 mt-4">
             La Spiaggia dei Gigli, Bandiera Blu, è a meno di 100 metri dagli appartamenti: si raggiunge in circa 1
@@ -141,7 +142,7 @@ export default function LocationPage() {
                 <CardTitle className="flex items-center gap-2"><MapPin className="h-5 w-5" /> Cultura</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-white/85">Le Castella, il castello aragonese e il centro di Isola di Capo Rizzuto a pochi km.</p>
+                <p className="text-white/85">Le Castella, Santa Severina e il centro di Isola di Capo Rizzuto completano bene il soggiorno.</p>
               </CardContent>
             </Card>
             <Card className="bg-[#0c2f4c] border-[#1d4f77] text-white">
@@ -149,7 +150,7 @@ export default function LocationPage() {
                 <CardTitle>Servizi</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-white/85">Ristoranti, escursioni, diving center e servizi turistici raggiungibili rapidamente in auto.</p>
+                <p className="text-white/85">Ristoranti, diving center, escursioni e proposte family-friendly raggiungibili rapidamente in auto.</p>
               </CardContent>
             </Card>
           </div>
