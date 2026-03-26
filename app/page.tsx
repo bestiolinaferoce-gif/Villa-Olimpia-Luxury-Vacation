@@ -320,6 +320,76 @@ export default function HomePage() {
       {/* Territorio e attrazioni */}
       <TerritorySection />
 
+      {/* Internal link hub */}
+      <section className="py-16 bg-white cv-auto">
+        <div className="container mx-auto px-4">
+          <ScrollReveal>
+            <div className="max-w-5xl mx-auto text-center">
+              <h2 className="text-3xl md:text-4xl font-playfair font-bold mb-4">
+                Scopri meglio Capo Rizzuto prima di prenotare
+              </h2>
+              <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-10">
+                Se vuoi organizzare bene il soggiorno, esplora le pagine dedicate al territorio, alle spiagge, alle
+                attività e ai nostri appartamenti. Ti aiutano a capire perché Villa Olimpia è una base così comoda tra
+                Capopiccolo, Spiaggia dei Gigli e Area Marina Protetta.
+              </p>
+            </div>
+          </ScrollReveal>
+
+          <div className="max-w-6xl mx-auto grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {[
+              {
+                title: "Appartamenti a Capo Rizzuto",
+                text: "Scopri tutte le soluzioni disponibili per coppie, famiglie e piccoli gruppi.",
+                href: "/appartamenti",
+              },
+              {
+                title: "Spiagge di Capo Rizzuto",
+                text: "Una guida utile tra Spiaggia dei Gigli, calette e mare dell'Area Marina Protetta.",
+                href: "/spiagge-capo-rizzuto",
+              },
+              {
+                title: "Cosa fare nei dintorni",
+                text: "Itinerari, escursioni e attività da vivere partendo da Villa Olimpia.",
+                href: "/cosa-fare-capo-rizzuto",
+              },
+              {
+                title: "Le Castella e il castello",
+                text: "Una delle visite più iconiche della zona, facile da raggiungere da Capopiccolo.",
+                href: "/le-castella",
+              },
+              {
+                title: "Blog e guide locali",
+                text: "Articoli su territorio, vacanze in famiglia, prenotazione diretta ed esperienze locali.",
+                href: "/blog",
+              },
+              {
+                title: "Prenotazione diretta",
+                text: "Contattaci per disponibilità, proposta personalizzata e assistenza veloce.",
+                href: "/prenota",
+              },
+            ].map((item, index) => (
+              <ScrollReveal key={item.href} delay={index * 0.08}>
+                <Card className="h-full border border-primary/10 bg-background/90 shadow-sm hover:shadow-lg transition-all duration-300">
+                  <CardHeader className="space-y-3">
+                    <CardTitle className="text-xl font-playfair">{item.title}</CardTitle>
+                    <CardDescription className="text-sm leading-relaxed">{item.text}</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <Button variant="outline" asChild className="w-full">
+                      <Link href={item.href}>
+                        Vai alla pagina
+                        <ArrowRight className="w-4 h-4 ml-2" />
+                      </Link>
+                    </Button>
+                  </CardContent>
+                </Card>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* FAQ preview */}
       <section className="py-20 bg-background cv-auto">
         <div className="container mx-auto px-4">
