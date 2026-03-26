@@ -34,13 +34,9 @@ export function generateMetadata({
   const usesDefaultOgImage =
     image === "/og-image.jpg" || imageUrl === `${baseUrl}/og-image.jpg`
   const titleIncludesSiteName = title.toLowerCase().includes(siteName.toLowerCase())
-  const truncatedTitle = title.length > 60 ? title.substring(0, 57) + "..." : title
-  const resolvedTitle = titleIncludesSiteName ? truncatedTitle : `${truncatedTitle} | ${siteName}`
-
-  // Ensure description is 155-160 characters for optimal SEO
-  const optimizedDescription = description.length > 160
-    ? description.substring(0, 157) + "..."
-    : description
+  const normalizedTitle = title.trim()
+  const resolvedTitle = titleIncludesSiteName ? normalizedTitle : `${normalizedTitle} | ${siteName}`
+  const optimizedDescription = description.trim()
 
   return {
     title: resolvedTitle,
