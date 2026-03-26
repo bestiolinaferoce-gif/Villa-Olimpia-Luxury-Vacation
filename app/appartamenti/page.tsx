@@ -140,6 +140,46 @@ export default function AppartamentiPage() {
 
       <LocalSeoSection />
 
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <div className="space-y-10">
+            <div>
+              <h2 className="text-3xl md:text-4xl font-playfair font-bold mb-4">
+                Appartamenti a Capo Rizzuto con piscina e vicino al mare
+              </h2>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                Gli appartamenti di Villa Olimpia a Capopiccolo sono pensati per chi cerca una soluzione comoda,
+                curata e ben posizionata per vivere una vacanza a Capo Rizzuto. La struttura si trova in una zona
+                ideale per raggiungere facilmente il mare, rilassarsi in piscina e visitare il territorio di Isola
+                di Capo Rizzuto, tra spiagge, borghi e luoghi di interesse naturalistico.
+              </p>
+              <p className="text-lg text-muted-foreground leading-relaxed mt-4">
+                Qui puoi scegliere tra diverse soluzioni adatte a coppie, famiglie e piccoli gruppi, con spazi
+                organizzati per offrire comfort, libertà e praticità durante tutto il soggiorno.
+              </p>
+            </div>
+
+            <div>
+              <h2 className="text-3xl md:text-4xl font-playfair font-bold mb-4">
+                Appartamenti per coppie, famiglie e piccoli gruppi
+              </h2>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                Le diverse soluzioni presenti nella struttura permettono di accogliere ospiti con esigenze diverse.
+                Chi viaggia in coppia può cercare ambienti più raccolti e riservati, mentre chi organizza una
+                vacanza in famiglia può trovare appartamenti più adatti alla gestione degli spazi e della vita
+                quotidiana durante il soggiorno.
+              </p>
+              <p className="text-lg text-muted-foreground leading-relaxed mt-4">
+                Per chi cerca appartamenti a Capo Rizzuto per famiglie, la disponibilità di più opzioni all&apos;interno
+                della stessa struttura rappresenta un vantaggio concreto. La presenza della piscina, la vicinanza
+                al mare e la facilità negli spostamenti aiutano a rendere il soggiorno più comodo, soprattutto nei
+                periodi estivi.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Mappa interattiva Villa Olimpia (posizioni e capienze da istruzioni) */}
       <MapExpand language="it" />
 
@@ -183,6 +223,21 @@ export default function AppartamentiPage() {
                   Area Marina Protetta
                 </Link>
                 .
+              </p>
+            </div>
+            <div className="bg-gradient-to-br from-slate-50 to-white rounded-2xl border border-slate-200 p-6 shadow-sm">
+              <h3 className="text-2xl md:text-3xl font-playfair font-bold text-gray-900 mb-4">
+                Perché scegliere una prenotazione diretta
+              </h3>
+              <p className="text-base text-gray-700 leading-relaxed">
+                Scegliere direttamente uno degli appartamenti di Villa Olimpia significa poter valutare con maggiore
+                chiarezza la soluzione più adatta al proprio soggiorno. La prenotazione diretta permette di ricevere
+                informazioni utili, disponibilità aggiornata e un contatto più semplice prima dell&apos;arrivo.
+              </p>
+              <p className="text-base text-gray-700 leading-relaxed mt-4">
+                Per chi sta organizzando una vacanza a Capo Rizzuto, questo aiuta a scegliere con più precisione
+                l&apos;appartamento migliore in base al numero di ospiti, al periodo e al tipo di esperienza
+                desiderata.
               </p>
             </div>
             <div id="piano-terra" className="space-y-6">

@@ -67,6 +67,43 @@ export default function SpiaggeCapoRizzutoPage() {
       <section className="py-20 bg-gradient-to-b from-[#f5fbff] to-[#e6f4ff]">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
+            <div className="space-y-6 mb-12">
+              <div>
+                <h2 className="text-3xl md:text-4xl font-playfair font-bold mb-4">
+                  Perché il mare di Capo Rizzuto è così apprezzato
+                </h2>
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                  Le spiagge di Capo Rizzuto sono apprezzate per la varietà del paesaggio e per la qualità
+                  dell&apos;esperienza che offrono. In pochi chilometri si passa da zone più ampie e semplici da
+                  raggiungere a calette più raccolte, punti panoramici e tratti di costa che mantengono un forte
+                  legame con l&apos;ambiente naturale circostante.
+                </p>
+                <p className="text-lg text-muted-foreground leading-relaxed mt-4">
+                  Questa varietà rende Capo Rizzuto una meta molto ricercata da chi organizza una vacanza in
+                  Calabria vicino al mare. Famiglie, coppie e piccoli gruppi trovano qui la possibilità di vivere
+                  giornate diverse, alternando spiagge più comode a luoghi più suggestivi e tranquilli.
+                </p>
+              </div>
+
+              <div>
+                <h2 className="text-3xl md:text-4xl font-playfair font-bold mb-4">
+                  Capopiccolo e la Spiaggia dei Gigli
+                </h2>
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                  Capopiccolo è uno dei riferimenti più importanti per chi sceglie di soggiornare in questa zona
+                  della costa. La Spiaggia dei Gigli è uno dei punti più interessanti per vicinanza, bellezza del
+                  mare e comodità di accesso. Per molti viaggiatori rappresenta uno dei motivi principali per
+                  scegliere un soggiorno in questa parte di Isola di Capo Rizzuto.
+                </p>
+                <p className="text-lg text-muted-foreground leading-relaxed mt-4">
+                  Chi cerca una casa vacanza o appartamenti vicino alla Spiaggia dei Gigli trova in questa zona un
+                  equilibrio molto forte tra paesaggio, tranquillità e praticità. Soggiornare vicino al mare
+                  permette di vivere meglio la giornata e di ridurre gli spostamenti, soprattutto durante i mesi più
+                  intensi dell&apos;estate.
+                </p>
+              </div>
+            </div>
+
             <h2 className="text-3xl md:text-4xl font-playfair font-bold mb-8 text-center">
               Spiagge da Non Perdere
             </h2>
@@ -223,6 +260,19 @@ export default function SpiaggeCapoRizzutoPage() {
             <h2 className="text-3xl md:text-4xl font-playfair font-bold mb-8 text-center">
               Attività da Fare sulle Spiagge
             </h2>
+            <div className="space-y-4 mb-8">
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                La scelta della spiaggia dipende dal tipo di vacanza che si desidera vivere. Chi viaggia con
+                bambini tende a preferire zone più comode e facilmente raggiungibili, mentre chi cerca angoli più
+                suggestivi può orientarsi verso punti meno centrali o più panoramici. Capo Rizzuto consente di
+                combinare entrambe le cose, offrendo più possibilità all&apos;interno dello stesso territorio.
+              </p>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                Questo è uno dei motivi per cui la zona funziona così bene anche come base di soggiorno. Non si
+                tratta di una sola spiaggia, ma di un insieme di luoghi che permettono di costruire una vacanza più
+                varia, alternando mare, relax, passeggiate, escursioni e visite nei dintorni.
+              </p>
+            </div>
             <div className="grid md:grid-cols-2 gap-6">
               {[
                 {
@@ -265,6 +315,13 @@ export default function SpiaggeCapoRizzutoPage() {
             </h2>
             <p className="text-lg text-muted-foreground mb-8 text-center">
               Villa Olimpia è la base perfetta per esplorare tutte le spiagge della zona, con appartamenti indipendenti e piscina condivisa:
+            </p>
+            <p className="text-lg text-muted-foreground leading-relaxed mb-8 text-center">
+              Per vivere davvero bene questa zona, è utile scegliere un alloggio in una posizione strategica,
+              vicino al mare e ben collegato alle principali spiagge e attrazioni. Soggiornare a Capopiccolo,
+              vicino alla Spiaggia dei Gigli, consente di avere un accesso più immediato alla costa e allo stesso
+              tempo di muoversi facilmente verso Le Castella, l&apos;Area Marina Protetta e gli altri luoghi di
+              interesse del territorio.
             </p>
             <div className="grid md:grid-cols-2 gap-6">
               {[

@@ -75,6 +75,37 @@ export default function LeCastellaPage() {
               Il castello, risalente al XV secolo, è stato utilizzato come fortezza difensiva contro le incursioni 
               saracene e oggi è una delle attrazioni turistiche più visitate della Calabria.
             </p>
+            <div className="space-y-6 mb-12">
+              <div>
+                <h2 className="text-3xl md:text-4xl font-playfair font-bold mb-4">
+                  Perché visitare Le Castella durante il soggiorno
+                </h2>
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                  Le Castella è una meta che unisce elementi diversi: il fascino storico del castello, la vicinanza
+                  al mare, la passeggiata nel borgo e la possibilità di vivere un&apos;escursione semplice ma molto
+                  appagante durante il soggiorno. È una località adatta sia a chi ama visitare luoghi simbolici sia
+                  a chi vuole semplicemente trascorrere qualche ora in un contesto molto caratteristico.
+                </p>
+                <p className="text-lg text-muted-foreground leading-relaxed mt-4">
+                  Per chi alloggia a Capopiccolo o a Isola di Capo Rizzuto, visitare Le Castella è una scelta
+                  naturale. La distanza contenuta consente di organizzare facilmente la giornata e di combinare la
+                  visita con momenti di mare, ristoranti sul territorio o altre tappe della costa.
+                </p>
+              </div>
+
+              <div>
+                <h2 className="text-3xl md:text-4xl font-playfair font-bold mb-4">
+                  Dove soggiornare per visitare Le Castella
+                </h2>
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                  Per visitare Le Castella in modo comodo, conviene scegliere una zona di soggiorno che permetta di
+                  raggiungere facilmente il borgo ma che offra anche accesso al mare, tranquillità e servizi utili
+                  per la vacanza. Capopiccolo e Isola di Capo Rizzuto rappresentano una soluzione molto valida per
+                  chi desidera restare vicino alle principali attrazioni della costa senza concentrarsi solo su una
+                  singola località.
+                </p>
+              </div>
+            </div>
 
             <div className="grid gap-4 md:grid-cols-3 mb-12">
               {leCastellaImages.map((image) => (
@@ -210,6 +241,12 @@ export default function LeCastellaPage() {
             </h2>
             <p className="text-lg text-muted-foreground mb-8 text-center">
               Villa Olimpia è la base perfetta per esplorare Le Castella e tutta la costa ionica calabrese:
+            </p>
+            <p className="text-lg text-muted-foreground leading-relaxed mb-8 text-center">
+              Scegliere un soggiorno in questa parte della Calabria significa avere la possibilità di alternare
+              giornate al mare, visite culturali, scoperta del territorio e momenti di relax. Le Castella rientra
+              perfettamente in questo equilibrio, perché aggiunge alla vacanza una componente identitaria forte,
+              immediatamente riconoscibile e molto apprezzata da chi visita la zona.
             </p>
             <div className="grid md:grid-cols-2 gap-6">
               {[
