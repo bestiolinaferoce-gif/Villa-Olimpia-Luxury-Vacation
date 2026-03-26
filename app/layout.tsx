@@ -166,10 +166,10 @@ export default function RootLayout({
               ],
               nearbyAttraction: [
                 { "@type": "TouristAttraction", name: "Spiaggia dei Gigli", description: "Spiaggia Bandiera Blu", distance: "100 metri" },
-                { "@type": "TouristAttraction", name: "Area Marina Protetta Capo Rizzuto", description: "Riserva marina protetta", distance: "2 km" },
+                { "@type": "TouristAttraction", name: "Area Marina Protetta Capo Rizzuto", description: "Costa protetta e snorkeling", distance: "nelle vicinanze" },
                 { "@type": "TouristAttraction", name: "Le Castella", description: "Castello aragonese patrimonio storico", distance: "8 km" },
                 { "@type": "TouristAttraction", name: "Valli Cupe", description: "Riserva naturale con cascate", distance: "65 km" },
-                { "@type": "TouristAttraction", name: "Spiagge Rosse Bandiera Blu", description: "Spiagge con sabbia colorata", distance: "12 km" }
+                { "@type": "TouristAttraction", name: "Santa Severina", description: "Borgo storico con castello", distance: "45 km" }
               ],
               checkInTime: "15:00",
               checkOutTime: "10:00",
@@ -186,8 +186,8 @@ export default function RootLayout({
               })),
               availableAtOrFrom: {
                 "@type": "Offer",
-                name: "Giugno e Luglio 2026 — Tariffe vantaggiose",
-                description: "Prenota direttamente per Giugno e Luglio 2026. Tariffe migliori rispetto ai portali.",
+                name: "Prenotazione diretta Villa Olimpia",
+                description: "Richiedi disponibilità diretta per appartamenti con piscina a Capopiccolo, vicino alla Spiaggia dei Gigli e all'Area Marina Protetta di Capo Rizzuto.",
                 priceCurrency: "EUR",
                 availability: "https://schema.org/LimitedAvailability"
               }

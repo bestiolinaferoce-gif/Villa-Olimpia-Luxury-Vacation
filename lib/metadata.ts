@@ -152,17 +152,11 @@ export function getApartmentMetadata(apartmentId: number): Metadata {
 export const defaultMetadata: Metadata = {
   metadataBase: new URL(baseUrl),
     title: {
-      default: `${siteName} | Appartamenti con Piscina Capo Rizzuto — Giugno e Luglio 2026`,
+      default: `${siteName} | Appartamenti con Piscina a Capo Rizzuto`,
       template: `%s`,
     },
-  description: "Villa Olimpia: 9 appartamenti con piscina privata a Capo Rizzuto, Calabria. Disponibilità Giugno e Luglio 2026 a tariffe vantaggiose. A 100m dalla Spiaggia dei Gigli, Area Marina Protetta. Prenota direttamente senza commissioni.",
+  description: "Villa Olimpia: appartamenti con piscina a Capopiccolo, nell'Area Marina Protetta di Capo Rizzuto. A pochi passi dalla Spiaggia dei Gigli, ideali per vacanze in Calabria con prenotazione diretta.",
   keywords: [
-    // June/July primary intent
-    "vacanze giugno calabria piscina",
-    "affitto giugno capo rizzuto",
-    "vacanze luglio calabria mare",
-    "appartamento luglio capo rizzuto piscina",
-    "offerta giugno villa piscina calabria",
     // Core
     "appartamenti vacanze Calabria piscina",
     "villa piscina Capo Rizzuto",
@@ -204,8 +198,8 @@ export const defaultMetadata: Metadata = {
     locale: "it_IT",
     url: baseUrl,
     siteName: openGraphSiteName,
-    title: `${siteName} — Appartamenti con Piscina a Capo Rizzuto | Giugno e Luglio 2026`,
-    description: "9 appartamenti con piscina privata a Capo Rizzuto. Tariffe vantaggiose Giugno e Luglio 2026. Spiaggia dei Gigli a 100m. Prenota direttamente senza commissioni.",
+    title: `${siteName} — Appartamenti con Piscina a Capo Rizzuto`,
+    description: "Appartamenti con piscina a Capopiccolo, nell'Area Marina Protetta di Capo Rizzuto. Spiaggia dei Gigli a pochi passi e prenotazione diretta senza intermediari.",
     images: [
       {
         url: `${baseUrl}/og-image.jpg`,
@@ -217,8 +211,8 @@ export const defaultMetadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `${siteName} — Appartamenti con Piscina Capo Rizzuto | Giugno e Luglio 2026`,
-    description: "9 appartamenti con piscina a Capo Rizzuto. Tariffe vantaggiose Giugno/Luglio 2026. Prenota ora!",
+    title: `${siteName} — Appartamenti con Piscina a Capo Rizzuto`,
+    description: "Appartamenti con piscina a Capopiccolo, vicino alla Spiaggia dei Gigli e all'Area Marina Protetta di Capo Rizzuto. Prenota direttamente.",
     images: [`${baseUrl}/og-image.jpg`],
   },
   alternates: {
