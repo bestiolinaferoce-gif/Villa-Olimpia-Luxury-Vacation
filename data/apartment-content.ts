@@ -18,14 +18,14 @@ export interface ApartmentContent {
 export const apartmentContent: Record<number, ApartmentContent> = {
   1: {
     // FRANGIPANE - 45 mq, 6 ospiti, 2 camere, 1 bagno, piano terra
-    shortDescription: "Frangipane Villa Olimpia: 45 mq, 6 ospiti, 2 camere matrimoniali, veranda privata e cucina completa. Unico al piano terra con doppia camera doppia. A 100 m dalla Spiaggia dei Gigli, Capopiccolo Isola di Capo Rizzuto.",
-    fullPremiumDescription: `Il lodge Frangipane è la scelta ideale per chi desidera vivere la propria vacanza in simbiosi con gli spazi esterni. Situato al piano terra, dispone di un accesso diretto a una veranda privata affacciata sulla piscina, arredata con tavolo e sedie da giardino: il posto perfetto per colazioni all'alba, pranzi all'ombra e cene sotto le stelle calabresi.
+    shortDescription: "Appartamento Frangipane per vacanze a Capo Rizzuto: soluzione comoda per famiglie e gruppi, con 2 camere matrimoniali, veranda privata e accesso rapido al mare a Capopiccolo.",
+    fullPremiumDescription: `L'appartamento Frangipane di Villa Olimpia è una soluzione pensata per chi desidera una vacanza a Capo Rizzuto con più spazio, comodità e accesso rapido al mare. Situato a Capopiccolo, in un'area molto apprezzata di Isola di Capo Rizzuto, è adatto a famiglie e gruppi che cercano una base pratica per vivere la Calabria tra spiagge, territorio e relax.
 
-Internamente, il Frangipane offre due camere da letto matrimoniali, un bagno completo con box doccia e un soggiorno con divano letto, per un totale di 6 posti letto. La cucina è completamente attrezzata con tutto il necessario per cucinare in piena autonomia. Ogni ambiente è climatizzato e dotato di connessione Wi-Fi ad alta velocità.
+Il suo punto di forza è l'equilibrio tra organizzazione degli spazi e facilità di utilizzo durante il soggiorno. Le due camere matrimoniali reali, la zona living e la veranda privata aiutano a vivere la vacanza con maggiore libertà, sia nei momenti in casa sia nelle ore dedicate al mare.
 
-Grazie alla sua posizione al piano terra e alla veranda privata fronte piscina, il Frangipane è particolarmente apprezzato da famiglie con bambini piccoli e da chi ama trascorrere le giornate a bordo piscina senza rinunciare alla privacy totale. La Spiaggia dei Gigli e la Spiaggia della Caletta distano meno di un minuto a piedi.
+Frangipane è particolarmente indicato per chi attribuisce valore alla comodità degli spazi durante il soggiorno. In una vacanza al mare, avere un appartamento funzionale e ben organizzato fa la differenza soprattutto quando si viaggia in più persone o si desidera una soluzione che permetta di vivere bene i tempi della giornata.
 
-Ogni ospite del Frangipane ha accesso alla piscina privata ad uso esclusivo degli ospiti di Villa Olimpia, al giardino attrezzato con zone relax e al barbecue privato del lodge. La struttura dispone inoltre di un grande barbecue comune in giardino, ideale per le serate conviviali.`,
+La vicinanza alla Spiaggia dei Gigli e alle altre zone più interessanti dell'Area Marina Protetta di Capo Rizzuto rende questa soluzione ancora più convincente. È una scelta adatta a chi cerca un soggiorno semplice da organizzare, comodo da vivere e ben inserito nel contesto di Capopiccolo.`,
     featureBullets: [
       "Due camere matrimoniali reali (unico al piano terra)",
       "Veranda privata arredata con vista giardino",
@@ -42,7 +42,7 @@ Ogni ospite del Frangipane ha accesso alla piscina privata ad uso esclusivo degl
       "Gruppi di amici",
       "Soggiorni medio-lunghi a Capo Rizzuto"
     ],
-    seoParagraph: "L'appartamento Frangipane di Villa Olimpia a Capopiccolo, Isola di Capo Rizzuto, è la scelta ideale per chi cerca appartamenti con piscina in Calabria vicino al mare. Con 45 mq, due camere matrimoniali e veranda privata, ospita fino a 6 persone. Vicinanza alla Spiaggia dei Gigli e all'Area Marina Protetta, dotazioni moderne, biancheria inclusa. Perfetto per famiglie e gruppi che desiderano comfort, privacy e prenotazione diretta a Capo Rizzuto.",
+    seoParagraph: "L'appartamento Frangipane di Villa Olimpia a Capopiccolo è una soluzione ideale per chi cerca appartamenti a Capo Rizzuto con piscina e vicino al mare. Con 45 mq, due camere matrimoniali e veranda privata, è particolarmente adatto a famiglie e piccoli gruppi che vogliono soggiornare vicino alla Spiaggia dei Gigli e all'Area Marina Protetta di Capo Rizzuto, in una posizione comoda per vivere il territorio e prenotare direttamente.",
     technicalSummary: {
       capacity: "6",
       rooms: "2 matrimoniali",
@@ -212,12 +212,14 @@ Il lodge Lavanda ha accesso diretto al giardino di Villa Olimpia, alla piscina p
   },
   7: {
     // GERANIO - 65 mq, 6 ospiti, 2 camere, 2 bagni, primo piano, 2 balconcini semipanoramici
-    shortDescription: "Geranio: 65 mq premium, primo piano. 2 camere, 2 bagni, 2 balconcini semipanoramici arredati. Fino a 6 ospiti. Il più completo di Villa Olimpia. Capopiccolo, Spiaggia dei Gigli a 100 m.",
-    fullPremiumDescription: `Il lodge Geranio è il più esclusivo di Villa Olimpia: situato al primo piano, è l'unico ad offrire due balconi panoramici — uno dalla camera da letto e uno dalla cucina — che regalano una vista privilegiata sul paesaggio circostante e sul verde della villa.
+    shortDescription: "Appartamento Geranio a Capo Rizzuto: la soluzione premium di Villa Olimpia con 2 camere, 2 bagni e 2 balconcini semipanoramici, ideale per famiglie e piccoli gruppi.",
+    fullPremiumDescription: `L'appartamento Geranio di Villa Olimpia è una delle soluzioni più complete e rappresentative della struttura. Situato al primo piano a Capopiccolo, è pensato per chi desidera soggiornare a Capo Rizzuto con più spazio, comfort e una posizione strategica per vivere il mare e il territorio.
 
-La dotazione è di livello superiore rispetto agli altri lodge: due camere da letto matrimoniali, due bagni completi (di cui uno en-suite con antibagno), cabina armadio nella camera principale, soggiorno con divano letto per due persone. Un totale di 6 posti letto con finiture e arredi di qualità superiore. Ideale per chi non vuole rinunciare a nulla, nemmeno in vacanza.
+Geranio si distingue per l'equilibrio tra ampiezza, funzionalità e qualità della permanenza. Le due camere da letto, i due bagni, il soggiorno ampio e i due balconcini semipanoramici arredati rendono questa unità particolarmente adatta a famiglie numerose, gruppi di amici o ospiti che desiderano un livello di comodità superiore.
 
-I due balconi panoramici rendono il Geranio il lodge ideale per chi ama iniziare la giornata con un caffè con vista e concluderla ammirando il tramonto. La piscina privata di Villa Olimpia, il giardino attrezzato, il barbecue privato e le spiagge a meno di un minuto completano un'esperienza di soggiorno che non ha equivalenti nella zona.`,
+I balconcini aiutano a vivere meglio il soggiorno anche fuori dagli ambienti interni, soprattutto nei momenti più lenti della giornata. Il contesto di Villa Olimpia, con piscina condivisa, giardino e accesso rapido alla Spiaggia dei Gigli, completa un'esperienza molto forte per chi cerca una vacanza premium in Calabria vicino al mare.
+
+Per posizione, dotazioni e qualità complessiva, Geranio è una delle scelte più convincenti per chi vuole prenotare direttamente un appartamento a Capo Rizzuto ben inserito nel territorio, a pochi minuti dall'Area Marina Protetta e da Le Castella.`,
     featureBullets: [
       "Due balconcini semipanoramici arredati",
       "Due camere da letto climatizzate",
@@ -233,7 +235,7 @@ I due balconi panoramici rendono il Geranio il lodge ideale per chi ama iniziare
       "Gruppi di amici",
       "Soggiorni premium a Capo Rizzuto"
     ],
-    seoParagraph: "Geranio è l'appartamento premium di Villa Olimpia a Capopiccolo, Isola di Capo Rizzuto: 65 mq, 2 camere, 2 bagni, cabina armadio e 2 balconcini semipanoramici arredati. Villa con piscina in Calabria ideale per 6 persone. A 100 m dalla Spiaggia dei Gigli. Perfetto per chi cerca un soggiorno premium con prenotazione diretta, spazi generosi e comfort di livello superiore.",
+    seoParagraph: "Geranio è l'appartamento premium di Villa Olimpia a Capopiccolo, Isola di Capo Rizzuto: 65 mq, 2 camere, 2 bagni e 2 balconcini semipanoramici arredati. È una soluzione ideale per chi cerca un appartamento a Capo Rizzuto con piscina, vicino alla Spiaggia dei Gigli e all'Area Marina Protetta, con spazi generosi, comfort superiore e prenotazione diretta.",
     technicalSummary: {
       capacity: "6",
       rooms: "2 da letto",
