@@ -27,6 +27,8 @@ npm install
 - `npm run health-check` - Report rapido sullo stato del progetto
 - `npm run quality:quick` - Controlli ferrei su repo, SEO, appartamenti e copy
 - `npm run quality:gate` - Quality gate completo prima di ogni deploy
+- `npm run verify:live-seo` - Verifica il dominio pubblico dopo il deploy
+- `npm run ops:daily` - Routine giornaliera completa per controlli locali + live
 
 ## 📁 Struttura del Progetto
 
@@ -128,3 +130,9 @@ npm run quality:gate
 ```
 
 Se `quality:gate` fallisce, il deploy va fermato finché il problema non è risolto.
+
+Dopo ogni deploy in produzione:
+
+```bash
+npm run verify:live-seo
+```

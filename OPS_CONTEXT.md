@@ -38,6 +38,8 @@ Ultimo aggiornamento: 2026-02-08
 - Health check: npm run health-check
 - Quality quick: npm run quality:quick
 - Quality gate pre-deploy: npm run quality:gate
+- Live SEO verify: npm run verify:live-seo
+- Daily ops routine: npm run ops:daily
 
 ## Verifiche post-deploy
 - Homepage
@@ -51,6 +53,7 @@ Ultimo aggiornamento: 2026-02-08
 - Il repo non deve contenere file spazzatura tracciati (`.DS_Store`, `*.bak`, `tmp_*`, `vercel.env`, config legacy).
 - I controlli SEO devono bloccare il ritorno di URL legacy, snippet sporchi e metadata datati.
 - Il percorso immagini canonico per gli appartamenti è `public/images/villa/appartamenti/*`.
+- Dopo ogni deploy va eseguito anche il controllo live del dominio pubblico.
 
 
 ## Aggiornamenti 2026-02-08
