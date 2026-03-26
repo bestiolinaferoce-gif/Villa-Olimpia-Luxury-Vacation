@@ -42,7 +42,7 @@ Ogni ospite del Frangipane ha accesso alla piscina privata ad uso esclusivo degl
       "Gruppi di amici",
       "Soggiorni medio-lunghi a Capo Rizzuto"
     ],
-    seoParagraph: "L'appartamento Frangipane di Villa Olimpia a Capopiccolo, Isola di Capo Rizzuto, è la scelta ideale per chi cerca appartamenti con piscina in Calabria vicino al mare. Con 45 mq, due camere matrimoniali e veranda privata, ospita fino a 6 persone. Vicinanza alla Spiaggia dei Gigli e all'Area Marina Protetta, dotazioni moderne, biancheria inclusa. Perfetto per famiglie e gruppi: prenotazione diretta, Booking.com e Airbnb. Indicizzazione ottimale per parole chiave: appartamento Capo Rizzuto, villa piscina Calabria, vacanza Isola di Capo Rizzuto.",
+    seoParagraph: "L'appartamento Frangipane di Villa Olimpia a Capopiccolo, Isola di Capo Rizzuto, è la scelta ideale per chi cerca appartamenti con piscina in Calabria vicino al mare. Con 45 mq, due camere matrimoniali e veranda privata, ospita fino a 6 persone. Vicinanza alla Spiaggia dei Gigli e all'Area Marina Protetta, dotazioni moderne, biancheria inclusa. Perfetto per famiglie e gruppi che desiderano comfort, privacy e prenotazione diretta a Capo Rizzuto.",
     technicalSummary: {
       capacity: "6",
       rooms: "2 matrimoniali",
@@ -233,7 +233,7 @@ I due balconi panoramici rendono il Geranio il lodge ideale per chi ama iniziare
       "Gruppi di amici",
       "Soggiorni premium a Capo Rizzuto"
     ],
-    seoParagraph: "Geranio è l'appartamento premium di Villa Olimpia a Capopiccolo, Isola di Capo Rizzuto: 65 mq, 2 camere, 2 bagni, cabina armadio e 2 balconcini semipanoramici arredati. Villa con piscina in Calabria ideale per 6 persone. A 100 m dalla Spiaggia dei Gigli. Keywords: appartamento premium Capo Rizzuto, balconcini semipanoramici Calabria, luxury Villa Olimpia, Booking Airbnb.",
+    seoParagraph: "Geranio è l'appartamento premium di Villa Olimpia a Capopiccolo, Isola di Capo Rizzuto: 65 mq, 2 camere, 2 bagni, cabina armadio e 2 balconcini semipanoramici arredati. Villa con piscina in Calabria ideale per 6 persone. A 100 m dalla Spiaggia dei Gigli. Perfetto per chi cerca un soggiorno premium con prenotazione diretta, spazi generosi e comfort di livello superiore.",
     technicalSummary: {
       capacity: "6",
       rooms: "2 da letto",

@@ -3,7 +3,6 @@ import Image from "next/image"
 import { getApartmentById, apartments } from "@/data/apartments"
 // FIX: Import esplicito per risolvere problemi di routing
 import { getApartmentMetadata, BASE_URL } from "@/lib/metadata"
-import { getApartmentSEO } from "@/data/apartments-seo"
 import { getApartmentContent } from "@/data/apartment-content"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -83,7 +82,6 @@ export default async function ApartmentDetailPage({ params }: PageProps) {
     notFound()
   }
 
-  const seoData = getApartmentSEO(apartmentId)
   const content = getApartmentContent(apartmentId)
   const contactHref = `/contatti?source=apartment_detail&apartment=${encodeURIComponent(apartment.name)}&guests=${apartment.guests}#prenota`
   const apartmentWhatsAppHref = buildWhatsAppUrlFromText(
@@ -250,7 +248,7 @@ export default async function ApartmentDetailPage({ params }: PageProps) {
               </Card>
             )}
 
-            {/* SEO Info Box per OTA */}
+            {/* Booking info box */}
             <Card className="bg-gradient-to-br from-blue-50 to-primary/5 border-blue-200/50 dark:from-blue-950/20 dark:border-blue-800/30">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2 text-blue-900 dark:text-blue-100">
@@ -436,7 +434,7 @@ export default async function ApartmentDetailPage({ params }: PageProps) {
         </div>
       </section>
 
-      {/* Schema Markup JSON-LD per SEO OTA */}
+      {/* Schema Markup JSON-LD */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
