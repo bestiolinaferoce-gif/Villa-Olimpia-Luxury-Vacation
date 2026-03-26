@@ -72,6 +72,41 @@ export default function AreaMarinaProtettaPage() {
               come snorkeling, immersioni guidate e pesca sportiva regolamentata, garantendo al contempo la 
               conservazione dell&apos;ambiente marino.
             </p>
+            <div className="space-y-6 mb-12">
+              <div>
+                <h2 className="text-3xl md:text-4xl font-playfair font-bold mb-4">
+                  Capopiccolo e Spiaggia dei Gigli
+                </h2>
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                  Tra le aree più apprezzate dell&apos;Area Marina Protetta ci sono Capopiccolo e la Spiaggia dei
+                  Gigli, che rappresentano un riferimento fondamentale anche per chi sceglie Villa Olimpia.
+                  Questa vicinanza permette di vivere la vacanza con grande comodità, senza perdere tempo negli
+                  spostamenti e con la possibilità di tornare facilmente in struttura durante la giornata.
+                </p>
+                <p className="text-lg text-muted-foreground leading-relaxed mt-4">
+                  Per molte persone questo è il vero lusso del soggiorno: avere il mare bello vicino, poter
+                  scegliere ogni giorno se restare in spiaggia o muoversi verso altri punti della costa, e vivere
+                  il territorio con un ritmo più libero.
+                </p>
+              </div>
+
+              <div>
+                <h2 className="text-3xl md:text-4xl font-playfair font-bold mb-4">
+                  Perché soggiornare qui conviene davvero
+                </h2>
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                  Soggiornare a Villa Olimpia, a Capopiccolo, significa essere già nel punto giusto per vivere il
+                  meglio di questa parte della costa. La struttura permette di avere accesso rapido al mare, di
+                  muoversi verso Le Castella e le altre località vicine e, allo stesso tempo, di usare la vacanza
+                  sul mare come base per conoscere meglio il territorio.
+                </p>
+                <p className="text-lg text-muted-foreground leading-relaxed mt-4">
+                  Per chi cerca appartamenti vicino all&apos;Area Marina Protetta di Capo Rizzuto, questa posizione
+                  rappresenta un vantaggio concreto, perché unisce qualità del contesto, comodità logistica e
+                  ricchezza dell&apos;esperienza.
+                </p>
+              </div>
+            </div>
 
             <div className="grid gap-4 md:grid-cols-2 mb-12">
               {marineImages.map((image) => (

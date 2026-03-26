@@ -107,6 +107,44 @@ export default function LocationPage() {
         ctaLabel="Chiedi disponibilita"
       />
 
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4 max-w-4xl">
+          <div className="space-y-10">
+            <div>
+              <h2 className="text-3xl md:text-4xl font-playfair font-bold mb-4">
+                Capopiccolo: una delle zone migliori per soggiornare a Capo Rizzuto
+              </h2>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                Capopiccolo è una località molto apprezzata da chi sceglie la costa crotonese per una vacanza al mare.
+                La vicinanza alla spiaggia, la bellezza del litorale e il contesto naturale rendono questa zona
+                particolarmente adatta a soggiorni estivi orientati al relax, al mare e alla scoperta del territorio.
+              </p>
+              <p className="text-lg text-muted-foreground leading-relaxed mt-4">
+                Chi cerca una location a Capo Rizzuto vicina al mare trova in Villa Olimpia una soluzione coerente con
+                questo obiettivo. La posizione consente di godere della costa senza dipendere da lunghi spostamenti
+                quotidiani e di vivere con maggiore libertà il soggiorno.
+              </p>
+            </div>
+
+            <div>
+              <h2 className="text-3xl md:text-4xl font-playfair font-bold mb-4">
+                Una base comoda anche per visitare i dintorni
+              </h2>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                Oltre al mare, Villa Olimpia offre il vantaggio di trovarsi in una posizione utile per raggiungere
+                facilmente altre mete del territorio. Le Castella è una delle escursioni più immediate e interessanti,
+                ma anche borghi come Santa Severina o percorsi naturalistici nell&apos;entroterra possono essere inseriti
+                nel soggiorno come gite in giornata.
+              </p>
+              <p className="text-lg text-muted-foreground leading-relaxed mt-4">
+                Questo rende la struttura adatta anche a chi non cerca solo spiaggia, ma vuole vivere una vacanza più
+                completa, bilanciando relax, scoperta e organizzazione semplice.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Mappa interattiva appartamenti Villa Olimpia */}
       <section className="bg-[#f8fbff]">
         <div className="container mx-auto px-4 py-8">

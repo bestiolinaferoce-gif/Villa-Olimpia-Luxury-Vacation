@@ -261,6 +261,54 @@ export default function TerritorioPage() {
               borghi storici, natura dell&apos;entroterra e mete adatte alle famiglie senza rinunciare
               alla comodità della costa ionica.
             </p>
+            <p className="text-lg text-muted-foreground leading-relaxed mt-4">
+              Soggiornare qui significa avere una base comoda per conoscere meglio il territorio di
+              Isola di Capo Rizzuto e della Calabria ionica, senza rinunciare alla tranquillità della
+              vacanza sul mare.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4 max-w-4xl">
+          <div className="space-y-10">
+            <div>
+              <h2 className="text-3xl md:text-4xl font-playfair font-bold mb-4">
+                Il vero vantaggio di Villa Olimpia
+              </h2>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                Il principale punto di forza di Villa Olimpia non è soltanto la struttura, ma la sua
+                collocazione. Essere a Capopiccolo, in prossimità dell&apos;Area Marina Protetta di Capo
+                Rizzuto, permette di vivere il soggiorno in modo più semplice e più ricco. Il mare
+                resta il centro dell&apos;esperienza, ma la posizione consente anche di ampliare facilmente
+                la vacanza con escursioni culturali, naturalistiche e family-friendly.
+              </p>
+              <p className="text-lg text-muted-foreground leading-relaxed mt-4">
+                Per chi organizza un soggiorno in Calabria, questo è un vantaggio concreto: una sola
+                base, più possibilità di scoperta, meno spostamenti inutili e maggiore libertà nel
+                costruire giornate diverse tra spiaggia, relax e visite nei dintorni.
+              </p>
+            </div>
+
+            <div>
+              <h2 className="text-3xl md:text-4xl font-playfair font-bold mb-4">
+                Mare, spiagge e gite in giornata
+              </h2>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                Il primo livello di esplorazione riguarda ciò che si trova già a pochi minuti da Villa
+                Olimpia: Capopiccolo, la Spiaggia dei Gigli, Le Castella e l&apos;intera Area Marina
+                Protetta di Capo Rizzuto. Questa zona è ideale per chi cerca acque limpide, paesaggi
+                costieri suggestivi, snorkeling, giornate al mare e tramonti sul litorale ionico.
+              </p>
+              <p className="text-lg text-muted-foreground leading-relaxed mt-4">
+                Accanto a questo, il territorio permette anche alcune escursioni in giornata molto
+                interessanti. Valli Cupe rappresenta una proposta valida per chi ama la natura e i
+                percorsi immersi nel verde. Santa Severina è perfetta per chi preferisce una gita
+                culturale tra castello, borgo e panorama sull&apos;entroterra. In stagione, anche attività
+                family-friendly come i parchi acquatici possono completare il soggiorno.
+              </p>
+            </div>
           </div>
         </div>
       </section>
