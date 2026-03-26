@@ -33,6 +33,9 @@ export function generateMetadata({
   const imageUrl = image.startsWith("http") ? image : `${baseUrl}${image}`
   const usesDefaultOgImage =
     image === "/og-image.jpg" || imageUrl === `${baseUrl}/og-image.jpg`
+  const titleIncludesSiteName = title.toLowerCase().includes(siteName.toLowerCase())
+  const truncatedTitle = title.length > 60 ? title.substring(0, 57) + "..." : title
+  const resolvedTitle = titleIncludesSiteName ? truncatedTitle : `${truncatedTitle} | ${siteName}`
 
   // Ensure description is 155-160 characters for optimal SEO
   const optimizedDescription = description.length > 160
@@ -40,11 +43,11 @@ export function generateMetadata({
     : description
 
   return {
-    title: title.length > 60 ? title.substring(0, 57) + "..." : `${title} | ${siteName}`,
+    title: resolvedTitle,
     description: optimizedDescription,
     keywords,
     openGraph: {
-      title: `${title} | ${siteName}`,
+      title: resolvedTitle,
       description: optimizedDescription,
       url,
       siteName: openGraphSiteName,
@@ -62,7 +65,7 @@ export function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: `${title} | ${siteName}`,
+      title: resolvedTitle,
       description: optimizedDescription,
       images: [imageUrl],
     },
@@ -152,7 +155,7 @@ export const defaultMetadata: Metadata = {
   metadataBase: new URL(baseUrl),
     title: {
       default: `${siteName} | Appartamenti con Piscina Capo Rizzuto — Giugno e Luglio 2026`,
-      template: `%s | ${siteName}`,
+      template: `%s`,
     },
   description: "Villa Olimpia: 9 appartamenti con piscina privata a Capo Rizzuto, Calabria. Disponibilità Giugno e Luglio 2026 a tariffe vantaggiose. A 100m dalla Spiaggia dei Gigli, Area Marina Protetta. Prenota direttamente senza commissioni.",
   keywords: [
