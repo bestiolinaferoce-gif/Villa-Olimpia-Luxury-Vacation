@@ -6,15 +6,16 @@ import { Sparkles, Shield, Clock, Waves, MessageCircle } from "lucide-react"
 import { generateMetadata } from "@/lib/metadata"
 
 export const metadata = generateMetadata({
-  title: "Prenota Villa Olimpia — Tariffe Dirette Capo Rizzuto",
+  title: "Prenotazione Diretta Appartamenti a Capo Rizzuto | Villa Olimpia",
   description:
-    "Prenota direttamente Villa Olimpia a Capopiccolo, Isola di Capo Rizzuto. Tariffe migliori garantite, nessuna commissione. Risposta entro 24h, disponibilità Giugno e Luglio 2026.",
+    "Richiedi la prenotazione diretta di Villa Olimpia a Capopiccolo, nell'Area Marina Protetta di Capo Rizzuto. Appartamenti con piscina, risposta entro 24 ore e contatto senza intermediari.",
   path: "/prenota",
   keywords: [
     "prenota villa olimpia",
     "prenotazione diretta appartamento capo rizzuto",
-    "tariffa migliore garantita capo rizzuto",
-    "disponibilità giugno luglio 2026 calabria",
+    "prenota appartamenti capopiccolo",
+    "area marina protetta capo rizzuto alloggio diretto",
+    "richiesta disponibilità villa olimpia",
   ],
 })
 
@@ -41,8 +42,8 @@ export default function PrenotaPage() {
                 <p className="mt-2 text-sm text-slate-600">Preventivo chiaro, nessuna sorpresa e contatto diretto.</p>
               </div>
               <div className="rounded-2xl border border-slate-200 bg-white p-4">
-                <p className="text-sm font-semibold text-slate-900">Localita premium</p>
-                <p className="mt-2 text-sm text-slate-600">Capopiccolo, Area Marina Protetta e Spiaggia dei Gigli.</p>
+                <p className="text-sm font-semibold text-slate-900">Posizione strategica</p>
+                <p className="mt-2 text-sm text-slate-600">Capopiccolo, Area Marina Protetta e Spiaggia dei Gigli a pochi passi.</p>
               </div>
             </div>
 
@@ -74,7 +75,7 @@ export default function PrenotaPage() {
           <div id="prenota" className="scroll-mt-24">
             <Card className="border-2 border-primary/10 shadow-2xl">
               <CardHeader>
-                <CardTitle>Richiedi disponibilita</CardTitle>
+                <CardTitle>Richiedi disponibilità</CardTitle>
                 <CardDescription>Compila il form e ricevi una proposta personalizzata.</CardDescription>
               </CardHeader>
               <CardContent>

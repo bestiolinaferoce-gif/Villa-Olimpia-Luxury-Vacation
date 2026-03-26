@@ -8,14 +8,15 @@ import { TrackContactSource } from "@/components/analytics/track-contact-source"
 import { generateMetadata } from "@/lib/metadata"
 
 export const metadata = generateMetadata({
-  title: "Contatti Villa Olimpia - Prenotazione diretta appartamenti Capo Rizzuto",
+  title: "Contatti e Prenotazione Diretta a Capo Rizzuto | Villa Olimpia",
   description:
-    "Contatta Villa Olimpia per preventivi e prenotazioni dirette dei 9 appartamenti con piscina a Capopiccolo, Isola di Capo Rizzuto. Telefono, email e WhatsApp senza commissioni di portali.",
+    "Contatta Villa Olimpia per preventivi e prenotazioni dirette dei 9 appartamenti a Capopiccolo, nell'Area Marina Protetta di Capo Rizzuto. Telefono, email e WhatsApp per un contatto rapido e senza intermediari.",
   path: "/contatti",
   keywords: [
     "contatti Villa Olimpia",
     "prenotazione diretta appartamenti Capo Rizzuto",
-    "preventivo vacanza Calabria mare",
+    "contatti appartamenti capopiccolo",
+    "preventivo area marina protetta capo rizzuto",
     "telefono Villa Olimpia Capo Rizzuto",
     "email appartamenti Spiaggia dei Gigli",
   ],
@@ -175,9 +176,9 @@ export default function ContattiPage() {
                   </a>
                 </Button>
                 <Button variant="outline" className="w-full" asChild>
-                  <a href="https://wa.me/393335773390" target="_blank" rel="noopener noreferrer">
-                    <MessageCircle className="mr-2 h-5 w-5" />
-                    WhatsApp: 333 577 3390
+                  <a href="tel:+393335773390">
+                    <Phone className="mr-2 h-5 w-5" />
+                    Chiama: 333 577 3390
                   </a>
                 </Button>
               </CardContent>
