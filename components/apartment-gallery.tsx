@@ -1,12 +1,16 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { LEGACY_APARTMENT_PLACEHOLDER_PATH } from "@/lib/public-image-fallbacks"
 import Image from 'next/image'
-import Lightbox from 'yet-another-react-lightbox'
+import dynamic from 'next/dynamic'
 import 'yet-another-react-lightbox/styles.css'
 import Zoom from 'yet-another-react-lightbox/plugins/zoom'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
+
+const Lightbox = dynamic(() => import('yet-another-react-lightbox'), {
+  ssr: false,
+})
 
 interface GalleryProps {
   images: string[]
@@ -16,6 +20,11 @@ interface GalleryProps {
 export default function ApartmentGallery({ images, alt }: GalleryProps) {
   const [open, setOpen] = useState(false)
   const [currentIndex, setCurrentIndex] = useState(0)
+  const [isMounted, setIsMounted] = useState(false)
+
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
 
   // Filtra solo immagini che esistono (non placeholder vuoti)
   const validImages = images.filter(img => img && img !== LEGACY_APARTMENT_PLACEHOLDER_PATH)
@@ -113,15 +122,16 @@ export default function ApartmentGallery({ images, alt }: GalleryProps) {
       )}
 
       {/* Lightbox */}
-      <Lightbox
-        open={open}
-        close={() => setOpen(false)}
-        slides={validImages.map(img => ({ src: img }))}
-        index={currentIndex}
-        plugins={[Zoom]}
-      />
+      {isMounted && open ? (
+        <Lightbox
+          open={open}
+          close={() => setOpen(false)}
+          slides={validImages.map(img => ({ src: img }))}
+          index={currentIndex}
+          plugins={[Zoom]}
+        />
+      ) : null}
     </>
   )
 }
-
 
