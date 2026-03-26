@@ -1,5 +1,5 @@
 import Image from "next/image"
-import { generateMetadata } from "@/lib/metadata"
+import { BASE_URL, generateMetadata } from "@/lib/metadata"
 import { ApartmentCard } from "@/components/apartment-card"
 import { apartments } from "@/data/apartments"
 import { Sparkles, MapPin, Home, Waves, Car, Wifi } from "lucide-react"
@@ -24,9 +24,48 @@ export const metadata = generateMetadata({
 export default function AppartamentiPage() {
   const pianoTerra = apartments.filter((apt) => apt.floor === "Piano Terra")
   const primoPiano = apartments.filter((apt) => apt.floor === "Primo Piano")
+  const apartmentListSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Appartamenti Villa Olimpia",
+    url: `${BASE_URL}/appartamenti`,
+    numberOfItems: apartments.length,
+    itemListElement: apartments.map((apartment, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      url: `${BASE_URL}/appartamenti/${apartment.name.toLowerCase()}`,
+      name: `Appartamento ${apartment.name}`,
+    })),
+  }
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: BASE_URL,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Appartamenti",
+        item: `${BASE_URL}/appartamenti`,
+      },
+    ],
+  }
 
   return (
     <div className="min-h-screen pt-20">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(apartmentListSchema) }}
+      />
       {/* Hero Premium */}
       <section className="relative py-24 overflow-hidden">
         <div className="absolute inset-0">

@@ -87,9 +87,92 @@ export default async function ApartmentDetailPage({ params }: PageProps) {
   const apartmentWhatsAppHref = buildWhatsAppUrlFromText(
     `Richiesta disponibilita ${apartment.name} - Villa Olimpia:\nDate: \nOspiti: ${apartment.guests}\nAppartamento: ${apartment.name}\nFonte: sito ufficiale (pagina appartamento)`
   )
+  const apartmentUrl = `${BASE_URL}/appartamenti/${apartment.name.toLowerCase()}`
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: BASE_URL,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Appartamenti",
+        item: `${BASE_URL}/appartamenti`,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: apartment.name,
+        item: apartmentUrl,
+      },
+    ],
+  }
+  const apartmentSchema = {
+    "@context": "https://schema.org",
+    "@type": "Accommodation",
+    "@id": `${apartmentUrl}#accommodation`,
+    name: `Appartamento ${apartment.name} - Villa Olimpia`,
+    description: apartment.fullDescription || apartment.description,
+    image: apartment.image.startsWith("/")
+      ? `${BASE_URL}${apartment.image}`
+      : `${BASE_URL}/og-image.jpg`,
+    mainEntityOfPage: apartmentUrl,
+    containedInPlace: {
+      "@type": "LodgingBusiness",
+      "@id": `${BASE_URL}/#business`,
+      name: "Villa Olimpia",
+      url: BASE_URL,
+    },
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: VILLA_OLIMPIA_LOCATION.address.street,
+      addressLocality: VILLA_OLIMPIA_LOCATION.address.city,
+      addressRegion: VILLA_OLIMPIA_LOCATION.address.region,
+      postalCode: VILLA_OLIMPIA_LOCATION.address.postalCode,
+      addressCountry: "IT",
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: VILLA_OLIMPIA_LOCATION.coordinates.latitude,
+      longitude: VILLA_OLIMPIA_LOCATION.coordinates.longitude,
+    },
+    numberOfRooms: apartment.bedrooms,
+    occupancy: {
+      "@type": "QuantitativeValue",
+      maxValue: apartment.guests,
+    },
+    amenityFeature: apartment.features.map((feature) => ({
+      "@type": "LocationFeatureSpecification",
+      name: feature,
+    })),
+    checkInTime: "15:00",
+    checkOutTime: "10:00",
+    offers: {
+      "@type": "Offer",
+      url: apartmentUrl,
+      priceCurrency: "EUR",
+      price: apartment.price?.toString() || "120",
+      availability: "https://schema.org/LimitedAvailability",
+      eligibleQuantity: {
+        "@type": "QuantitativeValue",
+        maxValue: apartment.guests,
+      },
+    },
+    telephone: VILLA_OLIMPIA_LOCATION.contact.phone,
+    url: apartmentUrl,
+  }
 
   return (
     <div className="min-h-screen pt-20">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <Breadcrumb
         items={[
           { label: "Appartamenti", href: "/appartamenti" },
@@ -438,40 +521,7 @@ export default async function ApartmentDetailPage({ params }: PageProps) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Accommodation",
-            "name": `Appartamento ${apartment.name} - Villa Olimpia`,
-            "description": apartment.fullDescription || apartment.description,
-            "image": apartment.image.startsWith("/")
-              ? `${BASE_URL}${apartment.image}`
-              : `${BASE_URL}/og-image.jpg`,
-            "address": {
-              "@type": "PostalAddress",
-              "streetAddress": VILLA_OLIMPIA_LOCATION.address.street,
-              "addressLocality": VILLA_OLIMPIA_LOCATION.address.city,
-              "addressRegion": VILLA_OLIMPIA_LOCATION.address.region,
-              "postalCode": VILLA_OLIMPIA_LOCATION.address.postalCode,
-              "addressCountry": "IT"
-            },
-            "geo": {
-              "@type": "GeoCoordinates",
-              "latitude": VILLA_OLIMPIA_LOCATION.coordinates.latitude,
-              "longitude": VILLA_OLIMPIA_LOCATION.coordinates.longitude
-            },
-            "numberOfRooms": apartment.bedrooms,
-            "occupancy": {
-              "@type": "QuantitativeValue",
-              "maxValue": apartment.guests
-            },
-            "amenityFeature": apartment.features.map(feature => ({
-              "@type": "LocationFeatureSpecification",
-              "name": feature
-            })),
-            "priceRange": `€${apartment.price}/notte`,
-            "telephone": VILLA_OLIMPIA_LOCATION.contact.phone,
-            "url": `${BASE_URL}/appartamenti/${apartment.name.toLowerCase()}`
-          })
+          __html: JSON.stringify(apartmentSchema)
         }}
       />
     </div>
