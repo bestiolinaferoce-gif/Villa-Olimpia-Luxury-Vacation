@@ -1,4 +1,4 @@
-import { notFound } from "next/navigation"
+import { notFound, permanentRedirect } from "next/navigation"
 import Image from "next/image"
 import { getApartmentById, apartments } from "@/data/apartments"
 // FIX: Import esplicito per risolvere problemi di routing
@@ -80,6 +80,11 @@ export default async function ApartmentDetailPage({ params }: PageProps) {
 
   if (!apartment) {
     notFound()
+  }
+
+  const canonicalSlug = apartment.name.toLowerCase()
+  if (id !== canonicalSlug) {
+    permanentRedirect(`/appartamenti/${canonicalSlug}`)
   }
 
   const content = getApartmentContent(apartmentId)
