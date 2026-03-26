@@ -192,8 +192,8 @@ echo "✅ IMPORT COMPLETATO"
 echo "━━━━━━━━━━━━━━━━━━━━"
 
 for apt in geranio zeus poseidon apollo afrodite atena era artemide dioniso ermes orchidea azalea; do
-  if [ -d "public/images/appartamenti/$apt" ]; then
-    COUNT=$(ls -1 public/images/appartamenti/$apt 2>/dev/null | wc -l | tr -d ' ')
+  if [ -d "public/images/villa/appartamenti/$apt" ]; then
+    COUNT=$(ls -1 public/images/villa/appartamenti/$apt 2>/dev/null | wc -l | tr -d ' ')
     [ $COUNT -gt 0 ] && echo "  $apt: $COUNT foto"
   fi
 done
@@ -206,7 +206,6 @@ rm -rf ~/Desktop/temp-import
 
 echo ""
 echo "🎯 Prossimo step: npm run build"
-
 
 
 

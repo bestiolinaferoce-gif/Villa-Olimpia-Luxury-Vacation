@@ -52,7 +52,7 @@ mkdir -p "$BACKUP_DIR"
 # Crea cartelle appartamenti
 echo "📁 Creazione cartelle appartamenti..."
 for apt in "${APPARTAMENTI[@]}"; do
-  mkdir -p "public/images/appartamenti/$apt"
+  mkdir -p "public/images/villa/appartamenti/$apt"
 done
 
 mkdir -p public/images/amenities
@@ -133,7 +133,7 @@ echo ""
 echo "📊 Foto per appartamento:"
 
 for apt in "${APPARTAMENTI[@]}"; do
-  COUNT=$(find "public/images/appartamenti/$apt" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" \) 2>/dev/null | wc -l | tr -d ' ')
+  COUNT=$(find "public/images/villa/appartamenti/$apt" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" \) 2>/dev/null | wc -l | tr -d ' ')
   if [ $COUNT -gt 0 ]; then
     echo "  $apt: $COUNT foto"
   fi
@@ -153,7 +153,6 @@ TOTAL_FINAL=$(find public/images -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o
 echo "📈 TOTALE FOTO NEL SITO: $TOTAL_FINAL"
 echo ""
 echo "🎯 Prossimo step: npm run build"
-
 
 
 

@@ -115,7 +115,7 @@ APPARTAMENTI=(
 )
 
 for apt in "${APPARTAMENTI[@]}"; do
-  mkdir -p "public/images/appartamenti/$apt"
+  mkdir -p "public/images/villa/appartamenti/$apt"
 done
 
 # 6. COPIA INTELLIGENTE
@@ -197,8 +197,8 @@ echo ""
 echo "📁 Foto per appartamento:"
 
 for apt in "${APPARTAMENTI[@]}"; do
-  if [ -d "public/images/appartamenti/$apt" ]; then
-    COUNT=$(find "public/images/appartamenti/$apt" -type f 2>/dev/null | wc -l | tr -d ' ')
+  if [ -d "public/images/villa/appartamenti/$apt" ]; then
+    COUNT=$(find "public/images/villa/appartamenti/$apt" -type f 2>/dev/null | wc -l | tr -d ' ')
     [ $COUNT -gt 0 ] && echo "  $apt: $COUNT foto"
   fi
 done
@@ -219,7 +219,6 @@ echo ""
 echo "💾 Backup salvato in: $BACKUP_DIR"
 echo ""
 echo "🎯 PROSSIMO STEP: npm run build"
-
 
 
 
