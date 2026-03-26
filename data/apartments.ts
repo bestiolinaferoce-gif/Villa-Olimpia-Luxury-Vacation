@@ -233,8 +233,8 @@ export const apartments: Apartment[] = [
       "/images/villa/gallery/Esterni_Piscina_Giorno_01.jpg",
       "/images/villa/gallery/Esterni_Giardino_Overview_01.jpg",
     ],
-    description: "Gardenia: 52 mq al primo piano, balcone vista mare Ionio. Camera matrimoniale e divano letto, 4 ospiti. Zona living spaziosa e cucina attrezzata. Villa Olimpia Capopiccolo, Spiaggia dei Gigli a 100 m.",
-    fullDescription: "Gardenia è un appartamento di 52 mq al centro del primo piano di Villa Olimpia, Capopiccolo, Isola di Capo Rizzuto. Ospita fino a 4 persone con 1 camera matrimoniale, zona living con divano letto, cucina attrezzata e 1 bagno. Il balcone con vista mare Ionio illumina gli ambienti e regala tramonti sul golfo. Living spazioso e luminoso; cucina completa. Accesso a piscina condivisa, giardino e area barbecue. A 100 metri dalla Spiaggia dei Gigli, Area Marina Protetta Capo Rizzuto. Appartamento vacanze primo piano Calabria con vista mare e ottima indicizzazione per coppie e famiglie 2+2.",
+    description: "Appartamento Gardenia a Capopiccolo con balcone vista mare Ionio, ambienti luminosi e soluzione ideale per coppie e famiglie 2+2 vicino alla Spiaggia dei Gigli.",
+    fullDescription: "Gardenia è un appartamento di Villa Olimpia situato al primo piano a Capopiccolo, pensato per chi cerca una vacanza a Capo Rizzuto con vista aperta, ambienti luminosi e accesso comodo al mare. Offre camera matrimoniale, zona living con divano letto, cucina attrezzata e balcone con vista mare Ionio. È una soluzione adatta a coppie e famiglie 2+2 che desiderano soggiornare vicino alla Spiaggia dei Gigli e all'Area Marina Protetta di Capo Rizzuto.",
     price: 150,
   },
   {
@@ -265,8 +265,8 @@ export const apartments: Apartment[] = [
       "/images/villa/appartamenti/azalea/Azalea_Terrazza_Tramonto_02.jpg",
       "/images/villa/appartamenti/azalea/Azalea_Veranda_01.jpg",
     ],
-    description: "Azalea: 50 mq al primo piano con terrazza privata panoramica e vista mare. Design moderno, camera matrimoniale e divano letto, 4 ospiti. Ideale per coppie e famiglie 2+2. Villa Olimpia Capopiccolo, Spiaggia dei Gigli a 100 m.",
-    fullDescription: "Azalea è un appartamento moderno di 50 mq a destra al primo piano di Villa Olimpia, Capopiccolo, Isola di Capo Rizzuto. Ospita fino a 4 persone con 1 camera matrimoniale, zona living con divano letto, cucina completa e 1 bagno. La terrazza privata panoramica è il punto forte: vista spettacolare sul mare Ionio e sulla costa calabrese, perfetta per colazioni e cene al tramonto. Arredi eleganti e design curato; cucina con elettrodomestici moderni. Posizione elevata per massima vista e tramonti. Accesso a piscina e giardino condivisi. A 100 metri dalla Spiaggia dei Gigli, Area Marina Protetta Capo Rizzuto. Appartamento vista mare Calabria con terrazza e SEO ottimizzato per prenotazioni dirette e OTA.",
+    description: "Appartamento Azalea a Capopiccolo con terrazza panoramica vista mare, soluzione luminosa e ben posizionata per coppie e famiglie 2+2 a Capo Rizzuto.",
+    fullDescription: "Azalea è un appartamento di Villa Olimpia al primo piano a Capopiccolo, ideale per chi cerca una vacanza a Capo Rizzuto con terrazza panoramica e vista mare. Offre camera matrimoniale, zona living con divano letto, cucina completa e un contesto particolarmente adatto a coppie e famiglie 2+2. La posizione, vicino alla Spiaggia dei Gigli e all'Area Marina Protetta di Capo Rizzuto, lo rende una soluzione molto valida per vivere il mare con comodità e prenotare direttamente.",
     price: 145,
   },
 ]
