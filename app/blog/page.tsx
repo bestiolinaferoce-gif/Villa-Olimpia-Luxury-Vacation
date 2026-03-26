@@ -7,16 +7,17 @@ import { BLOG_POSTS } from "@/data/blog-posts"
 import { generateMetadata, BASE_URL } from "@/lib/metadata"
 
 export const metadata = generateMetadata({
-  title: "Blog Villa Olimpia - Consigli e guide per le tue vacanze a Capo Rizzuto",
+  title: "Blog su Capo Rizzuto, Spiagge e Vacanze in Calabria | Villa Olimpia",
   description:
-    "Scopri consigli, guide e articoli su spiagge, famiglie, gastronomia e prenotazione diretta a Capo Rizzuto. Villa Olimpia ti accompagna nella pianificazione della vacanza perfetta.",
+    "Guide su Capo Rizzuto, Spiaggia dei Gigli, Le Castella, vacanze in famiglia, enogastronomia e prenotazione diretta. Il blog di Villa Olimpia per organizzare al meglio il soggiorno in Calabria.",
   path: "/blog",
   keywords: [
     "blog Villa Olimpia",
     "guide capo rizzuto",
-    "spiagge calabria",
+    "spiagge capo rizzuto",
     "vacanze famiglia capo rizzuto",
     "ristoranti capo rizzuto",
+    "area marina protetta capo rizzuto",
   ],
 })
 
@@ -53,6 +54,29 @@ export default function BlogPage() {
             <p className="text-xl text-muted-foreground">
               Consigli, guide e articoli per pianificare la tua vacanza a Capo Rizzuto.
               Spiagge, famiglie, gastronomia e tutto ciò che serve per un soggiorno indimenticabile.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-14 bg-white">
+        <div className="container mx-auto px-4 max-w-4xl">
+          <div className="space-y-5 text-lg text-muted-foreground leading-relaxed">
+            <p>
+              In questa sezione raccogliamo guide utili per chi sta organizzando una vacanza a Capo Rizzuto e vuole
+              capire meglio il territorio prima di prenotare. Troverai contenuti su spiagge, borghi, gastronomia,
+              attività per famiglie e suggerimenti pratici per vivere al meglio Capopiccolo e l&apos;Area Marina Protetta.
+            </p>
+            <p>
+              Ogni articolo è pensato per accompagnare l&apos;utente da una ricerca informativa a una scelta più consapevole
+              del soggiorno. Se vuoi passare subito alla parte operativa, puoi esplorare gli{" "}
+              <Link href="/appartamenti" className="text-primary underline-offset-2 hover:underline">
+                appartamenti di Villa Olimpia
+              </Link>{" "}
+              oppure inviare una{" "}
+              <Link href="/contatti?source=blog_intro#prenota" className="text-primary underline-offset-2 hover:underline">
+                richiesta diretta di disponibilità
+              </Link>.
             </p>
           </div>
         </div>

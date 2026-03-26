@@ -3,15 +3,16 @@ import { Breadcrumb } from "@/components/breadcrumb"
 import { generateMetadata } from "@/lib/metadata"
 
 export const metadata = generateMetadata({
-  title: "FAQ Villa Olimpia - Domande frequenti su appartamenti, servizi e prenotazioni",
+  title: "FAQ su Villa Olimpia, Appartamenti e Prenotazione Diretta",
   description:
-    "Domande frequenti su Villa Olimpia a Capo Rizzuto: orari di check-in e check-out, cancellazioni, WiFi, parcheggio, distanza dalla Spiaggia dei Gigli e servizi per famiglie.",
+    "Domande frequenti su Villa Olimpia a Capopiccolo: check-in, check-out, cancellazioni, WiFi, parcheggio, distanza dalla Spiaggia dei Gigli e prenotazione diretta a Capo Rizzuto.",
   path: "/faq",
   keywords: [
     "FAQ Villa Olimpia",
     "domande frequenti appartamenti Capo Rizzuto",
     "check-in check-out Spiaggia dei Gigli",
     "parcheggio WiFi villa con piscina Calabria",
+    "prenotazione diretta villa olimpia faq",
   ],
 })
 
@@ -96,10 +97,31 @@ export default function FAQPage() {
       />
       <div className="min-h-screen pt-20">
         <Breadcrumb items={[{ label: "FAQ" }]} />
+        <section className="py-14 bg-white">
+          <div className="container mx-auto px-4 max-w-4xl">
+            <div className="space-y-5">
+              <h1 className="text-4xl md:text-5xl font-playfair font-bold">Domande frequenti su Villa Olimpia</h1>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                In questa pagina trovi le risposte alle domande più comuni su appartamenti, servizi, check-in,
+                parcheggio, distanza dal mare e prenotazione diretta. È un supporto utile sia per chi sta valutando il
+                soggiorno sia per chi vuole chiarire rapidamente gli aspetti pratici prima di contattarci.
+              </p>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                Se dopo la lettura vuoi ricevere una proposta personalizzata, puoi andare alla pagina{" "}
+                <a href="/prenota" className="text-primary underline-offset-2 hover:underline">
+                  Prenota
+                </a>{" "}
+                oppure contattarci direttamente dalla pagina{" "}
+                <a href="/contatti?source=faq_intro#prenota" className="text-primary underline-offset-2 hover:underline">
+                  Contatti
+                </a>.
+              </p>
+            </div>
+          </div>
+        </section>
         <FAQSection />
       </div>
     </>
   )
 }
-
 

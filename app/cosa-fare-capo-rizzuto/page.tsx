@@ -7,9 +7,9 @@ import { generateMetadata } from "@/lib/metadata"
 import { Camera, Clock, MapPin, Mountain, Utensils, Waves } from "lucide-react"
 
 export const metadata: Metadata = generateMetadata({
-  title: "Cosa Fare a Capo Rizzuto | Attrazioni e Attività | Villa Olimpia",
+  title: "Cosa Fare a Capo Rizzuto tra Mare, Borghi e Natura | Villa Olimpia",
   description:
-    "Cosa fare a Capo Rizzuto: spiagge, Le Castella, Area Marina Protetta, enogastronomia, escursioni. Guida completa alle attività e attrazioni.",
+    "Scopri cosa fare a Capo Rizzuto: Spiaggia dei Gigli, Le Castella, Area Marina Protetta, enogastronomia, escursioni e itinerari da vivere partendo da Villa Olimpia a Capopiccolo.",
   path: "/cosa-fare-capo-rizzuto",
 })
 
@@ -73,6 +73,18 @@ export default function CosaFareCapoRizzutoPage() {
 
       <section className="py-16 bg-gradient-to-b from-[#f6fbff] to-[#e7f6ff]">
         <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto mb-10 space-y-5 text-base md:text-lg text-slate-700 leading-relaxed">
+            <p>
+              Capo Rizzuto è una destinazione che funziona bene non solo per il mare, ma anche per la varietà delle
+              esperienze che offre nel raggio di pochi chilometri. Da Villa Olimpia puoi costruire giornate molto diverse
+              tra spiagge, borghi, visite culturali, ristoranti di pesce e itinerari panoramici lungo la costa ionica.
+            </p>
+            <p>
+              La posizione di Capopiccolo, all&apos;interno dell&apos;Area Marina Protetta di Capo Rizzuto, rende tutto più
+              semplice: meno tempo in auto, più tempo da dedicare al soggiorno. Per questo abbiamo raccolto qui le
+              attività e le attrazioni più utili per organizzare una vacanza completa e ben equilibrata.
+            </p>
+          </div>
           <div className="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto">
             {highlights.map((item, index) => (
               <Card key={item.title} className="overflow-hidden border-0 shadow-xl bg-white/90 backdrop-blur">
