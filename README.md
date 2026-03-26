@@ -24,6 +24,9 @@ npm install
 - `npm run build` - Crea la build di produzione
 - `npm run start` - Avvia il server di produzione
 - `npm run lint` - Esegue il linter
+- `npm run health-check` - Report rapido sullo stato del progetto
+- `npm run quality:quick` - Controlli ferrei su repo, SEO, appartamenti e copy
+- `npm run quality:gate` - Quality gate completo prima di ogni deploy
 
 ## 📁 Struttura del Progetto
 
@@ -109,3 +112,19 @@ Tutti i diritti riservati - Villa Olimpia
 - Variabili: vedi `.env.example` (`NEXT_PUBLIC_GTM_ID`, `NEXT_PUBLIC_GA_MEASUREMENT_ID`, `NEXT_PUBLIC_META_PIXEL_ID` opzionale).
 - Documentazione: `docs/TRACKING.md`.
 - Verifica: `npm run verify:analytics` (opzionale: `SITE_URL=...` per controllare l'HTML deployato).
+
+## ✅ Workflow operativo consigliato
+
+Prima di ogni commit importante o deploy:
+
+```bash
+npm run quality:quick
+```
+
+Prima di ogni deploy in produzione:
+
+```bash
+npm run quality:gate
+```
+
+Se `quality:gate` fallisce, il deploy va fermato finché il problema non è risolto.

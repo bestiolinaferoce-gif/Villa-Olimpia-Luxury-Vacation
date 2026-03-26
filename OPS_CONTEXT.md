@@ -35,6 +35,9 @@ Ultimo aggiornamento: 2026-02-08
 - Build: npm run build
 - Dev: npm run dev
 - Lint: npm run lint (da verificare, errore "no such directory: .../lint")
+- Health check: npm run health-check
+- Quality quick: npm run quality:quick
+- Quality gate pre-deploy: npm run quality:gate
 
 ## Verifiche post-deploy
 - Homepage
@@ -42,6 +45,12 @@ Ultimo aggiornamento: 2026-02-08
 - /camere (redirect)
 - /sitemap.xml
 - /robots.txt
+
+## Guardrail operativi 2026-03-26
+- Non deployare se `npm run quality:gate` fallisce.
+- Il repo non deve contenere file spazzatura tracciati (`.DS_Store`, `*.bak`, `tmp_*`, `vercel.env`, config legacy).
+- I controlli SEO devono bloccare il ritorno di URL legacy, snippet sporchi e metadata datati.
+- Il percorso immagini canonico per gli appartamenti è `public/images/villa/appartamenti/*`.
 
 
 ## Aggiornamenti 2026-02-08

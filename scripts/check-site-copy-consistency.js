@@ -25,6 +25,13 @@ function assertContains(text, pattern, file, label, errors) {
   }
 }
 
+function extractApartmentSection(text, id) {
+  const nextId = id + 1
+  const regex = new RegExp(`${id}:\\s*{([\\s\\S]*?)\\n\\s*${nextId}:\\s*{`)
+  const match = text.match(regex)
+  return match ? match[1] : text
+}
+
 function fail(errors) {
   console.error("❌ Incongruenze copy trovate:\n")
   for (const err of errors) console.error(`- ${err}`)
@@ -59,16 +66,16 @@ function main() {
 
   const orchideaFiles = ["data/apartments.ts", "data/apartment-content.ts", "data/apartments-seo.ts"]
   for (const file of orchideaFiles) {
-    const text = read(file)
-    assertNotContains(text, /Orchidea[\s\S]{0,900}\b2 bagni?\b/i, file, "Orchidea con 2 bagni", errors)
-    assertContains(text, /Orchidea[\s\S]{0,900}\b1 bagno\b/i, file, "Orchidea con 1 bagno", errors)
+    const text = extractApartmentSection(read(file), 3)
+    assertNotContains(text, /\b1 bagno\b/i, file, "Orchidea con 1 bagno", errors)
+    assertContains(text, /(2 bagni|due bagni|doppi servizi)/i, file, "Orchidea con doppi servizi", errors)
   }
 
   const giglioFiles = ["data/apartments.ts", "data/apartment-content.ts", "data/apartments-seo.ts"]
   for (const file of giglioFiles) {
-    const text = read(file)
-    assertNotContains(text, /Giglio[\s\S]{0,900}area letto a castello/i, file, "Giglio con letto a castello", errors)
-    assertContains(text, /Giglio[\s\S]{0,900}una piazza e mezza/i, file, "Giglio con una piazza e mezza", errors)
+    const text = extractApartmentSection(read(file), 5)
+    assertNotContains(text, /area letto a castello/i, file, "Giglio con letto a castello", errors)
+    assertContains(text, /una piazza e mezza/i, file, "Giglio con una piazza e mezza", errors)
   }
 
   if (errors.length) fail(errors)
