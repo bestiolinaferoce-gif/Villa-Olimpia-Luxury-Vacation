@@ -5,32 +5,32 @@ import Link from "next/link"
 import { BlogArticleJsonLd } from "@/components/seo/blog-article-json-ld"
 
 export const metadata = generateMetadata({
-  title: "Le 10 spiagge più belle vicino a Isola di Capo Rizzuto",
-  description: "Scopri le 10 spiagge più belle dell'Isola di Capo Rizzuto e della Costa Ionica calabrese: sabbia dorata, acque cristalline e natura incontaminata nell'Area Marina Protetta.",
+  title: "Le Spiagge Più Belle di Capo Rizzuto e Dintorni | Villa Olimpia",
+  description: "Scopri le spiagge più belle di Capo Rizzuto, da Spiaggia dei Gigli a Le Castella fino alle calette dell'Area Marina Protetta. Guida utile per scegliere dove andare al mare in Calabria.",
   path: "/blog/spiagge-piu-belle-capo-rizzuto",
   type: "article",
-  keywords: ["spiagge capo rizzuto", "spiaggia dei gigli", "spiagge area marina protetta", "spiagge calabria ionica"],
+  keywords: ["spiagge capo rizzuto", "spiaggia dei gigli", "le castella spiaggia", "area marina protetta capo rizzuto", "dove andare al mare a capo rizzuto"],
 })
 
 export default function ArticlePage() {
   return (
     <div className="min-h-screen pt-20">
       <BlogArticleJsonLd
-        title="Le 10 spiagge più belle vicino a Isola di Capo Rizzuto"
-        description="Scopri le 10 spiagge più belle dell'Isola di Capo Rizzuto e della Costa Ionica calabrese: sabbia dorata, acque cristalline e natura incontaminata nell'Area Marina Protetta."
+        title="Le spiagge più belle di Capo Rizzuto e dintorni"
+        description="Scopri le spiagge più belle di Capo Rizzuto, da Spiaggia dei Gigli a Le Castella fino alle calette dell'Area Marina Protetta."
         path="/blog/spiagge-piu-belle-capo-rizzuto"
         datePublished="2026-03-16"
       />
-      <Breadcrumb items={[{ label: "Blog", href: "/blog" }, { label: "Le 10 spiagge più belle" }]} />
+      <Breadcrumb items={[{ label: "Blog", href: "/blog" }, { label: "Spiagge più belle di Capo Rizzuto" }]} />
 
       <section className="bg-gradient-to-br from-ocean/10 to-primary/10 py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h1 className="text-4xl md:text-5xl font-playfair font-bold mb-6">
-              Le 10 spiagge più belle vicino a Isola di Capo Rizzuto
+              Le spiagge più belle di Capo Rizzuto e dintorni
             </h1>
             <p className="text-xl text-muted-foreground">
-              Se state cercando le spiagge più belle della Calabria, siete nel posto giusto. L&apos;Isola di Capo Rizzuto e la sua Area Marina Protetta custodiscono alcuni dei tratti di costa più spettacolari dell&apos;intero Mar Mediterraneo.
+              Se stai cercando dove andare al mare a Capo Rizzuto, qui trovi una selezione utile delle spiagge più interessanti tra Capopiccolo, Spiaggia dei Gigli, Le Castella e Area Marina Protetta.
             </p>
           </div>
         </div>
@@ -40,7 +40,7 @@ export default function ArticlePage() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto space-y-12">
             <p className="text-lg text-muted-foreground">
-              Partendo da Villa Olimpia — a Capo Piccolo, a pochi passi dal mare — abbiamo selezionato le 10 spiagge imperdibili di questa zona, tutte facilmente raggiungibili durante la vostra vacanza.
+              Partendo da Villa Olimpia, a Capopiccolo e a pochi passi dalla Spiaggia dei Gigli, abbiamo selezionato le spiagge più interessanti di questa zona, tutte facilmente raggiungibili durante il soggiorno e adatte a esigenze diverse: famiglie, coppie, snorkeling e giornate più panoramiche.
             </p>
 
             <div>
@@ -129,7 +129,7 @@ export default function ArticlePage() {
                 La posizione di Villa Olimpia a Capo Piccolo è strategica: la Spiaggia dei Gigli e la Spiaggia della Caletta sono letteralmente a un minuto a piedi, mentre tutte le altre spiagge di questa lista sono raggiungibili in meno di 45 minuti d&apos;auto.
               </p>
               <p className="text-lg text-muted-foreground mb-6">
-                I nostri lodge indipendenti, la piscina privata e il personale sempre disponibile fanno di Villa Olimpia la base ideale per esplorare il meglio della Costa Ionica calabrese.
+                Gli appartamenti di Villa Olimpia, la piscina condivisa e la posizione all'interno dell'Area Marina Protetta rendono il soggiorno particolarmente comodo per chi vuole esplorare il meglio della costa ionica calabrese senza cambiare base.
               </p>
               <div className="flex flex-wrap gap-4">
                 <Button asChild variant="default">

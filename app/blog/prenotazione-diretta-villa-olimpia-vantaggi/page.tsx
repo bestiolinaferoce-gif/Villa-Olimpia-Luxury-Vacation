@@ -5,19 +5,19 @@ import Link from "next/link"
 import { BlogArticleJsonLd } from "@/components/seo/blog-article-json-ld"
 
 export const metadata = generateMetadata({
-  title: "Prenotazione diretta vs Airbnb e Booking: perché conviene prenotare direttamente a Villa Olimpia",
-  description: "Scopri tutti i vantaggi di prenotare direttamente su villaolimpiacaporizzuto.com invece di usare Airbnb o Booking.com. Prezzo migliore garantito e servizio personalizzato.",
+  title: "Perché Conviene la Prenotazione Diretta a Villa Olimpia",
+  description: "Scopri i vantaggi della prenotazione diretta a Villa Olimpia: contatto rapido, proposta personalizzata, maggiore flessibilità e soggiorno a Capo Rizzuto senza intermediari.",
   path: "/blog/prenotazione-diretta-villa-olimpia-vantaggi",
   type: "article",
-  keywords: ["prenotazione diretta villa olimpia", "affitto vacanze capo rizzuto", "villa olimpia booking airbnb", "appartamenti capo rizzuto prezzo migliore"],
+  keywords: ["prenotazione diretta villa olimpia", "prenota appartamenti capo rizzuto", "contatto diretto villa olimpia", "capopiccolo prenotazione diretta", "appartamenti capo rizzuto senza intermediari"],
 })
 
 export default function ArticlePage() {
   return (
     <div className="min-h-screen pt-20">
       <BlogArticleJsonLd
-        title="Prenotazione diretta vs Airbnb e Booking: perché conviene prenotare direttamente a Villa Olimpia"
-        description="Scopri tutti i vantaggi di prenotare direttamente su villaolimpiacaporizzuto.com invece di usare Airbnb o Booking.com. Prezzo migliore garantito e servizio personalizzato."
+        title="Perché conviene la prenotazione diretta a Villa Olimpia"
+        description="Scopri i vantaggi della prenotazione diretta a Villa Olimpia: contatto rapido, proposta personalizzata, maggiore flessibilità e soggiorno a Capo Rizzuto senza intermediari."
         path="/blog/prenotazione-diretta-villa-olimpia-vantaggi"
         datePublished="2026-03-16"
       />
@@ -27,10 +27,10 @@ export default function ArticlePage() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h1 className="text-4xl md:text-5xl font-playfair font-bold mb-6">
-              Prenotazione diretta vs Airbnb e Booking: perché conviene prenotare direttamente a Villa Olimpia
+              Perché conviene la prenotazione diretta a Villa Olimpia
             </h1>
             <p className="text-xl text-muted-foreground">
-              Siamo presenti su Airbnb e Booking.com — ci aiutano a farci trovare. Ma c&apos;è qualcosa che i portali non ti dicono: prenotare direttamente da noi conviene di più, per te e per noi.
+              Se stai organizzando una vacanza a Capo Rizzuto, prenotare direttamente con Villa Olimpia è il modo più semplice per ricevere una proposta chiara, un contatto rapido e una soluzione davvero adatta alle tue date.
             </p>
           </div>
         </div>
@@ -42,40 +42,40 @@ export default function ArticlePage() {
             <div>
               <h2 className="text-2xl md:text-3xl font-playfair font-bold mb-4">1. Il prezzo migliore è sempre quello diretto</h2>
               <p className="text-lg text-muted-foreground">
-                Airbnb e Booking applicano commissioni tra il 15% e il 20%. Quando prenoti direttamente, quelle commissioni non esistono: stesso lodge, stessa qualità, prezzo migliore garantito.
+                Quando richiedi disponibilità direttamente a Villa Olimpia, ricevi una proposta più lineare e senza passaggi superflui. Questo ti aiuta a valutare meglio il soggiorno e a scegliere la soluzione più adatta tra i nostri appartamenti a Capopiccolo.
               </p>
             </div>
 
             <div>
               <h2 className="text-2xl md:text-3xl font-playfair font-bold mb-4">2. Comunicazione diretta, risposte in pochi minuti</h2>
               <p className="text-lg text-muted-foreground">
-                Con la prenotazione diretta sei in contatto con Francesco via WhatsApp: risposte in pochi minuti, foto su richiesta, flessibilità su check-in e check-out.
+                Con il contatto diretto hai una comunicazione più veloce e più utile: puoi chiedere disponibilità, chiarire quale appartamento è più adatto, ricevere dettagli sulla posizione e organizzare meglio l'arrivo.
               </p>
             </div>
 
             <div>
               <h2 className="text-2xl md:text-3xl font-playfair font-bold mb-4">3. Flessibilità che i portali non permettono</h2>
               <ul className="list-disc list-inside text-lg text-muted-foreground space-y-2">
-                <li>Richieste speciali (culla, letto aggiuntivo, kit benvenuto)</li>
-                <li>Soggiorni personalizzati</li>
-                <li>Escursioni, ristoranti, noleggio attrezzatura</li>
+                <li>Richieste speciali e necessità di soggiorno più chiare</li>
+                <li>Indicazioni personalizzate su appartamenti e territorio</li>
+                <li>Consigli utili su spiagge, escursioni e organizzazione della vacanza</li>
               </ul>
             </div>
 
             <div>
               <h2 className="text-2xl md:text-3xl font-playfair font-bold mb-4">4. Rapporto diretto = vacanza migliore</h2>
               <p className="text-lg text-muted-foreground">
-                Quando prenoti direttamente ti conosciamo prima ancora che arrivi. Possiamo prepararci per accoglierti al meglio.
+                Quando il rapporto parte direttamente con la struttura, il soggiorno risulta più semplice da organizzare e più coerente con quello che stai cercando. Questo è particolarmente utile in una zona come Capo Rizzuto, dove posizione e tipologia dell'appartamento fanno una grande differenza.
               </p>
             </div>
 
             <div>
               <h2 className="text-2xl md:text-3xl font-playfair font-bold mb-4">Come prenotare direttamente</h2>
               <p className="text-lg text-muted-foreground mb-4">
-                Email: villaolimpiacaporizzuto@gmail.com | WhatsApp: +39 329 047 9193
+                Puoi contattarci via email o WhatsApp e ricevere rapidamente una risposta sulla disponibilità, sull'appartamento più adatto e sulle informazioni pratiche per il soggiorno.
               </p>
               <p className="text-lg text-muted-foreground">
-                Acconto del 30% tramite bonifico. Saldo al check-in.
+                In questo modo organizzi il soggiorno in modo più diretto, con meno attrito e con un confronto chiaro sulle tue esigenze reali di viaggio.
               </p>
             </div>
 
@@ -85,19 +85,19 @@ export default function ArticlePage() {
                   <tr className="bg-primary/10">
                     <th className="border border-primary/20 p-3 text-left font-semibold"></th>
                     <th className="border border-primary/20 p-3 text-left font-semibold">Prenotazione diretta</th>
-                    <th className="border border-primary/20 p-3 text-left font-semibold">Airbnb / Booking</th>
+                    <th className="border border-primary/20 p-3 text-left font-semibold">Canali intermedi</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td className="border border-primary/20 p-3 font-medium">Prezzo</td>
-                    <td className="border border-primary/20 p-3 text-green-600">Migliore garantito</td>
-                    <td className="border border-primary/20 p-3 text-muted-foreground">Commissioni incluse</td>
+                    <td className="border border-primary/20 p-3 font-medium">Contatto</td>
+                    <td className="border border-primary/20 p-3 text-green-600">Diretto e rapido</td>
+                    <td className="border border-primary/20 p-3 text-muted-foreground">Filtrato dalla piattaforma</td>
                   </tr>
                   <tr>
-                    <td className="border border-primary/20 p-3 font-medium">Comunicazione</td>
-                    <td className="border border-primary/20 p-3 text-green-600">WhatsApp diretto</td>
-                    <td className="border border-primary/20 p-3 text-muted-foreground">Tramite piattaforma</td>
+                    <td className="border border-primary/20 p-3 font-medium">Scelta alloggio</td>
+                    <td className="border border-primary/20 p-3 text-green-600">Più personalizzata</td>
+                    <td className="border border-primary/20 p-3 text-muted-foreground">Più standardizzata</td>
                   </tr>
                   <tr>
                     <td className="border border-primary/20 p-3 font-medium">Flessibilità</td>
@@ -105,9 +105,9 @@ export default function ArticlePage() {
                     <td className="border border-primary/20 p-3 text-muted-foreground">Rigida</td>
                   </tr>
                   <tr>
-                    <td className="border border-primary/20 p-3 font-medium">Personalizzazione</td>
-                    <td className="border border-primary/20 p-3 text-green-600">Completa</td>
-                    <td className="border border-primary/20 p-3 text-muted-foreground">Limitata</td>
+                    <td className="border border-primary/20 p-3 font-medium">Supporto sul territorio</td>
+                    <td className="border border-primary/20 p-3 text-green-600">Più diretto</td>
+                    <td className="border border-primary/20 p-3 text-muted-foreground">Più impersonale</td>
                   </tr>
                 </tbody>
               </table>
