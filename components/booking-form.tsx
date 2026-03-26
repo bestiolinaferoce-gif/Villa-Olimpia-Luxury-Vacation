@@ -352,13 +352,25 @@ export function BookingForm() {
       )}
 
       <Button type="submit" variant="luxury" className="w-full" disabled={isSubmitting}>
-        {isSubmitting ? "Invio in corso..." : "Verifica disponibilità"}
+        {isSubmitting ? "Invio in corso..." : "Richiedi disponibilità diretta"}
       </Button>
 
       <p className="text-xs text-muted-foreground">
         Prenotando da questo form parli direttamente con Villa Olimpia: nessuna commissione di portali e migliore
         tariffa disponibile sulle stesse date. Soggiorni di 7+ notti: sconto dedicato. Cancellazione flessibile fino a 30 giorni prima dell&apos;arrivo.
       </p>
+
+      <div className="grid grid-cols-1 gap-2 sm:grid-cols-3">
+        <div className="rounded-lg border border-emerald-200 bg-emerald-50 px-3 py-2 text-center text-xs font-medium text-emerald-800">
+          Nessuna commissione
+        </div>
+        <div className="rounded-lg border border-sky-200 bg-sky-50 px-3 py-2 text-center text-xs font-medium text-sky-800">
+          Risposta entro 24h
+        </div>
+        <div className="rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 text-center text-xs font-medium text-amber-800">
+          Tariffa diretta
+        </div>
+      </div>
 
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
         <Button

@@ -13,6 +13,8 @@ import ApartmentGallery from "@/components/apartment-gallery"
 import { AvailabilityCalendar } from "@/components/availability-calendar"
 import { VILLA_OLIMPIA_LOCATION } from "@/lib/location-data"
 import { Breadcrumb } from "@/components/breadcrumb"
+import { SITE_CONFIG } from "@/lib/constants"
+import { buildWhatsAppUrlFromText } from "@/lib/booking-contact"
 
 interface PageProps {
   params: Promise<{
@@ -84,6 +86,9 @@ export default async function ApartmentDetailPage({ params }: PageProps) {
   const seoData = getApartmentSEO(apartmentId)
   const content = getApartmentContent(apartmentId)
   const contactHref = `/contatti?source=apartment_detail&apartment=${encodeURIComponent(apartment.name)}&guests=${apartment.guests}#prenota`
+  const apartmentWhatsAppHref = buildWhatsAppUrlFromText(
+    `Richiesta disponibilita ${apartment.name} - Villa Olimpia:\nDate: \nOspiti: ${apartment.guests}\nAppartamento: ${apartment.name}\nFonte: sito ufficiale (pagina appartamento)`
+  )
 
   return (
     <div className="min-h-screen pt-20">
@@ -326,15 +331,24 @@ export default async function ApartmentDetailPage({ params }: PageProps) {
                   <Link href={contactHref}>Richiedi Prenotazione</Link>
                 </Button>
 
+                <div className="rounded-xl border border-emerald-200 bg-emerald-50/80 p-4">
+                  <p className="text-sm font-semibold text-emerald-900">Prenotazione diretta</p>
+                  <ul className="mt-2 space-y-1 text-sm text-emerald-800">
+                    <li>Tariffa diretta senza commissioni</li>
+                    <li>Risposta rapida con proposta su misura</li>
+                    <li>Supporto diretto prima e durante il soggiorno</li>
+                  </ul>
+                </div>
+
                 <div className="space-y-2">
                   <Button variant="outline" className="w-full" asChild>
-                    <a href="https://wa.me/393335773390" target="_blank" rel="noopener noreferrer">
-                      WhatsApp: 333 577 3390
+                    <a href={apartmentWhatsAppHref} target="_blank" rel="noopener noreferrer">
+                      WhatsApp diretto
                     </a>
                   </Button>
                   <Button variant="outline" className="w-full" asChild>
-                    <a href="https://wa.me/393335773390" target="_blank" rel="noopener noreferrer">
-                      WhatsApp: 333 577 3390
+                    <a href={`tel:${SITE_CONFIG.phone}`}>
+                      Chiama ora
                     </a>
                   </Button>
                 </div>
