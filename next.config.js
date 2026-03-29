@@ -33,7 +33,6 @@ const nextConfig = {
   compress: true,
 
   // Note: swcMinify è sempre abilitato in Next.js 16+, non serve specificarlo
-
   async headers() {
     return [
       {
@@ -76,6 +75,13 @@ const nextConfig = {
       { source: "/rooms", destination: "/appartamenti", permanent: true },
       { source: "/camere", destination: "/appartamenti", permanent: true },
       { source: "/home", destination: "/", permanent: true },
+      // Fix 404 da Google Search Console (28/03/2026) - URL con prefisso lingua
+      { source: "/en/appartamenti/apartment-9", destination: "/appartamenti/azalea", permanent: true },
+      { source: "/nl/appartamenti/apartment-2", destination: "/appartamenti/fiordaliso", permanent: true },
+      // Copertura preventiva: tutti i prefissi lingua per gli appartamenti
+      { source: "/en/appartamenti/:path*", destination: "/appartamenti/:path*", permanent: true },
+      { source: "/nl/appartamenti/:path*", destination: "/appartamenti/:path*", permanent: true },
+      { source: "/it/appartamenti/:path*", destination: "/appartamenti/:path*", permanent: true },
       // Protezione URL interni da crawling diretto
       { source: "/utm", destination: "/", permanent: false },
       { source: "/verifica-analytics", destination: "/", permanent: false },
@@ -87,6 +93,7 @@ const nextConfig = {
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production' ? { exclude: ['error', 'warn'] } : false,
   },
+
   experimental: {
     optimizePackageImports: ['lucide-react', 'framer-motion', '@radix-ui/react-icons'],
   },
