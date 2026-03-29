@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect } from "react"
-import { getCLS, getLCP, getFID, getFCP, getTTFB } from "web-vitals"
+import * as webVitals from "web-vitals"
 
 function sendToAnalytics(metric: { name: string; value: number; id: string }) {
   if (typeof window === "undefined") return
@@ -18,11 +18,18 @@ function sendToAnalytics(metric: { name: string; value: number; id: string }) {
 
 export function WebVitalsReporter() {
   useEffect(() => {
-    getCLS(sendToAnalytics)
-    getLCP(sendToAnalytics)
-    getFID(sendToAnalytics)
-    getFCP(sendToAnalytics)
-    getTTFB(sendToAnalytics)
+    const vitals = webVitals as Record<
+      string,
+      ((callback: typeof sendToAnalytics) => void) | undefined
+    >
+
+    ;[
+      vitals.onCLS ?? vitals.getCLS,
+      vitals.onLCP ?? vitals.getLCP,
+      vitals.onINP ?? vitals.getFID,
+      vitals.onFCP ?? vitals.getFCP,
+      vitals.onTTFB ?? vitals.getTTFB,
+    ].forEach((registerMetric) => registerMetric?.(sendToAnalytics))
   }, [])
   return null
 }
