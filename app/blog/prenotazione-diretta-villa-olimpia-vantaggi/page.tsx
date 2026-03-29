@@ -49,7 +49,7 @@ export default function ArticlePage() {
             <div>
               <h2 className="text-2xl md:text-3xl font-playfair font-bold mb-4">2. Comunicazione diretta, risposte in pochi minuti</h2>
               <p className="text-lg text-muted-foreground">
-                Con il contatto diretto hai una comunicazione più veloce e più utile: puoi chiedere disponibilità, chiarire quale appartamento è più adatto, ricevere dettagli sulla posizione e organizzare meglio l'arrivo.
+                Con il contatto diretto hai una comunicazione più veloce e più utile: puoi chiedere disponibilità, chiarire quale appartamento è più adatto, ricevere dettagli sulla posizione e organizzare meglio l&apos;arrivo.
               </p>
             </div>
 
@@ -65,14 +65,14 @@ export default function ArticlePage() {
             <div>
               <h2 className="text-2xl md:text-3xl font-playfair font-bold mb-4">4. Rapporto diretto = vacanza migliore</h2>
               <p className="text-lg text-muted-foreground">
-                Quando il rapporto parte direttamente con la struttura, il soggiorno risulta più semplice da organizzare e più coerente con quello che stai cercando. Questo è particolarmente utile in una zona come Capo Rizzuto, dove posizione e tipologia dell'appartamento fanno una grande differenza.
+                Quando il rapporto parte direttamente con la struttura, il soggiorno risulta più semplice da organizzare e più coerente con quello che stai cercando. Questo è particolarmente utile in una zona come Capo Rizzuto, dove posizione e tipologia dell&apos;appartamento fanno una grande differenza.
               </p>
             </div>
 
             <div>
               <h2 className="text-2xl md:text-3xl font-playfair font-bold mb-4">Come prenotare direttamente</h2>
               <p className="text-lg text-muted-foreground mb-4">
-                Puoi contattarci via email o WhatsApp e ricevere rapidamente una risposta sulla disponibilità, sull'appartamento più adatto e sulle informazioni pratiche per il soggiorno.
+                Puoi contattarci via email o WhatsApp e ricevere rapidamente una risposta sulla disponibilità, sull&apos;appartamento più adatto e sulle informazioni pratiche per il soggiorno.
               </p>
               <p className="text-lg text-muted-foreground">
                 In questo modo organizzi il soggiorno in modo più diretto, con meno attrito e con un confronto chiaro sulle tue esigenze reali di viaggio.

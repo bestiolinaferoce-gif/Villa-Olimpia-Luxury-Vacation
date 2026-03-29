@@ -45,7 +45,7 @@ export const metadata: Metadata = {
   ...defaultMetadata,
   alternates: {
     languages: {
-      'it': `${BASE_URL}/it`,
+      'it': BASE_URL,
       'en': `${BASE_URL}/en`,
       'de': `${BASE_URL}/de`,
       'fr': `${BASE_URL}/fr`,
@@ -72,6 +72,7 @@ export default async function LocaleLayout({
 
   // Carica i messaggi per il locale corrente
   const messages = await getMessages()
+  const localizedCanonical = locale === 'it' ? BASE_URL : `${BASE_URL}/${locale}`
 
   return (
     <html lang={locale} className={`${inter.variable} ${playfair.variable}`} suppressHydrationWarning>
@@ -100,7 +101,7 @@ export default async function LocaleLayout({
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <link rel="icon" href="/favicon-neutral.svg" type="image/svg+xml" />
-        <link rel="canonical" href={`${BASE_URL}/${locale}`} />
+        <link rel="canonical" href={localizedCanonical} />
         {process.env.NEXT_PUBLIC_GSC_VERIFICATION && (
           <meta name="google-site-verification" content={process.env.NEXT_PUBLIC_GSC_VERIFICATION} />
         )}
@@ -112,7 +113,7 @@ export default async function LocaleLayout({
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         {/* Hreflang tags per multilingua */}
-        <link rel="alternate" hrefLang="it" href={`${BASE_URL}/it`} />
+        <link rel="alternate" hrefLang="it" href={BASE_URL} />
         <link rel="alternate" hrefLang="en" href={`${BASE_URL}/en`} />
         <link rel="alternate" hrefLang="de" href={`${BASE_URL}/de`} />
         <link rel="alternate" hrefLang="fr" href={`${BASE_URL}/fr`} />
@@ -134,14 +135,14 @@ export default async function LocaleLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": ["LodgingBusiness", "VacationRental"],
-              "@id": `${BASE_URL}/${locale}#business`,
+              "@id": `${localizedCanonical}#business`,
               name: "Villa Olimpia",
               description: locale === 'it' 
                 ? "9 appartamenti di lusso con piscina privata a Capo Rizzuto, Calabria. A 100 metri dalla Spiaggia dei Gigli, Area Marina Protetta Capo Rizzuto."
                 : locale === 'en'
                 ? "9 luxury apartments with private pool in Capo Rizzuto, Calabria. 100 meters from Spiaggia dei Gigli, Capo Rizzuto Marine Protected Area."
                 : "9 luxury apartments with private pool in Capo Rizzuto, Calabria.",
-              url: `${BASE_URL}/${locale}`,
+              url: localizedCanonical,
               telephone: "+393335773390",
               address: {
                 "@type": "PostalAddress",

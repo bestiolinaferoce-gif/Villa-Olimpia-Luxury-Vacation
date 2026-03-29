@@ -129,7 +129,7 @@ export default function ArticlePage() {
                 La posizione di Villa Olimpia a Capo Piccolo è strategica: la Spiaggia dei Gigli e la Spiaggia della Caletta sono letteralmente a un minuto a piedi, mentre tutte le altre spiagge di questa lista sono raggiungibili in meno di 45 minuti d&apos;auto.
               </p>
               <p className="text-lg text-muted-foreground mb-6">
-                Gli appartamenti di Villa Olimpia, la piscina condivisa e la posizione all'interno dell'Area Marina Protetta rendono il soggiorno particolarmente comodo per chi vuole esplorare il meglio della costa ionica calabrese senza cambiare base.
+                Gli appartamenti di Villa Olimpia, la piscina condivisa e la posizione all&apos;interno dell&apos;Area Marina Protetta rendono il soggiorno particolarmente comodo per chi vuole esplorare il meglio della costa ionica calabrese senza cambiare base.
               </p>
               <div className="flex flex-wrap gap-4">
                 <Button asChild variant="default">
