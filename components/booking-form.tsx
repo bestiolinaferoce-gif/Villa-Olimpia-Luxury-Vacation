@@ -96,6 +96,25 @@ export function BookingForm() {
     return buildMailtoAvailabilityFallback(subject, body)
   }
 
+  const getLeadType = (data: BookingFormData) => {
+    return data.agency?.trim() ? "Agenzia / intermediario" : "Cliente diretto"
+  }
+
+  const getDaysToCheckIn = (checkIn: string) => {
+    const today = new Date()
+    today.setHours(0, 0, 0, 0)
+    const target = new Date(checkIn)
+    target.setHours(0, 0, 0, 0)
+
+    return Math.max(0, Math.round((target.getTime() - today.getTime()) / 86400000))
+  }
+
+  const getUrgencyLabel = (daysToCheckIn: number) => {
+    if (daysToCheckIn <= 3) return "Last minute"
+    if (daysToCheckIn <= 14) return "Vicino"
+    return "Programmabile"
+  }
+
   const buildWhatsAppUrl = (data: BookingFormData) => {
     const official = buildOfficialAvailabilityMessage({
       checkIn: data.checkIn,
@@ -104,14 +123,38 @@ export function BookingForm() {
       apartment: data.apartment,
       sourceLabel: "sito ufficiale",
     })
+    const source = data.source || "Diretta"
+    const daysToCheckIn = getDaysToCheckIn(data.checkIn)
+    const leadType = getLeadType(data)
+    const urgency = getUrgencyLabel(daysToCheckIn)
     const extra = [
+      "",
+      "Classificazione lead:",
+      `Tipo richiesta: ${leadType}`,
+      `Urgenza: ${urgency}`,
+      `Giorni al check-in: ${daysToCheckIn}`,
       "",
       "Contatto:",
       `Nome: ${data.name}`,
       `Email: ${data.email}`,
       `Telefono: ${data.phone}`,
-      ...(data.agency ? [`Agenzia: ${data.agency}`] : []),
-      ...(data.message ? ["", "Messaggio:", data.message] : []),
+      `Agenzia: ${data.agency || "Non indicata"}`,
+      "",
+      "Dettagli soggiorno:",
+      `Check-in: ${data.checkIn}`,
+      `Check-out: ${data.checkOut}`,
+      `Ospiti: ${data.guests}`,
+      `Appartamento: ${data.apartment || "Nessuna preferenza"}`,
+      "",
+      "Messaggio:",
+      data.message || "Nessun messaggio aggiuntivo",
+      "",
+      "Tracking:",
+      `Fonte lead: ${source}`,
+      `UTM Source: ${data.utmSource || "N/D"}`,
+      `UTM Medium: ${data.utmMedium || "N/D"}`,
+      `UTM Campaign: ${data.utmCampaign || "N/D"}`,
+      `Landing page: ${data.landingPage || "N/D"}`,
     ].join("\n")
     return buildWhatsAppUrlFromText(`${official}\n${extra}`)
   }
