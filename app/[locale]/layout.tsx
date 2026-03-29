@@ -94,7 +94,7 @@ export default async function LocaleLayout({
           }}
         />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-        <link rel="icon" href="/favicon.png" type="image/png" />
+        <link rel="icon" href="/favicon-neutral.svg" type="image/svg+xml" />
         <link rel="canonical" href={`https://villaolimpiacaporizzuto.com/${locale}`} />
         
         {/* Performance - Preconnect */}
