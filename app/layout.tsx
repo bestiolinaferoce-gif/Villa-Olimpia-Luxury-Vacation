@@ -69,7 +69,7 @@ export default function RootLayout({
           }}
         />
         {/* viewport gestito tramite export const viewport (Next.js App Router) */}
-        <link rel="icon" href="/favicon-villa-olimpia.svg" type="image/svg+xml" />
+        <link rel="icon" href="/favicon-neutral.svg" type="image/svg+xml" />
 
         {/* Performance - Preconnect */}
         <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="anonymous" />

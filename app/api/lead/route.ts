@@ -400,7 +400,9 @@ export async function POST(req: NextRequest) {
       persistLeadToFile(enrichedLead),
     ])
 
-    const deliveredAny = resendDelivery.ok || webhookDelivery.ok || persisted.ok
+    // Only treat the lead as delivered when an owner-facing channel succeeds.
+    // Local persistence is useful for recovery, but it is not a reliable confirmation.
+    const deliveredAny = resendDelivery.ok || webhookDelivery.ok || telegramDelivery.ok
 
     if (!deliveredAny) {
       return NextResponse.json(
@@ -408,6 +410,14 @@ export async function POST(req: NextRequest) {
           ok: false,
           reason: "all_delivery_channels_failed",
           fallback: "whatsapp_or_mailto",
+          channels: {
+            resend: resendDelivery.ok,
+            autoresponder: autoReplyDelivery.ok,
+            whatsappGuest: whatsappGuestDelivery.ok,
+            webhook: webhookDelivery.ok,
+            telegram: telegramDelivery.ok,
+            persisted: persisted.ok,
+          },
         },
         { status: 503 }
       )
