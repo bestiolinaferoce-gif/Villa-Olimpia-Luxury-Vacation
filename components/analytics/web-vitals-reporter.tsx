@@ -18,10 +18,18 @@ function sendToAnalytics(metric: { name: string; value: number; id: string }) {
 
 export function WebVitalsReporter() {
   useEffect(() => {
-    const vitals = webVitals as Record<
-      string,
-      ((callback: typeof sendToAnalytics) => void) | undefined
-    >
+    const vitals = webVitals as unknown as {
+      onCLS?: (callback: typeof sendToAnalytics) => void
+      getCLS?: (callback: typeof sendToAnalytics) => void
+      onLCP?: (callback: typeof sendToAnalytics) => void
+      getLCP?: (callback: typeof sendToAnalytics) => void
+      onINP?: (callback: typeof sendToAnalytics) => void
+      getFID?: (callback: typeof sendToAnalytics) => void
+      onFCP?: (callback: typeof sendToAnalytics) => void
+      getFCP?: (callback: typeof sendToAnalytics) => void
+      onTTFB?: (callback: typeof sendToAnalytics) => void
+      getTTFB?: (callback: typeof sendToAnalytics) => void
+    }
 
     ;[
       vitals.onCLS ?? vitals.getCLS,
