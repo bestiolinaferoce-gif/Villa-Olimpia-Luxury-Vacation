@@ -57,6 +57,9 @@ build-output.log
 *.swp
 *.swo
 
+# Local databases (never commit)
+dev.db
+
 # Local Netlify folder
 .netlify
 /data/public-requests.json
