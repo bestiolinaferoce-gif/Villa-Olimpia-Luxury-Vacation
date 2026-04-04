@@ -1,3 +1,4 @@
+import Link from "next/link"
 import { BookingForm } from "@/components/booking-form"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
@@ -19,6 +20,9 @@ export const metadata = generateMetadata({
     "preventivo area marina protetta capo rizzuto",
     "telefono Villa Olimpia Capo Rizzuto",
     "email appartamenti Spiaggia dei Gigli",
+    "contatti settembre capo rizzuto",
+    "prenotazione gruppo villa calabria",
+    "soggiorno 7 notti capo rizzuto",
   ],
 })
 
@@ -37,15 +41,15 @@ export default function ContattiPage() {
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 rounded-full bg-white/80 px-4 py-2 text-sm font-semibold text-primary shadow">
               <Sparkles className="h-4 w-4" />
-              Risposta veloce, assistenza reale
+              Date flessibili · gruppi · settembre
             </div>
             <h1 className="mt-6 text-4xl font-playfair font-bold text-slate-900 md:text-5xl">
-              Prenota la tua vacanza a Villa Olimpia
+              Richieste su misura: famiglie, gruppi e soggiorni più lunghi
             </h1>
             <p className="mt-4 text-lg text-slate-600">
-              Raccontaci le tue date e ti rispondiamo con un preventivo preciso. Prenotando qui hai il canale diretto
-              con Villa Olimpia, senza commissioni di portali, con piscina condivisa, giardino mediterraneo e mare a
-              pochi passi.
+              Scrivici per date anche indicative, soggiorni da 7 notti in su, settembre o maggio/giugno — e per
+              organizzare più appartamenti nello stesso complesso. Ti rispondiamo dal canale diretto Villa Olimpia,
+              con proposta chiara e senza intermediari: piscina condivisa, Area Marina Protetta e mare a pochi passi.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <div className="flex items-center gap-2 rounded-full bg-white/80 px-4 py-2 text-sm text-slate-700 shadow">
@@ -68,6 +72,68 @@ export default function ContattiPage() {
                 <span className="text-amber-600 font-semibold">−</span>
                 Sconto soggiorni 7+ notti (Giugno/Luglio)
               </div>
+              <div className="flex items-center gap-2 rounded-full bg-sky-50 px-4 py-2 text-sm text-slate-700 shadow border border-sky-200">
+                <span className="text-sky-600 font-semibold">◎</span>
+                Settembre: mare elegante e ritmo più calmo
+              </div>
+              <div className="flex items-center gap-2 rounded-full bg-violet-50 px-4 py-2 text-sm text-slate-700 shadow border border-violet-200">
+                <span className="text-violet-600 font-semibold">+</span>
+                Gruppi e più appartamenti: soluzione su richiesta
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="border-b border-primary/10 bg-white py-10">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-2xl font-playfair font-bold text-slate-900 mb-2 text-center md:text-left">
+              Richieste più frequenti
+            </h2>
+            <p className="text-sm text-slate-600 mb-6 text-center md:text-left">
+              Scegli il tipo di soggiorno che ti interessa: nel messaggio puoi già indicarlo così rispondiamo più in fretta.
+            </p>
+            <div className="grid gap-4 md:grid-cols-3">
+              <Card className="border border-primary/10">
+                <CardHeader className="pb-2">
+                  <CardTitle className="text-base font-playfair">Soggiorno famiglia</CardTitle>
+                  <CardDescription className="text-sm">
+                    Bambini, spazi comuni e vicinanza al mare: ti proponiamo l&apos;appartamento più adatto al tuo nucleo.
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <Button variant="outline" size="sm" className="w-full" asChild>
+                    <Link href="#prenota">Compila il form</Link>
+                  </Button>
+                </CardContent>
+              </Card>
+              <Card className="border border-primary/10">
+                <CardHeader className="pb-2">
+                  <CardTitle className="text-base font-playfair">Soggiorno 7+ notti</CardTitle>
+                  <CardDescription className="text-sm">
+                    Date flessibili e permanenze più lunghe: valutiamo insieme il periodo migliore (anche fuori da agosto).
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <Button variant="outline" size="sm" className="w-full" asChild>
+                    <Link href="/prenota">Vai a Prenota</Link>
+                  </Button>
+                </CardContent>
+              </Card>
+              <Card className="border border-primary/10">
+                <CardHeader className="pb-2">
+                  <CardTitle className="text-base font-playfair">Intera villa / più appartamenti</CardTitle>
+                  <CardDescription className="text-sm">
+                    Famiglie allargate o piccoli gruppi: disponibilità e combinazioni da verificare caso per caso.
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-2">
+                  <Button variant="luxury" size="sm" className="w-full" asChild>
+                    <Link href="/intera-villa-calabria">Scopri la pagina dedicata</Link>
+                  </Button>
+                </CardContent>
+              </Card>
             </div>
           </div>
         </div>

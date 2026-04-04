@@ -11,8 +11,8 @@ import { TrustBadges } from "@/components/conversion/trust-badges"
 import { SocialProof } from "@/components/conversion/social-proof"
 import { JuneJulySection } from "@/components/conversion/june-july-section"
 import Link from "next/link"
-import { Star, Wifi, Car, Waves, Utensils, Shield, Umbrella, MapPin, Sparkles, ArrowRight } from "lucide-react"
-import { getFeaturedApartments } from "@/data/apartments"
+import { Star, Wifi, Car, Waves, Utensils, Shield, Umbrella, MapPin, Sparkles, ArrowRight, SunMedium, CalendarRange, Users } from "lucide-react"
+import { getApartmentSlug, getFeaturedApartments } from "@/data/apartments"
 import { SITE_CONFIG } from "@/lib/constants"
 import { motion } from "framer-motion"
 import dynamic from "next/dynamic"
@@ -140,6 +140,88 @@ export default function HomePage() {
       {/* === JUNE/JULY CONVERSION ENGINE — Primary conversion section === */}
       <JuneJulySection />
 
+      {/* Maggio, Giugno, Settembre — mesi ideali, famiglie, Nord Europa */}
+      <section className="py-20 bg-gradient-to-br from-slate-50 via-background to-ocean/5 cv-auto">
+        <div className="container mx-auto px-4">
+          <ScrollReveal>
+            <div className="text-center mb-12 max-w-3xl mx-auto">
+              <div className="inline-flex items-center gap-2 bg-ocean/10 px-4 py-2 rounded-full mb-4">
+                <CalendarRange className="h-4 w-4 text-primary" />
+                <span className="text-sm font-semibold text-primary">Maggio · Giugno · Settembre</span>
+              </div>
+              <h2 className="text-4xl md:text-5xl font-playfair font-bold mb-4 text-foreground">
+                I mesi più eleganti per vivere Capo Rizzuto iniziano prima di agosto
+              </h2>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                Maggio, giugno e settembre sono spesso i mesi ideali per godersi il mare con meno folla, luce splendida
+                e un ritmo più rilassato. Piscina, Area Marina Protetta e Spiaggia dei Gigli restano il tuo salotto
+                privato a due passi dall&apos;acqua — perfetto per famiglie, piccoli gruppi e ospiti dal Nord Europa.
+              </p>
+            </div>
+          </ScrollReveal>
+
+          <div className="grid md:grid-cols-3 gap-6 mb-10 max-w-6xl mx-auto">
+            {[
+              {
+                icon: SunMedium,
+                title: "Maggio e giugno",
+                text: "Clima piacevole, giornate lunghe e spiagge ancora molto vivibili: il mare di Capo Rizzuto si gusta con calma, tra una nuotata e la piscina di Villa Olimpia.",
+              },
+              {
+                icon: Waves,
+                title: "Settembre",
+                text: "Il mese più elegante per il mare: acqua spesso ancora calda, atmosfera distesa e luminosità speciale — ideale per coppie e famiglie che cercano qualità senza ressa.",
+              },
+              {
+                icon: Users,
+                title: "Famiglie e piccoli gruppi",
+                text: "Nove appartamenti nello stesso complesso: comodo per nuclei diversi che viaggiano insieme, bambini che giocano in sicurezza e logistica semplice per tutti.",
+              },
+            ].map((item, i) => {
+              const Icon = item.icon
+              return (
+                <ScrollReveal key={item.title} delay={i * 0.12}>
+                  <Card className="h-full border-2 border-primary/10 bg-white/90 shadow-md hover:shadow-xl transition-all duration-300">
+                    <CardHeader>
+                      <div className="mb-3 inline-flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
+                        <Icon className="h-6 w-6 text-primary" />
+                      </div>
+                      <CardTitle className="text-xl font-playfair">{item.title}</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <CardDescription className="text-sm leading-relaxed">{item.text}</CardDescription>
+                    </CardContent>
+                  </Card>
+                </ScrollReveal>
+              )
+            })}
+          </div>
+
+          <ScrollReveal delay={0.2}>
+            <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-3 max-w-4xl mx-auto">
+              <Button variant="luxury" size="lg" asChild>
+                <Link href="/settembre-capo-rizzuto">
+                  Settembre a Capo Rizzuto
+                  <ArrowRight className="w-4 h-4 ml-2 inline" />
+                </Link>
+              </Button>
+              <Button variant="outline" size="lg" className="border-primary/30" asChild>
+                <Link href="/intera-villa-calabria">
+                  Gruppi e intera struttura
+                  <ArrowRight className="w-4 h-4 ml-2 inline" />
+                </Link>
+              </Button>
+              <Button variant="outline" size="lg" className="border-primary/30" asChild>
+                <Link href="/contatti?source=home_shoulder_season#prenota">
+                  Richiesta personalizzata
+                  <ArrowRight className="w-4 h-4 ml-2 inline" />
+                </Link>
+              </Button>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
       {/* Featured Apartments */}
       <section className="py-20 bg-background cv-auto">
         <div className="container mx-auto px-4">
@@ -162,7 +244,7 @@ export default function HomePage() {
             {featuredApartments.map((apartment, index) => (
               <ScrollReveal key={apartment.id} delay={index * 0.15}>
                 <ApartmentCard
-                  id={`apartment-${apartment.id}`}
+                  slug={getApartmentSlug(apartment)}
                   name={apartment.name}
                   description={apartment.description || apartment.fullDescription || ""}
                   image={apartment.image}
@@ -364,6 +446,16 @@ export default function HomePage() {
                 href: "/blog",
               },
               {
+                title: "Settembre a Capo Rizzuto",
+                text: "Mare, luce e tranquillità: perché settembre è un mese premium a Villa Olimpia.",
+                href: "/settembre-capo-rizzuto",
+              },
+              {
+                title: "Gruppi e intera struttura",
+                text: "Richieste per più appartamenti o soluzioni su misura per famiglie allargate e piccoli gruppi.",
+                href: "/intera-villa-calabria",
+              },
+              {
                 title: "Prenotazione diretta",
                 text: "Contattaci per disponibilità, proposta personalizzata e assistenza veloce.",
                 href: "/prenota",
@@ -387,6 +479,33 @@ export default function HomePage() {
               </ScrollReveal>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Prenotazione diretta — soggiorni lunghi e più appartamenti */}
+      <section className="py-14 bg-gradient-to-r from-primary/8 via-ocean/10 to-primary/8 border-y border-primary/15 cv-auto">
+        <div className="container mx-auto px-4">
+          <ScrollReveal>
+            <div className="max-w-4xl mx-auto text-center">
+              <h2 className="text-2xl md:text-3xl font-playfair font-bold text-foreground mb-3">
+                Prenotazione diretta per soggiorni più lunghi e richieste su misura
+              </h2>
+              <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
+                Scrivici per date flessibili, più appartamenti nello stesso complesso o esigenze di gruppo: ti rispondiamo dal canale ufficiale Villa Olimpia, senza intermediari.
+              </p>
+              <ul className="text-left max-w-xl mx-auto space-y-2 text-sm text-slate-700 mb-8">
+                <li className="flex gap-2"><span className="text-primary font-bold">•</span> Risposta rapida e chiara sulle disponibilità</li>
+                <li className="flex gap-2"><span className="text-primary font-bold">•</span> Proposta personalizzata in base a ospiti e periodo</li>
+                <li className="flex gap-2"><span className="text-primary font-bold">•</span> Soluzioni per più appartamenti o intera struttura (da concordare)</li>
+              </ul>
+              <Button variant="luxury" size="lg" asChild>
+                <Link href="/prenota">
+                  Vai alla prenotazione diretta
+                  <ArrowRight className="w-4 h-4 ml-2 inline" />
+                </Link>
+              </Button>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 
