@@ -19,6 +19,12 @@ export interface Apartment {
   active?: boolean
 }
 
+export interface BedSchema {
+  "@type": "BedDetails"
+  numberOfBeds: number
+  typeOfBed: string
+}
+
 export const apartments: Apartment[] = [
   // PIANO TERRA
   {
@@ -272,6 +278,24 @@ export const apartments: Apartment[] = [
 ]
 
 // Funzioni helper
+export function getApartmentSlug(apartment: Apartment | string): string {
+  return (typeof apartment === "string" ? apartment : apartment.name).trim().toLowerCase()
+}
+
+export function getApartmentBySlug(slug: string): Apartment | undefined {
+  const normalizedSlug = getApartmentSlug(slug)
+  return apartments.find((apt) => getApartmentSlug(apt) === normalizedSlug)
+}
+
+export function getApartmentBedSchema(apartment: Apartment): BedSchema {
+  return {
+    "@type": "BedDetails",
+    // We only publish a conservative minimum derived from the room count.
+    numberOfBeds: Math.max(apartment.bedrooms, 1),
+    typeOfBed: apartment.bedrooms > 1 ? "Mixed bed configuration" : "Double bed",
+  }
+}
+
 export function getApartmentById(id: number | string): Apartment | undefined {
   const idNum = typeof id === 'string' ? parseInt(id.replace('apartment-', '')) : id
   return apartments.find((apt) => apt.id === idNum)
