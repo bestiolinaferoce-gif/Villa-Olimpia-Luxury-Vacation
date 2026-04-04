@@ -12,7 +12,7 @@ import { TrustBadges } from "@/components/conversion/trust-badges"
 import { SocialProof } from "@/components/conversion/social-proof"
 import Link from "next/link"
 import { Star, Wifi, Car, Waves, Utensils, Shield, Umbrella, MapPin, Sparkles } from "lucide-react"
-import { getFeaturedApartments } from "@/data/apartments"
+import { getApartmentSlug, getFeaturedApartments } from "@/data/apartments"
 import { SITE_CONFIG } from "@/lib/constants"
 import { motion } from "framer-motion"
 import dynamic from "next/dynamic"
@@ -132,7 +132,7 @@ export default function HomePage() {
             {featuredApartments.map((apartment, index) => (
               <ScrollReveal key={apartment.id} delay={index * 0.15}>
                 <ApartmentCard
-                  id={`apartment-${apartment.id}`}
+                  slug={getApartmentSlug(apartment)}
                   name={apartment.name}
                   description={apartment.description || apartment.fullDescription || ""}
                   image={apartment.image}
