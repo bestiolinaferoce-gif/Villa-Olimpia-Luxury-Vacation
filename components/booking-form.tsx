@@ -6,7 +6,7 @@ import { useEffect, useMemo, useRef, useState } from "react"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
-import Calendar from "react-calendar"
+import Calendar, { type CalendarProps } from "react-calendar"
 import { format } from "date-fns"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -80,7 +80,7 @@ function DateRangePicker({
   onCheckOutChange: (date: string) => void
 }) {
   const [isOpen, setIsOpen] = useState(false)
-  const [localValue, setLocalValue] = useState<Date | [Date, Date] | null>(null)
+  const [localValue, setLocalValue] = useState<CalendarProps["value"]>(null)
   const pickerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -102,12 +102,15 @@ function DateRangePicker({
     }
   }, [isOpen])
 
-  const handleSelect = (value: Date | [Date, Date] | null) => {
+  const handleSelect: CalendarProps["onChange"] = (value) => {
     if (!value) return
+    if (!Array.isArray(value)) {
+      setLocalValue(value)
+      return
+    }
+    const [start, end] = value
     setLocalValue(value)
-
-    if (Array.isArray(value) && value.length === 2) {
-      const [start, end] = value
+    if (start instanceof Date && end instanceof Date) {
       onCheckInChange(format(start, "yyyy-MM-dd"))
       onCheckOutChange(format(end, "yyyy-MM-dd"))
       setIsOpen(false)
@@ -176,11 +179,13 @@ function DateRangePicker({
               if (view === "month") {
                 if (Array.isArray(localValue) && localValue.length === 2) {
                   const [start, end] = localValue
-                  if (date >= start && date <= end) {
-                    if (date.toDateString() === start.toDateString() || date.toDateString() === end.toDateString()) {
-                      return "font-bold"
+                  if (start instanceof Date && end instanceof Date) {
+                    if (date >= start && date <= end) {
+                      if (date.toDateString() === start.toDateString() || date.toDateString() === end.toDateString()) {
+                        return "font-bold"
+                      }
+                      return "bg-slate-200"
                     }
-                    return "bg-slate-200"
                   }
                 }
               }
