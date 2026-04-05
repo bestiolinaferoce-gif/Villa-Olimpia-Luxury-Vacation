@@ -135,7 +135,7 @@ export default async function LocaleLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": ["LodgingBusiness", "VacationRental"],
-              "@id": `${localizedCanonical}#business`,
+              "@id": "https://villaolimpiacaporizzuto.com/#business",
               name: "Villa Olimpia",
               description: locale === 'it' 
                 ? "9 appartamenti di lusso con piscina privata a Capo Rizzuto, Calabria. A 100 metri dalla Spiaggia dei Gigli, Area Marina Protetta Capo Rizzuto."

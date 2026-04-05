@@ -194,6 +194,98 @@ export default function RootLayout({
             }),
           }}
         />
+        {/* FAQ Schema – rich snippets Google */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              mainEntity: [
+                {
+                  "@type": "Question",
+                  name: "Quanto distano le spiagge da Villa Olimpia?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "La Spiaggia dei Gigli (Bandiera Blu) e la Spiaggia della Caletta distano meno di 100 metri a piedi da Villa Olimpia. Si esce dal cancello e si è già in spiaggia, senza auto né parcheggio."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  name: "C'è la piscina a Villa Olimpia Capo Rizzuto?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Sì. Villa Olimpia dispone di una piscina privata inclusa nel soggiorno, accessibile a tutti gli ospiti del residence. La piscina affaccia sul mare ed è disponibile durante tutta la stagione estiva."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  name: "Come si prenota un appartamento a Villa Olimpia?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Puoi prenotare direttamente tramite il modulo sul sito villaolimpiacaporizzuto.com, oppure contattarci su WhatsApp al +39 333 577 3390. La prenotazione diretta garantisce il miglior prezzo senza commissioni di intermediari."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  name: "Quante persone ospita Villa Olimpia?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Villa Olimpia dispone di 9 appartamenti indipendenti che ospitano da 2 a 6 persone ciascuno. Ogni appartamento è completamente arredato con cucina attrezzata, aria condizionata, terrazza privata e Wi-Fi gratuito."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  name: "Quali sono gli orari di check-in e check-out?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Il check-in è disponibile dalle ore 15:00. Il check-out è entro le ore 10:00. Per orari diversi contattare la struttura in anticipo."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  name: "Villa Olimpia è adatta alle famiglie con bambini?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Sì, Villa Olimpia è ideale per le famiglie con bambini. La spiaggia è a pochi passi, la piscina è sicura, e gli appartamenti sono spaziosi con cucina attrezzata. Il mare di Capopiccolo è basso e cristallino, perfetto per i più piccoli."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  name: "Quanto costano gli appartamenti per l'estate 2026?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "I prezzi variano in base all'appartamento e al periodo. Per l'estate 2026 (luglio e agosto) i prezzi partono da circa 120€ a notte. Contattaci tramite il sito o WhatsApp per un preventivo personalizzato senza impegno."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  name: "C'è il parcheggio a Villa Olimpia?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Sì, Villa Olimpia dispone di parcheggio privato gratuito all'interno della struttura, incluso nel soggiorno."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  name: "Dove si trova Villa Olimpia rispetto a Le Castella?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Villa Olimpia si trova a Capopiccolo, nella Riserva Marina di Capo Rizzuto, a circa 8 km dal Castello Aragonese di Le Castella. La struttura è nella zona più esclusiva del litorale ionico calabrese."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  name: "È disponibile il Wi-Fi gratuito a Villa Olimpia?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Sì, il Wi-Fi ad alta velocità è gratuito in tutti gli appartamenti e nelle aree comuni di Villa Olimpia."
+                  }
+                }
+              ]
+            }),
+          }}
+        />
       </head>
       <body className={inter.className} suppressHydrationWarning>
         <AnalyticsUnified />

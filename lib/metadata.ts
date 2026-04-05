@@ -152,16 +152,21 @@ export function getApartmentMetadata(apartmentId: number): Metadata {
 export const defaultMetadata: Metadata = {
   metadataBase: new URL(baseUrl),
     title: {
-      default: `${siteName} | Appartamenti con Piscina a Capo Rizzuto`,
+      default: `${siteName} | Appartamenti con Piscina a Capo Rizzuto — Estate 2026`,
       template: `%s`,
     },
-  description: "Villa Olimpia: appartamenti con piscina a Capopiccolo, nell'Area Marina Protetta di Capo Rizzuto. A pochi passi dalla Spiaggia dei Gigli, ideali per vacanze in Calabria con prenotazione diretta.",
+  description: "Villa Olimpia: 9 appartamenti con piscina a Capopiccolo, Area Marina Protetta di Capo Rizzuto. Estate 2026 disponibile — Spiaggia dei Gigli a 100m, prenotazione diretta senza commissioni.",
   keywords: [
-    // Core
+    // Core estate 2026
+    "appartamenti capo rizzuto estate 2026",
+    "appartamenti capo rizzuto agosto 2026",
+    "vacanze calabria estate 2026",
+    "affitto appartamento luglio 2026 calabria",
+    "villa olimpia capo rizzuto 2026",
+    // Prodotto
     "appartamenti vacanze Calabria piscina",
     "villa piscina Capo Rizzuto",
-    "affitto casa mare Calabria",
-    "appartamento piscina privata",
+    "appartamento piscina privata capo rizzuto",
     "Isola Capo Rizzuto appartamenti",
     "Spiaggia dei Gigli alloggio",
     "vacanze Calabria piscina",
@@ -173,11 +178,18 @@ export const defaultMetadata: Metadata = {
     "Capo Piccolo appartamenti",
     "Le Castella alloggio",
     "Riserva Marina Capo Rizzuto",
+    // Brand
     "villa olimpia",
     "villa olimpia capo rizzuto",
+    // Prenotazione diretta
+    "prenotazione diretta appartamento calabria",
+    "appartamento calabria senza intermediari",
     "affitto vacanze calabria",
-    "calabria luxury villa",
     "capopiccolo apartments",
+    // Long tail
+    "appartamento con piscina spiaggia capo rizzuto",
+    "villa vacanze calabria mare piscina famiglia",
+    "appartamento capopiccolo capo rizzuto prenotazione",
   ],
   authors: [{ name: siteName }],
   creator: siteName,
@@ -198,8 +210,8 @@ export const defaultMetadata: Metadata = {
     locale: "it_IT",
     url: baseUrl,
     siteName: openGraphSiteName,
-    title: `${siteName} — Appartamenti con Piscina a Capo Rizzuto`,
-    description: "Appartamenti con piscina a Capopiccolo, nell'Area Marina Protetta di Capo Rizzuto. Spiaggia dei Gigli a pochi passi e prenotazione diretta senza intermediari.",
+    title: `${siteName} — Appartamenti con Piscina a Capo Rizzuto | Estate 2026`,
+    description: "9 appartamenti con piscina a Capopiccolo, Area Marina Protetta di Capo Rizzuto. Estate 2026 disponibile — Spiaggia dei Gigli a 100m, prenotazione diretta senza commissioni.",
     images: [
       {
         url: `${baseUrl}/og-image.jpg`,
@@ -219,4 +231,25 @@ export const defaultMetadata: Metadata = {
     canonical: baseUrl,
   },
   other: { ...ogImageDimensions },
+}
+
+export function buildContactMetadata(locale?: string): Metadata {
+  const lang = locale ?? "it"
+  const titles: Record<string, string> = {
+    it: "Contatti e Prenotazioni | Villa Olimpia Capo Rizzuto",
+    en: "Contact & Bookings | Villa Olimpia Capo Rizzuto",
+    de: "Kontakt & Buchungen | Villa Olimpia Capo Rizzuto",
+    fr: "Contact et Réservations | Villa Olimpia Capo Rizzuto",
+    nl: "Contact en Boekingen | Villa Olimpia Capo Rizzuto",
+  }
+  const descriptions: Record<string, string> = {
+    it: "Richiedi disponibilità o un preventivo per i tuoi soggiorni a Villa Olimpia, Capo Rizzuto. Risposta entro 24 ore. Prenotazione diretta senza commissioni.",
+    en: "Request availability or a quote for your stay at Villa Olimpia, Capo Rizzuto. Reply within 24 hours. Direct booking with no fees.",
+    de: "Verfügbarkeit oder Angebot für Ihren Aufenthalt in Villa Olimpia, Capo Rizzuto anfragen. Antwort innerhalb von 24 Stunden.",
+    fr: "Demandez disponibilité ou devis pour votre séjour à Villa Olimpia, Capo Rizzuto. Réponse sous 24h. Réservation directe sans frais.",
+    nl: "Vraag beschikbaarheid of offerte aan voor uw verblijf bij Villa Olimpia, Capo Rizzuto. Antwoord binnen 24 uur.",
+  }
+  const title = titles[lang] ?? titles["it"]
+  const description = descriptions[lang] ?? descriptions["it"]
+  return generateMetadata({ title, description, path: "/contatti" })
 }

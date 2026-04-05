@@ -93,30 +93,6 @@ export default async function ApartmentDetailPage({ params }: PageProps) {
     `Richiesta disponibilita ${apartment.name} - Villa Olimpia:\nDate: \nOspiti: ${apartment.guests}\nAppartamento: ${apartment.name}\nFonte: sito ufficiale (pagina appartamento)`
   )
   const apartmentUrl = `${BASE_URL}/appartamenti/${apartment.name.toLowerCase()}`
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Home",
-        item: BASE_URL,
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: "Appartamenti",
-        item: `${BASE_URL}/appartamenti`,
-      },
-      {
-        "@type": "ListItem",
-        position: 3,
-        name: apartment.name,
-        item: apartmentUrl,
-      },
-    ],
-  }
   const apartmentSchema = {
     "@context": "https://schema.org",
     "@type": "Accommodation",
@@ -170,14 +146,15 @@ export default async function ApartmentDetailPage({ params }: PageProps) {
     },
     telephone: VILLA_OLIMPIA_LOCATION.contact.phone,
     url: apartmentUrl,
+    identifier: {
+      "@type": "PropertyValue",
+      name: "Codice appartamento",
+      value: apartment.name.toLowerCase(),
+    },
   }
 
   return (
     <div className="min-h-screen pt-20">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-      />
       <Breadcrumb
         items={[
           { label: "Appartamenti", href: "/appartamenti" },

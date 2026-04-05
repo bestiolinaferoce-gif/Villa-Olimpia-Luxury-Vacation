@@ -1,14 +1,18 @@
 "use client"
 
-import { useEffect, useMemo, useState } from "react"
+import "react-calendar/dist/Calendar.css"
+
+import { useEffect, useMemo, useRef, useState } from "react"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
+import Calendar from "react-calendar"
+import { format } from "date-fns"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
-import { Calendar, Users, Mail, MessageSquare, AlertCircle, CheckCircle2 } from "lucide-react"
+import { Calendar as CalendarIcon, Users, Mail, MessageSquare, AlertCircle, CheckCircle2, ChevronDown } from "lucide-react"
 import { apartments } from "@/data/apartments"
 import { trackBookingInitiation, trackEvent } from "@/components/analytics/google-analytics"
 import { useSearchParams } from "next/navigation"
@@ -38,12 +42,146 @@ const bookingSchema = z.object({
 
 type BookingFormData = z.infer<typeof bookingSchema>
 
+function DateRangePicker({
+  checkIn,
+  checkOut,
+  onCheckInChange,
+  onCheckOutChange,
+}: {
+  checkIn: string
+  checkOut: string
+  onCheckInChange: (date: string) => void
+  onCheckOutChange: (date: string) => void
+}) {
+  const [isOpen, setIsOpen] = useState(false)
+  const [localValue, setLocalValue] = useState<Date | [Date, Date] | null>(null)
+  const pickerRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (checkIn && checkOut) {
+      setLocalValue([new Date(checkIn), new Date(checkOut)])
+    }
+  }, [checkIn, checkOut])
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (pickerRef.current && !pickerRef.current.contains(event.target as Node)) {
+        setIsOpen(false)
+      }
+    }
+
+    if (isOpen) {
+      document.addEventListener("mousedown", handleClickOutside)
+      return () => document.removeEventListener("mousedown", handleClickOutside)
+    }
+  }, [isOpen])
+
+  const handleSelect = (value: Date | [Date, Date]) => {
+    setLocalValue(value)
+
+    if (Array.isArray(value) && value.length === 2) {
+      const [start, end] = value
+      onCheckInChange(format(start, "yyyy-MM-dd"))
+      onCheckOutChange(format(end, "yyyy-MM-dd"))
+      setIsOpen(false)
+    }
+  }
+
+  const displayText = checkIn && checkOut
+    ? `${format(new Date(checkIn), "dd MMM yyyy")} → ${format(new Date(checkOut), "dd MMM yyyy")}`
+    : "Seleziona date"
+
+  return (
+    <div ref={pickerRef} className="relative">
+      <button
+        type="button"
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full h-10 px-3 py-2 text-left text-sm rounded-md border border-input bg-background hover:bg-slate-50 transition-colors flex items-center justify-between"
+      >
+        <span className="text-muted-foreground">{displayText}</span>
+        <ChevronDown className={`h-4 w-4 text-muted-foreground transition-transform ${isOpen ? "rotate-180" : ""}`} />
+      </button>
+
+      {isOpen && (
+        <div className="absolute top-full left-0 right-0 mt-2 z-50 bg-white border border-slate-200 rounded-lg shadow-lg p-4">
+          <style>{`
+            .react-calendar {
+              width: 100%;
+              border: none;
+              font-family: inherit;
+            }
+            .react-calendar__tile--active {
+              background: #0f172a;
+              color: white;
+            }
+            .react-calendar__tile--range {
+              background: #e2e8f0;
+            }
+            .react-calendar__tile--rangeStart,
+            .react-calendar__tile--rangeEnd {
+              background: #0f172a;
+              color: white;
+            }
+            .react-calendar__tile {
+              padding: 8px 0;
+              font-size: 0.875rem;
+            }
+            .react-calendar__month-view__days__day {
+              padding: 0.5rem;
+            }
+            .react-calendar__navigation {
+              margin-bottom: 1rem;
+            }
+            .react-calendar__navigation button {
+              min-width: auto;
+              font-size: 0.875rem;
+              padding: 0.5rem;
+            }
+          `}</style>
+          <Calendar
+            onChange={handleSelect}
+            value={localValue}
+            selectRange={true}
+            showDoubleView={true}
+            minDate={new Date()}
+            locale="it-IT"
+            tileClassName={({ date, view }) => {
+              if (view === "month") {
+                if (Array.isArray(localValue) && localValue.length === 2) {
+                  const [start, end] = localValue
+                  if (date >= start && date <= end) {
+                    if (date.toDateString() === start.toDateString() || date.toDateString() === end.toDateString()) {
+                      return "font-bold"
+                    }
+                    return "bg-slate-200"
+                  }
+                }
+              }
+              return ""
+            }}
+          />
+          <div className="mt-4 flex gap-2">
+            <Button
+              type="button"
+              variant="outline"
+              size="sm"
+              className="w-full"
+              onClick={() => setIsOpen(false)}
+            >
+              Chiudi
+            </Button>
+          </div>
+        </div>
+      )}
+    </div>
+  )
+}
+
 export function BookingForm() {
   const searchParams = useSearchParams()
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [submitError, setSubmitError] = useState<string | null>(null)
-  const today = useMemo(() => new Date().toISOString().split("T")[0], [])
 
   const apartmentOptions = useMemo(
     () => apartments.map((apt) => ({ value: apt.name, label: `Appartamento ${apt.name}` })),
@@ -56,9 +194,13 @@ export function BookingForm() {
     formState: { errors },
     reset,
     setValue,
+    watch,
   } = useForm<BookingFormData>({
     resolver: zodResolver(bookingSchema),
   })
+
+  const checkIn = watch("checkIn")
+  const checkOut = watch("checkOut")
 
   useEffect(() => {
     const apartment = searchParams.get("apartment")
@@ -221,10 +363,10 @@ export function BookingForm() {
 
   if (isSubmitted) {
     return (
-      <div className="rounded-2xl border border-emerald-200 bg-emerald-50 p-6 text-center">
+      <div className="rounded-lg border border-emerald-200 bg-emerald-50 p-6 text-center">
         <div className="flex items-center justify-center gap-3 text-emerald-700">
           <CheckCircle2 className="h-6 w-6" />
-          <h3 className="text-xl font-semibold">Richiesta inviata</h3>
+          <h3 className="text-lg font-semibold">Richiesta inviata</h3>
         </div>
         <p className="mt-3 text-sm text-emerald-700/80">
           Abbiamo ricevuto la tua richiesta e ti risponderemo il prima possibile. Se preferisci, puoi
@@ -311,36 +453,19 @@ export function BookingForm() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-        <div className="space-y-2">
-          <Label htmlFor="checkIn">Check-in *</Label>
-          <div className="relative">
-            <Calendar className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-            <Input
-              id="checkIn"
-              type="date"
-              min={today}
-              {...register("checkIn")}
-              className={`pl-9 ${errors.checkIn ? "border-destructive" : ""}`}
-            />
-          </div>
-          {errors.checkIn && <p className="text-sm text-destructive">{errors.checkIn.message}</p>}
-        </div>
-
-        <div className="space-y-2">
-          <Label htmlFor="checkOut">Check-out *</Label>
-          <div className="relative">
-            <Calendar className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-            <Input
-              id="checkOut"
-              type="date"
-              min={today}
-              {...register("checkOut")}
-              className={`pl-9 ${errors.checkOut ? "border-destructive" : ""}`}
-            />
-          </div>
-          {errors.checkOut && <p className="text-sm text-destructive">{errors.checkOut.message}</p>}
-        </div>
+      <div className="space-y-2">
+        <Label>Seleziona date di check-in e check-out *</Label>
+        <DateRangePicker
+          checkIn={checkIn}
+          checkOut={checkOut}
+          onCheckInChange={(date) => setValue("checkIn", date)}
+          onCheckOutChange={(date) => setValue("checkOut", date)}
+        />
+        {(errors.checkIn || errors.checkOut) && (
+          <p className="text-sm text-destructive">
+            {errors.checkIn?.message || errors.checkOut?.message}
+          </p>
+        )}
       </div>
 
       <div className="space-y-2">
@@ -379,7 +504,7 @@ export function BookingForm() {
 
       {submitError && (
         <div className="flex items-start gap-3 rounded-lg border border-amber-200 bg-amber-50 p-4">
-          <AlertCircle className="h-5 w-5 text-amber-600" />
+          <AlertCircle className="h-5 w-5 text-amber-600 flex-shrink-0" />
           <p className="text-sm text-amber-700">{submitError}</p>
         </div>
       )}
