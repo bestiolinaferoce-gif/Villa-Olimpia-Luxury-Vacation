@@ -16,12 +16,15 @@ export function Breadcrumb({ items }: BreadcrumbProps) {
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
-    itemListElement: items.map((item, index) => ({
-      "@type": "ListItem",
-      position: index + 1,
-      name: item.label,
-      item: item.href ? `https://villaolimpiacaporizzuto.com${item.href}` : undefined,
-    })),
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://villaolimpiacaporizzuto.com" },
+      ...items.map((item, index) => ({
+        "@type": "ListItem",
+        position: index + 2,
+        name: item.label,
+        item: item.href ? `https://villaolimpiacaporizzuto.com${item.href}` : undefined,
+      })),
+    ],
   }
 
   return (

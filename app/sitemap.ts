@@ -20,6 +20,8 @@ const staticRoutes: Array<{
   { path: "/maggio-2026", priority: 0.9, changeFrequency: "weekly", lastMod: DATE_CORE },
   { path: "/giugno-2026", priority: 0.9, changeFrequency: "weekly", lastMod: DATE_CORE },
   { path: "/luglio-2026", priority: 0.9, changeFrequency: "weekly", lastMod: DATE_CORE },
+  { path: "/settembre-capo-rizzuto", priority: 0.88, changeFrequency: "weekly", lastMod: DATE_CORE },
+  { path: "/intera-villa-calabria", priority: 0.88, changeFrequency: "weekly", lastMod: DATE_CORE },
 
   { path: "/contatti", priority: 0.9, changeFrequency: "monthly", lastMod: DATE_CORE },
   { path: "/recensioni", priority: 0.9, changeFrequency: "weekly", lastMod: DATE_CORE },
