@@ -28,7 +28,8 @@
     "start": "next start",
     "lint": "eslint app components lib --ext .ts,.tsx --max-warnings 999",
     "lint:next": "next lint",
-    "verify:lead-email": "node scripts/verify-lead-email.js"
+    "verify:lead-email": "node scripts/verify-lead-email.js",
+    "verify:contact-channels": "node scripts/verify-contact-channels.js"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",

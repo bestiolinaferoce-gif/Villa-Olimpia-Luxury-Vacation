@@ -1,13 +1,13 @@
 /**
  * POST pubblico: richieste disponibilità dalla barra sticky.
- * Richiede in produzione: RESEND_API_KEY e LEADS_TO_EMAIL (vedi .env.example e npm run verify:lead-email).
+ * Richiede in produzione: RESEND_API_KEY. Destinatario: inbox ufficiale + opz. LEADS_TO_EMAIL (copia).
  */
 import { NextRequest, NextResponse } from "next/server"
 import { z } from "zod"
 import {
   buildOfficialAvailabilityMessage,
-  getPublicContactEmail,
 } from "@/lib/booking-contact"
+import { resolveOwnerEmailRecipients } from "@/lib/lead-inbox"
 
 const availabilitySchema = z.object({
   checkIn: z.string().min(1).max(20),
@@ -54,7 +54,7 @@ async function sendAvailabilityEmail(params: {
   userAgent: string
 }) {
   const apiKey = process.env.RESEND_API_KEY
-  const to = process.env.LEADS_TO_EMAIL || getPublicContactEmail()
+  const to = resolveOwnerEmailRecipients(process.env.LEADS_TO_EMAIL)
   const from =
     process.env.LEADS_FROM_EMAIL || "Villa Olimpia <onboarding@resend.dev>"
 

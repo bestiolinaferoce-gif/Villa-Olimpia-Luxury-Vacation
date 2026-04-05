@@ -51,7 +51,7 @@ export function WhatsAppButton() {
     },
     {
       number: SITE_CONFIG.whatsappSecondary,
-      display: "+39 333 577 3390",
+      display: "+39 329 047 9193",
       label: "Numero Secondario"
     }
   ]

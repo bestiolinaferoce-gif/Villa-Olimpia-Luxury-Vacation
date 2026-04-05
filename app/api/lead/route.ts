@@ -6,6 +6,7 @@ import { buildEnrichedLead, leadPriorityTag, type EnrichedLead } from "@/lib/lea
 import { DATA_DIR } from "@/lib/data-path"
 import { buildSeasonalAutoReplyHtml } from "@/lib/seasonal-auto-reply-html"
 import { SEASONAL_CONFIG, type SeasonalMonth } from "@/lib/seasonalConfig"
+import { resolveOwnerEmailRecipients } from "@/lib/lead-inbox"
 
 const leadSchema = z.object({
   name: z.string().min(2).max(120),
@@ -94,7 +95,7 @@ function buildTextEmail(lead: EnrichedLead) {
 
 async function sendWithResend(lead: EnrichedLead) {
   const apiKey = process.env.RESEND_API_KEY
-  const to = process.env.LEADS_TO_EMAIL || "villaolimpiacaporizzuto@gmail.com"
+  const to = resolveOwnerEmailRecipients(process.env.LEADS_TO_EMAIL)
   const from = process.env.LEADS_FROM_EMAIL || "Villa Olimpia <onboarding@resend.dev>"
 
   if (!apiKey) {
@@ -266,6 +267,9 @@ async function sendWhatsAppTemplateToGuest(lead: EnrichedLead) {
 }
 
 async function sendWithWebhook(lead: EnrichedLead) {
+  if (process.env.LEADS_WEBHOOK_DISABLED === "true") {
+    return { ok: false as const, reason: "webhook_disabled" }
+  }
   const webhookUrl = process.env.LEADS_WEBHOOK_URL
   const webhookToken = process.env.LEADS_WEBHOOK_TOKEN
   if (!webhookUrl) {

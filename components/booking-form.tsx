@@ -102,7 +102,8 @@ function DateRangePicker({
     }
   }, [isOpen])
 
-  const handleSelect = (value: Date | [Date, Date]) => {
+  const handleSelect = (value: Date | [Date, Date] | null) => {
+    if (!value) return
     setLocalValue(value)
 
     if (Array.isArray(value) && value.length === 2) {
