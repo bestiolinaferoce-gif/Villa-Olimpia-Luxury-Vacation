@@ -1,7 +1,7 @@
 import Image from "next/image"
 import { BASE_URL, generateMetadata } from "@/lib/metadata"
 import { ApartmentCard } from "@/components/apartment-card"
-import { apartments } from "@/data/apartments"
+import { apartments, getApartmentSlug } from "@/data/apartments"
 import { Sparkles, MapPin, Home, Waves, Car, Wifi } from "lucide-react"
 import { SectionDivider } from "@/components/animations/section-divider"
 import { MapExpand } from "@/components/apartments/map-expand"
@@ -34,7 +34,7 @@ export default function AppartamentiPage() {
     itemListElement: apartments.map((apartment, index) => ({
       "@type": "ListItem",
       position: index + 1,
-      url: `${BASE_URL}/appartamenti/${apartment.name.toLowerCase()}`,
+      url: `${BASE_URL}/appartamenti/${getApartmentSlug(apartment)}`,
       name: `Appartamento ${apartment.name}`,
     })),
   }
@@ -246,7 +246,7 @@ export default function AppartamentiPage() {
                 {pianoTerra.map((apartment) => (
                   <ApartmentCard
                     key={apartment.id}
-                    id={apartment.name.toLowerCase()}
+                    slug={getApartmentSlug(apartment)}
                     name={apartment.name}
                     description={apartment.description || apartment.fullDescription || ""}
                     image={apartment.image}
@@ -265,7 +265,7 @@ export default function AppartamentiPage() {
                 {primoPiano.map((apartment) => (
                   <ApartmentCard
                     key={apartment.id}
-                    id={apartment.name.toLowerCase()}
+                    slug={getApartmentSlug(apartment)}
                     name={apartment.name}
                     description={apartment.description || apartment.fullDescription || ""}
                     image={apartment.image}

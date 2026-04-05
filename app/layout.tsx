@@ -19,6 +19,7 @@ import { SeasonalRootOverlays } from "@/components/seasonal/SeasonalRootOverlays
 import FloatingBooking from "@/components/floating-booking"
 import NewsletterPopup from "@/components/newsletter-popup"
 import { I18nProvider } from "@/components/i18n-provider"
+
 import { getAverageRating, reviews } from "@/data/reviews-complete"
 import { apartments } from "@/data/apartments"
 const inter = Inter({

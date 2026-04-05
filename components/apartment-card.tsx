@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button"
 import { Bed, Users, Maximize2, Home, Star, ArrowRight } from "lucide-react"
 
 interface ApartmentCardProps {
-  id: string
+  slug: string
   name: string
   description: string
   image: string
@@ -20,7 +20,7 @@ interface ApartmentCardProps {
 }
 
 const ApartmentCardComponent = ({
-  id,
+  slug,
   name,
   description,
   image,
@@ -103,7 +103,7 @@ const ApartmentCardComponent = ({
               asChild
               className="w-full bg-white text-primary hover:bg-primary hover:text-white font-semibold shadow-xl"
             >
-              <Link href={`/appartamenti/${id}`}>
+              <Link href={`/appartamenti/${slug}`}>
                 <Maximize2 className="mr-2 h-4 w-4" />
                 Vedi Dettagli Completi
               </Link>
@@ -162,7 +162,7 @@ const ApartmentCardComponent = ({
                 className="bg-gradient-to-r from-primary to-blue-600 text-white hover:from-blue-600 hover:to-primary font-semibold shadow-lg group/btn"
                 asChild
               >
-                <Link href={`/appartamenti/${id}`}>
+                <Link href={`/appartamenti/${slug}`}>
                   <span className="group-hover/btn:translate-x-1 transition-transform inline-block">
                     Vedi Dettagli
                   </span>
