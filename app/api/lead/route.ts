@@ -121,6 +121,7 @@ async function sendWithResend(lead: EnrichedLead) {
 
   if (!response.ok) {
     const errorBody = await response.text()
+    console.error("[Resend] Error:", response.status, errorBody)
     return {
       ok: false as const,
       reason: `resend_error_${response.status}`,
@@ -401,8 +402,10 @@ export async function POST(req: NextRequest) {
     ])
 
     // Only treat the lead as delivered when an owner-facing channel succeeds.
-    // Local persistence is useful for recovery, but it is not a reliable confirmation.
-    const deliveredAny = resendDelivery.ok || webhookDelivery.ok || telegramDelivery.ok
+    // NOTE: webhookDelivery.ok is intentionally excluded — n8n returns HTTP 200 even when
+    // its Code nodes fail silently (process.env access is blocked). Counting the webhook
+    // as a successful delivery masks Resend/Telegram failures and breaks the fallback logic.
+    const deliveredAny = resendDelivery.ok || telegramDelivery.ok
 
     if (!deliveredAny) {
       return NextResponse.json(

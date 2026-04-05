@@ -148,8 +148,8 @@ export default async function ApartmentDetailPage({ params }: PageProps) {
     url: apartmentUrl,
     identifier: {
       "@type": "PropertyValue",
-      name: "Codice appartamento",
-      value: apartment.name.toLowerCase(),
+      name: "internal-slug",
+      value: canonicalSlug,
     },
   }
 

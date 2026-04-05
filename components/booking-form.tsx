@@ -21,6 +21,32 @@ import {
   buildOfficialAvailabilityMessage,
   buildWhatsAppUrlFromText,
 } from "@/lib/booking-contact"
+import emailjs from "@emailjs/browser"
+
+// Client-side guaranteed delivery via EmailJS (backup channel)
+async function sendLeadViaEmailJS(data: {
+  name: string; email: string; phone: string; checkIn: string; checkOut: string;
+  guests: string; apartment?: string; message?: string;
+}) {
+  const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+  const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID
+  const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID
+  if (!publicKey || !serviceId || !templateId) return
+  try {
+    await emailjs.send(serviceId, templateId, {
+      from_name: data.name,
+      from_email: data.email,
+      phone: data.phone || "—",
+      check_in: data.checkIn,
+      check_out: data.checkOut,
+      guests: data.guests,
+      apartment: data.apartment || "Nessuna preferenza",
+      message: data.message || "—",
+    }, publicKey)
+  } catch {
+    // silent — EmailJS is a backup channel
+  }
+}
 
 const bookingSchema = z.object({
   name: z.string().min(2, "Il nome deve contenere almeno 2 caratteri"),
@@ -321,6 +347,9 @@ export function BookingForm() {
     setIsSubmitting(true)
     setSubmitError(null)
     trackBookingInitiation()
+
+    // Fire EmailJS in parallel — guaranteed backup delivery regardless of server
+    sendLeadViaEmailJS(payload)
 
     try {
       const response = await fetch("/api/lead", {
