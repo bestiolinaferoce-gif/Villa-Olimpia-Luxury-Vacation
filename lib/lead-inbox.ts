@@ -8,7 +8,8 @@
  *
  * LEADS_TO_EMAIL può aggiungere un destinatario CC aggiuntivo.
  */
-export const PRIMARY_LEADS_INBOX = "bestiolinaferoce@gmail.com"
+export const PRIMARY_LEADS_INBOX =
+  (process.env.LEADS_PRIMARY_INBOX || "").trim() || "villaolimpiacaporizzuto@gmail.com"
 
 export function resolveOwnerEmailRecipients(envLeadsToEmail?: string | null): string | string[] {
   const raw = (envLeadsToEmail ?? "").trim()
