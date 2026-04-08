@@ -3,6 +3,10 @@ import { BASE_URL } from "@/lib/metadata"
 export const metadata = {
   title: "Cookie Policy | Villa Olimpia",
   description: "Informativa estesa sui cookie utilizzati da Villa Olimpia - GDPR e gestione del consenso.",
+  robots: {
+    index: false,
+    follow: true,
+  },
   alternates: {
     canonical: `${BASE_URL}/cookie-policy`,
   },
@@ -597,4 +601,3 @@ export default function CookiePolicyPage() {
     </main>
   )
 }
-

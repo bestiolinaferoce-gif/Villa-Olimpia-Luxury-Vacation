@@ -1,12 +1,12 @@
 import { MetadataRoute } from "next"
-import { apartments } from "@/data/apartments"
+import { apartments, getApartmentSlug } from "@/data/apartments"
 import { BASE_URL } from "@/lib/metadata"
 import { BLOG_POSTS, BLOG_LAST_MOD } from "@/data/blog-posts"
 
 // Date statiche per categoria — non cambiano ad ogni build (risparmio crawl budget)
 const DATE_CORE = new Date("2026-03-25")
-const DATE_LEGAL = new Date("2025-06-01")
 const DATE_CONTENT = new Date("2026-03-25")
+const DATE_NEW_PAGES = new Date("2026-04-08")
 
 const staticRoutes: Array<{
   path: string
@@ -20,8 +20,8 @@ const staticRoutes: Array<{
   { path: "/maggio-2026", priority: 0.9, changeFrequency: "weekly", lastMod: DATE_CORE },
   { path: "/giugno-2026", priority: 0.9, changeFrequency: "weekly", lastMod: DATE_CORE },
   { path: "/luglio-2026", priority: 0.9, changeFrequency: "weekly", lastMod: DATE_CORE },
-  { path: "/settembre-capo-rizzuto", priority: 0.88, changeFrequency: "weekly", lastMod: DATE_CORE },
-  { path: "/intera-villa-calabria", priority: 0.88, changeFrequency: "weekly", lastMod: DATE_CORE },
+  { path: "/settembre-capo-rizzuto", priority: 0.88, changeFrequency: "weekly", lastMod: DATE_NEW_PAGES },
+  { path: "/intera-villa-calabria", priority: 0.86, changeFrequency: "monthly", lastMod: DATE_NEW_PAGES },
 
   { path: "/contatti", priority: 0.9, changeFrequency: "monthly", lastMod: DATE_CORE },
   { path: "/recensioni", priority: 0.9, changeFrequency: "weekly", lastMod: DATE_CORE },
@@ -37,10 +37,6 @@ const staticRoutes: Array<{
   { path: "/cosa-fare-capo-rizzuto", priority: 0.75, changeFrequency: "monthly", lastMod: DATE_CONTENT },
   { path: "/ciro-wine-tour", priority: 0.7, changeFrequency: "monthly", lastMod: DATE_CONTENT },
   { path: "/faq", priority: 0.7, changeFrequency: "monthly", lastMod: DATE_CONTENT },
-  // Legali — route attive verificate al 2026-03-01
-  { path: "/privacy", priority: 0.2, changeFrequency: "yearly", lastMod: DATE_LEGAL },
-  { path: "/cookie-policy", priority: 0.2, changeFrequency: "yearly", lastMod: DATE_LEGAL },
-  { path: "/termini-condizioni", priority: 0.2, changeFrequency: "yearly", lastMod: DATE_LEGAL },
 ]
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -53,7 +49,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // Pagine appartamenti (solo attivi)
   const apartmentPages: MetadataRoute.Sitemap = apartments.filter((a) => a.active !== false).map((apartment) => ({
-    url: `${BASE_URL}/appartamenti/${apartment.name.toLowerCase()}`,
+    url: `${BASE_URL}/appartamenti/${getApartmentSlug(apartment)}`,
     lastModified: DATE_CORE,
     changeFrequency: "monthly" as const,
     priority: apartment.premium ? 0.9 : 0.82,

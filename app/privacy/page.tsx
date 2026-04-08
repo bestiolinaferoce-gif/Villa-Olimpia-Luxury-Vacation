@@ -4,6 +4,10 @@ import { BASE_URL } from "@/lib/metadata"
 export const metadata = {
   title: "Privacy Policy - Villa Olimpia",
   description: "Informativa sulla privacy di Villa Olimpia. Scopri come trattiamo i tuoi dati personali.",
+  robots: {
+    index: false,
+    follow: true,
+  },
   alternates: {
     canonical: `${BASE_URL}/privacy`,
   },
@@ -173,4 +177,3 @@ export default function PrivacyPage() {
     </div>
   )
 }
-

@@ -194,6 +194,24 @@ export function ReviewsSection() {
             Mostrando {paginatedReviews.length} di {filteredReviews.length} recensioni
           </p>
         </div>
+
+        <div className="mt-10 rounded-3xl border border-primary/10 bg-gradient-to-br from-primary/5 via-white to-ocean/5 p-6 md:p-8 text-center shadow-sm">
+          <h2 className="text-2xl md:text-3xl font-playfair font-bold text-slate-900">
+            Pronto a prenotare o a chiedere disponibilità?
+          </h2>
+          <p className="mt-3 text-sm md:text-base text-muted-foreground max-w-2xl mx-auto">
+            Se le recensioni ti hanno convinto, il passo successivo è semplice: verifica le date disponibili
+            oppure scrivici per una proposta diretta su misura.
+          </p>
+          <div className="mt-5 flex flex-col sm:flex-row justify-center gap-3">
+            <Button variant="luxury" asChild>
+              <a href="/prenota">Vai a Prenota</a>
+            </Button>
+            <Button variant="outline" asChild>
+              <a href="/contatti?source=reviews_page#prenota">Contattaci</a>
+            </Button>
+          </div>
+        </div>
       </div>
     </section>
   )
