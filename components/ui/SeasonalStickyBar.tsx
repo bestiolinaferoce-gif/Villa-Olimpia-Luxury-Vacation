@@ -98,14 +98,14 @@ export function SeasonalStickyBar({ targetMonth }: SeasonalStickyBarProps) {
         initial={{ y: 120, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         exit={{ y: 120, opacity: 0 }}
-        className="fixed bottom-0 left-0 right-0 z-[60] border-t border-white/10 shadow-2xl"
+        className="fixed bottom-0 left-0 right-0 z-[60] px-2 pb-2 sm:px-4"
         role="region"
         aria-label="Promemoria stagionale"
       >
         <div
-          className={`${styles.bar} ${styles.pulse ? "animate-pulse" : ""} relative`}
+          className={`${styles.bar} ${styles.pulse ? "animate-pulse" : ""} relative overflow-hidden rounded-t-2xl border border-white/15 shadow-2xl`}
         >
-          <div className="mx-auto flex max-w-6xl flex-col gap-2 px-3 py-2 sm:flex-row sm:items-center sm:justify-between sm:gap-4 sm:py-2.5">
+          <div className="mx-auto flex max-w-6xl flex-col gap-2 px-3 py-2.5 sm:flex-row sm:items-center sm:justify-between sm:gap-4 sm:py-3">
             <div className={`flex min-w-0 flex-1 items-center gap-2 text-xs sm:text-sm ${styles.text}`}>
               <Clock className="hidden h-4 w-4 shrink-0 sm:block" aria-hidden />
               <Users className="h-4 w-4 shrink-0 sm:hidden" aria-hidden />
@@ -135,11 +135,10 @@ export function SeasonalStickyBar({ targetMonth }: SeasonalStickyBarProps) {
               <Link
                 href={`/contatti?source=seasonal_sticky&month=${config.month}#prenota`}
                 onClick={onCta}
-                className="inline-flex items-center justify-center gap-1 rounded-full bg-white px-3 py-1.5 text-xs font-semibold text-slate-900 shadow sm:text-sm"
+                className="inline-flex max-w-[min(100%,14rem)] items-center justify-center gap-1 rounded-full bg-white px-3 py-2 text-left text-[11px] font-semibold leading-tight text-slate-900 shadow sm:max-w-none sm:py-1.5 sm:text-sm"
               >
-                <span className="hidden sm:inline">{config.ctaLabel}</span>
-                <span className="sm:hidden">Prenota</span>
-                <ArrowRight className="h-4 w-4" />
+                <span className="line-clamp-2 sm:line-clamp-none">{config.ctaLabel}</span>
+                <ArrowRight className="h-4 w-4 shrink-0" aria-hidden />
               </Link>
               <button
                 type="button"

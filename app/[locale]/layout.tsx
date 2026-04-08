@@ -15,7 +15,7 @@ import { PreloadResources } from "@/components/performance/preload-resources"
 import { TouchOptimizer } from "@/components/mobile/touch-optimizer"
 import { DirectionsProvider } from "@/components/directions-context"
 import { ErrorBoundary } from "@/components/error-boundary"
-import { defaultMetadata, BASE_URL } from "@/lib/metadata"
+import { defaultMetadata, BASE_URL, buildHreflangLanguages } from "@/lib/metadata"
 import { AnalyticsUnified } from "@/components/analytics/analytics-unified"
 import { WebVitalsReporter } from "@/components/analytics/web-vitals-reporter"
 import { AutoOptimizer } from "@/components/auto-optimizer"
@@ -38,21 +38,27 @@ const playfair = Playfair_Display({
 })
 
 export function generateStaticParams() {
-  return locales.map((locale) => ({ locale }))
+  return locales.filter((locale) => locale !== "it").map((locale) => ({ locale }))
 }
 
-export const metadata: Metadata = {
-  ...defaultMetadata,
-  alternates: {
-    languages: {
-      'it': BASE_URL,
-      'en': `${BASE_URL}/en`,
-      'de': `${BASE_URL}/de`,
-      'fr': `${BASE_URL}/fr`,
-      'nl': `${BASE_URL}/nl`,
-      'x-default': BASE_URL,
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>
+}): Promise<Metadata> {
+  const { locale } = await params
+  if (!locales.includes(locale as (typeof locales)[number])) {
+    return defaultMetadata
+  }
+  const canonical = locale === "it" ? BASE_URL : `${BASE_URL}/${locale}`
+  return {
+    ...defaultMetadata,
+    alternates: {
+      ...defaultMetadata.alternates,
+      canonical,
+      languages: buildHreflangLanguages("/"),
     },
-  },
+  }
 }
 
 export default async function LocaleLayout({
@@ -112,18 +118,12 @@ export default async function LocaleLayout({
         {/* DNS Prefetch per Analytics */}
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-        {/* Hreflang tags per multilingua */}
-        <link rel="alternate" hrefLang="it" href={BASE_URL} />
-        <link rel="alternate" hrefLang="en" href={`${BASE_URL}/en`} />
-        <link rel="alternate" hrefLang="de" href={`${BASE_URL}/de`} />
-        <link rel="alternate" hrefLang="fr" href={`${BASE_URL}/fr`} />
-        <link rel="alternate" hrefLang="nl" href={`${BASE_URL}/nl`} />
-        <link rel="alternate" hrefLang="x-default" href={BASE_URL} />
+        {/* Hreflang: gestito via generateMetadata (alternates.languages) */}
         
         {/* Meta tag posizione */}
         <meta property="business:contact_data:locality" content="Isola di Capo Rizzuto" />
         <meta property="business:contact_data:region" content="Calabria" />
-        <meta property="business:contact_data:country_name" content={locale === 'en' ? 'Italy' : locale === 'de' ? 'Italien' : locale === 'fr' ? 'Italie' : locale === 'nl' ? 'Italië' : 'Italia'} />
+        <meta property="business:contact_data:country_name" content={locale === 'en' ? 'Italy' : locale === 'de' ? 'Italien' : locale === 'fr' ? 'Italie' : 'Italia'} />
         <meta property="place:location:latitude" content="38.913856" />
         <meta property="place:location:longitude" content="17.0754964" />
         {/* Meta tags Facebook/Meta */}
@@ -140,8 +140,8 @@ export default async function LocaleLayout({
               description: locale === 'it' 
                 ? "9 appartamenti di lusso con piscina privata a Capo Rizzuto, Calabria. A 100 metri dalla Spiaggia dei Gigli, Area Marina Protetta Capo Rizzuto."
                 : locale === 'en'
-                ? "9 luxury apartments with private pool in Capo Rizzuto, Calabria. 100 meters from Spiaggia dei Gigli, Capo Rizzuto Marine Protected Area."
-                : "9 luxury apartments with private pool in Capo Rizzuto, Calabria.",
+                ? "9 luxury apartments with outdoor shared swimming pool in Capo Rizzuto, Calabria. About 100 meters from the sandy beach, near the Capo Rizzuto Marine Protected Area."
+                : "9 luxury apartments with outdoor shared swimming pool in Capo Rizzuto, Calabria.",
               url: localizedCanonical,
               telephone: "+393335773390",
               address: {
@@ -191,7 +191,7 @@ export default async function LocaleLayout({
               amenityFeature: [
                 {
                   "@type": "LocationFeatureSpecification",
-                  name: locale === 'it' ? "Piscina privata" : locale === 'en' ? "Private pool" : "Pool",
+                  name: locale === 'it' ? "Piscina privata" : locale === 'en' ? "Outdoor shared swimming pool" : "Pool",
                   value: true
                 },
                 {
@@ -226,7 +226,7 @@ export default async function LocaleLayout({
                 },
                 {
                   "@type": "LocationFeatureSpecification",
-                  name: locale === 'it' ? "Spiaggia Bandiera Blu a 100m" : locale === 'en' ? "Blue Flag beach at 100m" : "Beach 100m",
+                  name: locale === 'it' ? "Spiaggia Bandiera Blu a 100m" : locale === 'en' ? "About 100 meters from the sandy beach" : "Beach 100m",
                   value: true
                 },
                 {
@@ -240,7 +240,7 @@ export default async function LocaleLayout({
                   "@type": "TouristAttraction",
                   name: "Spiaggia dei Gigli",
                   description: locale === 'it' ? "Spiaggia Bandiera Blu" : locale === 'en' ? "Blue Flag beach" : "Beach",
-                  distance: locale === 'it' ? "100 metri" : "100 meters"
+                  distance: locale === 'it' ? "100 metri" : "about 100 meters"
                 },
                 {
                   "@type": "TouristAttraction",

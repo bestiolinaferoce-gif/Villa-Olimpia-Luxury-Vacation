@@ -28,14 +28,14 @@ export const en = {
       title: 'Villa Olimpia — Capo Rizzuto',
       subtitle: 'Luxury lodges 100 m from Spiaggia dei Gigli, marine protected area',
       valueProp: 'Book direct on the official site — no OTA commission.',
-      description: 'Less than 100 meters from the beautiful Spiaggia dei Gigli, in the Capo Rizzuto Marine Protected Area',
+      description: 'About 100 meters from the sandy beach, in the Capo Rizzuto Marine Protected Area',
       protectedArea: 'Capo Rizzuto Marine Protected Area',
       apartments: 'Apartments',
       happyGuests: 'Happy Guests',
       rating: 'Rating',
       ratingValue: '4.9/5 Rating',
-      beachDistance: '100 meters from the beach',
-      privatePool: 'Private Pool',
+      beachDistance: 'about 100 meters from the sandy beach',
+      privatePool: 'Outdoor shared swimming pool',
       bookedBy: 'Booked by 150+ guests in 2024',
       bookDirectly: 'Book Directly and Save',
       bookStay: 'Check availability',
@@ -56,10 +56,10 @@ export const en = {
       items: {
         privilegedLocation: {
           title: 'Privileged Location',
-          text: 'Less than 100 meters from the beautiful Spiaggia dei Gigli, in the Marine Protected Area',
+          text: 'About 100 meters from the sandy beach, in the Marine Protected Area',
         },
         privatePool: {
-          title: 'Private Pool',
+          title: 'Outdoor Shared Swimming Pool',
           text: 'Large shared pool with solarium and gazebo for relaxation',
         },
         premiumComfort: {
@@ -122,7 +122,7 @@ export const en = {
       items: {
         beachDistance: {
           q: 'How far is Villa Olimpia from the beach?',
-          a: 'We are less than 100 meters from the beautiful Spiaggia dei Gigli, reachable in 1 minute on foot.',
+          a: 'We are about 100 meters from the sandy beach, reachable in 1 minute on foot.',
         },
         parking: {
           q: 'Is parking included?',
@@ -180,7 +180,7 @@ export const en = {
   // Apartments
   apartments: {
     title: 'Apartments',
-    subtitle: '9 luxury apartments with private pool',
+    subtitle: '9 luxury apartments with outdoor shared swimming pool',
     description: 'All apartments feature air conditioning, free WiFi, full kitchen and access to shared pool',
     guests: 'guests',
     bedrooms: 'bedrooms',
@@ -206,7 +206,7 @@ export const en = {
   location: {
     title: 'Location',
     subtitle: 'Capopiccolo, Isola di Capo Rizzuto',
-    description: 'Less than 100 meters from the Blue Flag Spiaggia dei Gigli',
+    description: 'About 100 meters from the sandy beach',
   },
   // Services
   services: {
@@ -243,7 +243,7 @@ export const en = {
   footer: {
     brand: {
       title: 'Villa Olimpia',
-      description: 'Your luxury retreat in Calabria. 9 elegant apartments with private pool, just 100m from the beautiful Spiaggia dei Gigli.',
+      description: 'Your luxury retreat in Calabria. 9 elegant apartments with outdoor shared swimming pool, about 100 meters from the sandy beach.',
     },
     quickLinks: 'Quick Links',
     discover: 'Discover Capo Rizzuto',

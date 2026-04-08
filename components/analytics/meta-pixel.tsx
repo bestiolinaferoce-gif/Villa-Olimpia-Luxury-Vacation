@@ -6,7 +6,8 @@ import { COOKIE_CONSENT_UPDATED_EVENT } from "@/lib/cookie-consent-events"
 
 const STORAGE_KEY = "cookieConsent"
 
-function readMarketingAllowed(): boolean {
+/** Lettura consent marketing da localStorage (stesso schema del banner cookie). Usabile da pagine di diagnostica. */
+export function readMarketingConsentFromStorage(): boolean {
   if (typeof window === "undefined") return false
   try {
     const raw = localStorage.getItem(STORAGE_KEY)
@@ -41,7 +42,7 @@ export function MetaPixelOptional() {
   const [marketingOk, setMarketingOk] = useState(false)
 
   const sync = useCallback(() => {
-    setMarketingOk(readMarketingAllowed())
+    setMarketingOk(readMarketingConsentFromStorage())
   }, [])
 
   useEffect(() => {

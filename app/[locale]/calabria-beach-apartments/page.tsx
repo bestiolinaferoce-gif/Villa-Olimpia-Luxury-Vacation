@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: "Calabria Beach Apartments by Seaside, Italy",
     description:
-      "Calabria seaside apartments in Italy with pool, kitchens and sandy beach just 70m away. Ideal for families and couples at Villa Olimpia.",
+      "Calabria seaside apartments in Italy with outdoor shared swimming pool, kitchens, and about 100 meters from the sandy beach.",
     alternates: {
       canonical,
       languages: {

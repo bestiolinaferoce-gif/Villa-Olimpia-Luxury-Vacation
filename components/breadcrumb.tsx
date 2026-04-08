@@ -10,14 +10,19 @@ interface BreadcrumbItem {
 
 interface BreadcrumbProps {
   items: BreadcrumbItem[]
+  /** Localized home link (default `/`). */
+  homeHref?: string
+  /** Visible label for home (default `Home`). */
+  homeLabel?: string
 }
 
-export function Breadcrumb({ items }: BreadcrumbProps) {
+export function Breadcrumb({ items, homeHref = "/", homeLabel = "Home" }: BreadcrumbProps) {
+  const homeItemUrl = `https://villaolimpiacaporizzuto.com${homeHref.startsWith("/") ? homeHref : `/${homeHref}`}`
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: "https://villaolimpiacaporizzuto.com" },
+      { "@type": "ListItem", position: 1, name: homeLabel, item: homeItemUrl },
       ...items.map((item, index) => ({
         "@type": "ListItem",
         position: index + 2,
@@ -37,11 +42,11 @@ export function Breadcrumb({ items }: BreadcrumbProps) {
         <ol className="flex items-center space-x-2 text-sm text-muted-foreground">
           <li>
             <Link
-              href="/"
+              href={homeHref}
               className="hover:text-primary transition-colors flex items-center gap-1"
             >
               <Home className="w-4 h-4" />
-              <span>Home</span>
+              <span>{homeLabel}</span>
             </Link>
           </li>
           {items.map((item, index) => (

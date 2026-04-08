@@ -35,7 +35,7 @@ export default function VerificaAnalyticsPage() {
   if (!mounted) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center p-6">
-        <p className="text-gray-500">Caricamento...</p>
+        <p className="text-gray-500">Loading...</p>
       </div>
     )
   }

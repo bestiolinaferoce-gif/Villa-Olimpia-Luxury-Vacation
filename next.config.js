@@ -77,11 +77,10 @@ const nextConfig = {
       { source: "/home", destination: "/", permanent: true },
       // Fix 404 da Google Search Console (28/03/2026) - URL con prefisso lingua
       { source: "/en/appartamenti/apartment-9", destination: "/appartamenti/azalea", permanent: true },
-      { source: "/nl/appartamenti/apartment-2", destination: "/appartamenti/fiordaliso", permanent: true },
-      // Copertura preventiva: tutti i prefissi lingua per gli appartamenti
-      { source: "/en/appartamenti/:path*", destination: "/appartamenti/:path*", permanent: true },
-      { source: "/nl/appartamenti/:path*", destination: "/appartamenti/:path*", permanent: true },
-      { source: "/it/appartamenti/:path*", destination: "/appartamenti/:path*", permanent: true },
+      // Localized listing lives at /en/apartments; detail slugs stay on /appartamenti/*
+      { source: "/nl", destination: "/", permanent: true },
+      { source: "/nl/:path*", destination: "/", permanent: true },
+      { source: "/en/contatti", destination: "/en/contact", permanent: true },
       // Protezione URL interni da crawling diretto
       { source: "/utm", destination: "/", permanent: false },
       { source: "/verifica-analytics", destination: "/", permanent: false },

@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<title>Villa Olimpia – Guida Configurazione n8n</title>
+<style>
+  @page { size: A4; margin: 18mm 16mm; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 11px; color: #1a1a1a; background: #fff; }
+
+  .header { background: #1a1a2e; color: white; padding: 14px 18px; border-radius: 6px; margin-bottom: 14px; display: flex; justify-content: space-between; align-items: center; }
+  .header h1 { font-size: 16px; font-weight: 700; letter-spacing: -0.3px; }
+  .header .sub { font-size: 10px; opacity: 0.7; margin-top: 2px; }
+  .header .status { text-align: right; font-size: 10px; }
+  .status-ok { background: #22c55e; color: white; padding: 2px 8px; border-radius: 10px; font-weight: 600; font-size: 9px; }
+  .status-fix { background: #f59e0b; color: white; padding: 2px 8px; border-radius: 10px; font-weight: 600; font-size: 9px; }
+
+  .intro-box { background: #fef3c7; border: 1px solid #f59e0b; border-radius: 6px; padding: 10px 14px; margin-bottom: 14px; font-size: 10.5px; line-height: 1.5; }
+  .intro-box strong { color: #92400e; }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+  .grid-1 { margin-bottom: 12px; }
+
+  .card { border: 1.5px solid #e5e7eb; border-radius: 8px; overflow: hidden; }
+  .card-header { padding: 8px 12px; display: flex; align-items: center; gap: 8px; }
+  .card-header .icon { width: 26px; height: 26px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; }
+  .card-header h2 { font-size: 12px; font-weight: 700; }
+  .card-header .tag { margin-left: auto; font-size: 9px; padding: 1px 7px; border-radius: 10px; font-weight: 600; }
+
+  .card-body { padding: 10px 12px; }
+
+  .field-row { margin-bottom: 8px; }
+  .field-label { font-size: 9.5px; font-weight: 600; color: #6b7280; text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 3px; }
+  .field-desc { font-size: 9.5px; color: #4b5563; margin-bottom: 3px; line-height: 1.4; }
+  .field-input { border: 1.5px dashed #d1d5db; border-radius: 5px; padding: 7px 10px; min-height: 28px; background: #f9fafb; font-size: 10px; color: #9ca3af; font-style: italic; }
+  .field-input.prefilled { border-style: solid; border-color: #86efac; background: #f0fdf4; color: #166534; font-style: normal; font-family: 'Courier New', monospace; font-size: 9.5px; }
+  .field-input.ok { border-color: #22c55e; }
+
+  .where-box { background: #eff6ff; border-left: 3px solid #3b82f6; padding: 7px 10px; border-radius: 0 5px 5px 0; margin-top: 6px; font-size: 9.5px; line-height: 1.5; color: #1e40af; }
+  .where-box strong { color: #1d4ed8; }
+
+  /* Colors per card */
+  .card-openai .card-header { background: #f0fdf4; }
+  .card-openai .icon { background: #dcfce7; }
+  .card-openai .tag { background: #dcfce7; color: #166534; }
+
+  .card-whatsapp .card-header { background: #f0fdf9; }
+  .card-whatsapp .icon { background: #d1fae5; }
+  .card-whatsapp .tag { background: #d1fae5; color: #065f46; }
+
+  .card-resend .card-header { background: #fef3f2; }
+  .card-resend .icon { background: #fee2e2; }
+  .card-resend .tag { background: #fee2e2; color: #991b1b; }
+
+  .card-sheets .card-header { background: #f0fdf4; }
+  .card-sheets .icon { background: #bbf7d0; }
+  .card-sheets .tag { background: #bbf7d0; color: #14532d; }
+
+  .card-server .card-header { background: #f8f7ff; }
+  .card-server .icon { background: #ede9fe; }
+  .card-server .tag { background: #ede9fe; color: #4c1d95; }
+
+  .steps { list-style: none; counter-reset: steps; }
+  .steps li { counter-increment: steps; padding: 5px 0 5px 28px; position: relative; font-size: 10px; line-height: 1.5; border-bottom: 1px solid #f3f4f6; }
+  .steps li:last-child { border-bottom: none; }
+  .steps li::before { content: counter(steps); position: absolute; left: 0; top: 4px; width: 18px; height: 18px; background: #3b82f6; color: white; border-radius: 50%; font-size: 9px; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+  .steps code { background: #f1f5f9; border: 1px solid #e2e8f0; border-radius: 3px; padding: 0px 4px; font-family: 'Courier New', monospace; font-size: 9px; color: #0f172a; }
+
+  .test-section { background: #f8fafc; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 10px 14px; margin-top: 12px; }
+  .test-section h3 { font-size: 11px; font-weight: 700; margin-bottom: 8px; color: #0f172a; }
+  .test-cmd { background: #0f172a; color: #7dd3fc; padding: 8px 12px; border-radius: 5px; font-family: 'Courier New', monospace; font-size: 8.5px; line-height: 1.6; white-space: pre-wrap; word-break: break-all; }
+
+  .workflow-status { margin-top: 12px; }
+  .workflow-status h3 { font-size: 11px; font-weight: 700; margin-bottom: 6px; }
+  .node-row { display: flex; align-items: center; gap: 6px; padding: 4px 8px; border-radius: 5px; margin-bottom: 3px; font-size: 10px; }
+  .node-row.ok { background: #f0fdf4; }
+  .node-row.fix { background: #fffbeb; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .dot-green { background: #22c55e; }
+  .dot-yellow { background: #f59e0b; }
+  .node-name { font-weight: 600; flex: 1; }
+  .node-status { font-size: 9px; color: #6b7280; }
+
+  .footer { margin-top: 14px; padding-top: 8px; border-top: 1px solid #e5e7eb; display: flex; justify-content: space-between; font-size: 9px; color: #9ca3af; }
+
+  .divider { height: 1px; background: #e5e7eb; margin: 10px 0; }
+  .note { font-size: 9px; color: #6b7280; font-style: italic; margin-top: 4px; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div>
+    <h1>Villa Olimpia – Configurazione Automazione Lead</h1>
+    <div class="sub">n8n Workflow: lead-intake-vacation-rental &nbsp;·&nbsp; Server: 72.60.20.32:62925</div>
+  </div>
+  <div class="status">
+    <div>Stato workflow</div>
+    <div style="margin-top:4px"><span class="status-ok">✓ ATTIVO</span> &nbsp;<span class="status-fix">⚠ API DA CONFIGURARE</span></div>
+  </div>
+</div>
+
+<!-- INTRO -->
+<div class="intro-box">
+  <strong>Come usare questa scheda:</strong> Raccogliere i dati richiesti nei campi bianchi sottostanti (oppure fotografa/scrivi a mano).
+  Una volta completata, consegna la scheda all'assistente che inserirà automaticamente tutto in n8n.
+  I campi in <span style="color:#166534;font-weight:600">verde</span> sono già configurati e non richiedono azione.
+</div>
+
+<!-- STATO NODI -->
+<div class="workflow-status">
+  <h3>Stato attuale dei nodi del workflow</h3>
+  <div class="node-row ok"><div class="dot dot-green"></div><div class="node-name">Lead Intake Webhook</div><div class="node-status">✓ Funziona – riceve i lead dal sito</div></div>
+  <div class="node-row ok"><div class="dot dot-green"></div><div class="node-name">Normalize Lead</div><div class="node-status">✓ Funziona – pulisce i dati</div></div>
+  <div class="node-row ok"><div class="dot dot-green"></div><div class="node-name">Google Sheets Append</div><div class="node-status">✓ Funziona – scrive il lead nel foglio CRM</div></div>
+  <div class="node-row fix"><div class="dot dot-yellow"></div><div class="node-name">Send WhatsApp Notification</div><div class="node-status">⚠ Da configurare – richiede Token WhatsApp Business</div></div>
+  <div class="node-row fix"><div class="dot dot-yellow"></div><div class="node-name">Generate Quote With GPT-4o</div><div class="node-status">⚠ Da configurare – richiede chiave OpenAI</div></div>
+  <div class="node-row fix"><div class="dot dot-yellow"></div><div class="node-name">Build Quote Email HTML</div><div class="node-status">⚠ Dipende da GPT-4o</div></div>
+  <div class="node-row fix"><div class="dot dot-yellow"></div><div class="node-name">Send Quote Email (Resend)</div><div class="node-status">⚠ Da configurare – richiede API Key Resend</div></div>
+  <div class="node-row ok"><div class="dot dot-green"></div><div class="node-name">Google Sheets Update / Lookup</div><div class="node-status">✓ Funziona – aggiorna status lead</div></div>
+  <div class="node-row ok"><div class="dot dot-green"></div><div class="node-name">Wait 48 Hours → Has Customer Replied? → Send Reminder</div><div class="node-status">✓ Funziona – followup automatico</div></div>
+</div>
+
+<div class="divider"></div>
+
+<!-- GRID SEZIONE 1+2 -->
+<div class="grid-2">
+
+  <!-- OPENAI -->
+  <div class="card card-openai">
+    <div class="card-header">
+      <div class="icon">🤖</div>
+      <div>
+        <h2>OpenAI – GPT-4o</h2>
+        <div style="font-size:9px;color:#6b7280">Per generare preventivi automatici</div>
+      </div>
+      <div class="tag">DA CONFIGURARE</div>
+    </div>
+    <div class="card-body">
+      <div class="field-row">
+        <div class="field-label">API Key OpenAI</div>
+        <div class="field-desc">Vai su <strong>platform.openai.com</strong> → API Keys → Create new secret key</div>
+        <div class="field-input">sk-proj-________________________________</div>
+      </div>
+      <div class="where-box">
+        <strong>Dove inserire:</strong> n8n → Settings → Variables → Aggiungi variabile<br>
+        Nome: <code>OPENAI_API_KEY</code> &nbsp;·&nbsp; Valore: la chiave qui sopra
+      </div>
+    </div>
+  </div>
+
+  <!-- WHATSAPP -->
+  <div class="card card-whatsapp">
+    <div class="card-header">
+      <div class="icon">💬</div>
+      <div>
+        <h2>WhatsApp Business API</h2>
+        <div style="font-size:9px;color:#6b7280">Per notifiche immediate sul tuo telefono</div>
+      </div>
+      <div class="tag">DA CONFIGURARE</div>
+    </div>
+    <div class="card-body">
+      <div class="field-row">
+        <div class="field-label">Access Token</div>
+        <div class="field-desc">Meta for Developers → Il tuo App → WhatsApp → API Setup → Temporary/Permanent Token</div>
+        <div class="field-input">EAAxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</div>
+      </div>
+      <div class="field-row">
+        <div class="field-label">Phone Number ID</div>
+        <div class="field-desc">Stessa pagina API Setup → "Phone number ID" (è un numero lungo)</div>
+        <div class="field-input">1234567890123456</div>
+      </div>
+      <div class="field-row">
+        <div class="field-label">Numero destinatario (TUO numero)</div>
+        <div class="field-desc">Il tuo numero WhatsApp personale con prefisso internazionale, senza +</div>
+        <div class="field-input">393xxxxxxxxx</div>
+      </div>
+      <div class="where-box">
+        <strong>Dove inserire:</strong> n8n → Settings → Variables<br>
+        <code>WA_TOKEN</code> · <code>WA_PHONE_ID</code> · <code>WA_TO_NUMBER</code>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- GRID SEZIONE 3+4 -->
+<div class="grid-2">
+
+  <!-- RESEND EMAIL -->
+  <div class="card card-resend">
+    <div class="card-header">
+      <div class="icon">✉️</div>
+      <div>
+        <h2>Resend – Email Automatiche</h2>
+        <div style="font-size:9px;color:#6b7280">Preventivi e reminder via email ai clienti</div>
+      </div>
+      <div class="tag">DA CONFIGURARE</div>
+    </div>
+    <div class="card-body">
+      <div class="field-row">
+        <div class="field-label">API Key Resend</div>
+        <div class="field-desc">Già impostata su Vercel – usa la stessa anche qui</div>
+        <div class="field-input prefilled">re_URwRSH2h_C7RrMhH9fbSyDMV6A4ZFazbs</div>
+      </div>
+      <div class="field-row">
+        <div class="field-label">Email mittente (FROM)</div>
+        <div class="field-desc">Deve essere un dominio verificato su resend.com (es. info@villaolimpiacaporizzuto.com)</div>
+        <div class="field-input">info@villaolimpiacaporizzuto.com</div>
+      </div>
+      <div class="field-row">
+        <div class="field-label">Email proprietario (TO notifiche)</div>
+        <div class="field-desc">La tua email dove vuoi ricevere copia di ogni lead</div>
+        <div class="field-input">bestiolinaferoce@gmail.com</div>
+      </div>
+      <div class="where-box">
+        <strong>Dove inserire:</strong> n8n → Settings → Variables<br>
+        <code>RESEND_API_KEY</code> · <code>EMAIL_FROM</code> · <code>EMAIL_OWNER</code>
+      </div>
+    </div>
+  </div>
+
+  <!-- GOOGLE SHEETS -->
+  <div class="card card-sheets">
+    <div class="card-header">
+      <div class="icon">📊</div>
+      <div>
+        <h2>Google Sheets – CRM Lead</h2>
+        <div style="font-size:9px;color:#6b7280">Registro automatico di tutte le richieste</div>
+      </div>
+      <div class="tag" style="background:#bbf7d0;color:#14532d">✓ GIA' CONFIGURATO</div>
+    </div>
+    <div class="card-body">
+      <div class="field-row">
+        <div class="field-label">Credenziali Google Service Account</div>
+        <div class="field-input prefilled">Google Service Account account (ID: 9ipu4S9c22VSVMEu)</div>
+      </div>
+      <div class="field-row">
+        <div class="field-label">ID del foglio Google Sheets</div>
+        <div class="field-desc">Apri il foglio → copia l'ID dall'URL: docs.google.com/spreadsheets/d/<strong>[ID QUI]</strong>/edit</div>
+        <div class="field-input">__________________________________________________</div>
+        <div class="note">* Verifica che il service account abbia accesso al foglio (condividi il foglio con l'email del service account)</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- DOVE INSERIRE LE VARIABILI IN N8N -->
+<div class="card card-server grid-1">
+  <div class="card-header">
+    <div class="icon">⚙️</div>
+    <div>
+      <h2>Come inserire le variabili in n8n – Guida passo passo</h2>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="grid-2">
+      <div>
+        <div class="field-label" style="margin-bottom:6px">Metodo A – Tramite interfaccia n8n (consigliato)</div>
+        <ol class="steps">
+          <li>Apri <code>http://72.60.20.32:62925</code> nel browser</li>
+          <li>Clicca su <strong>Settings</strong> (ingranaggio in basso a sinistra)</li>
+          <li>Seleziona <strong>Variables</strong></li>
+          <li>Clicca <strong>Add Variable</strong> per ogni variabile</li>
+          <li>Inserisci Nome e Valore come indicato nelle sezioni sopra</li>
+          <li>Salva. Il workflow userà automaticamente i nuovi valori.</li>
+        </ol>
+      </div>
+      <div>
+        <div class="field-label" style="margin-bottom:6px">Metodo B – Via SSH sul server (alternativa)</div>
+        <ol class="steps">
+          <li>Connettiti al server: <code>ssh root@72.60.20.32</code></li>
+          <li>Modifica il file .env di n8n: <code>nano /root/n8n/.env</code></li>
+          <li>Aggiungi le righe:<br><code>OPENAI_API_KEY=sk-...</code><br><code>WA_TOKEN=EAA...</code><br><code>RESEND_API_KEY=re_...</code></li>
+          <li>Salva con <code>Ctrl+X → Y → Enter</code></li>
+          <li>Riavvia n8n: <code>docker restart n8n</code></li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- RIEPILOGO VARIABILI -->
+<div class="card grid-1" style="border-color:#c7d2fe;">
+  <div class="card-header" style="background:#eef2ff;">
+    <div class="icon" style="background:#c7d2fe;">📋</div>
+    <h2>Riepilogo completo variabili da aggiungere in n8n</h2>
+  </div>
+  <div class="card-body">
+    <table style="width:100%;border-collapse:collapse;font-size:10px;">
+      <thead>
+        <tr style="background:#f1f5f9;">
+          <th style="padding:5px 8px;text-align:left;border:1px solid #e2e8f0;width:28%">Nome Variabile</th>
+          <th style="padding:5px 8px;text-align:left;border:1px solid #e2e8f0;width:22%">Servizio</th>
+          <th style="padding:5px 8px;text-align:left;border:1px solid #e2e8f0;">Valore da inserire</th>
+          <th style="padding:5px 8px;text-align:center;border:1px solid #e2e8f0;width:10%">Stato</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td style="padding:5px 8px;border:1px solid #e2e8f0;font-family:monospace;">OPENAI_API_KEY</td><td style="padding:5px 8px;border:1px solid #e2e8f0;">OpenAI</td><td style="padding:5px 8px;border:1px solid #e2e8f0;color:#9ca3af;font-style:italic;">sk-proj-...</td><td style="padding:5px 8px;border:1px solid #e2e8f0;text-align:center;">⚠</td></tr>
+        <tr style="background:#fafafa;"><td style="padding:5px 8px;border:1px solid #e2e8f0;font-family:monospace;">WA_TOKEN</td><td style="padding:5px 8px;border:1px solid #e2e8f0;">WhatsApp Business</td><td style="padding:5px 8px;border:1px solid #e2e8f0;color:#9ca3af;font-style:italic;">EAAxxxxxxx...</td><td style="padding:5px 8px;border:1px solid #e2e8f0;text-align:center;">⚠</td></tr>
+        <tr><td style="padding:5px 8px;border:1px solid #e2e8f0;font-family:monospace;">WA_PHONE_ID</td><td style="padding:5px 8px;border:1px solid #e2e8f0;">WhatsApp Business</td><td style="padding:5px 8px;border:1px solid #e2e8f0;color:#9ca3af;font-style:italic;">ID numerico dal pannello Meta</td><td style="padding:5px 8px;border:1px solid #e2e8f0;text-align:center;">⚠</td></tr>
+        <tr style="background:#fafafa;"><td style="padding:5px 8px;border:1px solid #e2e8f0;font-family:monospace;">WA_TO_NUMBER</td><td style="padding:5px 8px;border:1px solid #e2e8f0;">WhatsApp Business</td><td style="padding:5px 8px;border:1px solid #e2e8f0;color:#9ca3af;font-style:italic;">393xxxxxxxxx (senza +)</td><td style="padding:5px 8px;border:1px solid #e2e8f0;text-align:center;">⚠</td></tr>
+        <tr><td style="padding:5px 8px;border:1px solid #e2e8f0;font-family:monospace;">RESEND_API_KEY</td><td style="padding:5px 8px;border:1px solid #e2e8f0;">Resend Email</td><td style="padding:5px 8px;border:1px solid #e2e8f0;font-family:monospace;color:#166534;">re_URwRSH2h_C7Rr... (già su Vercel)</td><td style="padding:5px 8px;border:1px solid #e2e8f0;text-align:center;color:#22c55e;">✓</td></tr>
+        <tr style="background:#fafafa;"><td style="padding:5px 8px;border:1px solid #e2e8f0;font-family:monospace;">EMAIL_FROM</td><td style="padding:5px 8px;border:1px solid #e2e8f0;">Resend Email</td><td style="padding:5px 8px;border:1px solid #e2e8f0;color:#9ca3af;font-style:italic;">info@villaolimpiacaporizzuto.com</td><td style="padding:5px 8px;border:1px solid #e2e8f0;text-align:center;">⚠</td></tr>
+        <tr><td style="padding:5px 8px;border:1px solid #e2e8f0;font-family:monospace;">EMAIL_OWNER</td><td style="padding:5px 8px;border:1px solid #e2e8f0;">Resend Email</td><td style="padding:5px 8px;border:1px solid #e2e8f0;color:#9ca3af;font-style:italic;">la tua email personale</td><td style="padding:5px 8px;border:1px solid #e2e8f0;text-align:center;">⚠</td></tr>
+        <tr style="background:#fafafa;"><td style="padding:5px 8px;border:1px solid #e2e8f0;font-family:monospace;">Google Service Account</td><td style="padding:5px 8px;border:1px solid #e2e8f0;">Google Sheets</td><td style="padding:5px 8px;border:1px solid #e2e8f0;font-family:monospace;color:#166534;">9ipu4S9c22VSVMEu (già configurato)</td><td style="padding:5px 8px;border:1px solid #e2e8f0;text-align:center;color:#22c55e;">✓</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- TEST -->
+<div class="test-section">
+  <h3>🧪 Come testare dopo la configurazione</h3>
+  <p style="font-size:10px;margin-bottom:6px;">Dopo aver inserito tutti i dati, incolla questo comando nel Terminale Mac per verificare che tutto funzioni:</p>
+  <div class="test-cmd">curl -s -X POST http://72.60.20.32:62925/webhook/lead-intake \
+  -H "Authorization: Bearer 6e940a38c400726cd3a28840d9eb0412" \
+  -H "Content-Type: application/json" \
+  -d '{"event":"lead.created","priorityTag":"TEST","lead":{"name":"Mario Rossi","email":"test@test.com","phone":"3331234567","apartments":"Bilo 1","dates":"1-8 luglio 2025","guests":"4","message":"Vorrei informazioni per luglio","source":"test"}}'</div>
+  <p style="font-size:9.5px;margin-top:6px;color:#374151;">Dopo 30 secondi dovresti ricevere: ✅ WhatsApp con i dati del lead &nbsp;·&nbsp; ✅ Email al cliente con preventivo GPT-4o &nbsp;·&nbsp; ✅ Riga nel Google Sheets</p>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div>Villa Olimpia Capo Rizzuto &nbsp;·&nbsp; villaolimpiacaporizzuto.com</div>
+  <div>n8n v2.8.3 &nbsp;·&nbsp; Workflow ID: j7PTnrkpyAG8Pcp7 &nbsp;·&nbsp; Generato il 05/04/2026</div>
+</div>
+
+</body>
+</html>

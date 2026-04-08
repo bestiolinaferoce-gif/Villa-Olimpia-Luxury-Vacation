@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: isEn ? "Calabria Seaside Apartments in Italy | Villa Olimpia" : "Villa Olimpia Capo Rizzuto",
     description: isEn
-      ? "Seaside apartments in Calabria, Italy: pool, sandy beach at 70m, and family-friendly stays for couples and families."
+      ? "Seaside apartments in Calabria, Italy: outdoor shared swimming pool and about 100 meters from the sandy beach."
       : "Villa Olimpia Capo Rizzuto.",
     alternates: {
       canonical,

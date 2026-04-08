@@ -146,7 +146,7 @@ export function HeroSectionPremium() {
             </div>
             <div className="hidden md:block w-px h-12 bg-white/30" />
             <div className="text-center">
-              <div className="text-2xl sm:text-3xl md:text-4xl font-bold">100m</div>
+              <div className="text-2xl sm:text-3xl md:text-4xl font-bold">~100m</div>
               <div className="text-xs sm:text-sm md:text-base text-white/80 mt-1">{t.home.hero.beachDistance}</div>
             </div>
             <div className="hidden md:block w-px h-12 bg-white/30" />

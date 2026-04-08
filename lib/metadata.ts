@@ -1,5 +1,12 @@
 import type { Metadata } from "next"
 import { apartments } from "@/data/apartments"
+import {
+  localeHasRoute,
+  normalizeCanonicalPath,
+  SUPPORTED_LOCALES,
+  type SupportedLocale,
+} from "@/lib/i18n-config"
+import { getLocalizedPathForCanonical } from "@/lib/i18n-routing"
 
 export const BASE_URL = "https://villaolimpiacaporizzuto.com"
 const baseUrl = BASE_URL
@@ -233,23 +240,79 @@ export const defaultMetadata: Metadata = {
   other: { ...ogImageDimensions },
 }
 
-export function buildContactMetadata(locale?: string): Metadata {
+/** Hreflang alternates only for locale/route pairs that exist (no fake URLs). */
+export function buildHreflangLanguages(canonicalPath: string): Record<string, string> {
+  const p = normalizeCanonicalPath(canonicalPath)
+  const languages: Record<string, string> = {}
+  for (const loc of SUPPORTED_LOCALES) {
+    if (!localeHasRoute(loc, p)) continue
+    const path = getLocalizedPathForCanonical(p, loc)
+    languages[loc] = path === "/" ? baseUrl : `${baseUrl}${path}`
+  }
+  languages["x-default"] = p === "/" ? baseUrl : `${baseUrl}${p}`
+  return languages
+}
+
+export function buildContactMetadata(locale?: string, pathForCanonical = "/contatti"): Metadata {
   const lang = locale ?? "it"
   const titles: Record<string, string> = {
     it: "Contatti e Prenotazioni | Villa Olimpia Capo Rizzuto",
     en: "Contact & Bookings | Villa Olimpia Capo Rizzuto",
     de: "Kontakt & Buchungen | Villa Olimpia Capo Rizzuto",
     fr: "Contact et Réservations | Villa Olimpia Capo Rizzuto",
-    nl: "Contact en Boekingen | Villa Olimpia Capo Rizzuto",
   }
   const descriptions: Record<string, string> = {
     it: "Richiedi disponibilità o un preventivo per i tuoi soggiorni a Villa Olimpia, Capo Rizzuto. Risposta entro 24 ore. Prenotazione diretta senza commissioni.",
     en: "Request availability or a quote for your stay at Villa Olimpia, Capo Rizzuto. Reply within 24 hours. Direct booking with no fees.",
     de: "Verfügbarkeit oder Angebot für Ihren Aufenthalt in Villa Olimpia, Capo Rizzuto anfragen. Antwort innerhalb von 24 Stunden.",
     fr: "Demandez disponibilité ou devis pour votre séjour à Villa Olimpia, Capo Rizzuto. Réponse sous 24h. Réservation directe sans frais.",
-    nl: "Vraag beschikbaarheid of offerte aan voor uw verblijf bij Villa Olimpia, Capo Rizzuto. Antwoord binnen 24 uur.",
   }
   const title = titles[lang] ?? titles["it"]
   const description = descriptions[lang] ?? descriptions["it"]
-  return generateMetadata({ title, description, path: "/contatti" })
+  const base = generateMetadata({ title, description, path: pathForCanonical })
+  return {
+    ...base,
+    alternates: {
+      ...base.alternates,
+      languages: buildHreflangLanguages("/contatti"),
+    },
+  }
+}
+
+export function buildApartmentsListingMetadata(
+  locale: SupportedLocale,
+  pathForCanonical: string
+): Metadata {
+  const isEn = locale === "en"
+  const title = isEn
+    ? "Apartments in Capo Rizzuto with Pool | Villa Olimpia Capopiccolo"
+    : "Appartamenti a Capo Rizzuto con Piscina | Villa Olimpia Capopiccolo"
+  const description = isEn
+    ? "Discover Villa Olimpia apartments in Capopiccolo, Capo Rizzuto: options for couples, families and small groups with pool, garden and Spiaggia dei Gigli a short walk away."
+    : "Scopri gli appartamenti di Villa Olimpia a Capopiccolo, Capo Rizzuto: soluzioni per coppie, famiglie e piccoli gruppi con piscina, giardino e Spiaggia dei Gigli a pochi passi."
+  const base = generateMetadata({
+    title,
+    description,
+    path: pathForCanonical,
+    keywords: isEn
+      ? [
+          "Villa Olimpia apartments",
+          "Capo Rizzuto holiday rentals pool",
+          "Capopiccolo apartments Italy",
+        ]
+      : [
+          "appartamenti Villa Olimpia",
+          "appartamenti Capo Rizzuto piscina",
+          "case vacanze Spiaggia dei Gigli",
+          "appartamenti Capopiccolo Isola di Capo Rizzuto",
+          "alloggi famiglia Calabria mare",
+        ],
+  })
+  return {
+    ...base,
+    alternates: {
+      ...base.alternates,
+      languages: buildHreflangLanguages("/appartamenti"),
+    },
+  }
 }

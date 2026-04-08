@@ -25,18 +25,38 @@ export function buildOfficialAvailabilityMessage(params: {
   guests: string
   apartment?: string | null
   sourceLabel?: string
+  /** When set, builds the summary using these labels (e.g. localized contact form). */
+  i18n?: {
+    title: string
+    dates: string
+    guests: string
+    apartment: string
+    source: string
+    noPreference: string
+    defaultSourceLabel: string
+  }
 }): string {
+  const L = params.i18n
   const apartmentLine =
     params.apartment?.trim() && params.apartment.trim().length > 0
       ? params.apartment.trim()
-      : "Nessuna preferenza"
-  const source = params.sourceLabel?.trim() || "sito ufficiale"
+      : (L?.noPreference ?? "Nessuna preferenza")
+  const source = params.sourceLabel?.trim() || L?.defaultSourceLabel || "sito ufficiale"
+  if (!L) {
+    return [
+      "Richiesta disponibilità Villa Olimpia:",
+      `Date: ${params.checkIn} - ${params.checkOut}`,
+      `Ospiti: ${params.guests}`,
+      `Appartamento: ${apartmentLine}`,
+      `Fonte: ${source}`,
+    ].join("\n")
+  }
   return [
-    "Richiesta disponibilità Villa Olimpia:",
-    `Date: ${params.checkIn} - ${params.checkOut}`,
-    `Ospiti: ${params.guests}`,
-    `Appartamento: ${apartmentLine}`,
-    `Fonte: ${source}`,
+    L.title,
+    `${L.dates}: ${params.checkIn} - ${params.checkOut}`,
+    `${L.guests}: ${params.guests}`,
+    `${L.apartment}: ${apartmentLine}`,
+    `${L.source}: ${source}`,
   ].join("\n")
 }
 

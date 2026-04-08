@@ -3,6 +3,7 @@
 import { motion } from "framer-motion"
 import { Sun, Cloud, CloudRain, CloudDrizzle, CloudSnow, Wind, Eye } from "lucide-react"
 import { useEffect, useState } from "react"
+import { useI18n } from "@/components/i18n-provider"
 
 interface WeatherData {
   temperature: number
@@ -22,6 +23,7 @@ interface WeatherWidgetProps {
 }
 
 export function WeatherWidget({ position = 'hero' }: WeatherWidgetProps = {}) {
+  const { t } = useI18n()
   const [weather, setWeather] = useState<WeatherData | null>(null)
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState(false)
@@ -181,7 +183,7 @@ export function WeatherWidget({ position = 'hero' }: WeatherWidgetProps = {}) {
       >
         <div className="flex items-center gap-3">
           <div className="w-5 h-5 border-2 border-primary border-t-transparent rounded-full animate-spin" />
-          <span className="text-sm text-muted-foreground">Caricamento...</span>
+          <span className="text-sm text-muted-foreground">{t.common.loading}</span>
         </div>
       </motion.div>
     )

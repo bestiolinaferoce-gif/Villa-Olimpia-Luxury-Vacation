@@ -1,5 +1,6 @@
 "use client"
 
+import Link from "next/link"
 import { useMemo, useState, FormEvent } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -8,8 +9,9 @@ import { Textarea } from "@/components/ui/textarea"
 import { apartments } from "@/data/apartments"
 import { reviews } from "@/data/reviews-complete"
 import type { MonthConfig, SeasonalMonth } from "@/lib/seasonalConfig"
+import { whatsappUrlForConfig } from "@/lib/seasonalConfig"
 import { trackEvent } from "@/components/analytics/google-analytics"
-import { Star } from "lucide-react"
+import { MessageCircle, Phone, Star } from "lucide-react"
 
 export interface SeasonalUrgencyFormProps {
   config: MonthConfig
@@ -84,11 +86,42 @@ export function SeasonalUrgencyForm({
 
   return (
     <section className="mx-auto max-w-3xl px-4 py-14">
-      <h2 className="font-playfair text-3xl font-bold text-slate-900">Preventivo rapido</h2>
-      <p className="mt-2 text-slate-600">
-        Compila il form: riceviamo la richiesta sulla casella operativa e ti rispondiamo al più presto.
+      <div className="inline-flex items-center rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-xs font-semibold text-primary">
+        {config.label}
+      </div>
+      <h2 className="mt-3 font-playfair text-3xl font-bold tracking-tight text-slate-900">Preventivo per questo periodo</h2>
+      <p className="mt-2 text-slate-600 leading-relaxed">
+        Compila il form: riceviamo la richiesta sulla casella operativa e ti rispondiamo con una proposta chiara, senza intermediari.
       </p>
-      <form onSubmit={onSubmit} className="mt-8 space-y-4 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+
+      <div className="mt-6 flex flex-col gap-4 rounded-2xl border border-slate-200 bg-gradient-to-br from-slate-50/80 to-white p-4 sm:flex-row sm:items-center sm:justify-between">
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-wide text-primary">Contatto immediato</p>
+          <p className="mt-1 text-sm text-slate-600">Stesso giorno lavorativo · Villa Olimpia diretta</p>
+        </div>
+        <div className="flex flex-wrap gap-2">
+          <Button variant="outline" size="sm" className="gap-1.5" asChild>
+            <a href={whatsappUrlForConfig(config)} target="_blank" rel="noopener noreferrer">
+              <MessageCircle className="h-4 w-4" />
+              WhatsApp
+            </a>
+          </Button>
+          <Button variant="outline" size="sm" className="gap-1.5" asChild>
+            <a href="tel:+393335773390">
+              <Phone className="h-4 w-4" />
+              Chiama
+            </a>
+          </Button>
+          <Button variant="ghost" size="sm" asChild>
+            <Link href="/contatti?source=seasonal_form_full#prenota">Form completo</Link>
+          </Button>
+        </div>
+      </div>
+
+      <form
+        onSubmit={onSubmit}
+        className="mt-8 space-y-4 rounded-2xl border border-primary/10 bg-white p-6 shadow-md ring-1 ring-slate-100"
+      >
         <div className="grid gap-4 sm:grid-cols-2">
           <div>
             <Label htmlFor="sn">Nome</Label>
@@ -144,7 +177,13 @@ export function SeasonalUrgencyForm({
           />
           Voglio ricevere aggiornamenti e offerte dedicate sul canale diretto (opt-in).
         </label>
-        <Button type="submit" className="w-full sm:w-auto" disabled={status === "loading" || status === "done"}>
+        <Button
+          type="submit"
+          variant="luxury"
+          size="lg"
+          className="w-full"
+          disabled={status === "loading" || status === "done"}
+        >
           {status === "done" ? "Richiesta inviata" : status === "loading" ? "Invio…" : config.ctaLabel}
         </Button>
         {status === "error" && (

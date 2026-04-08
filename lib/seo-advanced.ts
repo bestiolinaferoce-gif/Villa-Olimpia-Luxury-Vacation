@@ -184,7 +184,7 @@ export const SEO_CONFIG = {
   // Meta descriptions per mercati
   metaDescriptions: {
     it: "9 appartamenti di lusso con piscina privata a Capo Rizzuto, Calabria. A meno di 100 metri dalla Spiaggia dei Gigli. WiFi gratuito, parcheggio, vista mare mozzafiato.",
-    en: "9 luxury apartments with private pool in Capo Rizzuto, Calabria. Less than 100 meters from Spiaggia dei Gigli. Free WiFi, parking, breathtaking sea view.",
+    en: "9 luxury apartments with outdoor shared swimming pool in Capo Rizzuto, Calabria. About 100 meters from the sandy beach. Free WiFi, parking, breathtaking sea view.",
     de: "9 Luxus-Appartements mit privatem Pool in Capo Rizzuto, Kalabrien. Weniger als 100 Meter vom Spiaggia dei Gigli entfernt. Kostenloses WLAN, Parkplatz, atemberaubender Meerblick.",
     nl: "9 luxe appartementen met privézwembad in Capo Rizzuto, Calabrië. Minder dan 100 meter van Spiaggia dei Gigli. Gratis WiFi, parkeren, adembenemend uitzicht op zee.",
     es: "9 apartamentos de lujo con piscina privada en Capo Rizzuto, Calabria. A menos de 100 metros de Spiaggia dei Gigli. WiFi gratis, aparcamiento, vista al mar impresionante.",

@@ -1,14 +1,18 @@
-import { getRequestConfig } from 'next-intl/server';
-import { notFound } from 'next/navigation';
+import { getRequestConfig } from "next-intl/server"
+import { notFound } from "next/navigation"
+import {
+  DEFAULT_LOCALE,
+  SUPPORTED_LOCALES,
+  type SupportedLocale,
+} from "@/lib/i18n-config"
 
-export const locales = ['it', 'en', 'de', 'fr', 'nl'] as const;
-export type Locale = (typeof locales)[number];
-export const defaultLocale: Locale = 'it';
+export const locales = SUPPORTED_LOCALES
+export type Locale = SupportedLocale
+export const defaultLocale = DEFAULT_LOCALE
 
 export default getRequestConfig(async ({ locale }: { locale?: string }) => {
-  // Locale assente (es. richieste fuori da [locale]): usa default, non 404 sull'intero sito
   if (locale && !locales.includes(locale as Locale)) {
-    notFound();
+    notFound()
   }
 
   const resolved = (locale && locales.includes(locale as Locale) ? locale : defaultLocale) as Locale
@@ -16,6 +20,5 @@ export default getRequestConfig(async ({ locale }: { locale?: string }) => {
   return {
     locale: resolved,
     messages: (await import(`../messages/${resolved}.json`)).default,
-  };
-});
-
+  }
+})

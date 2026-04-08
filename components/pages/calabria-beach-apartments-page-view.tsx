@@ -12,7 +12,7 @@ export function CalabriaBeachApartmentsPageView() {
           <div className="grid items-center gap-10 lg:grid-cols-2">
             <div>
               <h1 className="text-4xl font-playfair font-bold text-slate-900 md:text-5xl">
-                Calabria beach apartments in Italy, 70m from sandy seaside
+                Calabria beach apartments in Italy, about 100 meters from the sandy beach
               </h1>
               <p className="mt-4 text-lg text-slate-600">
                 Looking for Calabria beach apartments and seaside apartments in Italy? Villa Olimpia offers a premium
@@ -58,8 +58,16 @@ export function CalabriaBeachApartmentsPageView() {
           <h2 className="text-center text-3xl font-playfair font-bold md:text-4xl">Why Villa Olimpia</h2>
           <div className="mx-auto mt-10 grid max-w-5xl gap-6 md:grid-cols-3">
             {[
-              { icon: Waves, title: "70m to beach", text: "Quick walk to sandy seaside with shallow water." },
-              { icon: Umbrella, title: "Pool and garden", text: "Private pool area and relaxing Mediterranean space." },
+              {
+                icon: Waves,
+                title: "About 100 meters to beach",
+                text: "Quick walk to sandy seaside with shallow water.",
+              },
+              {
+                icon: Umbrella,
+                title: "Pool and garden",
+                text: "Outdoor shared swimming pool area and relaxing Mediterranean space.",
+              },
               { icon: Home, title: "Apartments with kitchen", text: "Flexible holiday lifestyle for families and couples." },
             ].map((item) => {
               const Icon = item.icon
@@ -107,10 +115,12 @@ export function CalabriaBeachApartmentsPageView() {
 
       <section className="bg-slate-50 py-16">
         <div className="container mx-auto px-4">
-          <h2 className="text-center text-3xl font-playfair font-bold md:text-4xl">Sandy beach just 70 meters away</h2>
+          <h2 className="text-center text-3xl font-playfair font-bold md:text-4xl">
+            About 100 meters from the sandy beach
+          </h2>
           <p className="mx-auto mt-4 max-w-3xl text-center text-slate-600">
-            One of Villa Olimpia strongest advantages is proximity: your holiday apartment is only 70 meters from a
-            sandy beach, ideal for children and for guests who want easy seaside access in Calabria, Italy.
+            One of Villa Olimpia strongest advantages is proximity: your holiday apartment is about 100 meters from
+            the sandy beach, ideal for children and for guests who want easy seaside access in Calabria, Italy.
           </p>
         </div>
       </section>

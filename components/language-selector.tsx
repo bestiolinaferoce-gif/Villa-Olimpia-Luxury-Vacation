@@ -1,12 +1,14 @@
 "use client"
 
 import { useState, useRef, useEffect, useMemo } from "react"
+import { usePathname, useRouter } from "next/navigation"
 import { Globe, Check } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
 import { useI18n } from "@/components/i18n-provider"
 import { locales, localeNames, localeFlags, type Locale } from "@/lib/i18n/config"
+import { buildUrlForLocale, appendQuery } from "@/lib/i18n-routing"
 
-const languages = locales.map(code => ({
+const languages = locales.map((code) => ({
   code,
   name: localeNames[code],
   flag: localeFlags[code],
@@ -14,12 +16,13 @@ const languages = locales.map(code => ({
 
 export function LanguageSelector() {
   const [isOpen, setIsOpen] = useState(false)
-  const { locale, setLocale } = useI18n()
+  const { locale } = useI18n()
   const dropdownRef = useRef<HTMLDivElement>(null)
+  const pathname = usePathname() || "/"
+  const router = useRouter()
 
   useEffect(() => {
-    // Update document language when locale changes
-    if (typeof document !== 'undefined') {
+    if (typeof document !== "undefined") {
       document.documentElement.lang = locale
     }
   }, [locale])
@@ -41,39 +44,39 @@ export function LanguageSelector() {
   }, [isOpen])
 
   const handleLanguageChange = (langCode: Locale) => {
-    setLocale(langCode)
+    const raw = typeof window !== "undefined" ? window.location.search : ""
+    const query = raw.startsWith("?") ? raw.slice(1) : raw
+    const targetPath = buildUrlForLocale(pathname, langCode)
+    const href = appendQuery(targetPath, query)
+    router.push(href)
     setIsOpen(false)
-    
-    // Show success notification
-    if (typeof window !== 'undefined') {
+
+    if (typeof window !== "undefined") {
       const langName = localeNames[langCode]
-      
-      // Create toast notification
-      const toast = document.createElement('div')
-      toast.className = 'fixed bottom-4 right-4 z-[200] bg-primary text-white px-6 py-4 rounded-lg shadow-2xl border-2 border-white/30 backdrop-blur-sm animate-in fade-in slide-in-from-bottom-4'
+      const toast = document.createElement("div")
+      toast.className =
+        "fixed bottom-4 right-4 z-[200] bg-primary text-white px-6 py-4 rounded-lg shadow-2xl border-2 border-white/30 backdrop-blur-sm animate-in fade-in slide-in-from-bottom-4"
       toast.innerHTML = `
         <div class="flex items-center gap-3">
           <span class="text-2xl">🌐</span>
           <div>
             <p class="font-semibold">Lingua: ${langName}</p>
-            <p class="text-sm text-white/90">Traduzione applicata</p>
+            <p class="text-sm text-white/90">URL aggiornato</p>
           </div>
         </div>
       `
       document.body.appendChild(toast)
-      
-      // Remove after 3 seconds
       setTimeout(() => {
-        toast.style.opacity = '0'
-        toast.style.transform = 'translateY(20px)'
-        toast.style.transition = 'all 0.3s ease'
+        toast.style.opacity = "0"
+        toast.style.transform = "translateY(20px)"
+        toast.style.transition = "all 0.3s ease"
         setTimeout(() => toast.remove(), 300)
       }, 3000)
     }
   }
 
-  const currentLanguage = useMemo(() => 
-    languages.find(l => l.code === locale) || languages[0],
+  const currentLanguage = useMemo(
+    () => languages.find((l) => l.code === locale) || languages[0],
     [locale]
   )
 
@@ -104,6 +107,7 @@ export function LanguageSelector() {
               {languages.map((lang) => (
                 <button
                   key={lang.code}
+                  type="button"
                   onClick={() => handleLanguageChange(lang.code)}
                   className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all text-left ${
                     locale === lang.code
@@ -111,18 +115,14 @@ export function LanguageSelector() {
                       : "hover:bg-primary/5 text-gray-700"
                   }`}
                 >
-                  <span className="text-xl">{lang.flag}</span>
+                  <span className="text-2xl">{lang.flag}</span>
                   <span className="flex-1 text-sm">{lang.name}</span>
-                  {locale === lang.code && (
-                    <Check className="w-4 h-4 text-primary" />
-                  )}
+                  {locale === lang.code && <Check className="w-4 h-4 text-primary" />}
                 </button>
               ))}
             </div>
             <div className="px-4 py-2 bg-primary/5 border-t border-primary/10">
-              <p className="text-xs text-muted-foreground text-center">
-                ✓ Traduzione attiva
-              </p>
+              <p className="text-xs text-muted-foreground text-center">URL-based · SEO</p>
             </div>
           </motion.div>
         )}
@@ -130,4 +130,3 @@ export function LanguageSelector() {
     </div>
   )
 }
-

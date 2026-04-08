@@ -1,0 +1,185 @@
+{
+  "name": "Villa Olimpia - Lead Intake",
+  "nodes": [
+    {
+      "id": "a1b2c3d4-0001-0001-0001-000000000001",
+      "name": "Ricevi Lead",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [240, 300],
+      "parameters": {
+        "path": "lead-intake",
+        "httpMethod": "POST",
+        "responseMode": "responseNode",
+        "options": {}
+      }
+    },
+    {
+      "id": "a1b2c3d4-0002-0002-0002-000000000002",
+      "name": "Verifica Token",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [480, 300],
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.headers.authorization }}",
+              "operation": "equal",
+              "value2": "Bearer 6e940a38c400726cd3a28840d9eb0412"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "a1b2c3d4-0003-0003-0003-000000000003",
+      "name": "Formatta Messaggio",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3,
+      "position": [720, 180],
+      "parameters": {
+        "mode": "manual",
+        "duplicateItem": false,
+        "fields": {
+          "values": [
+            {
+              "name": "testo",
+              "type": "stringValue",
+              "stringValue": "=🏖️ *Nuova richiesta Villa Olimpia*\n\n👤 *Nome:* {{ $json.body.lead.name }}\n📧 *Email:* {{ $json.body.lead.email }}\n📱 *Tel:* {{ $json.body.lead.phone }}\n\n🏠 *Appartamento:* {{ $json.body.lead.apartments }}\n📅 *Date:* {{ $json.body.lead.dates }}\n👥 *Ospiti:* {{ $json.body.lead.guests }}\n\n💬 *Messaggio:*\n{{ $json.body.lead.message }}\n\n🔖 {{ $json.body.priorityTag }} | 📍 {{ $json.body.lead.source }}"
+            },
+            {
+              "name": "lead_name",
+              "type": "stringValue",
+              "stringValue": "={{ $json.body.lead.name }}"
+            },
+            {
+              "name": "lead_email",
+              "type": "stringValue",
+              "stringValue": "={{ $json.body.lead.email }}"
+            },
+            {
+              "name": "lead_phone",
+              "type": "stringValue",
+              "stringValue": "={{ $json.body.lead.phone }}"
+            },
+            {
+              "name": "lead_apartments",
+              "type": "stringValue",
+              "stringValue": "={{ $json.body.lead.apartments }}"
+            },
+            {
+              "name": "lead_dates",
+              "type": "stringValue",
+              "stringValue": "={{ $json.body.lead.dates }}"
+            },
+            {
+              "name": "lead_guests",
+              "type": "stringValue",
+              "stringValue": "={{ $json.body.lead.guests }}"
+            },
+            {
+              "name": "lead_message",
+              "type": "stringValue",
+              "stringValue": "={{ $json.body.lead.message }}"
+            },
+            {
+              "name": "priority_tag",
+              "type": "stringValue",
+              "stringValue": "={{ $json.body.priorityTag }}"
+            },
+            {
+              "name": "source",
+              "type": "stringValue",
+              "stringValue": "={{ $json.body.lead.source }}"
+            },
+            {
+              "name": "received_at",
+              "type": "stringValue",
+              "stringValue": "={{ new Date().toISOString() }}"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "a1b2c3d4-0004-0004-0004-000000000004",
+      "name": "Risposta OK",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [960, 180],
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={ \"ok\": true, \"message\": \"Lead ricevuto\" }",
+        "options": {
+          "responseCode": 200
+        }
+      }
+    },
+    {
+      "id": "a1b2c3d4-0005-0005-0005-000000000005",
+      "name": "Risposta 401",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [720, 420],
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={ \"ok\": false, \"message\": \"Non autorizzato\" }",
+        "options": {
+          "responseCode": 401
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Ricevi Lead": {
+      "main": [
+        [
+          {
+            "node": "Verifica Token",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Verifica Token": {
+      "main": [
+        [
+          {
+            "node": "Formatta Messaggio",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Risposta 401",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Formatta Messaggio": {
+      "main": [
+        [
+          {
+            "node": "Risposta OK",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "tags": [
+    {
+      "name": "villa-olimpia"
+    }
+  ]
+}

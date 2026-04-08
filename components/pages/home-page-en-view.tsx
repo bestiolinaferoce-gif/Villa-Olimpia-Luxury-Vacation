@@ -16,7 +16,7 @@ export function HomePageEnView() {
                 Premium seaside apartments in Calabria, Italy
               </p>
               <h1 className="mt-6 text-4xl font-playfair font-bold text-slate-900 md:text-5xl">
-                Calabria seaside apartments with pool, 70 meters from sandy beach
+                Calabria seaside apartments with outdoor shared swimming pool, about 100 meters from the sandy beach
               </h1>
               <p className="mt-4 text-lg leading-relaxed text-slate-600">
                 Villa Olimpia is ideal for families and couples looking for an elegant holiday in southern Italy:
@@ -56,8 +56,8 @@ export function HomePageEnView() {
           <h2 className="text-center text-3xl font-playfair font-bold text-slate-900 md:text-4xl">Why choose us</h2>
           <div className="mx-auto mt-10 grid max-w-5xl gap-6 md:grid-cols-3">
             {[
-              "70 meters from a shallow sandy beach",
-              "Swimming pool, garden and quiet private setting",
+              "About 100 meters from the sandy beach",
+              "Outdoor shared swimming pool, garden and quiet private setting",
               "Apartments with kitchen for flexible stays",
             ].map((item) => (
               <Card key={item} className="border border-primary/10 shadow-sm">
@@ -118,7 +118,8 @@ export function HomePageEnView() {
         <div className="container mx-auto px-4">
           <h2 className="text-center text-3xl font-playfair font-bold text-slate-900 md:text-4xl">Location advantages</h2>
           <p className="mx-auto mt-4 max-w-3xl text-center text-slate-600">
-            Stay by the sea without giving up comfort: the sandy beach is 70 meters away, the pool is inside the
+            Stay by the sea without giving up comfort: you are about 100 meters from the sandy beach, and the outdoor
+            shared swimming pool is inside the
             property, and the area is perfect for a calm premium stay in Calabria, Italy.
           </p>
           <div className="mx-auto mt-8 grid max-w-5xl gap-6 md:grid-cols-3">

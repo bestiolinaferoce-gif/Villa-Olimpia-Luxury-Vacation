@@ -7,7 +7,7 @@ import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import type { MonthConfig } from "@/lib/seasonalConfig"
 import { getAvailabilityPercent, whatsappUrlForConfig } from "@/lib/seasonalConfig"
-import { Shield, Clock, Sparkles } from "lucide-react"
+import { Shield, Clock, Sparkles, MessageCircle, Phone } from "lucide-react"
 
 export interface SeasonalHeroProps {
   config: MonthConfig
@@ -37,10 +37,13 @@ export function SeasonalHero({ config, locale = "it" }: SeasonalHeroProps) {
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-white backdrop-blur"
+            className="inline-flex items-center gap-2 rounded-full bg-white/12 px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-white backdrop-blur sm:text-sm"
           >
-            <Sparkles className="h-3.5 w-3.5" />
-            {config.label} · {config.availabilityLeft}/{config.totalUnits} lodge liberi (agg. manuale)
+            <Sparkles className="h-3.5 w-3.5 shrink-0" />
+            <span className="text-white">{config.label}</span>
+            <span className="font-normal normal-case text-white/80">
+              · {config.availabilityLeft}/{config.totalUnits} lodge liberi (agg. manuale)
+            </span>
           </motion.div>
           <motion.h1
             initial={{ opacity: 0, y: 16 }}
@@ -68,18 +71,35 @@ export function SeasonalHero({ config, locale = "it" }: SeasonalHeroProps) {
               transition={{ duration: 0.8 }}
             />
           </div>
-          <div className="mt-6 flex flex-wrap gap-3">
-            <Button size="lg" className="bg-[#25D366] hover:bg-[#1ebe5d] text-white" asChild>
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <Button
+              size="lg"
+              className="w-full gap-2 bg-[#25D366] text-white shadow-lg shadow-black/25 hover:bg-[#1ebe5d] sm:w-auto"
+              asChild
+            >
               <a href={whatsappUrlForConfig(config)} target="_blank" rel="noopener noreferrer">
-                WhatsApp
+                <MessageCircle className="h-5 w-5" />
+                WhatsApp diretto
               </a>
             </Button>
-            <Button size="lg" variant="secondary" asChild>
+            <Button
+              size="lg"
+              variant="secondary"
+              className="w-full border border-white/25 bg-white/95 text-slate-900 hover:bg-white sm:w-auto"
+              asChild
+            >
               <Link href={`/contatti?source=seasonal_hero&month=${config.month}#prenota`}>
-                Richiedi preventivo email
+                Preventivo via form
               </Link>
             </Button>
           </div>
+          <a
+            href="tel:+393335773390"
+            className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-white/90 underline-offset-4 transition hover:text-white hover:underline"
+          >
+            <Phone className="h-4 w-4 shrink-0" />
+            Oppure chiama · +39 333 577 3390
+          </a>
           <div className="mt-6 flex flex-wrap gap-4 text-xs text-white/85">
             <span className="inline-flex items-center gap-1">
               <Clock className="h-3.5 w-3.5" /> Risposta rapida in giornata lavorativa
