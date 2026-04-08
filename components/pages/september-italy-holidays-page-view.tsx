@@ -4,8 +4,41 @@ import { Button } from "@/components/ui/button"
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 
 export function SeptemberItalyHolidaysPageView() {
+  const faqItems = [
+    {
+      q: "Why choose Calabria in September?",
+      a: "You usually get warm weather, calmer beaches, and a more relaxed holiday pace.",
+    },
+    {
+      q: "Is the beach still easy to access in September?",
+      a: "Yes. Villa Olimpia remains about 100 meters from the sandy beach.",
+    },
+    {
+      q: "Can we still use the pool?",
+      a: "Yes, guests can use the outdoor shared swimming pool during the seasonal opening period.",
+    },
+    {
+      q: "How do I request rates for September?",
+      a: "Use the direct booking form or contact page and we reply quickly with available options.",
+    },
+  ]
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqItems.map((item) => ({
+      "@type": "Question",
+      name: item.q,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.a,
+      },
+    })),
+  }
+
   return (
     <div className="min-h-screen pt-20">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <section className="bg-gradient-to-br from-ocean/15 via-primary/10 to-amber-50 py-16">
         <div className="container mx-auto px-4">
           <h1 className="mx-auto max-w-4xl text-center text-4xl font-playfair font-bold text-slate-900 md:text-5xl">
@@ -17,13 +50,13 @@ export function SeptemberItalyHolidaysPageView() {
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Button variant="luxury" size="lg" asChild>
-              <Link href="/en/prenota">Check availability</Link>
+              <Link href="/en/prenota">Check availability for your dates</Link>
             </Button>
             <Button variant="outline" size="lg" className="bg-white text-slate-900 hover:bg-slate-100" asChild>
-              <Link href="/en/contact">Contact us</Link>
+              <Link href="/en/contact">Send us a quick request</Link>
             </Button>
             <Button variant="outline" size="lg" className="bg-white text-slate-900 hover:bg-slate-100" asChild>
-              <Link href="/en/prenota">Book your stay</Link>
+              <Link href="/en/prenota">Book your stay directly</Link>
             </Button>
           </div>
         </div>
@@ -83,6 +116,19 @@ export function SeptemberItalyHolidaysPageView() {
       </section>
 
       <section className="bg-white py-16">
+        <div className="container mx-auto px-4 mb-16">
+          <h2 className="text-center text-3xl font-playfair font-bold text-slate-900 md:text-4xl">September travel FAQ</h2>
+          <div className="mx-auto mt-8 grid max-w-5xl gap-4 md:grid-cols-2">
+            {faqItems.map((item) => (
+              <Card key={item.q} className="border border-primary/10">
+                <CardHeader>
+                  <CardTitle className="text-lg">{item.q}</CardTitle>
+                  <CardDescription className="text-slate-700">{item.a}</CardDescription>
+                </CardHeader>
+              </Card>
+            ))}
+          </div>
+        </div>
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-playfair font-bold md:text-4xl">September booking CTA</h2>
           <p className="mx-auto mt-4 max-w-2xl text-slate-600">
@@ -90,13 +136,13 @@ export function SeptemberItalyHolidaysPageView() {
           </p>
           <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
             <Button variant="luxury" size="lg" asChild>
-              <Link href="/en/prenota">Check availability</Link>
+              <Link href="/en/prenota">Check availability for your dates</Link>
             </Button>
             <Button variant="outline" size="lg" asChild>
               <Link href="/en/contact">Contact us</Link>
             </Button>
             <Button variant="outline" size="lg" asChild>
-              <Link href="/en/prenota">Book your stay</Link>
+              <Link href="/en/prenota">Book your stay directly</Link>
             </Button>
           </div>
           <div className="mt-6 flex flex-wrap justify-center gap-3">

@@ -5,8 +5,41 @@ import { Button } from "@/components/ui/button"
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 
 export function CalabriaBeachApartmentsPageView() {
+  const faqItems = [
+    {
+      q: "Is the beach sandy and suitable for children?",
+      a: "Yes, the nearby beach is sandy and usually appreciated by families with children.",
+    },
+    {
+      q: "How far are the apartments from the sea?",
+      a: "Villa Olimpia is about 100 meters from the sandy beach.",
+    },
+    {
+      q: "What kind of pool is available?",
+      a: "Guests can use an outdoor shared swimming pool inside the property.",
+    },
+    {
+      q: "Can I contact the property directly?",
+      a: "Yes. You can send a direct request via contact page or booking form for fast support.",
+    },
+  ]
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqItems.map((item) => ({
+      "@type": "Question",
+      name: item.q,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.a,
+      },
+    })),
+  }
+
   return (
     <div className="min-h-screen pt-20">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <section className="bg-gradient-to-br from-ocean/15 via-primary/10 to-amber-50 py-16">
         <div className="container mx-auto px-4">
           <div className="grid items-center gap-10 lg:grid-cols-2">
@@ -16,17 +49,18 @@ export function CalabriaBeachApartmentsPageView() {
               </h1>
               <p className="mt-4 text-lg text-slate-600">
                 Looking for Calabria beach apartments and seaside apartments in Italy? Villa Olimpia offers a premium
-                stay with swimming pool, family-friendly atmosphere, and direct access to the sandy coast of Capo Rizzuto.
+                stay with outdoor shared swimming pool, family-friendly atmosphere, and direct access to the sandy coast
+                of Capo Rizzuto.
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <Button variant="luxury" size="lg" asChild>
                   <Link href="/en/prenota">
-                    Check availability
+                    Check availability for your dates
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                 </Button>
                 <Button variant="outline" size="lg" asChild>
-                  <Link href="/en/contact">Contact us</Link>
+                  <Link href="/en/contact">Send us a quick request</Link>
                 </Button>
               </div>
             </div>
@@ -113,6 +147,27 @@ export function CalabriaBeachApartmentsPageView() {
         </div>
       </section>
 
+      <section className="bg-white py-16">
+        <div className="container mx-auto px-4">
+          <h2 className="text-center text-3xl font-playfair font-bold text-slate-900 md:text-4xl">FAQ for seaside apartment stays</h2>
+          <div className="mx-auto mt-8 grid max-w-5xl gap-4 md:grid-cols-2">
+            {faqItems.map((item) => (
+              <Card key={item.q} className="border border-primary/10">
+                <CardHeader>
+                  <CardTitle className="text-lg">{item.q}</CardTitle>
+                  <CardDescription className="text-slate-700">{item.a}</CardDescription>
+                </CardHeader>
+              </Card>
+            ))}
+          </div>
+          <div className="mt-8 text-center">
+            <Button variant="outline" asChild>
+              <Link href="/en/family-holiday-calabria">See family-focused options</Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
       <section className="bg-slate-50 py-16">
         <div className="container mx-auto px-4">
           <h2 className="text-center text-3xl font-playfair font-bold md:text-4xl">
@@ -130,7 +185,7 @@ export function CalabriaBeachApartmentsPageView() {
           <h2 className="text-3xl font-playfair font-bold md:text-4xl">Book your Calabria seaside holiday</h2>
           <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
             <Button variant="luxury" size="lg" asChild>
-              <Link href="/en/prenota">Book your stay</Link>
+              <Link href="/en/prenota">Book your stay directly</Link>
             </Button>
             <Button variant="outline" size="lg" className="border-white text-white hover:bg-white/10" asChild>
               <Link href="/en/contact">Contact us</Link>
