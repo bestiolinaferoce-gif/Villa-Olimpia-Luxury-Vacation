@@ -2,6 +2,8 @@ import { MetadataRoute } from "next"
 import { apartments, getApartmentSlug } from "@/data/apartments"
 import { BASE_URL } from "@/lib/metadata"
 import { BLOG_POSTS, BLOG_LAST_MOD } from "@/data/blog-posts"
+import { SUPPORTED_LOCALES, localeHasRoute } from "@/lib/i18n-config"
+import { getLocalizedPathForCanonical } from "@/lib/i18n-routing"
 
 // Date statiche per categoria — non cambiano ad ogni build (risparmio crawl budget)
 const DATE_CORE = new Date("2026-03-25")
@@ -39,6 +41,23 @@ const staticRoutes: Array<{
   { path: "/faq", priority: 0.7, changeFrequency: "monthly", lastMod: DATE_CONTENT },
 ]
 
+/** Canonical paths with localized URL strategy (Model A selective) */
+const MULTILINGUAL_CANONICAL = [
+  "/",
+  "/contatti",
+  "/appartamenti",
+  "/prenota",
+  "/capo-rizzuto",
+  "/le-castella",
+  "/settembre-capo-rizzuto",
+] as const
+
+const EN_ONLY_CANONICAL = [
+  "/calabria-beach-apartments",
+  "/family-holiday-calabria",
+  "/september-italy-holidays",
+] as const
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const pages: MetadataRoute.Sitemap = staticRoutes.map((route) => ({
     url: `${BASE_URL}${route.path}`,
@@ -71,5 +90,33 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.68,
   }))
 
-  return [...pages, ...apartmentPages, ...blogIndex, ...blogArticles]
+  const localizedExtra: MetadataRoute.Sitemap = []
+  for (const canonical of MULTILINGUAL_CANONICAL) {
+    const baseMeta = staticRoutes.find((r) => r.path === canonical || (canonical === "/" && r.path === ""))
+    const lastMod = baseMeta?.lastMod ?? DATE_CORE
+    const changeFrequency = baseMeta?.changeFrequency ?? ("monthly" as const)
+    const priority = (baseMeta?.priority ?? 0.85) * 0.99
+
+    for (const loc of SUPPORTED_LOCALES) {
+      if (loc === "it") continue
+      if (!localeHasRoute(loc, canonical)) continue
+      const path = getLocalizedPathForCanonical(canonical, loc)
+      const url = path === "/" ? BASE_URL : `${BASE_URL}${path}`
+      localizedExtra.push({
+        url,
+        lastModified: lastMod,
+        changeFrequency,
+        priority,
+      })
+    }
+  }
+
+  const enOnly: MetadataRoute.Sitemap = EN_ONLY_CANONICAL.map((canonical) => ({
+    url: `${BASE_URL}/en${canonical}`,
+    lastModified: DATE_CONTENT,
+    changeFrequency: "weekly",
+    priority: 0.82,
+  }))
+
+  return [...pages, ...localizedExtra, ...enOnly, ...apartmentPages, ...blogIndex, ...blogArticles]
 }
