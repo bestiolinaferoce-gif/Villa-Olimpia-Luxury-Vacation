@@ -1,4 +1,5 @@
 import { Review } from "@/data/reviews-complete"
+import { BASE_URL } from "@/lib/metadata"
 
 export function ReviewSchema({ review }: { review: Review }) {
   const schema = {
@@ -17,8 +18,7 @@ export function ReviewSchema({ review }: { review: Review }) {
       worstRating: 1,
     },
     itemReviewed: {
-      "@type": "LodgingBusiness",
-      name: "Villa Olimpia",
+      "@id": `${BASE_URL}/#business`,
     },
   }
 
@@ -31,4 +31,3 @@ export function ReviewSchema({ review }: { review: Review }) {
     />
   )
 }
-

@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { apartments } from "@/data/apartments"
+import { apartments, getApartmentSlug } from "@/data/apartments"
 import {
   localeHasRoute,
   normalizeCanonicalPath,
@@ -97,10 +97,10 @@ export function getApartmentMetadata(apartmentId: number): Metadata {
   const seoDescription = `Scopri ${apartment.name} a Villa Olimpia, Capopiccolo: appartamento al ${apartment.floor.toLowerCase()} di ${apartment.size} per ${apartment.guests} ospiti, con ${apartment.bedrooms} ${cameraLabel} e ${apartment.bathrooms} ${bagnoLabel}. Vicino alla Spiaggia dei Gigli e all'Area Marina Protetta di Capo Rizzuto.`
 
   const keywords = [
-    `appartamento ${apartment.name.toLowerCase()} villa olimpia`,
-    `appartamento ${apartment.name.toLowerCase()} capopiccolo`,
-    `appartamento ${apartment.name.toLowerCase()} capo rizzuto`,
-    `${apartment.name.toLowerCase()} capo rizzuto piscina`,
+    `appartamento ${getApartmentSlug(apartment)} villa olimpia`,
+    `appartamento ${getApartmentSlug(apartment)} capopiccolo`,
+    `appartamento ${getApartmentSlug(apartment)} capo rizzuto`,
+    `${getApartmentSlug(apartment)} capo rizzuto piscina`,
     `appartamento ${apartment.floor.toLowerCase()} capo rizzuto`,
     `appartamento ${apartment.guests} ospiti capopiccolo`,
     `prenotazione diretta villa olimpia`,
@@ -113,7 +113,7 @@ export function getApartmentMetadata(apartmentId: number): Metadata {
   const baseMeta = generateMetadata({
     title: seoTitle,
     description: seoDescription,
-    path: `/appartamenti/${apartment.name.toLowerCase()}`,
+    path: `/appartamenti/${getApartmentSlug(apartment)}`,
     image: apartment.image.startsWith("/") ? apartment.image : undefined,
     type: "article",
   })

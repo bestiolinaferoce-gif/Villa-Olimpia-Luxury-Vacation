@@ -1,6 +1,6 @@
 import { notFound, permanentRedirect } from "next/navigation"
 import Image from "next/image"
-import { getApartmentById, apartments } from "@/data/apartments"
+import { getApartmentBedSchema, getApartmentById, getApartmentBySlug, getApartmentSlug, apartments } from "@/data/apartments"
 // FIX: Import esplicito per risolvere problemi di routing
 import { getApartmentMetadata, BASE_URL } from "@/lib/metadata"
 import { getApartmentContent } from "@/data/apartment-content"
@@ -24,7 +24,7 @@ interface PageProps {
 // FIX: Genera staticamente tutte le pagine per evitare 404
 export async function generateStaticParams() {
   // SEO Round 2: solo slug canonici (nome), redirect 301 per vecchi URL
-  return apartments.map((apartment) => ({ id: apartment.name.toLowerCase() }))
+  return apartments.map((apartment) => ({ id: getApartmentSlug(apartment) }))
 }
 
 export async function generateMetadata({ params }: PageProps) {
@@ -38,10 +38,7 @@ export async function generateMetadata({ params }: PageProps) {
   } else if (!isNaN(parseInt(id))) {
     apartmentId = parseInt(id)
   } else {
-    const apartmentByName = apartments.find(apt => 
-      apt.name.toLowerCase() === id.toLowerCase()
-    )
-    apartmentId = apartmentByName?.id
+    apartmentId = getApartmentBySlug(id)?.id
   }
   
   if (!apartmentId || isNaN(apartmentId)) {
@@ -63,13 +60,7 @@ export default async function ApartmentDetailPage({ params }: PageProps) {
     // Se è solo un numero
     apartmentId = parseInt(id)
   } else {
-    // Se è un nome (es. "frangipane"), cerca per nome
-    const apartmentByName = apartments.find(apt => 
-      apt.name.toLowerCase() === id.toLowerCase()
-    )
-    if (apartmentByName) {
-      apartmentId = apartmentByName.id
-    }
+    apartmentId = getApartmentBySlug(id)?.id
   }
   
   if (!apartmentId || isNaN(apartmentId)) {
@@ -82,7 +73,7 @@ export default async function ApartmentDetailPage({ params }: PageProps) {
     notFound()
   }
 
-  const canonicalSlug = apartment.name.toLowerCase()
+  const canonicalSlug = getApartmentSlug(apartment)
   if (id !== canonicalSlug) {
     permanentRedirect(`/appartamenti/${canonicalSlug}`)
   }
@@ -92,7 +83,31 @@ export default async function ApartmentDetailPage({ params }: PageProps) {
   const apartmentWhatsAppHref = buildWhatsAppUrlFromText(
     `Richiesta disponibilita ${apartment.name} - Villa Olimpia:\nDate: \nOspiti: ${apartment.guests}\nAppartamento: ${apartment.name}\nFonte: sito ufficiale (pagina appartamento)`
   )
-  const apartmentUrl = `${BASE_URL}/appartamenti/${apartment.name.toLowerCase()}`
+  const apartmentUrl = `${BASE_URL}/appartamenti/${canonicalSlug}`
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: BASE_URL,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Appartamenti",
+        item: `${BASE_URL}/appartamenti`,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: apartment.name,
+        item: apartmentUrl,
+      },
+    ],
+  }
   const apartmentSchema = {
     "@context": "https://schema.org",
     "@type": "Accommodation",
@@ -127,6 +142,7 @@ export default async function ApartmentDetailPage({ params }: PageProps) {
       "@type": "QuantitativeValue",
       maxValue: apartment.guests,
     },
+    bed: getApartmentBedSchema(apartment),
     amenityFeature: apartment.features.map((feature) => ({
       "@type": "LocationFeatureSpecification",
       name: feature,
@@ -155,6 +171,10 @@ export default async function ApartmentDetailPage({ params }: PageProps) {
 
   return (
     <div className="min-h-screen pt-20">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <Breadcrumb
         items={[
           { label: "Appartamenti", href: "/appartamenti" },

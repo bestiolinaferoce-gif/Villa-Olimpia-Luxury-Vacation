@@ -19,6 +19,7 @@ const checks = [
 
 const redirectChecks = [
   { label: "WWW canonico", url: "https://www.villaolimpiacaporizzuto.com", expectLocation: /^https:\/\/villaolimpiacaporizzuto\.com\/?$/i },
+  { label: "Default locale canonico", url: `${BASE_URL}/it`, expectLocation: /^(https:\/\/villaolimpiacaporizzuto\.com\/|\/)$/i },
   { label: "Legacy apartments", url: `${BASE_URL}/apartments`, expectLocation: /\/appartamenti$/i },
   { label: "Legacy home", url: `${BASE_URL}/home`, expectLocation: /^(https:\/\/villaolimpiacaporizzuto\.com\/|\/)$/i },
   { label: "Legacy apartment id", url: `${BASE_URL}/appartamenti/1`, expectLocation: /\/appartamenti\/frangipane$/i },

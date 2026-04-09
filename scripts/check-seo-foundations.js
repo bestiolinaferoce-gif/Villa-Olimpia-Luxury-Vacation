@@ -41,7 +41,7 @@ function main() {
   const home = read("app/page.tsx")
   const appartamentiHub = read("app/appartamenti/page.tsx")
 
-  assertContains(layout, /appartamenti\/\$\{apartment\.name\.toLowerCase\(\)\}/, "app/layout.tsx", "slug canonici in structured data", errors)
+  assertContains(layout, /appartamenti\/\$\{getApartmentSlug\(apartment\)\}/, "app/layout.tsx", "slug canonici in structured data", errors)
   assertNotContains(layout, /\/appartamenti\/1\b/, "app/layout.tsx", "URL numerici structured data", errors)
   assertNotContains(layout, /UTM Builder/i, "app/layout.tsx", "snippet sporchi", errors)
 
@@ -53,6 +53,7 @@ function main() {
   assertNotContains(sitemap, /path:\s*"\/apartments"|path:\s*"\/rooms"|path:\s*"\/home"/, "app/sitemap.ts", "alias legacy in sitemap", errors)
 
   assertContains(home, /Scopri meglio Capo Rizzuto prima di prenotare/, "app/page.tsx", "hub link interni home", errors)
+  assertNotContains(home, /apartment-\$\{apartment\.id\}/, "app/page.tsx", "link legacy appartamenti in home", errors)
   assertContains(appartamentiHub, /ItemList/, "app/appartamenti/page.tsx", "schema ItemList hub appartamenti", errors)
 
   if (errors.length) fail(errors)

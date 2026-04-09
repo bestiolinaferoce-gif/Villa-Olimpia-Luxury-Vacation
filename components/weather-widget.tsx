@@ -232,4 +232,3 @@ export function WeatherWidget({ position = 'hero' }: WeatherWidgetProps = {}) {
     </motion.div>
   )
 }
-
