@@ -39,7 +39,7 @@ export interface Restaurant {
 }
 
 function premiumToGridRestaurant(p: PremiumMapRestaurant): Restaurant {
-  const id = p.id === 'aragosta' ? 'l-aragosta' : p.id
+  const id = p.id
   const row: Restaurant = {
     id,
     name: p.name,
@@ -70,48 +70,6 @@ const restaurantsFromPremiumMap = premiumRestaurants.map(premiumToGridRestaurant
 
 const additionalRestaurants: Restaurant[] = [
   {
-    id: 'da-roberto',
-    name: 'Ristorante Da Roberto',
-    location: 'Capo Rizzuto Marina',
-    distance: '1.5km',
-    rating: 4.4,
-    reviewCount: 298,
-    priceRange: '€€',
-    cuisine: 'Pizzeria e Pesce',
-    description:
-      'Locale informale sulla marina con ampia terrazza fronte mare. Pizza napoletana cotta nel forno a legna e ottima scelta di antipasti di pesce. Perfetto per famiglie e cene informali.',
-    specialties: [
-      'Pizza Marinara',
-      'Frittura mista di pesce',
-      'Spaghetti alle vongole',
-      'Insalata di polpo',
-    ],
-    phone: '+39 0962 792345',
-    googleMapsUrl: 'https://www.google.com/maps/search/Ristorante+Da+Roberto+Capo+Rizzuto+Marina',
-    image: '/images/ristoranti/da-roberto.jpg',
-  },
-  {
-    id: 'il-gabbiano',
-    name: 'Trattoria Il Gabbiano',
-    location: 'Capo Rizzuto',
-    distance: '10 minuti',
-    rating: 4.3,
-    reviewCount: 342,
-    priceRange: '€',
-    cuisine: 'Cucina Casalinga Calabrese',
-    description:
-      'Trattoria storica con cucina casalinga e porzioni generose. Gestione familiare dal 1985. Menù tradizionale con pasta fresca fatta in casa, carni grigliate e verdure dell\'orto. Prezzi molto contenuti.',
-    specialties: [
-      'Pasta fatta in casa',
-      'Salsiccia locale alla griglia',
-      'Peperoni ripieni',
-      'Dolci tradizionali',
-    ],
-    phone: '+39 0962 791234',
-    googleMapsUrl: 'https://www.google.com/maps/search/Trattoria+Il+Gabbiano+Capo+Rizzuto',
-    image: '/images/ristoranti/il-gabbiano.jpg',
-  },
-  {
     id: 'da-ercole',
     name: 'Ristorante Da Ercole',
     location: 'Crotone Centro',
@@ -128,8 +86,8 @@ const additionalRestaurants: Restaurant[] = [
       'Filetto di ricciola in crosta',
       'Tiramisù alla liquirizia DOP',
     ],
-    phone: '+39 0962 902567',
-    website: 'https://www.ristorantedaercole.it',
+    phone: '+39 0962 901425',
+    website: 'https://www.ristorantedaercole.com',
     googleMapsUrl: 'https://www.google.com/maps/search/Ristorante+Da+Ercole+Crotone',
     image: '/images/ristoranti/da-ercole.jpg',
   },

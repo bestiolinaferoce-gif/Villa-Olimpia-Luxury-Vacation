@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
-import { Wine, UtensilsCrossed, ChefHat, Grape } from 'lucide-react'
+import { Wine, UtensilsCrossed, ChefHat, Grape, Globe, MapPin, Phone } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 import { generateMetadata as genMeta } from "@/lib/metadata"
@@ -8,6 +8,25 @@ import { EnogastronomiaRestaurantsGrid } from '@/components/enogastronomia-resta
 import { AnimatedSection } from '@/components/enogastronomia-animated-section'
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 // import RestaurantsMapPremium from '@/components/restaurants-map-premium' // Temporaneamente disabilitato
+
+const verifiedRestaurantReferences = [
+  {
+    name: 'Ristorante Da Mimmo',
+    area: 'Le Castella',
+    distance: 'circa 8-12 minuti in auto',
+    note: 'Locale con sito ufficiale attivo affacciato sul porticciolo di Le Castella.',
+    website: 'https://ristorantedamimmo.le-castella.it',
+    maps: 'https://www.google.com/maps/search/Ristorante+Da+Mimmo+Le+Castella',
+  },
+  {
+    name: 'Da Annibale 1968',
+    area: 'Le Castella',
+    distance: 'circa 8-12 minuti in auto',
+    note: 'Presenza ufficiale verificabile su Facebook e posizione comoda per una cena nel borgo.',
+    website: 'https://www.facebook.com/daannibale1968',
+    maps: 'https://www.google.com/maps/search/Da+Annibale+1968+Le+Castella',
+  },
+]
 
 export const metadata: Metadata = genMeta({
   title: "Enogastronomia Calabrese | Vini Cirò DOC e Sapori Locali | Villa Olimpia Capo Rizzuto",
@@ -287,6 +306,51 @@ export default function EnogastronomiaPage() {
         </div>
       </section>
 
+      <section className="py-14 bg-slate-50/70">
+        <div className="container mx-auto px-4 max-w-6xl">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl md:text-4xl font-playfair font-bold text-gray-900 mb-3">
+              Indirizzi con presenza ufficiale verificabile
+            </h2>
+            <p className="text-muted-foreground max-w-3xl mx-auto">
+              Qui troviamo solo locali con sito ufficiale o pagina ufficiale attiva. Per orari e disponibilità, ti consigliamo comunque un controllo finale prima di partire da Villa Olimpia.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-5">
+            {verifiedRestaurantReferences.map((restaurant) => (
+              <Card key={restaurant.name} className="border-primary/10 shadow-sm">
+                <CardHeader>
+                  <CardTitle className="text-2xl font-playfair">{restaurant.name}</CardTitle>
+                  <div className="flex flex-wrap items-center gap-2 text-sm text-slate-600">
+                    <span>{restaurant.area}</span>
+                    <span className="text-slate-300">•</span>
+                    <span>{restaurant.distance}</span>
+                  </div>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <p className="text-sm text-slate-700">{restaurant.note}</p>
+                  <div className="flex flex-wrap gap-3">
+                    <Button size="sm" variant="outline" asChild>
+                      <a href={restaurant.website} target="_blank" rel="noopener noreferrer">
+                        <Globe className="w-4 h-4 mr-2" />
+                        Pagina ufficiale
+                      </a>
+                    </Button>
+                    <Button size="sm" variant="outline" asChild>
+                      <a href={restaurant.maps} target="_blank" rel="noopener noreferrer">
+                        <MapPin className="w-4 h-4 mr-2" />
+                        Apri Maps
+                      </a>
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Ristoranti Consigliati - Grid Cards */}
       <section className="py-20 bg-gradient-to-b from-white via-amber-50/40 to-rose-50/40">
         <div className="container mx-auto px-4 max-w-7xl">
@@ -300,7 +364,7 @@ export default function EnogastronomiaPage() {
                 Ristoranti Consigliati
               </h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                I ristoranti più apprezzati tra Capo Rizzuto, Le Castella e Crotone, selezionati per qualità e vicinanza a Villa Olimpia
+                Una selezione più rigorosa: qui teniamo solo i locali con presenza ufficiale verificata e asset abbastanza solidi da mostrare nel sito
               </p>
             </div>
           </AnimatedSection>
