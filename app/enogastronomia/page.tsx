@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { generateMetadata as genMeta } from "@/lib/metadata"
 import { EnogastronomiaRestaurantsGrid } from '@/components/enogastronomia-restaurants-grid'
 import { AnimatedSection } from '@/components/enogastronomia-animated-section'
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 // import RestaurantsMapPremium from '@/components/restaurants-map-premium' // Temporaneamente disabilitato
 
 export const metadata: Metadata = genMeta({
@@ -32,9 +33,9 @@ export const metadata: Metadata = genMeta({
 export default function EnogastronomiaPage() {
   return (
     <div className="min-h-screen">
-      {/* Hero con gradient rosso/viola */}
-      <section className="relative h-[70vh] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-red-900 via-purple-900 to-pink-900" />
+      {/* Hero premium, tono mediterraneo */}
+      <section className="relative h-[62vh] flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-[#10283c] via-[#1f4f6a] to-[#2b6c7a]" />
         <div className="absolute inset-0 bg-black/20" />
         
         <div className="relative z-10 text-center text-white px-4 max-w-4xl mx-auto">
@@ -42,7 +43,7 @@ export default function EnogastronomiaPage() {
             I Sapori della Calabria
           </h1>
           <p className="text-xl md:text-2xl mb-8 font-light">
-            Vini pregiati, olio extravergine DOP e tradizioni culinarie millenarie
+            Ristoranti affidabili, prodotti locali e cantine raggiungibili da Villa Olimpia
           </p>
         </div>
       </section>
@@ -241,6 +242,50 @@ export default function EnogastronomiaPage() {
         </div>
       </section>
       */}
+
+
+      <section className="py-14 bg-white border-y border-primary/10">
+        <div className="container mx-auto px-4 max-w-6xl">
+          <h2 className="text-3xl md:text-4xl font-playfair font-bold text-center mb-4">Guida concreta ai ristoranti della zona</h2>
+          <p className="text-center text-muted-foreground max-w-3xl mx-auto mb-8">
+            Per una scelta utile: verifica sempre giorno di chiusura, distanza reale, fascia oraria e possibilità di prenotazione.
+          </p>
+          <div className="grid md:grid-cols-3 gap-5">
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-xl">Capo Rizzuto</CardTitle>
+              </CardHeader>
+              <CardContent className="text-sm text-slate-700 space-y-2">
+                <p><strong>Ideale per:</strong> cene rilassate vicino a Villa Olimpia.</p>
+                <p><strong>Distanza tipica:</strong> 5-15 minuti in auto.</p>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-xl">Le Castella</CardTitle>
+              </CardHeader>
+              <CardContent className="text-sm text-slate-700 space-y-2">
+                <p><strong>Ideale per:</strong> cena con vista castello e passeggiata serale.</p>
+                <p><strong>Distanza tipica:</strong> circa 8-12 minuti in auto.</p>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-xl">Crotone</CardTitle>
+              </CardHeader>
+              <CardContent className="text-sm text-slate-700 space-y-2">
+                <p><strong>Ideale per:</strong> scelta più ampia e ristorazione urbana.</p>
+                <p><strong>Distanza tipica:</strong> circa 20-30 minuti in auto.</p>
+              </CardContent>
+            </Card>
+          </div>
+          <div className="mt-8 text-center">
+            <Button variant="outline" asChild>
+              <Link href="/contatti">Richiedi consigli aggiornati prima di prenotare</Link>
+            </Button>
+          </div>
+        </div>
+      </section>
 
       {/* Ristoranti Consigliati - Grid Cards */}
       <section className="py-20 bg-gradient-to-b from-white via-amber-50/40 to-rose-50/40">

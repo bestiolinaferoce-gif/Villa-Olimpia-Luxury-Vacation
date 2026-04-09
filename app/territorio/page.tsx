@@ -167,7 +167,11 @@ const destinations = [
     ],
     icon: Castle,
     href: "/le-castella",
-    coordinates: { lat: 38.9167, lng: 17.0167 }
+    coordinates: { lat: 38.9167, lng: 17.0167 },
+    officialSite: "https://www.comune.isoladicaporizzuto.kr.it/vivere-il-comune/territorio/le-castella/",
+    officialLabel: "Info ufficiali su Le Castella",
+    contactLine1: "Comune di Isola di Capo Rizzuto · 0962 795111",
+    contactLine2: "infopoint turistico locale: verificare orari stagionali"
   },
   {
     id: "crotone",
@@ -222,6 +226,37 @@ const destinations = [
     icon: Waves,
     href: "/area-marina-protetta",
     coordinates: { lat: 38.95, lng: 17.0833 }
+  },
+]
+
+
+const strategicGuides = [
+  {
+    title: "Le Castella",
+    what: "Borgo marinaro con Castello Aragonese e passeggiata sul lungomare.",
+    where: "Costa di Isola di Capo Rizzuto.",
+    distance: "circa 8 minuti da Villa Olimpia",
+    activities: "visita al castello, borgo storico, calette e tramonto",
+    officialSite: "https://www.comune.isoladicaporizzuto.kr.it/vivere-il-comune/territorio/le-castella/",
+    contacts: "Comune di Isola di Capo Rizzuto · 0962 795111",
+  },
+  {
+    title: "Santa Severina",
+    what: "Borgo storico con castello normanno e centro medievale.",
+    where: "Entroterra crotonese.",
+    distance: "circa 50 minuti da Villa Olimpia",
+    activities: "castello, battistero, passeggiata nel borgo, panorami sulla valle",
+    officialSite: "https://www.comune.santaseverina.kr.it/vivere_il_comune/luoghi/luogo_5.html",
+    contacts: "Comune di Santa Severina · 0962 51062",
+  },
+  {
+    title: "Valli Cupe",
+    what: "Riserva naturale regionale con canyon, gole e sentieri freschi.",
+    where: "Area di Sersale.",
+    distance: "circa 1h 15 min da Villa Olimpia",
+    activities: "trekking, fotografia naturalistica, escursioni guidate in stagione",
+    officialSite: "https://comune.sersale.cz.it/novita/riserva-regionale-valli-cupe/",
+    contacts: "Comune di Sersale · 0961 930911",
   },
 ]
 
@@ -321,6 +356,41 @@ export default function TerritorioPage() {
                 family-friendly come i parchi acquatici possono completare il soggiorno.
               </p>
             </div>
+          </div>
+        </div>
+      </section>
+
+
+      <section className="py-14 bg-white">
+        <div className="container mx-auto px-4 max-w-6xl">
+          <h2 className="text-3xl md:text-4xl font-playfair font-bold text-center mb-4">
+            Guida pratica per Le Castella, Santa Severina e Valli Cupe
+          </h2>
+          <p className="text-center text-muted-foreground max-w-3xl mx-auto mb-10">
+            Tre gite concrete e facili da organizzare durante il soggiorno: cosa sono, dove si trovano,
+            quanto distano da Villa Olimpia e quali riferimenti ufficiali consultare prima della partenza.
+          </p>
+          <div className="grid md:grid-cols-3 gap-6">
+            {strategicGuides.map((g) => (
+              <Card key={g.title} className="border border-primary/10 shadow-sm">
+                <CardHeader>
+                  <CardTitle className="text-xl">{g.title}</CardTitle>
+                  <CardDescription className="text-slate-700">{g.what}</CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-2 text-sm text-slate-700">
+                  <p><strong>Dove:</strong> {g.where}</p>
+                  <p><strong>Distanza:</strong> {g.distance}</p>
+                  <p><strong>Cosa fare:</strong> {g.activities}</p>
+                  <p>
+                    <strong>Sito ufficiale:</strong>{" "}
+                    <a href={g.officialSite} target="_blank" rel="noopener noreferrer" className="text-primary underline underline-offset-4">
+                      consulta info
+                    </a>
+                  </p>
+                  <p><strong>Contatti utili:</strong> {g.contacts}</p>
+                </CardContent>
+              </Card>
+            ))}
           </div>
         </div>
       </section>

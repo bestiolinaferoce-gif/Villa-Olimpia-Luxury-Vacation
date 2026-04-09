@@ -64,14 +64,17 @@ export const apartments: Apartment[] = [
     bedrooms: 1,
     bathrooms: 1,
     features: ["Balcone", "Vista piscina", "Giardino condiviso", "Area barbecue", "Aria condizionata", "WiFi gratuito", "Cucina attrezzata", "TV Smart", "Biancheria inclusa", "Prodotti bagno"],
-    // ✅ FOTO AGGIORNATE 2025 - 4 foto nuove
-    image: "/images/villa/appartamenti/fiordaliso/Fiordaliso_Living_01.jpg",
+    // ✅ FOTO AGGIORNATE 2025 - camera/bagno/gazebo integrati
+    image: "/images/villa/appartamenti/fiordaliso/Fiordaliso_Camera_01.jpg",
     images: [
+      "/images/villa/appartamenti/fiordaliso/Fiordaliso_Camera_01.jpg",
+      "/images/villa/appartamenti/fiordaliso/Fiordaliso_Bagno_01.jpg",
       "/images/villa/appartamenti/fiordaliso/Fiordaliso_Living_01.jpg",
       "/images/villa/appartamenti/fiordaliso/Fiordaliso_Living_02.jpg",
       "/images/villa/appartamenti/fiordaliso/Fiordaliso_Living_Cucina_01.jpg",
+      "/images/villa/appartamenti/fiordaliso/Fiordaliso_Gazebo_01.jpg",
+      "/images/villa/appartamenti/fiordaliso/Fiordaliso_Gazebo_Giorno_02.jpg",
       "/images/villa/gallery/Esterni_Piscina_Giorno_01.jpg",
-      "/images/villa/gallery/Esterni_Giardino_Overview_01.jpg",
     ],
     description: "Appartamento Fiordaliso a Capopiccolo con balcone vista piscina, ambienti luminosi e soluzione ideale per coppie e famiglie 2+2 vicino alla Spiaggia dei Gigli.",
     fullDescription: "Fiordaliso è un appartamento di Villa Olimpia al piano terra a Capopiccolo, pensato per chi cerca una vacanza a Capo Rizzuto con balcone vista piscina, accesso comodo ai servizi della struttura e vicinanza reale al mare. Offre camera matrimoniale, zona living con divano letto, cucina attrezzata e una distribuzione pratica per coppie e famiglie 2+2. La posizione, vicino alla Spiaggia dei Gigli e all'Area Marina Protetta di Capo Rizzuto, lo rende una soluzione semplice da vivere e molto funzionale.",
@@ -142,16 +145,19 @@ export const apartments: Apartment[] = [
     bedrooms: 2,
     bathrooms: 1,
     features: ["Camera matrimoniale + camera con letto da una piazza e mezza", "Zona living con divano letto", "Cucina moderna", "Aria condizionata", "WiFi gratuito", "TV Smart", "Biancheria inclusa", "Prodotti bagno"],
-    // ✅ FOTO AGGIORNATE 2025 - 10 foto nuove
+    // ✅ FOTO AGGIORNATE 2025 - seconda camera e living rafforzati
     image: "/images/villa/appartamenti/giglio/main.jpg",
     images: [
       "/images/villa/appartamenti/giglio/main.jpg",
       "/images/villa/appartamenti/giglio/Giglio_Camera_01.jpg",
+      "/images/villa/appartamenti/giglio/Giglio_Camera_Annessa_02.jpg",
       "/images/villa/appartamenti/giglio/Giglio_Camera_Castello_01.jpg",
       "/images/villa/appartamenti/giglio/Giglio_Bagno_01.jpg",
       "/images/villa/appartamenti/giglio/Giglio_Cucina_01.jpg",
       "/images/villa/appartamenti/giglio/Giglio_Living_03.jpg",
       "/images/villa/appartamenti/giglio/Giglio_Living_04.jpg",
+      "/images/villa/appartamenti/giglio/Giglio_Living_05.jpg",
+      "/images/villa/appartamenti/giglio/Giglio_Living_06.jpg",
       "/images/villa/appartamenti/giglio/Giglio_Esterno_Gazebo_01.jpg",
       "/images/villa/appartamenti/giglio/Giglio_Esterno_Patio_01.jpg",
     ],
@@ -196,10 +202,15 @@ export const apartments: Apartment[] = [
     bedrooms: 2,
     bathrooms: 2,
     features: ["2 balconcini semipanoramici", "Vista mare e giardino", "2 camere da letto", "2 bagni completi", "Soggiorno ampio", "Cucina moderna", "Aria condizionata", "WiFi gratuito", "TV Smart", "Biancheria premium", "Prodotti bagno lusso"],
-    // ✅ FOTO AGGIORNATE 2025 - 13 foto nuove
+    // ✅ FOTO AGGIORNATE 2025 - balconi/terrazzino/living integrati
     image: "/images/villa/appartamenti/geranio/main.jpg",
     images: [
       "/images/villa/appartamenti/geranio/main.jpg",
+      "/images/villa/appartamenti/geranio/Geranio_Balconi_01.jpg",
+      "/images/villa/appartamenti/geranio/Geranio_Balcone_02.jpg",
+      "/images/villa/appartamenti/geranio/Geranio_Balcone_Cucina_03.jpg",
+      "/images/villa/appartamenti/geranio/Geranio_Terrazzino_04.jpg",
+      "/images/villa/appartamenti/geranio/Geranio_Terrazzo_Alba_05.jpg",
       "/images/villa/appartamenti/geranio/Geranio_Camera_02.jpg",
       "/images/villa/appartamenti/geranio/Geranio_Camera_03.jpg",
       "/images/villa/appartamenti/geranio/Geranio_Camera_04.jpg",

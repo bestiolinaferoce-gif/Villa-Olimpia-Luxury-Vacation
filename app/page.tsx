@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button"
 import { TrustBadges } from "@/components/conversion/trust-badges"
 import { SocialProof } from "@/components/conversion/social-proof"
 import { JuneJulySection } from "@/components/conversion/june-july-section"
+import { HomeMiniRibbon } from "@/components/home-mini-ribbon"
 import Link from "next/link"
 import { Star, Wifi, Car, Waves, Utensils, Shield, Umbrella, MapPin, Sparkles, ArrowRight, SunMedium, CalendarRange, Users } from "lucide-react"
 import { getApartmentSlug, getFeaturedApartments } from "@/data/apartments"
@@ -139,6 +140,25 @@ export default function HomePage() {
 
       {/* === JUNE/JULY CONVERSION ENGINE — Primary conversion section === */}
       <JuneJulySection />
+
+
+      <section className="py-6 bg-background cv-auto">
+        <div className="container mx-auto px-4">
+          <div className="flex justify-center">
+            <Link
+              href="/prenota?source=promo_giugno_home"
+              className="group inline-flex items-center gap-2 rounded-full border border-amber-300/70 bg-gradient-to-r from-amber-50 via-white to-amber-100 px-4 py-2.5 text-sm md:text-base text-slate-800 shadow-sm hover:shadow-md transition-all duration-300"
+            >
+              <span className="inline-flex h-2 w-2 rounded-full bg-amber-500 animate-pulse" aria-hidden />
+              <span className="font-semibold tracking-wide">Promo giugno</span>
+              <span className="text-slate-600">1 settimana a 750,00 €</span>
+              <ArrowRight className="h-4 w-4 text-amber-700 group-hover:translate-x-0.5 transition-transform" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <HomeMiniRibbon />
 
       {/* Maggio, Giugno, Settembre — mesi ideali, famiglie, Nord Europa */}
       <section className="py-20 bg-gradient-to-br from-slate-50 via-background to-ocean/5 cv-auto">

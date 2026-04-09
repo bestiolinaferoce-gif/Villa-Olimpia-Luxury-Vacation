@@ -8,7 +8,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 
 export const metadata: Metadata = generateMetadata({
   title: "Migliori Spiagge di Capo Rizzuto e Capopiccolo | Villa Olimpia",
-  description: "Scopri le migliori spiagge di Capo Rizzuto: Spiaggia dei Gigli, Capopiccolo, Le Castella e Area Marina Protetta. Villa Olimpia si trova a meno di 100 metri dal mare.",
+  description: "Scopri le migliori spiagge di Capo Rizzuto: Spiaggia dei Gigli, Capopiccolo, Le Castella e Area Marina Protetta. Villa Olimpia si trova a meno di 100 metri dal mare con accesso rapido alle spiagge migliori della costa ionica.",
   path: "/spiagge-capo-rizzuto",
 })
 
@@ -27,6 +27,50 @@ const capopiccoloImages = [
   },
 ]
 
+
+
+const selectedBeachPhotoSet = [
+  {
+    src: "/images/territory/spiaggia-grande-capo-rizzuto-01.jpg",
+    alt: "Spiaggia Grande Capo Rizzuto",
+    label: "Spiaggia Grande",
+  },
+  {
+    src: "/images/territory/spiaggia-grande-capo-rizzuto-02.jpg",
+    alt: "Spiaggia Grande Capo Rizzuto panoramica",
+    label: "Costa ionica",
+  },
+  {
+    src: "/images/territory/spiaggia-grande-capo-rizzuto-lido-01.jpg",
+    alt: "Lido a Spiaggia Grande Capo Rizzuto",
+    label: "Lido e servizi",
+  },
+  {
+    src: "/images/territory/lido-spiaggia-grande-capo-rizzuto-01.jpg",
+    alt: "Lido Spiaggia Grande Capo Rizzuto",
+    label: "Spiaggia attrezzata",
+  },
+  {
+    src: "/images/territory/spiagge-rosse-01.jpg",
+    alt: "Spiagge Rosse a Capo Rizzuto",
+    label: "Spiagge Rosse",
+  },
+  {
+    src: "/images/territory/spiagge-rosse-02.jpg",
+    alt: "Spiagge Rosse dettaglio costa",
+    label: "Colori naturali",
+  },
+  {
+    src: "/images/territory/tramonto-le-castella-desktop-01.jpg",
+    alt: "Tramonto su Le Castella",
+    label: "Le Castella sunset",
+  },
+  {
+    src: "/images/territory/tramonto-area-marina-protetta-desktop-01.jpg",
+    alt: "Tramonto Area Marina Protetta",
+    label: "Area Marina Protetta",
+  },
+]
 export default function SpiaggeCapoRizzutoPage() {
   return (
     <div className="min-h-screen pt-20">
@@ -60,6 +104,69 @@ export default function SpiaggeCapoRizzutoPage() {
                 sizes="(max-width: 768px) 100vw, 896px"
               />
             </div>
+          </div>
+        </div>
+      </section>
+
+
+      <section className="py-14 bg-white">
+        <div className="container mx-auto px-4 max-w-6xl">
+          <h2 className="text-3xl md:text-4xl font-playfair font-bold text-center mb-4">
+            Le spiagge più belle della costa ionica in foto
+          </h2>
+          <p className="text-center text-muted-foreground max-w-3xl mx-auto mb-8">
+            Selezione reale dal territorio di Capo Rizzuto: Spiaggia Grande, Spiagge Rosse, Le Castella e Area Marina Protetta.
+          </p>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {selectedBeachPhotoSet.map((photo) => (
+              <div key={photo.src} className="group rounded-xl overflow-hidden border border-primary/10 bg-white shadow-sm hover:shadow-md transition-shadow">
+                <div className="relative aspect-[4/3]">
+                  <Image
+                    src={photo.src}
+                    alt={photo.alt}
+                    fill
+                    className="object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+                    sizes="(max-width: 768px) 50vw, 25vw"
+                  />
+                </div>
+                <p className="px-3 py-2 text-xs sm:text-sm font-medium text-slate-700">{photo.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-14 bg-slate-50/60 border-y border-primary/10">
+        <div className="container mx-auto px-4 max-w-6xl">
+          <h2 className="text-3xl font-playfair font-bold text-center mb-8">Guida pratica alle spiagge</h2>
+          <div className="grid md:grid-cols-3 gap-5">
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-xl">Per famiglie</CardTitle>
+              </CardHeader>
+              <CardContent className="text-sm text-slate-700 space-y-2">
+                <p><strong>Consigliate:</strong> Spiaggia dei Gigli, Spiaggia Grande.</p>
+                <p><strong>Punti forti:</strong> accesso semplice, fondali graduali, stabilimenti vicini.</p>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-xl">Per snorkeling</CardTitle>
+              </CardHeader>
+              <CardContent className="text-sm text-slate-700 space-y-2">
+                <p><strong>Consigliate:</strong> calette di Capopiccolo e Area Marina Protetta.</p>
+                <p><strong>Punti forti:</strong> acqua limpida e fondali interessanti vicino costa.</p>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-xl">Per tramonto e foto</CardTitle>
+              </CardHeader>
+              <CardContent className="text-sm text-slate-700 space-y-2">
+                <p><strong>Consigliate:</strong> Le Castella e affacci della riserva marina.</p>
+                <p><strong>Punti forti:</strong> luce serale, skyline del castello, costa panoramica.</p>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
@@ -307,6 +414,69 @@ export default function SpiaggeCapoRizzutoPage() {
       </section>
 
       {/* Why Villa Olimpia */}
+
+      <section className="py-14 bg-white">
+        <div className="container mx-auto px-4 max-w-6xl">
+          <h2 className="text-3xl md:text-4xl font-playfair font-bold text-center mb-4">
+            Le spiagge più belle della costa ionica in foto
+          </h2>
+          <p className="text-center text-muted-foreground max-w-3xl mx-auto mb-8">
+            Selezione reale dal territorio di Capo Rizzuto: Spiaggia Grande, Spiagge Rosse, Le Castella e Area Marina Protetta.
+          </p>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {selectedBeachPhotoSet.map((photo) => (
+              <div key={photo.src} className="group rounded-xl overflow-hidden border border-primary/10 bg-white shadow-sm hover:shadow-md transition-shadow">
+                <div className="relative aspect-[4/3]">
+                  <Image
+                    src={photo.src}
+                    alt={photo.alt}
+                    fill
+                    className="object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+                    sizes="(max-width: 768px) 50vw, 25vw"
+                  />
+                </div>
+                <p className="px-3 py-2 text-xs sm:text-sm font-medium text-slate-700">{photo.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-14 bg-slate-50/60 border-y border-primary/10">
+        <div className="container mx-auto px-4 max-w-6xl">
+          <h2 className="text-3xl font-playfair font-bold text-center mb-8">Guida pratica alle spiagge</h2>
+          <div className="grid md:grid-cols-3 gap-5">
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-xl">Per famiglie</CardTitle>
+              </CardHeader>
+              <CardContent className="text-sm text-slate-700 space-y-2">
+                <p><strong>Consigliate:</strong> Spiaggia dei Gigli, Spiaggia Grande.</p>
+                <p><strong>Punti forti:</strong> accesso semplice, fondali graduali, stabilimenti vicini.</p>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-xl">Per snorkeling</CardTitle>
+              </CardHeader>
+              <CardContent className="text-sm text-slate-700 space-y-2">
+                <p><strong>Consigliate:</strong> calette di Capopiccolo e Area Marina Protetta.</p>
+                <p><strong>Punti forti:</strong> acqua limpida e fondali interessanti vicino costa.</p>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-xl">Per tramonto e foto</CardTitle>
+              </CardHeader>
+              <CardContent className="text-sm text-slate-700 space-y-2">
+                <p><strong>Consigliate:</strong> Le Castella e affacci della riserva marina.</p>
+                <p><strong>Punti forti:</strong> luce serale, skyline del castello, costa panoramica.</p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
       <section className="py-20 bg-gradient-to-b from-[#f5fbff] to-[#e6f4ff]">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
