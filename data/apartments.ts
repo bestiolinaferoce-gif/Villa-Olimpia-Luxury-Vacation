@@ -119,17 +119,18 @@ export const apartments: Apartment[] = [
     bedrooms: 1,
     bathrooms: 1,
     features: ["Accesso diretto giardino", "Vista piscina", "Patio privato", "Aria condizionata", "WiFi gratuito", "Cucina completa", "TV Smart", "Biancheria inclusa", "Ideale per famiglie"],
-    // ✅ FOTO AGGIORNATE 2025 - 9 foto nuove
+    // ✅ FOTO AGGIORNATE 2026 - gap bagno/cucina chiuso
     image: "/images/villa/appartamenti/tulipano/main.jpg",
     images: [
       "/images/villa/appartamenti/tulipano/main.jpg",
       "/images/villa/appartamenti/tulipano/Tulipano_Camera_01.jpg",
-      "/images/villa/appartamenti/tulipano/Tulipano_Camera_02.jpg",
-      "/images/villa/appartamenti/tulipano/Tulipano_Camera_04.jpg",
-      "/images/villa/appartamenti/tulipano/Tulipano_Camera_Sera_01.jpg",
-      "/images/villa/appartamenti/tulipano/Tulipano_Ingresso_01.jpg",
+      "/images/villa/appartamenti/tulipano/Tulipano_Camera_05.jpg",
       "/images/villa/appartamenti/tulipano/Tulipano_Living_02.jpg",
       "/images/villa/appartamenti/tulipano/Tulipano_Living_Sera_01.jpg",
+      "/images/villa/appartamenti/tulipano/Tulipano_Living_Cucina_03.jpg",
+      "/images/villa/appartamenti/tulipano/Tulipano_Bagno_01.jpg",
+      "/images/villa/appartamenti/tulipano/Tulipano_Ingresso_01.jpg",
+      "/images/villa/appartamenti/tulipano/Tulipano_Camera_04.jpg",
     ],
     description: "Appartamento Tulipano a Capopiccolo con accesso diretto al giardino, patio privato e posizione ideale per famiglie vicino alla piscina e alla Spiaggia dei Gigli.",
     fullDescription: "Tulipano è un appartamento di Villa Olimpia al piano terra a Capopiccolo, ideale per chi cerca una vacanza a Capo Rizzuto pratica e comoda da vivere in famiglia. Offre camera matrimoniale, zona living con divano letto, cucina completa, patio privato e accesso diretto al giardino, con una posizione molto favorevole rispetto alla piscina e agli spazi esterni della struttura. La vicinanza alla Spiaggia dei Gigli e all'Area Marina Protetta di Capo Rizzuto lo rende una soluzione molto adatta a coppie e famiglie 2+2.",
