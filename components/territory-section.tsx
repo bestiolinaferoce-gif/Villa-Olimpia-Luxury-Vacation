@@ -239,15 +239,13 @@ export function TerritorySection() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
           {destinations.filter(d => d.featured).map((destination, index) => {
             const Icon = categoryIcons[destination.category]
-            const gradientClass = categoryColors[destination.category]
-            
             return (
               <ScrollReveal key={index} delay={index * 0.2}>
                 <motion.div
                   whileHover={{ y: -8, scale: 1.02 }}
                   className="h-full"
                 >
-                  <Card className="h-full hover:shadow-2xl transition-all border-2 border-primary/20 overflow-hidden group">
+                  <Card className="h-full hover:shadow-2xl transition-all border border-white/60 bg-white/90 backdrop-blur-sm overflow-hidden group shadow-[0_18px_50px_rgba(15,23,42,0.08)]">
                     {/* Immagine principale */}
                     <div className="relative h-64 md:h-80 overflow-hidden">
                       <Image
@@ -285,6 +283,7 @@ export function TerritorySection() {
                       
                       {/* Nome destinazione */}
                       <div className="absolute bottom-0 left-0 right-0 p-6">
+                        <div className="mb-3 h-px w-16 bg-white/50" />
                         <div className="flex items-center gap-3 mb-2">
                           <div className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-lg flex items-center justify-center">
                             <Icon className="w-5 h-5 text-white" />
@@ -312,7 +311,7 @@ export function TerritorySection() {
                           {destination.highlights.map((highlight, idx) => (
                             <span
                               key={idx}
-                              className="text-xs bg-primary/10 text-primary px-3 py-1.5 rounded-full font-medium"
+                              className="text-xs bg-sky-50 text-sky-800 px-3 py-1.5 rounded-full font-medium ring-1 ring-sky-100"
                             >
                               {highlight}
                             </span>
@@ -330,7 +329,7 @@ export function TerritorySection() {
 
                       {/* Link */}
                       {destination.link ? (
-                        <Button variant="outline" size="sm" className="w-full" asChild>
+                        <Button variant="outline" size="sm" className="w-full border-slate-200 bg-white hover:bg-sky-50" asChild>
                           <Link href={destination.link}>
                             Scopri di più
                             <ExternalLink className="w-4 h-4 ml-2" />
@@ -353,15 +352,13 @@ export function TerritorySection() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
           {destinations.filter(d => !d.featured).map((destination, index) => {
             const Icon = categoryIcons[destination.category]
-            const gradientClass = categoryColors[destination.category]
-            
             return (
               <ScrollReveal key={index} delay={index * 0.1}>
                 <motion.div
                   whileHover={{ y: -5, scale: 1.02 }}
                   className="h-full"
                 >
-                  <Card className="h-full hover:shadow-xl transition-all border-2 border-primary/10 overflow-hidden group">
+                  <Card className="h-full hover:shadow-xl transition-all border border-white/60 bg-white/90 backdrop-blur-sm overflow-hidden group shadow-[0_16px_40px_rgba(15,23,42,0.07)]">
                     {/* Immagine */}
                     <div className="relative h-48 overflow-hidden">
                       <Image

@@ -171,10 +171,13 @@ export function HomeGallery() {
     <section id="gallery-home" className="py-20 bg-gradient-to-b from-background via-primary/5 to-background relative z-10">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-playfair font-bold mb-4 text-gray-900">
-            🏊‍♂️ Piscina E Territorio
+          <span className="inline-flex items-center rounded-full border border-sky-200 bg-white/90 px-4 py-2 text-sm font-semibold tracking-[0.14em] text-sky-700 uppercase shadow-sm">
+            Piscina e territorio
+          </span>
+          <h2 className="mt-5 text-4xl md:text-5xl font-playfair font-bold text-gray-900">
+            La parte più bella del soggiorno, in uno sguardo
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="mt-4 text-xl text-muted-foreground max-w-2xl mx-auto">
             Dalla piscina privata alle spiagge di Capopiccolo, fino a Le Castella e all&apos;Area Marina Protetta:
             scopri in un colpo d&apos;occhio i motivi per cui Villa Olimpia e la sua posizione fanno davvero la differenza.
           </p>
@@ -182,7 +185,7 @@ export function HomeGallery() {
 
         {/* Carousel principale */}
         <div className="relative max-w-5xl mx-auto mb-8">
-          <div className="relative h-96 md:h-[500px] rounded-2xl overflow-hidden shadow-2xl bg-gray-100">
+          <div className="relative h-96 md:h-[500px] rounded-[28px] overflow-hidden shadow-[0_24px_80px_rgba(15,23,42,0.18)] bg-gray-100 ring-1 ring-slate-200/60">
             {(() => {
               const image = imagesToShow[currentIndex]
               return (
@@ -204,12 +207,12 @@ export function HomeGallery() {
                     blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAiIGhlaWdodD0iMTAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIj48c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjZTBlMGUwIi8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjZjVmNWY1Ii8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkKSIvPjwvc3ZnPg=="
                     onError={() => handleImageError(currentIndex)}
                   />
-                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent p-6">
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/45 to-transparent p-6">
                     <div className="text-white">
-                      <span className="text-sm font-medium bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full">
+                      <span className="text-xs font-semibold uppercase tracking-[0.14em] bg-white/20 backdrop-blur-sm px-3 py-1.5 rounded-full">
                         {image.category}
                       </span>
-                      <p className="text-lg font-semibold mt-2">{image.alt}</p>
+                      <p className="text-lg md:text-xl font-semibold mt-3 max-w-2xl">{image.alt}</p>
                     </div>
                   </div>
                 </motion.div>
@@ -222,14 +225,14 @@ export function HomeGallery() {
             <>
               <button
                 onClick={() => setCurrentIndex((prev) => (prev - 1 + imagesToShow.length) % imagesToShow.length)}
-                className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-3 rounded-full shadow-lg z-20 transition"
+                className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-3 rounded-full shadow-lg z-20 transition ring-1 ring-slate-200/70"
                 aria-label="Immagine precedente"
               >
                 <ChevronLeft className="w-6 h-6 text-gray-800" />
               </button>
               <button
                 onClick={() => setCurrentIndex((prev) => (prev + 1) % imagesToShow.length)}
-                className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-3 rounded-full shadow-lg z-20 transition"
+                className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-3 rounded-full shadow-lg z-20 transition ring-1 ring-slate-200/70"
                 aria-label="Immagine successiva"
               >
                 <ChevronRight className="w-6 h-6 text-gray-800" />

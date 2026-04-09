@@ -336,16 +336,17 @@ export default function TerritorioPage() {
             {destinations.map((destination, index) => {
               const Icon = destination.icon
               return (
-                <Card key={destination.id} className="group relative overflow-hidden border border-white/60 bg-white/80 backdrop-blur-sm shadow-lg hover:shadow-2xl transition-all">
+                <Card key={destination.id} className="group relative overflow-hidden border border-white/60 bg-white/85 backdrop-blur-sm shadow-[0_20px_60px_rgba(15,23,42,0.10)] hover:shadow-[0_28px_80px_rgba(15,23,42,0.14)] transition-all">
                   <div className="absolute inset-0 pointer-events-none bg-gradient-to-br from-amber-100/40 via-transparent to-sky-100/40 opacity-0 group-hover:opacity-100 transition-opacity" />
                   <div className="relative h-64">
                     <Image
                       src={destination.image}
                       alt={`${destination.name} - ${destination.category}`}
                       fill
-                      className="object-cover"
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
                       sizes="(max-width: 768px) 100vw, 50vw"
                     />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/35 via-transparent to-transparent" />
                     <div className="absolute top-4 left-4">
                       <span className="bg-gradient-to-r from-sky-500 to-cyan-500 text-white px-3 py-1 rounded-full text-sm font-semibold shadow-md">
                         {destination.category}
@@ -380,12 +381,12 @@ export default function TerritorioPage() {
                     {destination.images.length > 1 && (
                       <div className="grid grid-cols-3 gap-2 mb-4">
                         {destination.images.slice(0, 3).map((image, imageIndex) => (
-                          <div key={`${destination.id}-thumb-${imageIndex}`} className="relative h-20 overflow-hidden rounded-lg border border-slate-200">
+                          <div key={`${destination.id}-thumb-${imageIndex}`} className="relative h-20 overflow-hidden rounded-xl border border-slate-200 shadow-sm">
                             <Image
                               src={image}
                               alt={`${destination.name} - anteprima ${imageIndex + 1}`}
                               fill
-                              className="object-cover"
+                              className="object-cover transition-transform duration-300 hover:scale-105"
                               sizes="120px"
                             />
                           </div>
@@ -408,7 +409,7 @@ export default function TerritorioPage() {
                     )}
 
                     {(destination.officialSite || destination.contactLine1) && (
-                      <div className="mb-4 rounded-xl border border-sky-100 bg-sky-50/80 p-4 text-sm">
+                      <div className="mb-4 rounded-2xl border border-sky-100 bg-gradient-to-br from-sky-50 to-white p-4 text-sm shadow-sm">
                         <p className="font-semibold text-slate-900 mb-2">Informazioni utili verificate</p>
                         {destination.officialSite && destination.officialLabel && (
                           <p className="mb-1">
