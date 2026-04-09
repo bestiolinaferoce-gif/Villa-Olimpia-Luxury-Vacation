@@ -21,7 +21,7 @@ import { WebVitalsReporter } from "@/components/analytics/web-vitals-reporter"
 import { AutoOptimizer } from "@/components/auto-optimizer"
 import { LazyOverlays } from "@/components/lazy-overlays"
 
-import { getAverageRating, reviews } from "@/data/reviews-complete"
+import { apartments, getApartmentBedSchema, getApartmentSlug } from "@/data/apartments"
 
 const inter = Inter({ 
   subsets: ["latin"],
@@ -79,6 +79,14 @@ export default async function LocaleLayout({
   // Carica i messaggi per il locale corrente
   const messages = await getMessages()
   const localizedCanonical = locale === 'it' ? BASE_URL : `${BASE_URL}/${locale}`
+  const vacationRentalImages = Array.from(
+    new Set(
+      apartments
+        .flatMap((apartment) => apartment.images?.length ? apartment.images : [apartment.image])
+        .filter(Boolean)
+        .map((image) => `${BASE_URL}${image}`),
+    ),
+  ).slice(0, 12)
 
   return (
     <html lang={locale} className={`${inter.variable} ${playfair.variable}`} suppressHydrationWarning>
@@ -135,8 +143,9 @@ export default async function LocaleLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": ["LodgingBusiness", "VacationRental"],
-              "@id": "https://villaolimpiacaporizzuto.com/#business",
+              "@id": `${BASE_URL}/#business`,
               name: "Villa Olimpia",
+              additionalType: "HolidayVillageRental",
               description: locale === 'it' 
                 ? "9 appartamenti di lusso con piscina privata a Capo Rizzuto, Calabria. A 100 metri dalla Spiaggia dei Gigli, Area Marina Protetta Capo Rizzuto."
                 : locale === 'en'
@@ -144,6 +153,8 @@ export default async function LocaleLayout({
                 : "9 luxury apartments with outdoor shared swimming pool in Capo Rizzuto, Calabria.",
               url: localizedCanonical,
               telephone: "+393335773390",
+              latitude: 38.913856,
+              longitude: 17.0754964,
               address: {
                 "@type": "PostalAddress",
                 streetAddress: "Località Capopiccolo snc",
@@ -177,17 +188,8 @@ export default async function LocaleLayout({
                 }
               ],
               priceRange: "€€",
-              image: `${BASE_URL}/og-image.jpg`,
+              image: vacationRentalImages,
               numberOfRooms: 9,
-              ...(getAverageRating() > 0 && reviews.length > 0 ? {
-                aggregateRating: {
-                  "@type": "AggregateRating",
-                  ratingValue: Math.round(getAverageRating() * 10) / 10,
-                  reviewCount: reviews.length,
-                  bestRating: 5,
-                  worstRating: 1
-                }
-              } : {}),
               amenityFeature: [
                 {
                   "@type": "LocationFeatureSpecification",
@@ -235,6 +237,25 @@ export default async function LocaleLayout({
                   value: true
                 }
               ],
+              identifier: "villa-olimpia-capo-rizzuto",
+              containsPlace: apartments.map((apartment) => ({
+                "@type": "Accommodation",
+                additionalType: "EntirePlace",
+                name: `Appartamento ${apartment.name}`,
+                url: `${BASE_URL}/appartamenti/${getApartmentSlug(apartment)}`,
+                bed: getApartmentBedSchema(apartment),
+                occupancy: {
+                  "@type": "QuantitativeValue",
+                  value: apartment.guests,
+                },
+                numberOfBedrooms: apartment.bedrooms,
+                numberOfBathroomsTotal: apartment.bathrooms,
+                amenityFeature: apartment.features.map((feature) => ({
+                  "@type": "LocationFeatureSpecification",
+                  name: feature,
+                  value: true,
+                })),
+              })),
               nearbyAttraction: [
                 {
                   "@type": "TouristAttraction",

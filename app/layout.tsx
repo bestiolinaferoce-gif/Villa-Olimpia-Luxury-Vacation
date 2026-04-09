@@ -21,7 +21,7 @@ import NewsletterPopup from "@/components/newsletter-popup"
 import { I18nProvider } from "@/components/i18n-provider"
 
 import { getAverageRating, reviews } from "@/data/reviews-complete"
-import { apartments } from "@/data/apartments"
+import { apartments, getApartmentSlug } from "@/data/apartments"
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
@@ -187,7 +187,7 @@ export default function RootLayout({
               containsPlace: apartments.map((apartment) => ({
                 "@type": "Accommodation",
                 name: `Appartamento ${apartment.name}`,
-                url: `${BASE_URL}/appartamenti/${apartment.name.toLowerCase()}`
+                url: `${BASE_URL}/appartamenti/${getApartmentSlug(apartment)}`
               })),
               availableAtOrFrom: {
                 "@type": "Offer",
