@@ -86,7 +86,7 @@ const destinations: TouristDestination[] = [
     distance: "65 km",
     driveTime: "1 ora 10 min",
     description: "Riserva naturale spettacolare con cascate, gole profonde e natura selvaggia. Patrimonio naturalistico della Calabria. Escursioni guidate e sentieri per tutti i livelli.",
-    image: "/images/villa/location/spiaggia-dei-gigli-2.jpg",
+    image: "/images/territory/valli-cupe-canyon.jpg",
     imageAlt: "Valli Cupe Calabria - Cascate gole natura selvaggia escursioni 4K",
     highlights: ["Riserva naturale", "Cascate spettacolari", "Gole profonde", "Escursioni guidate", "Natura selvaggia"],
     bestTime: "Aprile - Ottobre",

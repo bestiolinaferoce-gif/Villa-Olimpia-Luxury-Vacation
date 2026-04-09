@@ -33,9 +33,9 @@ const destinations = [
     distance: "circa 1h 15 min",
     duration: "mezza giornata / giornata",
     difficulty: "Media",
-    price: "ingressi e guide da verificare",
-    description: "Valli Cupe, nell'entroterra catanzarese, è una delle escursioni naturalistiche più suggestive della Calabria: gole, salti d'acqua, vegetazione fitta e percorsi da affrontare con scarpe adatte e tempi rilassati.",
-    fullDescription: "È una gita adatta a chi desidera alternare il mare della costa ionica a un'esperienza più verde e fresca nell'entroterra. Per alcuni itinerari è utile verificare in anticipo apertura, accessi e disponibilità di guide locali.",
+    price: "accessi, guide e aperture da verificare",
+    description: "La Riserva Naturale Regionale Valli Cupe, nell'area di Sersale, è una delle escursioni più interessanti dell'entroterra calabrese per chi cerca canyon, gole, sentieri freschi e scorci d'acqua lontani dalla costa.",
+    fullDescription: "È una gita adatta a chi desidera alternare il mare della costa ionica a un'esperienza più verde e fresca. Le condizioni dei sentieri, gli accessi e l'eventuale supporto di guide locali vanno controllati prima della partenza sui canali ufficiali.",
     highlights: [
       "canyon e cascatelle",
       "sentieri naturalistici",
@@ -43,24 +43,30 @@ const destinations = [
       "guide locali in stagione",
       "ideale in primavera ed estate"
     ],
-    image: "/images/territory/valli-cupe-crocchio.jpg",
+    image: "/images/territory/valli-cupe-canyon.jpg",
     images: [
-      "/images/territory/valli-cupe-crocchio.jpg"
+      "/images/territory/valli-cupe-canyon.jpg",
+      "/images/territory/valli-cupe-sentiero.jpg",
+      "/images/territory/valli-cupe-cascata.jpg"
     ],
     icon: Mountain,
     href: "/cosa-fare-capo-rizzuto",
-    coordinates: { lat: 39.0667, lng: 16.7833 }
+    coordinates: { lat: 39.0667, lng: 16.7833 },
+    officialSite: "https://comune.sersale.cz.it/novita/riserva-regionale-valli-cupe/",
+    officialLabel: "Info ufficiali sulla Riserva Valli Cupe",
+    contactLine1: "Comune di Sersale · Centralino 0961 930911",
+    contactLine2: "Ente gestore: Associazione dei Comuni della Riserva"
   },
   {
     id: "castello-santa-severina",
-    name: "Castello di Santa Severina",
+    name: "Santa Severina e Castello Normanno",
     category: "Cultura e Storia",
     distance: "circa 50 minuti",
     duration: "2-3 ore",
     difficulty: "Facile",
-    price: "biglietto da verificare",
-    description: "Santa Severina è uno dei borghi storici più affascinanti dell'entroterra crotonese. Il castello domina la valle e la visita si abbina bene a una mezza giornata tra vicoli, panorama e identità storica calabrese.",
-    fullDescription: "È una gita molto adatta a chi durante la vacanza vuole affiancare al mare un momento culturale. Il borgo e il castello offrono una lettura diversa del territorio, più interna e autentica, a distanza gestibile da Villa Olimpia.",
+    price: "intero €5 · ridotto €3",
+    description: "Santa Severina, tra i borghi più belli della Calabria, è una gita culturale molto solida per chi vuole affiancare al mare un castello normanno, il battistero bizantino e uno dei panorami più noti della valle del Neto.",
+    fullDescription: "Il borgo ruota attorno a Piazza Campo, al castello e ai luoghi religiosi storici. È una visita adatta a coppie, famiglie e ospiti che vogliono inserire nel soggiorno una mezza giornata più culturale, con informazioni ufficiali facili da verificare online.",
     highlights: [
       "castello normanno",
       "borgo storico",
@@ -68,13 +74,19 @@ const destinations = [
       "itinerario culturale",
       "abbinabile a pranzo tipico"
     ],
-    image: "/images/territory/castello-santa-severina.jpg",
+    image: "/images/territory/santa-severina-panorama.jpg",
     images: [
-      "/images/territory/castello-santa-severina.jpg"
+      "/images/territory/santa-severina-panorama.jpg",
+      "/images/territory/santa-severina-borgo.jpg",
+      "/images/territory/santa-severina-castello.jpg"
     ],
     icon: Castle,
     href: "/cosa-fare-capo-rizzuto",
-    coordinates: { lat: 39.1481, lng: 16.9133 }
+    coordinates: { lat: 39.1481, lng: 16.9133 },
+    officialSite: "https://www.comune.santaseverina.kr.it/vivere_il_comune/luoghi/luogo_5.html",
+    officialLabel: "Sito ufficiale Castello Normanno",
+    contactLine1: "Comune di Santa Severina · 0962 51062",
+    contactLine2: "protocollo@comune.santaseverina.kr.it"
   },
   {
     id: "sila-piccola",
@@ -364,6 +376,22 @@ export default function TerritorioPage() {
                     <p className="text-muted-foreground mb-4">
                       {destination.description}
                     </p>
+
+                    {destination.images.length > 1 && (
+                      <div className="grid grid-cols-3 gap-2 mb-4">
+                        {destination.images.slice(0, 3).map((image, imageIndex) => (
+                          <div key={`${destination.id}-thumb-${imageIndex}`} className="relative h-20 overflow-hidden rounded-lg border border-slate-200">
+                            <Image
+                              src={image}
+                              alt={`${destination.name} - anteprima ${imageIndex + 1}`}
+                              fill
+                              className="object-cover"
+                              sizes="120px"
+                            />
+                          </div>
+                        ))}
+                      </div>
+                    )}
                     
                     {destination.highlights && destination.highlights.length > 0 && (
                       <div className="mb-4">
@@ -376,6 +404,26 @@ export default function TerritorioPage() {
                             </li>
                           ))}
                         </ul>
+                      </div>
+                    )}
+
+                    {(destination.officialSite || destination.contactLine1) && (
+                      <div className="mb-4 rounded-xl border border-sky-100 bg-sky-50/80 p-4 text-sm">
+                        <p className="font-semibold text-slate-900 mb-2">Informazioni utili verificate</p>
+                        {destination.officialSite && destination.officialLabel && (
+                          <p className="mb-1">
+                            <a
+                              href={destination.officialSite}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="font-medium text-sky-700 underline underline-offset-4"
+                            >
+                              {destination.officialLabel}
+                            </a>
+                          </p>
+                        )}
+                        {destination.contactLine1 && <p className="text-muted-foreground">{destination.contactLine1}</p>}
+                        {destination.contactLine2 && <p className="text-muted-foreground">{destination.contactLine2}</p>}
                       </div>
                     )}
                     
@@ -526,7 +574,7 @@ export default function TerritorioPage() {
               <div className="text-center mt-8">
                 <Button size="lg" variant="secondary" asChild>
                   <Link href="/contatti">
-                    Chiedici un consiglio sul territorio
+                    Verifica disponibilità per il tuo tour
                   </Link>
                 </Button>
               </div>
@@ -579,8 +627,9 @@ export default function TerritorioPage() {
                 </div>
               </div>
               <p className="mt-6 text-xs text-muted-foreground">
-                Crediti immagini esterne: Valli Cupe, foto di Francesco Placco, licenza CC BY-SA 4.0 via Wikimedia Commons.
-                Castello di Santa Severina, foto di Drnico, pubblico dominio via Wikimedia Commons.
+                Le immagini di Santa Severina e Valli Cupe presenti in questa pagina sono state selezionate e ottimizzate
+                per il sito di Villa Olimpia. Orari, accessi e riferimenti utili vanno sempre verificati sui siti ufficiali
+                indicati prima della visita.
               </p>
             </div>
           </div>

@@ -67,6 +67,26 @@ const galleryImages = [
     alt: 'Castello Aragonese di Le Castella al tramonto',
     category: 'Territorio'
   },
+  {
+    src: '/images/territory/santa-severina-panorama.jpg',
+    alt: 'Santa Severina con castello e panorama sulla valle del Neto',
+    category: 'Territorio'
+  },
+  {
+    src: '/images/territory/santa-severina-castello.jpg',
+    alt: 'Castello normanno di Santa Severina durante una gita culturale dalla costa ionica',
+    category: 'Territorio'
+  },
+  {
+    src: '/images/territory/valli-cupe-canyon.jpg',
+    alt: 'Valli Cupe tra canyon, gole e sentieri nell entroterra calabrese',
+    category: 'Territorio'
+  },
+  {
+    src: '/images/territory/valli-cupe-cascata.jpg',
+    alt: 'Valli Cupe con pareti rocciose e acqua lungo i percorsi naturalistici',
+    category: 'Territorio'
+  },
   // VILLA - Esterni e facciate (solo foto esistenti)
   {
     src: '/images/villa/gallery/Esterni_Facciata_Giorno_01.jpg',

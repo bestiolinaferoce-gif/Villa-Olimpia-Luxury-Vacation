@@ -228,14 +228,14 @@ export const apartments: Apartment[] = [
     bedrooms: 1,
     bathrooms: 1,
     features: ["Balcone vista mare", "Zona living spaziosa", "Cucina attrezzata", "Aria condizionata", "WiFi gratuito", "TV Smart", "Biancheria inclusa", "Prodotti bagno", "Primo piano"],
-    // ✅ FOTO AGGIORNATE 2025 - 4 foto nuove
+    // ✅ FOTO AGGIORNATE 2025 - 5 foto appartamento + rimosso duplicato main.jpg
     image: "/images/villa/appartamenti/gardenia/main.jpg",
     images: [
       "/images/villa/appartamenti/gardenia/main.jpg",
       "/images/villa/appartamenti/gardenia/Gardenia_Camera_01.jpg",
       "/images/villa/appartamenti/gardenia/Gardenia_Camera_02.jpg",
       "/images/villa/appartamenti/gardenia/Gardenia_Bagno_01.jpg",
-      "/images/villa/appartamenti/gardenia/main.jpg",
+      "/images/villa/appartamenti/gardenia/Gardenia_Living_01.jpg",
       "/images/villa/gallery/Esterni_Piscina_Giorno_01.jpg",
       "/images/villa/gallery/Esterni_Giardino_Overview_01.jpg",
     ],
@@ -253,7 +253,7 @@ export const apartments: Apartment[] = [
     bedrooms: 1,
     bathrooms: 1,
     features: ["Terrazza privata panoramica", "Vista mare spettacolare", "Design moderno", "Aria condizionata", "WiFi gratuito", "Cucina completa", "TV Smart", "Biancheria inclusa", "Prodotti bagno", "Primo piano"],
-    // ✅ FOTO AGGIORNATE 2025 - 17 foto nuove
+    // ✅ FOTO AGGIORNATE 2025 - 16 foto (aggiunto Living_01/02 esistenti su disco)
     image: "/images/villa/appartamenti/azalea/Azalea_Camera_01.jpg",
     images: [
       "/images/villa/appartamenti/azalea/Azalea_Camera_01.jpg",
@@ -263,6 +263,8 @@ export const apartments: Apartment[] = [
       "/images/villa/appartamenti/azalea/Azalea_Bagno_01.jpg",
       "/images/villa/appartamenti/azalea/Azalea_Cucina_01.jpg",
       "/images/villa/appartamenti/azalea/Azalea_Cucina_02.jpg",
+      "/images/villa/appartamenti/azalea/Azalea_Living_01.jpg",
+      "/images/villa/appartamenti/azalea/Azalea_Living_02.jpg",
       "/images/villa/appartamenti/azalea/Azalea_Terrazza_01.jpg",
       "/images/villa/appartamenti/azalea/Azalea_Terrazza_02.jpg",
       "/images/villa/appartamenti/azalea/Azalea_Terrazza_03.jpg",
