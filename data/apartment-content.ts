@@ -211,9 +211,9 @@ Per chi cerca un appartamento tranquillo a Capo Rizzuto vicino alla Spiaggia dei
     }
   },
   7: {
-    // GERANIO - 65 mq, 6 ospiti, 2 camere, 2 bagni, primo piano, 2 balconcini semipanoramici
-    shortDescription: "Appartamento Geranio a Capo Rizzuto: la soluzione premium di Villa Olimpia con 2 camere, 2 bagni e 2 balconcini semipanoramici, ideale per famiglie e piccoli gruppi.",
-    fullPremiumDescription: `L'appartamento Geranio di Villa Olimpia è una delle soluzioni più complete e rappresentative della struttura. Situato al primo piano a Capopiccolo, è pensato per chi desidera soggiornare a Capo Rizzuto con più spazio, comfort e una posizione strategica per vivere il mare e il territorio.
+    // GERANIO - 65 mq, 6 ospiti, 2 camere, 2 bagni, attico premium al primo piano, 2 balconcini semipanoramici
+    shortDescription: "Attico Geranio a Capo Rizzuto: la soluzione premium di Villa Olimpia con 2 camere, 2 bagni e 2 balconcini semipanoramici, ideale per famiglie e piccoli gruppi.",
+    fullPremiumDescription: `L'attico Geranio di Villa Olimpia è una delle soluzioni più complete e rappresentative della struttura. Situato al primo piano a Capopiccolo, è pensato per chi desidera soggiornare a Capo Rizzuto con più spazio, comfort e una posizione strategica per vivere il mare e il territorio.
 
 Geranio si distingue per l'equilibrio tra ampiezza, funzionalità e qualità della permanenza. Le due camere da letto, i due bagni, il soggiorno ampio e i due balconcini semipanoramici arredati rendono questa unità particolarmente adatta a famiglie numerose, gruppi di amici o ospiti che desiderano un livello di comodità superiore.
 
@@ -235,25 +235,25 @@ Per posizione, dotazioni e qualità complessiva, Geranio è una delle scelte pi�
       "Gruppi di amici",
       "Soggiorni premium a Capo Rizzuto"
     ],
-    seoParagraph: "Geranio è l'appartamento premium di Villa Olimpia a Capopiccolo, Isola di Capo Rizzuto: 65 mq, 2 camere, 2 bagni e 2 balconcini semipanoramici arredati. È una soluzione ideale per chi cerca un appartamento a Capo Rizzuto con piscina, vicino alla Spiaggia dei Gigli e all'Area Marina Protetta, con spazi generosi, comfort superiore e prenotazione diretta.",
+    seoParagraph: "Geranio è l'attico premium di Villa Olimpia a Capopiccolo, Isola di Capo Rizzuto: 65 mq, 2 camere, 2 bagni e 2 balconcini semipanoramici arredati. È una soluzione ideale per chi cerca un appartamento a Capo Rizzuto con piscina, vicino alla Spiaggia dei Gigli e all'Area Marina Protetta, con spazi generosi, comfort superiore e prenotazione diretta.",
     technicalSummary: {
       capacity: "6",
       rooms: "2 da letto",
       bathrooms: "2",
       outdoorArea: "2 balconcini semipanoramici",
-      floor: "Primo"
+      floor: "Attico"
     }
   },
   8: {
     // GARDENIA - 52 mq, 4 ospiti, 1 camera, 1 bagno, primo piano centro
-    shortDescription: "Appartamento Gardenia a Capopiccolo: soluzione luminosa con balcone vista mare Ionio, ideale per coppie e famiglie che vogliono soggiornare vicino alla Spiaggia dei Gigli.",
+    shortDescription: "Appartamento Gardenia a Capopiccolo: soluzione luminosa con 2 balconi vista mare Ionio, ideale per coppie e famiglie che vogliono soggiornare vicino alla Spiaggia dei Gigli.",
     fullPremiumDescription: `L'appartamento Gardenia di Villa Olimpia è una soluzione molto equilibrata per chi desidera una vacanza a Capo Rizzuto con vista aperta, ambienti luminosi e una posizione favorevole per vivere il mare con comodità. Situato al primo piano a Capopiccolo, è adatto a coppie e famiglie che cercano un soggiorno rilassante in un contesto ben organizzato.
 
-La luce naturale e il balcone con vista sul mare Ionio sono due degli elementi che rendono Gardenia particolarmente piacevole da vivere. Gli spazi sono pensati per offrire comfort e semplicità: camera matrimoniale, zona living con divano letto, cucina attrezzata e una distribuzione adatta a chi vuole sentirsi libero durante il soggiorno.
+La luce naturale e i 2 balconi con vista sul mare Ionio sono due degli elementi che rendono Gardenia particolarmente piacevole da vivere. Gli spazi sono pensati per offrire comfort e semplicità: camera matrimoniale, zona living con divano letto, cucina attrezzata e una distribuzione adatta a chi vuole sentirsi libero durante il soggiorno.
 
 Per chi cerca un appartamento a Capo Rizzuto vicino al mare ma in una posizione tranquilla, Gardenia rappresenta una scelta molto valida. La struttura consente di raggiungere facilmente la Spiaggia dei Gigli, la piscina condivisa e le altre aree di Villa Olimpia, mantenendo un buon equilibrio tra privacy, panorama e praticità.`,
     featureBullets: [
-      "Balcone con vista mare Ionio",
+      "2 balconi con vista mare Ionio",
       "Camera matrimoniale e divano letto",
       "Zona living spaziosa e luminosa",
       "Cucina attrezzata completa",
@@ -267,12 +267,12 @@ Per chi cerca un appartamento a Capo Rizzuto vicino al mare ma in una posizione 
       "Famiglie 2+2",
       "Chi cerca tranquillità vista mare"
     ],
-    seoParagraph: "Gardenia è un appartamento di Villa Olimpia a Capopiccolo, Isola di Capo Rizzuto, ideale per chi cerca un soggiorno vicino al mare con balcone vista Ionio, piscina condivisa e accesso rapido alla Spiaggia dei Gigli. È una soluzione adatta a coppie e famiglie 2+2 che vogliono vivere Capo Rizzuto in modo comodo, con prenotazione diretta e una posizione forte sul territorio.",
+    seoParagraph: "Gardenia è un appartamento di Villa Olimpia a Capopiccolo, Isola di Capo Rizzuto, ideale per chi cerca un soggiorno vicino al mare con 2 balconi vista Ionio, piscina condivisa e accesso rapido alla Spiaggia dei Gigli. È una soluzione adatta a coppie e famiglie 2+2 che vogliono vivere Capo Rizzuto in modo comodo, con prenotazione diretta e una posizione forte sul territorio.",
     technicalSummary: {
       capacity: "4",
       rooms: "1 matrimoniale",
       bathrooms: "1",
-      outdoorArea: "Balcone vista mare",
+      outdoorArea: "2 balconi vista mare",
       floor: "Primo"
     }
   },

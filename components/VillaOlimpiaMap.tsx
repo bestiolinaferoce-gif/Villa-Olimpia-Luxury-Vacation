@@ -169,7 +169,7 @@ const PRIMO_PIANO: AptData[] = [
     sqm: 52, guests: 4, bedrooms: 1, bathrooms: 1,
     layout: { x: 35, y: 0, w: 30, h: 100 },
     amenities: ['sea_view', 'spacious', 'kitchen', 'ac', 'wifi', 'tv', 'linens', 'bath_products', 'first_floor'],
-    highlight: 'Balcone vista mare Ionio' },
+    highlight: '2 balconi vista mare Ionio' },
   { id: 'azalea', name: 'Azalea', floor: 'primo',
     sqm: 50, guests: 4, bedrooms: 1, bathrooms: 1,
     layout: { x: 65, y: 0, w: 35, h: 100 },

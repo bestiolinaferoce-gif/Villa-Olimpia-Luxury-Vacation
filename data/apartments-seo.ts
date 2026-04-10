@@ -193,8 +193,8 @@ Cucina completa, aria condizionata, WiFi, TV Smart. Prezzo da €120/notte. Book
   7: {
     id: 7,
     name: "Geranio",
-    seoTitle: "Appartamento Premium Geranio Villa Olimpia - 6 Ospiti | 2 Balconcini Semipanoramici | Primo Piano",
-    seoDescription: "Appartamento Premium Geranio 65 mq, 2 balconcini semipanoramici arredati, 6 ospiti, 2 camere, 2 bagni. Villa Olimpia Capopiccolo. Booking.com e Airbnb.",
+    seoTitle: "Attico Premium Geranio Villa Olimpia - 6 Ospiti | 2 Balconcini Semipanoramici",
+    seoDescription: "Attico Premium Geranio 65 mq, 2 balconcini semipanoramici arredati, 6 ospiti, 2 camere, 2 bagni. Villa Olimpia Capopiccolo. Booking.com e Airbnb.",
     seoKeywords: [
       "appartamento geranio villa olimpia",
       "appartamento premium geranio",
@@ -205,7 +205,7 @@ Cucina completa, aria condizionata, WiFi, TV Smart. Prezzo da €120/notte. Book
       "airbnb geranio calabria",
       "luxury apartment 6 guests isola capo rizzuto"
     ],
-    seoContent: `L'appartamento Geranio è l'appartamento più grande e prestigioso di Villa Olimpia, situato al primo piano a sinistra. Con 65 mq di superficie, questo appartamento premium può ospitare comodamente fino a 6 persone ed è dotato di 2 camere da letto e 2 bagni.
+    seoContent: `L'attico Geranio è l'appartamento più grande e prestigioso di Villa Olimpia, situato al primo piano a sinistra. Con 65 mq di superficie, questo appartamento premium può ospitare comodamente fino a 6 persone ed è dotato di 2 camere da letto e 2 bagni.
 
 La caratteristica principale dell'appartamento Geranio sono i 2 balconcini semipanoramici arredati con affaccio sul giardino. Il soggiorno ampio e i doppi servizi garantiscono massimo comfort e privacy, rendendolo perfetto per famiglie o gruppi di amici.
 
@@ -230,19 +230,19 @@ Disponibile per prenotazioni su Booking.com, Airbnb o direttamente tramite il si
   8: {
     id: 8,
     name: "Gardenia",
-    seoTitle: "Appartamento Gardenia Villa Olimpia - 4 Ospiti | Balcone Vista Mare | Primo Piano",
-    seoDescription: "Appartamento Gardenia 52 mq, balcone vista mare, zona living spaziosa, 4 ospiti. Villa Olimpia Capopiccolo Primo Piano. Booking.com e Airbnb.",
+    seoTitle: "Appartamento Gardenia Villa Olimpia - 4 Ospiti | 2 Balconi Vista Mare | Primo Piano",
+    seoDescription: "Appartamento Gardenia 52 mq, 2 balconi vista mare, zona living spaziosa, 4 ospiti. Villa Olimpia Capopiccolo Primo Piano. Booking.com e Airbnb.",
     seoKeywords: [
       "appartamento gardenia villa olimpia",
       "affitto gardenia primo piano",
       "vacation rental gardenia calabria",
-      "balcone vista mare capopiccolo",
+      "2 balconi vista mare capopiccolo",
       "booking gardenia villa olimpia",
       "airbnb gardenia isola capo rizzuto"
     ],
     seoContent: `L'appartamento Gardenia è un appartamento di 52 mq al centro del primo piano di Villa Olimpia, Capopiccolo, Isola di Capo Rizzuto. Ospita fino a 4 persone con 1 camera matrimoniale, zona living con divano letto, cucina attrezzata e 1 bagno.
 
-Il balcone con vista mare Ionio illumina gli ambienti e regala tramonti sul golfo. Living spazioso e luminoso; accesso a piscina condivisa, giardino e area barbecue. A 100 m dalla Spiaggia dei Gigli, Area Marina Protetta Capo Rizzuto.
+I 2 balconi con vista mare Ionio illuminano gli ambienti e regalano tramonti sul golfo. Living spazioso e luminoso; accesso a piscina condivisa, giardino e area barbecue. A 100 m dalla Spiaggia dei Gigli, Area Marina Protetta Capo Rizzuto.
 
 Cucina attrezzata, aria condizionata, WiFi, TV Smart. Prezzo da €150/notte. Booking.com, Airbnb e prenotazione diretta.`,
     bookingKeywords: [
