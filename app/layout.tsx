@@ -109,7 +109,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": ["LodgingBusiness", "VacationRental"],
+              "@type": "LodgingBusiness",
               "@id": `${BASE_URL}/#business`,
               name: "Villa Olimpia",
               description:
