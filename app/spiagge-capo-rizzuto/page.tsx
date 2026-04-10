@@ -119,13 +119,13 @@ export default function SpiaggeCapoRizzutoPage() {
           </p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {selectedBeachPhotoSet.map((photo) => (
-              <div key={photo.src} className="group rounded-xl overflow-hidden border border-primary/10 bg-white shadow-sm hover:shadow-md transition-shadow">
+              <div key={photo.src} className="rounded-xl overflow-hidden border border-primary/10 bg-white shadow-sm">
                 <div className="relative aspect-[4/3]">
                   <Image
                     src={photo.src}
                     alt={photo.alt}
                     fill
-                    className="object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+                    className="object-cover"
                     sizes="(max-width: 768px) 50vw, 25vw"
                   />
                 </div>
@@ -414,69 +414,6 @@ export default function SpiaggeCapoRizzutoPage() {
       </section>
 
       {/* Why Villa Olimpia */}
-
-      <section className="py-14 bg-white">
-        <div className="container mx-auto px-4 max-w-6xl">
-          <h2 className="text-3xl md:text-4xl font-playfair font-bold text-center mb-4">
-            Le spiagge più belle della costa ionica in foto
-          </h2>
-          <p className="text-center text-muted-foreground max-w-3xl mx-auto mb-8">
-            Selezione reale dal territorio di Capo Rizzuto: Spiaggia Grande, Spiagge Rosse, Le Castella e Area Marina Protetta.
-          </p>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {selectedBeachPhotoSet.map((photo) => (
-              <div key={photo.src} className="group rounded-xl overflow-hidden border border-primary/10 bg-white shadow-sm hover:shadow-md transition-shadow">
-                <div className="relative aspect-[4/3]">
-                  <Image
-                    src={photo.src}
-                    alt={photo.alt}
-                    fill
-                    className="object-cover transition-transform duration-300 group-hover:scale-[1.03]"
-                    sizes="(max-width: 768px) 50vw, 25vw"
-                  />
-                </div>
-                <p className="px-3 py-2 text-xs sm:text-sm font-medium text-slate-700">{photo.label}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="py-14 bg-slate-50/60 border-y border-primary/10">
-        <div className="container mx-auto px-4 max-w-6xl">
-          <h2 className="text-3xl font-playfair font-bold text-center mb-8">Guida pratica alle spiagge</h2>
-          <div className="grid md:grid-cols-3 gap-5">
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-xl">Per famiglie</CardTitle>
-              </CardHeader>
-              <CardContent className="text-sm text-slate-700 space-y-2">
-                <p><strong>Consigliate:</strong> Spiaggia dei Gigli, Spiaggia Grande.</p>
-                <p><strong>Punti forti:</strong> accesso semplice, fondali graduali, stabilimenti vicini.</p>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-xl">Per snorkeling</CardTitle>
-              </CardHeader>
-              <CardContent className="text-sm text-slate-700 space-y-2">
-                <p><strong>Consigliate:</strong> calette di Capopiccolo e Area Marina Protetta.</p>
-                <p><strong>Punti forti:</strong> acqua limpida e fondali interessanti vicino costa.</p>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-xl">Per tramonto e foto</CardTitle>
-              </CardHeader>
-              <CardContent className="text-sm text-slate-700 space-y-2">
-                <p><strong>Consigliate:</strong> Le Castella e affacci della riserva marina.</p>
-                <p><strong>Punti forti:</strong> luce serale, skyline del castello, costa panoramica.</p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
       <section className="py-20 bg-gradient-to-b from-[#f5fbff] to-[#e6f4ff]">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
