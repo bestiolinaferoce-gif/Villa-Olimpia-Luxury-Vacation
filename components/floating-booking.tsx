@@ -17,6 +17,9 @@ export default function FloatingBooking() {
   const [show, setShow] = useState(false)
   const [expanded, setExpanded] = useState(false)
   const [mounted, setMounted] = useState(false)
+  const [name, setName] = useState("")
+  const [email, setEmail] = useState("")
+  const [phone, setPhone] = useState("")
   const [checkIn, setCheckIn] = useState("")
   const [checkOut, setCheckOut] = useState("")
   const [guests, setGuests] = useState("2")
@@ -87,6 +90,18 @@ export default function FloatingBooking() {
     setError(null)
     if (honeypot) return
 
+    if (!name.trim() || name.trim().length < 2) {
+      setError("Inserisci il tuo nome (minimo 2 caratteri).")
+      return
+    }
+    if (!email.trim() || !email.includes("@") || !email.includes(".")) {
+      setError("Inserisci un indirizzo email valido.")
+      return
+    }
+    if (!phone.trim() || phone.replace(/\D/g, "").length < 7) {
+      setError("Inserisci un numero di telefono valido.")
+      return
+    }
     if (!checkIn || !checkOut) {
       setError("Seleziona check-in e check-out.")
       return
@@ -104,6 +119,9 @@ export default function FloatingBooking() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
+          name: name.trim(),
+          email: email.trim(),
+          phone: phone.trim(),
           checkIn,
           checkOut,
           guests,
@@ -203,7 +221,7 @@ export default function FloatingBooking() {
                   <div className="space-y-4 text-center py-2">
                     <CheckCircle2 className="w-12 h-12 text-emerald-600 mx-auto" />
                     <p className="text-sm text-muted-foreground">
-                      Richiesta inviata. Ti risponderemo al più presto. Puoi anche scriverci su WhatsApp.
+                      Richiesta inviata. Ti risponderemo via email o telefono al più presto. Puoi anche scriverci su WhatsApp.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-2">
                       <Button variant="outline" className="flex-1" asChild>
@@ -230,6 +248,49 @@ export default function FloatingBooking() {
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                      <div className="space-y-1.5">
+                        <Label htmlFor="fb-name">Nome *</Label>
+                        <input
+                          id="fb-name"
+                          type="text"
+                          value={name}
+                          onChange={(e) => setName(e.target.value)}
+                          className="w-full px-3 py-2 border rounded-lg text-sm"
+                          placeholder="Il tuo nome"
+                          required
+                          autoComplete="name"
+                        />
+                      </div>
+                      <div className="space-y-1.5">
+                        <Label htmlFor="fb-phone">Telefono *</Label>
+                        <input
+                          id="fb-phone"
+                          type="tel"
+                          value={phone}
+                          onChange={(e) => setPhone(e.target.value)}
+                          className="w-full px-3 py-2 border rounded-lg text-sm"
+                          placeholder="+39 333 0000000"
+                          required
+                          autoComplete="tel"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="space-y-1.5">
+                      <Label htmlFor="fb-email">Email *</Label>
+                      <input
+                        id="fb-email"
+                        type="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        className="w-full px-3 py-2 border rounded-lg text-sm"
+                        placeholder="tua@email.com"
+                        required
+                        autoComplete="email"
+                      />
+                    </div>
+
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                       <div className="space-y-1.5">
                         <Label htmlFor="fb-checkin">Check-in</Label>
@@ -313,7 +374,7 @@ export default function FloatingBooking() {
                           Invio in corso...
                         </>
                       ) : (
-                        "Verifica disponibilità"
+                        "Richiedi disponibilità"
                       )}
                     </Button>
 

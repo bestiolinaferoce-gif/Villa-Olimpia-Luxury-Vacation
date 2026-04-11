@@ -16,8 +16,7 @@ import { AnalyticsUnified } from "@/components/analytics/analytics-unified"
 import { MetaPixelOptional } from "@/components/analytics/meta-pixel"
 import { AutoOptimizer } from "@/components/auto-optimizer"
 import { SeasonalRootOverlays } from "@/components/seasonal/SeasonalRootOverlays"
-import FloatingBooking from "@/components/floating-booking"
-import NewsletterPopup from "@/components/newsletter-popup"
+import { LazyOverlays } from "@/components/lazy-overlays"
 import { I18nProvider } from "@/components/i18n-provider"
 
 import { getAverageRating, reviews } from "@/data/reviews-complete"
@@ -208,8 +207,7 @@ export default function RootLayout({
           <I18nProvider>
             <AutoOptimizer />
             <SeasonalRootOverlays />
-            <FloatingBooking />
-            <NewsletterPopup />
+            <LazyOverlays />
             <DirectionsProvider>
               <PreloadResources />
               <TouchOptimizer />

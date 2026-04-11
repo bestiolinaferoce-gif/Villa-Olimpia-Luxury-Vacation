@@ -10,6 +10,9 @@ import {
 import { resolveOwnerEmailRecipients } from "@/lib/lead-inbox"
 
 const availabilitySchema = z.object({
+  name: z.string().min(2).max(120),
+  email: z.string().email(),
+  phone: z.string().min(6).max(40),
   checkIn: z.string().min(1).max(20),
   checkOut: z.string().min(1).max(20),
   guests: z.string().min(1).max(5),
@@ -44,6 +47,9 @@ function isRateLimited(ip: string) {
 }
 
 async function sendAvailabilityEmail(params: {
+  name: string
+  email: string
+  phone: string
   checkIn: string
   checkOut: string
   guests: string
@@ -62,20 +68,25 @@ async function sendAvailabilityEmail(params: {
     return { ok: false as const, reason: "missing_resend_key" }
   }
 
-  const guestSummary = buildOfficialAvailabilityMessage({
-    checkIn: params.checkIn,
-    checkOut: params.checkOut,
-    guests: params.guests,
-    apartment: params.apartment || undefined,
-    sourceLabel: params.source || "sito ufficiale",
-  })
-
   const text = [
-    "Nuova richiesta disponibilità dalla barra prenotazione (Villa Olimpia)",
+    "═══════════════════════════════════════",
+    "NUOVA RICHIESTA DISPONIBILITÀ — Villa Olimpia",
+    "═══════════════════════════════════════",
     "",
-    guestSummary,
+    "DATI CLIENTE:",
+    `Nome:      ${params.name}`,
+    `Email:     ${params.email}`,
+    `Telefono:  ${params.phone}`,
     "",
-    "Metadati:",
+    "RICHIESTA:",
+    `Check-in:      ${params.checkIn}`,
+    `Check-out:     ${params.checkOut}`,
+    `Ospiti:        ${params.guests}`,
+    `Appartamento:  ${params.apartment || "Nessuna preferenza"}`,
+    `Fonte:         ${params.source || "sito ufficiale"}`,
+    "",
+    "───────────────────────────────────────",
+    "Metadati tecnici:",
     `IP: ${params.ip}`,
     `Referer: ${params.referer}`,
     `User-Agent: ${params.userAgent}`,
@@ -90,7 +101,8 @@ async function sendAvailabilityEmail(params: {
     body: JSON.stringify({
       from,
       to,
-      subject: "[Disponibilità] Richiesta da barra sito — Villa Olimpia",
+      reply_to: params.email,
+      subject: `[Disponibilità] ${params.name} — ${params.checkIn} / ${params.checkOut} — Villa Olimpia`,
       text,
     }),
   })
@@ -143,6 +155,9 @@ export async function POST(req: NextRequest) {
     const source = body.source?.trim() || "sticky_booking_bar"
 
     const sent = await sendAvailabilityEmail({
+      name: body.name,
+      email: body.email,
+      phone: body.phone,
       checkIn: body.checkIn,
       checkOut: body.checkOut,
       guests: body.guests,

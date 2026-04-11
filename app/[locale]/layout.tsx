@@ -19,7 +19,6 @@ import { defaultMetadata, BASE_URL, buildHreflangLanguages } from "@/lib/metadat
 import { AnalyticsUnified } from "@/components/analytics/analytics-unified"
 import { WebVitalsReporter } from "@/components/analytics/web-vitals-reporter"
 import { AutoOptimizer } from "@/components/auto-optimizer"
-import { LazyOverlays } from "@/components/lazy-overlays"
 
 import { apartments, getApartmentBedSchema, getApartmentSlug } from "@/data/apartments"
 
@@ -301,7 +300,6 @@ export default async function LocaleLayout({
         <ErrorBoundary>
           <NextIntlClientProvider messages={messages}>
             <AutoOptimizer />
-            <LazyOverlays />
             <DirectionsProvider>
               <PreloadResources />
               <TouchOptimizer />
