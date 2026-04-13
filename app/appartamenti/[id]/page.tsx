@@ -1,7 +1,7 @@
 import { notFound, permanentRedirect } from "next/navigation"
 import Image from "next/image"
 import { getApartmentBedSchema, getApartmentById, getApartmentBySlug, getApartmentSlug, apartments } from "@/data/apartments"
-import { getOccupiedRangesForLodge } from "@/lib/public-calendar/occupancy"
+import { getOccupiedRangesForLodge, lodgeNameForApartment } from "@/lib/public-calendar/occupancy"
 
 export const revalidate = 300
 // FIX: Import esplicito per risolvere problemi di routing
@@ -82,8 +82,7 @@ export default async function ApartmentDetailPage({ params }: PageProps) {
   }
 
   const content = getApartmentContent(apartmentId)
-  const lodgeId = `lodge-${apartmentId}`
-  const occupiedRanges = await getOccupiedRangesForLodge(lodgeId)
+  const occupiedRanges = await getOccupiedRangesForLodge(lodgeNameForApartment(apartmentId))
   const contactHref = `/contatti?source=apartment_detail&apartment=${encodeURIComponent(apartment.name)}&guests=${apartment.guests}#prenota`
   const apartmentWhatsAppHref = buildWhatsAppUrlFromText(
     `Richiesta disponibilita ${apartment.name} - Villa Olimpia:\nDate: \nOspiti: ${apartment.guests}\nAppartamento: ${apartment.name}\nFonte: sito ufficiale (pagina appartamento)`
