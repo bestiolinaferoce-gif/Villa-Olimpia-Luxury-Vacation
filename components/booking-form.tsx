@@ -2,7 +2,7 @@
 
 import "react-calendar/dist/Calendar.css"
 
-import { useEffect, useMemo, useRef, useState } from "react"
+import { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
@@ -12,15 +12,16 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
-import { Users, Mail, MessageSquare, AlertCircle, CheckCircle2, ChevronDown } from "lucide-react"
+import { Users, AlertCircle, CheckCircle2, ChevronDown } from "lucide-react"
 import { apartments } from "@/data/apartments"
-import { trackBookingInitiation, trackEvent } from "@/components/analytics/google-analytics"
-import { useSearchParams } from "next/navigation"
+import { trackBookingInitiation, trackEvent, trackFormStart, trackWhatsAppClick } from "@/components/analytics/google-analytics"
+import { usePathname, useSearchParams } from "next/navigation"
 import {
   buildMailtoAvailabilityFallback,
   buildOfficialAvailabilityMessage,
   buildWhatsAppUrlFromText,
 } from "@/lib/booking-contact"
+
 import {
   type BookingFormCopy,
   type BookingFormCopyResolved,
@@ -255,9 +256,22 @@ export function BookingForm({
   calendarLocale?: string
 }) {
   const searchParams = useSearchParams()
+  const pathname = usePathname()
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [submitError, setSubmitError] = useState<string | null>(null)
+
+  const locale = useMemo(() => {
+    const seg = pathname.split("/").filter(Boolean)[0]
+    return ["en", "de", "fr"].includes(seg) ? seg : "it"
+  }, [pathname])
+
+  const formStartTracked = useRef(false)
+  const handleFormStart = useCallback(() => {
+    if (formStartTracked.current) return
+    formStartTracked.current = true
+    trackFormStart("booking_form", locale)
+  }, [locale])
 
   const t = useMemo(() => resolveBookingFormCopy(copy), [copy])
 
@@ -424,7 +438,7 @@ export function BookingForm({
       const serverPayload = await response.json().catch(() => null)
 
       if (!response.ok || !serverPayload?.ok) {
-        trackEvent("lead_submit_fallback", "Conversion", serverPayload?.reason || "unknown")
+        trackEvent("lead_submit_fallback", "Conversion", `${locale}_${serverPayload?.reason || "unknown"}`)
         setIsSubmitting(false)
         setSubmitError(t.status.submitUnavailable)
         const popup = window.open(buildWhatsAppUrl(payload), "_blank", "noopener,noreferrer")
@@ -436,12 +450,12 @@ export function BookingForm({
 
       setIsSubmitting(false)
       setIsSubmitted(true)
-      trackEvent("lead_submit_success", "Conversion", payload.apartment || "no_apartment")
+      trackEvent("lead_submit_success", "Conversion", `${locale}_${payload.apartment || "no_apartment"}`)
       reset()
     } catch {
       setIsSubmitting(false)
       setSubmitError(t.status.submitFailed)
-      trackEvent("lead_submit_error", "Conversion", "network_error")
+      trackEvent("lead_submit_error", "Conversion", `${locale}_network_error`)
       const popup = window.open(buildWhatsAppUrl(payload), "_blank", "noopener,noreferrer")
       if (!popup) {
         window.location.href = buildMailto(payload)
@@ -451,15 +465,27 @@ export function BookingForm({
 
   if (isSubmitted) {
     return (
-      <div className="rounded-lg border border-emerald-200 bg-emerald-50 p-6 text-center">
-        <div className="flex items-center justify-center gap-3 text-emerald-700">
-          <CheckCircle2 className="h-6 w-6" />
-          <h3 className="text-lg font-semibold">{t.status.requestReadyTitle}</h3>
-        </div>
-        <p className="mt-3 text-sm text-emerald-700/80">{t.status.requestReadyDescription}</p>
+      <div className="rounded-lg border border-emerald-200 bg-emerald-50 p-8 text-center">
+        <CheckCircle2 className="mx-auto h-10 w-10 text-emerald-500" />
+        <h3 className="mt-4 text-xl font-playfair font-semibold text-emerald-800">Richiesta ricevuta</h3>
+        <p className="mt-2 text-sm text-emerald-700/80 leading-relaxed">
+          Abbiamo preso nota delle tue date. Ti risponderemo entro 24 ore con disponibilità e prezzi diretti.
+        </p>
+        <p className="mt-3 text-sm text-emerald-700/60">
+          Nel frattempo, per urgenze puoi scriverci su{" "}
+          <a
+            href="https://wa.me/393335773390"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline underline-offset-2 font-medium"
+            onClick={() => trackWhatsAppClick("form_success", locale)}
+          >
+            WhatsApp
+          </a>.
+        </p>
         <Button
           variant="outline"
-          className="mt-5"
+          className="mt-6"
           onClick={() => {
             setIsSubmitted(false)
             reset()
@@ -481,6 +507,7 @@ export function BookingForm({
             {...register("name")}
             placeholder={t.placeholders.name}
             className={errors.name ? "border-destructive" : ""}
+            onFocus={handleFormStart}
           />
           {errors.name && <p className="text-sm text-destructive">{errors.name.message}</p>}
         </div>
@@ -497,7 +524,7 @@ export function BookingForm({
           {errors.email && <p className="text-sm text-destructive">{errors.email.message}</p>}
         </div>
 
-        <div className="space-y-2">
+        <div className="space-y-2 md:col-span-2">
           <Label htmlFor="phone">{t.labels.phone}</Label>
           <Input
             id="phone"
@@ -509,18 +536,7 @@ export function BookingForm({
           {errors.phone && <p className="text-sm text-destructive">{errors.phone.message}</p>}
         </div>
 
-        <div className="space-y-2">
-          <Label htmlFor="agency">{t.labels.agency}</Label>
-          <Input
-            id="agency"
-            {...register("agency")}
-            placeholder={t.placeholders.agency}
-            className={errors.agency ? "border-destructive" : ""}
-          />
-          {errors.agency && <p className="text-sm text-destructive">{errors.agency.message}</p>}
-        </div>
-
-        <div className="space-y-2">
+        <div className="space-y-2 md:col-span-2">
           <Label htmlFor="guests">{t.labels.guests}</Label>
           <div className="relative">
             <Users className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
@@ -577,7 +593,19 @@ export function BookingForm({
           id="message"
           {...register("message")}
           placeholder={t.placeholders.message}
-          rows={5}
+          rows={4}
+        />
+      </div>
+
+      <div className="space-y-1">
+        <Label htmlFor="agency" className="text-xs text-muted-foreground font-normal">
+          {t.labels.agency} <span className="text-slate-400">(opzionale — solo se scrivi per conto di un&apos;agenzia)</span>
+        </Label>
+        <Input
+          id="agency"
+          {...register("agency")}
+          placeholder={t.placeholders.agency}
+          className="text-sm"
         />
       </div>
 
@@ -590,42 +618,11 @@ export function BookingForm({
         </div>
       )}
 
-      <Button type="submit" variant="luxury" className="w-full" disabled={isSubmitting}>
+      <Button type="submit" variant="luxury" className="w-full" size="lg" disabled={isSubmitting}>
         {isSubmitting ? t.status.submitting : t.status.submit}
       </Button>
 
-      <p className="text-xs leading-relaxed text-muted-foreground">{t.helperText}</p>
-
-      <div className="grid grid-cols-1 gap-2 sm:grid-cols-3">
-        <div className="rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-center text-xs font-medium text-slate-700">
-          {t.trustRow.direct}
-        </div>
-        <div className="rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-center text-xs font-medium text-slate-700">
-          {t.trustRow.fast}
-        </div>
-        <div className="rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-center text-xs font-medium text-slate-700">
-          {t.trustRow.clear}
-        </div>
-      </div>
-
-      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-        <Button type="button" variant="outline" className="w-full" asChild>
-          <a href={buildMailtoAvailabilityFallback(t.messageTemplate.emailFallback, t.messageTemplate.whatsappFallback)}>
-            <Mail className="mr-2 h-4 w-4" />
-            {t.quickActions.email}
-          </a>
-        </Button>
-        <Button type="button" variant="outline" className="w-full" asChild>
-          <a
-            href={buildWhatsAppUrlFromText(t.messageTemplate.whatsappFallback)}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <MessageSquare className="mr-2 h-4 w-4" />
-            {t.quickActions.whatsapp}
-          </a>
-        </Button>
-      </div>
+      <p className="text-xs leading-relaxed text-muted-foreground text-center">{t.helperText}</p>
     </form>
   )
 }

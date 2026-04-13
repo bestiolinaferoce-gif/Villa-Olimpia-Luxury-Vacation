@@ -63,33 +63,38 @@ function isRateLimited(ip: string) {
 
 function buildTextEmail(lead: EnrichedLead) {
   const priorityTag = leadPriorityTag(lead)
+  const sep = "─".repeat(42)
   return [
-    "Nuova richiesta preventivo dal sito Villa Olimpia",
+    "RICHIESTA DISPONIBILITA · VILLA OLIMPIA",
+    sep,
     "",
-    `Nome: ${lead.name}`,
-    `Email: ${lead.email}`,
-    `Telefono: ${lead.phone}`,
-    ...(lead.agency ? [`Agenzia: ${lead.agency}`] : []),
-    `Giorni al check-in: ${lead.daysToCheckIn}`,
-    `Check-in: ${lead.checkIn}`,
-    `Check-out: ${lead.checkOut}`,
-    `Ospiti: ${lead.guests}`,
-    `Appartamento preferito: ${lead.apartment || "Nessuna preferenza"}`,
+    "OSPITE",
+    `Nome:       ${lead.name}`,
+    `Email:      ${lead.email}`,
+    `Telefono:   ${lead.phone}`,
+    ...(lead.agency ? [`Agenzia:    ${lead.agency}`] : []),
     "",
-    "Messaggio:",
-    lead.message || "Nessun messaggio aggiuntivo",
+    "SOGGIORNO",
+    `Check-in:   ${lead.checkIn}`,
+    `Check-out:  ${lead.checkOut}`,
+    `Ospiti:     ${lead.guests}`,
+    `Appartamento: ${lead.apartment || "Nessuna preferenza"}`,
     "",
-    "Riepilogo operativo:",
-    `Priorita: ${priorityTag}`,
-    `Ricevuto: ${lead.receivedAt}`,
-    `Prima risposta entro: ${lead.followUpPlan.firstContactBy}`,
-    `Canale suggerito: ${lead.followUpPlan.channel}`,
-    `Notti: ${lead.stayNights}`,
-    `Fonte lead: ${lead.source || "Diretta"}`,
-    ...(lead.utmCampaign ? [`Campagna: ${lead.utmCampaign}`] : []),
-    ...(lead.landingPage ? [`Pagina di arrivo: ${lead.landingPage}`] : []),
+    "MESSAGGIO",
+    lead.message || "(nessun messaggio aggiuntivo)",
     "",
-    `Lead ID: ${lead.leadId}`,
+    sep,
+    "DATI INTERNI",
+    `Priorita:          ${priorityTag}`,
+    `Urgenza:           ${lead.daysToCheckIn <= 3 ? "Last minute" : lead.daysToCheckIn <= 14 ? "Vicino" : "Programmabile"} (${lead.daysToCheckIn} giorni al check-in)`,
+    `Notti:             ${lead.stayNights}`,
+    `Prima risposta:    ${lead.followUpPlan.firstContactBy}`,
+    `Canale suggerito:  ${lead.followUpPlan.channel}`,
+    `Fonte lead:        ${lead.source || "Diretta"}`,
+    ...(lead.utmCampaign ? [`Campagna:          ${lead.utmCampaign}`] : []),
+    ...(lead.landingPage ? [`Pagina arrivo:     ${lead.landingPage}`] : []),
+    `Ricevuto:          ${lead.receivedAt}`,
+    `Lead ID:           ${lead.leadId}`,
   ].join("\n")
 }
 
@@ -102,7 +107,7 @@ async function sendWithResend(lead: EnrichedLead) {
     return { ok: false as const, reason: "missing_resend_key" }
   }
 
-  const subject = `[${leadPriorityTag(lead)}] Nuova richiesta preventivo - ${lead.name}`
+  const subject = `Richiesta disponibilità – ${lead.name} · ${lead.checkIn} [${leadPriorityTag(lead)}]`
   const text = buildTextEmail(lead)
 
   const response = await fetch("https://api.resend.com/emails", {

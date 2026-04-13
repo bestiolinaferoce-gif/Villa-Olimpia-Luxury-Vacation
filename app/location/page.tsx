@@ -19,10 +19,22 @@ const transportOptions = [
 ]
 
 const mediaStrip = [
-  "/images/territory/spiaggia-capopiccolo.jpg",
-  "/images/territory/castello-aragonese-le-castella.jpg",
-  "/images/territory/castello-santa-severina.jpg",
-]
+  {
+    src: "/images/territory/spiaggia-capopiccolo-panorama.jpg",
+    alt: "Panorama della costa ionica a Capopiccolo, vicino a Villa Olimpia",
+    href: "/spiagge-capo-rizzuto",
+  },
+  {
+    src: "/images/territory/castello-aragonese-le-castella.jpg",
+    alt: "Castello Aragonese di Le Castella sulla costa ionica",
+    href: "/le-castella",
+  },
+  {
+    src: "/images/territory/castello-santa-severina.jpg",
+    alt: "Borgo e castello di Santa Severina nell'entroterra calabrese",
+    href: "/territorio",
+  },
+] as const
 
 export default function LocationPage() {
   const router = useRouter()
@@ -160,37 +172,63 @@ export default function LocationPage() {
         <div className="container mx-auto px-4 max-w-6xl">
           <h2 className="text-3xl md:text-4xl font-playfair font-bold mb-8 text-center">Territorio, Mare e Vita Locale</h2>
           <div className="grid md:grid-cols-3 gap-4 mb-8">
-            {mediaStrip.map((src, index) => (
-              <div key={src} className="relative h-56 rounded-2xl overflow-hidden border border-white/20">
-                <Image src={src} alt={`Location media ${index + 1}`} fill className="object-cover" sizes="(max-width: 1024px) 100vw, 33vw" />
-              </div>
+            {mediaStrip.map((item) => (
+              <Link
+                key={item.src}
+                href={item.href}
+                className="group relative block h-56 rounded-2xl overflow-hidden border border-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2 focus-visible:ring-offset-[#062035]"
+              >
+                <Image src={item.src} alt={item.alt} fill className="object-cover transition-transform duration-300 group-hover:scale-[1.02]" sizes="(max-width: 1024px) 100vw, 33vw" />
+              </Link>
             ))}
           </div>
           <div className="grid md:grid-cols-3 gap-4">
-            <Card className="bg-[#0c2f4c] border-[#1d4f77] text-white">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2"><Waves className="h-5 w-5" /> Mare</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-white/85">Accesso alla spiaggia in circa 1 minuto a piedi e fondali adatti a famiglie e snorkeling.</p>
-              </CardContent>
-            </Card>
-            <Card className="bg-[#0c2f4c] border-[#1d4f77] text-white">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2"><MapPin className="h-5 w-5" /> Cultura</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-white/85">Le Castella, Santa Severina e il centro di Isola di Capo Rizzuto completano bene il soggiorno.</p>
-              </CardContent>
-            </Card>
-            <Card className="bg-[#0c2f4c] border-[#1d4f77] text-white">
-              <CardHeader>
-                <CardTitle>Servizi</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-white/85">Ristoranti, diving center, escursioni e proposte family-friendly raggiungibili rapidamente in auto.</p>
-              </CardContent>
-            </Card>
+            <Link href="/spiagge-capo-rizzuto" className="block h-full rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2 focus-visible:ring-offset-[#062035]">
+              <Card className="h-full overflow-hidden bg-[#0c2f4c] border-[#1d4f77] text-white transition-transform hover:-translate-y-0.5 hover:shadow-lg">
+                <div className="relative h-40 w-full">
+                  <Image
+                    src="/images/villa/location/spiaggia-dei-gigli.jpg"
+                    alt="Spiaggia dei Gigli Bandiera Blu, a pochi passi da Villa Olimpia"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 100vw, 33vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0c2f4c] via-[#0c2f4c]/40 to-transparent" />
+                </div>
+                <CardHeader className="pb-2">
+                  <CardTitle className="flex items-center gap-2"><Waves className="h-5 w-5" /> Mare</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-white/85">Accesso alla spiaggia in circa 1 minuto a piedi e fondali adatti a famiglie e snorkeling.</p>
+                </CardContent>
+              </Card>
+            </Link>
+            <Link
+              href="/territorio"
+              className="block h-full rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2 focus-visible:ring-offset-[#062035]"
+            >
+              <Card className="h-full bg-[#0c2f4c] border-[#1d4f77] text-white transition-transform hover:-translate-y-0.5 hover:shadow-lg">
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2"><MapPin className="h-5 w-5" /> Cultura</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-white/85">Le Castella, Santa Severina e il centro di Isola di Capo Rizzuto completano bene il soggiorno.</p>
+                </CardContent>
+              </Card>
+            </Link>
+            <Link
+              href="/cosa-fare-capo-rizzuto"
+              className="block h-full rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2 focus-visible:ring-offset-[#062035]"
+            >
+              <Card className="h-full bg-[#0c2f4c] border-[#1d4f77] text-white transition-transform hover:-translate-y-0.5 hover:shadow-lg">
+                <CardHeader>
+                  <CardTitle>Servizi</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-white/85">Ristoranti, diving center, escursioni e proposte family-friendly raggiungibili rapidamente in auto.</p>
+                </CardContent>
+              </Card>
+            </Link>
           </div>
         </div>
       </section>

@@ -1,32 +1,20 @@
-import { writeFile, readFile, mkdir } from "fs/promises"
-import path from "path"
-import { DATA_DIR } from "@/lib/data-path"
+import { kvGet, kvSet } from "@/lib/kv"
 import type { PublicBookingRequest } from "./types"
 
-const FILE_PATH = path.join(DATA_DIR, "public-requests.json")
-
-async function ensureDataFile(): Promise<PublicBookingRequest[]> {
-  try {
-    const content = await readFile(FILE_PATH, "utf-8")
-    return JSON.parse(content)
-  } catch {
-    await mkdir(DATA_DIR, { recursive: true }).catch(() => {})
-    return []
-  }
-}
+const KV_KEY = "publicrequests:all"
 
 export async function saveRequest(req: PublicBookingRequest): Promise<void> {
-  const requests = await ensureDataFile()
+  const requests = (await kvGet<PublicBookingRequest[]>(KV_KEY)) ?? []
   requests.push(req)
-  await writeFile(FILE_PATH, JSON.stringify(requests, null, 2))
+  await kvSet(KV_KEY, requests)
 }
 
 export async function getAllRequests(): Promise<PublicBookingRequest[]> {
-  return ensureDataFile()
+  return (await kvGet<PublicBookingRequest[]>(KV_KEY)) ?? []
 }
 
 export async function getRequestById(id: string): Promise<PublicBookingRequest | null> {
-  const requests = await ensureDataFile()
+  const requests = await getAllRequests()
   return requests.find((r) => r.id === id) ?? null
 }
 
@@ -34,9 +22,9 @@ export async function updateRequestStatus(
   id: string,
   status: PublicBookingRequest["status"]
 ): Promise<void> {
-  const requests = await ensureDataFile()
+  const requests = (await kvGet<PublicBookingRequest[]>(KV_KEY)) ?? []
   const idx = requests.findIndex((r) => r.id === id)
   if (idx < 0) return
   requests[idx] = { ...requests[idx], status }
-  await writeFile(FILE_PATH, JSON.stringify(requests, null, 2))
+  await kvSet(KV_KEY, requests)
 }

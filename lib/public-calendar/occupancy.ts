@@ -1,6 +1,4 @@
-import { readFile } from "fs/promises"
-import path from "path"
-import { ICAL_CACHE_DIR } from "@/lib/data-path"
+import { kvGet } from "@/lib/kv"
 import { getAllBookings } from "./bookingBoardStore"
 
 export type OccupiedRange = {
@@ -21,14 +19,8 @@ function dedupeRanges(ranges: OccupiedRange[]): OccupiedRange[] {
 }
 
 async function getICalRangesForLodge(lodgeId: string): Promise<OccupiedRange[]> {
-  try {
-    const cachePath = path.join(ICAL_CACHE_DIR, `${lodgeId}.json`)
-    const content = await readFile(cachePath, "utf-8")
-    const data = JSON.parse(content)
-    return Array.isArray(data?.ranges) ? data.ranges : []
-  } catch {
-    return []
-  }
+  const data = await kvGet<{ ranges: OccupiedRange[] }>(`ical:${lodgeId}`)
+  return Array.isArray(data?.ranges) ? data.ranges : []
 }
 
 export async function getOccupiedRangesForLodge(

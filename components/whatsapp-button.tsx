@@ -5,6 +5,8 @@ import { MessageCircle, Phone, X } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
 import { SITE_CONFIG } from "@/lib/constants"
 import { SEASONAL_CONFIG, getCurrentSeasonalMonth } from "@/lib/seasonalConfig"
+import { trackWhatsAppClick } from "@/components/analytics/google-analytics"
+import { usePathname } from "next/navigation"
 
 export function WhatsAppButton() {
   const [isVisible, setIsVisible] = useState(false)
@@ -38,6 +40,12 @@ export function WhatsAppButton() {
       document.removeEventListener("mousedown", handleClickOutside)
     }
   }, [isMenuOpen])
+
+  const pathname = usePathname()
+  const locale = (() => {
+    const seg = pathname.split("/").filter(Boolean)[0]
+    return ["en", "de", "fr"].includes(seg) ? seg : "it"
+  })()
 
   const month = getCurrentSeasonalMonth()
   const cfg = month === "other" ? SEASONAL_CONFIG.other : SEASONAL_CONFIG[month]
@@ -88,6 +96,7 @@ export function WhatsAppButton() {
                       rel="noopener noreferrer"
                       whileHover={{ backgroundColor: "#f0f9ff" }}
                       className="flex items-center gap-3 px-4 py-3 text-sm text-gray-700 hover:text-green-600 transition-colors cursor-pointer group"
+                      onClick={() => trackWhatsAppClick(`floating_btn_${index === 0 ? "primary" : "secondary"}`, locale)}
                     >
                       <Phone className="w-4 h-4 text-green-500" />
                       <div className="flex-1">

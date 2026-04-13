@@ -18,14 +18,14 @@ export function CounterAnimation({
   prefix = "",
   className = "",
 }: CounterAnimationProps) {
-  const [count, setCount] = useState(end)
+  const [count, setCount] = useState(0)
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.5,
   })
 
   useEffect(() => {
-    if (!inView || count === end) return
+    if (!inView) return
 
     let startTime: number | null = null
     const startValue = 0
@@ -48,7 +48,7 @@ export function CounterAnimation({
     }
 
     requestAnimationFrame(animate)
-  }, [count, inView, end, duration])
+  }, [inView, end, duration])
 
   return (
     <span ref={ref} className={className}>
@@ -58,4 +58,3 @@ export function CounterAnimation({
     </span>
   )
 }
-

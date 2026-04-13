@@ -7,6 +7,7 @@ import { DEFAULT_BOOKING_FORM_COPY } from "@/lib/booking-form-copy"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Phone, Mail, MapPin, MessageCircle, Sparkles, Clock, Waves, Heart } from "lucide-react"
+import { trackWhatsAppClick } from "@/components/analytics/google-analytics"
 import { Breadcrumb } from "@/components/breadcrumb"
 import { ShareKit, type ShareKitCopy } from "@/components/conversion/share-kit"
 import { TrackContactSource } from "@/components/analytics/track-contact-source"
@@ -600,8 +601,8 @@ export default function ContactPageClient() {
                       <a href="tel:+393335773390" className="block text-muted-foreground hover:text-primary">
                         +39 333 577 3390
                       </a>
-                      <a href="tel:+393335773390" className="block text-muted-foreground hover:text-primary">
-                        +39 333 577 3390
+                      <a href="tel:+393290479193" className="block text-muted-foreground hover:text-primary">
+                        +39 329 047 9193
                       </a>
                     </div>
                   </div>
@@ -660,17 +661,11 @@ export default function ContactPageClient() {
                 <CardTitle>{copy.whatsapp.title}</CardTitle>
                 <CardDescription>{copy.whatsapp.description}</CardDescription>
               </CardHeader>
-              <CardContent className="space-y-3">
+              <CardContent>
                 <Button variant="luxury" className="w-full" asChild>
-                  <a href="https://wa.me/393335773390" target="_blank" rel="noopener noreferrer">
+                  <a href="https://wa.me/393335773390" target="_blank" rel="noopener noreferrer" onClick={() => trackWhatsAppClick("contact_sidebar", locale)}>
                     <MessageCircle className="mr-2 h-5 w-5" />
-                    {copy.whatsapp.primary}
-                  </a>
-                </Button>
-                <Button variant="outline" className="w-full" asChild>
-                  <a href="https://wa.me/393335773390" target="_blank" rel="noopener noreferrer">
-                    <MessageCircle className="mr-2 h-5 w-5" />
-                    {copy.whatsapp.secondary}
+                    WhatsApp · 333 577 3390
                   </a>
                 </Button>
               </CardContent>

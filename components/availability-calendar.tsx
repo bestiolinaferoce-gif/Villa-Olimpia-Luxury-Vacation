@@ -3,112 +3,136 @@
 import { useMemo } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Calendar } from "lucide-react"
-import { AvailabilityStatus, getAvailabilityForApartment } from "@/data/availability-aug-2026"
+import type { OccupiedRange } from "@/lib/public-calendar/occupancy"
 
 interface AvailabilityCalendarProps {
-  apartmentId: number
+  occupiedRanges: OccupiedRange[]
 }
 
 const weekdayLabels = ["Lun", "Mar", "Mer", "Gio", "Ven", "Sab", "Dom"]
-
-const statusStyles: Record<AvailabilityStatus, { label: string; className: string }> = {
-  available: {
-    label: "Disponibile",
-    className: "bg-emerald-100 text-emerald-900 border-emerald-200",
-  },
-  booked: {
-    label: "Occupato",
-    className: "bg-rose-100 text-rose-900 border-rose-200",
-  },
-  changeover: {
-    label: "Cambio",
-    className: "bg-amber-100 text-amber-900 border-amber-200",
-  },
-  option: {
-    label: "Opzione",
-    className: "bg-sky-100 text-sky-900 border-sky-200",
-  },
-  unknown: {
-    label: "In aggiornamento",
-    className: "bg-slate-100 text-slate-700 border-slate-200",
-  },
-}
 
 function getMonthStartOffset(year: number, monthIndex: number) {
   const jsDay = new Date(year, monthIndex, 1).getDay()
   return (jsDay + 6) % 7
 }
 
-export function AvailabilityCalendar({ apartmentId }: AvailabilityCalendarProps) {
-  const availability = getAvailabilityForApartment(apartmentId)
+function isDateOccupied(dateStr: string, ranges: OccupiedRange[]): boolean {
+  const d = new Date(dateStr).getTime()
+  return ranges.some((r) => {
+    const s = new Date(r.start).getTime()
+    const e = new Date(r.end).getTime()
+    return d >= s && d < e
+  })
+}
 
-  const { daysInMonth, monthYear, startOffset, isUnknown } = useMemo(() => {
-    const base = availability || {
-      month: "2026-08",
-      updatedAt: "2026-02-08",
-      days: {},
-    }
-    const [year, month] = base.month.split("-").map(Number)
-    const monthIndex = month - 1
-    const daysInMonth = new Date(year, month, 0).getDate()
-    const startOffset = getMonthStartOffset(year, monthIndex)
-    const monthLabel = new Date(year, monthIndex).toLocaleDateString("it-IT", { month: "long" })
-    const monthYear = `${monthLabel.charAt(0).toUpperCase()}${monthLabel.slice(1)} ${year}`
-    const isUnknown = Object.values(base.days || {}).every((value) => value === "unknown") || !Object.keys(base.days || {}).length
+function formatMonthYear(year: number, monthIndex: number): string {
+  const label = new Date(year, monthIndex).toLocaleDateString("it-IT", { month: "long" })
+  return `${label.charAt(0).toUpperCase()}${label.slice(1)} ${year}`
+}
 
-    return { daysInMonth, monthYear, startOffset, isUnknown }
-  }, [availability])
+function MonthGrid({
+  year,
+  monthIndex,
+  occupiedRanges,
+}: {
+  year: number
+  monthIndex: number
+  occupiedRanges: OccupiedRange[]
+}) {
+  const daysInMonth = new Date(year, monthIndex + 1, 0).getDate()
+  const startOffset = getMonthStartOffset(year, monthIndex)
+  const today = new Date()
+  today.setHours(0, 0, 0, 0)
+
+  return (
+    <div className="space-y-2">
+      <p className="text-center text-sm font-semibold text-slate-700">
+        {formatMonthYear(year, monthIndex)}
+      </p>
+      <div className="grid grid-cols-7 gap-1 text-xs text-muted-foreground">
+        {weekdayLabels.map((label) => (
+          <div key={label} className="text-center font-semibold uppercase tracking-wide">
+            {label}
+          </div>
+        ))}
+      </div>
+      <div className="grid grid-cols-7 gap-1">
+        {Array.from({ length: startOffset }).map((_, i) => (
+          <div key={`empty-${i}`} className="h-8" />
+        ))}
+        {Array.from({ length: daysInMonth }).map((_, i) => {
+          const day = i + 1
+          const dateStr = `${year}-${String(monthIndex + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`
+          const date = new Date(dateStr)
+          const isPast = date < today
+          const occupied = !isPast && isDateOccupied(dateStr, occupiedRanges)
+
+          let className = "h-8 rounded-md border text-xs font-semibold flex items-center justify-center "
+          if (isPast) {
+            className += "bg-slate-50 text-slate-300 border-slate-100"
+          } else if (occupied) {
+            className += "bg-rose-100 text-rose-800 border-rose-200"
+          } else {
+            className += "bg-emerald-50 text-emerald-800 border-emerald-200"
+          }
+
+          return (
+            <div key={day} className={className}>
+              {day}
+            </div>
+          )
+        })}
+      </div>
+    </div>
+  )
+}
+
+export function AvailabilityCalendar({ occupiedRanges }: AvailabilityCalendarProps) {
+  const months = useMemo(() => {
+    const now = new Date()
+    return [0, 1, 2].map((offset) => {
+      const d = new Date(now.getFullYear(), now.getMonth() + offset, 1)
+      return { year: d.getFullYear(), monthIndex: d.getMonth() }
+    })
+  }, [])
 
   return (
     <Card className="border-2 border-primary/10 shadow-lg">
-      <CardHeader>
+      <CardHeader className="pb-2">
         <div className="flex items-center gap-2">
           <Calendar className="h-5 w-5 text-primary" />
           <CardTitle className="text-lg">Disponibilità</CardTitle>
         </div>
         <CardDescription>
-          {monthYear} · aggiornamento manuale
+          Aggiornamento automatico ogni ora
         </CardDescription>
       </CardHeader>
-      <CardContent className="space-y-4">
-        <div className="grid grid-cols-7 gap-2 text-xs text-muted-foreground">
-          {weekdayLabels.map((label) => (
-            <div key={label} className="text-center font-semibold uppercase tracking-wide">
-              {label}
-            </div>
-          ))}
+      <CardContent className="space-y-6">
+        {months.map(({ year, monthIndex }) => (
+          <MonthGrid
+            key={`${year}-${monthIndex}`}
+            year={year}
+            monthIndex={monthIndex}
+            occupiedRanges={occupiedRanges}
+          />
+        ))}
+
+        <div className="flex flex-wrap gap-3 text-xs text-muted-foreground pt-1 border-t">
+          <div className="flex items-center gap-1.5">
+            <span className="inline-flex h-3 w-3 rounded-full border bg-emerald-50 border-emerald-200" />
+            <span>Disponibile</span>
+          </div>
+          <div className="flex items-center gap-1.5">
+            <span className="inline-flex h-3 w-3 rounded-full border bg-rose-100 border-rose-200" />
+            <span>Occupato</span>
+          </div>
+          <div className="flex items-center gap-1.5">
+            <span className="inline-flex h-3 w-3 rounded-full border bg-slate-50 border-slate-100" />
+            <span>Passato</span>
+          </div>
         </div>
 
-        <div className="grid grid-cols-7 gap-2">
-          {Array.from({ length: startOffset }).map((_, index) => (
-            <div key={`empty-${index}`} className="h-9" />
-          ))}
-          {Array.from({ length: daysInMonth }).map((_, index) => {
-            const day = index + 1
-            const status = availability?.days?.[day] ?? "unknown"
-            const style = statusStyles[status]
-
-            return (
-              <div
-                key={day}
-                className={`h-9 rounded-lg border text-xs font-semibold flex items-center justify-center ${style.className}`}
-              >
-                {day}
-              </div>
-            )
-          })}
-        </div>
-
-        <div className="flex flex-wrap gap-2 text-xs text-muted-foreground">
-          {Object.entries(statusStyles).map(([key, meta]) => (
-            <div key={key} className="flex items-center gap-2">
-              <span className={`inline-flex h-3 w-3 rounded-full border ${meta.className}`} />
-              <span>{meta.label}</span>
-            </div>
-          ))}
-        </div>
-
-        {isUnknown && (
+        {occupiedRanges.length === 0 && (
           <div className="rounded-xl border border-dashed border-primary/30 bg-primary/5 px-4 py-3 text-sm text-primary/80">
             Disponibilità in aggiornamento: stiamo importando le date reali per questo appartamento.
           </div>

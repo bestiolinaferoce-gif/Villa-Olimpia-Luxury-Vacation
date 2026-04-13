@@ -1,6 +1,9 @@
 import { notFound, permanentRedirect } from "next/navigation"
 import Image from "next/image"
 import { getApartmentBedSchema, getApartmentById, getApartmentBySlug, getApartmentSlug, apartments } from "@/data/apartments"
+import { getOccupiedRangesForLodge } from "@/lib/public-calendar/occupancy"
+
+export const revalidate = 300
 // FIX: Import esplicito per risolvere problemi di routing
 import { getApartmentMetadata, BASE_URL } from "@/lib/metadata"
 import { getApartmentContent } from "@/data/apartment-content"
@@ -79,6 +82,8 @@ export default async function ApartmentDetailPage({ params }: PageProps) {
   }
 
   const content = getApartmentContent(apartmentId)
+  const lodgeId = `lodge-${apartmentId}`
+  const occupiedRanges = await getOccupiedRangesForLodge(lodgeId)
   const contactHref = `/contatti?source=apartment_detail&apartment=${encodeURIComponent(apartment.name)}&guests=${apartment.guests}#prenota`
   const apartmentWhatsAppHref = buildWhatsAppUrlFromText(
     `Richiesta disponibilita ${apartment.name} - Villa Olimpia:\nDate: \nOspiti: ${apartment.guests}\nAppartamento: ${apartment.name}\nFonte: sito ufficiale (pagina appartamento)`
@@ -222,7 +227,7 @@ export default async function ApartmentDetailPage({ params }: PageProps) {
             {content && (
               <Card className="bg-gradient-to-br from-amber-50/80 to-background border-amber-200/50 dark:from-amber-950/20 dark:to-background dark:border-amber-800/30">
                 <CardHeader>
-                  <CardTitle className="text-amber-900 dark:text-amber-100">Descrizione</CardTitle>
+                  <CardTitle className="text-amber-900 dark:text-amber-100">Il tuo appartamento a Capo Rizzuto</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground leading-relaxed text-base mb-6">
@@ -236,7 +241,7 @@ export default async function ApartmentDetailPage({ params }: PageProps) {
             {content && (
               <Card className="bg-gradient-to-br from-teal-50/80 to-background border-teal-200/50 dark:from-teal-950/20 dark:to-background dark:border-teal-800/30">
                 <CardHeader>
-                  <CardTitle className="text-teal-900 dark:text-teal-100">Descrizione Completa</CardTitle>
+                  <CardTitle className="text-teal-900 dark:text-teal-100">Come si vive qui</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="prose prose-lg max-w-none">
@@ -252,13 +257,13 @@ export default async function ApartmentDetailPage({ params }: PageProps) {
             {content && content.featureBullets.length > 0 && (
               <Card className="bg-gradient-to-br from-emerald-50/80 to-background border-emerald-200/50 dark:from-emerald-950/20 dark:to-background dark:border-emerald-800/30">
                 <CardHeader>
-                  <CardTitle className="text-emerald-900 dark:text-emerald-100">Punti di Forza</CardTitle>
+                  <CardTitle className="text-emerald-900 dark:text-emerald-100">Cosa include</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <ul className="space-y-3">
                     {content.featureBullets.map((feature, index) => (
                       <li key={index} className="flex items-start gap-3">
-                        <span className="text-emerald-600 dark:text-emerald-400 mt-1">•</span>
+                        <span className="text-emerald-600 dark:text-emerald-400 mt-1 font-bold">✓</span>
                         <span className="text-muted-foreground">{feature}</span>
                       </li>
                     ))}
@@ -271,14 +276,14 @@ export default async function ApartmentDetailPage({ params }: PageProps) {
             {content && content.perfectFor.length > 0 && (
               <Card className="bg-gradient-to-br from-violet-50/80 to-background border-violet-200/50 dark:from-violet-950/20 dark:to-background dark:border-violet-800/30">
                 <CardHeader>
-                  <CardTitle className="text-violet-900 dark:text-violet-100">Perfetto per…</CardTitle>
+                  <CardTitle className="text-violet-900 dark:text-violet-100">Ideale per</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <ul className="space-y-3">
+                  <ul className="flex flex-wrap gap-2">
                     {content.perfectFor.map((item, index) => (
-                      <li key={index} className="flex items-start gap-3">
-                        <span className="text-violet-600 dark:text-violet-400 mt-1">•</span>
-                        <span className="text-muted-foreground">{item}</span>
+                      <li key={index} className="inline-flex items-center gap-2 rounded-full border border-violet-200 bg-violet-50 px-3 py-1.5 text-sm text-violet-800">
+                        <span className="text-violet-500">●</span>
+                        {item}
                       </li>
                     ))}
                   </ul>
@@ -290,7 +295,7 @@ export default async function ApartmentDetailPage({ params }: PageProps) {
             {content && (
               <Card className="bg-gradient-to-br from-sky-50 to-primary/5 border-sky-200/50 dark:from-sky-950/20 dark:to-background dark:border-sky-800/30">
                 <CardHeader>
-                  <CardTitle className="text-sky-900 dark:text-sky-100">Informazioni Dettagliate</CardTitle>
+                  <CardTitle className="text-sky-900 dark:text-sky-100">Posizione e dintorni</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground leading-relaxed">
@@ -304,29 +309,29 @@ export default async function ApartmentDetailPage({ params }: PageProps) {
             {content && (
               <Card className="bg-gradient-to-br from-slate-50/80 to-background border-slate-200/50 dark:from-slate-900/20 dark:to-background dark:border-slate-700/30">
                 <CardHeader>
-                  <CardTitle className="text-slate-800 dark:text-slate-200">Dati Tecnici</CardTitle>
+                  <CardTitle className="text-slate-800 dark:text-slate-200">Scheda tecnica</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                      <p className="font-semibold text-foreground mb-1">Posti Letto</p>
-                      <p className="text-muted-foreground">{content.technicalSummary.capacity}</p>
+                  <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                    <div className="rounded-xl border border-slate-200 bg-white p-3 text-center">
+                      <p className="text-xs font-semibold uppercase tracking-wide text-slate-500 mb-1">Ospiti</p>
+                      <p className="text-lg font-bold text-slate-900">{content.technicalSummary.capacity}</p>
                     </div>
-                    <div>
-                      <p className="font-semibold text-foreground mb-1">Camere</p>
-                      <p className="text-muted-foreground">{content.technicalSummary.rooms}</p>
+                    <div className="rounded-xl border border-slate-200 bg-white p-3 text-center">
+                      <p className="text-xs font-semibold uppercase tracking-wide text-slate-500 mb-1">Camere</p>
+                      <p className="text-base font-bold text-slate-900">{content.technicalSummary.rooms}</p>
                     </div>
-                    <div>
-                      <p className="font-semibold text-foreground mb-1">Bagni</p>
-                      <p className="text-muted-foreground">{content.technicalSummary.bathrooms}</p>
+                    <div className="rounded-xl border border-slate-200 bg-white p-3 text-center">
+                      <p className="text-xs font-semibold uppercase tracking-wide text-slate-500 mb-1">Bagni</p>
+                      <p className="text-lg font-bold text-slate-900">{content.technicalSummary.bathrooms}</p>
                     </div>
-                    <div>
-                      <p className="font-semibold text-foreground mb-1">Area Esterna</p>
-                      <p className="text-muted-foreground">{content.technicalSummary.outdoorArea}</p>
+                    <div className="rounded-xl border border-slate-200 bg-white p-3 text-center">
+                      <p className="text-xs font-semibold uppercase tracking-wide text-slate-500 mb-1">Spazio esterno</p>
+                      <p className="text-sm font-semibold text-slate-900">{content.technicalSummary.outdoorArea}</p>
                     </div>
-                    <div>
-                      <p className="font-semibold text-foreground mb-1">Piano</p>
-                      <p className="text-muted-foreground">{content.technicalSummary.floor}</p>
+                    <div className="rounded-xl border border-slate-200 bg-white p-3 text-center">
+                      <p className="text-xs font-semibold uppercase tracking-wide text-slate-500 mb-1">Piano</p>
+                      <p className="text-lg font-bold text-slate-900">{content.technicalSummary.floor}</p>
                     </div>
                   </div>
                 </CardContent>
@@ -373,53 +378,48 @@ export default async function ApartmentDetailPage({ params }: PageProps) {
           {/* Sidebar */}
           <div className="space-y-6">
             {/* Booking Card */}
-            <Card className="sticky top-24 bg-gradient-to-br from-primary/5 to-background border-primary/20 shadow-lg">
-              <CardHeader>
-                <CardTitle className="text-primary">Prenota</CardTitle>
+            <Card className="sticky top-24 border-2 border-primary/15 shadow-2xl shadow-primary/5 ring-1 ring-primary/5">
+              <CardHeader className="pb-3">
+                <CardTitle className="font-playfair text-xl text-slate-900">Richiedi disponibilità</CardTitle>
+                <CardDescription className="text-sm text-slate-600">
+                  Prenotazione diretta · risposta entro 24 ore · nessuna commissione OTA
+                </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
-                <div className="text-center">
-                  <div className="text-4xl font-bold text-primary mb-2">
-                    €{apartment.price}
+                <div className="grid grid-cols-2 gap-2 text-sm border border-slate-100 rounded-xl p-3 bg-slate-50/60">
+                  <div>
+                    <p className="text-slate-500 text-xs">Ospiti max</p>
+                    <p className="font-semibold text-slate-900">{apartment.guests} persone</p>
                   </div>
-                  <div className="text-sm text-muted-foreground">per notte</div>
-                </div>
-
-                <div className="space-y-3">
-                  <div className="flex items-center justify-between text-sm">
-                    <span className="text-muted-foreground">Ospiti</span>
-                    <span className="font-medium">{apartment.guests}</span>
+                  <div>
+                    <p className="text-slate-500 text-xs">Camere</p>
+                    <p className="font-semibold text-slate-900">{apartment.bedrooms}</p>
                   </div>
-                  <div className="flex items-center justify-between text-sm">
-                    <span className="text-muted-foreground">Camere</span>
-                    <span className="font-medium">{apartment.bedrooms}</span>
+                  <div>
+                    <p className="text-slate-500 text-xs">Bagni</p>
+                    <p className="font-semibold text-slate-900">{apartment.bathrooms}</p>
                   </div>
-                  <div className="flex items-center justify-between text-sm">
-                    <span className="text-muted-foreground">Bagni</span>
-                    <span className="font-medium">{apartment.bathrooms}</span>
-                  </div>
-                  <div className="flex items-center justify-between text-sm">
-                    <span className="text-muted-foreground">Superficie</span>
-                    <span className="font-medium">{apartment.size}</span>
-                  </div>
-                  <div className="flex items-center justify-between text-sm">
-                    <span className="text-muted-foreground">Piano</span>
-                    <span className="font-medium">{apartment.floor}</span>
+                  <div>
+                    <p className="text-slate-500 text-xs">Superficie</p>
+                    <p className="font-semibold text-slate-900">{apartment.size}</p>
                   </div>
                 </div>
 
-                <AvailabilityCalendar apartmentId={apartment.id} />
+                <AvailabilityCalendar occupiedRanges={occupiedRanges} />
 
                 <Button variant="luxury" className="w-full" size="lg" asChild>
-                  <Link href={contactHref}>Richiedi Prenotazione</Link>
+                  <Link href={contactHref}>
+                    <Calendar className="mr-2 h-4 w-4" />
+                    Verifica disponibilità
+                  </Link>
                 </Button>
 
                 <div className="rounded-xl border border-emerald-200 bg-emerald-50/80 p-4">
-                  <p className="text-sm font-semibold text-emerald-900">Prenotazione diretta</p>
-                  <ul className="mt-2 space-y-1 text-sm text-emerald-800">
-                    <li>Tariffa diretta senza commissioni</li>
-                    <li>Risposta rapida con proposta su misura</li>
-                    <li>Supporto diretto prima e durante il soggiorno</li>
+                  <p className="text-sm font-semibold text-emerald-900">Perché prenotare direttamente</p>
+                  <ul className="mt-2 space-y-1.5 text-sm text-emerald-800">
+                    <li className="flex items-start gap-1.5"><span className="font-bold mt-px">✓</span> Tariffa senza commissioni OTA</li>
+                    <li className="flex items-start gap-1.5"><span className="font-bold mt-px">✓</span> Proposta su misura in 24 ore</li>
+                    <li className="flex items-start gap-1.5"><span className="font-bold mt-px">✓</span> Contatto diretto con i proprietari</li>
                   </ul>
                 </div>
 
@@ -462,31 +462,67 @@ export default async function ApartmentDetailPage({ params }: PageProps) {
         </div>
       </div>
 
-      {/* Location Links Section */}
+      {/* Territory / Location Visual Section */}
       <section className="py-16 bg-gradient-to-br from-primary/5 via-ocean/5 to-primary/10">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl font-playfair font-bold text-slate-900 mb-3">Il territorio di Capo Rizzuto</h2>
+            <p className="text-slate-600 max-w-2xl mx-auto">
+              A 100 metri dalla Spiaggia dei Gigli, nell&apos;Area Marina Protetta: natura, mare cristallino e borghi storici a portata di mano.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+            <div className="relative h-48 rounded-2xl overflow-hidden">
+              <Image
+                src="/images/territory/spiaggia-capopiccolo.jpg"
+                alt="Spiaggia di Capopiccolo - Area Marina Protetta Capo Rizzuto"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 33vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+              <p className="absolute bottom-3 left-3 text-white text-sm font-semibold">Spiaggia Capopiccolo</p>
+            </div>
+            <div className="relative h-48 rounded-2xl overflow-hidden">
+              <Image
+                src="/images/territory/area-marina-protetta-capo-rizzuto.jpg"
+                alt="Area Marina Protetta di Capo Rizzuto - acque cristalline"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 33vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+              <p className="absolute bottom-3 left-3 text-white text-sm font-semibold">Area Marina Protetta</p>
+            </div>
+            <div className="relative h-48 rounded-2xl overflow-hidden">
+              <Image
+                src="/images/territory/castello-aragonese-le-castella.jpg"
+                alt="Castello aragonese di Le Castella"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 33vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+              <p className="absolute bottom-3 left-3 text-white text-sm font-semibold">Le Castella (8 km)</p>
+            </div>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <Card className="hover:shadow-xl transition-shadow border-2 border-primary/20">
               <CardHeader>
                 <CardTitle className="flex items-center gap-3">
                   <MapPin className="h-6 w-6 text-primary" />
-                  Scopri cosa vedere nei dintorni
+                  Cosa vedere nei dintorni
                 </CardTitle>
-                <CardDescription>
-                  Esplora le attrazioni e le spiagge vicino a Villa Olimpia. A soli 100 metri dalla Spiaggia dei Gigli Bandiera Blu.
-                </CardDescription>
               </CardHeader>
               <CardContent>
                 <ul className="space-y-2 text-sm text-muted-foreground mb-4">
-                  <li>• <strong className="text-foreground">Spiaggia dei Gigli</strong> - Bandiera Blu a 100m</li>
-                  <li>• <strong className="text-foreground">Area Marina Protetta</strong> - Snorkeling e immersioni</li>
-                  <li>• <strong className="text-foreground">Le Castella</strong> - Castello aragonese (8 km)</li>
-                  <li>• <strong className="text-foreground">Valli Cupe</strong> - Riserva naturale con cascate</li>
+                  <li>• <strong className="text-foreground">Spiaggia dei Gigli</strong> — Bandiera Blu a 100m</li>
+                  <li>• <strong className="text-foreground">Area Marina Protetta</strong> — Snorkeling e immersioni</li>
+                  <li>• <strong className="text-foreground">Le Castella</strong> — Castello aragonese (8 km)</li>
+                  <li>• <strong className="text-foreground">Valli Cupe</strong> — Riserva naturale con cascate</li>
                 </ul>
                 <Button variant="outline" className="w-full" asChild>
-                  <Link href="/location">
-                    Esplora tutte le attrazioni della Calabria
-                  </Link>
+                  <Link href="/location">Esplora il territorio</Link>
                 </Button>
               </CardContent>
             </Card>
@@ -495,23 +531,18 @@ export default async function ApartmentDetailPage({ params }: PageProps) {
               <CardHeader>
                 <CardTitle className="flex items-center gap-3">
                   <UtensilsCrossed className="h-6 w-6 text-ocean" />
-                  Dove mangiare e cosa assaggiare
+                  Sapori del territorio
                 </CardTitle>
-                <CardDescription>
-                  Ristoranti eccellenza, cantine storiche Cirò DOC e prodotti tipici calabresi nei dintorni.
-                </CardDescription>
               </CardHeader>
               <CardContent>
                 <ul className="space-y-2 text-sm text-muted-foreground mb-4">
-                  <li>• <strong className="text-foreground">Cantine Cirò DOC</strong> - Degustazioni vini storici</li>
-                  <li>• <strong className="text-foreground">Ristoranti pesce fresco</strong> - Cucina calabrese autentica</li>
-                  <li>• <strong className="text-foreground">Agriturismi km zero</strong> - Sapori genuini</li>
-                  <li>• <strong className="text-foreground">Prodotti tipici</strong> - &apos;Nduja, cipolla rossa, bergamotto</li>
+                  <li>• <strong className="text-foreground">Cantine Cirò DOC</strong> — Vini storici calabresi</li>
+                  <li>• <strong className="text-foreground">Ristoranti pesce fresco</strong> — Cucina calabrese autentica</li>
+                  <li>• <strong className="text-foreground">Agriturismi km zero</strong> — Sapori genuini</li>
+                  <li>• <strong className="text-foreground">Prodotti tipici</strong> — &apos;Nduja, cipolla rossa, bergamotto</li>
                 </ul>
                 <Button variant="outline" className="w-full" asChild>
-                  <Link href="/location">
-                    Scopri i sapori del territorio
-                  </Link>
+                  <Link href="/enogastronomia">Gastronomia e vini</Link>
                 </Button>
               </CardContent>
             </Card>

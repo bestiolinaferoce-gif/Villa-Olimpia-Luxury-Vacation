@@ -1,8 +1,11 @@
+"use client"
+
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { ArrowRight, Waves, Users, CookingPot, MapPin, CheckCircle2 } from "lucide-react"
+import { trackEvent } from "@/components/analytics/google-analytics"
 
 export function HomePageEnView() {
   const faqItems = [
@@ -57,17 +60,14 @@ export function HomePageEnView() {
                 loved sandy beaches in Capo Rizzuto.
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                <Button variant="luxury" size="lg" asChild>
+                <Button variant="luxury" size="lg" asChild onClick={() => trackEvent("cta_click", "Conversion", "en_hero_check_availability")}>
                   <Link href="/en/prenota">
                     Check availability for your dates
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                 </Button>
-                <Button variant="outline" size="lg" asChild>
+                <Button variant="outline" size="lg" asChild onClick={() => trackEvent("cta_click", "Conversion", "en_hero_contact")}>
                   <Link href="/en/contact">Send us a quick request</Link>
-                </Button>
-                <Button variant="outline" size="lg" asChild>
-                  <Link href="/en/calabria-beach-apartments">Explore seaside guide</Link>
                 </Button>
               </div>
             </div>
@@ -192,14 +192,11 @@ export function HomePageEnView() {
             Direct contact with Villa Olimpia team. Fast answers, clear rates, and support before booking.
           </p>
           <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-            <Button variant="luxury" size="lg" asChild>
+            <Button variant="luxury" size="lg" asChild onClick={() => trackEvent("cta_click", "Conversion", "en_bottom_book")}>
               <Link href="/en/prenota">Book your stay directly</Link>
             </Button>
-            <Button variant="outline" size="lg" className="border-white text-white hover:bg-white/10" asChild>
+            <Button variant="outline" size="lg" className="border-white text-white hover:bg-white/10" asChild onClick={() => trackEvent("cta_click", "Conversion", "en_bottom_contact")}>
               <Link href="/en/contact">Contact us</Link>
-            </Button>
-            <Button variant="outline" size="lg" className="border-white text-white hover:bg-white/10" asChild>
-              <Link href="/en/prenota">Check availability</Link>
             </Button>
           </div>
         </div>

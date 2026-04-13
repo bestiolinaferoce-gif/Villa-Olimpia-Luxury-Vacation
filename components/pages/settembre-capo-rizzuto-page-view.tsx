@@ -126,7 +126,7 @@ export function SettembreCapoRizzutoPageView({
                 <Globe className="h-6 w-6 text-primary mb-2" />
                 <CardTitle className="text-lg font-playfair">Ospiti dal Nord Europa</CardTitle>
                 <CardDescription>
-                  May, June and September are often the best months for guests looking for sea, sunshine and quieter stays in Calabria, with more space to enjoy the coast at a slower pace.
+                  Maggio, giugno e settembre sono spesso i mesi migliori per chi viene dal Nord Europa: mare ancora piacevole, meno folla e soggiorni curati a Capo Rizzuto, con più spazio per vivere la costa a ritmo lento.
                 </CardDescription>
               </CardHeader>
             </Card>

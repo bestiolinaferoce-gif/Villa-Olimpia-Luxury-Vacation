@@ -1,32 +1,19 @@
 /**
- * Store simulato del Booking Board (file-based).
- * Sostituire con integrazione Zustand/API quando disponibile.
+ * Booking Board store — KV-based (Vercel KV / Upstash Redis).
  */
-import { writeFile, readFile, mkdir } from "fs/promises"
-import path from "path"
-import { DATA_DIR } from "@/lib/data-path"
+import { kvGet, kvSet } from "@/lib/kv"
 import type { Booking } from "./types"
 
-const FILE_PATH = path.join(DATA_DIR, "booking-board.json")
-
-async function ensureFile(): Promise<Booking[]> {
-  try {
-    const content = await readFile(FILE_PATH, "utf-8")
-    return JSON.parse(content)
-  } catch {
-    await mkdir(DATA_DIR, { recursive: true }).catch(() => {})
-    return []
-  }
-}
+const KV_KEY = "bookingboard:bookings"
 
 export async function getAllBookings(): Promise<Booking[]> {
-  return ensureFile()
+  return (await kvGet<Booking[]>(KV_KEY)) ?? []
 }
 
 export async function addBooking(booking: Booking): Promise<void> {
-  const bookings = await ensureFile()
+  const bookings = await getAllBookings()
   bookings.push(booking)
-  await writeFile(FILE_PATH, JSON.stringify(bookings, null, 2))
+  await kvSet(KV_KEY, bookings)
 }
 
 function datesOverlap(
@@ -48,7 +35,7 @@ export async function hasConflict(
   checkOut: string,
   excludeId?: string
 ): Promise<boolean> {
-  const bookings = await ensureFile()
+  const bookings = await getAllBookings()
   return bookings.some(
     (b) =>
       b.lodgeId === lodgeId &&

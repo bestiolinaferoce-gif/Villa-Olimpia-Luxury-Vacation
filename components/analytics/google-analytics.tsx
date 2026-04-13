@@ -158,6 +158,30 @@ export const trackLanguageChange = (language: string) => {
   trackEvent("language_change", "Engagement", language)
 }
 
+/** CTA click con contesto locale — usa label = "<locale>_<cta_id>" */
+export const trackCtaClick = (ctaId: string, locale?: string) => {
+  const label = locale ? `${locale}_${ctaId}` : ctaId
+  trackEvent("cta_click", "Conversion", label)
+}
+
+/** Traccia l'avvio del form (campo toccato per la prima volta) */
+export const trackFormStart = (formId: string, locale?: string) => {
+  const label = locale ? `${locale}_${formId}` : formId
+  trackEvent("form_start", "Conversion", label)
+}
+
+/** Traccia click WhatsApp con contesto */
+export const trackWhatsAppClick = (source: string, locale?: string) => {
+  const label = locale ? `${source}_${locale}` : source
+  trackEvent("whatsapp_click", "Conversion", label)
+}
+
+/** Traccia fallback (quando il submit API fallisce e si apre WA/mailto) */
+export const trackFormFallback = (reason: string, locale?: string) => {
+  const label = locale ? `${reason}_${locale}` : reason
+  trackEvent("form_fallback", "Conversion", label)
+}
+
 // Extend Window interface
 declare global {
   interface Window {

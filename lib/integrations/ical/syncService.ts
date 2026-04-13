@@ -1,6 +1,4 @@
-import { writeFile, mkdir } from "fs/promises"
-import path from "path"
-import { ICAL_CACHE_DIR } from "@/lib/data-path"
+import { kvSet } from "@/lib/kv"
 import { parseICalFeed } from "./parser"
 import { getICalUrlsForLodge } from "./lodgeICalMap"
 import type { OccupiedRange } from "@/lib/public-calendar/occupancy"
@@ -27,14 +25,12 @@ export async function syncICalForLodge(
     allRanges.push(...ranges)
   }
 
-  await mkdir(ICAL_CACHE_DIR, { recursive: true }).catch(() => {})
-  const cachePath = path.join(ICAL_CACHE_DIR, `${lodgeId}.json`)
   const cacheContent = {
     lodgeId,
     updatedAt: new Date().toISOString(),
     ranges: allRanges,
   }
-  await writeFile(cachePath, JSON.stringify(cacheContent, null, 2))
+  await kvSet(`ical:${lodgeId}`, cacheContent, 90000)
 
   return { synced: allRanges.length, errors }
 }

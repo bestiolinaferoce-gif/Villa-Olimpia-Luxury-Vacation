@@ -114,7 +114,6 @@ export default async function LocaleLayout({
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <link rel="icon" href="/favicon-neutral.svg" type="image/svg+xml" />
-        <link rel="canonical" href={localizedCanonical} />
         {process.env.NEXT_PUBLIC_GSC_VERIFICATION && (
           <meta name="google-site-verification" content={process.env.NEXT_PUBLIC_GSC_VERIFICATION} />
         )}
@@ -141,16 +140,15 @@ export default async function LocaleLayout({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": ["LodgingBusiness", "VacationRental"],
+              "@type": "LodgingBusiness",
               "@id": `${BASE_URL}/#business`,
               name: "Villa Olimpia",
-              additionalType: "HolidayVillageRental",
               description: locale === 'it' 
                 ? "9 appartamenti di lusso con piscina privata a Capo Rizzuto, Calabria. A 100 metri dalla Spiaggia dei Gigli, Area Marina Protetta Capo Rizzuto."
                 : locale === 'en'
                 ? "9 luxury apartments with outdoor shared swimming pool in Capo Rizzuto, Calabria. About 100 meters from the sandy beach, near the Capo Rizzuto Marine Protected Area."
                 : "9 luxury apartments with outdoor shared swimming pool in Capo Rizzuto, Calabria.",
-              url: localizedCanonical,
+              url: BASE_URL,
               telephone: "+393335773390",
               latitude: 38.913856,
               longitude: 17.0754964,

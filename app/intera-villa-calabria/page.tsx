@@ -1,9 +1,10 @@
+import Image from "next/image"
 import Link from "next/link"
 import { generateMetadata } from "@/lib/metadata"
 import { Breadcrumb } from "@/components/breadcrumb"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Users, Building2, Waves, ShieldCheck, ArrowRight, Home } from "lucide-react"
+import { Users, Building2, Waves, ShieldCheck, ArrowRight, Home, Clock, MessageCircle } from "lucide-react"
 
 export const metadata = generateMetadata({
   title: "Più appartamenti o intera struttura | Gruppi e famiglie | Villa Olimpia",
@@ -24,22 +25,53 @@ export default function InteraVillaCalabriaPage() {
     <div className="min-h-screen pt-20">
       <Breadcrumb items={[{ label: "Intera struttura e gruppi" }]} />
 
-      <section className="relative overflow-hidden bg-gradient-to-br from-primary/10 via-ocean/10 to-slate-50 py-16">
-        <div className="container relative mx-auto px-4">
-          <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 rounded-full bg-white/90 px-4 py-2 text-sm font-semibold text-primary shadow border border-primary/10">
+      {/* Hero con immagine */}
+      <section className="relative h-[55vh] overflow-hidden">
+        <Image
+          src="/images/villa/gallery/Esterni_Piscina_Giorno_01.jpg"
+          alt="Villa Olimpia piscina e giardino - soluzione per gruppi e famiglie a Capo Rizzuto"
+          fill
+          className="object-cover"
+          priority
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
+          <div className="container mx-auto max-w-3xl">
+            <div className="inline-flex items-center gap-2 rounded-full bg-white/15 border border-white/25 px-4 py-2 text-sm font-semibold mb-4">
               <Users className="h-4 w-4" />
               Gruppi · famiglie · più appartamenti
             </div>
-            <h1 className="mt-6 text-4xl font-playfair font-bold text-slate-900 md:text-5xl">
+            <h1 className="text-4xl font-playfair font-bold md:text-5xl leading-tight">
               Più appartamenti nello stesso complesso: la comodità di Villa Olimpia per gruppi e famiglie
             </h1>
-            <p className="mt-4 text-lg text-slate-600 leading-relaxed">
+          </div>
+        </div>
+      </section>
+
+      <section className="relative overflow-hidden bg-gradient-to-br from-white via-slate-50/60 to-white py-14">
+        <div className="container relative mx-auto px-4">
+          <div className="max-w-3xl">
+            <p className="text-lg text-slate-600 leading-relaxed">
               Villa Olimpia riunisce nove appartamenti indipendenti attorno a piscina e spazi esterni: è la soluzione
               ideale quando viaggiate in più nuclei ma volete restare vicini. Le richieste per l&apos;intera struttura o
-              per combinazioni multiple sono valutate caso per caso: la disponibilità va sempre verificata su richiesta,
+              per combinazioni multiple sono valutate caso per caso — la disponibilità va sempre verificata su richiesta,
               senza impegni automatici.
             </p>
+            <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-3 text-sm">
+              <div className="flex items-center gap-2 rounded-xl border border-primary/10 bg-white px-4 py-3 shadow-sm">
+                <Home className="h-4 w-4 text-primary shrink-0" />
+                <span className="text-slate-700">9 appartamenti indipendenti</span>
+              </div>
+              <div className="flex items-center gap-2 rounded-xl border border-primary/10 bg-white px-4 py-3 shadow-sm">
+                <Waves className="h-4 w-4 text-primary shrink-0" />
+                <span className="text-slate-700">Piscina e giardino condivisi</span>
+              </div>
+              <div className="flex items-center gap-2 rounded-xl border border-primary/10 bg-white px-4 py-3 shadow-sm">
+                <Clock className="h-4 w-4 text-primary shrink-0" />
+                <span className="text-slate-700">Risposta entro 24 ore</span>
+              </div>
+            </div>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Button variant="luxury" size="lg" asChild>
                 <Link href="/contatti?source=entire_villa_page#prenota">
@@ -48,7 +80,10 @@ export default function InteraVillaCalabriaPage() {
                 </Link>
               </Button>
               <Button variant="outline" size="lg" asChild>
-                <Link href="/prenota">Prenota (singolo appartamento)</Link>
+                <a href="https://wa.me/393335773390" target="_blank" rel="noopener noreferrer">
+                  <MessageCircle className="mr-2 h-4 w-4" />
+                  Scrivi su WhatsApp
+                </a>
               </Button>
             </div>
           </div>
@@ -152,7 +187,7 @@ export default function InteraVillaCalabriaPage() {
           </h2>
           <p className="text-slate-600 mb-8">
             Guarda le schede degli appartamenti per capire capacità e disposizione, poi contattaci con numero di ospiti e
-            periodo indicativo.
+            periodo indicativo. Maggio, giugno e settembre sono spesso i mesi migliori per soggiorni di gruppo.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Button variant="luxury" size="lg" asChild>
@@ -160,6 +195,9 @@ export default function InteraVillaCalabriaPage() {
             </Button>
             <Button variant="outline" size="lg" asChild>
               <Link href="/settembre-capo-rizzuto">Settembre a Capo Rizzuto</Link>
+            </Button>
+            <Button variant="outline" size="lg" asChild>
+              <Link href="/maggio-2026">Maggio 2026</Link>
             </Button>
           </div>
         </div>

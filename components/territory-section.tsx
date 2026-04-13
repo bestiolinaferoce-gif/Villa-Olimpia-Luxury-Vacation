@@ -67,20 +67,6 @@ const destinations: TouristDestination[] = [
     featured: true
   },
   {
-    name: "Capopiccolo e Spiaggia dei Gigli",
-    category: "spiaggia",
-    distance: "2 km",
-    driveTime: "5 minuti",
-    description: "Capopiccolo e la vicina Spiaggia dei Gigli offrono cale luminose, mare trasparente e scorci tra i più fotografati dell'Area Marina Protetta di Capo Rizzuto.",
-    image: "/images/territory/spiaggia-capopiccolo.jpg",
-    imageAlt: "Spiaggia di Capopiccolo vicino Villa Olimpia con mare cristallino e scogli sulla costa ionica",
-    highlights: ["Capopiccolo", "Spiaggia dei Gigli", "Mare cristallino", "Cale panoramiche", "Relax sul mare"],
-    bestTime: "Giugno - Settembre",
-    link: "/spiagge-capo-rizzuto",
-    badges: ["bandiera-blu", "4k"],
-    featured: true
-  },
-  {
     name: "Valli Cupe",
     category: "natura",
     distance: "65 km",
@@ -90,6 +76,7 @@ const destinations: TouristDestination[] = [
     imageAlt: "Valli Cupe Calabria - Cascate gole natura selvaggia escursioni 4K",
     highlights: ["Riserva naturale", "Cascate spettacolari", "Gole profonde", "Escursioni guidate", "Natura selvaggia"],
     bestTime: "Aprile - Ottobre",
+    link: "/territorio",
     badges: ["4k"],
     featured: true
   },
@@ -112,10 +99,11 @@ const destinations: TouristDestination[] = [
     distance: "15 km",
     driveTime: "20 minuti",
     description: "Città storica con il Museo Archeologico Nazionale, il centro antico e il promontorio con vista panoramica. Capitale della Magna Grecia in Calabria.",
-    image: "/images/villa/location/spiaggia-dei-gigli-2.jpg",
-    imageAlt: "Crotone città storica Magna Grecia - Museo archeologico centro antico 4K",
+    image: "/images/territory/santa-severina-panorama.jpg",
+    imageAlt: "Borgo storico calabrese sull'altopiano — tipica gita culturale da Capo Rizzuto",
     highlights: ["Museo Archeologico Nazionale", "Centro storico", "Vista panoramica", "Gastronomia locale", "Magna Grecia"],
     bestTime: "Tutto l'anno",
+    link: "/territorio",
     badges: ["4k"]
   },
   {
@@ -124,10 +112,11 @@ const destinations: TouristDestination[] = [
     distance: "85 km",
     driveTime: "1 ora 15 min",
     description: "Una delle spiagge più belle della Calabria, con scogliere a picco sul mare e vista sulle Isole Eolie. Atmosfera esclusiva e panorami mozzafiato.",
-    image: "/images/villa/location/spiaggia-dei-gigli.jpg",
-    imageAlt: "Capo Vaticano Calabria - Spiagge scogliere vista Eolie 4K",
+    image: "/images/territory/spiaggia-grande-capo-rizzuto-02.jpg",
+    imageAlt: "Costa ionica calabrese — esempio di litorale sabbioso della regione",
     highlights: ["Spiagge paradisiache", "Vista Isole Eolie", "Scogliere spettacolari", "Atmosfera esclusiva", "Spiaggia da sogno"],
     bestTime: "Giugno - Settembre",
+    link: "/territorio",
     badges: ["4k"]
   },
   {
@@ -136,10 +125,11 @@ const destinations: TouristDestination[] = [
     distance: "90 km",
     driveTime: "1 ora 20 min",
     description: "La perla della Costa degli Dei. Centro storico affascinante, spiagge dorate e famosa per le cipolle rosse. Meta turistica internazionale della Calabria.",
-    image: "/images/villa/location/spiaggia-dei-gigli-2.jpg",
-    imageAlt: "Tropea Costa degli Dei - Centro storico spiagge dorate cipolla rossa 4K",
+    image: "/images/territory/castello-santa-severina.jpg",
+    imageAlt: "Castello e borgo storico in Calabria — meta raggiungibile in giornata da Capo Rizzuto",
     highlights: ["Centro storico", "Spiagge dorate", "Cipolla rossa di Tropea", "Vita notturna", "Meta internazionale"],
     bestTime: "Maggio - Ottobre",
+    link: "/territorio",
     badges: ["4k"]
   },
   {
@@ -148,10 +138,11 @@ const destinations: TouristDestination[] = [
     distance: "60 km",
     driveTime: "50 minuti",
     description: "La perla dello Ionio, famosa per le spiagge dorate, la vita notturna e i ristoranti di pesce freschissimo. Bandiera Blu per qualità ambientale.",
-    image: "/images/villa/location/spiaggia-dei-gigli.jpg",
-    imageAlt: "Soverato perla dello Ionio - Spiagge dorate vita notturna pesce fresco Bandiera Blu 4K",
+    image: "/images/territory/spiaggia-capopiccolo-lato-interno.jpg",
+    imageAlt: "Cala ionica con acqua limpida — atmosfera da località balneare crotonese",
     highlights: ["Bandiera Blu", "Spiagge dorate", "Vita notturna", "Pesce fresco", "Resort esclusivi"],
     bestTime: "Giugno - Settembre",
+    link: "/spiagge-capo-rizzuto",
     badges: ["bandiera-blu", "4k"]
   },
   {
@@ -160,10 +151,11 @@ const destinations: TouristDestination[] = [
     distance: "70 km",
     driveTime: "1 ora",
     description: "Il polmone verde della Calabria. Escursioni, laghi montani, fauna selvatica e rifugi accoglienti. Patrimonio naturale da esplorare in ogni stagione.",
-    image: "/images/villa/location/spiaggia-dei-gigli-2.jpg",
-    imageAlt: "Parco Nazionale Sila Calabria - Laghi montani escursioni natura 4K",
+    image: "/images/territory/valli-cupe-sentiero.jpg",
+    imageAlt: "Sentiero e natura montana in Calabria — escursioni nell'entroterra",
     highlights: ["Parco Nazionale", "Escursioni", "Laghi montani", "Fauna selvatica", "Rifugi"],
     bestTime: "Giugno - Settembre (estate), Dicembre - Marzo (sci)",
+    link: "/territorio",
     badges: ["4k"]
   },
 ]
@@ -336,8 +328,11 @@ export function TerritorySection() {
                           </Link>
                         </Button>
                       ) : (
-                        <Button variant="outline" size="sm" className="w-full">
-                          Informazioni disponibili in loco
+                        <Button variant="outline" size="sm" className="w-full border-slate-200 bg-white hover:bg-sky-50" asChild>
+                          <Link href="/territorio">
+                            Esplora il territorio
+                            <ExternalLink className="w-4 h-4 ml-2" />
+                          </Link>
                         </Button>
                       )}
                     </CardContent>
@@ -420,6 +415,22 @@ export function TerritorySection() {
                           <Calendar className="w-3 h-3" />
                           <span>{destination.bestTime}</span>
                         </div>
+                      )}
+
+                      {destination.link ? (
+                        <Button variant="outline" size="sm" className="w-full border-slate-200 bg-white hover:bg-sky-50" asChild>
+                          <Link href={destination.link}>
+                            Scopri di più
+                            <ExternalLink className="w-4 h-4 ml-2" />
+                          </Link>
+                        </Button>
+                      ) : (
+                        <Button variant="outline" size="sm" className="w-full border-slate-200 bg-white hover:bg-sky-50" asChild>
+                          <Link href="/territorio">
+                            Esplora il territorio
+                            <ExternalLink className="w-4 h-4 ml-2" />
+                          </Link>
+                        </Button>
                       )}
                     </CardContent>
                   </Card>

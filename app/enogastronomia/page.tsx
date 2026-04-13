@@ -373,20 +373,6 @@ export default function EnogastronomiaPage() {
         </div>
       </section>
 
-      {/* Spazio Sponsor (discreto, in fondo pagina) */}
-      <section className="py-12 bg-gradient-to-br from-slate-50 via-white to-amber-50/30">
-        <div className="container mx-auto px-4 max-w-5xl">
-          <div className="text-center border border-primary/10 rounded-2xl bg-white/70 backdrop-blur-sm p-6">
-            <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-2">
-              Partner & Sponsor
-            </p>
-            <p className="text-sm text-gray-600">
-              Spazio dedicato a partner selezionati — presto disponibile.
-            </p>
-          </div>
-        </div>
-      </section>
-
       {/* CTA */}
       <section className="py-20 bg-gradient-to-br from-red-900 via-purple-900 to-pink-900 text-white">
         <div className="container mx-auto px-4 text-center">
