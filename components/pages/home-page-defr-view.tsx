@@ -23,7 +23,7 @@ const copy: Record<
   de: {
     badge: "Ferienwohnungen im Meeresschutzgebiet Capo Rizzuto, Kalabrien",
     h1: "Ferienwohnungen mit Gemeinschafts-Außenpool, ca. 100 m vom Sandstrand",
-    body: "Villa Olimpia liegt in Capopiccolo im Meeresschutzgebiet Capo Rizzuto: 9 vollausgestattete Apartments mit Gemeinschafts-Außenpool, mediterranem Garten und ruhiger Lage – ca. 100 m vom Sandstrand entfernt. Ideal für Familien und Paare, die das echte Süditalien erleben möchten.",
+    body: "Villa Olimpia liegt in Capopiccolo im Meeresschutzgebiet Capo Rizzuto: 9 vollausgestattete Apartments mit Gemeinschafts-Außenpool, mediterranem Garten und ruhiger Lage – ca. 100 m vom Sandstrand entfernt. Ideal für Familien und Paare, die das echte Süditalien erleben möchten. Juni und Juli 2026 noch verfügbar – jetzt direkt anfragen.",
     ctaPrimary: "Verfügbarkeit anfragen",
     ctaSecondary: "Alle Apartments ansehen",
     why: {
@@ -47,12 +47,12 @@ const copy: Record<
       },
     ],
     ctaBottom: "Bereit für Ihren Urlaub in Kalabrien?",
-    ctaBottomSub: "Direktkontakt mit Villa Olimpia. Schnelle Antwort, transparente Preise, kein Vermittler.",
+    ctaBottomSub: "Direktkontakt mit Villa Olimpia. Schnelle Antwort, transparente Preise, kein Vermittler. Juni und Juli 2026 verfügbar.",
   },
   fr: {
     badge: "Appartements en bord de mer — Aire Marine Protégée de Capo Rizzuto, Calabre",
     h1: "Appartements avec piscine extérieure partagée, à environ 100 m de la plage",
-    body: "Villa Olimpia à Capopiccolo est situé dans l'Aire Marine Protégée de Capo Rizzuto : 9 appartements entièrement équipés avec piscine extérieure partagée, jardin méditerranéen et cadre calme, à environ 100 m de la plage. L'Italie authentique, loin des foules.",
+    body: "Villa Olimpia à Capopiccolo est situé dans l'Aire Marine Protégée de Capo Rizzuto : 9 appartements entièrement équipés avec piscine extérieure partagée, jardin méditerranéen et cadre calme, à environ 100 m de la plage. L'Italie authentique, loin des foules. Disponibilités juin et juillet 2026 — contactez-nous directement.",
     ctaPrimary: "Demander la disponibilité",
     ctaSecondary: "Voir tous les appartements",
     why: {
@@ -79,7 +79,7 @@ const copy: Record<
       },
     ],
     ctaBottom: "Prêt pour votre séjour en Calabre ?",
-    ctaBottomSub: "Contact direct avec Villa Olimpia. Réponse rapide, tarifs transparents, sans intermédiaire.",
+    ctaBottomSub: "Contact direct avec Villa Olimpia. Réponse rapide, tarifs transparents, sans intermédiaire. Disponible juin et juillet 2026.",
   },
 }
 

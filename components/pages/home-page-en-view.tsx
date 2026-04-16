@@ -49,15 +49,15 @@ export function HomePageEnView() {
             <div>
               <p className="inline-flex items-center gap-2 rounded-full bg-white/80 px-4 py-2 text-sm font-semibold text-primary shadow">
                 <Waves className="h-4 w-4" />
-                Premium seaside apartments in Calabria, Italy
+                Seaside apartments — Capo Rizzuto Marine Protected Area, Calabria
               </p>
               <h1 className="mt-6 text-4xl font-playfair font-bold text-slate-900 md:text-5xl">
                 9 Seaside Apartments in Calabria with Outdoor Pool — About 100 Metres from the Sandy Beach
               </h1>
               <p className="mt-4 text-lg leading-relaxed text-slate-600">
-                Villa Olimpia is ideal for families and couples looking for an elegant holiday in southern Italy:
-                fully equipped apartments with kitchen, Mediterranean garden, and direct access to one of the most
-                loved sandy beaches in Capo Rizzuto.
+                Villa Olimpia offers 9 independent apartments with private outdoor spaces, fully equipped kitchens,
+                and a shared outdoor pool — set in a quiet Mediterranean garden inside the Capo Rizzuto Marine
+                Protected Area. Good availability for June and July 2026 — contact us directly.
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <Button variant="luxury" size="lg" asChild onClick={() => trackEvent("cta_click", "Conversion", "en_hero_check_availability")}>
@@ -115,27 +115,27 @@ export function HomePageEnView() {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2 text-lg">
                   <Users className="h-5 w-5 text-primary" />
-                  Couples
+                  Independent units
                 </CardTitle>
-                <CardDescription className="text-slate-700">Smart studio and one-bedroom options for romantic seaside breaks.</CardDescription>
+                <CardDescription className="text-slate-700">Each apartment is self-contained with its own private outdoor space — balcony or terrace — and a fully equipped kitchen.</CardDescription>
               </CardHeader>
             </Card>
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2 text-lg">
                   <CookingPot className="h-5 w-5 text-primary" />
-                  Families
+                  Families and couples
                 </CardTitle>
-                <CardDescription className="text-slate-700">Two-bedroom layouts with kitchen, outdoor areas, and easy beach access.</CardDescription>
+                <CardDescription className="text-slate-700">Studio, one-bedroom, and two-bedroom layouts. All include kitchen — ideal for flexible self-catering stays of 1–3 weeks.</CardDescription>
               </CardHeader>
             </Card>
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2 text-lg">
                   <MapPin className="h-5 w-5 text-primary" />
-                  Location
+                  Capopiccolo, Capo Rizzuto
                 </CardTitle>
-                <CardDescription className="text-slate-700">Capopiccolo, close to Le Castella and the Capo Rizzuto marine reserve.</CardDescription>
+                <CardDescription className="text-slate-700">Inside the Marine Protected Area, close to Le Castella fortress and Isola di Capo Rizzuto. Quiet road, 100 m from the beach.</CardDescription>
               </CardHeader>
             </Card>
           </div>
@@ -207,9 +207,9 @@ export function HomePageEnView() {
         <div className="container mx-auto px-4">
           <h2 className="text-center text-3xl font-playfair font-bold text-slate-900 md:text-4xl">Location advantages</h2>
           <p className="mx-auto mt-4 max-w-3xl text-center text-slate-600">
-            Stay by the sea without giving up comfort: you are about 100 meters from the sandy beach, and the outdoor
-            shared swimming pool is inside the
-            property, and the area is perfect for a calm premium stay in Calabria, Italy.
+            Stay by the sea without giving up comfort: about 100 metres from the sandy beach, outdoor shared pool
+            within the property, quiet Mediterranean garden, and the full Capo Rizzuto Marine Protected Area on
+            your doorstep. A calm, independent base for Calabria.
           </p>
           <div className="mx-auto mt-8 grid max-w-5xl gap-6 md:grid-cols-3">
             <Button variant="outline" asChild>
