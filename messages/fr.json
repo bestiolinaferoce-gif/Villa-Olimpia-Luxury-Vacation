@@ -7,9 +7,9 @@
     "reviews": "Avis",
     "faq": "FAQ",
     "contacts": "Contact",
-    "seasonMaggio": "Maggio 2026",
-    "seasonGiugno": "Giugno 2026",
-    "seasonLuglio": "Luglio 2026"
+    "seasonMaggio": "Mai 2026",
+    "seasonGiugno": "Juin 2026",
+    "seasonLuglio": "Juillet 2026"
   },
   "common": {
     "bookNow": "Réserver Maintenant",
@@ -25,8 +25,8 @@
   },
   "home": {
     "hero": {
-      "title": "Villa Olimpia — Appartements avec piscine privée à Capo Rizzuto",
-      "subtitle": "Expérience de luxe sur la magnifique Spiaggia dei Gigli",
+      "title": "Villa Olimpia — Appartements avec piscine extérieure à Capo Rizzuto",
+      "subtitle": "Expérience authentique sur la magnifique Spiaggia dei Gigli",
       "description": "À moins de 100 mètres de la magnifique Spiaggia dei Gigli, dans l'Aire Marine Protégée Capo Rizzuto",
       "protectedArea": "Aire Marine Protégée Capo Rizzuto",
       "apartments": "Appartements",
@@ -34,7 +34,7 @@
       "rating": "Note",
       "ratingValue": "Excellente note",
       "beachDistance": "100 mètres de la plage",
-      "privatePool": "Piscine Privée",
+      "privatePool": "Piscine Extérieure Partagée",
       "bookedBy": "Réservé par de nombreux clients en 2024",
       "bookDirectly": "Réservez directement et économisez",
       "bookStay": "Réservez votre séjour",
@@ -58,8 +58,8 @@
           "text": "À moins de 100 mètres de la magnifique Spiaggia dei Gigli, dans l'Aire Marine Protégée"
         },
         "privatePool": {
-          "title": "Piscine Privée",
-          "text": "Grande piscine partagée avec solarium et gazebo pour la détente"
+          "title": "Piscine Extérieure Partagée",
+          "text": "Grande piscine extérieure avec solarium et gazebo – cadre calme dans l'Aire Marine Protégée de Capo Rizzuto"
         },
         "premiumComfort": {
           "title": "Confort Premium",
@@ -188,7 +188,7 @@
   },
   "apartments": {
     "title": "Appartements",
-    "subtitle": "9 appartements de luxe avec piscine privée",
+    "subtitle": "9 appartements avec piscine extérieure partagée dans l'Aire Marine Protégée de Capo Rizzuto",
     "description": "Tous les appartements disposent de climatisation, WiFi gratuit, cuisine complète et accès à la piscine partagée",
     "guests": "invités",
     "bedrooms": "chambres",
@@ -244,8 +244,8 @@
   },
   "footer": {
     "brand": {
-      "title": "Villa Olimpia — Appartements avec piscine privée à Capo Rizzuto",
-      "description": "Votre retraite de luxe en Calabre. 9 appartements élégants avec piscine privée, à seulement 100m de la magnifique Spiaggia dei Gigli."
+      "title": "Villa Olimpia — Appartements avec piscine extérieure à Capo Rizzuto",
+      "description": "9 appartements en bord de mer en Calabre avec piscine extérieure partagée, à environ 100 m de la plage Spiaggia dei Gigli, dans l'Aire Marine Protégée de Capo Rizzuto."
     },
     "quickLinks": "Liens Rapides",
     "discover": "Découvrir Capo Rizzuto",

@@ -16,19 +16,19 @@ export function generateStaticParams() {
 
 const metaByLocale: Record<string, { title: string; description: string }> = {
   en: {
-    title: "Calabria Seaside Apartments in Italy | Villa Olimpia",
+    title: "Calabria Seaside Apartments with Pool | Villa Olimpia — Capo Rizzuto",
     description:
-      "Seaside apartments in Calabria, Italy: outdoor shared swimming pool and about 100 meters from the sandy beach. Direct booking, reply within 24 hours.",
+      "9 apartments in the Capo Rizzuto Marine Protected Area, Calabria: outdoor shared pool and about 100 metres from the sandy beach. Available June, July and September 2026. Direct booking.",
   },
   de: {
-    title: "Ferienwohnungen Kalabrien am Meer mit Pool | Villa Olimpia",
+    title: "Ferienwohnungen Kalabrien am Meer mit Pool | Villa Olimpia Capo Rizzuto",
     description:
-      "Ferienwohnungen in Kalabrien, Süditalien: Gemeinschafts-Außenpool und ca. 100 m vom Sandstrand. Direktbuchung, Antwort innerhalb von 24 Stunden.",
+      "9 Ferienwohnungen im Meeresschutzgebiet Capo Rizzuto, Kalabrien: Gemeinschafts-Außenpool, ca. 100 m vom Sandstrand. Juni, Juli und September 2026 verfügbar. Direktbuchung.",
   },
   fr: {
-    title: "Appartements en bord de mer Calabre avec piscine | Villa Olimpia",
+    title: "Appartements bord de mer Calabre avec piscine | Villa Olimpia Capo Rizzuto",
     description:
-      "Appartements en bord de mer en Calabre, Italie du Sud : piscine extérieure partagée et environ 100 m de la plage. Réservation directe, réponse sous 24h.",
+      "9 appartements dans l'Aire Marine Protégée de Capo Rizzuto, Calabre : piscine extérieure partagée et environ 100 m de la plage. Disponibles juin, juillet et septembre 2026. Réservation directe.",
   },
 }
 

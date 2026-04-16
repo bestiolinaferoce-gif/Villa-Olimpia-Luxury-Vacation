@@ -172,7 +172,7 @@
     "cta": {
       "title": "Ready for Your Vacation?",
       "description": "Book your apartment and experience an unforgettable stay in beautiful Calabria",
-      "saveUpTo": "Book Directly and Save up to 15%",
+      "saveUpTo": "Book Direct — No OTA Fees",
       "bookVacation": "Book Your Vacation"
     },
     "juneJuly": {
@@ -188,8 +188,8 @@
   },
   "apartments": {
     "title": "Apartments",
-    "subtitle": "9 luxury apartments with outdoor shared swimming pool",
-    "description": "All apartments feature air conditioning, free WiFi, full kitchen and access to shared pool",
+    "subtitle": "9 apartments with outdoor shared swimming pool in the Capo Rizzuto Marine Protected Area",
+    "description": "All apartments feature air conditioning, free WiFi, fully equipped kitchen and access to the outdoor shared pool — steps from the Spiaggia dei Gigli beach",
     "guests": "guests",
     "bedrooms": "bedrooms",
     "bathrooms": "bathrooms",
@@ -244,8 +244,8 @@
   },
   "footer": {
     "brand": {
-      "title": "Villa Olimpia — Apartments with Outdoor Shared Swimming Pool in Capo Rizzuto",
-      "description": "Your luxury retreat in Calabria. 9 elegant apartments with outdoor shared swimming pool, about 100 meters from the sandy beach."
+      "title": "Villa Olimpia — Seaside Apartments with Outdoor Pool in Capo Rizzuto, Calabria",
+      "description": "9 seaside apartments in Calabria with outdoor shared swimming pool, about 100 metres from the sandy beach in the Capo Rizzuto Marine Protected Area. Direct booking."
     },
     "quickLinks": "Quick Links",
     "discover": "Discover Capo Rizzuto",

@@ -7,9 +7,9 @@
     "reviews": "Bewertungen",
     "faq": "FAQ",
     "contacts": "Kontakt",
-    "seasonMaggio": "Maggio 2026",
-    "seasonGiugno": "Giugno 2026",
-    "seasonLuglio": "Luglio 2026"
+    "seasonMaggio": "Mai 2026",
+    "seasonGiugno": "Juni 2026",
+    "seasonLuglio": "Juli 2026"
   },
   "common": {
     "bookNow": "Jetzt buchen",
@@ -25,7 +25,7 @@
   },
   "home": {
     "hero": {
-      "title": "Villa Olimpia — Apartments mit Privatpool in Capo Rizzuto",
+      "title": "Villa Olimpia — Ferienwohnungen mit Gemeinschafts-Außenpool in Capo Rizzuto",
       "subtitle": "Luxuserlebnis am wunderschönen Spiaggia dei Gigli",
       "description": "Weniger als 100 Meter vom wunderschönen Spiaggia dei Gigli, im Meeresschutzgebiet Capo Rizzuto",
       "protectedArea": "Meeresschutzgebiet Capo Rizzuto",
@@ -34,7 +34,7 @@
       "rating": "Bewertung",
       "ratingValue": "Ausgezeichnete Bewertung",
       "beachDistance": "100 Meter vom Strand",
-      "privatePool": "Privater Pool",
+      "privatePool": "Gemeinschafts-Außenpool",
       "bookedBy": "Von vielen Gästen im Jahr 2024 gebucht",
       "bookDirectly": "Direkt buchen und sparen",
       "bookStay": "Buchen Sie Ihren Aufenthalt",
@@ -58,8 +58,8 @@
           "text": "Weniger als 100 Meter vom wunderschönen Spiaggia dei Gigli, im Meeresschutzgebiet"
         },
         "privatePool": {
-          "title": "Privater Pool",
-          "text": "Großer Gemeinschaftspool mit Solarium und Pavillon zum Entspannen"
+          "title": "Gemeinschafts-Außenpool",
+          "text": "Großer Außenpool mit Solarium und Pavillon – ruhige Lage im Meeresschutzgebiet Capo Rizzuto"
         },
         "premiumComfort": {
           "title": "Premium-Komfort",
@@ -188,7 +188,7 @@
   },
   "apartments": {
     "title": "Wohnungen",
-    "subtitle": "9 Luxuswohnungen mit privatem Pool",
+    "subtitle": "9 Ferienwohnungen mit Gemeinschafts-Außenpool im Meeresschutzgebiet Capo Rizzuto",
     "description": "Alle Wohnungen verfügen über Klimaanlage, kostenloses WiFi, voll ausgestattete Küche und Zugang zum Gemeinschaftspool",
     "guests": "Gäste",
     "bedrooms": "Schlafzimmer",
@@ -244,8 +244,8 @@
   },
   "footer": {
     "brand": {
-      "title": "Villa Olimpia — Apartments mit Privatpool in Capo Rizzuto",
-      "description": "Ihr Luxus-Rückzugsort in Kalabrien. 9 elegante Wohnungen mit privatem Pool, nur 100m vom wunderschönen Spiaggia dei Gigli entfernt."
+      "title": "Villa Olimpia — Ferienwohnungen mit Außenpool in Capo Rizzuto",
+      "description": "9 Ferienwohnungen im Meeresschutzgebiet Capo Rizzuto, Kalabrien – mit Gemeinschafts-Außenpool und ca. 100 m vom Sandstrand Spiaggia dei Gigli."
     },
     "quickLinks": "Schnelllinks",
     "discover": "Capo Rizzuto entdecken",

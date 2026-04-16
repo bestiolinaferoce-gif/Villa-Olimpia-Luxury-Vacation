@@ -52,7 +52,7 @@ export function HomePageEnView() {
                 Premium seaside apartments in Calabria, Italy
               </p>
               <h1 className="mt-6 text-4xl font-playfair font-bold text-slate-900 md:text-5xl">
-                Calabria seaside apartments with outdoor shared swimming pool, about 100 meters from the sandy beach
+                9 Seaside Apartments in Calabria with Outdoor Pool — About 100 Metres from the Sandy Beach
               </h1>
               <p className="mt-4 text-lg leading-relaxed text-slate-600">
                 Villa Olimpia is ideal for families and couples looking for an elegant holiday in southern Italy:
@@ -89,17 +89,17 @@ export function HomePageEnView() {
           <h2 className="text-center text-3xl font-playfair font-bold text-slate-900 md:text-4xl">Why choose us</h2>
           <div className="mx-auto mt-10 grid max-w-5xl gap-6 md:grid-cols-3">
             {[
-              "About 100 meters from the sandy beach",
-              "Outdoor shared swimming pool, garden and quiet private setting",
-              "Apartments with kitchen for flexible stays",
+              { title: "Steps from the Beach", text: "About 100 metres from the sandy beach of Spiaggia dei Gigli, in the Capo Rizzuto Marine Protected Area" },
+              { title: "Outdoor Shared Pool", text: "Outdoor shared swimming pool with solarium and gazebo, in a quiet private garden setting" },
+              { title: "Flexible Self-Catering", text: "Fully equipped kitchens in every apartment — ideal for families, couples, and longer stays" },
             ].map((item) => (
-              <Card key={item} className="border border-primary/10 shadow-sm">
+              <Card key={item.title} className="border border-primary/10 shadow-sm">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2 text-lg">
                     <CheckCircle2 className="h-5 w-5 text-primary" />
-                    Guest-first comfort
+                    {item.title}
                   </CardTitle>
-                  <CardDescription className="text-sm text-slate-600">{item}</CardDescription>
+                  <CardDescription className="text-sm text-slate-600">{item.text}</CardDescription>
                 </CardHeader>
               </Card>
             ))}
@@ -147,6 +147,46 @@ export function HomePageEnView() {
         </div>
       </section>
 
+      <section className="bg-white py-16">
+        <div className="container mx-auto px-4">
+          <h2 className="text-center text-3xl font-playfair font-bold text-slate-900 md:text-4xl">When to visit Capo Rizzuto</h2>
+          <p className="mx-auto mt-4 max-w-2xl text-center text-slate-600">
+            June, July and September are the three best months to stay at Villa Olimpia. Each has its own character.
+          </p>
+          <div className="mx-auto mt-10 grid max-w-5xl gap-6 md:grid-cols-3">
+            <Card className="border border-primary/10 shadow-sm">
+              <CardHeader>
+                <CardTitle className="text-lg">June</CardTitle>
+                <CardDescription className="text-slate-700">
+                  Warm sea, quieter beaches, good availability. An excellent choice for an early-summer holiday in Calabria without the peak-season crowds.
+                </CardDescription>
+              </CardHeader>
+            </Card>
+            <Card className="border border-primary/10 shadow-sm">
+              <CardHeader>
+                <CardTitle className="text-lg">July</CardTitle>
+                <CardDescription className="text-slate-700">
+                  Peak summer at the Capo Rizzuto Marine Protected Area. The sea is at its best and the area is at its most vibrant. Book early — July fills quickly.
+                </CardDescription>
+              </CardHeader>
+            </Card>
+            <Card className="border border-primary/10 shadow-sm">
+              <CardHeader>
+                <CardTitle className="text-lg">September</CardTitle>
+                <CardDescription className="text-slate-700">
+                  The sea reaches its warmest in September. Beaches are calmer, restaurants quieter, and the light is beautiful. A favourite month for European visitors.
+                </CardDescription>
+              </CardHeader>
+            </Card>
+          </div>
+          <div className="mt-8 text-center">
+            <Button variant="luxury" asChild>
+              <Link href="/en/contact">Check availability for your dates</Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
       <section className="bg-slate-50 py-16">
         <div className="container mx-auto px-4">
           <h2 className="text-center text-3xl font-playfair font-bold text-slate-900 md:text-4xl">Quick answers before booking</h2>
@@ -173,13 +213,13 @@ export function HomePageEnView() {
           </p>
           <div className="mx-auto mt-8 grid max-w-5xl gap-6 md:grid-cols-3">
             <Button variant="outline" asChild>
-              <Link href="/en/calabria-beach-apartments">Calabria beach apartments</Link>
+              <Link href="/en/apartments">Browse all 9 apartments</Link>
             </Button>
             <Button variant="outline" asChild>
-              <Link href="/en/family-holiday-calabria">Family holiday Calabria</Link>
+              <Link href="/en/family-holiday-calabria">Family holiday in Calabria</Link>
             </Button>
             <Button variant="outline" asChild>
-              <Link href="/en/september-italy-holidays">September Italy holidays</Link>
+              <Link href="/en/september-italy-holidays">September in southern Italy</Link>
             </Button>
           </div>
         </div>

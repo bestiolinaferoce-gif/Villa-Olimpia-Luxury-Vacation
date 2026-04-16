@@ -21,21 +21,21 @@ const copy: Record<
   }
 > = {
   de: {
-    badge: "Ferienwohnungen in Kalabrien, Italien",
-    h1: "Ferienwohnungen mit Pool, ca. 100 m vom Sandstrand",
-    body: "Villa Olimpia in Capopiccolo (Isola di Capo Rizzuto) bietet 9 vollausgestattete Apartments mit Gemeinschafts-Außenpool, mediterranem Garten und ruhiger Lage. Ideal für Familien und Paare, die das echte Süditalien erleben möchten.",
+    badge: "Ferienwohnungen im Meeresschutzgebiet Capo Rizzuto, Kalabrien",
+    h1: "Ferienwohnungen mit Gemeinschafts-Außenpool, ca. 100 m vom Sandstrand",
+    body: "Villa Olimpia liegt in Capopiccolo im Meeresschutzgebiet Capo Rizzuto: 9 vollausgestattete Apartments mit Gemeinschafts-Außenpool, mediterranem Garten und ruhiger Lage – ca. 100 m vom Sandstrand entfernt. Ideal für Familien und Paare, die das echte Süditalien erleben möchten.",
     ctaPrimary: "Verfügbarkeit anfragen",
-    ctaSecondary: "Über Kapo Rizzuto",
+    ctaSecondary: "Alle Apartments ansehen",
     why: {
       heading: "Warum Villa Olimpia?",
       items: [
-        "Ca. 100 Meter vom Sandstrand",
-        "Außenpool und private, ruhige Lage",
+        "Ca. 100 m vom Sandstrand Spiaggia dei Gigli im Meeresschutzgebiet",
+        "Gemeinschafts-Außenpool mit Solarium und ruhiger, privater Lage",
         "Vollausgestattete Apartments mit Küche",
       ],
     },
     faq: [
-      { q: "Wie weit ist es zum Strand?", a: "Etwa 100 Meter zu Fuß zum Sandstrand." },
+      { q: "Wie weit ist es zum Strand?", a: "Etwa 100 Meter zu Fuß zum Sandstrand Spiaggia dei Gigli im Meeresschutzgebiet Capo Rizzuto." },
       { q: "Gibt es einen Pool?", a: "Ja, ein Gemeinschafts-Außenpool steht allen Gästen zur Verfügung." },
       {
         q: "Wie kann man direkt buchen?",
@@ -43,28 +43,28 @@ const copy: Record<
       },
       {
         q: "Wann ist die beste Reisezeit?",
-        a: "Mai, Juni und September bieten weniger Betrieb, wunderschönes Meer und angenehme Temperaturen.",
+        a: "Juni und September bieten weniger Betrieb, schönes Meer und angenehme Temperaturen. Juli ist Hochsaison – frühzeitig buchen empfohlen.",
       },
     ],
     ctaBottom: "Bereit für Ihren Urlaub in Kalabrien?",
     ctaBottomSub: "Direktkontakt mit Villa Olimpia. Schnelle Antwort, transparente Preise, kein Vermittler.",
   },
   fr: {
-    badge: "Appartements en bord de mer en Calabre, Italie",
-    h1: "Appartements avec piscine extérieure, à environ 100 m de la plage",
-    body: "Villa Olimpia à Capopiccolo (Isola di Capo Rizzuto) propose 9 appartements entièrement équipés avec piscine extérieure partagée, jardin méditerranéen et cadre calme. Idéal pour les familles et les couples à la recherche d'un séjour authentique dans le sud de l'Italie.",
+    badge: "Appartements en bord de mer — Aire Marine Protégée de Capo Rizzuto, Calabre",
+    h1: "Appartements avec piscine extérieure partagée, à environ 100 m de la plage",
+    body: "Villa Olimpia à Capopiccolo est situé dans l'Aire Marine Protégée de Capo Rizzuto : 9 appartements entièrement équipés avec piscine extérieure partagée, jardin méditerranéen et cadre calme, à environ 100 m de la plage. L'Italie authentique, loin des foules.",
     ctaPrimary: "Demander la disponibilité",
-    ctaSecondary: "Découvrir Capo Rizzuto",
+    ctaSecondary: "Voir tous les appartements",
     why: {
       heading: "Pourquoi choisir Villa Olimpia ?",
       items: [
-        "À environ 100 mètres de la plage de sable",
+        "À environ 100 m de la plage Spiaggia dei Gigli, Aire Marine Protégée",
         "Piscine extérieure partagée et cadre calme et privé",
         "Appartements entièrement équipés avec cuisine",
       ],
     },
     faq: [
-      { q: "À quelle distance se trouve la plage ?", a: "À environ 100 mètres à pied de la plage de sable." },
+      { q: "À quelle distance se trouve la plage ?", a: "À environ 100 mètres à pied de la plage Spiaggia dei Gigli, dans l'Aire Marine Protégée de Capo Rizzuto." },
       {
         q: "Y a-t-il une piscine ?",
         a: "Oui, une piscine extérieure partagée est disponible pour tous les clients.",
@@ -75,7 +75,7 @@ const copy: Record<
       },
       {
         q: "Quelle est la meilleure période ?",
-        a: "Mai, juin et septembre offrent moins de foule, une mer magnifique et des températures agréables.",
+        a: "Juin et septembre offrent une mer magnifique et moins de monde. Juillet est la haute saison — réservez tôt.",
       },
     ],
     ctaBottom: "Prêt pour votre séjour en Calabre ?",
@@ -86,7 +86,7 @@ const copy: Record<
 export function HomePageDeFrView({ locale }: { locale: DeFrLocale }) {
   const c = copy[locale]
   const contactHref = `/${locale}/contatti`
-  const capoHref = `/${locale}/capo-rizzuto`
+  const capoHref = `/appartamenti`
 
   return (
     <div className="min-h-screen pt-20">
