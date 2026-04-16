@@ -105,7 +105,7 @@ export default function RootLayout({
               "@id": `${BASE_URL}/#business`,
               name: "Villa Olimpia",
               description:
-                "9 appartamenti di lusso con piscina privata a Capopiccolo, nel cuore dell'Area Marina Protetta di Capo Rizzuto. A 100 metri dalla Spiaggia dei Gigli (Bandiera Blu), con terrazza, aria condizionata e cucina attrezzata.",
+                "9 appartamenti con piscina esterna condivisa a Capopiccolo, nel cuore dell'Area Marina Protetta di Capo Rizzuto. A 100 metri dalla Spiaggia dei Gigli (Bandiera Blu), con terrazza, aria condizionata e cucina attrezzata.",
               url: BASE_URL,
               telephone: "+393335773390",
               address: {
@@ -151,7 +151,7 @@ export default function RootLayout({
                 }
               } : {}),
               amenityFeature: [
-                { "@type": "LocationFeatureSpecification", name: "Piscina privata", value: true },
+                { "@type": "LocationFeatureSpecification", name: "Piscina esterna condivisa", value: true },
                 { "@type": "LocationFeatureSpecification", name: "Parcheggio gratuito", value: true },
                 { "@type": "LocationFeatureSpecification", name: "Wi-Fi gratuito", value: true },
                 { "@type": "LocationFeatureSpecification", name: "Aria condizionata", value: true },

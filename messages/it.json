@@ -25,7 +25,7 @@
   },
   "home": {
     "hero": {
-      "title": "Villa Olimpia — Appartamenti con Piscina Privata a Capo Rizzuto",
+      "title": "Villa Olimpia — Appartamenti con Piscina Esterna a Capo Rizzuto",
       "subtitle": "Esperienza di lusso nella splendida Spiaggia dei Gigli",
       "description": "A meno di 100 metri dalla splendida Spiaggia dei Gigli, nell'Area Marina Protetta Capo Rizzuto",
       "protectedArea": "Area Marina Protetta Capo Rizzuto",
@@ -34,7 +34,7 @@
       "rating": "Rating",
       "ratingValue": "Rating eccellente",
       "beachDistance": "100 metri dalla spiaggia",
-      "privatePool": "Piscina Privata",
+      "privatePool": "Piscina Esterna Condivisa",
       "bookedBy": "Prenotato da molti ospiti nel 2024",
       "bookDirectly": "Prenota Direttamente e Risparmia",
       "bookStay": "Prenota il tuo soggiorno",
@@ -58,7 +58,7 @@
           "text": "A meno di 100 metri dalla splendida Spiaggia dei Gigli, nell'Area Marina Protetta"
         },
         "privatePool": {
-          "title": "Piscina Privata",
+          "title": "Piscina Esterna Condivisa",
           "text": "Grande piscina condivisa con solarium e gazebo per il relax"
         },
         "premiumComfort": {
@@ -188,7 +188,7 @@
   },
   "apartments": {
     "title": "Gli Appartamenti",
-    "subtitle": "9 appartamenti di lusso con piscina privata",
+    "subtitle": "9 appartamenti di lusso con piscina esterna condivisa",
     "description": "Tutti gli appartamenti dispongono di aria condizionata, WiFi gratuito, cucina completa e accesso alla piscina condivisa",
     "guests": "ospiti",
     "bedrooms": "camere",
@@ -244,8 +244,8 @@
   },
   "footer": {
     "brand": {
-      "title": "Villa Olimpia — Appartamenti con Piscina Privata a Capo Rizzuto",
-      "description": "Il tuo rifugio di lusso in Calabria. 9 appartamenti eleganti con piscina privata, a soli 100m dalla splendida Spiaggia dei Gigli."
+      "title": "Villa Olimpia — Appartamenti con Piscina Esterna a Capo Rizzuto",
+      "description": "Il tuo rifugio in Calabria. 9 appartamenti con piscina esterna condivisa, a soli 100m dalla splendida Spiaggia dei Gigli."
     },
     "quickLinks": "Link Rapidi",
     "discover": "Scopri Capo Rizzuto",
