@@ -4,6 +4,15 @@ import type { NextRequest } from "next/server"
 const CANONICAL_HOST = "villaolimpiacaporizzuto.com"
 const WWW_HOST = `www.${CANONICAL_HOST}`
 
+function getLocaleFromPathname(pathname: string): string {
+  for (const locale of ["en", "de", "fr"]) {
+    if (pathname === `/${locale}` || pathname.startsWith(`/${locale}/`)) {
+      return locale
+    }
+  }
+  return "it"
+}
+
 export function proxy(request: NextRequest) {
   const url = request.nextUrl.clone()
   let shouldRedirect = false
@@ -22,7 +31,10 @@ export function proxy(request: NextRequest) {
     return NextResponse.redirect(url, 308)
   }
 
-  return NextResponse.next()
+  const locale = getLocaleFromPathname(request.nextUrl.pathname)
+  const requestHeaders = new Headers(request.headers)
+  requestHeaders.set("x-next-intl-locale", locale)
+  return NextResponse.next({ request: { headers: requestHeaders } })
 }
 
 export const config = {
