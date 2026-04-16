@@ -12,7 +12,7 @@ import { TouchOptimizer } from "@/components/mobile/touch-optimizer"
 import { DirectionsProvider } from "@/components/directions-context"
 import { ErrorBoundary } from "@/components/error-boundary"
 import { defaultMetadata, BASE_URL } from "@/lib/metadata"
-import { getLocale } from 'next-intl/server'
+import { headers } from 'next/headers'
 import { AnalyticsUnified } from "@/components/analytics/analytics-unified"
 import { MetaPixelOptional } from "@/components/analytics/meta-pixel"
 import { AutoOptimizer } from "@/components/auto-optimizer"
@@ -49,7 +49,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  const locale = await getLocale()
+  const locale = (await headers()).get('x-next-intl-locale') ?? 'it'
   return (
     <html lang={locale} className={`${inter.variable} ${playfair.variable}`} suppressHydrationWarning>
       <head>
