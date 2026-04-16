@@ -12,6 +12,7 @@ import { TouchOptimizer } from "@/components/mobile/touch-optimizer"
 import { DirectionsProvider } from "@/components/directions-context"
 import { ErrorBoundary } from "@/components/error-boundary"
 import { defaultMetadata, BASE_URL } from "@/lib/metadata"
+import { headers } from 'next/headers'
 import { AnalyticsUnified } from "@/components/analytics/analytics-unified"
 import { MetaPixelOptional } from "@/components/analytics/meta-pixel"
 import { AutoOptimizer } from "@/components/auto-optimizer"
@@ -43,13 +44,14 @@ export const viewport: Viewport = {
   maximumScale: 5,
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const locale = (await headers()).get('x-next-intl-locale') ?? 'it'
   return (
-    <html lang="it" className={`${inter.variable} ${playfair.variable}`} suppressHydrationWarning>
+    <html lang={locale} className={`${inter.variable} ${playfair.variable}`} suppressHydrationWarning>
       <head>
         {/* Consent Mode v2 - PRIMO script, prima di GTM */}
         <script
