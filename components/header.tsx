@@ -7,6 +7,8 @@ import { Menu, X } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
 import { LanguageSelector } from "@/components/language-selector"
 import { useI18n } from "@/components/i18n-provider"
+import { getLocalizedPathForCanonical } from "@/lib/i18n-routing"
+import type { SupportedLocale } from "@/lib/i18n-config"
 
 const navLinkClass = (scrolled: boolean) =>
   scrolled
@@ -17,24 +19,8 @@ export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
 
-  let t: { nav: Record<string, string>; common: { bookNow: string } }
-  try {
-    const i18n = useI18n()
-    t = i18n.t
-  } catch {
-    t = {
-      nav: {
-        home: "Home",
-        apartments: "Gli Appartamenti",
-        location: "La Location",
-        services: "Servizi",
-        reviews: "Recensioni",
-        faq: "FAQ",
-        contacts: "Contatti",
-      },
-      common: { bookNow: "Prenota Ora" },
-    }
-  }
+  const { t, locale } = useI18n()
+  const currentLocale = (locale ?? "it") as SupportedLocale
 
   useEffect(() => {
     if (typeof window === "undefined") return
@@ -43,14 +29,18 @@ export function Header() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
+  // Ogni href usa il percorso canonico italiano → getLocalizedPathForCanonical
+  // lo traduce nel path corretto per la lingua attiva (/en/apartments, /de/contatti, ecc.)
+  // Per route non tradotte (location, servizi, recensioni, faq) il path resta invariato.
+  const loc = getLocalizedPathForCanonical
   const navItems = [
-    { href: "/", label: t.nav.home },
-    { href: "/appartamenti", label: t.nav.apartments },
-    { href: "/location", label: t.nav.location },
-    { href: "/servizi", label: t.nav.services },
-    { href: "/recensioni", label: t.nav.reviews },
-    { href: "/faq", label: t.nav.faq },
-    { href: "/contatti?source=header_menu", label: t.nav.contacts },
+    { href: loc("/", currentLocale), label: t.nav.home },
+    { href: loc("/appartamenti", currentLocale), label: t.nav.apartments },
+    { href: loc("/location", currentLocale), label: t.nav.location },
+    { href: loc("/servizi", currentLocale), label: t.nav.services },
+    { href: loc("/recensioni", currentLocale), label: t.nav.reviews },
+    { href: loc("/faq", currentLocale), label: t.nav.faq },
+    { href: `${loc("/contatti", currentLocale)}?source=header_menu`, label: t.nav.contacts },
   ]
 
   return (
@@ -63,7 +53,7 @@ export function Header() {
     >
       <div className="container mx-auto max-w-7xl px-4">
         <div className="flex h-[4.5rem] items-center justify-between gap-4">
-          <Link href="/" className="shrink-0">
+          <Link href={loc("/", currentLocale)} className="shrink-0">
             <motion.span
               whileHover={{ scale: 1.02 }}
               className={`font-playfair text-xl font-bold tracking-tight sm:text-2xl ${
@@ -88,7 +78,7 @@ export function Header() {
           <div className="hidden shrink-0 items-center gap-3 lg:flex">
             <LanguageSelector />
             <Button size="sm" className="font-semibold shadow-sm" asChild>
-              <Link href="/contatti?source=header_cta#prenota">{t.common.bookNow}</Link>
+              <Link href={`${loc("/contatti", currentLocale)}?source=header_cta#prenota`}>{t.common.bookNow}</Link>
             </Button>
           </div>
 
@@ -126,7 +116,7 @@ export function Header() {
               <div className="flex flex-col gap-3 border-t border-slate-100 py-4">
                 <LanguageSelector />
                 <Button className="w-full font-semibold" asChild>
-                  <Link href="/contatti?source=header_mobile_cta#prenota" onClick={() => setIsMenuOpen(false)}>
+                  <Link href={`${loc("/contatti", currentLocale)}?source=header_mobile_cta#prenota`} onClick={() => setIsMenuOpen(false)}>
                     {t.common.bookNow}
                   </Link>
                 </Button>

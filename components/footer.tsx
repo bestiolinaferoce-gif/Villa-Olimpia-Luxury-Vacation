@@ -5,9 +5,13 @@ import { Phone, Mail, MapPin, Facebook, Instagram } from "lucide-react"
 import { useI18n } from "@/components/i18n-provider"
 import { SITE_CONFIG } from "@/lib/constants"
 import { CookiePreferencesTrigger } from "@/components/cookie-preferences-trigger"
+import { getLocalizedPathForCanonical } from "@/lib/i18n-routing"
+import type { SupportedLocale } from "@/lib/i18n-config"
 
 export function Footer() {
-  const { t } = useI18n()
+  const { t, locale } = useI18n()
+  const currentLocale = (locale ?? "it") as SupportedLocale
+  const loc = (canonical: string) => getLocalizedPathForCanonical(canonical, currentLocale)
   return (
     <footer className="bg-secondary/30 border-t">
       <div className="container mx-auto px-4 py-12 md:py-16">
@@ -48,7 +52,7 @@ export function Footer() {
             <ul className="space-y-2 text-sm">
               <li>
                 <Link
-                  href="/"
+                  href={loc("/")}
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
                   {t.nav.home}
@@ -56,7 +60,7 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href="/appartamenti"
+                  href={loc("/appartamenti")}
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
                   {t.nav.apartments}
@@ -64,7 +68,7 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href="/location"
+                  href={loc("/location")}
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
                   {t.nav.location}
@@ -72,7 +76,7 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href="/servizi"
+                  href={loc("/servizi")}
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
                   {t.nav.services}
@@ -80,7 +84,7 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href="/contatti"
+                  href={loc("/contatti")}
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
                   {t.nav.contacts}
@@ -88,7 +92,7 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href="/faq"
+                  href={loc("/faq")}
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
                   {t.nav.faq}
@@ -103,7 +107,7 @@ export function Footer() {
             <ul className="space-y-2 text-sm">
               <li>
                 <Link
-                  href="/capo-rizzuto"
+                  href={loc("/capo-rizzuto")}
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
                   Appartamenti Capo Rizzuto
@@ -111,7 +115,7 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href="/le-castella"
+                  href={loc("/le-castella")}
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
                   Vacanze Le Castella

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
+  <title id="title">Villa Olimpia Monogram</title>
+  <desc id="desc">Monogramma VO elegante per favicon e miniature di Villa Olimpia.</desc>
+  <defs>
+    <linearGradient id="bg-monogram" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0e3a54" />
+      <stop offset="100%" stop-color="#167c8d" />
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="url(#bg-monogram)" />
+  <path d="M16 20L25 46L32 28L39 46L48 20" fill="none" stroke="#f6efe3" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" />
+  <path d="M23 18h18" fill="none" stroke="#f6efe3" stroke-linecap="round" stroke-width="3" opacity="0.85" />
+  <circle cx="32" cy="51" r="2.5" fill="#f6efe3" opacity="0.9" />
+</svg>

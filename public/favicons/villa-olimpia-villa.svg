@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
+  <title id="title">Villa Olimpia Villa Icon</title>
+  <desc id="desc">Icona villa con tetto e ingresso ispirata a una struttura ricettiva premium.</desc>
+  <defs>
+    <linearGradient id="bg-villa" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10384e" />
+      <stop offset="100%" stop-color="#1b6371" />
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="url(#bg-villa)" />
+  <path d="M14 28L32 14L50 28" fill="none" stroke="#f6efe3" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" />
+  <path d="M20 28v18h24V28" fill="none" stroke="#f6efe3" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" />
+  <path d="M28 46V35h8v11" fill="none" stroke="#f6efe3" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" />
+  <path d="M24 34h4M36 34h4" fill="none" stroke="#f6efe3" stroke-linecap="round" stroke-width="3" opacity="0.9" />
+</svg>

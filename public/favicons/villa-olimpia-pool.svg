@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
+  <title id="title">Villa Olimpia Pool Icon</title>
+  <desc id="desc">Icona piscina e gazebo per Villa Olimpia, adatta a favicon o miniature.</desc>
+  <defs>
+    <linearGradient id="bg-pool" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b3650" />
+      <stop offset="100%" stop-color="#158995" />
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="url(#bg-pool)" />
+  <path d="M18 25L32 15L46 25" fill="none" stroke="#f6efe3" stroke-linecap="round" stroke-linejoin="round" stroke-width="3.5" />
+  <path d="M24 25v7M40 25v7" fill="none" stroke="#f6efe3" stroke-linecap="round" stroke-width="3.5" />
+  <path d="M18 38c4 0 4-2.5 8-2.5s4 2.5 8 2.5 4-2.5 8-2.5 4 2.5 8 2.5" fill="none" stroke="#f6efe3" stroke-linecap="round" stroke-width="3.5" />
+  <path d="M16 46c5 0 5-2.5 10-2.5s5 2.5 10 2.5 5-2.5 10-2.5 5 2.5 10 2.5" fill="none" stroke="#f6efe3" stroke-linecap="round" stroke-width="3.5" opacity="0.9" />
+</svg>

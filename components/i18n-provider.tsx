@@ -29,6 +29,15 @@ export function I18nProvider({
     setLocaleState(getLocaleFromPathname(pathname))
   }, [pathname])
 
+  // Keep document.documentElement.lang in sync with the derived locale so that
+  // the HTML attribute is correct after hydration even though the root layout
+  // emits lang="it" in the static SSR shell.
+  useEffect(() => {
+    if (typeof document !== 'undefined') {
+      document.documentElement.lang = locale
+    }
+  }, [locale])
+
   const setLocale = (newLocale: Locale) => {
     setLocaleState(newLocale)
     if (typeof document !== 'undefined') {
