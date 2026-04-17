@@ -77,6 +77,8 @@ const nextConfig = {
       { source: "/home", destination: "/", permanent: true },
       // Fix 404 da Google Search Console (28/03/2026) - URL con prefisso lingua
       { source: "/en/appartamenti/apartment-9", destination: "/appartamenti/azalea", permanent: true },
+      // Fix Search Console (17/04/2026) - prefisso /it/ non necessario (locale di default)
+      { source: "/it/:path*", destination: "/:path*", permanent: true },
       // Localized listing lives at /en/apartments; detail slugs stay on /appartamenti/*
       { source: "/nl", destination: "/", permanent: true },
       { source: "/nl/:path*", destination: "/", permanent: true },
