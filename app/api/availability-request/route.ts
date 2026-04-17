@@ -1,13 +1,15 @@
 /**
  * POST pubblico: richieste disponibilità dalla barra sticky.
  * Richiede in produzione: RESEND_API_KEY. Destinatario: inbox ufficiale + opz. LEADS_TO_EMAIL (copia).
+ * Fallback: LEADS_TELEGRAM_BOT_TOKEN + LEADS_TELEGRAM_CHAT_ID (alert operatore).
+ * Persistenza: NDJSON in data/leads/ (o /tmp su Vercel).
  */
 import { NextRequest, NextResponse } from "next/server"
 import { z } from "zod"
-import {
-  buildOfficialAvailabilityMessage,
-} from "@/lib/booking-contact"
+import { appendFile, mkdir } from "fs/promises"
+import path from "path"
 import { resolveOwnerEmailRecipients } from "@/lib/lead-inbox"
+import { DATA_DIR } from "@/lib/data-path"
 
 const availabilitySchema = z.object({
   name: z.string().min(2).max(120),
@@ -119,6 +121,80 @@ async function sendAvailabilityEmail(params: {
   return { ok: true as const }
 }
 
+// ─── Persistenza NDJSON (safety-net: eseguita indipendentemente da Resend) ─────
+
+type AvailabilityRecord = {
+  receivedAt: string
+  name: string
+  email: string
+  phone: string
+  checkIn: string
+  checkOut: string
+  guests: string
+  apartment: string
+  source: string
+  ip: string
+  referer: string
+  userAgent: string
+}
+
+async function persistAvailabilityToFile(record: AvailabilityRecord) {
+  if (process.env.LEADS_PERSIST_ENABLED === "false") {
+    return { ok: false as const, reason: "persist_disabled" }
+  }
+  try {
+    const baseDir = process.env.LEADS_STORE_DIR
+      ? path.resolve(process.env.LEADS_STORE_DIR)
+      : path.join(DATA_DIR, "leads")
+    await mkdir(baseDir, { recursive: true })
+    const month = record.receivedAt.slice(0, 7) // YYYY-MM
+    const filePath = path.join(baseDir, `availability-${month}.ndjson`)
+    await appendFile(filePath, `${JSON.stringify(record)}\n`, "utf8")
+    return { ok: true as const, filePath }
+  } catch {
+    return { ok: false as const, reason: "persist_failed" }
+  }
+}
+
+// ─── Telegram alert operatore (fallback se Resend è giù) ──────────────────────
+
+async function sendTelegramAvailabilityAlert(record: AvailabilityRecord) {
+  const token = process.env.LEADS_TELEGRAM_BOT_TOKEN
+  const chatId = process.env.LEADS_TELEGRAM_CHAT_ID
+  if (!token || !chatId) {
+    return { ok: false as const, reason: "missing_telegram_config" }
+  }
+
+  const message = [
+    "📅 Nuova richiesta disponibilità — Villa Olimpia",
+    `Nome:      ${record.name}`,
+    `Email:     ${record.email}`,
+    `Telefono:  ${record.phone}`,
+    `Check-in:  ${record.checkIn}`,
+    `Check-out: ${record.checkOut}`,
+    `Ospiti:    ${record.guests}`,
+    `Lodge:     ${record.apartment || "Nessuna preferenza"}`,
+    `Fonte:     ${record.source}`,
+  ].join("\n")
+
+  const url = `https://api.telegram.org/bot${token}/sendMessage`
+  const response = await fetch(url, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      chat_id: chatId,
+      text: message,
+      disable_web_page_preview: true,
+    }),
+  })
+
+  if (!response.ok) {
+    return { ok: false as const, reason: `telegram_error_${response.status}` }
+  }
+
+  return { ok: true as const }
+}
+
 export async function POST(req: NextRequest) {
   try {
     const ip = getClientIp(req)
@@ -154,7 +230,8 @@ export async function POST(req: NextRequest) {
     const userAgent = req.headers.get("user-agent") || "unknown"
     const source = body.source?.trim() || "sticky_booking_bar"
 
-    const sent = await sendAvailabilityEmail({
+    const record: AvailabilityRecord = {
+      receivedAt: new Date().toISOString(),
       name: body.name,
       email: body.email,
       phone: body.phone,
@@ -166,13 +243,42 @@ export async function POST(req: NextRequest) {
       ip,
       referer,
       userAgent,
-    })
-
-    if (!sent.ok) {
-      return NextResponse.json({ ok: false, reason: sent.reason }, { status: 503 })
     }
 
-    return NextResponse.json({ ok: true })
+    const [emailDelivery, telegramDelivery, persisted] = await Promise.all([
+      sendAvailabilityEmail({ ...record }),
+      sendTelegramAvailabilityAlert(record),
+      persistAvailabilityToFile(record),
+    ])
+
+    // Il lead è consegnato se almeno uno dei canali owner ha funzionato.
+    // La persistenza su file è best-effort e non blocca il successo.
+    const deliveredAny = emailDelivery.ok || telegramDelivery.ok
+
+    if (!deliveredAny) {
+      return NextResponse.json(
+        {
+          ok: false,
+          reason: "all_delivery_channels_failed",
+          fallback: "whatsapp_or_mailto",
+          channels: {
+            resend: emailDelivery.ok,
+            telegram: telegramDelivery.ok,
+            persisted: persisted.ok,
+          },
+        },
+        { status: 503 }
+      )
+    }
+
+    return NextResponse.json({
+      ok: true,
+      channels: {
+        resend: emailDelivery.ok,
+        telegram: telegramDelivery.ok,
+        persisted: persisted.ok,
+      },
+    })
   } catch {
     return NextResponse.json({ ok: false, reason: "server_error" }, { status: 500 })
   }
