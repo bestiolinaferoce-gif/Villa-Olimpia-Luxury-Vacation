@@ -18,7 +18,7 @@ export function CounterAnimation({
   prefix = "",
   className = "",
 }: CounterAnimationProps) {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(end)
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.5,
