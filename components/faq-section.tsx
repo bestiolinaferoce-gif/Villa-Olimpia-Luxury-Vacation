@@ -33,7 +33,7 @@ const faqs: FAQItem[] = [
   },
   {
     question: "Quanto dista la spiaggia?",
-    answer: "Siamo a meno di 100 metri dalla splendida Spiaggia dei Gigli, raggiungibile in 1 minuto a piedi. Una delle spiagge più belle della Calabria, nell'Area Marina Protetta Capo Rizzuto.",
+    answer: "Siamo a 100 metri dalla Spiaggia dei Gigli, raggiungibile in 1 minuto a piedi. Una delle spiagge più belle della Calabria, nell'Area Marina Protetta Capo Rizzuto.",
   },
   {
     question: "Gli appartamenti hanno l'aria condizionata?",

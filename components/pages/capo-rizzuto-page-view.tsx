@@ -196,7 +196,7 @@ export function CapoRizzutoPageView({
               </p>
               <div className="grid md:grid-cols-2 gap-6 mb-12">
                 {[
-                  { emoji: "🏖️", text: "Raggiungere la spiaggia a piedi in 7 minuti (meno di 100 m)" },
+                  { emoji: "🏖️", text: "Raggiungere la spiaggia a piedi in 1 minuto (a 100 metri dalla Spiaggia dei Gigli)" },
                   { emoji: "🏰", text: "Visitare il Castello Aragonese di Le Castella (3km - 8 min auto)" },
                   { emoji: "🐠", text: "Fare snorkeling nell'Area Marina Protetta (2km)" },
                   { emoji: "🍷", text: "Degustare vini DOC a Cirò (30km)" },

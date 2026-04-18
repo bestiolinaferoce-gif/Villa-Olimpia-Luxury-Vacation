@@ -87,7 +87,7 @@ export default function SpiaggeCapoRizzutoPage() {
               <Link href="/appartamenti" className="underline underline-offset-4 decoration-primary/60 hover:text-primary">
                 Villa Olimpia
               </Link>{" "}
-              è la base perfetta per la tua vacanza al mare, a meno di 100 metri dalla spiaggia Bandiera Blu.
+              è la base perfetta per la tua vacanza al mare, a 100 metri dalla Spiaggia dei Gigli Bandiera Blu.
             </p>
             <p className="text-base text-muted-foreground max-w-3xl mx-auto">
               Questa guida ti aiuta a scegliere tra le spiagge di Capopiccolo, Le Castella e l&apos;Area Marina Protetta di Capo Rizzuto,
@@ -241,7 +241,7 @@ export default function SpiaggeCapoRizzutoPage() {
                   </div>
                   <CardDescription className="flex items-center gap-2">
                     <MapPin className="h-4 w-4" />
-                    A meno di 100 m da Villa Olimpia - Bandiera Blu
+                    A 100 metri da Villa Olimpia - Bandiera Blu
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -432,7 +432,7 @@ export default function SpiaggeCapoRizzutoPage() {
             </p>
             <div className="grid md:grid-cols-2 gap-6">
               {[
-                "A meno di 100 m dalla Spiaggia dei Gigli (1 minuto a piedi)",
+                "A 100 metri dalla Spiaggia dei Gigli (1 minuto a piedi)",
                 "Parcheggio gratuito per raggiungere le altre spiagge",
                 "Piscina privata per relax dopo la spiaggia",
                 "WiFi gratuito per condividere le tue foto",

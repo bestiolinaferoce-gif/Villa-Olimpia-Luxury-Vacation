@@ -254,7 +254,7 @@ export function LeCastellaPageView({
                 "9 appartamenti con piscina condivisa",
                 "Parcheggio gratuito per la tua auto",
                 "WiFi fibra gratuito",
-                "A meno di 100 m dalla Spiaggia dei Gigli",
+                "A 100 metri dalla Spiaggia dei Gigli",
                 "Posizione strategica per esplorare la Calabria",
               ].map((item, i) => (
                 <div key={i} className="flex items-center gap-3 p-4 bg-white/90 rounded-lg shadow-sm border border-primary/10">

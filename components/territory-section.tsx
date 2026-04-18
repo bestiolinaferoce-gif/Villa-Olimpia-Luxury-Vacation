@@ -218,7 +218,7 @@ export function TerritorySection() {
               <Award className="h-4 w-4 text-primary" />
             </div>
             <h1 className="text-4xl md:text-5xl font-playfair font-bold mb-4">
-              Mete Turistiche e Attrazioni della Calabria
+              Villa Olimpia — Lodge con Piscina a Capo Rizzuto
             </h1>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
               Esplora le meraviglie della Calabria e della Costa degli Achei. Dalle spiagge Bandiera Blu ai siti UNESCO, 

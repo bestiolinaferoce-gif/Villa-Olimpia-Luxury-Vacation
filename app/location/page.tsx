@@ -65,7 +65,7 @@ export default function LocationPage() {
             la possibilità di organizzare escursioni in giornata verso borghi storici e natura dell&apos;entroterra.
           </p>
           <p className="text-sm md:text-base text-white/80 mt-4">
-            La Spiaggia dei Gigli, Bandiera Blu, è a meno di 100 metri dagli appartamenti: si raggiunge in circa 1
+            La Spiaggia dei Gigli, Bandiera Blu, è a 100 metri dalla struttura: si raggiunge in circa 1
             minuto a piedi dal cancello di Villa Olimpia.
           </p>
         </div>
@@ -114,7 +114,7 @@ export default function LocationPage() {
 
       <LocalSeoSection
         title="Dove si trova Villa Olimpia"
-        subtitle="Capopiccolo, Isola di Capo Rizzuto: mare cristallino, area marina protetta e Spiaggia dei Gigli a pochi passi."
+        subtitle="Capopiccolo, Isola di Capo Rizzuto: mare cristallino, area marina protetta e Spiaggia dei Gigli a 100 metri."
         ctaHref="/contatti"
         ctaLabel="Chiedi disponibilita"
         showLocationCta={false}

@@ -193,7 +193,7 @@ export default function AreaMarinaProtettaPage() {
                   </p>
                   <p className="text-muted-foreground">
                     <strong>Dove:</strong> Le zone A e B dell&apos;area protetta sono accessibili per snorkeling. 
-                    Consigliamo di partire dalla spiaggia di Capopiccolo, a soli meno di 100 m da Villa Olimpia.
+                    Consigliamo di partire dalla spiaggia di Capopiccolo, a 100 metri da Villa Olimpia.
                   </p>
                 </CardContent>
               </Card>
@@ -303,7 +303,7 @@ export default function AreaMarinaProtettaPage() {
             <div className="grid md:grid-cols-2 gap-6">
               {[
                 "A soli 2km dall&apos;ingresso dell&apos;Area Marina Protetta",
-                "A meno di 100 m dalla spiaggia di Capopiccolo (punto di accesso)",
+                "A 100 metri dalla Spiaggia dei Gigli (punto di accesso)",
                 "Parcheggio gratuito per attrezzatura subacquea",
                 "Spazio per asciugare mute e attrezzatura",
                 "Cucina completa per preparare pranzi al sacco",
