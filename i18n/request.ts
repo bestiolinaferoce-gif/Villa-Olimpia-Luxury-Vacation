@@ -10,7 +10,11 @@ export const locales = SUPPORTED_LOCALES
 export type Locale = SupportedLocale
 export const defaultLocale = DEFAULT_LOCALE
 
-export default getRequestConfig(async ({ locale }: { locale?: string }) => {
+export default getRequestConfig(async ({ requestLocale }) => {
+  // v4 API: requestLocale is a Promise<string | undefined>
+  // It comes from the [locale] URL segment set by next-intl middleware
+  const locale = await requestLocale
+
   if (locale && !locales.includes(locale as Locale)) {
     notFound()
   }
