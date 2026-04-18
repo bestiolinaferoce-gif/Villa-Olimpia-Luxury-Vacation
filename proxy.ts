@@ -5,7 +5,7 @@ const CANONICAL_HOST = "villaolimpiacaporizzuto.com"
 const WWW_HOST = `www.${CANONICAL_HOST}`
 
 function getLocaleFromPathname(pathname: string): string {
-  for (const locale of ["en", "de", "fr", "nl"]) {
+  for (const locale of ["en", "de", "fr", "nl", "no"]) {
     if (pathname === `/${locale}` || pathname.startsWith(`/${locale}/`)) {
       return locale
     }

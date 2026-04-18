@@ -3,7 +3,7 @@
  * Italian routes at root remain primary; localized URLs use /en, /de, /fr prefixes.
  */
 
-export const SUPPORTED_LOCALES = ["it", "en", "de", "fr", "nl"] as const
+export const SUPPORTED_LOCALES = ["it", "en", "de", "fr", "nl", "no"] as const
 export type SupportedLocale = (typeof SUPPORTED_LOCALES)[number]
 
 export const DEFAULT_LOCALE: SupportedLocale = "it"
@@ -22,7 +22,7 @@ export const CORE_TRANSLATED_ROUTES = [
 export type CoreTranslatedRoute = (typeof CORE_TRANSLATED_ROUTES)[number]
 
 /** Locales with homepage + contact + a few SEO landings only */
-export const PARTIAL_LOCALES = ["de", "fr", "nl"] as const
+export const PARTIAL_LOCALES = ["de", "fr", "nl", "no"] as const
 export type PartialLocale = (typeof PARTIAL_LOCALES)[number]
 
 export const PARTIAL_ROUTES_FOR_DE_FR = [

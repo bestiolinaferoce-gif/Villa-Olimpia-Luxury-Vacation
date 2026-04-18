@@ -1,0 +1,295 @@
+{
+  "nav": {
+    "home": "Hjem",
+    "apartments": "Leiligheter",
+    "location": "Beliggenhet",
+    "services": "Tjenester",
+    "reviews": "Anmeldelser",
+    "faq": "FAQ",
+    "contacts": "Kontakt",
+    "seasonMaggio": "Mai 2026",
+    "seasonGiugno": "Juni 2026",
+    "seasonLuglio": "Juli 2026"
+  },
+  "common": {
+    "bookNow": "Bestill nå",
+    "learnMore": "Les mer",
+    "readMore": "Les mer",
+    "viewDetails": "Se detaljer",
+    "back": "Tilbake",
+    "next": "Neste",
+    "close": "Lukk",
+    "loading": "Laster...",
+    "error": "Feil",
+    "success": "Suksess"
+  },
+  "home": {
+    "hero": {
+      "title": "9 Strandnære Lodges med Basseng i Calabria",
+      "subtitle": "Direktefly Oslo (OSL) → Lamezia Terme (SUF) med Norwegian — 75 min fra flyplassen",
+      "description": "Ca. 70 meter fra sandstranden Spiaggia dei Gigli, i det marine verneområdet Capo Rizzuto",
+      "protectedArea": "Marint verneområde Capo Rizzuto",
+      "apartments": "Leiligheter",
+      "happyGuests": "Fornøyde gjester",
+      "rating": "Vurdering",
+      "ratingValue": "Utmerket vurdering",
+      "beachDistance": "Ca. 70 meter fra stranden",
+      "privatePool": "Delt utendørsbasseng",
+      "bookedBy": "Bestilt av mange gjester i 2024",
+      "bookDirectly": "Book direkte og spar",
+      "bookStay": "Sjekk tilgjengelighet",
+      "discoverApartments": "Se alle leiligheter",
+      "scroll": "Rull ned",
+      "cta": "Book ferien din"
+    },
+    "featured": {
+      "title": "Våre Leiligheter",
+      "subtitle": "Velg din ideelle leilighet",
+      "mostBooked": "Mest bestilt",
+      "description": "9 luksusleiligheter med fantastisk utsikt over Det ioniske hav. Hver enhet tilbyr unike egenskaper og premium komfort.",
+      "viewAll": "Se alle leiligheter"
+    },
+    "whyChoose": {
+      "title": "Hvorfor velge Villa Olimpia",
+      "subtitle": "Oppdag hva som gjør oss til det perfekte valget for ferien din",
+      "items": {
+        "privilegedLocation": {
+          "title": "Enestående beliggenhet",
+          "text": "Ca. 70 meter fra sandstranden Spiaggia dei Gigli, i det marine verneområdet"
+        },
+        "privatePool": {
+          "title": "Delt utendørsbasseng",
+          "text": "Stort delt basseng med solarium og paviljong for avslapning"
+        },
+        "premiumComfort": {
+          "title": "Premium komfort",
+          "text": "9 moderne leiligheter med alle fasiliteter for en perfekt ferie"
+        }
+      }
+    },
+    "services": {
+      "title": "Tjenester og fasiliteter",
+      "subtitle": "Alt du trenger for en perfekt ferie",
+      "description": "Alt du trenger for et uforglemmelig opphold i vakre Calabria.",
+      "items": {
+        "wifi": {
+          "title": "Gratis WiFi",
+          "description": "Høyhastighets internett i alle leiligheter"
+        },
+        "parking": {
+          "title": "Parkering",
+          "description": "Privat parkering tilgjengelig for alle gjester"
+        },
+        "seaView": {
+          "title": "Havutsikt",
+          "description": "Alle leiligheter har fantastisk utsikt over havet"
+        },
+        "kitchen": {
+          "title": "Fullt utstyrt kjøkken",
+          "description": "Fullt utstyrte kjøkken for tilberedning av måltider"
+        },
+        "security": {
+          "title": "Sikkerhet",
+          "description": "24/7 sikkerhetssystem og safe i hver leilighet"
+        },
+        "premium": {
+          "title": "Premium service",
+          "description": "Dedikert assistanse for et uforglemmelig opphold"
+        }
+      }
+    },
+    "reviews": {
+      "title": "Anmeldelser fra våre gjester",
+      "subtitle": "Verifiserte anmeldelser",
+      "description": "Gjennomsnittlig vurdering",
+      "descriptionRating": "Utmerket",
+      "descriptionStars": "stjerner basert på",
+      "descriptionCount": "mange",
+      "descriptionReviews": "verifiserte anmeldelser tilgjengelig på nett.",
+      "verifiedCount": "Verifiserte anmeldelser",
+      "readMore": "Les anmeldelser"
+    },
+    "howToReach": {
+      "title": "Slik kommer du hit",
+      "subtitle": "Informasjon om flyplasser, tog og bilruter."
+    },
+    "faq": {
+      "title": "Ofte stilte spørsmål",
+      "subtitle": "Alt du ønsker å vite",
+      "description": "Finn raskt svar på de vanligste spørsmålene",
+      "viewAll": "Se alle spørsmål",
+      "items": {
+        "beachDistance": {
+          "q": "Hvor langt er det fra Villa Olimpia til stranden?",
+          "a": "Vi er ca. 70 meter fra sandstranden Spiaggia dei Gigli, nåbar på 1 minutt til fots."
+        },
+        "parking": {
+          "q": "Er parkering inkludert?",
+          "a": "Ja, hver leilighet har en gratis reservert parkeringsplass på eiendommen."
+        },
+        "pool": {
+          "q": "Er bassenget delt?",
+          "a": "Ja, det store bassenget deles av alle leilighetsgjester, med stort solarium og paviljong."
+        },
+        "checkIn": {
+          "q": "Hvordan fungerer innsjekk?",
+          "a": "Innsjekk er fra kl. 15:00 og utsjekk innen kl. 10:00. Vi er fleksible for spesielle behov – kontakt oss!"
+        }
+      }
+    },
+    "googleWidget": {
+      "badge": "Google-anmeldelser",
+      "title": "Hva gjester sier på Google",
+      "subtitle": "Ekte, oppdaterte anmeldelser for et trygt valg.",
+      "ratingNote": "Verifiserte vurderinger",
+      "cardTitle": "Google Anmeldelser",
+      "cardSubtitle": "Les alle anmeldelser og se gjestenes erfaringer.",
+      "cta": "Åpne på Google"
+    },
+    "trustBadges": {
+      "title": "Sertifiseringer og partnere",
+      "subtitle": "Book med tillit på de sikreste plattformene",
+      "items": {
+        "booking": {
+          "label": "Sertifisert av",
+          "name": "Booking.com"
+        },
+        "airbnb": {
+          "label": "Supervert",
+          "name": "Airbnb"
+        },
+        "protected": {
+          "label": "Verneområde",
+          "name": "Capo Rizzuto"
+        }
+      },
+      "badges": {
+        "certified": "Sertifisert Booking.com",
+        "superhost": "Supervert Airbnb",
+        "secure": "Trygg bestilling"
+      }
+    },
+    "cta": {
+      "title": "Klar for ferien din?",
+      "description": "Book leiligheten din og opplev et uforglemmelig opphold i vakre Calabria",
+      "saveUpTo": "Book direkte — ingen OTA-gebyrer",
+      "bookVacation": "Book ferien din"
+    },
+    "juneJuly": {
+      "title": "Hvorfor juni og juli ved Villa Olimpia",
+      "subtitle": "Varmt hav, færre turister, perfekt temperatur. Calabria i forsommeren er ideelt for familier og par.",
+      "reasons": {
+        "family": "Perfekt for familier med barn",
+        "couples": "Ideelt for par og romantiske ferier",
+        "territory": "Lokale opplevelser: vinsmakinger, marint verneområde, Le Castella"
+      },
+      "cta": "Sjekk tilgjengelighet juni/juli"
+    }
+  },
+  "apartments": {
+    "title": "Leiligheter",
+    "subtitle": "9 luksusleiligheter med delt utendørsbasseng i det marine verneområdet Capo Rizzuto",
+    "description": "Alle leiligheter har aircondition, gratis WiFi, fullt utstyrt kjøkken og tilgang til delt utendørsbasseng — noen skritt fra sandstranden Spiaggia dei Gigli",
+    "guests": "gjester",
+    "bedrooms": "soverom",
+    "bathrooms": "bad",
+    "size": "Størrelse",
+    "floor": "Etasje",
+    "price": "per natt",
+    "features": "Fasiliteter",
+    "descriptionLabel": "Beskrivelse",
+    "fullDescription": "Full beskrivelse",
+    "perfectFor": "Perfekt for…",
+    "technicalData": "Tekniske data",
+    "bookingInfo": "Bestillingsinformasjon",
+    "location": "Beliggenhet",
+    "beachDistance": "Avstand til strand",
+    "checkInOut": "Innsjekk / Utsjekk",
+    "averageRating": "Gjennomsnittlig vurdering",
+    "bookApartment": "Be om bestilling",
+    "exploreAttractions": "Oppdag hva som er å se i nærheten",
+    "exploreFood": "Hvor du kan spise og hva du bør smake"
+  },
+  "location": {
+    "title": "Beliggenhet",
+    "subtitle": "Capopiccolo, Isola di Capo Rizzuto",
+    "description": "Ca. 70 meter fra sandstranden"
+  },
+  "services": {
+    "title": "Tjenester",
+    "subtitle": "Alle fasiliteter for en uforglemmelig ferie"
+  },
+  "reviews": {
+    "title": "Anmeldelser",
+    "subtitle": "Hva gjestene våre sier",
+    "all": "Alle",
+    "filter": "Filtrer etter stjerner",
+    "verified": "Verifisert"
+  },
+  "faq": {
+    "title": "Ofte stilte spørsmål",
+    "subtitle": "Alt du ønsker å vite"
+  },
+  "contacts": {
+    "title": "Kontakt",
+    "subtitle": "Book eller be om informasjon",
+    "name": "Navn",
+    "email": "E-post",
+    "phone": "Telefon",
+    "message": "Melding",
+    "send": "Send",
+    "sending": "Sender...",
+    "success": "Melding sendt!",
+    "error": "Feil ved sending av melding"
+  },
+  "footer": {
+    "brand": {
+      "title": "Villa Olimpia — Strandnære leiligheter med utendørsbasseng i Capo Rizzuto, Calabria",
+      "description": "9 strandnære leiligheter i Calabria med delt utendørsbasseng, ca. 70 meter fra sandstranden i det marine verneområdet Capo Rizzuto. Direktebestilling."
+    },
+    "quickLinks": "Hurtiglenker",
+    "discover": "Oppdag Capo Rizzuto",
+    "contact": "Kontakt",
+    "bookNow": "Bestill nå",
+    "bookNowDescription": "Kontakt oss via WhatsApp for tilgjengelighet og personlige tilbud",
+    "whatsapp": "WhatsApp",
+    "copyright": "Alle rettigheter forbeholdt"
+  },
+  "flights": {
+    "title": "Direktefly fra Oslo til Lamezia Terme",
+    "description": "Norwegian fly direkte Oslo Gardermoen (OSL) → Lamezia Terme (SUF) hver mandag, 4. mai–19. oktober 2026. Villa Olimpia ligger 75 minutter fra flyplassen.",
+    "cta": "Se tilgjengelighet"
+  },
+  "norway": {
+    "badge": "Direktefly fra Oslo — mai–oktober 2026",
+    "h1": "Drømmeferien i Calabria – Direktefly fra Oslo med Norwegian",
+    "intro": "Norwegian flyr direkte fra Oslo Gardermoen (OSL) til Lamezia Terme (SUF) hver mandag fra 4. mai til 19. oktober 2026. Villa Olimpia ligger kun 75 minutter fra flyplassen — 9 private lodges, delt utendørsbasseng, og sandstranden Spiaggia dei Gigli bare 70 meter unna.",
+    "flightsSection": {
+      "title": "Direktefly Oslo → Lamezia Terme 2026",
+      "route": "Oslo Gardermoen (OSL) → Lamezia Terme (SUF)",
+      "frequency": "Avganger: hver mandag",
+      "season": "Sesong: 4. mai – 19. oktober 2026",
+      "duration": "Reisetid: ca. 3 timer 15 min",
+      "transfer": "Fra flyplassen til Villa Olimpia: 75 minutter med leiebil"
+    },
+    "villaSection": {
+      "title": "Villa Olimpia — 9 Private Lodges",
+      "body": "Villa Olimpia er et eksklusivt leilighets-kompleks i Capopiccolo, i det marine verneområdet Capo Rizzuto. Anlegget har 9 separate lodges: Frangipane, Fiordaliso, Giglio, Tulipano, Orchidea, Lavanda, Geranio, Gardenia og Azalea. Hvert lodge er selvstendig med privat terrasse, fullt utstyrt kjøkken og aircondition. Gjestene deler et stort utendørsbasseng med solarium.",
+      "beach": "Sandstranden Spiaggia dei Gigli (Blått Flagg) er kun 70 meter fra Villa Olimpia, innenfor det marine verneområdet Capo Rizzuto."
+    },
+    "transferSection": {
+      "title": "Transport: Fra Lamezia Terme til Villa Olimpia",
+      "body": "Fra Lamezia Terme flyplass (SUF) til Villa Olimpia er det ca. 75 minutter med bil. Vi anbefaler å leie bil på flyplassen. Vi kan også hjelpe med å organisere privat transfer.",
+      "mapsLink": "Åpne rute i Google Maps",
+      "distance": "Avstand: ca. 85 km"
+    },
+    "groupsSection": {
+      "title": "Grupper opp til 20 gjester",
+      "body": "Villa Olimpia er ideelt for grupper. Med 9 separate lodges kan vi ta imot fra 4 til 20 gjester. Perfekt for familiegjenforeninger, vennegjenger og små selskapsturer. Kontakt oss for gruppepriser og tilgjengelighet."
+    },
+    "faqTitle": "Vanlige spørsmål fra norske gjester",
+    "ctaTitle": "Klar til å bestille?",
+    "ctaBody": "Skriv til oss på WhatsApp — vi svarer på norsk eller engelsk innen 24 timer.",
+    "ctaButton": "Skriv på WhatsApp"
+  }
+}

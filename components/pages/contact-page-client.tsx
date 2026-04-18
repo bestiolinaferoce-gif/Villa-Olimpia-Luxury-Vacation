@@ -632,6 +632,135 @@ const contactPageCopy: Record<Locale, ContactPageCopy> = {
       },
     },
   },
+  no: {
+    breadcrumbLabel: "Kontakt",
+    badge: "Raskt svar, ekte hjelp",
+    title: "Book oppholdet ditt i Villa Olimpia",
+    intro:
+      "Fortell oss reisedatoene dine, så svarer vi med et nøyaktig tilbud. Når du booker her, snakker du direkte med Villa Olimpia — ingen OTA-provisjoner, delt utendørsbasseng, middelhavspark og havet rett utenfor.",
+    chips: {
+      fastReply: "Svar innen 24 timer",
+      closeToSea: "70m fra stranden",
+      familyFriendly: "Perfekt for familier",
+      flexibleCancellation: "Fleksibel avbestilling inntil 30 dager før ankomst",
+      longStayDiscount: "Rabatt for opphold på 7+ netter (juni/juli)",
+    },
+    quoteCard: {
+      title: "Be om tilbud",
+      description: "Fyll inn datoer og ønsker. Vi svarer med det beste tilgjengelige tilbudet.",
+    },
+    directContacts: {
+      title: "Direkte kontakt",
+      description: "Raskt svar for presserende eller korte henvendelser.",
+      phone: "Telefon",
+      email: "E-post",
+      address: "Adresse",
+      openMaps: "Åpne i Google Maps",
+    },
+    b2b: {
+      title: "Er du et reisebyrå?",
+      description: "Vi samarbeider med reisebyråer og turoperatører med tilpasset tilgjengelighet og priser.",
+      cta: "Be om B2B-samarbeid",
+      note: "I skjemaet kan du også fylle ut Reisebyrå-feltet for prioritert behandling.",
+    },
+    whatsapp: {
+      title: "Direkte på WhatsApp",
+      description: "Skriv til oss nå for et raskt svar.",
+      primary: "WhatsApp: +39 333 577 3390",
+      secondary: "WhatsApp reserve: +39 333 577 3390",
+    },
+    availability: {
+      title: "Tilgjengelighet",
+      mondayFriday: "Mandag - Fredag",
+      saturday: "Lørdag",
+      sunday: "Søndag",
+    },
+    share: {
+      title: "Del Villa Olimpia",
+      description: "En enkel melding kan hjelpe oss. Vi har forberedt teksten for deg.",
+      shareText:
+        "Jeg anbefaler Villa Olimpia i Capopiccolo: leiligheter med basseng 70m fra stranden. Svar innen 24t.",
+      shareOnWhatsApp: "Del på WhatsApp",
+      copyText: "Kopier tekst",
+      copiedText: "Kopiert",
+    },
+    form: {
+      labels: {
+        name: "Fullt navn *",
+        email: "E-post *",
+        phone: "Telefon *",
+        guests: "Gjester *",
+        checkIn: "Innsjekk *",
+        checkOut: "Utsjekk *",
+        apartment: "Foretrukket leilighet",
+        agency: "Reisebyrå (valgfritt)",
+        message: "Melding",
+      },
+      placeholders: {
+        name: "Ola Nordmann",
+        email: "ola.nordmann@email.no",
+        phone: "+47 900 00 000",
+        guests: "2",
+        agency: "Navn på reisebyrå eller turoperatør",
+        message: "Spørsmål eller spesielle ønsker?",
+      },
+      validation: {
+        nameMin: "Navnet må inneholde minst 2 tegn",
+        emailInvalid: "Ugyldig e-postadresse",
+        phoneMin: "Ugyldig telefonnummer",
+        checkInRequired: "Velg innsjekkdato",
+        checkOutRequired: "Velg utsjekkdato",
+        guestsRequired: "Velg antall gjester",
+        invalidDateRange: "Utsjekk må være etter innsjekk.",
+      },
+      apartmentOptions: {
+        labelPrefix: "Leilighet",
+        noPreference: "Ingen preferanse",
+      },
+      status: {
+        submitting: "Sender...",
+        submit: "Sjekk tilgjengelighet",
+        submitUnavailable:
+          "Automatisk sending er ikke tilgjengelig akkurat nå. Vi åpner WhatsApp med din forhåndsutfylte melding.",
+        submitFailed:
+          "Automatisk sending mislyktes. Vi åpner WhatsApp med din forhåndsutfylte melding.",
+        requestReadyTitle: "Forespørsel klar",
+        requestReadyDescription:
+          "Vi har mottatt forespørselen din. Hvis du ikke ser den utgående e-posten, kan du sende den via WhatsApp eller e-post med knappene nedenfor.",
+        sendAnother: "Send en ny forespørsel",
+      },
+      helperText:
+        "Med dette skjemaet snakker du direkte med Villa Olimpia: ingen OTA-provisjoner og den beste tilgjengelige prisen for de samme datoene. Opphold på 7+ netter får spesiell rabatt. Fleksibel avbestilling inntil 30 dager før ankomst.",
+      quickActions: {
+        email: "Send via e-post",
+        whatsapp: "Skriv på WhatsApp",
+      },
+      messageTemplate: {
+        subject: "Tilbudsforespørsel",
+        title: "Tilgjengelighetsforespørsel Villa Olimpia:",
+        dates: "Datoer",
+        guests: "Gjester",
+        apartment: "Leilighet",
+        source: "Kilde",
+        sourceLabel: "offisiell nettside",
+        noPreference: "Ingen preferanse",
+        additionalDetails: "Ytterligere detaljer:",
+        contactDetails: "Kontaktinformasjon:",
+        name: "Navn",
+        email: "E-post",
+        phone: "Telefon",
+        agency: "Reisebyrå",
+        notProvided: "Ikke oppgitt",
+        utmSource: "UTM Source",
+        utmMedium: "UTM Medium",
+        utmCampaign: "UTM Campaign",
+        message: "Melding",
+        noAdditionalMessage: "Ingen ytterligere melding",
+        emailFallback: "Villa Olimpia informasjon",
+        whatsappFallback: "Tilgjengelighetsforespørsel Villa Olimpia:\nDatoer: \nGjester: \nLeilighet: \nKilde: offisiell nettside",
+      },
+    },
+  },
 }
 
 export default function ContactPageClient() {
@@ -644,6 +773,7 @@ export default function ContactPageClient() {
       de: "de-DE",
       fr: "fr-FR",
       nl: "nl-NL",
+      no: "nb-NO",
     }
     return m[locale] ?? "it-IT"
   }, [locale])

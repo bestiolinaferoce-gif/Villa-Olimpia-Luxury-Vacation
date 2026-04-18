@@ -239,6 +239,12 @@ export const it = {
     success: 'Messaggio inviato con successo!',
     error: 'Errore nell\'invio del messaggio',
   },
+  // Flights
+  flights: {
+    title: 'Voli diretti da Oslo a Lamezia Terme',
+    description: 'Norwegian vola diretto Oslo Gardermoen (OSL) → Lamezia Terme (SUF) ogni lunedì, dal 4 maggio al 19 ottobre 2026. Villa Olimpia si trova a 75 minuti dall\'aeroporto.',
+    cta: 'Verifica disponibilità',
+  },
   // Footer
   footer: {
     brand: {

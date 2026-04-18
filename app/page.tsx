@@ -19,6 +19,7 @@ import { motion } from "framer-motion"
 import dynamic from "next/dynamic"
 import { useI18n } from "@/components/i18n-provider"
 import { buildWhatsAppUrlFromText } from "@/lib/booking-contact"
+import { FlightsBanner } from "@/components/flights-banner"
 
 // Lazy load componenti pesanti
 const HomeGallery = dynamic(() => import("@/components/home-gallery").then(mod => ({ default: mod.HomeGallery })), {
@@ -136,6 +137,7 @@ export default function HomePage() {
   return (
     <>
       <HeroSectionPremium />
+      <FlightsBanner translations={t.flights} />
       <TrustBadges />
 
       {/* === JUNE/JULY CONVERSION ENGINE — Primary conversion section === */}

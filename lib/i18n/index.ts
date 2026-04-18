@@ -4,6 +4,7 @@ import { en } from "./translations/en"
 import { de } from "./translations/de"
 import { fr } from "./translations/fr"
 import { nl } from "./translations/nl"
+import { no } from "./translations/no"
 
 export const translations = {
   it,
@@ -11,6 +12,7 @@ export const translations = {
   de,
   fr,
   nl,
+  no,
 } as const
 
 export type Translation = typeof it

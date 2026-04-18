@@ -81,6 +81,7 @@ const nextConfig = {
       { source: "/it/:path*", destination: "/:path*", permanent: true },
       // Localized listing lives at /en/apartments; detail slugs stay on /appartamenti/*
 { source: "/en/contatti", destination: "/en/contact", permanent: true },
+      { source: "/en/norway", destination: "/no/norway", permanent: false },
       // Protezione URL interni da crawling diretto
       { source: "/utm", destination: "/", permanent: false },
       { source: "/verifica-analytics", destination: "/", permanent: false },

@@ -203,6 +203,11 @@ export const fr = {
     success: 'Message envoyé avec succès !',
     error: 'Erreur lors de l\'envoi du message',
   },
+  flights: {
+    title: 'Vols directs d\'Oslo vers Lamezia Terme',
+    description: 'Norwegian vole en direct Oslo Gardermoen (OSL) → Lamezia Terme (SUF) chaque lundi, du 4 mai au 19 octobre 2026. Villa Olimpia est à 75 minutes de l\'aéroport.',
+    cta: 'Vérifier les disponibilités',
+  },
   footer: {
     brand: {
       title: 'Villa Olimpia',
