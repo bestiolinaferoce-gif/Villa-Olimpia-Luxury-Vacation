@@ -1,6 +1,5 @@
 "use client"
 
-import VirtualTour from "@/components/virtual-tour"
 import { motion } from "framer-motion"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { 
@@ -281,8 +280,6 @@ export default function ServiziPage() {
         </div>
       </section>
 
-      <VirtualTour />
-
       {/* Additional Info */}
       <section className="py-20">
         <div className="container mx-auto px-4">
@@ -297,20 +294,20 @@ export default function ServiziPage() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-2xl">9</CardTitle>
-                  <CardDescription>Appartamenti</CardDescription>
+                  <CardTitle className="text-2xl">9 Lodge</CardTitle>
+                  <CardDescription>Unità indipendenti con terrazza privata</CardDescription>
                 </CardHeader>
               </Card>
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-2xl">100%</CardTitle>
-                  <CardDescription>Soddisfazione</CardDescription>
+                  <CardTitle className="text-2xl">100% Soddisfazione</CardTitle>
+                  <CardDescription>Ospiti soddisfatti, punteggio medio 4.9/5</CardDescription>
                 </CardHeader>
               </Card>
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-2xl">24/7</CardTitle>
-                  <CardDescription>Assistenza</CardDescription>
+                  <CardTitle className="text-2xl">24/7 Assistenza</CardTitle>
+                  <CardDescription>Supporto disponibile tutto il giorno</CardDescription>
                 </CardHeader>
               </Card>
             </div>

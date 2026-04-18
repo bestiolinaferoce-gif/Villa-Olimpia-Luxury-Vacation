@@ -4,17 +4,36 @@ import { motion } from "framer-motion"
 import { Card, CardContent } from "@/components/ui/card"
 import { Star, CheckCircle } from "lucide-react"
 import { Review } from "@/data/reviews-complete"
-import Image from "next/image"
 
 interface ReviewCardProps {
   review: Review
   index: number
 }
 
-export function ReviewCard({ review, index }: ReviewCardProps) {
-  // Usa avatar dal campo se disponibile, altrimenti genera uno nuovo
-  const avatarUrl = review.avatar || `https://api.dicebear.com/7.x/avataaars/svg?seed=${review.author}`
+const AVATAR_COLORS = [
+  "bg-blue-100 text-blue-700",
+  "bg-green-100 text-green-700",
+  "bg-amber-100 text-amber-700",
+  "bg-rose-100 text-rose-700",
+  "bg-violet-100 text-violet-700",
+  "bg-teal-100 text-teal-700",
+]
 
+function InitialsAvatar({ name, index }: { name: string; index: number }) {
+  const initials = name
+    .split(/[\s&+]+/)
+    .slice(0, 2)
+    .map((w) => w.charAt(0).toUpperCase())
+    .join("")
+  const colorClass = AVATAR_COLORS[index % AVATAR_COLORS.length]
+  return (
+    <div className={`w-12 h-12 rounded-full flex-shrink-0 flex items-center justify-center font-semibold text-base ${colorClass}`}>
+      {initials}
+    </div>
+  )
+}
+
+export function ReviewCard({ review, index }: ReviewCardProps) {
   const formatDate = (dateString: string) => {
     const date = new Date(dateString)
     return date.toLocaleDateString("it-IT", {
@@ -36,24 +55,7 @@ export function ReviewCard({ review, index }: ReviewCardProps) {
           {/* Header */}
           <div className="flex items-start justify-between mb-4">
             <div className="flex items-center gap-3">
-              <div className="relative w-12 h-12 rounded-full overflow-hidden bg-primary/10 flex-shrink-0">
-                <Image
-                  src={avatarUrl}
-                  alt={review.author}
-                  width={48}
-                  height={48}
-                  className="object-cover"
-                  onError={(e) => {
-                    // Fallback a placeholder se avatar non carica
-                    const target = e.target as HTMLImageElement
-                    target.style.display = 'none'
-                    const parent = target.parentElement
-                    if (parent) {
-                      parent.innerHTML = `<div class="w-full h-full flex items-center justify-center bg-primary/20 text-primary font-semibold text-lg">${review.author.charAt(0).toUpperCase()}</div>`
-                    }
-                  }}
-                />
-              </div>
+              <InitialsAvatar name={review.author} index={index} />
               <div>
                 <div className="flex items-center gap-2">
                   <p className="font-semibold">{review.author}</p>

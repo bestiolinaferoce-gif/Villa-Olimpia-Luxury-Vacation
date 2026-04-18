@@ -40,17 +40,17 @@ export default function ParallaxHero() {
             Villa Olimpia Capo Rizzuto
           </h1>
           <p className="text-2xl md:text-3xl mb-4">
-            A 70 Metri dal Mare • Piscina Privata 12x6m
+            A 100 Metri dalla Spiaggia dei Gigli • Piscina 12x6m
           </p>
           <p className="text-xl mb-8">
-            9 Appartamenti Luxury in Calabria
+            9 Lodge Luxury in Calabria
           </p>
           <div className="flex gap-4 justify-center flex-wrap">
             <Button size="lg" asChild>
               <Link href="/appartamenti">Scopri Appartamenti</Link>
             </Button>
             <Button size="lg" variant="outline" className="bg-white/10 hover:bg-white/20 border-white text-white" asChild>
-              <Link href="/contatti">Prenota Ora</Link>
+              <Link href="/contatti#prenota">Prenota Ora</Link>
             </Button>
           </div>
         </div>

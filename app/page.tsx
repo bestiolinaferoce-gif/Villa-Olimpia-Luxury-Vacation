@@ -148,7 +148,7 @@ export default function HomePage() {
         <div className="container mx-auto px-4">
           <div className="flex justify-center">
             <Link
-              href="/prenota?source=promo_giugno_home"
+              href="/contatti?source=promo_giugno_home#prenota"
               className="group inline-flex items-center gap-2 rounded-full border border-amber-300/70 bg-gradient-to-r from-amber-50 via-white to-amber-100 px-4 py-2.5 text-sm md:text-base text-slate-800 shadow-sm hover:shadow-md transition-all duration-300"
             >
               <span className="inline-flex h-2 w-2 rounded-full bg-amber-500 animate-pulse" aria-hidden />

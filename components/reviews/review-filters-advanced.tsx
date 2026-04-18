@@ -104,7 +104,7 @@ export function ReviewFiltersAdvanced({
           >
             Tutte le Piattaforme
           </Button>
-          {Object.entries(sourceCounts).map(([source, count]) => (
+          {Object.entries(sourceCounts).filter(([, count]) => count > 0).map(([source, count]) => (
             <Button
               key={source}
               variant={selectedSource === source ? "default" : "outline"}

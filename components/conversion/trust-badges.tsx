@@ -19,7 +19,7 @@ const badges = [
   {
     icon: CheckCircle2,
     title: "Cancellazione Gratuita",
-    description: "Fino a 7 giorni prima",
+    description: "Fino a 14 giorni prima",
     color: "text-green-600",
   },
   {

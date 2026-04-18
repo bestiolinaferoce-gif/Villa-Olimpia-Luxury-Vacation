@@ -117,6 +117,7 @@ export default function LocationPage() {
         subtitle="Capopiccolo, Isola di Capo Rizzuto: mare cristallino, area marina protetta e Spiaggia dei Gigli a pochi passi."
         ctaHref="/contatti"
         ctaLabel="Chiedi disponibilita"
+        showLocationCta={false}
       />
 
       <section className="py-16 bg-white">

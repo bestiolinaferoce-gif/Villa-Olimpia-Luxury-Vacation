@@ -68,7 +68,7 @@ export function HeroSection() {
             transition={{ delay: 0.6, duration: 0.8 }}
             className="text-lg md:text-xl text-white/80 max-w-xl mx-auto"
           >
-            Experience the Mediterranean lifestyle in our stunning apartments
+            Experience the Mediterranean lifestyle in our stunning lodges
             with breathtaking sea views in Capopiccolo, Isola di Capo Rizzuto
           </motion.p>
 
@@ -85,7 +85,7 @@ export function HeroSection() {
               className="text-lg px-8 py-6"
               asChild
             >
-              <Link href="/contatti">
+              <Link href="/contatti#prenota">
                 <Calendar className="mr-2 h-5 w-5" />
                 Prenota Ora
               </Link>

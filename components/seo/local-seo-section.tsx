@@ -7,6 +7,7 @@ interface LocalSeoSectionProps {
   subtitle?: string
   ctaHref?: string
   ctaLabel?: string
+  showLocationCta?: boolean
 }
 
 export function LocalSeoSection({
@@ -14,6 +15,7 @@ export function LocalSeoSection({
   subtitle = "Appartamenti con piscina a 100 metri dalla Spiaggia dei Gigli, nel cuore di Isola di Capo Rizzuto.",
   ctaHref = "/contatti",
   ctaLabel = "Richiedi preventivo",
+  showLocationCta = true,
 }: LocalSeoSectionProps) {
   return (
     <section className="py-16 bg-gradient-to-b from-white via-slate-50/70 to-white">
@@ -43,9 +45,11 @@ export function LocalSeoSection({
               <Button variant="luxury" asChild>
                 <Link href={ctaHref}>{ctaLabel}</Link>
               </Button>
-              <Button variant="outline" asChild>
-                <Link href="/location">Vedi la location</Link>
-              </Button>
+              {showLocationCta && (
+                <Button variant="outline" asChild>
+                  <Link href="/location">Vedi la location</Link>
+                </Button>
+              )}
               <Button variant="outline" asChild>
                 <Link href="/appartamenti">Vedi gli appartamenti</Link>
               </Button>

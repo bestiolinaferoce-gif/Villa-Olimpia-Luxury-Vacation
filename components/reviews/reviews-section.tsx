@@ -103,15 +103,13 @@ export function ReviewsSection() {
             Recensioni Villa Olimpia — Cosa dicono i nostri ospiti
           </h1>
           <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto font-light">
-            Esperienze reali di chi ha già soggiornato a Villa Olimpia
+            Esperienze reali di chi ha già soggiornato a Villa Olimpia — verificate su tutte le piattaforme. Prenotando direttamente risparmi le commissioni.
           </p>
           {reviews.length > 0 && (
             <div className="mt-8 flex items-center justify-center gap-4 text-sm text-muted-foreground">
               <span>✓ Booking.com</span>
               <span>•</span>
               <span>✓ Airbnb</span>
-              <span>•</span>
-              <span>✓ Google</span>
             </div>
           )}
         </div>
@@ -205,7 +203,7 @@ export function ReviewsSection() {
           </p>
           <div className="mt-5 flex flex-col sm:flex-row justify-center gap-3">
             <Button variant="luxury" asChild>
-              <a href="/prenota">Vai a Prenota</a>
+              <a href="/contatti?source=reviews_page_primary#prenota">Prenota Ora</a>
             </Button>
             <Button variant="outline" asChild>
               <a href="/contatti?source=reviews_page#prenota">Contattaci</a>
