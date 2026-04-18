@@ -3,12 +3,14 @@ import { it } from "./translations/it"
 import { en } from "./translations/en"
 import { de } from "./translations/de"
 import { fr } from "./translations/fr"
+import { nl } from "./translations/nl"
 
 export const translations = {
   it,
   en,
   de,
   fr,
+  nl,
 } as const
 
 export type Translation = typeof it

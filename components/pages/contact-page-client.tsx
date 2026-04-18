@@ -503,6 +503,135 @@ const contactPageCopy: Record<Locale, ContactPageCopy> = {
       },
     },
   },
+  nl: {
+    breadcrumbLabel: "Contact",
+    badge: "Snel antwoord, echte begeleiding",
+    title: "Boek uw verblijf in Villa Olimpia",
+    intro:
+      "Vertel ons uw reisdata en wij antwoorden met een nauwkeurige offerte. Hier boekt u rechtstreeks bij Villa Olimpia, zonder OTA-commissies, met gedeeld zwembad, mediterrane tuin en zee op loopafstand.",
+    chips: {
+      fastReply: "Antwoord binnen 24u",
+      closeToSea: "100m van het strand",
+      familyFriendly: "Perfect voor families",
+      flexibleCancellation: "Flexibele annulering tot 30 dagen voor aankomst",
+      longStayDiscount: "Korting bij verblijf van 7+ nachten (juni/juli)",
+    },
+    quoteCard: {
+      title: "Offerte aanvragen",
+      description: "Vul uw data en voorkeuren in. Wij antwoorden met het beste beschikbare aanbod.",
+    },
+    directContacts: {
+      title: "Directe contacten",
+      description: "Snelle reactie voor urgente of korte vragen.",
+      phone: "Telefoon",
+      email: "E-mail",
+      address: "Adres",
+      openMaps: "Openen in Google Maps",
+    },
+    b2b: {
+      title: "Bent u een reisbureau?",
+      description: "Wij werken samen met reisbureaus en touroperators voor speciale beschikbaarheid en tarieven.",
+      cta: "B2B-samenwerking aanvragen",
+      note: "In het formulier kunt u ook het veld Reisbureau invullen voor prioritaire behandeling.",
+    },
+    whatsapp: {
+      title: "Direct via WhatsApp",
+      description: "Schrijf ons nu voor een snel antwoord.",
+      primary: "WhatsApp: 333 577 3390",
+      secondary: "WhatsApp reserve: 333 577 3390",
+    },
+    availability: {
+      title: "Bereikbaarheid",
+      mondayFriday: "Maandag - Vrijdag",
+      saturday: "Zaterdag",
+      sunday: "Zondag",
+    },
+    share: {
+      title: "Deel Villa Olimpia",
+      description: "Een eenvoudig bericht kan ons helpen. De tekst staat klaar voor u.",
+      shareText:
+        "Ik raad Villa Olimpia in Capopiccolo aan: appartementen met zwembad op 100m van het strand. Antwoord binnen 24u.",
+      shareOnWhatsApp: "Delen via WhatsApp",
+      copyText: "Tekst kopiëren",
+      copiedText: "Gekopieerd",
+    },
+    form: {
+      labels: {
+        name: "Volledige naam *",
+        email: "E-mail *",
+        phone: "Telefoon *",
+        guests: "Gasten *",
+        checkIn: "Check-in *",
+        checkOut: "Check-out *",
+        apartment: "Voorkeur appartement",
+        agency: "Reisbureau (optioneel)",
+        message: "Bericht",
+      },
+      placeholders: {
+        name: "Jan de Vries",
+        email: "jan.devries@email.nl",
+        phone: "+31 6 12345678",
+        guests: "2",
+        agency: "Naam reisbureau of touroperator",
+        message: "Vragen of speciale wensen?",
+      },
+      validation: {
+        nameMin: "De naam moet minimaal 2 tekens bevatten",
+        emailInvalid: "Ongeldig e-mailadres",
+        phoneMin: "Ongeldig telefoonnummer",
+        checkInRequired: "Selecteer een incheckdatum",
+        checkOutRequired: "Selecteer een uitcheckdatum",
+        guestsRequired: "Selecteer het aantal gasten",
+        invalidDateRange: "Check-out moet na check-in zijn.",
+      },
+      apartmentOptions: {
+        labelPrefix: "Appartement",
+        noPreference: "Geen voorkeur",
+      },
+      status: {
+        submitting: "Verzenden...",
+        submit: "Beschikbaarheid controleren",
+        submitUnavailable:
+          "Automatisch verzenden is momenteel niet beschikbaar. We openen WhatsApp met uw vooringevuld bericht.",
+        submitFailed:
+          "Automatisch verzenden mislukt. We openen WhatsApp met uw vooringevuld bericht.",
+        requestReadyTitle: "Aanvraag klaar",
+        requestReadyDescription:
+          "We hebben uw aanvraag ontvangen. Als u de uitgaande e-mail niet ziet, kunt u deze nog sturen via WhatsApp of e-mail met de knoppen hieronder.",
+        sendAnother: "Nog een aanvraag sturen",
+      },
+      helperText:
+        "Met dit formulier spreekt u rechtstreeks met Villa Olimpia: geen OTA-commissies en de beste beschikbare prijs voor dezelfde data. Verblijven van 7+ nachten krijgen een speciale korting. Flexibele annulering tot 30 dagen voor aankomst.",
+      quickActions: {
+        email: "Versturen per e-mail",
+        whatsapp: "Schrijven via WhatsApp",
+      },
+      messageTemplate: {
+        subject: "Offerteaanvraag",
+        title: "Beschikbaarheidsaanvraag Villa Olimpia:",
+        dates: "Data",
+        guests: "Gasten",
+        apartment: "Appartement",
+        source: "Bron",
+        sourceLabel: "officiële website",
+        noPreference: "Geen voorkeur",
+        additionalDetails: "Aanvullende details:",
+        contactDetails: "Contactgegevens:",
+        name: "Naam",
+        email: "E-mail",
+        phone: "Telefoon",
+        agency: "Reisbureau",
+        notProvided: "Niet opgegeven",
+        utmSource: "UTM Source",
+        utmMedium: "UTM Medium",
+        utmCampaign: "UTM Campaign",
+        message: "Bericht",
+        noAdditionalMessage: "Geen aanvullend bericht",
+        emailFallback: "Villa Olimpia informatie",
+        whatsappFallback: "Beschikbaarheidsaanvraag Villa Olimpia:\nData: \nGasten: \nAppartement: \nBron: officiële website",
+      },
+    },
+  },
 }
 
 export default function ContactPageClient() {
@@ -514,6 +643,7 @@ export default function ContactPageClient() {
       en: "en-GB",
       de: "de-DE",
       fr: "fr-FR",
+      nl: "nl-NL",
     }
     return m[locale] ?? "it-IT"
   }, [locale])

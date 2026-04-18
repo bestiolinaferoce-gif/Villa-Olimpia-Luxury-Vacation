@@ -260,12 +260,14 @@ export function buildContactMetadata(locale?: string, pathForCanonical = "/conta
     en: "Contact & Bookings | Villa Olimpia Capo Rizzuto",
     de: "Kontakt & Buchungen | Villa Olimpia Capo Rizzuto",
     fr: "Contact et Réservations | Villa Olimpia Capo Rizzuto",
+    nl: "Contact & Boekingen | Villa Olimpia Capo Rizzuto",
   }
   const descriptions: Record<string, string> = {
     it: "Richiedi disponibilità o un preventivo per i tuoi soggiorni a Villa Olimpia, Capo Rizzuto. Risposta entro 24 ore. Prenotazione diretta senza commissioni.",
     en: "Request availability or a quote for your stay at Villa Olimpia, Capo Rizzuto. Reply within 24 hours. Direct booking with no fees.",
     de: "Verfügbarkeit oder Angebot für Ihren Aufenthalt in Villa Olimpia, Capo Rizzuto anfragen. Antwort innerhalb von 24 Stunden.",
     fr: "Demandez disponibilité ou devis pour votre séjour à Villa Olimpia, Capo Rizzuto. Réponse sous 24h. Réservation directe sans frais.",
+    nl: "Vraag beschikbaarheid of een offerte aan voor uw verblijf in Villa Olimpia, Capo Rizzuto. Antwoord binnen 24 uur. Direct boeken zonder commissie.",
   }
   const title = titles[lang] ?? titles["it"]
   const description = descriptions[lang] ?? descriptions["it"]
