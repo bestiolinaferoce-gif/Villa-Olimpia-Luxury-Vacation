@@ -236,6 +236,7 @@ export const defaultMetadata: Metadata = {
   },
   alternates: {
     canonical: baseUrl,
+    languages: buildHreflangLanguages("/"),
   },
   other: { ...ogImageDimensions },
 }
