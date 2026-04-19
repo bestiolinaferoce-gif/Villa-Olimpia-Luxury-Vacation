@@ -112,6 +112,63 @@ export default function LocationPage() {
         </div>
       </section>
 
+      <section className="py-14 bg-white border-y border-slate-200/80">
+        <div className="container mx-auto px-4 max-w-4xl">
+          <h2 className="text-3xl md:text-4xl font-playfair font-bold mb-4 text-center">
+            Cosa c&apos;è nei dintorni (orientamento pratico)
+          </h2>
+          <p className="text-center text-muted-foreground mb-8 max-w-2xl mx-auto text-sm">
+            Distanze e tempi sono indicativi e dipendono da traffico, stagione e punto di partenza esatto all&apos;interno di Capopiccolo.
+          </p>
+          <ul className="space-y-3 text-slate-700">
+            <li className="flex gap-3">
+              <span className="mt-1 h-2 w-2 rounded-full bg-primary shrink-0" />
+              <span>
+                <strong>Spiaggia dei Gigli (Bandiera Blu):</strong> {VILLA_OLIMPIA_LOCATION.distances.spiaggia} — ideale come spiaggia quotidiana senza auto.
+              </span>
+            </li>
+            <li className="flex gap-3">
+              <span className="mt-1 h-2 w-2 rounded-full bg-primary shrink-0" />
+              <span>
+                <strong>Le Castella:</strong> circa <strong>{VILLA_OLIMPIA_LOCATION.distances.leCastella}</strong> in linea d&apos;aria/indicazione stradale usata in struttura; in auto spesso si parla di circa 8–12 minuti, ma verifica sempre il percorso del giorno.
+              </span>
+            </li>
+            <li className="flex gap-3">
+              <span className="mt-1 h-2 w-2 rounded-full bg-primary shrink-0" />
+              <span>
+                <strong>Crotone:</strong> {VILLA_OLIMPIA_LOCATION.distances.crotone} — utile per servizi, spostamenti e collegamenti; tempi in auto tipicamente brevi sulla costa, ma variabili.
+              </span>
+            </li>
+            <li className="flex gap-3">
+              <span className="mt-1 h-2 w-2 rounded-full bg-primary shrink-0" />
+              <span>
+                <strong>Aeroporto di Crotone:</strong> {VILLA_OLIMPIA_LOCATION.distances.aeroporto} (verifica voli e collegamenti aggiornati sul sito dell&apos;aeroporto).
+              </span>
+            </li>
+            <li className="flex gap-3">
+              <span className="mt-1 h-2 w-2 rounded-full bg-primary shrink-0" />
+              <span>
+                <strong>Santa Severina:</strong> gita in entroterra di circa <strong>45–50 minuti</strong> in auto (indicativo), per un pomeriggio diverso dal mare.
+              </span>
+            </li>
+            <li className="flex gap-3">
+              <span className="mt-1 h-2 w-2 rounded-full bg-primary shrink-0" />
+              <span>
+                <strong>Area Marina Protetta / riserva marina:</strong> {VILLA_OLIMPIA_LOCATION.distances.riservaMarina} — punto di riferimento per snorkeling, natura costiera e panorami.
+              </span>
+            </li>
+          </ul>
+          <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
+            <Button variant="luxury" asChild>
+              <Link href="/contatti?source=location-dintorni">Chiedi disponibilità</Link>
+            </Button>
+            <Button variant="outline" asChild>
+              <Link href="/territorio">Apri la pagina Territorio</Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
       <LocalSeoSection
         title="Dove si trova Villa Olimpia"
         subtitle="Capopiccolo, Isola di Capo Rizzuto: mare cristallino, area marina protetta e Spiaggia dei Gigli a 100 metri."
@@ -133,9 +190,8 @@ export default function LocationPage() {
                 particolarmente adatta a soggiorni estivi orientati al relax, al mare e alla scoperta del territorio.
               </p>
               <p className="text-lg text-muted-foreground leading-relaxed mt-4">
-                Chi cerca una location a Capo Rizzuto vicina al mare trova in Villa Olimpia una soluzione coerente con
-                questo obiettivo. La posizione consente di godere della costa senza dipendere da lunghi spostamenti
-                quotidiani e di vivere con maggiore libertà il soggiorno.
+                Se il tuo obiettivo è mare quotidiano con spostamenti brevi per cultura e servizi, questa zona è
+                pensata proprio per quello: meno tempo in macchina, più tempo in spiaggia.
               </p>
             </div>
 
@@ -150,8 +206,7 @@ export default function LocationPage() {
                 nel soggiorno come gite in giornata.
               </p>
               <p className="text-lg text-muted-foreground leading-relaxed mt-4">
-                Questo rende la struttura adatta anche a chi non cerca solo spiaggia, ma vuole vivere una vacanza più
-                completa, bilanciando relax, scoperta e organizzazione semplice.
+                Da qui puoi decidere giorno per giorno: più mare, più borgo, più natura—senza piani complicati.
               </p>
             </div>
           </div>

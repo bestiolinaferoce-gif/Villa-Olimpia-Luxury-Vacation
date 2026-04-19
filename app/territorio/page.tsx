@@ -64,8 +64,8 @@ const destinations = [
     distance: "circa 50 minuti",
     duration: "2-3 ore",
     difficulty: "Facile",
-    price: "intero €5 · ridotto €3",
-    description: "Santa Severina, tra i borghi più belli della Calabria, è una gita culturale molto solida per chi vuole affiancare al mare un castello normanno, il battistero bizantino e uno dei panorami più noti della valle del Neto.",
+    price: "biglietti: verifica sul sito ufficiale prima della visita",
+    description: "Santa Severina è una gita culturale molto solida dall'odore di pietra vecchia: borgo compatto, castello che domina il paesaggio, duomo e battistero paleocristiano, chiusura ideale con il panorama sulla valle del Neto.",
     fullDescription: "Il borgo ruota attorno a Piazza Campo, al castello e ai luoghi religiosi storici. È una visita adatta a coppie, famiglie e ospiti che vogliono inserire nel soggiorno una mezza giornata più culturale, con informazioni ufficiali facili da verificare online.",
     highlights: [
       "castello normanno",
@@ -122,7 +122,7 @@ const destinations = [
     distance: "8 minuti",
     duration: "2-3 ore",
     difficulty: "Facile",
-    price: "Castello €5",
+    price: "biglietti castello: verifica sul sito ufficiale prima della visita",
     description: "Il simbolo di Capo Rizzuto: il Castello Aragonese su un isolotto collegato alla terraferma. Un borgo marinaro incantevole con spiagge cristalline e ristoranti di pesce freschissimo.",
     fullDescription: "Il Castello Aragonese è uno dei simboli più fotografati della Calabria. Costruito nel XV secolo su un isolotto, è collegato alla terraferma da un ponte. Il borgo marinaro offre tre calette sabbiose perfette per famiglie e ristoranti specializzati in pesce fresco del giorno.",
     highlights: [
@@ -153,7 +153,7 @@ const destinations = [
     distance: "5-15 minuti",
     duration: "Mezza giornata / Giornata intera",
     difficulty: "Facile / Media",
-    price: "Escursioni da €25",
+    price: "escursioni in barca/diving: tariffe e operatori da verificare prima della visita",
     description: "L'Area Marina Protetta più grande d'Italia! Oltre 15.000 ettari di mare protetto con una biodiversità straordinaria. Paradiso per snorkeling e diving con fondali ricchissimi di fauna e flora marina.",
     fullDescription: "Escursioni in barca, diving center certificati, percorsi snorkeling guidati e visite al centro di educazione ambientale. La riserva ospita cernie, polpi, stelle marine e una varietà incredibile di pesci colorati.",
     highlights: [
@@ -190,7 +190,7 @@ const strategicGuides = [
     title: "Santa Severina",
     what: "Borgo storico con castello normanno e centro medievale.",
     where: "Entroterra crotonese.",
-    distance: "circa 50 minuti da Villa Olimpia",
+    distance: "circa 45–50 minuti da Villa Olimpia",
     activities: "castello, battistero, passeggiata nel borgo, panorami sulla valle",
     officialSite: "https://www.comune.santaseverina.kr.it/vivere_il_comune/luoghi/luogo_5.html",
     contacts: "Comune di Santa Severina · 0962 51062",
@@ -234,7 +234,7 @@ export default function TerritorioPage() {
               Scopri il Territorio
             </h1>
             <p className="text-xl md:text-2xl text-white/90 max-w-2xl mx-auto">
-              Esplora le meraviglie della Calabria a pochi minuti da Villa Olimpia
+              Base a Capopiccolo per mare, AMP e borghi vicini: scegli cosa fare giorno per giorno, senza cambiare alloggio.
             </p>
           </div>
         </div>
@@ -245,19 +245,18 @@ export default function TerritorioPage() {
         <div className="container mx-auto px-4 max-w-4xl">
           <div className="text-center mb-12 bg-white/80 backdrop-blur-sm rounded-3xl p-10 shadow-xl border border-white/70">
             <h2 className="text-4xl font-playfair font-bold mb-4">
-              Un Territorio da Esplorare
+              Perché Capopiccolo funziona come base
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Villa Olimpia si trova in una posizione strategica all&apos;interno dell&apos;Area Marina
-              Protetta di Capo Rizzuto. Questo significa mare, calette e spiagge raggiungibili in
-              pochi minuti, ma anche la possibilità di organizzare escursioni in giornata verso
-              borghi storici, natura dell&apos;entroterra e mete adatte alle famiglie senza rinunciare
-              alla comodità della costa ionica.
+              Villa Olimpia è a <strong>Capopiccolo</strong>, sul tratto ionico di <strong>Isola di Capo Rizzuto</strong>:
+              qui il mare non è un &quot;extra&quot;, ma la normalità quotidiana. In pochi minuti puoi passare dalla
+              spiaggia alle cale dell&apos;<strong>Area Marina Protetta</strong>, oppure impostare una giornata diversa
+              verso <strong>Le Castella</strong> o l&apos;entroterra, senza perdere ore in trasferimenti lunghi.
             </p>
             <p className="text-lg text-muted-foreground leading-relaxed mt-4">
-              Soggiornare qui significa avere una base comoda per conoscere meglio il territorio di
-              Isola di Capo Rizzuto e della Calabria ionica, senza rinunciare alla tranquillità della
-              vacanza sul mare.
+              Se stai pianificando una vacanza in Calabria ionica, questa posizione serve soprattutto a una cosa:
+              decidere con calma cosa fare, in base al meteo, ai bambini e al ritmo che preferisci—restando sempre
+              vicino alla costa.
             </p>
           </div>
         </div>
@@ -268,37 +267,34 @@ export default function TerritorioPage() {
           <div className="space-y-10">
             <div>
               <h2 className="text-3xl md:text-4xl font-playfair font-bold mb-4">
-                Il vero vantaggio di Villa Olimpia
+                Cosa fare senza stress (e senza cambiare hotel)
               </h2>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                Il principale punto di forza di Villa Olimpia non è soltanto la struttura, ma la sua
-                collocazione. Essere a Capopiccolo, in prossimità dell&apos;Area Marina Protetta di Capo
-                Rizzuto, permette di vivere il soggiorno in modo più semplice e più ricco. Il mare
-                resta il centro dell&apos;esperienza, ma la posizione consente anche di ampliare facilmente
-                la vacanza con escursioni culturali, naturalistiche e family-friendly.
+                Il vantaggio pratico è semplice: la maggior parte delle esperienze &quot;migliori&quot; qui sono
+                raggiungibili con spostamenti brevi. Il mare resta il protagonista, ma puoi inserire anche mezza
+                giornata culturale o una giornata natura senza trasformare il viaggio in un tour forzato.
               </p>
               <p className="text-lg text-muted-foreground leading-relaxed mt-4">
-                Per chi organizza un soggiorno in Calabria, questo è un vantaggio concreto: una sola
-                base, più possibilità di scoperta, meno spostamenti inutili e maggiore libertà nel
-                costruire giornate diverse tra spiaggia, relax e visite nei dintorni.
+                Sotto trovi schede con tempi indicativi da Villa Olimpia: usali come orientamento, poi verifica
+                sempre traffico, stagione e aperture prima di partire.
               </p>
             </div>
 
             <div>
               <h2 className="text-3xl md:text-4xl font-playfair font-bold mb-4">
-                Mare, spiagge e gite in giornata
+                Itinerari che hanno senso da Capopiccolo
               </h2>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                Il primo livello di esplorazione riguarda ciò che si trova già a pochi minuti da Villa
-                Olimpia: Capopiccolo, la Spiaggia dei Gigli, Le Castella e l&apos;intera Area Marina
-                Protetta di Capo Rizzuto. Questa zona è ideale per chi cerca acque limpide, paesaggi
-                costieri suggestivi, snorkeling, giornate al mare e tramonti sul litorale ionico.
+                <strong>Mare quotidiano:</strong> Spiaggia dei Gigli e Capopiccolo, più le calette dell&apos;AMP se ti piace
+                esplorare con calma.
               </p>
               <p className="text-lg text-muted-foreground leading-relaxed mt-4">
-                Accanto a questo, il territorio permette anche alcune escursioni in giornata molto
-                interessanti. Valli Cupe rappresenta una proposta valida per chi ama la natura e i
-                percorsi immersi nel verde. Santa Severina è perfetta per chi preferisce una gita
-                culturale tra castello, borgo e panorama sull&apos;entroterra.
+                <strong>Mezza giornata:</strong> Le Castella (borgo e castello) oppure una passeggiata più lungo la costa
+                del comune, in base a cosa vuoi combinare (spiaggia + cultura).
+              </p>
+              <p className="text-lg text-muted-foreground leading-relaxed mt-4">
+                <strong>Giornata:</strong> Santa Severina per un borgo &quot;da cartolina&quot;, oppure Valli Cupe se cerchi natura
+                più fresca e sentieri—sempre con planning aggiornato su accessi e condizioni.
               </p>
             </div>
           </div>
@@ -391,6 +387,12 @@ export default function TerritorioPage() {
                   <CardContent>
                     <p className="text-muted-foreground mb-4">
                       {destination.description}
+                    </p>
+                    <p className="text-sm font-medium text-slate-800 mb-4">
+                      Da Villa Olimpia:{" "}
+                      <span className="font-normal text-muted-foreground">
+                        {destination.distance} (tempi indicativi, dipendono da traffico e stagione)
+                      </span>
                     </p>
 
                     {destination.images.length > 1 && (
@@ -504,23 +506,23 @@ export default function TerritorioPage() {
                 </div>
 
                 <div className="bg-white/90 backdrop-blur-sm p-6 rounded-lg shadow-lg border border-white/70">
-                  <h4 className="font-bold mb-3 text-lg">Perché questa impostazione funziona meglio</h4>
-                  <ul className="space-y-2 text-sm">
+                  <h4 className="font-bold mb-3 text-lg">Come usare queste gite (in modo intelligente)</h4>
+                  <ul className="space-y-2 text-sm text-muted-foreground">
                     <li className="flex items-start gap-2">
                       <span className="text-green-600 mt-1">✓</span>
-                      <span>rafforza il posizionamento di Villa Olimpia come base strategica sulla costa</span>
+                      <span>parti early in alta stagione: parcheggi e accessi cambiano molto tra luglio e agosto</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-green-600 mt-1">✓</span>
-                      <span>aiuta Google a capire il territorio reale, senza claim deboli o gonfiati</span>
+                      <span>combina sempre mare + ombra: borghi ed entroterra sono perfetti nelle ore centrali più calde</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-green-600 mt-1">✓</span>
-                      <span>dà al visitatore idee concrete per allungare il soggiorno e chiedere consigli diretti</span>
+                      <span>verifica aperture e biglietti sul sito ufficiale del comune o del monumento, soprattutto fuori stagione</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-green-600 mt-1">✓</span>
-                      <span>mantiene pulito il sito, evitando informazioni non verificate o giuridicamente deboli</span>
+                      <span>se hai dubbi su strade o tempi, chiedi in struttura: spesso è il modo più rapido per evitare stress</span>
                     </li>
                   </ul>
                 </div>

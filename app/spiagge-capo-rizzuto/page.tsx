@@ -108,6 +108,89 @@ export default function SpiaggeCapoRizzutoPage() {
         </div>
       </section>
 
+      <section className="py-14 bg-white border-b border-primary/10">
+        <div className="container mx-auto px-4 max-w-4xl">
+          <h2 className="text-2xl md:text-3xl font-playfair font-bold mb-4 text-center">
+            L&apos;Area Marina Protetta di Capo Rizzuto: perché queste spiagge sono diverse
+          </h2>
+          <p className="text-lg text-muted-foreground leading-relaxed">
+            L&apos;Area Marina Protetta (AMP) di Capo Rizzuto protegge un tratto di costa e di mare dove
+            acqua limpida, fondali e habitat marino convivono con sentieri, promontori e piccole cale. È un
+            contesto che cambia l&apos;esperienza rispetto a una spiaggia &quot;singola&quot;: in pochi chilometri si
+            passa da sabbia comoda a scogli, punti panoramici e angoli più raccolti, sempre con la stessa
+            identità di territorio protetto.
+          </p>
+          <p className="text-lg text-muted-foreground leading-relaxed mt-4">
+            Per chi cerca una risposta chiara a &quot;quali spiagge visitare a Capo Rizzuto&quot;, la chiave è proprio
+            questa varietà: non esiste una sola spiaggia &quot;migliore in assoluto&quot;, ma una scelta sensata in base a
+            bambini, snorkeling, tramonto, comodità di arrivo e desiderio di tranquillità. Qui sotto trovi un
+            confronto rapido e poi le schede dettagliate.
+          </p>
+          <p className="text-sm text-muted-foreground mt-4 rounded-lg bg-slate-50 border border-slate-200/80 p-4">
+            Tariffe, regole di accesso, parcheggi e servizi possono cambiare con la stagione e le ordinanze locali:
+            verifica le condizioni aggiornate prima della visita.
+          </p>
+        </div>
+      </section>
+
+      <section className="py-14 bg-slate-50/80 border-b border-primary/10">
+        <div className="container mx-auto px-4 max-w-6xl">
+          <h2 className="text-2xl md:text-3xl font-playfair font-bold text-center mb-2">
+            Confronto rapido: quale spiaggia scegliere
+          </h2>
+          <p className="text-center text-muted-foreground max-w-3xl mx-auto mb-8 text-sm">
+            Indicazioni pratiche basate sull&apos;esperienza tipica in zona, senza sostituire le informazioni ufficiali dell&apos;AMP o dei gestori.
+          </p>
+          <div className="overflow-x-auto rounded-2xl border border-primary/10 bg-white shadow-sm">
+            <table className="w-full min-w-[640px] text-left text-sm">
+              <thead>
+                <tr className="border-b border-slate-200 bg-slate-50/90">
+                  <th className="px-4 py-3 font-semibold text-slate-900">Criterio</th>
+                  <th className="px-4 py-3 font-semibold text-slate-900">Dove orientarsi</th>
+                </tr>
+              </thead>
+              <tbody className="text-slate-700">
+                <tr className="border-b border-slate-100">
+                  <td className="px-4 py-3 font-medium">Migliore per famiglie con bambini</td>
+                  <td className="px-4 py-3">
+                    <strong>Spiaggia dei Gigli</strong> e <strong>Spiaggia Grande di Le Castella</strong>: sabbia ampia, organizzazione turistica consolidata.
+                  </td>
+                </tr>
+                <tr className="border-b border-slate-100">
+                  <td className="px-4 py-3 font-medium">Migliore per snorkeling</td>
+                  <td className="px-4 py-3">
+                    <strong>Calette dell&apos;AMP</strong> e tratte vicino a <strong>Capopiccolo</strong>: fondali interessanti con mare spesso molto limpido (sempre con prudenza e condizioni del giorno).
+                  </td>
+                </tr>
+                <tr className="border-b border-slate-100">
+                  <td className="px-4 py-3 font-medium">Migliore per il tramonto</td>
+                  <td className="px-4 py-3">
+                    <strong>Le Castella</strong> (scorcio sul castello) e <strong>punti panoramici lungo la costa dell&apos;AMP</strong>.
+                  </td>
+                </tr>
+                <tr className="border-b border-slate-100">
+                  <td className="px-4 py-3 font-medium">Parcheggio più semplice (in generale)</td>
+                  <td className="px-4 py-3">
+                    Per evitare l&apos;auto: <strong>Spiaggia dei Gigli</strong> a circa <strong>100 metri</strong> da Villa Olimpia a piedi. Altrove dipende da periodo e flussi: verifica prima della visita.
+                  </td>
+                </tr>
+                <tr className="border-b border-slate-100">
+                  <td className="px-4 py-3 font-medium">Più vicina a Villa Olimpia</td>
+                  <td className="px-4 py-3">
+                    <strong>Spiaggia dei Gigli</strong> (~100 m, pochi minuti a piedi).
+                  </td>
+                </tr>
+                <tr>
+                  <td className="px-4 py-3 font-medium">Più &quot;selvaggia&quot; / meno affollata (relativamente)</td>
+                  <td className="px-4 py-3">
+                    <strong>Piccole cale dell&apos;AMP</strong> e tratti meno centrali: spesso più rustici, con meno servizi. Valuta accessi e sicurezza in base al meteo.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
 
       <section className="py-14 bg-white">
         <div className="container mx-auto px-4 max-w-6xl">
@@ -258,7 +341,7 @@ export default function SpiaggeCapoRizzutoPage() {
                     </div>
                     <div className="p-3 bg-primary/5 rounded-lg">
                       <p className="font-semibold mb-1">Servizi</p>
-                      <p className="text-sm text-muted-foreground">Stabilimenti balneari, ristoranti, parcheggio</p>
+                      <p className="text-sm text-muted-foreground">Stabilimenti balneari e ristoranti nelle vicinanze; per soste auto e regole locali, verifica prima della visita.</p>
                     </div>
                   </div>
                 </CardContent>
@@ -266,17 +349,18 @@ export default function SpiaggeCapoRizzutoPage() {
 
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-2xl">Spiagge di Capopiccolo</CardTitle>
+                  <CardTitle className="text-2xl">Capopiccolo</CardTitle>
                   <CardDescription className="flex items-center gap-2">
                     <MapPin className="h-4 w-4" />
-                    Area Marina Protetta Capo Rizzuto
+                    Promontorio e accessi all&apos;Area Marina Protetta di Capo Rizzuto
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <p className="text-lg text-muted-foreground mb-4">
-                    Le spiagge di <strong>Capopiccolo</strong> si trovano nell&apos;Area Marina Protetta Capo Rizzuto, 
-                    una delle riserve marine più importanti d&apos;Italia. Le acque sono cristalline e i fondali ricchi 
-                    di vita marina, perfetti per snorkeling e immersioni.
+                    <strong>Capopiccolo</strong> è il punto in cui la costa incontra l&apos;AMP: promontori, calette e
+                    scorci molto luminosi, con mare che spesso resta limpido anche con brezza estiva. È una zona
+                    ideale se vuoi alternare spiaggia, snorkeling e passeggiate guardando il paesaggio marino
+                    protetto—sempre nel rispetto delle regole dell&apos;area e delle condizioni del giorno.
                   </p>
                   <div className="grid gap-4 md:grid-cols-3 mb-4">
                     {capopiccoloImages.map((image) => (
@@ -306,34 +390,78 @@ export default function SpiaggeCapoRizzutoPage() {
 
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-2xl">Spiaggia di Le Castella</CardTitle>
+                  <CardTitle className="text-2xl">Calette dell&apos;AMP</CardTitle>
                   <CardDescription className="flex items-center gap-2">
                     <MapPin className="h-4 w-4" />
-                    8 minuti da Villa Olimpia
+                    Snorkeling e fondali, tra Capopiccolo e la riserva
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <p className="text-lg text-muted-foreground mb-4">
-                    La spiaggia di <strong>Le Castella</strong> offre una vista spettacolare sul Castello Aragonese. 
-                    Sabbia dorata e acque turchesi la rendono una delle spiagge più fotografate della Calabria.
+                    Le <strong>calette</strong> lungo l&apos;AMP sono il punto di forza per chi ama esplorare a
+                    nuoto con maschera e boccaglio, o semplicemente vuole acqua profonda vicino alla roccia con
+                    fondali interessanti. Sono luoghi più &quot;naturali&quot;: porta scarpette da scoglio, acqua e
+                    prudenza, e controlla sempre meteo e mare prima di entrare in acqua.
                   </p>
                   <div className="relative aspect-[16/9] overflow-hidden rounded-2xl mb-4">
                     <Image
-                      src="/images/territory/tramonto-castello-aragonese-le-castella.jpg"
-                      alt="Castello Aragonese di Le Castella al tramonto visto dalla costa"
+                      src="/images/territory/spiaggia-capopiccolo-lato-interno.jpg"
+                      alt="Cala e fondali vicino a Capopiccolo nell&apos;Area Marina Protetta di Capo Rizzuto"
                       fill
                       className="object-cover"
                       sizes="(max-width: 1024px) 100vw, 60vw"
                     />
                   </div>
+                  <p className="text-sm text-muted-foreground">
+                    Escursioni in barca, guide e regole di accesso dipendono da stagione e gestione dell&apos;area:
+                    verifica le condizioni aggiornate prima della visita.
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-2xl">Spiaggia Grande di Le Castella</CardTitle>
+                  <CardDescription className="flex items-center gap-2">
+                    <MapPin className="h-4 w-4" />
+                    Circa 8–10 minuti in auto da Villa Olimpia (indicativo)
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-lg text-muted-foreground mb-4">
+                    La <strong>Spiaggia Grande</strong> di Le Castella è la classica spiaggia lunga e comoda:
+                    sabbia ampia, servizi e un&apos;atmosfera molto adatta alle famiglie. Da qui il borgo e il
+                    Castello Aragonese compaiono sullo sfondo: perfetto per una giornata &quot;mare + passeggiata&quot;
+                    senza rinunciare al panorama iconico della costa.
+                  </p>
+                  <div className="grid md:grid-cols-2 gap-4 mb-4">
+                    <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
+                      <Image
+                        src="/images/territory/spiaggia-grande-capo-rizzuto-01.jpg"
+                        alt="Spiaggia Grande a Le Castella, sabbia ampia e mare cristallino"
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 1024px) 100vw, 50vw"
+                      />
+                    </div>
+                    <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
+                      <Image
+                        src="/images/territory/tramonto-castello-aragonese-le-castella.jpg"
+                        alt="Tramonto sul Castello Aragonese visto dalla costa di Le Castella"
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 1024px) 100vw, 50vw"
+                      />
+                    </div>
+                  </div>
                   <div className="grid md:grid-cols-2 gap-4 mt-4">
                     <div className="p-3 bg-primary/5 rounded-lg">
-                      <p className="font-semibold mb-1">Vista</p>
-                      <p className="text-sm text-muted-foreground">Panorama sul Castello Aragonese</p>
+                      <p className="font-semibold mb-1">Per chi</p>
+                      <p className="text-sm text-muted-foreground">Famiglie, giornata lunga al mare, prime esperienze con bambini</p>
                     </div>
                     <div className="p-3 bg-primary/5 rounded-lg">
-                      <p className="font-semibold mb-1">Atmosfera</p>
-                      <p className="text-sm text-muted-foreground">Romantica e suggestiva</p>
+                      <p className="font-semibold mb-1">Consiglio pratico</p>
+                      <p className="text-sm text-muted-foreground">In alta stagione, organizzazione e parcheggi possono cambiare: verifica prima della visita.</p>
                     </div>
                   </div>
                 </CardContent>
@@ -344,18 +472,63 @@ export default function SpiaggeCapoRizzutoPage() {
                   <CardTitle className="text-2xl">Spiagge Rosse</CardTitle>
                   <CardDescription className="flex items-center gap-2">
                     <MapPin className="h-4 w-4" />
-                    12 km da Villa Olimpia - Bandiera Blu
+                    Costa ionica nel tratto di Capo Rizzuto — Bandiera Blu (verifica edizione aggiornata)
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <p className="text-lg text-muted-foreground mb-4">
-                    Le <strong>Spiagge Rosse</strong> devono il loro nome alla particolare colorazione della sabbia, 
-                    che assume tonalità rossastre. Questa caratteristica unica, unita alle acque cristalline, 
-                    le rende una meta imperdibile per gli amanti della fotografia e della natura.
+                    Le <strong>Spiagge Rosse</strong> devono il nome alle tonalità rosse delle rocce e dei detriti
+                    locali, che contrastano con il blu del mare. È un luogo molto fotografato e diverso dalla
+                    sabbia chiara classica: ideale se cerchi un paesaggio più minerale, con scogli e angoli
+                    particolari.
+                  </p>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
+                      <Image
+                        src="/images/territory/spiagge-rosse-01.jpg"
+                        alt="Spiagge Rosse, contrasto tra rocce rosse e mare a Capo Rizzuto"
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 1024px) 100vw, 50vw"
+                      />
+                    </div>
+                    <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
+                      <Image
+                        src="/images/territory/spiagge-rosse-02.jpg"
+                        alt="Dettaglio delle rocce rosse sulla costa delle Spiagge Rosse"
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 1024px) 100vw, 50vw"
+                      />
+                    </div>
+                  </div>
+                  <p className="text-sm text-muted-foreground mt-4">
+                    Accessi, servizi e parcheggi variano: verifica le condizioni aggiornate prima della visita.
                   </p>
                 </CardContent>
               </Card>
             </div>
+          </div>
+        </div>
+      </section>
+      <section className="py-16 bg-white border-y border-primary/10">
+        <div className="container mx-auto px-4 max-w-4xl">
+          <h2 className="text-3xl md:text-4xl font-playfair font-bold mb-6 text-center">
+            Come arrivare da Villa Olimpia
+          </h2>
+          <div className="space-y-4 text-lg text-muted-foreground leading-relaxed">
+            <p>
+              <strong>A piedi:</strong> la <strong>Spiaggia dei Gigli</strong> dista circa <strong>100 metri</strong> da Villa Olimpia:
+              è la soluzione più semplice per una giornata al mare senza spostamenti in auto.
+            </p>
+            <p>
+              <strong>In auto:</strong> per <strong>Capopiccolo</strong>, altre cale dell&apos;AMP, <strong>Le Castella</strong> e
+              le <strong>Spiagge Rosse</strong> conviene muoversi con mezzo proprio, pianificando orari in base alla stagione.
+              Tempi di percorrenza e disponibilità di parcheggio cambiano spesso: verifica le condizioni aggiornate prima della visita.
+            </p>
+            <p className="text-sm rounded-lg bg-slate-50 border border-slate-200/80 p-4">
+              Se arrivi da fuori zona, chiedi in struttura indicazioni aggiornate sul tratto migliore in base al traffico e al periodo.
+            </p>
           </div>
         </div>
       </section>
@@ -493,12 +666,12 @@ export default function SpiaggeCapoRizzutoPage() {
             Prenota la Tua Vacanza al Mare
           </h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto text-white/90">
-            Scegli Villa Olimpia come base per scoprire le spiagge più belle della Calabria e prenota in modo diretto, senza commissioni di portali.
+            Prenota il tuo lodge a circa 100 metri dalla Spiaggia dei Gigli: contattaci per disponibilità e preventivo diretto, senza commissioni di portali.
           </p>
           <Button variant="luxury" size="lg" asChild className="group">
-            <Link href="/contatti?source=spiagge-page#prenota">
+            <Link href="/contatti?source=spiagge-pillar#prenota">
               <span className="group-hover:translate-x-1 transition-transform inline-block">
-                Verifica Disponibilità
+                Vai ai contatti / disponibilità
               </span>
               <svg className="w-5 h-5 ml-2 inline-block group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />

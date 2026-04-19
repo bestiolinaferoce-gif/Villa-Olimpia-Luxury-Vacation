@@ -35,6 +35,15 @@ interface TouristDestination {
   link?: string
   badges?: ("unesco" | "bandiera-blu" | "4k")[]
   featured?: boolean
+  visitorGuide?: {
+    history: string
+    itinerary: string[]
+    howToReach: string
+    parking: string
+    verifyNote: string
+    officialHref?: string
+    officialLabel?: string
+  }
 }
 
 const destinations: TouristDestination[] = [
@@ -97,14 +106,32 @@ const destinations: TouristDestination[] = [
     name: "Santa Severina",
     category: "cultura",
     distance: "40 km",
-    driveTime: "50 minuti",
-    description: "Uno dei borghi storici più interessanti dell'entroterra crotonese, con castello normanno, battistero e affacci panoramici sulla valle del Neto.",
+    driveTime: "circa 45–50 minuti in auto",
+    description: "Borgo dell'entroterra crotonese tra vicoli, pietra viva e panorami sulla valle del Neto: una gita lenta, ideale se vuoi alternare il mare a un pomeriggio da cartolina.",
     image: "/images/territory/santa-severina-panorama.jpg",
     imageAlt: "Santa Severina vista dal borgo con il castello normanno nell'entroterra calabrese",
-    highlights: ["Castello normanno", "Borgo storico", "Battistero", "Panorami sulla valle", "Gita culturale"],
+    highlights: ["Castello storico", "Borgo medievale", "Battistero paleocristiano", "Panorama sulla valle", "Gita culturale"],
     bestTime: "Tutto l'anno",
     link: "/territorio",
-    badges: ["4k"]
+    badges: ["4k"],
+    visitorGuide: {
+      history:
+        "Santa Severina è un borgo medievale nell'entroterra crotonese: vicoli stretti, piazzette silenziose e un castello che domina il paesaggio, con il duomo e un battistero paleocristiano molto suggestivo.",
+      itinerary: [
+        "Castello e mura: orientati sul borgo e sul panorama",
+        "Duomo: pausa nel cuore storico",
+        "Battistero paleocristiano: piccolo capolavoro da vedere con calma",
+        "Belvedere sulla valle del Neto: chiudi il giro con una vista ampia",
+      ],
+      howToReach:
+        "Da Villa Olimpia, in direzione Crotone e poi verso l'entroterra (itinerario su SS107 / collegamenti principali verso il Crotonese): conteggia circa 45–50 minuti in auto, a seconda del traffico e della stagione.",
+      parking:
+        "In genere è disponibile un parcheggio gratuito vicino all'ingresso del borgo: verifica sempre segnaletica e ordinanze locali aggiornate.",
+      verifyNote:
+        "Verifica orari e biglietti direttamente sul sito ufficiale del Castello di Santa Severina o del Comune prima della visita.",
+      officialHref: "https://www.comune.santaseverina.kr.it/vivere_il_comune/luoghi/luogo_5.html",
+      officialLabel: "Scheda ufficiale Comune di Santa Severina (Castello)",
+    },
   },
 ]
 
@@ -363,6 +390,46 @@ export function TerritorySection() {
                           <Calendar className="w-3 h-3" />
                           <span>{destination.bestTime}</span>
                         </div>
+                      )}
+
+                      {destination.visitorGuide && (
+                        <details className="mb-4 rounded-xl border border-slate-200 bg-slate-50/70 p-4 text-sm text-slate-700">
+                          <summary className="cursor-pointer font-semibold text-slate-900 outline-none">
+                            Mini-guida pratica
+                          </summary>
+                          <div className="mt-3 space-y-3">
+                            <p className="leading-relaxed">{destination.visitorGuide.history}</p>
+                            <div>
+                              <p className="font-semibold text-slate-900 mb-1">Cosa vedere (ordine consigliato)</p>
+                              <ol className="list-decimal pl-5 space-y-1">
+                                {destination.visitorGuide.itinerary.map((step, idx) => (
+                                  <li key={idx}>{step}</li>
+                                ))}
+                              </ol>
+                            </div>
+                            <p>
+                              <span className="font-semibold text-slate-900">Come arrivare da Villa Olimpia: </span>
+                              {destination.visitorGuide.howToReach}
+                            </p>
+                            <p>
+                              <span className="font-semibold text-slate-900">Parcheggio: </span>
+                              {destination.visitorGuide.parking}
+                            </p>
+                            <p className="text-xs text-muted-foreground">{destination.visitorGuide.verifyNote}</p>
+                            {destination.visitorGuide.officialHref && destination.visitorGuide.officialLabel && (
+                              <p>
+                                <a
+                                  href={destination.visitorGuide.officialHref}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="font-medium text-primary underline underline-offset-4"
+                                >
+                                  {destination.visitorGuide.officialLabel}
+                                </a>
+                              </p>
+                            )}
+                          </div>
+                        </details>
                       )}
 
                       {destination.link ? (
