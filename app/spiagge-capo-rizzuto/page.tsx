@@ -95,8 +95,8 @@ export default function SpiaggeCapoRizzutoPage() {
             </p>
             <div className="relative w-full max-w-5xl mx-auto mt-6 overflow-hidden rounded-2xl shadow-lg ring-1 ring-black/5">
               <Image
-                src="/images/territory/spiaggia-capopiccolo.jpg"
-                alt="Spiaggia di Capopiccolo Capo Rizzuto"
+                src="/images/territory/spiaggia-capopiccolo-panorama.jpg"
+                alt="Panorama della spiaggia di Capopiccolo e della costa di Isola di Capo Rizzuto"
                 width={1200}
                 height={630}
                 priority

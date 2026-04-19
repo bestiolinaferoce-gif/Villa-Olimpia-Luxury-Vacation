@@ -5,12 +5,15 @@ export const SEO_CONFIG = {
   // Base URL
   baseUrl: "https://villaolimpiacaporizzuto.com",
   
-  // Sitemap avanzata con hreflang — lingue supportate: it, en, de, fr
+  // Hreflang allineati al dominio canonico corrente (IT senza prefisso /it)
   hreflang: {
-    it: "https://villaolimpiacaporizzuto.com/it",
+    it: "https://villaolimpiacaporizzuto.com",
     en: "https://villaolimpiacaporizzuto.com/en",
     de: "https://villaolimpiacaporizzuto.com/de",
     fr: "https://villaolimpiacaporizzuto.com/fr",
+    nl: "https://villaolimpiacaporizzuto.com/nl",
+    no: "https://villaolimpiacaporizzuto.com/no",
+    "x-default": "https://villaolimpiacaporizzuto.com",
   },
 
   // Structured Data avanzato
@@ -111,7 +114,7 @@ export const SEO_CONFIG = {
         longitude: 17.0754964,
       },
       touristType: ["Family", "Couple", "Group"],
-      availableLanguage: ["Italian", "English", "German", "French"],
+      availableLanguage: ["Italian", "English", "German", "French", "Dutch", "Norwegian"],
     },
   },
 
@@ -181,4 +184,3 @@ export function generateHreflangTags() {
 export function generateStructuredData(type: keyof typeof SEO_CONFIG.structuredData) {
   return JSON.stringify(SEO_CONFIG.structuredData[type])
 }
-

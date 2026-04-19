@@ -120,12 +120,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const nordicPages: MetadataRoute.Sitemap = [
     {
-      url: `${BASE_URL}/no`,
-      lastModified: DATE_NEW_PAGES,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
       url: `${BASE_URL}/no/norway`,
       lastModified: DATE_NEW_PAGES,
       changeFrequency: "monthly",

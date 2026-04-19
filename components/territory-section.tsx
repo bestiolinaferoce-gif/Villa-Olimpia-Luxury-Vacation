@@ -94,67 +94,15 @@ const destinations: TouristDestination[] = [
     badges: ["4k"]
   },
   {
-    name: "Crotone - Città Storica",
+    name: "Santa Severina",
     category: "cultura",
-    distance: "15 km",
-    driveTime: "20 minuti",
-    description: "Città storica con il Museo Archeologico Nazionale, il centro antico e il promontorio con vista panoramica. Capitale della Magna Grecia in Calabria.",
-    image: "/images/territory/santa-severina-panorama.jpg",
-    imageAlt: "Borgo storico calabrese sull'altopiano — tipica gita culturale da Capo Rizzuto",
-    highlights: ["Museo Archeologico Nazionale", "Centro storico", "Vista panoramica", "Gastronomia locale", "Magna Grecia"],
-    bestTime: "Tutto l'anno",
-    link: "/territorio",
-    badges: ["4k"]
-  },
-  {
-    name: "Capo Vaticano",
-    category: "spiaggia",
-    distance: "85 km",
-    driveTime: "1 ora 15 min",
-    description: "Una delle spiagge più belle della Calabria, con scogliere a picco sul mare e vista sulle Isole Eolie. Atmosfera esclusiva e panorami mozzafiato.",
-    image: "/images/territory/spiaggia-grande-capo-rizzuto-02.jpg",
-    imageAlt: "Costa ionica calabrese — esempio di litorale sabbioso della regione",
-    highlights: ["Spiagge paradisiache", "Vista Isole Eolie", "Scogliere spettacolari", "Atmosfera esclusiva", "Spiaggia da sogno"],
-    bestTime: "Giugno - Settembre",
-    link: "/territorio",
-    badges: ["4k"]
-  },
-  {
-    name: "Tropea",
-    category: "cultura",
-    distance: "90 km",
-    driveTime: "1 ora 20 min",
-    description: "La perla della Costa degli Dei. Centro storico affascinante, spiagge dorate e famosa per le cipolle rosse. Meta turistica internazionale della Calabria.",
-    image: "/images/territory/castello-santa-severina.jpg",
-    imageAlt: "Castello e borgo storico in Calabria — meta raggiungibile in giornata da Capo Rizzuto",
-    highlights: ["Centro storico", "Spiagge dorate", "Cipolla rossa di Tropea", "Vita notturna", "Meta internazionale"],
-    bestTime: "Maggio - Ottobre",
-    link: "/territorio",
-    badges: ["4k"]
-  },
-  {
-    name: "Soverato",
-    category: "spiaggia",
-    distance: "60 km",
+    distance: "40 km",
     driveTime: "50 minuti",
-    description: "La perla dello Ionio, famosa per le spiagge dorate, la vita notturna e i ristoranti di pesce freschissimo. Bandiera Blu per qualità ambientale.",
-    image: "/images/territory/spiaggia-capopiccolo-lato-interno.jpg",
-    imageAlt: "Cala ionica con acqua limpida — atmosfera da località balneare crotonese",
-    highlights: ["Bandiera Blu", "Spiagge dorate", "Vita notturna", "Pesce fresco", "Resort esclusivi"],
-    bestTime: "Giugno - Settembre",
-    link: "/spiagge-capo-rizzuto",
-    badges: ["bandiera-blu", "4k"]
-  },
-  {
-    name: "Parco Nazionale della Sila",
-    category: "natura",
-    distance: "70 km",
-    driveTime: "1 ora",
-    description: "Il polmone verde della Calabria. Escursioni, laghi montani, fauna selvatica e rifugi accoglienti. Patrimonio naturale da esplorare in ogni stagione.",
-    image: "/images/territory/valli-cupe-sentiero.jpg",
-    imageAlt: "Sentiero e natura montana in Calabria — escursioni nell'entroterra",
-    highlights: ["Parco Nazionale", "Escursioni", "Laghi montani", "Fauna selvatica", "Rifugi"],
-    bestTime: "Giugno - Settembre (estate), Dicembre - Marzo (sci)",
+    description: "Uno dei borghi storici più interessanti dell'entroterra crotonese, con castello normanno, battistero e affacci panoramici sulla valle del Neto.",
+    image: "/images/territory/santa-severina-panorama.jpg",
+    imageAlt: "Santa Severina vista dal borgo con il castello normanno nell'entroterra calabrese",
+    highlights: ["Castello normanno", "Borgo storico", "Battistero", "Panorami sulla valle", "Gita culturale"],
+    bestTime: "Tutto l'anno",
     link: "/territorio",
     badges: ["4k"]
   },
@@ -218,11 +166,11 @@ export function TerritorySection() {
               <Award className="h-4 w-4 text-primary" />
             </div>
             <h1 className="text-4xl md:text-5xl font-playfair font-bold mb-4">
-              Villa Olimpia — Lodge con Piscina a Capo Rizzuto
+              Cosa Vedere Vicino Villa Olimpia
             </h1>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              Esplora le meraviglie della Calabria e della Costa degli Achei. Dalle spiagge Bandiera Blu ai siti UNESCO, 
-              dalle aree marine protette ai borghi storici. Scopri cosa visitare durante il tuo soggiorno a Villa Olimpia.
+              Mare, borghi storici e natura raggiungibili senza cambiare base: Capopiccolo, Le Castella,
+              Santa Severina, Valli Cupe e l&apos;Area Marina Protetta di Capo Rizzuto.
             </p>
           </div>
         </ScrollReveal>

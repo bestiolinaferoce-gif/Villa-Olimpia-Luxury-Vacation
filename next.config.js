@@ -80,8 +80,9 @@ const nextConfig = {
       // Fix Search Console (17/04/2026) - prefisso /it/ non necessario (locale di default)
       { source: "/it/:path*", destination: "/:path*", permanent: true },
       // Localized listing lives at /en/apartments; detail slugs stay on /appartamenti/*
-{ source: "/en/contatti", destination: "/en/contact", permanent: true },
+      { source: "/en/contatti", destination: "/en/contact", permanent: true },
       { source: "/en/norway", destination: "/no/norway", permanent: false },
+      { source: "/nl/cosa-fare-capo-rizzuto", destination: "/cosa-fare-capo-rizzuto", permanent: true },
       // Protezione URL interni da crawling diretto
       { source: "/utm", destination: "/", permanent: false },
       { source: "/verifica-analytics", destination: "/", permanent: false },

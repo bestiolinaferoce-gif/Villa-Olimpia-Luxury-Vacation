@@ -21,7 +21,7 @@ const APPARTAMENTO = {
   // 150-160 caratteri ↑ — controlla con: https://charactercounter.com/
 };
 
-const BASE_URL = "https://www.villaolimpiacaporizzuto.com";
+const BASE_URL = "https://villaolimpiacaporizzuto.com";
 const CANONICAL = `${BASE_URL}/appartamenti/${APPARTAMENTO.slug}`;
 
 // ── Metadata SEO ─────────────────────────────────────────────────────────────

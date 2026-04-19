@@ -89,33 +89,6 @@ const destinations = [
     contactLine2: "protocollo@comune.santaseverina.kr.it"
   },
   {
-    id: "sila-piccola",
-    name: "Sila Piccola",
-    category: "Montagna e Natura",
-    distance: "40 minuti",
-    duration: "Mezza giornata / Giornata intera",
-    difficulty: "Varie",
-    price: "Gratuito",
-    description: "La Sila Piccola è una proposta sensata per chi desidera una giornata diversa dal mare: boschi, aria più fresca, sentieri e tavole tipiche dell'entroterra calabrese.",
-    fullDescription: "Non è un'escursione da improvvisare all'ultimo in piena estate senza programma, ma una buona alternativa per chi ama paesaggi montani, prodotti locali e tappe naturalistiche lontane dalla costa.",
-    highlights: [
-      "Laghi di montagna",
-      "Trekking e mountain bike",
-      "Fauna selvatica",
-      "Sci di fondo (inverno)",
-      "Caseifici DOP"
-    ],
-    image: "/images/villa/location/beach-4.jpg",
-    images: [
-      "/images/villa/location/beach-4.jpg",
-      "/images/villa/location/beach-5.jpg",
-      "/images/villa/location/beach-3.jpg"
-    ],
-    icon: Mountain,
-    href: "/cosa-fare-capo-rizzuto",
-    coordinates: { lat: 39.2667, lng: 16.5833 }
-  },
-  {
     id: "capopiccolo",
     name: "Capopiccolo e Spiagge di Capo Rizzuto",
     category: "Mare e Spiaggia",
@@ -172,33 +145,6 @@ const destinations = [
     officialLabel: "Info ufficiali su Le Castella",
     contactLine1: "Comune di Isola di Capo Rizzuto · 0962 795111",
     contactLine2: "infopoint turistico locale: verificare orari stagionali"
-  },
-  {
-    id: "crotone",
-    name: "Crotone - Città Magno-Greca",
-    category: "Cultura e Storia",
-    distance: "20 minuti",
-    duration: "Mezza giornata",
-    difficulty: "Facile",
-    price: "Museo €5",
-    description: "Fondata nel 708 a.C., Crotone è una delle città della Magna Grecia più importanti. Il Museo Archeologico Nazionale ospita tesori unici, tra cui l'Hera Lacinia, una delle statue greche più belle al mondo.",
-    fullDescription: "Passeggia nel centro storico, visita il Castello Carlo V affacciato sul mare, e scopri la storia di Pitagora che qui fondò la sua scuola. Il lungomare di 5 km è perfetto per passeggiate romantiche al tramonto. I ristoranti del centro storico servono piatti tipici calabresi.",
-    highlights: [
-      "Museo Archeologico Nazionale",
-      "Hera Lacinia (statua greca)",
-      "Castello Carlo V",
-      "Scuola di Pitagora",
-      "Lungomare 5 km"
-    ],
-    image: "/images/villa/location/beach-2.jpg",
-    images: [
-      "/images/villa/location/beach-2.jpg",
-      "/images/villa/location/beach-3.jpg",
-      "/images/villa/location/beach-4.jpg"
-    ],
-    icon: Castle,
-    href: "/location",
-    coordinates: { lat: 39.0833, lng: 17.1167 }
   },
   {
     id: "riserva-marina",
@@ -352,8 +298,7 @@ export default function TerritorioPage() {
                 Accanto a questo, il territorio permette anche alcune escursioni in giornata molto
                 interessanti. Valli Cupe rappresenta una proposta valida per chi ama la natura e i
                 percorsi immersi nel verde. Santa Severina è perfetta per chi preferisce una gita
-                culturale tra castello, borgo e panorama sull&apos;entroterra. In stagione, anche attività
-                family-friendly come i parchi acquatici possono completare il soggiorno.
+                culturale tra castello, borgo e panorama sull&apos;entroterra.
               </p>
             </div>
           </div>

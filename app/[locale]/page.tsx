@@ -5,8 +5,9 @@ import { HomePageEnView } from "@/components/pages/home-page-en-view"
 import { HomePageDeFrView } from "@/components/pages/home-page-defr-view"
 import HomePageClient from "@/components/pages/home-page-client"
 import { FlightsBanner } from "@/components/flights-banner"
-import { BASE_URL, buildHreflangLanguages } from "@/lib/metadata"
+import { buildHreflangLanguages, buildLocalizedPageMetadata } from "@/lib/metadata"
 import { locales } from "@/i18n/request"
+import type { SupportedLocale } from "@/lib/i18n-config"
 
 interface PageProps {
   params: Promise<{ locale: string }>
@@ -48,16 +49,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { locale } = await params
   if (!locales.includes(locale as (typeof locales)[number])) notFound()
 
-  const canonical = locale === "en" ? `${BASE_URL}/en` : `${BASE_URL}/${locale}`
   const meta = metaByLocale[locale] ?? { title: "Villa Olimpia", description: "Villa Olimpia Capo Rizzuto." }
-  return {
+  return buildLocalizedPageMetadata({
+    locale: locale as SupportedLocale,
     title: meta.title,
     description: meta.description,
-    alternates: {
-      canonical,
-      languages: buildHreflangLanguages("/"),
-    },
-  }
+    path: `/${locale}`,
+    languages: buildHreflangLanguages("/"),
+  })
 }
 
 function FlightsBannerWrapper({ locale }: { locale: string }) {

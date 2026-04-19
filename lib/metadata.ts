@@ -21,6 +21,15 @@ const ogImageDimensions = {
   "og:image:height": String(OG_IMAGE_H),
 } as const
 
+const OPEN_GRAPH_LOCALE_BY_LOCALE: Record<SupportedLocale, string> = {
+  it: "it_IT",
+  en: "en_GB",
+  de: "de_DE",
+  fr: "fr_FR",
+  nl: "nl_NL",
+  no: "nb_NO",
+}
+
 export function generateMetadata({
   title,
   description,
@@ -252,6 +261,50 @@ export function buildHreflangLanguages(canonicalPath: string): Record<string, st
   }
   languages["x-default"] = p === "/" ? baseUrl : `${baseUrl}${p}`
   return languages
+}
+
+export function buildLocalizedPageMetadata({
+  locale,
+  title,
+  description,
+  path,
+  image = "/og-image.jpg",
+  type = "website",
+  keywords,
+  languages,
+}: {
+  locale: SupportedLocale
+  title: string
+  description: string
+  path: string
+  image?: string
+  type?: "website" | "article"
+  keywords?: string[]
+  languages?: Record<string, string>
+}): Metadata {
+  const base = generateMetadata({
+    title,
+    description,
+    path,
+    image,
+    type,
+    keywords,
+  })
+
+  return {
+    ...base,
+    openGraph: {
+      ...base.openGraph,
+      locale: OPEN_GRAPH_LOCALE_BY_LOCALE[locale],
+    },
+    twitter: {
+      ...base.twitter,
+    },
+    alternates: {
+      ...base.alternates,
+      ...(languages ? { languages } : {}),
+    },
+  }
 }
 
 export function buildContactMetadata(locale?: string, pathForCanonical = "/contatti"): Metadata {

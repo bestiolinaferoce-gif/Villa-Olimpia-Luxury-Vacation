@@ -71,3 +71,25 @@ dev.db
 # Local reports and Lighthouse artifacts
 _reports_local/
 lighthouse-*.json
+
+# Debris / audit files — never commit
+auth.json
+config.json
+test-availability-audit.mjs
+test-*.mjs
+
+# Audit/strategy documents — keep local only
+AIRBNB_STRATEGY_VILLA_OLIMPIA.md
+AUDIT_COMPLETO_APRILE_2026.md
+AUDIT_CONVERSION_ESTERO_2026-04-12.md
+AUDIT_FOTO_APRILE_2026.md
+AUDIT_TECNICO_APRILE_2026.md
+PROMPT_CODE_CONVERSION_ESTERO_2026-04-12.md
+SEO-AUDIT-REPORT-2026-04-11.md
+SEO-CRO-Strategy-European-Market.md
+SUPER_PROMPT_CLAUDE_CODE_AVAILABILITY_SYNC.md
+VILLA_OLIMPIA_CLAUDE_CROSSCHECK_REPORT*.md
+
+# Office/spreadsheet audit files
+*.xlsx
+*.docx

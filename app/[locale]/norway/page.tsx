@@ -4,7 +4,7 @@ import { notFound } from "next/navigation"
 import Link from "next/link"
 import Script from "next/script"
 import { locales } from "@/i18n/request"
-import { BASE_URL } from "@/lib/metadata"
+import { BASE_URL, buildLocalizedPageMetadata } from "@/lib/metadata"
 
 interface PageProps {
   params: Promise<{ locale: string }>
@@ -19,21 +19,19 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (locale !== "no" && locale !== "en") notFound()
 
   const canonical = `${BASE_URL}/${locale}/norway`
-
-  return {
+  return buildLocalizedPageMetadata({
+    locale: locale === "no" ? "no" : "en",
     title: "Villa Olimpia Calabria – Direktefly fra Oslo | 2026",
     description:
       "Book direkte. Norwegian direktefly Oslo–Lamezia Terme fra mai 2026. 9 private lodges, basseng, 70m fra stranden.",
-    alternates: {
-      canonical,
-      languages: {
-        nb: `${BASE_URL}/no/norway`,
-        en: `${BASE_URL}/en/norway`,
-        it: BASE_URL,
-        "x-default": BASE_URL,
-      },
+    path: `/${locale}/norway`,
+    languages: {
+      nb: `${BASE_URL}/no/norway`,
+      en: `${BASE_URL}/en/norway`,
+      it: BASE_URL,
+      "x-default": BASE_URL,
     },
-  }
+  })
 }
 
 const lodgingSchema = {
