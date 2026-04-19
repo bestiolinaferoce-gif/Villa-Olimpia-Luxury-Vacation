@@ -123,6 +123,21 @@ export default function AreaMarinaProtettaPage() {
                   <p className="px-4 py-3 text-sm text-muted-foreground">{image.alt}</p>
                 </div>
               ))}
+              <div className="overflow-hidden rounded-2xl border border-primary/10 bg-white shadow-sm md:col-span-2">
+                <Image
+                  src="/images/territory/tartaruga-caretta-caretta.jpg"
+                  alt="Tartaruga Caretta caretta in mare — specie protetta, tra le più note del Mediterraneo e legata agli ecosistemi costieri come l'Area Marina Protetta di Capo Rizzuto"
+                  width={1536}
+                  height={1024}
+                  className="h-auto w-full object-cover"
+                  sizes="(max-width: 1024px) 100vw, 896px"
+                />
+                <p className="px-4 py-3 text-sm text-muted-foreground">
+                  La <strong>Caretta caretta</strong> è un richiamo forte alla biodiversità marina: non è una promessa di avvistamento,
+                  ma un modo concreto per ricordare perché un&apos;area protetta conta. Avvistamenti, norme e zone sensibili cambiano:
+                  verifica sempre le regole aggiornate dell&apos;AMP e il rispetto della fauna prima di uscire in mare.
+                </p>
+              </div>
             </div>
 
             <div className="grid md:grid-cols-3 gap-6 mb-12">

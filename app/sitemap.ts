@@ -9,6 +9,7 @@ import { getLocalizedPathForCanonical } from "@/lib/i18n-routing"
 const DATE_CORE = new Date("2026-03-25")
 const DATE_CONTENT = new Date("2026-03-25")
 const DATE_NEW_PAGES = new Date("2026-04-08")
+const DATE_TERRITORIO = new Date("2026-04-19")
 
 const staticRoutes: Array<{
   path: string
@@ -28,7 +29,7 @@ const staticRoutes: Array<{
   { path: "/contatti", priority: 0.9, changeFrequency: "monthly", lastMod: DATE_CORE },
   { path: "/recensioni", priority: 0.9, changeFrequency: "weekly", lastMod: DATE_CORE },
   { path: "/location", priority: 0.85, changeFrequency: "monthly", lastMod: DATE_CONTENT },
-  { path: "/territorio", priority: 0.85, changeFrequency: "monthly", lastMod: DATE_CONTENT },
+  { path: "/territorio", priority: 0.85, changeFrequency: "monthly", lastMod: DATE_TERRITORIO },
   { path: "/enogastronomia", priority: 0.8, changeFrequency: "monthly", lastMod: DATE_CONTENT },
   { path: "/servizi", priority: 0.8, changeFrequency: "monthly", lastMod: DATE_CONTENT },
   { path: "/capo-rizzuto", priority: 0.8, changeFrequency: "monthly", lastMod: DATE_CONTENT },

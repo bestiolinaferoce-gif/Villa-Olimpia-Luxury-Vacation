@@ -8,20 +8,23 @@ import { Breadcrumb } from "@/components/breadcrumb"
 import { generateMetadata as genMeta } from "@/lib/metadata"
 
 export const metadata: Metadata = genMeta({
-  title: "Territorio, spiagge e attrazioni vicino Villa Olimpia in Calabria",
-  description: "Scopri cosa vedere vicino Villa Olimpia: Area Marina Protetta di Capo Rizzuto, Capopiccolo, Le Castella, Santa Severina e gite in giornata tra mare, borghi e natura.",
+  title: "Cosa vedere vicino Villa Olimpia: Capocolonna, Valli Cupe, Santa Severina",
+  description: "Scopri le attrazioni vicino Villa Olimpia Capo Rizzuto: il Tempio di Hera Lacinia a Capocolonna, le Valli Cupe, Santa Severina, Le Castella e l'Area Marina Protetta.",
   path: "/territorio",
+  image: "/images/territory/capocolonna-veduta-aerea.jpg",
   keywords: [
+    "capocolonna tempio hera lacinia",
+    "tempio greco calabria",
+    "magna grecia calabria",
+    "cosa vedere capo rizzuto",
     "valli cupe calabria",
     "castello santa severina",
-    "santa severina cosa vedere",
-    "area marina protetta capo rizzuto",
-    "capo rizzuto attrazioni",
     "le castella calabria",
-    "calabria turismo",
-    "riserva marina capo rizzuto",
+    "area marina protetta capo rizzuto",
     "gite in giornata calabria ionica",
-    "spiaggia dei gigli"
+    "archeologia calabria",
+    "parco archeologico capo colonna",
+    "colonna di capocolonna"
   ]
 })
 
@@ -56,6 +59,38 @@ const destinations = [
     officialLabel: "Info ufficiali sulla Riserva Valli Cupe",
     contactLine1: "Comune di Sersale · Centralino 0961 930911",
     contactLine2: "Ente gestore: Associazione dei Comuni della Riserva"
+  },
+  {
+    id: "capocolonna",
+    name: "Capocolonna — Tempio di Hera Lacinia",
+    category: "Archeologia e Storia",
+    distance: "circa 30 minuti in auto",
+    duration: "2-3 ore",
+    difficulty: "Facile",
+    price: "accesso area: verifica sul sito del Parco Archeologico prima della visita",
+    description: "Il Promontorio di Capocolonna è uno dei luoghi più significativi della Magna Grecia in Calabria. Sul suo punto più elevato si erge ancora oggi l'unica colonna superstite del Tempio di Hera Lacinia, santuario dorico del V secolo a.C. appartenente all'antica città di Kroton.",
+    fullDescription: "Il santuario era uno dei più venerati del Mediterraneo antico: le testimonianze storiche parlano di pellegrini provenienti da tutto il mondo greco. Oggi l'unica colonna rimasta in piedi è diventata il simbolo stesso della Calabria ionica. Accanto al sito archeologico si trova il Santuario della Madonna di Capocolonna, meta di devozione popolare tra le più sentite della provincia di Crotone. La visita si completa con una passeggiata sul promontorio affacciato sull'Area Marina Protetta: il panorama è tra i più intensi della costa ionica. Verifica orari e accessi direttamente sul sito del Parco Archeologico Nazionale di Capo Colonna prima della visita.",
+    highlights: [
+      "unica colonna dorica superstite",
+      "Magna Grecia, V sec. a.C.",
+      "santuario della Madonna di Capocolonna",
+      "panorama sull'Area Marina Protetta",
+      "a 30 minuti da Villa Olimpia"
+    ],
+    image: "/images/territory/capocolonna-veduta-aerea.jpg",
+    images: [
+      "/images/territory/capocolonna-veduta-aerea.jpg",
+      "/images/territory/capocolonna-colonna-dorica.jpg",
+      "/images/territory/capocolonna-santuario-madonna.jpg",
+      "/images/territory/capocolonna-veduta-aerea-2.jpg"
+    ],
+    icon: Castle,
+    href: "/cosa-fare-capo-rizzuto",
+    coordinates: { lat: 38.8583, lng: 17.1972 },
+    officialSite: "https://www.museoarcheologicocrotone.it",
+    officialLabel: "Museo Archeologico Nazionale di Crotone",
+    contactLine1: "Parco Archeologico di Capo Colonna",
+    contactLine2: "Per orari e biglietti verificare prima della visita"
   },
   {
     id: "castello-santa-severina",
@@ -207,7 +242,39 @@ const strategicGuides = [
 ]
 
 export default function TerritorioPage() {
+  const capocolonnaSchema = {
+    "@context": "https://schema.org",
+    "@type": "LandmarkOrHistoricBuilding",
+    "name": "Tempio di Hera Lacinia — Capocolonna",
+    "alternateName": "Colonna di Capocolonna",
+    "description": "Unica colonna superstite del Tempio di Hera Lacinia, santuario greco-magno greco del V secolo a.C. Simbolo della Calabria ionica e del patrimonio archeologico di Kroton.",
+    "url": "https://villaolimpiacaporizzuto.com/territorio",
+    "image": "https://villaolimpiacaporizzuto.com/images/territory/capocolonna-veduta-aerea.jpg",
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 38.8583,
+      "longitude": 17.1972
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Capo Colonna",
+      "addressRegion": "Calabria",
+      "addressCountry": "IT"
+    },
+    "containedInPlace": {
+      "@type": "Place",
+      "name": "Area Marina Protetta Capo Rizzuto"
+    },
+    "historicalSignificance": "Santuario panellenico di epoca magno-greca, V secolo a.C.",
+    "touristType": ["Cultural", "Historical", "Archaeological"]
+  }
+
   return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(capocolonnaSchema) }}
+      />
     <div className="min-h-screen pt-20">
       <Breadcrumb items={[
         { label: "Home", href: "/" },
@@ -706,5 +773,6 @@ export default function TerritorioPage() {
         </div>
       </section>
     </div>
+    </>
   )
 }
