@@ -48,7 +48,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       card: "summary_large_image",
       title: "Calabria Beach Apartments — Villa Olimpia",
       description:
-        "9 seaside apartments with pool, ~100m from the beach. Capo Rizzuto Marine Protected Area, Calabria. Direct booking.",
+        "9 seaside apartments with pool, ~100m from the beach. Capo Rizzuto Marine Protected Area, Calabria.",
       images: [`${BASE_URL}/og-image.jpg`],
     },
   }
