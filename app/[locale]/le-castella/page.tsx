@@ -6,14 +6,13 @@ import {
 } from "@/lib/metadata"
 import { LeCastellaPageView } from "@/components/pages/le-castella-page-view"
 import { getLocalizedPathForCanonical } from "@/lib/i18n-routing"
-import { locales } from "@/i18n/request"
 
 interface PageProps {
   params: Promise<{ locale: string }>
 }
 
 export function generateStaticParams() {
-  return locales.filter((l) => l !== "it").map((locale) => ({ locale }))
+  return [{ locale: "en" }]
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {

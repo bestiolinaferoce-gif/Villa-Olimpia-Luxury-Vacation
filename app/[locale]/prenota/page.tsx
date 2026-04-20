@@ -6,14 +6,13 @@ import {
 } from "@/lib/metadata"
 import { PrenotaPageView } from "@/components/pages/prenota-page-view"
 import { getLocalizedPathForCanonical } from "@/lib/i18n-routing"
-import { locales } from "@/i18n/request"
 
 interface PageProps {
   params: Promise<{ locale: string }>
 }
 
 export function generateStaticParams() {
-  return locales.filter((l) => l !== "it").map((locale) => ({ locale }))
+  return [{ locale: "en" }]
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
