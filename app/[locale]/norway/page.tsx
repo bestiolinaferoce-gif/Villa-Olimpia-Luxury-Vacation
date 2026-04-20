@@ -11,7 +11,7 @@ interface PageProps {
 }
 
 export function generateStaticParams() {
-  return [{ locale: "no" }, { locale: "en" }]
+  return [{ locale: "no" }]
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
@@ -27,9 +27,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     path: `/${locale}/norway`,
     languages: {
       nb: `${BASE_URL}/no/norway`,
-      en: `${BASE_URL}/en/norway`,
       it: BASE_URL,
-      "x-default": BASE_URL,
+      "x-default": `${BASE_URL}/no/norway`,
     },
   })
 }
