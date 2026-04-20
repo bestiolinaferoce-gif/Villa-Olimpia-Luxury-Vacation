@@ -65,6 +65,9 @@ export function localeHasRoute(locale: SupportedLocale, canonicalPath: string): 
   if (!isCoreRoute(p)) return false
   if (locale === "it") return true
   if (locale === "en") return true
+  // Norwegian has a dedicated /no/norway landing page; /no (root) 301-redirects there.
+  // Exclude /no from the homepage to avoid a redirecting URL in sitemap/hreflang.
+  if (locale === "no" && p === "/") return false
   if (isPartialLocale(locale)) return isPartialRouteForDeFr(p)
   return false
 }
