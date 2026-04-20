@@ -55,8 +55,8 @@ const ribbonItems: RibbonItem[] = [
   },
   {
     label: "Spiaggia Grande",
-    src: "/images/territory/spiaggia-capopiccolo-lato-interno.jpg",
-    alt: "Spiaggia ampia del territorio di Capo Rizzuto",
+    src: "/images/territory/spiaggia-grande-capo-rizzuto-01.jpg",
+    alt: "Spiaggia Grande lungo la costa ionica di Capo Rizzuto",
     href: "/spiagge-capo-rizzuto",
   },
   {
