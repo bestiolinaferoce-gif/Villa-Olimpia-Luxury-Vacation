@@ -25,6 +25,12 @@ function assertNotContains(text, pattern, file, label, errors) {
   }
 }
 
+function assertFileExists(file, errors) {
+  if (!fs.existsSync(path.join(ROOT, file))) {
+    errors.push(`${file}: file richiesto mancante`)
+  }
+}
+
 function fail(errors) {
   console.error("❌ Regressioni SEO trovate:\n")
   for (const error of errors) console.error(`- ${error}`)
@@ -34,10 +40,14 @@ function fail(errors) {
 function main() {
   const errors = []
 
+  assertFileExists("public/robots.txt", errors)
+  if (errors.length) fail(errors)
+
   const layout = read("app/layout.tsx")
   const metadata = read("lib/metadata.ts")
   const sitemap = read("app/sitemap.ts")
-  const robots = read("app/robots.ts")
+  const robotsRoute = read("app/robots.ts")
+  const robots = read("public/robots.txt")
   const home = read("app/page.tsx")
   const appartamentiHub = read("app/appartamenti/page.tsx")
 
@@ -48,7 +58,12 @@ function main() {
   assertContains(metadata, /villaolimpiacaporizzuto\.com/, "lib/metadata.ts", "dominio ufficiale", errors)
   assertNotContains(metadata, /Giugno e Luglio 2026/i, "lib/metadata.ts", "metadata stagionali obsoleti", errors)
 
-  assertContains(robots, /villaolimpiacaporizzuto\.com/, "app/robots.ts", "host corretto", errors)
+  assertContains(robotsRoute, /MetadataRoute\.Robots/, "app/robots.ts", "metadata route robots", errors)
+  assertContains(robotsRoute, /sitemap:\s*`\$\{BASE_URL\}\/sitemap\.xml`/, "app/robots.ts", "sitemap metadata route", errors)
+  assertContains(robotsRoute, /host:\s*BASE_URL/, "app/robots.ts", "host metadata route", errors)
+  assertContains(robots, /^User-agent:\s*\*/im, "public/robots.txt", "user-agent valido", errors)
+  assertContains(robots, /^Allow:\s*\//im, "public/robots.txt", "allow root", errors)
+  assertContains(robots, /Sitemap:\s*https:\/\/villaolimpiacaporizzuto\.com\/sitemap\.xml/i, "public/robots.txt", "host corretto", errors)
   assertContains(sitemap, /appartamenti/, "app/sitemap.ts", "rotte canoniche appartamenti", errors)
   assertNotContains(sitemap, /path:\s*"\/apartments"|path:\s*"\/rooms"|path:\s*"\/home"/, "app/sitemap.ts", "alias legacy in sitemap", errors)
 

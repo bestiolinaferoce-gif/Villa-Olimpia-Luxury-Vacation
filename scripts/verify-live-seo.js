@@ -10,11 +10,42 @@ const http = require("http")
 const BASE_URL = process.env.SITE_URL || "https://villaolimpiacaporizzuto.com"
 
 const checks = [
-  { label: "Home", url: `${BASE_URL}/`, expectStatus: 200, expect: [/Villa Olimpia/i, /Appartamenti con Piscina a Capo Rizzuto/i] },
-  { label: "Robots", url: `${BASE_URL}/robots.txt`, expectStatus: 200, expect: [/Sitemap:\s*https:\/\/villaolimpiacaporizzuto\.com\/sitemap\.xml/i, /User-agent:\s*\*/i] },
-  { label: "Sitemap", url: `${BASE_URL}/sitemap.xml`, expectStatus: 200, expect: [/<urlset/i, /appartamenti\/frangipane/i] },
-  { label: "Appartamenti hub", url: `${BASE_URL}/appartamenti`, expectStatus: 200, expect: [/Appartamenti a Capo Rizzuto/i, /canonical/i] },
-  { label: "Prenota", url: `${BASE_URL}/prenota`, expectStatus: 200, expect: [/Prenota/i] },
+  {
+    label: "Home",
+    url: `${BASE_URL}/`,
+    expectStatus: 200,
+    expectContentType: /text\/html/i,
+    expect: [/Villa Olimpia/i, /Appartamenti con Piscina a Capo Rizzuto/i],
+  },
+  {
+    label: "Robots",
+    url: `${BASE_URL}/robots.txt`,
+    expectStatus: 200,
+    expectContentType: /text\/plain/i,
+    expect: [/Sitemap:\s*https:\/\/villaolimpiacaporizzuto\.com\/sitemap\.xml/i, /User-agent:\s*\*/i],
+    reject: [/<!DOCTYPE html>/i, /<html\b/i],
+  },
+  {
+    label: "Sitemap",
+    url: `${BASE_URL}/sitemap.xml`,
+    expectStatus: 200,
+    expectContentType: /(application|text)\/xml/i,
+    expect: [/<urlset/i, /appartamenti\/frangipane/i],
+  },
+  {
+    label: "Appartamenti hub",
+    url: `${BASE_URL}/appartamenti`,
+    expectStatus: 200,
+    expectContentType: /text\/html/i,
+    expect: [/Appartamenti a Capo Rizzuto/i, /canonical/i],
+  },
+  {
+    label: "Prenota",
+    url: `${BASE_URL}/prenota`,
+    expectStatus: 200,
+    expectContentType: /text\/html/i,
+    expect: [/Prenota/i],
+  },
 ]
 
 const redirectChecks = [
@@ -56,6 +87,10 @@ function fail(errors) {
   process.exit(1)
 }
 
+function summarizeContentType(headers) {
+  return headers["content-type"] || "n/a"
+}
+
 async function main() {
   const errors = []
 
@@ -67,11 +102,36 @@ async function main() {
       errors.push(`${check.label}: status ${response.statusCode}, atteso ${check.expectStatus}`)
       continue
     }
+
+    const contentType = summarizeContentType(response.headers)
+    if (check.expectContentType && !check.expectContentType.test(contentType)) {
+      errors.push(`${check.label}: content-type inatteso (${contentType})`)
+    }
+
+    let checkFailed = false
     for (const pattern of check.expect) {
       if (!pattern.test(response.body)) {
         errors.push(`${check.label}: contenuto atteso non trovato (${pattern})`)
+        checkFailed = true
       }
     }
+
+    for (const pattern of check.reject || []) {
+      if (pattern.test(response.body)) {
+        errors.push(`${check.label}: contenuto non valido rilevato (${pattern})`)
+        checkFailed = true
+      }
+    }
+
+    if (check.expectContentType && !check.expectContentType.test(contentType)) {
+      checkFailed = true
+    }
+
+    if (checkFailed) {
+      console.log(`❌ ${check.label}`)
+      continue
+    }
+
     console.log(`✅ ${check.label}`)
   }
 
