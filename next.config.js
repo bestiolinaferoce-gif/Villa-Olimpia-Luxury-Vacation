@@ -74,6 +74,11 @@ const nextConfig = {
       { source: "/appartamenti/7", destination: "/appartamenti/geranio", permanent: true },
       { source: "/appartamenti/8", destination: "/appartamenti/gardenia", permanent: true },
       { source: "/appartamenti/9", destination: "/appartamenti/azalea", permanent: true },
+      {
+        source: "/appartamenti/:slug*",
+        destination: "/it/appartamenti",
+        permanent: true,
+      },
       { source: "/termini", destination: "/termini-condizioni", permanent: true },
       // Route duplicate inglese → italiane (301 permanente per SEO)
       { source: "/apartments", destination: "/appartamenti", permanent: true },
