@@ -11,7 +11,7 @@ const BASE_URL = process.env.SITE_URL || "https://villaolimpiacaporizzuto.com"
 
 const checks = [
   { label: "Home", url: `${BASE_URL}/`, expectStatus: 200, expect: [/Villa Olimpia/i, /Appartamenti con Piscina a Capo Rizzuto/i] },
-  { label: "Robots", url: `${BASE_URL}/robots.txt`, expectStatus: 200, expect: [/Sitemap:/i, /Host:\s*villaolimpiacaporizzuto\.com/i] },
+  { label: "Robots", url: `${BASE_URL}/robots.txt`, expectStatus: 200, expect: [/Sitemap:\s*https:\/\/villaolimpiacaporizzuto\.com\/sitemap\.xml/i, /User-agent:\s*\*/i] },
   { label: "Sitemap", url: `${BASE_URL}/sitemap.xml`, expectStatus: 200, expect: [/<urlset/i, /appartamenti\/frangipane/i] },
   { label: "Appartamenti hub", url: `${BASE_URL}/appartamenti`, expectStatus: 200, expect: [/Appartamenti a Capo Rizzuto/i, /canonical/i] },
   { label: "Prenota", url: `${BASE_URL}/prenota`, expectStatus: 200, expect: [/Prenota/i] },

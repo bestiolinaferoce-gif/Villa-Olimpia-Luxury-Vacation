@@ -166,7 +166,7 @@ export function getApartmentMetadata(apartmentId: number): Metadata {
 }
 
 export const defaultMetadata: Metadata = {
-  metadataBase: new URL(baseUrl),
+  metadataBase: new URL("https://villaolimpiacaporizzuto.com"),
     title: {
       default: `${siteName} | Appartamenti con Piscina a Capo Rizzuto — Estate 2026`,
       template: `%s`,

@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://villaolimpiacaporizzuto.com/sitemap.xml

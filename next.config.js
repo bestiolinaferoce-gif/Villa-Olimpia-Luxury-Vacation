@@ -49,6 +49,12 @@ const nextConfig = {
   // Redirect 301 permanenti
   async redirects() {
     return [
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "www.villaolimpiacaporizzuto.com" }],
+        destination: "https://villaolimpiacaporizzuto.com/:path*",
+        permanent: true,
+      },
       { source: "/privacy-policy", destination: "/privacy", permanent: true },
       { source: "/appartamenti/apartment-1", destination: "/appartamenti/frangipane", permanent: true },
       { source: "/appartamenti/apartment-2", destination: "/appartamenti/fiordaliso", permanent: true },
