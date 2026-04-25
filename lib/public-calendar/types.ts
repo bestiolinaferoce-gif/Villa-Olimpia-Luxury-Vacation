@@ -33,4 +33,7 @@ export type Booking = {
   guests: number;
   notes?: string;
   status: "pending" | "confirmed" | "cancelled" | "injected";
+  source?: "public_request" | "airbnb" | "booking_com";
+  externalId?: string;
+  syncedAt?: string;
 };
