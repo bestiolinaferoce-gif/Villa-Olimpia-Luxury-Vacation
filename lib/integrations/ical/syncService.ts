@@ -4,6 +4,15 @@ import { getICalUrlsForLodge } from "./lodgeICalMap"
 import type { OccupiedRange } from "@/lib/public-calendar/occupancy"
 import { syncExternalBookingsForLodge } from "@/lib/public-calendar/bookingBoardStore"
 import type { Booking } from "@/lib/public-calendar/types"
+import { syncOtaBookingsToBoard } from "./boardCloudSync"
+
+type BoardReservation = {
+  uid: string | null
+  start: string
+  end: string
+  source: "airbnb" | "booking_com"
+  summary: string | null
+}
 
 function buildExternalBookingId(
   lodgeId: string,
@@ -70,6 +79,7 @@ export async function syncICalForLodge(
   const allRanges: OccupiedRange[] = []
   const syncedSources: Array<"airbnb" | "booking_com"> = []
   const syncedBookings: Booking[] = []
+  const boardReservations: BoardReservation[] = []
   const { airbnb, booking } = getICalUrlsForLodge(lodgeId)
   const syncedAt = new Date().toISOString()
 
@@ -84,6 +94,15 @@ export async function syncICalForLodge(
       )
       allRanges.push(
         ...reservations.map(({ start, end, source }) => ({ start, end, source }))
+      )
+      boardReservations.push(
+        ...reservations.map(({ uid, start, end, source, summary }) => ({
+          uid,
+          start,
+          end,
+          source,
+          summary,
+        }))
       )
       syncedBookings.push(
         ...reservations.map((reservation) =>
@@ -104,6 +123,15 @@ export async function syncICalForLodge(
       allRanges.push(
         ...reservations.map(({ start, end, source }) => ({ start, end, source }))
       )
+      boardReservations.push(
+        ...reservations.map(({ uid, start, end, source, summary }) => ({
+          uid,
+          start,
+          end,
+          source,
+          summary,
+        }))
+      )
       syncedBookings.push(
         ...reservations.map((reservation) =>
           toExternalBooking(lodgeId, reservation, syncedAt)
@@ -120,6 +148,7 @@ export async function syncICalForLodge(
   await kvSet(`ical:${lodgeId}`, cacheContent, 90000)
   if (syncedSources.length > 0) {
     await syncExternalBookingsForLodge(lodgeId, syncedSources, syncedBookings)
+    await syncOtaBookingsToBoard(lodgeId, boardReservations, syncedSources, syncedAt)
   }
 
   return { synced: allRanges.length, errors }
