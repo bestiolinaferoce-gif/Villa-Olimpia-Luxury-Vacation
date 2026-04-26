@@ -8,6 +8,7 @@ import { NextRequest, NextResponse } from "next/server"
 import { z } from "zod"
 import { appendFile, mkdir } from "fs/promises"
 import path from "path"
+import { buildOwnerAvailabilityNotificationHtml } from "@/lib/email-branding"
 import { resolveOwnerEmailRecipients } from "@/lib/lead-inbox"
 import { DATA_DIR } from "@/lib/data-path"
 
@@ -93,6 +94,17 @@ async function sendAvailabilityEmail(params: {
     `Referer: ${params.referer}`,
     `User-Agent: ${params.userAgent}`,
   ].join("\n")
+  const html = buildOwnerAvailabilityNotificationHtml({
+    name: params.name,
+    email: params.email,
+    phone: params.phone,
+    checkIn: params.checkIn,
+    checkOut: params.checkOut,
+    guests: params.guests,
+    apartment: params.apartment,
+    source: params.source,
+    referer: params.referer,
+  })
 
   const response = await fetch("https://api.resend.com/emails", {
     method: "POST",
@@ -106,6 +118,7 @@ async function sendAvailabilityEmail(params: {
       reply_to: params.email,
       subject: `[Disponibilità] ${params.name} — ${params.checkIn} / ${params.checkOut} — Villa Olimpia`,
       text,
+      html,
     }),
   })
 

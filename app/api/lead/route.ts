@@ -4,6 +4,7 @@ import { appendFile, mkdir } from "fs/promises"
 import path from "path"
 import { buildEnrichedLead, leadPriorityTag, type EnrichedLead } from "@/lib/lead-automation"
 import { DATA_DIR } from "@/lib/data-path"
+import { buildOwnerLeadNotificationHtml } from "@/lib/email-branding"
 import { buildSeasonalAutoReplyHtml } from "@/lib/seasonal-auto-reply-html"
 import { SEASONAL_CONFIG, type SeasonalMonth } from "@/lib/seasonalConfig"
 import { resolveOwnerEmailRecipients } from "@/lib/lead-inbox"
@@ -109,6 +110,20 @@ async function sendWithResend(lead: EnrichedLead) {
 
   const subject = `Richiesta disponibilità – ${lead.name} · ${lead.checkIn} [${leadPriorityTag(lead)}]`
   const text = buildTextEmail(lead)
+  const html = buildOwnerLeadNotificationHtml({
+    guestName: lead.name,
+    guestEmail: lead.email,
+    guestPhone: lead.phone,
+    checkIn: lead.checkIn,
+    checkOut: lead.checkOut,
+    guests: lead.guests,
+    apartment: lead.apartment || "",
+    message: lead.message || "",
+    priority: leadPriorityTag(lead),
+    source: lead.source || "Diretta",
+    followUpBy: lead.followUpPlan.firstContactBy,
+    stayNights: String(lead.stayNights),
+  })
 
   const response = await fetch("https://api.resend.com/emails", {
     method: "POST",
@@ -122,6 +137,7 @@ async function sendWithResend(lead: EnrichedLead) {
       reply_to: lead.email,
       subject,
       text,
+      html,
     }),
   })
 
@@ -176,17 +192,14 @@ async function sendAutoReplyToGuest(lead: EnrichedLead) {
     .filter(Boolean)
     .join("\n")
 
-  const html =
-    seasonalKey && seasonalKey !== "other"
-      ? buildSeasonalAutoReplyHtml({
-          name: lead.name,
-          month: seasonalKey,
-          checkIn: lead.checkIn,
-          checkOut: lead.checkOut,
-          guests: lead.guests,
-          apartment: lead.apartment,
-        })
-      : null
+  const html = buildSeasonalAutoReplyHtml({
+    name: lead.name,
+    month: seasonalKey || "other",
+    checkIn: lead.checkIn,
+    checkOut: lead.checkOut,
+    guests: lead.guests,
+    apartment: lead.apartment,
+  })
 
   const response = await fetch("https://api.resend.com/emails", {
     method: "POST",
@@ -199,7 +212,7 @@ async function sendAutoReplyToGuest(lead: EnrichedLead) {
       to: lead.email,
       subject,
       text,
-      ...(html ? { html } : {}),
+      html,
     }),
   })
 
