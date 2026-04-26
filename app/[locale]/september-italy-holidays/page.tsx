@@ -18,9 +18,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const canonical = `${BASE_URL}/en/september-italy-holidays`
   return buildLocalizedPageMetadata({
     locale: "en",
-    title: "September Italy Holidays in Calabria Seaside",
+    title: "September Holidays Italy | Calabria Warm Sea & Low Prices",
     description:
-      "September holidays in Calabria, Italy: warm weather, less crowded beaches and better value. Seaside apartments with pool at Villa Olimpia.",
+      "September in Calabria: 26°C sea, empty beaches, up to 30% lower prices. The best kept secret in Southern Italy. Book your September break now.",
     path: "/en/september-italy-holidays",
     languages: {
       en: canonical,

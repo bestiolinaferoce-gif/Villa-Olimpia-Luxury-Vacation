@@ -17,9 +17,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   const canonical = `${BASE_URL}/en/calabria-beach-apartments`
   return {
-    title: "Calabria Beach Apartments by Seaside, Italy",
+    title: "Calabria Beach Apartments with Pool | Near Le Castella",
     description:
-      "Calabria seaside apartments in Italy with outdoor shared swimming pool, kitchens, and about 100 meters from the sandy beach.",
+      "Self-catering apartments steps from the beach in Calabria, southern Italy. Pool, air conditioning, fully equipped kitchen. Book direct for best price.",
     alternates: {
       canonical,
       languages: {

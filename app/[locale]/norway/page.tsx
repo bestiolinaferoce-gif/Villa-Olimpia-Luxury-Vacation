@@ -21,9 +21,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const canonical = `${BASE_URL}/${locale}/norway`
   return buildLocalizedPageMetadata({
     locale: locale === "no" ? "no" : "en",
-    title: "Villa Olimpia Calabria – Direktefly fra Oslo | 2026",
+    title: "Ferie Italia fra Norge | Leiligheter med Basseng Kalabria",
     description:
-      "Book direkte. Norwegian direktefly Oslo–Lamezia Terme fra mai 2026. 9 private lodges, basseng, 70m fra stranden.",
+      "Reisetips for nordmenn til Kalabria: flyforbindelser, beste sesong og private leiligheter med basseng. September og juni — de hemmelige sesongene.",
     path: `/${locale}/norway`,
     languages: {
       nb: `${BASE_URL}/no/norway`,

@@ -19,9 +19,9 @@ export function generateStaticParams() {
 
 const metaByLocale: Record<string, { title: string; description: string }> = {
   en: {
-    title: "Calabria Seaside Apartments with Pool | Villa Olimpia — Capo Rizzuto",
+    title: "Capo Rizzuto Holiday Apartments with Pool | Villa Olimpia Calabria",
     description:
-      "9 apartments in the Capo Rizzuto Marine Protected Area, Calabria: outdoor shared pool and about 100 metres from the sandy beach. Available June, July and September 2026. Direct booking.",
+      "Book your Calabria holiday at Villa Olimpia. 9 private lodges with shared pool, 70m from the beach. Capo Piccolo, Marine Protected Area.",
   },
   de: {
     title: "Ferienwohnungen Kalabrien am Meer mit Pool | Villa Olimpia Capo Rizzuto",
@@ -39,9 +39,9 @@ const metaByLocale: Record<string, { title: string; description: string }> = {
       "9 vakantieappartementen in het zeereservaat Capo Rizzuto, Calabrië: gedeeld buitenzwembad, ca. 100 m van het strand. Beschikbaar juni, juli en september 2026. Directe boeking.",
   },
   no: {
-    title: "Villa Olimpia Calabria – Feriebolig ved havet | Direktefly fra Oslo 2026",
+    title: "Italia Ferie med Basseng | Villa Olimpia Kalabria",
     description:
-      "9 uavhengige lodges med basseng, 70m fra stranden. Direktefly Oslo (OSL)→Lamezia Terme (SUF) med Norwegian hver mandag mai–oktober 2026. Book direkte uten mellomledd.",
+      "Bestill din drømmeferie i Kalabria. 9 private leiligheter med felles basseng og 70 m til stranden. Direkte fra Norge via Warszawa.",
   },
 }
 

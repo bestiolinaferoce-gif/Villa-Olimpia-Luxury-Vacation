@@ -69,8 +69,8 @@ export const SEASONAL_CONFIG: Record<SeasonalMonth | "other", MonthConfig> = {
     discountBadge: "Disponibilità limitata — canale diretto",
     heroTagline: "Giugno a Capo Rizzuto: estate che inizia, ancora valore sul diretto",
     heroTaglineEn: "June at Capo Rizzuto: summer begins — still great value booking direct",
-    seoTitle: `Vacanze Giugno ${SEASONAL_CAMPAIGN_YEAR} Calabria | Villa Olimpia Capo Rizzuto`,
-    seoDescription: `Prenota giugno ${SEASONAL_CAMPAIGN_YEAR} a Villa Olimpia — lodge con piscina, Area Marina Protetta. Verifica disponibilità con risposta rapida.`,
+    seoTitle: `Giugno ${SEASONAL_CAMPAIGN_YEAR} Capo Rizzuto | Villa Olimpia con Piscina al Mare`,
+    seoDescription: `Giugno a Capo Rizzuto: mare già caldo, nessuna folla, prezzi convenienti. Lodge con piscina disponibili. Prenota il tuo giugno in Calabria.`,
     seoKeywords: [
       `vacanze giugno calabria ${SEASONAL_CAMPAIGN_YEAR}`,
       "villa piscina giugno calabria",
@@ -95,8 +95,8 @@ export const SEASONAL_CONFIG: Record<SeasonalMonth | "other", MonthConfig> = {
     discountBadge: "Alta stagione — ultimi lodge in aggiornamento manuale",
     heroTagline: `Luglio ${SEASONAL_CAMPAIGN_YEAR}: alta domanda — prenota diretto per bloccare le date`,
     heroTaglineEn: `July ${SEASONAL_CAMPAIGN_YEAR}: peak demand — book direct to secure dates`,
-    seoTitle: `Villa Olimpia Luglio ${SEASONAL_CAMPAIGN_YEAR} | Lodge con piscina Capo Rizzuto`,
-    seoDescription: `Luglio ${SEASONAL_CAMPAIGN_YEAR} a Villa Olimpia: disponibilità aggiornata manualmente. Prenotazione diretta, risposta rapida.`,
+    seoTitle: `Luglio ${SEASONAL_CAMPAIGN_YEAR} Capo Rizzuto | Villa Olimpia Lodge con Piscina`,
+    seoDescription: `Prenota il tuo luglio a Capo Rizzuto. Lodge privati con piscina e accesso diretto alla Spiaggia dei Gigli. Disponibilità limitata — verifica ora.`,
     seoKeywords: [
       `vacanze luglio calabria ${SEASONAL_CAMPAIGN_YEAR}`,
       "villa piscina luglio calabria",

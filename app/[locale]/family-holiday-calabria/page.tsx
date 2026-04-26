@@ -18,9 +18,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const canonical = `${BASE_URL}/en/family-holiday-calabria`
   return buildLocalizedPageMetadata({
     locale: "en",
-    title: "Family Holiday Calabria Seaside Apartments Italy",
+    title: "Family Holiday Calabria | Apartments with Pool & Beach Access",
     description:
-      "Family holiday in Calabria with sandy beach, pool, garden and safe setting. Seaside apartments in Italy near Le Castella at Villa Olimpia.",
+      "Perfect family holiday in Calabria: spacious apartments for 4-6 guests, shared pool, 70m from sandy beach. Kids love it. Book direct and save.",
     path: "/en/family-holiday-calabria",
     languages: {
       en: canonical,

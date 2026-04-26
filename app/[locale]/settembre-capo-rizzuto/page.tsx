@@ -17,6 +17,34 @@ export function generateStaticParams() {
   return locales.filter((l) => l !== "it").map((locale) => ({ locale }))
 }
 
+const metaByLocale: Record<string, { title: string; description: string }> = {
+  en: {
+    title: "September Holidays Italy | Calabria Warm Sea & Low Prices",
+    description:
+      "September in Calabria: 26°C sea, empty beaches, up to 30% lower prices. The best kept secret in Southern Italy. Book your September break now.",
+  },
+  de: {
+    title: "September Urlaub Kalabrien | Warmes Meer & Wenig Andrang",
+    description:
+      "September in Kalabrien: 26°C Meer, leere Strände und bis zu 30% günstigere Preise. Buchen Sie jetzt Ihren September-Urlaub.",
+  },
+  fr: {
+    title: "Vacances Septembre Calabre | Mer 26°C, Sans Foule",
+    description:
+      "Septembre en Calabre : mer à 26°C, plages désertes et prix jusqu'à 30% plus bas. Réservez maintenant votre séjour de septembre.",
+  },
+  nl: {
+    title: "September Vakantie Calabrië | Warme Zee & Rustige Stranden",
+    description:
+      "September in Calabrië: 26°C zee, lege stranden en tot 30% lagere prijzen. Boek nu je septembervakantie in Zuid-Italië.",
+  },
+  no: {
+    title: "September Ferie Italia | Varmt Hav og Lave Priser i Kalabria",
+    description:
+      "September i Kalabria er den perfekte ferien for nordmenn: 26°C sjø, ingen folkemasser og priser 20-30% lavere enn august. Bestill nå.",
+  },
+}
+
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { locale } = await params
   const path =
@@ -26,11 +54,15 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
         ? "/de/settembre-capo-rizzuto"
         : locale === "fr"
           ? "/fr/settembre-capo-rizzuto"
-          : "/settembre-capo-rizzuto"
+          : locale === "nl"
+            ? "/nl/settembre-capo-rizzuto"
+            : locale === "no"
+              ? "/no/settembre-capo-rizzuto"
+              : "/settembre-capo-rizzuto"
+  const meta = metaByLocale[locale] ?? metaByLocale.en
   const base = definePageMetadata({
-    title: "Settembre a Capo Rizzuto | Villa con piscina | Villa Olimpia",
-    description:
-      "Settembre a Capo Rizzuto: mare ancora caldo, meno folla e soggiorni rilassati a Villa Olimpia. Villa con piscina vicino all'Area Marina Protetta e alla Spiaggia dei Gigli. Prenotazione diretta.",
+    title: meta.title,
+    description: meta.description,
     path,
   })
   return {

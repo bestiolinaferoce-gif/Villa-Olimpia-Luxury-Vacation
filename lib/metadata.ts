@@ -99,11 +99,52 @@ export function getApartmentMetadata(apartmentId: number): Metadata {
     })
   }
 
-  const bagnoLabel = apartment.bathrooms === 1 ? "bagno" : "bagni"
-  const cameraLabel = apartment.bedrooms === 1 ? "camera" : "camere"
+  const lodgeMeta: Record<string, { titleQualifier: string; descUsp: string }> = {
+    Frangipane: {
+      titleQualifier: "Famiglia 6 Posti",
+      descUsp: "2 camere matrimoniali e veranda privata, ideale per famiglie e gruppi fino a 6 ospiti",
+    },
+    Fiordaliso: {
+      titleQualifier: "Balcone Vista Piscina",
+      descUsp: "Balcone vista piscina e accesso comodo a tutti i servizi della struttura",
+    },
+    Orchidea: {
+      titleQualifier: "con 2 Bagni",
+      descUsp: "Unico nella zona: camera matrimoniale con 2 bagni completi e terrazza panoramica vista mare",
+    },
+    Tulipano: {
+      titleQualifier: "Patio e Giardino",
+      descUsp: "Accesso diretto al giardino e patio privato, posizione perfetta vicino alla piscina",
+    },
+    Giglio: {
+      titleQualifier: "Famiglia 6 Posti",
+      descUsp: "Due camere e gazebo esterno, soluzione comoda per famiglie e gruppi fino a 6 ospiti",
+    },
+    Lavanda: {
+      titleQualifier: "Veranda Privata",
+      descUsp: "Veranda e portico privati in posizione tranquilla, ideale per coppie e piccole famiglie",
+    },
+    Geranio: {
+      titleQualifier: "Premium 6 Posti",
+      descUsp: "2 camere matrimoniali, 2 bagni e 2 balconi semipanoramici. Il lodge più grande e completo",
+    },
+    Gardenia: {
+      titleQualifier: "2 Balconi Vista Mare",
+      descUsp: "2 balconi con vista sul Mar Ionio e ambienti luminosi al primo piano",
+    },
+    Azalea: {
+      titleQualifier: "Terrazza Vista Mare",
+      descUsp: "Terrazza panoramica con vista mare spettacolare e design moderno",
+    },
+  }
 
-  const seoTitle = `Appartamento ${apartment.name} a Capo Rizzuto con Piscina | Villa Olimpia`
-  const seoDescription = `Scopri ${apartment.name} a Villa Olimpia, Capopiccolo: appartamento al ${apartment.floor.toLowerCase()} di ${apartment.size} per ${apartment.guests} ospiti, con ${apartment.bedrooms} ${cameraLabel} e ${apartment.bathrooms} ${bagnoLabel}. Vicino alla Spiaggia dei Gigli e all'Area Marina Protetta di Capo Rizzuto.`
+  const meta = lodgeMeta[apartment.name] ?? {
+    titleQualifier: `${apartment.guests} Posti`,
+    descUsp: `Appartamento di ${apartment.size} per ${apartment.guests} ospiti`,
+  }
+
+  const seoTitle = `Lodge ${apartment.name} | Appartamento ${meta.titleQualifier} Capo Rizzuto Piscina`
+  const seoDescription = `${meta.descUsp}. Lodge privato a Villa Olimpia, 70m dalla Spiaggia dei Gigli. Prenota direttamente.`
 
   const keywords = [
     `appartamento ${getApartmentSlug(apartment)} villa olimpia`,
@@ -168,10 +209,10 @@ export function getApartmentMetadata(apartmentId: number): Metadata {
 export const defaultMetadata: Metadata = {
   metadataBase: new URL("https://villaolimpiacaporizzuto.com"),
     title: {
-      default: `${siteName} | Appartamenti con Piscina a Capo Rizzuto — Estate 2026`,
+      default: `${siteName} Capo Rizzuto | Appartamenti con Piscina al Mare`,
       template: `%s`,
     },
-  description: "Villa Olimpia: 9 appartamenti con piscina a Capopiccolo, Area Marina Protetta di Capo Rizzuto. Estate 2026 disponibile — Spiaggia dei Gigli a 100m, prenotazione diretta senza commissioni.",
+  description: "Lodge privati con piscina a Capo Piccolo, a 70m dalla Spiaggia dei Gigli. 9 appartamenti nell'Area Marina Protetta di Capo Rizzuto. Prenota ora.",
   keywords: [
     // Core estate 2026
     "appartamenti capo rizzuto estate 2026",
@@ -226,8 +267,8 @@ export const defaultMetadata: Metadata = {
     locale: "it_IT",
     url: baseUrl,
     siteName: openGraphSiteName,
-    title: `${siteName} — Appartamenti con Piscina a Capo Rizzuto | Estate 2026`,
-    description: "9 appartamenti con piscina a Capopiccolo, Area Marina Protetta di Capo Rizzuto. Estate 2026 disponibile — Spiaggia dei Gigli a 100m, prenotazione diretta senza commissioni.",
+    title: `${siteName} Capo Rizzuto | Appartamenti con Piscina al Mare`,
+    description: "Lodge privati con piscina a Capo Piccolo, a 70m dalla Spiaggia dei Gigli. 9 appartamenti nell'Area Marina Protetta di Capo Rizzuto. Prenota ora.",
     images: [
       {
         url: `${baseUrl}/og-image.jpg`,
@@ -239,8 +280,8 @@ export const defaultMetadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `${siteName} — Appartamenti con Piscina a Capo Rizzuto`,
-    description: "Appartamenti con piscina a Capopiccolo, vicino alla Spiaggia dei Gigli e all'Area Marina Protetta di Capo Rizzuto. Prenota direttamente.",
+    title: `${siteName} Capo Rizzuto | Appartamenti con Piscina al Mare`,
+    description: "Lodge privati con piscina a Capo Piccolo, a 70m dalla Spiaggia dei Gigli. 9 appartamenti nell'Area Marina Protetta di Capo Rizzuto. Prenota ora.",
     images: [`${baseUrl}/og-image.jpg`],
   },
   alternates: {
