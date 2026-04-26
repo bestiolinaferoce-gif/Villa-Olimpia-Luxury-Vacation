@@ -93,3 +93,13 @@ VILLA_OLIMPIA_CLAUDE_CROSSCHECK_REPORT*.md
 # Office/spreadsheet audit files
 *.xlsx
 *.docx
+
+# Claude Code harness state — never commit
+.claude/
+
+# Python build artifacts
+__pycache__/
+*.pyc
+
+# Local-only proposal generators
+scripts/generate_belloni_proposal_pdf.py
