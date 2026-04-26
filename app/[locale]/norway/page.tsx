@@ -152,6 +152,12 @@ function NorwayPageContent() {
               >
                 {t("ctaButton")}
               </Link>
+              <Link
+                href="/no/settembre-capo-rizzuto"
+                className="inline-flex items-center justify-center rounded-full border border-white/40 bg-white/10 text-white px-8 py-3.5 font-semibold hover:bg-white/20 transition-colors"
+              >
+                September i Calabria — havet 26°C →
+              </Link>
             </div>
           </div>
         </section>
