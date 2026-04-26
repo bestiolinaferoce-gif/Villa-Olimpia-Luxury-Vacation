@@ -23,6 +23,24 @@ export function VacationRentalSchema({ apartment }: Props) {
     value: true,
   }))
 
+  const bedroomPlaces = Array.from({ length: apartment.bedrooms }, (_, i) => ({
+    "@type": "Accommodation",
+    name:
+      apartment.bedrooms === 1
+        ? "Camera da letto"
+        : `Camera da letto ${i + 1}`,
+    numberOfRooms: 1,
+  }))
+
+  const containsPlace = [
+    ...bedroomPlaces,
+    {
+      "@type": "Accommodation",
+      name: "Zona giorno",
+      numberOfRooms: 1,
+    },
+  ]
+
   const avg = getAverageRating()
   const aggregateRating =
     avg > 0 && reviews.length > 0
@@ -82,6 +100,7 @@ export function VacationRentalSchema({ apartment }: Props) {
     petsAllowed: false,
     smokingAllowed: false,
     amenityFeature,
+    containsPlace,
     ...(apartment.price
       ? {
           offers: {
