@@ -59,6 +59,10 @@ const EN_ONLY_CANONICAL = [
   "/september-italy-holidays",
 ] as const
 
+const EN_PRIORITY_LANDINGS: Array<{ canonical: string; priority: number }> = [
+  { canonical: "/capo-rizzuto-holiday-apartments", priority: 0.9 },
+]
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const pages: MetadataRoute.Sitemap = staticRoutes.map((route) => ({
     url: `${BASE_URL}${route.path}`,
@@ -119,6 +123,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.82,
   }))
 
+  const enPriorityLandings: MetadataRoute.Sitemap = EN_PRIORITY_LANDINGS.map(
+    ({ canonical, priority }) => ({
+      url: `${BASE_URL}/en${canonical}`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority,
+    })
+  )
+
   const nordicPages: MetadataRoute.Sitemap = [
     {
       url: `${BASE_URL}/no/norway`,
@@ -128,5 +141,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ]
 
-  return [...pages, ...localizedExtra, ...enOnly, ...nordicPages, ...apartmentPages, ...blogIndex, ...blogArticles]
+  return [...pages, ...localizedExtra, ...enOnly, ...enPriorityLandings, ...nordicPages, ...apartmentPages, ...blogIndex, ...blogArticles]
 }
