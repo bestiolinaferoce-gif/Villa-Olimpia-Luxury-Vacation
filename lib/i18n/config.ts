@@ -15,6 +15,7 @@ export const localeNames: Record<Locale, string> = {
   fr: "Français",
   nl: "Nederlands",
   no: "Norsk",
+  sv: "Svenska",
 }
 
 export const localeFlags: Record<Locale, string> = {
@@ -24,4 +25,5 @@ export const localeFlags: Record<Locale, string> = {
   fr: "🇫🇷",
   nl: "🇳🇱",
   no: "🇳🇴",
+  sv: "🇸🇪",
 }

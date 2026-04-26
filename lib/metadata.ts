@@ -28,6 +28,7 @@ const OPEN_GRAPH_LOCALE_BY_LOCALE: Record<SupportedLocale, string> = {
   fr: "fr_FR",
   nl: "nl_NL",
   no: "nb_NO",
+  sv: "sv_SE",
 }
 
 export function generateMetadata({

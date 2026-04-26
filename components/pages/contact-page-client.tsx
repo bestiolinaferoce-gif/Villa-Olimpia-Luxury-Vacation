@@ -61,7 +61,7 @@ type ContactPageCopy = {
   form: BookingFormCopy
 }
 
-const contactPageCopy: Record<Locale, ContactPageCopy> = {
+const contactPageCopy: Partial<Record<Locale, ContactPageCopy>> = {
   it: {
     breadcrumbLabel: "Contatti",
     badge: "Risposta veloce, assistenza reale",
@@ -765,15 +765,16 @@ const contactPageCopy: Record<Locale, ContactPageCopy> = {
 
 export default function ContactPageClient() {
   const { locale, t } = useI18n()
-  const copy = useMemo(() => contactPageCopy[locale], [locale])
+  const copy = useMemo(() => contactPageCopy[locale] ?? contactPageCopy.en!, [locale])
   const calendarLocale = useMemo(() => {
-    const m: Record<Locale, string> = {
+    const m: Partial<Record<Locale, string>> = {
       it: "it-IT",
       en: "en-GB",
       de: "de-DE",
       fr: "fr-FR",
       nl: "nl-NL",
       no: "nb-NO",
+      sv: "sv-SE",
     }
     return m[locale] ?? "it-IT"
   }, [locale])

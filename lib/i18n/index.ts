@@ -18,7 +18,7 @@ export const translations = {
 export type Translation = typeof it
 
 export function getTranslations(locale: Locale): Translation {
-  return translations[locale] ?? translations.it
+  return translations[locale as keyof typeof translations] ?? translations.it
 }
 
 export function t(locale: Locale) {

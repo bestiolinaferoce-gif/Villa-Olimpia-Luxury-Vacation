@@ -1,0 +1,293 @@
+{
+  "nav": {
+    "home": "Hem",
+    "apartments": "Lägenheter",
+    "location": "Plats",
+    "services": "Tjänster",
+    "reviews": "Recensioner",
+    "faq": "FAQ",
+    "contacts": "Kontakt",
+    "seasonMaggio": "Maj 2026",
+    "seasonGiugno": "Juni 2026",
+    "seasonLuglio": "Juli 2026"
+  },
+  "common": {
+    "bookNow": "Boka nu",
+    "learnMore": "Läs mer",
+    "readMore": "Läs mer",
+    "viewDetails": "Visa detaljer",
+    "back": "Tillbaka",
+    "next": "Nästa",
+    "close": "Stäng",
+    "loading": "Laddar...",
+    "error": "Fel",
+    "success": "Lyckades"
+  },
+  "home": {
+    "hero": {
+      "title": "9 Strandnära Lodges med Pool i Kalabrien",
+      "subtitle": "Semesterlägenheter med pool, 70 m från sandstranden Spiaggia dei Gigli",
+      "description": "Cirka 70 meter från sandstranden Spiaggia dei Gigli, i det marina naturreservatet Capo Rizzuto",
+      "protectedArea": "Marint naturreservat Capo Rizzuto",
+      "apartments": "Lägenheter",
+      "happyGuests": "Nöjda gäster",
+      "rating": "Betyg",
+      "ratingValue": "Utmärkt betyg",
+      "beachDistance": "Cirka 70 meter från stranden",
+      "privatePool": "Delad utomhuspool",
+      "bookedBy": "Bokad av många gäster 2024",
+      "bookDirectly": "Boka direkt och spara",
+      "bookStay": "Kontrollera tillgänglighet",
+      "discoverApartments": "Se alla lägenheter",
+      "scroll": "Scrolla ner",
+      "cta": "Boka din semester"
+    },
+    "featured": {
+      "title": "Våra Lägenheter",
+      "subtitle": "Välj din ideala lägenhet",
+      "mostBooked": "Mest bokad",
+      "description": "9 lyxlägenheter med fantastisk utsikt över Joniska havet. Varje enhet erbjuder unika egenskaper och premiumkomfort.",
+      "viewAll": "Se alla lägenheter"
+    },
+    "whyChoose": {
+      "title": "Varför välja Villa Olimpia",
+      "subtitle": "Upptäck vad som gör oss till det perfekta valet för din semester",
+      "items": {
+        "privilegedLocation": {
+          "title": "Enastående läge",
+          "text": "Cirka 70 meter från sandstranden Spiaggia dei Gigli, i det marina naturreservatet"
+        },
+        "privatePool": {
+          "title": "Delad utomhuspool",
+          "text": "Stor delad pool med solterrass och paviljong för avkoppling"
+        },
+        "premiumComfort": {
+          "title": "Premiumkomfort",
+          "text": "9 moderna lägenheter med alla bekvämligheter för en perfekt semester"
+        }
+      }
+    },
+    "services": {
+      "title": "Tjänster och bekvämligheter",
+      "subtitle": "Allt du behöver för en perfekt semester",
+      "description": "Allt du behöver för en oförglömlig vistelse i vackra Kalabrien.",
+      "items": {
+        "wifi": {
+          "title": "Gratis WiFi",
+          "description": "Höghastighetsinternet i alla lägenheter"
+        },
+        "parking": {
+          "title": "Parkering",
+          "description": "Privat parkering tillgänglig för alla gäster"
+        },
+        "seaView": {
+          "title": "Havsutsikt",
+          "description": "Alla lägenheter har fantastisk utsikt över havet"
+        },
+        "kitchen": {
+          "title": "Fullt utrustat kök",
+          "description": "Fullt utrustade kök för matlagning"
+        },
+        "security": {
+          "title": "Säkerhet",
+          "description": "Säkerhetssystem dygnet runt och kassaskåp i varje lägenhet"
+        },
+        "premium": {
+          "title": "Premiumservice",
+          "description": "Dedikerad assistans för en oförglömlig vistelse"
+        }
+      }
+    },
+    "reviews": {
+      "title": "Recensioner från våra gäster",
+      "subtitle": "Verifierade recensioner",
+      "description": "Genomsnittligt betyg",
+      "descriptionRating": "Utmärkt",
+      "descriptionStars": "stjärnor baserat på",
+      "descriptionCount": "många",
+      "descriptionReviews": "verifierade recensioner tillgängliga online.",
+      "verifiedCount": "Verifierade recensioner",
+      "readMore": "Läs recensioner"
+    },
+    "howToReach": {
+      "title": "Så hittar du hit",
+      "subtitle": "Information om flygplatser, tåg och bilvägar."
+    },
+    "faq": {
+      "title": "Vanliga frågor",
+      "subtitle": "Allt du vill veta",
+      "description": "Hitta snabbt svar på de vanligaste frågorna",
+      "viewAll": "Se alla frågor",
+      "items": {
+        "beachDistance": {
+          "q": "Hur långt är det från Villa Olimpia till stranden?",
+          "a": "Vi ligger cirka 70 meter från sandstranden Spiaggia dei Gigli, nåbar på 1 minut till fots."
+        },
+        "parking": {
+          "q": "Är parkering inkluderad?",
+          "a": "Ja, varje lägenhet har en gratis reserverad parkeringsplats på fastigheten."
+        },
+        "pool": {
+          "q": "Är poolen delad?",
+          "a": "Ja, den stora poolen delas av alla lägenhetsgäster, med stor solterrass och paviljong."
+        },
+        "checkIn": {
+          "q": "Hur fungerar incheckning?",
+          "a": "Incheckning är från kl. 15:00 och utcheckning senast kl. 10:00. Vi är flexibla för särskilda behov – kontakta oss!"
+        }
+      }
+    },
+    "googleWidget": {
+      "badge": "Google-recensioner",
+      "title": "Vad gäster säger på Google",
+      "subtitle": "Äkta, uppdaterade recensioner för ett tryggt val.",
+      "ratingNote": "Verifierade betyg",
+      "cardTitle": "Google Recensioner",
+      "cardSubtitle": "Läs alla recensioner och se gästernas erfarenheter.",
+      "cta": "Öppna på Google"
+    },
+    "trustBadges": {
+      "title": "Certifieringar och partners",
+      "subtitle": "Boka med förtroende på de säkraste plattformarna",
+      "items": {
+        "booking": {
+          "label": "Certifierad av",
+          "name": "Booking.com"
+        },
+        "airbnb": {
+          "label": "Superhost",
+          "name": "Airbnb"
+        },
+        "protected": {
+          "label": "Naturreservat",
+          "name": "Capo Rizzuto"
+        }
+      },
+      "badges": {
+        "certified": "Certifierad Booking.com",
+        "superhost": "Superhost Airbnb",
+        "secure": "Säker bokning"
+      }
+    },
+    "cta": {
+      "title": "Redo för din semester?",
+      "description": "Boka din lägenhet och upplev en oförglömlig vistelse i vackra Kalabrien",
+      "saveUpTo": "Boka direkt — inga OTA-avgifter",
+      "bookVacation": "Boka din semester"
+    },
+    "juneJuly": {
+      "title": "Varför juni och juli vid Villa Olimpia",
+      "subtitle": "Varmt hav, färre turister, perfekt temperatur. Kalabrien på försommaren är idealiskt för familjer och par.",
+      "reasons": {
+        "family": "Perfekt för familjer med barn",
+        "couples": "Idealiskt för par och romantiska semestrar",
+        "territory": "Lokala upplevelser: vinprovningar, marint naturreservat, Le Castella"
+      },
+      "cta": "Kontrollera tillgänglighet juni/juli"
+    }
+  },
+  "apartments": {
+    "title": "Lägenheter",
+    "subtitle": "9 lyxlägenheter med delad utomhuspool i det marina naturreservatet Capo Rizzuto",
+    "description": "Alla lägenheter har luftkonditionering, gratis WiFi, fullt utrustat kök och tillgång till delad utomhuspool — några steg från sandstranden Spiaggia dei Gigli",
+    "guests": "gäster",
+    "bedrooms": "sovrum",
+    "bathrooms": "badrum",
+    "size": "Storlek",
+    "floor": "Våning",
+    "price": "per natt",
+    "features": "Bekvämligheter",
+    "descriptionLabel": "Beskrivning",
+    "fullDescription": "Fullständig beskrivning",
+    "perfectFor": "Perfekt för…",
+    "technicalData": "Tekniska data",
+    "bookingInfo": "Bokningsinformation",
+    "location": "Plats",
+    "beachDistance": "Avstånd till strand",
+    "checkInOut": "Incheckning / Utcheckning",
+    "averageRating": "Genomsnittligt betyg",
+    "bookApartment": "Begär bokning",
+    "exploreAttractions": "Upptäck vad som finns att se i närheten",
+    "exploreFood": "Var du kan äta och vad du bör smaka"
+  },
+  "location": {
+    "title": "Plats",
+    "subtitle": "Capopiccolo, Isola di Capo Rizzuto",
+    "description": "Cirka 70 meter från sandstranden"
+  },
+  "services": {
+    "title": "Tjänster",
+    "subtitle": "Alla bekvämligheter för en oförglömlig semester"
+  },
+  "reviews": {
+    "title": "Recensioner",
+    "subtitle": "Vad våra gäster säger",
+    "all": "Alla",
+    "filter": "Filtrera efter stjärnor",
+    "verified": "Verifierad"
+  },
+  "faq": {
+    "title": "Vanliga frågor",
+    "subtitle": "Allt du vill veta"
+  },
+  "contacts": {
+    "title": "Kontakt",
+    "subtitle": "Boka eller begär information",
+    "name": "Namn",
+    "email": "E-post",
+    "phone": "Telefon",
+    "message": "Meddelande",
+    "send": "Skicka",
+    "sending": "Skickar...",
+    "success": "Meddelande skickat!",
+    "error": "Fel vid skickande av meddelande"
+  },
+  "footer": {
+    "brand": {
+      "title": "Villa Olimpia — Strandnära lägenheter med utomhuspool i Capo Rizzuto, Kalabrien",
+      "description": "9 strandnära lägenheter i Kalabrien med delad utomhuspool, cirka 70 meter från sandstranden i det marina naturreservatet Capo Rizzuto. Direktbokning."
+    },
+    "quickLinks": "Snabblänkar",
+    "discover": "Upptäck Capo Rizzuto",
+    "contact": "Kontakt",
+    "bookNow": "Boka nu",
+    "bookNowDescription": "Kontakta oss via WhatsApp för tillgänglighet och personliga erbjudanden",
+    "whatsapp": "WhatsApp",
+    "copyright": "Alla rättigheter reserverade"
+  },
+  "flights": {
+    "title": "Direktflyg från Stockholm till Lamezia Terme",
+    "description": "Bekväma flygförbindelser till Kalabrien från Sverige via Rom, München eller Köpenhamn. Villa Olimpia ligger 75 minuter från flygplatsen.",
+    "cta": "Se tillgänglighet"
+  },
+  "sweden": {
+    "badge": "Semesterlägenheter med pool — Kalabrien 2026",
+    "h1": "Din drömsemester i Kalabrien — Villa Olimpia Capo Rizzuto",
+    "intro": "Villa Olimpia erbjuder 9 privata lägenheter med delad utomhuspool, bara 70 meter från sandstranden Spiaggia dei Gigli i det marina naturreservatet Capo Rizzuto, södra Italien. Bekväma flygförbindelser från Sverige via Rom Fiumicino eller München. Perfekt för svenska familjer och par som söker varmt hav, lugn och autentisk italiensk gästfrihet.",
+    "flightsSection": {
+      "title": "Så tar du dig till Villa Olimpia från Sverige",
+      "route1": "Stockholm Arlanda (ARN) → Rom Fiumicino (FCO) → Lamezia Terme (SUF)",
+      "route2": "Göteborg Landvetter (GOT) → München (MUC) → Lamezia Terme (SUF)",
+      "route3": "Köpenhamn (CPH) → Rom (FCO) → Lamezia Terme (SUF)",
+      "duration": "Total restid: cirka 6–7 timmar inklusive byte",
+      "transfer": "Från Lamezia Terme till Villa Olimpia: 75 minuter med hyrbil"
+    },
+    "villaSection": {
+      "title": "Villa Olimpia — 9 Privata Lodges",
+      "body": "Villa Olimpia är ett exklusivt lägenhetskomplex i Capopiccolo, inom det marina naturreservatet Capo Rizzuto. Anläggningen har 9 separata lodges: Frangipane, Fiordaliso, Giglio, Tulipano, Orchidea, Lavanda, Geranio, Gardenia och Azalea. Varje lodge är fristående med privat terrass, fullt utrustat kök och luftkonditionering. Gästerna delar en stor utomhuspool med solterrass.",
+      "beach": "Sandstranden Spiaggia dei Gigli (Blå Flagg) ligger endast 70 meter från Villa Olimpia, inom det marina naturreservatet Capo Rizzuto."
+    },
+    "seasonSection": {
+      "title": "När ska du resa: juni, juli eller september?",
+      "body": "September är svenskarnas hemliga månad i Kalabrien — havet är fortfarande 26°C, stränderna är tomma och priserna är 20–30% lägre än i augusti. Juni erbjuder försommarvärme och färre turister. Juli är högsäsong med längsta dagarna och varmaste haven."
+    },
+    "groupsSection": {
+      "title": "Grupper upp till 20 gäster",
+      "body": "Villa Olimpia är idealiskt för grupper. Med 9 separata lodges kan vi ta emot från 4 till 20 gäster. Perfekt för familjeåterträffar, vänkretsar och små sällskapsresor. Kontakta oss för grupppriser och tillgänglighet."
+    },
+    "faqTitle": "Vanliga frågor från svenska gäster",
+    "ctaTitle": "Redo att boka?",
+    "ctaBody": "Skriv till oss på WhatsApp — vi svarar på engelska eller italienska inom 24 timmar.",
+    "ctaButton": "Skriv på WhatsApp"
+  }
+}
