@@ -23,6 +23,33 @@ export function VacationRentalSchema({ apartment }: Props) {
     value: true,
   }))
 
+  const bedroomPlaces = Array.from({ length: apartment.bedrooms }, (_, i) => ({
+    "@type": "Accommodation",
+    name:
+      apartment.bedrooms === 1
+        ? "Camera da letto"
+        : `Camera da letto ${i + 1}`,
+    numberOfRooms: 1,
+    bed: {
+      "@type": "BedDetails",
+      numberOfBeds: 1,
+      typeOfBed: "Double bed",
+    },
+  }))
+
+  const containsPlace = [
+    ...bedroomPlaces,
+    {
+      "@type": "Accommodation",
+      name: "Zona giorno con divano letto",
+      bed: {
+        "@type": "BedDetails",
+        numberOfBeds: 1,
+        typeOfBed: "Sofa bed",
+      },
+    },
+  ]
+
   const avg = getAverageRating()
   const aggregateRating =
     avg > 0 && reviews.length > 0
@@ -77,16 +104,12 @@ export function VacationRentalSchema({ apartment }: Props) {
       value: parseInt(apartment.size, 10) || undefined,
       unitCode: "MTK",
     },
-    checkinTime: "15:00",
-    checkoutTime: "10:00",
+    checkinTime: "T15:00:00",
+    checkoutTime: "T10:00:00",
     petsAllowed: false,
     smokingAllowed: false,
     amenityFeature,
-    containsPlace: {
-      "@type": "Accommodation",
-      name: "Villa Olimpia",
-      url: `${BASE_URL}/appartamenti`,
-    },
+    containsPlace,
     ...(apartment.price
       ? {
           offers: {
