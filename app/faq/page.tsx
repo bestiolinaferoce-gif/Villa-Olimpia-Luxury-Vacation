@@ -85,6 +85,30 @@ const faqSchema = {
         text: "Alcuni appartamenti accettano animali domestici. Ti preghiamo di contattarci in anticipo per verificare la disponibilità e le condizioni.",
       },
     },
+    {
+      "@type": "Question",
+      name: "C'è una piscina a Villa Olimpia?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Sì, Villa Olimpia dispone di una piscina condivisa disponibile per tutti gli ospiti, immersa nel giardino della struttura a Capopiccolo.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Quanti appartamenti ci sono a Villa Olimpia?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Villa Olimpia dispone di 9 lodge privati indipendenti: Frangipane, Fiordaliso, Orchidea, Tulipano, Giglio e Lavanda al piano terra; Geranio, Gardenia e Azalea al primo piano.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Come si arriva a Villa Olimpia?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "L'aeroporto più vicino è Crotone (CRV), a circa 20 km. In alternativa Lamezia Terme (SUF), a circa 80 minuti di auto. Si consiglia di noleggiare un'auto per muoversi tra spiagge e borghi della zona.",
+      },
+    },
   ],
 }
 

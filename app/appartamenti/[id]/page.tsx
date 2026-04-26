@@ -15,6 +15,7 @@ import ApartmentGallery from "@/components/apartment-gallery"
 import { AvailabilityCalendar } from "@/components/availability-calendar"
 import { VILLA_OLIMPIA_LOCATION } from "@/lib/location-data"
 import { Breadcrumb } from "@/components/breadcrumb"
+import { VacationRentalSchema } from "@/components/seo/vacation-rental-schema"
 import { SITE_CONFIG } from "@/lib/constants"
 import { buildWhatsAppUrlFromText } from "@/lib/booking-contact"
 
@@ -179,6 +180,7 @@ export default async function ApartmentDetailPage({ params }: PageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
+      <VacationRentalSchema apartment={apartment} />
       <Breadcrumb
         items={[
           { label: "Appartamenti", href: "/appartamenti" },
