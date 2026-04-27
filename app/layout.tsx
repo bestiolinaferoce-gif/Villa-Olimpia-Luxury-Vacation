@@ -12,10 +12,8 @@ import { TouchOptimizer } from "@/components/mobile/touch-optimizer"
 import { DirectionsProvider } from "@/components/directions-context"
 import { ErrorBoundary } from "@/components/error-boundary"
 import { defaultMetadata, BASE_URL } from "@/lib/metadata"
-import { headers } from 'next/headers'
 import { AnalyticsUnified } from "@/components/analytics/analytics-unified"
 import { MetaPixelOptional } from "@/components/analytics/meta-pixel"
-import { AutoOptimizer } from "@/components/auto-optimizer"
 import { SeasonalRootOverlays } from "@/components/seasonal/SeasonalRootOverlays"
 import { LazyOverlays } from "@/components/lazy-overlays"
 import { I18nProvider } from "@/components/i18n-provider"
@@ -49,9 +47,8 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  const locale = (await headers()).get('x-next-intl-locale') ?? 'it'
   return (
-    <html lang={locale} className={`${inter.variable} ${playfair.variable}`} suppressHydrationWarning>
+    <html lang="it" className={`${inter.variable} ${playfair.variable}`} suppressHydrationWarning>
       <head>
         {/* Consent Mode v2 - PRIMO script, prima di GTM */}
         <script
@@ -198,9 +195,7 @@ export default async function RootLayout({
         <AnalyticsUnified />
         <MetaPixelOptional />
         <ErrorBoundary>
-          {/* FIX HYDRATION: I18nProvider gestisce correttamente SSR/client mismatch */}
           <I18nProvider>
-            <AutoOptimizer />
             <SeasonalRootOverlays />
             <LazyOverlays />
             <DirectionsProvider>
