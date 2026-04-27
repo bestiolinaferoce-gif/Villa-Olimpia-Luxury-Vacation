@@ -94,7 +94,7 @@ function getApartmentCardDescription(apartment: Apartment, locale: string, guest
   return `${apartment.guests} ${guestsLabel}, ${apartment.bedrooms} ${bedroomsLabel}.`
 }
 
-export default function HomePageClient() {
+export default function HomePageClient({ skipAboveTheFold = false }: { skipAboveTheFold?: boolean }) {
   const { t, locale } = useI18n()
   const featuredApartments = getFeaturedApartments()
 
@@ -139,9 +139,13 @@ export default function HomePageClient() {
 
   return (
     <>
-      <HeroSectionPremium />
-      <TrustBadges />
-      <JuneJulySection />
+      {!skipAboveTheFold ? (
+        <>
+          <HeroSectionPremium />
+          <TrustBadges />
+          <JuneJulySection />
+        </>
+      ) : null}
 
       <section className="py-20 bg-background cv-auto">
         <div className="container mx-auto px-4">
