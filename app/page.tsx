@@ -95,6 +95,66 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section className="bg-slate-50 py-10">
+        <div className="container mx-auto px-4">
+          <div className="mx-auto max-w-5xl rounded-[28px] border border-slate-200 bg-white p-6 shadow-sm md:p-8">
+            <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+              <div className="max-w-2xl">
+                <p className="text-sm font-semibold uppercase tracking-[0.16em] text-sky-700">
+                  Guide utili prima della prenotazione
+                </p>
+                <h2 className="mt-3 font-playfair text-3xl font-bold text-slate-900 md:text-4xl">
+                  Scopri meglio Capo Rizzuto prima di prenotare
+                </h2>
+                <p className="mt-3 text-base leading-relaxed text-slate-600">
+                  Se vuoi capire com&apos;egrave; davvero la zona, qui trovi le pagine piu utili su spiagge, dintorni,
+                  posizione della struttura e cose da fare durante il soggiorno.
+                </p>
+              </div>
+
+              <Link
+                href="/contatti?source=home_internal_hub#prenota"
+                className="inline-flex items-center justify-center rounded-full border border-slate-300 px-5 py-3 text-sm font-semibold text-slate-800 transition hover:border-slate-400 hover:bg-slate-50"
+              >
+                Richiedi disponibilita
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </div>
+
+            <div className="mt-6 grid gap-3 md:grid-cols-4">
+              <Link
+                href="/location"
+                className="rounded-2xl border border-slate-200 px-4 py-4 transition hover:border-sky-300 hover:bg-sky-50/50"
+              >
+                <p className="text-sm font-semibold text-slate-900">Dove si trova Villa Olimpia</p>
+                <p className="mt-2 text-sm text-slate-600">Distanze reali, mare raggiungibile a piedi e logistica.</p>
+              </Link>
+              <Link
+                href="/spiagge-capo-rizzuto"
+                className="rounded-2xl border border-slate-200 px-4 py-4 transition hover:border-sky-300 hover:bg-sky-50/50"
+              >
+                <p className="text-sm font-semibold text-slate-900">Le spiagge piu belle</p>
+                <p className="mt-2 text-sm text-slate-600">Spiaggia dei Gigli, Capopiccolo e altre calette vicine.</p>
+              </Link>
+              <Link
+                href="/le-castella"
+                className="rounded-2xl border border-slate-200 px-4 py-4 transition hover:border-sky-300 hover:bg-sky-50/50"
+              >
+                <p className="text-sm font-semibold text-slate-900">Le Castella</p>
+                <p className="mt-2 text-sm text-slate-600">Castello Aragonese, passeggiata serale e gite in zona.</p>
+              </Link>
+              <Link
+                href="/cosa-fare-capo-rizzuto"
+                className="rounded-2xl border border-slate-200 px-4 py-4 transition hover:border-sky-300 hover:bg-sky-50/50"
+              >
+                <p className="text-sm font-semibold text-slate-900">Cosa fare nei dintorni</p>
+                <p className="mt-2 text-sm text-slate-600">Borghi, natura, mare e idee concrete per il soggiorno.</p>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <HomePageClient skipAboveTheFold />
     </>
   )

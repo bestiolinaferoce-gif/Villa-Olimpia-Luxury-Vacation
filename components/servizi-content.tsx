@@ -22,8 +22,8 @@ const includedServices = [
   },
   {
     icon: Waves,
-    title: "Vista Mare",
-    description: "Tutti gli appartamenti offrono una vista mozzafiato sul mare",
+    title: "Balconi, terrazze e scorci aperti",
+    description: "Molti appartamenti offrono spazi esterni privati, terrazze o affacci aperti verso il contesto marino",
   },
   {
     icon: Utensils,
@@ -32,13 +32,13 @@ const includedServices = [
   },
   {
     icon: Shield,
-    title: "Sicurezza 24/7",
-    description: "Sistema di sicurezza avanzato e cassaforte in ogni appartamento",
+    title: "Assistenza in struttura",
+    description: "Contatto diretto e supporto rapido prima dell'arrivo, al check-in e durante il soggiorno",
   },
   {
     icon: Star,
-    title: "Servizio Premium",
-    description: "Assistenza dedicata e servizio concierge per rendere il tuo soggiorno perfetto",
+    title: "Supporto diretto",
+    description: "Indicazioni pratiche su appartamenti, spiagge, arrivo e richieste utili senza passare da portali",
   },
   {
     icon: Droplets,
@@ -57,18 +57,18 @@ const includedServices = [
   },
   {
     icon: Coffee,
-    title: "Caffè e Tè",
-    description: "Macchina del caffè e tè disponibili in ogni appartamento",
+    title: "Biancheria inclusa",
+    description: "Set essenziale per il soggiorno con dotazioni base già presenti all'arrivo",
   },
   {
     icon: Dumbbell,
-    title: "Area Fitness",
-    description: "Palestra attrezzata per mantenerti in forma durante il soggiorno",
+    title: "Piscina condivisa",
+    description: "Grande piscina esterna con area solarium e spazi relax per gli ospiti della struttura",
   },
   {
     icon: UserCircle,
-    title: "Concierge",
-    description: "Servizio concierge per prenotazioni, consigli e assistenza",
+    title: "Consigli sul territorio",
+    description: "Supporto per orientarti tra spiagge, Le Castella, ristoranti e attività nei dintorni",
   },
 ]
 
@@ -85,8 +85,8 @@ const optionalServices = [
     price: "€50",
   },
   {
-    title: "Baby-sitting",
-    description: "Servizio di baby-sitting su prenotazione",
+    title: "Check-in flessibile",
+    description: "Valutiamo arrivi fuori orario standard quando compatibili con operatività e disponibilità",
     price: "Su richiesta",
   },
   {
@@ -302,4 +302,3 @@ export function ServiziContent() {
     </>
   )
 }
-

@@ -41,7 +41,7 @@ export function SocialProof() {
             Cosa Dicono i Nostri Ospiti
           </h3>
           <p className="text-sm sm:text-base text-muted-foreground">
-            Migliaia di ospiti soddisfatti in tutta Europa
+            Feedback raccolti da ospiti reali e richieste dirette
           </p>
         </div>
         

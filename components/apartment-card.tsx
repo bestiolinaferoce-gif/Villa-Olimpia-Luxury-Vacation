@@ -32,6 +32,8 @@ const ApartmentCardComponent = ({
   const [imageError, setImageError] = useState(false)
   const isPlaceholder = image.includes('placeholder') || !image.startsWith('/')
   const showPlaceholder = isPlaceholder || imageError
+  const guestsLabel = guests === 1 ? "ospite" : "ospiti"
+  const bedroomsLabel = bedrooms === 1 ? "camera" : "camere"
 
   return (
     <motion.div
@@ -131,11 +133,11 @@ const ApartmentCardComponent = ({
           <div className="flex items-center gap-4 text-sm text-gray-600 mb-6">
             <div className="flex items-center gap-2 bg-blue-50 px-3 py-1.5 rounded-lg">
               <Users className="h-4 w-4 text-primary" />
-              <span className="font-semibold">{guests} ospiti</span>
+              <span className="font-semibold">{guests} {guestsLabel}</span>
             </div>
             <div className="flex items-center gap-2 bg-blue-50 px-3 py-1.5 rounded-lg">
               <Bed className="h-4 w-4 text-primary" />
-              <span className="font-semibold">{bedrooms} camere</span>
+              <span className="font-semibold">{bedrooms} {bedroomsLabel}</span>
             </div>
           </div>
 

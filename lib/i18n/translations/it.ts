@@ -47,7 +47,7 @@ export const it = {
       title: 'I Nostri Appartamenti',
       subtitle: 'Scegli il tuo appartamento ideale',
       mostBooked: 'Più Prenotati',
-      description: '9 appartamenti di lusso con vista mozzafiato sul mare Ionio. Ogni unità offre caratteristiche uniche e comfort premium.',
+      description: '9 appartamenti tra piscina condivisa, terrazze, giardino e vicinanza reale al mare. Ogni unità ha caratteristiche diverse e comfort completi.',
       viewAll: 'Vedi Tutti gli Appartamenti',
     },
     whyChoose: {
@@ -82,20 +82,20 @@ export const it = {
           description: 'Parcheggio privato disponibile per tutti gli ospiti',
         },
         seaView: {
-          title: 'Vista Mare',
-          description: 'Tutti gli appartamenti offrono una vista mozzafiato sul mare',
+          title: 'Spazi esterni e scorci aperti',
+          description: 'Molti appartamenti offrono balconi, terrazze o affacci aperti verso il contesto marino',
         },
         kitchen: {
           title: 'Cucina Attrezzata',
           description: 'Cucine completamente attrezzate per preparare i tuoi pasti',
         },
         security: {
-          title: 'Sicurezza',
-          description: 'Sistema di sicurezza 24/7 e cassaforte in ogni appartamento',
+          title: 'Assistenza',
+          description: "Contatto diretto e supporto rapido prima dell'arrivo, al check-in e durante il soggiorno",
         },
         premium: {
-          title: 'Servizio Premium',
-          description: 'Assistenza dedicata per rendere il tuo soggiorno indimenticabile',
+          title: 'Supporto Diretto',
+          description: 'Indicazioni pratiche su appartamenti, spiagge, arrivo e richieste utili senza passare da portali',
         },
       },
     },
@@ -180,7 +180,7 @@ export const it = {
   // Apartments
   apartments: {
     title: 'Gli Appartamenti',
-    subtitle: '9 appartamenti di lusso con piscina privata',
+    subtitle: '9 appartamenti con piscina condivisa',
     description: 'Tutti gli appartamenti dispongono di aria condizionata, WiFi gratuito, cucina completa e accesso alla piscina condivisa',
     guests: 'ospiti',
     bedrooms: 'camere',
@@ -260,8 +260,6 @@ export const it = {
     copyright: 'Tutti i diritti riservati',
   },
 }
-
-
 
 
 
