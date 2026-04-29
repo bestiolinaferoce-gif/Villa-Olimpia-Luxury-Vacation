@@ -74,7 +74,8 @@ const nextConfig = {
       { source: "/appartamenti/7", destination: "/appartamenti/geranio", permanent: true },
       { source: "/appartamenti/8", destination: "/appartamenti/gardenia", permanent: true },
       { source: "/appartamenti/9", destination: "/appartamenti/azalea", permanent: true },
-      { source: "/termini", destination: "/termini-condizioni", permanent: true },
+      // Fix GSC (29/04/2026) - /termini-condizioni era la vecchia URL, ora /termini è la canonical
+      { source: "/termini-condizioni", destination: "/termini", permanent: true },
       // Route duplicate inglese → italiane (301 permanente per SEO)
       { source: "/apartments", destination: "/appartamenti", permanent: true },
       { source: "/apartments/:path*", destination: "/appartamenti/:path*", permanent: true },
@@ -83,6 +84,10 @@ const nextConfig = {
       { source: "/home", destination: "/", permanent: true },
       // Fix 404 da Google Search Console (28/03/2026) - URL con prefisso lingua
       { source: "/en/appartamenti/apartment-9", destination: "/appartamenti/azalea", permanent: true },
+      // Fix GSC (29/04/2026) - /en/appartamenti → listing inglese corretto
+      { source: "/en/appartamenti", destination: "/en/apartments", permanent: true },
+      // Fix GSC (29/04/2026) - /de|fr|nl/appartamenti/* → pagine lodge italiane (le uniche esistenti)
+      { source: "/:locale(de|fr|nl|no|sv)/appartamenti/:slug*", destination: "/appartamenti/:slug*", permanent: true },
       // Fix Search Console (17/04/2026) - prefisso /it/ non necessario (locale di default)
       { source: "/it/:path*", destination: "/:path*", permanent: true },
       // Localized listing lives at /en/apartments; detail slugs stay on /appartamenti/*

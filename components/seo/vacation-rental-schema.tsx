@@ -80,14 +80,13 @@ export function VacationRentalSchema({ apartment }: Props) {
       postalCode: VILLA_OLIMPIA_LOCATION.address.postalCode,
       addressCountry: "IT",
     },
-    latitude: VILLA_OLIMPIA_LOCATION.coordinates.latitude,
-    longitude: VILLA_OLIMPIA_LOCATION.coordinates.longitude,
     geo: {
       "@type": "GeoCoordinates",
       latitude: VILLA_OLIMPIA_LOCATION.coordinates.latitude,
       longitude: VILLA_OLIMPIA_LOCATION.coordinates.longitude,
     },
-    numberOfRooms: apartment.bedrooms,
+    numberOfBedrooms: apartment.bedrooms,
+    numberOfRooms: apartment.bedrooms + apartment.bathrooms + 1, // bedrooms + bathrooms + living area
     numberOfBathroomsTotal: apartment.bathrooms,
     occupancy: {
       "@type": "QuantitativeValue",
@@ -99,8 +98,8 @@ export function VacationRentalSchema({ apartment }: Props) {
       value: parseInt(apartment.size, 10) || undefined,
       unitCode: "MTK",
     },
-    checkinTime: "15:00:00",
-    checkoutTime: "10:00:00",
+    checkinTime: "T15:00:00",
+    checkoutTime: "T10:00:00",
     petsAllowed: false,
     smokingAllowed: false,
     amenityFeature,

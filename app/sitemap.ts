@@ -10,6 +10,7 @@ const DATE_CORE = new Date("2026-03-25")
 const DATE_CONTENT = new Date("2026-03-25")
 const DATE_NEW_PAGES = new Date("2026-04-08")
 const DATE_TERRITORIO = new Date("2026-04-19")
+const DATE_SCHEMA_FIX = new Date("2026-04-29") // Fix schema VacationRental + redirect
 
 const staticRoutes: Array<{
   path: string
@@ -74,7 +75,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Pagine appartamenti (solo attivi)
   const apartmentPages: MetadataRoute.Sitemap = apartments.filter((a) => a.active !== false).map((apartment) => ({
     url: `${BASE_URL}/appartamenti/${getApartmentSlug(apartment)}`,
-    lastModified: DATE_CORE,
+    lastModified: DATE_SCHEMA_FIX,
     changeFrequency: "monthly" as const,
     priority: apartment.premium ? 0.9 : 0.82,
   }))
