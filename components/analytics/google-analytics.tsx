@@ -7,7 +7,11 @@ import { COOKIE_CONSENT_UPDATED_EVENT } from "@/lib/cookie-consent-events"
 import type { MutableRefObject } from "react"
 
 // Google Analytics 4 Measurement ID
-const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || ""
+const GA_MEASUREMENT_ID =
+  process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID &&
+  process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID !== "G-XXXXXXXXXX"
+    ? process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID
+    : "G-NW2FHPE98G"
 
 const isGAEnabled = () =>
   Boolean(GA_MEASUREMENT_ID && GA_MEASUREMENT_ID !== "G-XXXXXXXXXX")
@@ -71,6 +75,7 @@ export function GoogleAnalytics() {
     if (typeof window === "undefined") return
 
     const handleConsentUpdated = () => {
+      lastTrackedPathRef.current = null
       sendCurrentPageView(pathname, lastTrackedPathRef)
     }
 
@@ -95,6 +100,16 @@ export function GoogleAnalytics() {
       <Script
         id="ga4-init"
         strategy="afterInteractive"
+        onLoad={() => {
+          if (typeof window !== 'undefined' && window.gtag && hasAnalyticsConsent()) {
+            const pagePath = window.location.pathname + window.location.search
+            window.gtag('config', GA_MEASUREMENT_ID, {
+              page_path: pagePath,
+              page_location: window.location.href,
+              page_title: document.title,
+            })
+          }
+        }}
         dangerouslySetInnerHTML={{
           __html: `
             window.dataLayer = window.dataLayer || [];
