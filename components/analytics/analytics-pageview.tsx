@@ -2,13 +2,7 @@
 
 import { usePathname } from "next/navigation"
 import { useEffect } from "react"
-
-const GA_MEASUREMENT_ID =
-  typeof process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID !== "undefined" &&
-  process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID !== "" &&
-  process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID !== "G-XXXXXXXXXX"
-    ? process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID
-    : "G-FHYFT8YKNF"
+import { getResolvedGaMeasurementId } from "@/components/analytics/analytics-config"
 
 /**
  * Invia page_view a GA4 quando cambia la route (navigazione client-side).
@@ -18,9 +12,10 @@ export function AnalyticsPageView() {
   const pathname = usePathname()
 
   useEffect(() => {
-    if (typeof window === "undefined" || !(window as any).gtag || !pathname) return
+    const gaMeasurementId = getResolvedGaMeasurementId()
+    if (typeof window === "undefined" || !(window as any).gtag || !pathname || !gaMeasurementId) return
     const pagePath = pathname + (window.location.search || "")
-    ;(window as any).gtag("config", GA_MEASUREMENT_ID, {
+    ;(window as any).gtag("config", gaMeasurementId, {
       page_path: pagePath,
       page_location: window.location.origin + pagePath,
       page_title: document.title || undefined,

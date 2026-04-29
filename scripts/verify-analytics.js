@@ -11,20 +11,29 @@ const http = require("http");
 
 const ROOT = path.resolve(__dirname, "..");
 
-function loadEnvLocal() {
-  const envPath = path.join(ROOT, ".env.local");
-  try {
-    if (fs.existsSync(envPath)) {
+function loadTrackedEnv() {
+  const candidates = [
+    ".env.local",
+    ".env.production.local",
+    ".vercel/.env.development.local",
+  ];
+  const out = {};
+
+  for (const relPath of candidates) {
+    const envPath = path.join(ROOT, relPath);
+    try {
+      if (!fs.existsSync(envPath)) continue;
       const content = fs.readFileSync(envPath, "utf8");
-      const out = {};
       content.split("\n").forEach((line) => {
         const m = line.match(/^NEXT_PUBLIC_(GA_MEASUREMENT_ID|GTM_ID|META_PIXEL_ID)=(.+)$/);
-        if (m) out["NEXT_PUBLIC_" + m[1]] = m[2].replace(/^["']|["']$/g, "").trim();
+        if (m && !out["NEXT_PUBLIC_" + m[1]]) {
+          out["NEXT_PUBLIC_" + m[1]] = m[2].replace(/^["']|["']$/g, "").trim();
+        }
       });
-      return out;
-    }
-  } catch (_) {}
-  return {};
+    } catch (_) {}
+  }
+
+  return out;
 }
 
 function fetchUrl(url) {
@@ -41,7 +50,7 @@ function fetchUrl(url) {
 }
 
 async function main() {
-  const envLocal = loadEnvLocal();
+  const envLocal = loadTrackedEnv();
   const gaId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || envLocal.NEXT_PUBLIC_GA_MEASUREMENT_ID || "";
   const gtmId = process.env.NEXT_PUBLIC_GTM_ID || envLocal.NEXT_PUBLIC_GTM_ID || "GTM-K5NQGHBD";
   const metaPixelId =
