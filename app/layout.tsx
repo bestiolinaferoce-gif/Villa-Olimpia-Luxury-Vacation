@@ -13,6 +13,7 @@ import { DirectionsProvider } from "@/components/directions-context"
 import { ErrorBoundary } from "@/components/error-boundary"
 import { defaultMetadata, BASE_URL } from "@/lib/metadata"
 import { AnalyticsUnified } from "@/components/analytics/analytics-unified"
+import { GoogleAnalytics } from "@/components/analytics/google-analytics"
 import { MetaPixelOptional } from "@/components/analytics/meta-pixel"
 import { SeasonalRootOverlays } from "@/components/seasonal/SeasonalRootOverlays"
 import { LazyOverlays } from "@/components/lazy-overlays"
@@ -193,6 +194,7 @@ export default async function RootLayout({
       </head>
       <body className={inter.className} suppressHydrationWarning>
         <AnalyticsUnified />
+        <GoogleAnalytics />
         <MetaPixelOptional />
         <ErrorBoundary>
           <I18nProvider>
