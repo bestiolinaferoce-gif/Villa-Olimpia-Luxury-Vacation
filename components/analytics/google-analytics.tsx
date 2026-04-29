@@ -1,8 +1,10 @@
 "use client"
 
-import { useEffect } from "react"
+import { useEffect, useRef } from "react"
 import Script from "next/script"
 import { usePathname } from "next/navigation"
+import { COOKIE_CONSENT_UPDATED_EVENT } from "@/lib/cookie-consent-events"
+import type { MutableRefObject } from "react"
 
 // Google Analytics 4 Measurement ID
 const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || ""
@@ -15,8 +17,44 @@ export function isAnalyticsEnabled(): boolean {
   return isGAEnabled()
 }
 
+const COOKIE_CONSENT_STORAGE_KEY = "cookieConsent"
+
+function hasAnalyticsConsent(): boolean {
+  if (typeof window === "undefined") return false
+
+  try {
+    const raw = window.localStorage.getItem(COOKIE_CONSENT_STORAGE_KEY)
+    if (!raw) return false
+
+    const parsed = JSON.parse(raw)
+    if (parsed === "accepted") return true
+
+    return Boolean(parsed?.preferences?.analytics)
+  } catch {
+    return false
+  }
+}
+
+function sendCurrentPageView(pathname: string | null, lastTrackedPathRef: MutableRefObject<string | null>) {
+  if (!isGAEnabled() || typeof window === "undefined" || !window.gtag || !pathname) return
+  if (!hasAnalyticsConsent()) return
+
+  const pagePath = pathname + (window.location.search || "")
+  if (lastTrackedPathRef.current === pagePath) return
+
+  lastTrackedPathRef.current = pagePath
+  const pageLocation = window.location.origin + pagePath
+
+  window.gtag("config", GA_MEASUREMENT_ID, {
+    page_path: pagePath,
+    page_location: pageLocation,
+    page_title: document.title ?? undefined,
+  })
+}
+
 export function GoogleAnalytics() {
   const pathname = usePathname()
+  const lastTrackedPathRef = useRef<string | null>(null)
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -24,18 +62,20 @@ export function GoogleAnalytics() {
     }
   }, [])
 
-  // Page view: un solo invio per route (no doppio al primo load)
+  // Page view: invia solo quando il consenso analytics e` effettivamente attivo.
   useEffect(() => {
-    if (!isGAEnabled() || typeof window === "undefined" || !window.gtag || !pathname) return
+    sendCurrentPageView(pathname, lastTrackedPathRef)
+  }, [pathname])
 
-    const pagePath = pathname + (window.location.search || "")
-    const pageLocation = window.location.origin + pagePath
+  useEffect(() => {
+    if (typeof window === "undefined") return
 
-    window.gtag("config", GA_MEASUREMENT_ID, {
-      page_path: pagePath,
-      page_location: pageLocation,
-      page_title: document.title ?? undefined,
-    })
+    const handleConsentUpdated = () => {
+      sendCurrentPageView(pathname, lastTrackedPathRef)
+    }
+
+    window.addEventListener(COOKIE_CONSENT_UPDATED_EVENT, handleConsentUpdated)
+    return () => window.removeEventListener(COOKIE_CONSENT_UPDATED_EVENT, handleConsentUpdated)
   }, [pathname])
 
   if (!isGAEnabled()) {
@@ -189,8 +229,6 @@ declare global {
     gtag: (...args: any[]) => void
   }
 }
-
-
 
 
 
