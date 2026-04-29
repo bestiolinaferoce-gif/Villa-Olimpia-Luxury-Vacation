@@ -39,9 +39,21 @@ function hasAnalyticsConsent(): boolean {
   }
 }
 
-function sendCurrentPageView(pathname: string | null, lastTrackedPathRef: MutableRefObject<string | null>) {
-  if (!isGAEnabled() || typeof window === "undefined" || !window.gtag || !pathname) return
+function sendCurrentPageView(
+  pathname: string | null,
+  lastTrackedPathRef: MutableRefObject<string | null>,
+  retryCount = 0
+) {
+  if (!isGAEnabled() || typeof window === "undefined" || !pathname) return
   if (!hasAnalyticsConsent()) return
+
+  // Retry se gtag non è ancora disponibile (race condition script load)
+  if (!window.gtag) {
+    if (retryCount < 5) {
+      setTimeout(() => sendCurrentPageView(pathname, lastTrackedPathRef, retryCount + 1), 100)
+    }
+    return
+  }
 
   const pagePath = pathname + (window.location.search || "")
   if (lastTrackedPathRef.current === pagePath) return
@@ -76,6 +88,15 @@ export function GoogleAnalytics() {
 
     const handleConsentUpdated = () => {
       lastTrackedPathRef.current = null
+      // Aggiorna esplicitamente analytics_storage PRIMA del pageview
+      // per evitare race condition tra consent mode e hit GA4
+      if (hasAnalyticsConsent() && typeof window !== "undefined" && window.gtag) {
+        window.gtag("consent", "update", {
+          analytics_storage: "granted",
+          functionality_storage: "granted",
+          security_storage: "granted",
+        })
+      }
       sendCurrentPageView(pathname, lastTrackedPathRef)
     }
 

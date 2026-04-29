@@ -163,7 +163,10 @@ export function CookieConsent() {
     }))
   }
 
-  if (!mounted || !showBanner) return null
+  // showBanner parte sempre false (safe per SSR hydration).
+  // mounted non è necessario come guard: showBanner=false corrisponde
+  // al render server. Il banner appare subito dopo il primo useEffect.
+  if (!showBanner) return null
 
   return (
     <>

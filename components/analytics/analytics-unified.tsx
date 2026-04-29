@@ -12,31 +12,9 @@ const GTM_ID =
     ? process.env.NEXT_PUBLIC_GTM_ID
     : "GTM-K5NQGHBD"
 
+// GTM disabilitato: il tag GA4 al suo interno è in pausa e crea conflitto
+// con il caricamento diretto di GA4 in google-analytics.tsx.
+// Riabilitare solo se GTM viene riconfigurato con tag GA4 attivo.
 export function AnalyticsUnified() {
-  return (
-    <>
-      {/* 1. Google Tag Manager - caricato per primo */}
-      <Script
-        id="gtm-unified"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{
-          __html: `
-(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','${GTM_ID}');
-          `.trim(),
-        }}
-      />
-      <noscript>
-        <iframe
-          src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
-          height="0"
-          width="0"
-          style={{ display: "none", visibility: "hidden" }}
-        />
-      </noscript>
-    </>
-  )
+  return null
 }
