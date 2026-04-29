@@ -23,6 +23,7 @@ export function VacationRentalSchema({ apartment }: Props) {
     value: true,
   }))
 
+  // Google VacationRental richiede "occupancy" in ogni containsPlace item
   const bedroomPlaces = Array.from({ length: apartment.bedrooms }, (_, i) => ({
     "@type": "Accommodation",
     name:
@@ -30,6 +31,10 @@ export function VacationRentalSchema({ apartment }: Props) {
         ? "Camera da letto"
         : `Camera da letto ${i + 1}`,
     numberOfRooms: 1,
+    occupancy: {
+      "@type": "QuantitativeValue",
+      maxValue: 2,
+    },
   }))
 
   const containsPlace = [
@@ -38,6 +43,10 @@ export function VacationRentalSchema({ apartment }: Props) {
       "@type": "Accommodation",
       name: "Zona giorno",
       numberOfRooms: 1,
+      occupancy: {
+        "@type": "QuantitativeValue",
+        maxValue: 2,
+      },
     },
   ]
 
@@ -62,7 +71,7 @@ export function VacationRentalSchema({ apartment }: Props) {
     name: `${apartment.name} - Villa Olimpia Capo Rizzuto`,
     identifier: {
       "@type": "PropertyValue",
-      name: "vacation-rental-id",
+      propertyID: "villa-olimpia-vacation-rental",
       value: slug,
     },
     url,
