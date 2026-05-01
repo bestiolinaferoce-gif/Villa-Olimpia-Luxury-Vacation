@@ -7,7 +7,7 @@ import { generateMetadata } from "@/lib/metadata"
 export const metadata = generateMetadata({
   title: "Recensioni Villa Olimpia Capo Rizzuto | Opinioni reali degli ospiti",
   description:
-    "Leggi le recensioni verificate degli ospiti di Villa Olimpia a Capopiccolo, Isola di Capo Rizzuto. Opinioni reali su piscina, appartamenti e spiaggia a 70m dal mare da Booking, Airbnb e prenotazioni dirette.",
+    "Leggi le recensioni verificate degli ospiti di Villa Olimpia a Capopiccolo, Isola di Capo Rizzuto. Opinioni reali su piscina, appartamenti e spiaggia a meno di 100 metri dal mare da Booking, Airbnb e prenotazioni dirette.",
   path: "/recensioni",
   keywords: [
     "recensioni Villa Olimpia",
