@@ -12,7 +12,7 @@ interface LocalSeoSectionProps {
 
 export function LocalSeoSection({
   title = "Villa Olimpia a Capopiccolo",
-  subtitle = "Appartamenti con piscina a 100 metri dalla Spiaggia dei Gigli, nel cuore di Isola di Capo Rizzuto.",
+  subtitle = "Appartamenti con piscina a meno di 100 metri dalla Spiaggia dei Gigli, nel cuore di Isola di Capo Rizzuto.",
   ctaHref = "/contatti",
   ctaLabel = "Richiedi preventivo",
   showLocationCta = true,
@@ -36,7 +36,7 @@ export function LocalSeoSection({
                 </span>
                 <span className="inline-flex items-center gap-2 rounded-full bg-slate-100 px-3 py-1 text-slate-700">
                   <Waves className="h-4 w-4 text-primary" />
-                  Spiaggia dei Gigli a 100m
+                  Meno di 100 m – Spiaggia dei Gigli
                 </span>
               </div>
             </div>

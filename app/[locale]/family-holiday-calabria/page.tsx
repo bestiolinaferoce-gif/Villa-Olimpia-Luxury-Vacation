@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     locale: "en",
     title: "Family Holiday Calabria | Apartments with Pool & Beach Access",
     description:
-      "Perfect family holiday in Calabria: spacious apartments for 4-6 guests, shared pool, 70m from sandy beach. Kids love it. Book direct and save.",
+      "Perfect family holiday in Calabria: spacious apartments for 4-6 guests, shared pool, less than 100 metres from the sandy beach. Kids love it. Book direct and save.",
     path: "/en/family-holiday-calabria",
     languages: {
       en: canonical,

@@ -5,32 +5,32 @@ import Link from "next/link"
 import { BlogArticleJsonLd } from "@/components/seo/blog-article-json-ld"
 
 export const metadata = generateMetadata({
-  title: "Le Spiagge Più Belle di Capo Rizzuto e Dintorni | Villa Olimpia",
-  description: "Scopri le spiagge più belle di Capo Rizzuto, da Spiaggia dei Gigli a Le Castella fino alle calette dell'Area Marina Protetta. Guida utile per scegliere dove andare al mare in Calabria.",
+  title: "10 Spiagge della Costa Ionica Calabrese: da Capo Rizzuto a Copanello | Villa Olimpia",
+  description: "Guida alle 10 spiagge più belle della costa ionica calabrese: da Capo Rizzuto e Capopiccolo fino a Copanello e Punta Alice. Scopri caratteristiche, atmosfera e come scegliere la tappa giusta.",
   path: "/blog/spiagge-piu-belle-capo-rizzuto",
   type: "article",
-  keywords: ["spiagge capo rizzuto", "spiaggia dei gigli", "le castella spiaggia", "area marina protetta capo rizzuto", "dove andare al mare a capo rizzuto"],
+  keywords: ["spiagge costa ionica calabrese", "spiagge capo rizzuto", "spiaggia dei gigli", "le castella spiaggia", "copanello spiaggia", "punta alice spiaggia"],
 })
 
 export default function ArticlePage() {
   return (
     <div className="min-h-screen pt-20">
       <BlogArticleJsonLd
-        title="Le spiagge più belle di Capo Rizzuto e dintorni"
-        description="Scopri le spiagge più belle di Capo Rizzuto, da Spiaggia dei Gigli a Le Castella fino alle calette dell'Area Marina Protetta."
+        title="10 spiagge della costa ionica calabrese: da Capo Rizzuto a Copanello"
+        description="Guida alle spiagge più belle della costa ionica calabrese, da Capopiccolo e Le Castella fino a Copanello e Punta Alice."
         path="/blog/spiagge-piu-belle-capo-rizzuto"
         datePublished="2026-03-16"
       />
-      <Breadcrumb items={[{ label: "Blog", href: "/blog" }, { label: "Spiagge più belle di Capo Rizzuto" }]} />
+      <Breadcrumb items={[{ label: "Blog", href: "/blog" }, { label: "10 Spiagge della Costa Ionica Calabrese" }]} />
 
       <section className="bg-gradient-to-br from-ocean/10 to-primary/10 py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h1 className="text-4xl md:text-5xl font-playfair font-bold mb-6">
-              Le spiagge più belle di Capo Rizzuto e dintorni
+              10 spiagge da non perdere sulla costa ionica calabrese
             </h1>
             <p className="text-xl text-muted-foreground">
-              Se stai cercando dove andare al mare a Capo Rizzuto, qui trovi una selezione utile delle spiagge più interessanti tra Capopiccolo, Spiaggia dei Gigli, Le Castella e Area Marina Protetta.
+              Se stai cercando dove andare al mare lungo la costa ionica calabrese, qui trovi una selezione utile tra Capopiccolo, Le Castella, Capo Colonna, Punta Alice e Copanello.
             </p>
           </div>
         </div>
@@ -41,6 +41,12 @@ export default function ArticlePage() {
           <div className="max-w-4xl mx-auto space-y-12">
             <p className="text-lg text-muted-foreground">
               Partendo da Villa Olimpia, a Capopiccolo e a pochi passi dalla Spiaggia dei Gigli, abbiamo selezionato le spiagge più interessanti di questa zona, tutte facilmente raggiungibili durante il soggiorno e adatte a esigenze diverse: famiglie, coppie, snorkeling e giornate più panoramiche.
+            </p>
+            <p className="text-lg text-muted-foreground">
+              Se invece vuoi concentrarti solo sulle spiagge più vicine a Villa Olimpia, con confronto rapido, foto e consigli pratici su Capopiccolo e Area Marina Protetta, trovi una guida dedicata nella pagina{" "}
+              <Link href="/spiagge-capo-rizzuto" className="underline underline-offset-4 decoration-primary/60 hover:text-primary">
+                spiagge di Capo Rizzuto
+              </Link>.
             </p>
 
             <div>

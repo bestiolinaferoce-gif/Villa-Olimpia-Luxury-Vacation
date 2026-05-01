@@ -39,7 +39,7 @@ const lodgingSchema = {
   name: "Villa Olimpia",
   url: "https://villaolimpiacaporizzuto.com",
   description:
-    "9 lodges indipendenti con piscina, 70m dalla spiaggia, Area Marina Protetta di Capo Rizzuto, Calabria",
+    "9 lodges indipendenti con piscina, a meno di 100 metri dalla spiaggia, Area Marina Protetta di Capo Rizzuto, Calabria",
   address: {
     "@type": "PostalAddress",
     streetAddress: "Località Capo Piccolo",
@@ -61,7 +61,7 @@ const lodgingSchema = {
     },
     {
       "@type": "LocationFeatureSpecification",
-      name: "Strand 70 meter",
+      name: "Strand 100 m",
       value: true,
     },
     {
@@ -101,8 +101,8 @@ const faqSchema = {
       "@type": "Question",
       name: "Er det strand i nærheten av Villa Olimpia?",
       acceptedAnswer: {
-        "@type": "Answer",
-        text: "Stranden Spiaggia dei Gigli (Blått Flagg) er kun 70 meter fra Villa Olimpia, innenfor det marine verneområdet Capo Rizzuto.",
+      "@type": "Answer",
+        text: "Stranden Spiaggia dei Gigli (Blått Flagg) ligger under 100 m fra Villa Olimpia, innenfor det marine verneområdet Capo Rizzuto.",
       },
     },
   ],

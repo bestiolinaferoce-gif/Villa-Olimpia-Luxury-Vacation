@@ -10,7 +10,7 @@ const features = [
   {
     icon: Waves,
     title: "Posizione Privilegiata",
-    description: "A soli 100 metri dalla splendida Spiaggia dei Gigli, una delle più belle della Calabria. Mare cristallino e sabbia fine a pochi passi da casa.",
+    description: "A meno di 100 metri dalla splendida Spiaggia dei Gigli, una delle più belle della Calabria. Mare cristallino e sabbia fine a pochi passi da casa.",
   },
   {
     icon: Waves,
@@ -89,4 +89,3 @@ export function WhyChooseUs() {
     </section>
   )
 }
-

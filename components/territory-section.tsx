@@ -50,7 +50,7 @@ const destinations: TouristDestination[] = [
   {
     name: "Spiaggia dei Gigli",
     category: "spiaggia",
-    distance: "100 metri",
+    distance: "meno di 100 m",
     driveTime: "1 minuto a piedi",
     description: "La spiaggia più vicina a Villa Olimpia, con sabbia dorata e acque cristalline. Perfetta per famiglie, dotata di servizi e ristoranti. Bandiera Blu per la qualità delle acque.",
     image: "/images/villa/location/spiaggia-dei-gigli.jpg",

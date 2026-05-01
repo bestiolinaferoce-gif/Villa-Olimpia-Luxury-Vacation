@@ -35,7 +35,7 @@ export function LeCastellaPageView({
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-playfair font-bold mb-6">
-              Vacanze Le Castella - Villa Olimpia
+              Cosa vedere a Le Castella: il Castello Aragonese e le spiagge
             </h1>
             <p className="text-xl text-muted-foreground mb-8">
               Scopri Le Castella, uno dei borghi più suggestivi della Calabria, e soggiorna a Villa Olimpia, 
@@ -69,7 +69,7 @@ export function LeCastellaPageView({
             <p className="text-lg text-muted-foreground mb-6">
               Le Castella è una frazione di Isola di Capo Rizzuto, famosa per il suo <strong>Castello Aragonese</strong>, 
               un&apos;imponente fortezza costruita su un&apos;isoletta collegata alla terraferma. Questo simbolo della Calabria 
-              domina il panorama della Spiaggia dei Gigli ed è uno dei luoghi più fotografati della costa ionica.
+              domina il panorama della spiaggia di Le Castella ed è uno dei luoghi più fotografati della costa ionica.
             </p>
             <p className="text-lg text-muted-foreground mb-8">
               Il castello, risalente al XV secolo, è stato utilizzato come fortezza difensiva contro le incursioni 
@@ -151,7 +151,7 @@ export function LeCastellaPageView({
                   <CardTitle>Spiaggia</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-lg font-semibold">Spiaggia dei Gigli</p>
+                  <p className="text-lg font-semibold">Spiaggia di Le Castella</p>
                   <p className="text-muted-foreground">Bandiera Blu</p>
                 </CardContent>
               </Card>
@@ -194,11 +194,11 @@ export function LeCastellaPageView({
 
               <Card>
                 <CardHeader>
-                  <CardTitle>Relax sulla Spiaggia dei Gigli</CardTitle>
+                  <CardTitle>Relax sulla Spiaggia di Le Castella</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground">
-                    La spiaggia di Le Castella, conosciuta come &quot;Spiaggia dei Gigli&quot;, è una delle più belle della Calabria. 
+                    La spiaggia di Le Castella è una delle più belle della Calabria. 
                     Sabbia fine, acque cristalline e la vista del castello sullo sfondo creano un&apos;atmosfera unica.
                   </p>
                 </CardContent>
@@ -254,7 +254,7 @@ export function LeCastellaPageView({
                 "9 appartamenti con piscina condivisa",
                 "Parcheggio gratuito per la tua auto",
                 "WiFi fibra gratuito",
-                "A 100 metri dalla Spiaggia dei Gigli",
+                "A meno di 100 metri dalla Spiaggia dei Gigli",
                 "Posizione strategica per esplorare la Calabria",
               ].map((item, i) => (
                 <div key={i} className="flex items-center gap-3 p-4 bg-white/90 rounded-lg shadow-sm border border-primary/10">

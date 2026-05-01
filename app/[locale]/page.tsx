@@ -21,7 +21,7 @@ const metaByLocale: Record<string, { title: string; description: string }> = {
   en: {
     title: "Capo Rizzuto Holiday Apartments with Pool | Villa Olimpia Calabria",
     description:
-      "Book your Calabria holiday at Villa Olimpia. 9 private lodges with shared pool, 70m from the beach. Capo Piccolo, Marine Protected Area.",
+      "Book your Calabria holiday at Villa Olimpia. 9 private lodges with shared pool, less than 100 metres from the beach. Capo Piccolo, Marine Protected Area.",
   },
   de: {
     title: "Ferienwohnungen Kalabrien am Meer mit Pool | Villa Olimpia Capo Rizzuto",
@@ -41,7 +41,7 @@ const metaByLocale: Record<string, { title: string; description: string }> = {
   no: {
     title: "Italia Ferie med Basseng | Villa Olimpia Kalabria",
     description:
-      "Bestill din drømmeferie i Kalabria. 9 private leiligheter med felles basseng og 70 m til stranden. Direkte fra Norge via Warszawa.",
+      "Bestill din drømmeferie i Kalabria. 9 private leiligheter med felles basseng og under 100 m til stranden. Direkte fra Norge via Warszawa.",
   },
 }
 

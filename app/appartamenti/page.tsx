@@ -1,21 +1,9 @@
 import Script from "next/script"
 import { apartments, getApartmentSlug } from "@/data/apartments"
-import { BASE_URL, generateMetadata } from "@/lib/metadata"
+import { BASE_URL, buildApartmentsListingMetadata } from "@/lib/metadata"
 import { AppartamentiIndexPageView } from "@/components/pages/appartamenti-index-page-view"
 
-export const metadata = generateMetadata({
-  title: "Appartamenti Capo Rizzuto con Piscina | 9 Lodge Villa Olimpia",
-  description:
-    "Scegli tra 9 lodge privati con piscina a Capo Piccolo. Dal bilocale al trilocale, tutti con cucina, aria condizionata e spazio esterno.",
-  path: "/appartamenti",
-  keywords: [
-    "appartamenti Villa Olimpia",
-    "appartamenti Capo Rizzuto piscina",
-    "case vacanze Spiaggia dei Gigli",
-    "appartamenti Capopiccolo Isola di Capo Rizzuto",
-    "alloggi famiglia Calabria mare",
-  ],
-})
+export const metadata = buildApartmentsListingMetadata("it", "/appartamenti")
 
 export default function AppartamentiPage() {
   const itemListSchema = {

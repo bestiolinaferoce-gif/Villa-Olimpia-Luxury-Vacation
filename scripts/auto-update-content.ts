@@ -9,7 +9,7 @@ interface SeasonalContent {
 
 const seasonalContent: SeasonalContent[] = [
   // Estate (Giu-Set)
-  { month: 5, heroText: 'Rinfrescati nella nostra piscina a 70m dal mare', featuredSection: 'piscina' },
+  { month: 5, heroText: 'Rinfrescati nella nostra piscina a meno di 100 metri dal mare', featuredSection: 'piscina' },
   { month: 6, heroText: 'Estate perfetta: piscina, mare e relax a Villa Olimpia', featuredSection: 'piscina' },
   { month: 7, heroText: 'Vivi l\'estate calabrese: piscina privata e spiaggia a due passi', featuredSection: 'mare' },
   { month: 8, heroText: 'Agosto a Villa Olimpia: piscina e mare cristallino ti aspettano', featuredSection: 'mare' },
@@ -41,7 +41,6 @@ export function updateSeasonalHeroText(): string {
 
 // Esporta per uso futuro
 export { seasonalContent }
-
 
 
 

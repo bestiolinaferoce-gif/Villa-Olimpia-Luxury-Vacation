@@ -81,7 +81,7 @@ export function AppartamentiIndexPageView({ mapLanguage = "it" }: AppartamentiIn
               Appartamenti Villa Olimpia
             </h1>
             <p className="text-xl md:text-2xl text-white/90 leading-relaxed max-w-3xl mx-auto mb-8">
-              9 appartamenti esclusivi a 100 metri dal mare, piscina condivisa e comfort premium.
+              9 appartamenti esclusivi a meno di 100 metri dal mare, piscina condivisa e comfort premium.
             </p>
             <div className="flex flex-wrap justify-center gap-4 text-sm">
               <div className="flex items-center gap-2 bg-white/15 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
@@ -90,7 +90,7 @@ export function AppartamentiIndexPageView({ mapLanguage = "it" }: AppartamentiIn
               </div>
               <div className="flex items-center gap-2 bg-white/15 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
                 <Home className="w-4 h-4 text-white" />
-                <span className="font-medium">100m dalla spiaggia</span>
+                <span className="font-medium">Meno di 100 m dalla spiaggia</span>
               </div>
               <div className="flex items-center gap-2 bg-white/15 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
                 <Waves className="w-4 h-4 text-white" />

@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const canonical = `${BASE_URL}/en/capo-rizzuto-holiday-apartments`
   const title = "Holiday Apartments Capo Rizzuto with Pool | Villa Olimpia Calabria"
   const description =
-    "9 private holiday apartments with shared pool, 70m from Blue Flag beach. Capo Rizzuto Marine Reserve, Calabria. Ideal for families & couples. Book direct."
+    "9 private holiday apartments with shared pool, less than 100 metres from the Blue Flag beach. Capo Rizzuto Marine Reserve, Calabria. Ideal for families and couples. Book direct."
 
   return {
     title,
@@ -86,7 +86,7 @@ export default async function CapoRizzutoHolidayApartmentsPage({ params }: PageP
     url: BASE_URL,
     image: `${BASE_URL}/og-image.jpg`,
     description:
-      "9 private holiday apartments with shared pool, 70m from the Blue Flag beach in the Capo Rizzuto Marine Protected Area, Calabria.",
+      "9 private holiday apartments with shared pool, less than 100 metres from the Blue Flag beach in the Capo Rizzuto Marine Protected Area, Calabria.",
     address: {
       "@type": "PostalAddress",
       streetAddress: VILLA_OLIMPIA_LOCATION.address.street,
@@ -107,7 +107,7 @@ export default async function CapoRizzutoHolidayApartmentsPage({ params }: PageP
       { "@type": "LocationFeatureSpecification", name: "Free WiFi", value: true },
       { "@type": "LocationFeatureSpecification", name: "Air conditioning", value: true },
       { "@type": "LocationFeatureSpecification", name: "Free parking", value: true },
-      { "@type": "LocationFeatureSpecification", name: "70m from sandy beach", value: true },
+      { "@type": "LocationFeatureSpecification", name: "100 m from sandy beach", value: true },
     ],
   }
 
@@ -139,7 +139,7 @@ export default async function CapoRizzutoHolidayApartmentsPage({ params }: PageP
               Your Holiday in Capo Rizzuto Starts Here
             </h1>
             <p className="text-sky-100 text-lg leading-relaxed max-w-3xl">
-              9 private holiday apartments with a shared pool, just 70 metres
+              9 private holiday apartments with a shared pool, less than 100 metres
               from the Blue Flag Spiaggia dei Gigli beach in the Capo Rizzuto
               Marine Protected Area, Calabria. Self-catering, sea-view options,
               direct booking — no agency fees.
@@ -174,7 +174,7 @@ export default async function CapoRizzutoHolidayApartmentsPage({ params }: PageP
                   body: "Sun deck, sun loungers and pool open from late spring to early autumn.",
                 },
                 {
-                  title: "70m from the beach",
+                  title: "Under 100m from the beach",
                   body: "Spiaggia dei Gigli — soft sand, Blue Flag, walking distance from every lodge.",
                 },
                 {
@@ -259,7 +259,7 @@ export default async function CapoRizzutoHolidayApartmentsPage({ params }: PageP
               A short drive away, Le Castella is home to the Aragonese Castle —
               a small island fortress jutting into the Ionian Sea, perfect for
               sunset photos and a sea-front aperitivo. Beaches around the
-              property include the sandy Spiaggia dei Gigli (70 m), the wide
+              property include the sandy Spiaggia dei Gigli (100 m), the wide
               Spiaggia Grande and the secluded coves of Capo Piccolo.
             </p>
           </div>

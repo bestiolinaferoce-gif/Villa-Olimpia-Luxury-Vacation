@@ -145,7 +145,7 @@ export function getApartmentMetadata(apartmentId: number): Metadata {
   }
 
   const seoTitle = `Lodge ${apartment.name} | Appartamento ${meta.titleQualifier} Capo Rizzuto Piscina`
-  const seoDescription = `${meta.descUsp}. Lodge privato a Villa Olimpia, 70m dalla Spiaggia dei Gigli. Prenota direttamente.`
+  const seoDescription = `${meta.descUsp}. Lodge privato a Villa Olimpia, a meno di 100 metri dalla Spiaggia dei Gigli. Prenota direttamente.`
 
   const keywords = [
     `appartamento ${getApartmentSlug(apartment)} villa olimpia`,
@@ -213,7 +213,7 @@ export const defaultMetadata: Metadata = {
       default: `${siteName} Capo Rizzuto | Appartamenti con Piscina al Mare`,
       template: `%s`,
     },
-  description: "Lodge privati con piscina a Capo Piccolo, a 70m dalla Spiaggia dei Gigli. 9 appartamenti nell'Area Marina Protetta di Capo Rizzuto. Prenota ora.",
+  description: "Lodge privati con piscina a Capo Piccolo, a meno di 100 metri dalla Spiaggia dei Gigli. 9 appartamenti nell'Area Marina Protetta di Capo Rizzuto. Prenota ora.",
   keywords: [
     // Core estate 2026
     "appartamenti capo rizzuto estate 2026",
@@ -384,10 +384,10 @@ export function buildApartmentsListingMetadata(
   const isEn = locale === "en"
   const title = isEn
     ? "Apartments in Capo Rizzuto with Pool | Villa Olimpia Capopiccolo"
-    : "Appartamenti a Capo Rizzuto con Piscina | Villa Olimpia Capopiccolo"
+    : "9 Lodge con Piscina a Capo Rizzuto | Villa Olimpia Capopiccolo"
   const description = isEn
     ? "Discover Villa Olimpia apartments in Capopiccolo, Capo Rizzuto: options for couples, families and small groups with pool, garden and Spiaggia dei Gigli a short walk away."
-    : "Scopri gli appartamenti di Villa Olimpia a Capopiccolo, Capo Rizzuto: soluzioni per coppie, famiglie e piccoli gruppi con piscina, giardino e Spiaggia dei Gigli a pochi passi."
+    : "Scegli tra 9 lodge privati a Capopiccolo, Capo Rizzuto: piscina, giardino, Spiaggia dei Gigli a meno di 100 metri e prenotazione diretta senza commissioni."
   const base = generateMetadata({
     title,
     description,

@@ -78,7 +78,7 @@ export function LocationLinksSection({ variant = "full" }: LocationLinksSectionP
               </CardHeader>
               <CardContent>
                 <ul className="space-y-2 text-sm text-muted-foreground mb-6">
-                  <li>• <strong className="text-foreground">Spiaggia dei Gigli</strong> - Bandiera Blu a 100 metri</li>
+                  <li>• <strong className="text-foreground">Spiaggia dei Gigli</strong> - Bandiera Blu a meno di 100 metri</li>
                   <li>• <strong className="text-foreground">Area Marina Protetta</strong> - Snorkeling e immersioni</li>
                   <li>• <strong className="text-foreground">Le Castella</strong> - Castello aragonese patrimonio storico</li>
                   <li>• <strong className="text-foreground">Valli Cupe</strong> - Riserva naturale con cascate</li>
@@ -132,7 +132,6 @@ export function LocationLinksSection({ variant = "full" }: LocationLinksSectionP
     </section>
   )
 }
-
 
 
 
