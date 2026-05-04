@@ -89,7 +89,7 @@ export const apartments: Apartment[] = [
     guests: 4,
     bedrooms: 1,
     bathrooms: 2,
-    features: ["Terrazza panoramica", "Vista mare", "Zona living spaziosa", "Aria condizionata", "WiFi gratuito", "Cucina completa", "TV Smart", "Biancheria inclusa"],
+    features: ["Vista mare", "Zona living spaziosa", "Aria condizionata", "WiFi gratuito", "Cucina completa", "TV LED", "Biancheria inclusa"],
     // ✅ FOTO AGGIORNATE 2025 - 12 foto nuove
     image: "/images/villa/appartamenti/orchidea/Orchidea_Camera_01.jpg",
     images: [
@@ -105,8 +105,8 @@ export const apartments: Apartment[] = [
       "/images/villa/appartamenti/orchidea/Orchidea_Living_Cucina_01.jpg",
       "/images/villa/appartamenti/orchidea/Orchidea_Camera_Dettaglio_01.jpg",
     ],
-    description: "Appartamento Orchidea a Capopiccolo con terrazza panoramica vista mare e doppi servizi, ideale per coppie e famiglie che cercano più comfort vicino alla Spiaggia dei Gigli.",
-    fullDescription: "Orchidea è un appartamento di Villa Olimpia a Capopiccolo pensato per chi cerca una vacanza a Capo Rizzuto con vista mare, terrazza panoramica e un livello di comfort superiore. Offre camera matrimoniale, zona living con divano letto, cucina completa e doppi servizi, un plus utile per coppie e famiglie che desiderano più comodità. La posizione, a pochi passi dalla Spiaggia dei Gigli e dall'Area Marina Protetta di Capo Rizzuto, lo rende una soluzione molto interessante per vivere il territorio con semplicità.",
+    description: "Appartamento Orchidea a Capopiccolo con doppi servizi e vista mare, ideale per coppie e famiglie che cercano più comfort vicino alla Spiaggia dei Gigli.",
+    fullDescription: "Orchidea è un appartamento di Villa Olimpia a Capopiccolo pensato per chi cerca una vacanza a Capo Rizzuto con vista mare e un livello di comfort superiore. Offre camera matrimoniale, zona living con divano letto, cucina completa e doppi servizi, un plus utile per coppie e famiglie che desiderano più comodità. La posizione, a pochi passi dalla Spiaggia dei Gigli e dall'Area Marina Protetta di Capo Rizzuto, lo rende una soluzione molto interessante per vivere il territorio con semplicità.",
     price: 140,
   },
   {

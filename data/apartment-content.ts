@@ -85,14 +85,14 @@ Per chi cerca un appartamento a Capo Rizzuto vicino alla Spiaggia dei Gigli e al
   },
   3: {
     // ORCHIDEA - 48 mq, 4 ospiti, 1 camera, doppi servizi, terrazza vista mare
-    shortDescription: "Appartamento Orchidea a Capopiccolo con terrazza panoramica vista mare e doppi servizi, ideale per coppie e famiglie che cercano più comfort vicino alla Spiaggia dei Gigli.",
+    shortDescription: "Appartamento Orchidea a Capopiccolo con doppi servizi e vista mare, ideale per coppie e famiglie che cercano più comfort vicino alla Spiaggia dei Gigli.",
     fullPremiumDescription: `L'appartamento Orchidea di Villa Olimpia è una soluzione molto interessante per chi desidera una vacanza a Capo Rizzuto con vista mare, spazi ben distribuiti e un livello di comfort superiore. Situato a Capopiccolo, è adatto a coppie e famiglie che vogliono soggiornare vicino alla Spiaggia dei Gigli in un contesto curato e tranquillo.
 
-Il punto distintivo di Orchidea è l'equilibrio tra terrazza panoramica, zona living luminosa e doppi servizi, un plus particolarmente utile per chi viaggia in più persone. La camera matrimoniale, il divano letto e la cucina completa permettono di vivere il soggiorno con maggiore libertà, sia nei momenti di relax sia nell'organizzazione delle giornate.
+Il punto distintivo di Orchidea è l'equilibrio tra zona living luminosa e doppi servizi, un plus particolarmente utile per chi viaggia in più persone. La camera matrimoniale, il divano letto e la cucina completa permettono di vivere il soggiorno con maggiore libertà, sia nei momenti di relax sia nell'organizzazione delle giornate.
 
 Per chi cerca un appartamento vista mare a Capo Rizzuto con accesso rapido alla piscina e all'Area Marina Protetta, Orchidea è una proposta solida. La posizione interna a Villa Olimpia consente di combinare mare, comfort e scoperta del territorio con grande semplicità.`,
     featureBullets: [
-      "Terrazza panoramica con vista mare Ionio",
+      "Vista mare Ionio",
       "Bagno completo",
       "Camera matrimoniale e divano letto",
       "Zona living spaziosa e luminosa",
@@ -106,12 +106,12 @@ Per chi cerca un appartamento vista mare a Capo Rizzuto con accesso rapido alla 
       "Famiglie 2+2",
       "Soggiorni vista mare a Capo Rizzuto"
     ],
-    seoParagraph: "Orchidea è un appartamento di Villa Olimpia a Capopiccolo con terrazza panoramica vista mare e doppi servizi, ideale per chi cerca un soggiorno a Capo Rizzuto vicino alla Spiaggia dei Gigli e all'Area Marina Protetta. È una soluzione molto adatta a coppie e famiglie che vogliono più comfort, una vista aperta sul territorio e prenotazione diretta.",
+    seoParagraph: "Orchidea è un appartamento di Villa Olimpia a Capopiccolo con doppi servizi e vista mare, ideale per chi cerca un soggiorno a Capo Rizzuto vicino alla Spiaggia dei Gigli e all'Area Marina Protetta. È una soluzione molto adatta a coppie e famiglie che vogliono più comfort, una vista aperta sul territorio e prenotazione diretta.",
     technicalSummary: {
       capacity: "4",
       rooms: "1 matrimoniale",
       bathrooms: "2",
-      outdoorArea: "Terrazza panoramica",
+      outdoorArea: "Spazio esterno",
       floor: "Terra"
     }
   },

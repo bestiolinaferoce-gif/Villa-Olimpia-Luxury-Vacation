@@ -111,7 +111,7 @@ export function getApartmentMetadata(apartmentId: number): Metadata {
     },
     Orchidea: {
       titleQualifier: "con 2 Bagni",
-      descUsp: "Unico nella zona: camera matrimoniale con 2 bagni completi e terrazza panoramica vista mare",
+      descUsp: "Unico nella zona: camera matrimoniale con 2 bagni completi e vista mare",
     },
     Tulipano: {
       titleQualifier: "Patio e Giardino",
