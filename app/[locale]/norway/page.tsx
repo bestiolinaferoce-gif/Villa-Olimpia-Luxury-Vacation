@@ -16,11 +16,11 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { locale } = await params
-  if (locale !== "no" && locale !== "en") notFound()
+  if (locale !== "no") notFound()
 
-  const canonical = `${BASE_URL}/${locale}/norway`
+  const canonical = `${BASE_URL}/no/norway`
   return buildLocalizedPageMetadata({
-    locale: locale === "no" ? "no" : "en",
+    locale: "no",
     title: "Ferie Italia fra Norge | Leiligheter med Basseng Kalabria",
     description:
       "Reisetips for nordmenn til Kalabria: flyforbindelser, beste sesong og private leiligheter med basseng. September og juni — de hemmelige sesongene.",
@@ -111,7 +111,7 @@ const faqSchema = {
 export default async function NorwayPage({ params }: PageProps) {
   const { locale } = await params
   if (!locales.includes(locale as (typeof locales)[number])) notFound()
-  if (locale !== "no" && locale !== "en") notFound()
+  if (locale !== "no") notFound()
 
   return <NorwayPageContent />
 }
