@@ -28,8 +28,8 @@ export type PartialLocale = (typeof PARTIAL_LOCALES)[number]
 export const PARTIAL_ROUTES_FOR_DE_FR = [
   "/",
   "/contatti",
-  "/capo-rizzuto",
-  "/settembre-capo-rizzuto",
+  // NOTE: /capo-rizzuto and /settembre-capo-rizzuto removed —
+  // [locale] pages redirect to IT for DE/FR/NL/NO/SV → excluded from hreflang/sitemap
 ] as const
 
 export type PartialRouteForDeFr = (typeof PARTIAL_ROUTES_FOR_DE_FR)[number]
@@ -64,10 +64,22 @@ export function localeHasRoute(locale: SupportedLocale, canonicalPath: string): 
   const p = normalizeCanonicalPath(canonicalPath)
   if (!isCoreRoute(p)) return false
   if (locale === "it") return true
+
+  // [locale]/le-castella redirects to IT for ALL non-IT locales → exclude from hreflang/sitemap
+  if (p === "/le-castella") return false
+
+  // [locale]/settembre-capo-rizzuto redirects to IT for ALL non-IT locales → exclude
+  if (p === "/settembre-capo-rizzuto") return false
+
   if (locale === "en") return true
+
   // Norwegian has a dedicated /no/norway landing page; /no (root) 301-redirects there.
   // Exclude /no from the homepage to avoid a redirecting URL in sitemap/hreflang.
   if (locale === "no" && p === "/") return false
+
+  // [locale]/capo-rizzuto: only EN has real content; DE/FR/NL/NO/SV redirect to IT → exclude
+  if (p === "/capo-rizzuto" && isPartialLocale(locale)) return false
+
   if (isPartialLocale(locale)) return isPartialRouteForDeFr(p)
   return false
 }
