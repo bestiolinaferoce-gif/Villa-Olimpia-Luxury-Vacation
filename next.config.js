@@ -101,6 +101,8 @@ const nextConfig = {
       { source: "/en/contatti", destination: "/en/contact", permanent: true },
       // /no homepage redirects to the dedicated Norwegian landing page
       { source: "/no", destination: "/no/norway", permanent: true },
+      { source: "/da-oslo-a-lamezia-villa-olimpia", destination: "/oslo-lamezia-villa-olimpia", permanent: true },
+      { source: "/da-crotone-aeroporto-a-villa-olimpia", destination: "/aeroporto-crotone-villa-olimpia", permanent: true },
       { source: "/nl/cosa-fare-capo-rizzuto", destination: "/cosa-fare-capo-rizzuto", permanent: true },
       // Protezione URL interni da crawling diretto
       { source: "/utm", destination: "/", permanent: false },
