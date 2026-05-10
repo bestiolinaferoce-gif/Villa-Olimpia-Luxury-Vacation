@@ -21,27 +21,32 @@ const metaByLocale: Record<string, { title: string; description: string }> = {
   en: {
     title: "Capo Rizzuto Holiday Apartments with Pool | Villa Olimpia Calabria",
     description:
-      "Book your Calabria holiday at Villa Olimpia. 9 private lodges with shared pool, less than 100 metres from the beach. Capo Piccolo, Marine Protected Area.",
+      "Book your Calabria holiday at Villa Olimpia. 9 private lodges with a shared pool, about 100 metres from the sandy beach in Capo Piccolo.",
   },
   de: {
     title: "Ferienwohnungen Kalabrien am Meer mit Pool | Villa Olimpia Capo Rizzuto",
     description:
-      "9 Ferienwohnungen im Meeresschutzgebiet Capo Rizzuto, Kalabrien: Gemeinschafts-Außenpool, ca. 100 m vom Sandstrand. Juni, Juli und September 2026 verfügbar. Direktbuchung.",
+      "9 Ferienwohnungen im Meeresschutzgebiet Capo Rizzuto, Kalabrien: Gemeinschafts-Außenpool, ca. 100 m vom Sandstrand und direkte Buchung ohne Vermittler.",
   },
   fr: {
     title: "Appartements bord de mer Calabre avec piscine | Villa Olimpia Capo Rizzuto",
     description:
-      "9 appartements dans l'Aire Marine Protégée de Capo Rizzuto, Calabre : piscine extérieure partagée et environ 100 m de la plage. Disponibles juin, juillet et septembre 2026. Réservation directe.",
+      "9 appartements dans l'Aire Marine Protégée de Capo Rizzuto, Calabre : piscine extérieure partagée, environ 100 m de la plage et réservation directe.",
   },
   nl: {
     title: "Vakantieappartementen Calabrië aan zee met zwembad | Villa Olimpia Capo Rizzuto",
     description:
-      "9 vakantieappartementen in het zeereservaat Capo Rizzuto, Calabrië: gedeeld buitenzwembad, ca. 100 m van het strand. Beschikbaar juni, juli en september 2026. Directe boeking.",
+      "9 vakantieappartementen in het zeereservaat Capo Rizzuto, Calabrië: gedeeld buitenzwembad, ongeveer 100 m van het strand en direct boeken.",
   },
   no: {
     title: "Italia Ferie med Basseng | Villa Olimpia Kalabria",
     description:
-      "Bestill din drømmeferie i Kalabria. 9 private leiligheter med felles basseng og under 100 m til stranden. Direkte fra Norge via Warszawa.",
+      "Bestill ferie i Calabria hos Villa Olimpia: 9 private leiligheter med felles basseng og omtrent 100 meter til stranden i Capo Piccolo.",
+  },
+  sv: {
+    title: "Semesterlägenheter i Kalabrien nära stranden | Villa Olimpia",
+    description:
+      "9 privata semesterlägenheter i Capo Rizzuto med delad pool, cirka 100 meter från sandstranden och direkt bokning hos Villa Olimpia.",
   },
 }
 

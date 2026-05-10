@@ -1,12 +1,12 @@
 import type { Metadata } from "next"
-import { redirect } from "next/navigation"
+import { notFound } from "next/navigation"
 import {
   generateMetadata as definePageMetadata,
   buildHreflangLanguages,
 } from "@/lib/metadata"
 import { SettembreCapoRizzutoPageView } from "@/components/pages/settembre-capo-rizzuto-page-view"
 import { getLocalizedPathForCanonical } from "@/lib/i18n-routing"
-import { isPartialLocale, type SupportedLocale } from "@/lib/i18n-config"
+import { type SupportedLocale } from "@/lib/i18n-config"
 import { locales } from "@/i18n/request"
 
 interface PageProps {
@@ -33,33 +33,23 @@ const metaByLocale: Record<string, { title: string; description: string }> = {
     description:
       "Septembre en Calabre : mer à 26°C, plages désertes et prix jusqu'à 30% plus bas. Réservez maintenant votre séjour de septembre.",
   },
-  nl: {
-    title: "September Vakantie Calabrië | Warme Zee & Rustige Stranden",
-    description:
-      "September in Calabrië: 26°C zee, lege stranden en tot 30% lagere prijzen. Boek nu je septembervakantie in Zuid-Italië.",
-  },
-  no: {
-    title: "September Ferie Italia | Varmt Hav og Lave Priser i Kalabria",
-    description:
-      "September i Kalabria er den perfekte ferien for nordmenn: 26°C sjø, ingen folkemasser og priser 20-30% lavere enn august. Bestill nå.",
-  },
 }
+
+const SUPPORTED_SETTEMBRE_LOCALES = ["en", "de", "fr"] as const
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { locale } = await params
+  if (!SUPPORTED_SETTEMBRE_LOCALES.includes(locale as (typeof SUPPORTED_SETTEMBRE_LOCALES)[number])) {
+    notFound()
+  }
+
   const path =
     locale === "en"
       ? "/en/settembre-capo-rizzuto"
       : locale === "de"
         ? "/de/settembre-capo-rizzuto"
-        : locale === "fr"
-          ? "/fr/settembre-capo-rizzuto"
-          : locale === "nl"
-            ? "/nl/settembre-capo-rizzuto"
-            : locale === "no"
-              ? "/no/settembre-capo-rizzuto"
-              : "/settembre-capo-rizzuto"
-  const meta = metaByLocale[locale] ?? metaByLocale.en
+        : "/fr/settembre-capo-rizzuto"
+  const meta = metaByLocale[locale]
   const base = definePageMetadata({
     title: meta.title,
     description: meta.description,
@@ -94,9 +84,10 @@ function linkSet(L: SupportedLocale) {
 export default async function LocalizedSettembrePage({ params }: PageProps) {
   const { locale } = await params
   const L = locale as SupportedLocale
-  if (locale === "en" || isPartialLocale(L)) {
-    const links = linkSet(L)
-    return <SettembreCapoRizzutoPageView {...links} />
+  if (!SUPPORTED_SETTEMBRE_LOCALES.includes(locale as (typeof SUPPORTED_SETTEMBRE_LOCALES)[number])) {
+    notFound()
   }
-  redirect("/settembre-capo-rizzuto")
+
+  const links = linkSet(L)
+  return <SettembreCapoRizzutoPageView {...links} />
 }

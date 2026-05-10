@@ -14,8 +14,8 @@ const features = [
   },
   {
     icon: Waves,
-    title: "Piscina Privata",
-    description: "Piscina esclusiva per i nostri ospiti, immersa nel verde con area solarium attrezzata. Relax totale in un ambiente curato e riservato.",
+    title: "Piscina Condivisa",
+    description: "Piscina ad uso esclusivo degli ospiti, immersa nel verde con area solarium attrezzata. Relax in un ambiente curato e riservato.",
   },
   {
     icon: Award,

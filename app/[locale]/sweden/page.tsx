@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     title:
       "Semesterlägenheter med Pool i Calabrien | Villa Olimpia Capo Rizzuto",
     description:
-      "9 privata semesterlägenheter med pool, 70m från Blå Flagg-stranden. Capo Rizzuto, Calabrien. Perfekt för familjer. Boka direkt.",
+      "9 privata semesterlägenheter med pool, cirka 100 meter från Blå Flagg-stranden. Capo Rizzuto, Calabrien. Perfekt för familjer. Boka direkt.",
     path: `/sv/sweden`,
     languages: {
       sv: canonical,
@@ -40,7 +40,7 @@ const lodgingSchema = {
   name: "Villa Olimpia",
   url: "https://villaolimpiacaporizzuto.com",
   description:
-    "9 oberoende lodges med pool, 70m från stranden, marint naturreservat Capo Rizzuto, Kalabrien",
+    "9 oberoende lodges med pool, cirka 100 meter från stranden, marint naturreservat Capo Rizzuto, Kalabrien",
   address: {
     "@type": "PostalAddress",
     streetAddress: "Località Capo Piccolo",
@@ -62,7 +62,7 @@ const lodgingSchema = {
     },
     {
       "@type": "LocationFeatureSpecification",
-      name: "Strand 70 meter",
+      name: "Strand cirka 100 meter",
       value: true,
     },
     {
@@ -103,7 +103,7 @@ const faqSchema = {
       name: "Finns det strand nära Villa Olimpia?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Sandstranden Spiaggia dei Gigli (Blå Flagg) ligger endast 70 meter från Villa Olimpia, inom det marina naturreservatet Capo Rizzuto.",
+        text: "Sandstranden Spiaggia dei Gigli (Blå Flagg) ligger cirka 100 meter från Villa Olimpia, inom det marina naturreservatet Capo Rizzuto.",
       },
     },
   ],

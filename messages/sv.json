@@ -26,14 +26,14 @@
   "home": {
     "hero": {
       "title": "9 Strandnära Lodges med Pool i Kalabrien",
-      "subtitle": "Semesterlägenheter med pool, 70 m från sandstranden Spiaggia dei Gigli",
-      "description": "Cirka 70 meter från sandstranden Spiaggia dei Gigli, i det marina naturreservatet Capo Rizzuto",
+      "subtitle": "Semesterlägenheter med pool, cirka 100 meter från sandstranden Spiaggia dei Gigli",
+      "description": "Cirka 100 meter från sandstranden Spiaggia dei Gigli, i det marina naturreservatet Capo Rizzuto",
       "protectedArea": "Marint naturreservat Capo Rizzuto",
       "apartments": "Lägenheter",
       "happyGuests": "Nöjda gäster",
       "rating": "Betyg",
       "ratingValue": "Utmärkt betyg",
-      "beachDistance": "Cirka 70 meter från stranden",
+      "beachDistance": "Cirka 100 meter från stranden",
       "privatePool": "Delad utomhuspool",
       "bookedBy": "Bokad av många gäster 2024",
       "bookDirectly": "Boka direkt och spara",
@@ -55,7 +55,7 @@
       "items": {
         "privilegedLocation": {
           "title": "Enastående läge",
-          "text": "Cirka 70 meter från sandstranden Spiaggia dei Gigli, i det marina naturreservatet"
+          "text": "Cirka 100 meter från sandstranden Spiaggia dei Gigli, i det marina naturreservatet"
         },
         "privatePool": {
           "title": "Delad utomhuspool",
@@ -121,7 +121,7 @@
       "items": {
         "beachDistance": {
           "q": "Hur långt är det från Villa Olimpia till stranden?",
-          "a": "Vi ligger cirka 70 meter från sandstranden Spiaggia dei Gigli, nåbar på 1 minut till fots."
+          "a": "Vi ligger cirka 100 meter från sandstranden Spiaggia dei Gigli, nåbar på 1 minut till fots."
         },
         "parking": {
           "q": "Är parkering inkluderad?",
@@ -213,7 +213,7 @@
   "location": {
     "title": "Plats",
     "subtitle": "Capopiccolo, Isola di Capo Rizzuto",
-    "description": "Cirka 70 meter från sandstranden"
+    "description": "Cirka 100 meter från sandstranden"
   },
   "services": {
     "title": "Tjänster",
@@ -245,7 +245,7 @@
   "footer": {
     "brand": {
       "title": "Villa Olimpia — Strandnära lägenheter med utomhuspool i Capo Rizzuto, Kalabrien",
-      "description": "9 strandnära lägenheter i Kalabrien med delad utomhuspool, cirka 70 meter från sandstranden i det marina naturreservatet Capo Rizzuto. Direktbokning."
+      "description": "9 strandnära lägenheter i Kalabrien med delad utomhuspool, cirka 100 meter från sandstranden i det marina naturreservatet Capo Rizzuto. Direktbokning."
     },
     "quickLinks": "Snabblänkar",
     "discover": "Upptäck Capo Rizzuto",
@@ -263,7 +263,7 @@
   "sweden": {
     "badge": "Semesterlägenheter med pool — Kalabrien 2026",
     "h1": "Din drömsemester i Kalabrien — Villa Olimpia Capo Rizzuto",
-    "intro": "Villa Olimpia erbjuder 9 privata lägenheter med delad utomhuspool, bara 70 meter från sandstranden Spiaggia dei Gigli i det marina naturreservatet Capo Rizzuto, södra Italien. Bekväma flygförbindelser från Sverige via Rom Fiumicino eller München. Perfekt för svenska familjer och par som söker varmt hav, lugn och autentisk italiensk gästfrihet.",
+    "intro": "Villa Olimpia erbjuder 9 privata lägenheter med delad utomhuspool, cirka 100 meter från sandstranden Spiaggia dei Gigli i det marina naturreservatet Capo Rizzuto, södra Italien. Bekväma flygförbindelser från Sverige via Rom Fiumicino eller München. Perfekt för svenska familjer och par som söker varmt hav, lugn och autentisk italiensk gästfrihet.",
     "flightsSection": {
       "title": "Så tar du dig till Villa Olimpia från Sverige",
       "route1": "Stockholm Arlanda (ARN) → Rom Fiumicino (FCO) → Lamezia Terme (SUF)",
@@ -275,7 +275,7 @@
     "villaSection": {
       "title": "Villa Olimpia — 9 Privata Lodges",
       "body": "Villa Olimpia är ett exklusivt lägenhetskomplex i Capopiccolo, inom det marina naturreservatet Capo Rizzuto. Anläggningen har 9 separata lodges: Frangipane, Fiordaliso, Giglio, Tulipano, Orchidea, Lavanda, Geranio, Gardenia och Azalea. Varje lodge är fristående med privat terrass, fullt utrustat kök och luftkonditionering. Gästerna delar en stor utomhuspool med solterrass.",
-      "beach": "Sandstranden Spiaggia dei Gigli (Blå Flagg) ligger endast 70 meter från Villa Olimpia, inom det marina naturreservatet Capo Rizzuto."
+      "beach": "Sandstranden Spiaggia dei Gigli (Blå Flagg) ligger cirka 100 meter från Villa Olimpia, inom det marina naturreservatet Capo Rizzuto."
     },
     "seasonSection": {
       "title": "När ska du resa: juni, juli eller september?",

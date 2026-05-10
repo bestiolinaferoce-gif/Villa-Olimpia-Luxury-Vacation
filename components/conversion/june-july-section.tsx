@@ -95,13 +95,13 @@ export function JuneJulySection() {
           >
             <div className="relative">
               <div className="absolute -top-3 left-6 bg-amber-500 text-white px-4 py-1 rounded-full text-sm font-bold z-10">
-                Solo 4 appartamenti
+                Mese consigliato
               </div>
               <Card className="border-2 border-amber-200 bg-white/90 backdrop-blur-sm shadow-lg pt-4">
                 <CardContent className="p-6 pt-6">
                   <h3 className="text-2xl font-playfair font-bold text-slate-900 mb-6 flex items-center gap-3">
                     <Sun className="h-7 w-7 text-amber-500" />
-                    Giugno 2026
+                    Giugno
                   </h3>
                   <div className="space-y-5">
                     {juneReasons.map((reason, i) => (
@@ -117,7 +117,7 @@ export function JuneJulySection() {
                     ))}
                   </div>
                   <Button variant="luxury" className="w-full mt-6 group" asChild>
-                    <Link href="/contatti?source=june_section&checkIn=2026-06-01#prenota">
+                    <Link href="/contatti?source=june_section&preferredMonth=giugno#prenota">
                       Prenota Giugno
                       <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                     </Link>
@@ -136,13 +136,13 @@ export function JuneJulySection() {
           >
             <div className="relative">
               <div className="absolute -top-3 left-6 bg-sky-600 text-white px-4 py-1 rounded-full text-sm font-bold z-10">
-                Solo 3 appartamenti
+                Alta stagione
               </div>
               <Card className="border-2 border-sky-200 bg-white/90 backdrop-blur-sm shadow-lg pt-4">
                 <CardContent className="p-6 pt-6">
                   <h3 className="text-2xl font-playfair font-bold text-slate-900 mb-6 flex items-center gap-3">
                     <Waves className="h-7 w-7 text-sky-500" />
-                    Luglio 2026
+                    Luglio
                   </h3>
                   <div className="space-y-5">
                     {julyReasons.map((reason, i) => (
@@ -158,7 +158,7 @@ export function JuneJulySection() {
                     ))}
                   </div>
                   <Button variant="default" className="w-full mt-6 group" asChild>
-                    <Link href="/contatti?source=july_section&checkIn=2026-07-01#prenota">
+                    <Link href="/contatti?source=july_section&preferredMonth=luglio#prenota">
                       Prenota Luglio
                       <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                     </Link>

@@ -1,11 +1,14 @@
+import { generateMetadata } from "@/lib/metadata"
 import { ImageGallery } from "@/components/gallery/image-gallery"
 import { villaImages } from "@/lib/image-loader"
 import { Breadcrumb } from "@/components/breadcrumb"
 
-export const metadata = {
-  title: "Gallery - Villa Olimpia",
-  description: "Scopri Villa Olimpia attraverso le nostre foto. Appartamenti, piscina, terrazze, spiaggia e viste mozzafiato sulla Spiaggia dei Gigli, Capo Rizzuto.",
-}
+export const metadata = generateMetadata({
+  title: "Gallery Fotografica | Villa Olimpia Capo Rizzuto",
+  description:
+    "Scopri Villa Olimpia attraverso foto reali di appartamenti, piscina, spazi esterni, Spiaggia dei Gigli e territorio di Capo Rizzuto.",
+  path: "/gallery",
+})
 
 export default function GalleryPage() {
   return (

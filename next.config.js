@@ -90,7 +90,13 @@ const nextConfig = {
       // Fix GSC (29/04/2026) - /de|fr|nl/appartamenti/* → pagine lodge italiane (le uniche esistenti)
       { source: "/:locale(de|fr|nl|no|sv)/appartamenti/:slug*", destination: "/appartamenti/:slug*", permanent: true },
       // Fix Search Console (17/04/2026) - prefisso /it/ non necessario (locale di default)
+      { source: "/it", destination: "/", permanent: true },
       { source: "/it/:path*", destination: "/:path*", permanent: true },
+      // Localized routes not actually supported should resolve with a clean redirect, not a soft 200 page.
+      { source: "/:locale(de|fr|nl|no|sv)/prenota", destination: "/prenota", permanent: true },
+      { source: "/:locale(de|fr|nl|no|sv)/le-castella", destination: "/le-castella", permanent: true },
+      { source: "/:locale(nl|no|sv)/capo-rizzuto", destination: "/capo-rizzuto", permanent: true },
+      { source: "/:locale(nl|no|sv)/settembre-capo-rizzuto", destination: "/settembre-capo-rizzuto", permanent: true },
       // Localized listing lives at /en/apartments; detail slugs stay on /appartamenti/*
       { source: "/en/contatti", destination: "/en/contact", permanent: true },
       // /no homepage redirects to the dedicated Norwegian landing page

@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { redirect } from "next/navigation"
+import { notFound } from "next/navigation"
 import {
   generateMetadata as definePageMetadata,
   buildHreflangLanguages,
@@ -17,7 +17,11 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { locale } = await params
-  const path = locale === "en" ? "/en/le-castella" : `/le-castella`
+  if (locale !== "en") {
+    notFound()
+  }
+
+  const path = "/en/le-castella"
   const base = definePageMetadata({
     title: "Le Castella e Castello Aragonese | Villa Olimpia vicino Capopiccolo",
     description:
@@ -35,13 +39,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function LocalizedLeCastellaPage({ params }: PageProps) {
   const { locale } = await params
-  if (locale === "en") {
-    return (
-      <LeCastellaPageView
-        contactHref={getLocalizedPathForCanonical("/contatti", "en")}
-        capoRizzutoHref={getLocalizedPathForCanonical("/capo-rizzuto", "en")}
-      />
-    )
+  if (locale !== "en") {
+    notFound()
   }
-  redirect("/le-castella")
+
+  return (
+    <LeCastellaPageView
+      contactHref={getLocalizedPathForCanonical("/contatti", "en")}
+      capoRizzutoHref={getLocalizedPathForCanonical("/capo-rizzuto", "en")}
+    />
+  )
 }

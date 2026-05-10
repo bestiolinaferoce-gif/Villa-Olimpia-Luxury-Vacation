@@ -11,6 +11,7 @@ const DATE_CONTENT = new Date("2026-03-25")
 const DATE_NEW_PAGES = new Date("2026-04-08")
 const DATE_TERRITORIO = new Date("2026-04-19")
 const DATE_SCHEMA_FIX = new Date("2026-04-29") // Fix schema VacationRental + redirect
+const DATE_INTERNATIONAL = new Date("2026-05-10")
 
 const staticRoutes: Array<{
   path: string
@@ -26,6 +27,9 @@ const staticRoutes: Array<{
   { path: "/luglio-2026", priority: 0.9, changeFrequency: "weekly", lastMod: DATE_CORE },
   { path: "/settembre-capo-rizzuto", priority: 0.88, changeFrequency: "weekly", lastMod: DATE_NEW_PAGES },
   { path: "/intera-villa-calabria", priority: 0.86, changeFrequency: "monthly", lastMod: DATE_NEW_PAGES },
+  { path: "/oslo-lamezia-villa-olimpia", priority: 0.84, changeFrequency: "monthly", lastMod: DATE_INTERNATIONAL },
+  { path: "/aeroporto-crotone-villa-olimpia", priority: 0.84, changeFrequency: "monthly", lastMod: DATE_INTERNATIONAL },
+  { path: "/aeroporto-lamezia-villa-olimpia", priority: 0.84, changeFrequency: "monthly", lastMod: DATE_INTERNATIONAL },
 
   { path: "/contatti", priority: 0.9, changeFrequency: "monthly", lastMod: DATE_CORE },
   { path: "/recensioni", priority: 0.9, changeFrequency: "weekly", lastMod: DATE_CORE },
@@ -58,6 +62,10 @@ const EN_ONLY_CANONICAL = [
   "/calabria-beach-apartments",
   "/family-holiday-calabria",
   "/september-italy-holidays",
+  "/dusseldorf-to-crotone-calabria",
+  "/oslo-to-lamezia-villa-olimpia",
+  "/crotone-airport-to-villa-olimpia",
+  "/lamezia-airport-to-villa-olimpia",
 ] as const
 
 const EN_PRIORITY_LANDINGS: Array<{ canonical: string; priority: number }> = [
@@ -127,7 +135,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const enPriorityLandings: MetadataRoute.Sitemap = EN_PRIORITY_LANDINGS.map(
     ({ canonical, priority }) => ({
       url: `${BASE_URL}/en${canonical}`,
-      lastModified: new Date(),
+      lastModified: DATE_INTERNATIONAL,
       changeFrequency: "monthly" as const,
       priority,
     })
@@ -141,8 +149,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: `${BASE_URL}/no/oslo-til-lamezia-villa-olimpia`,
+      lastModified: DATE_INTERNATIONAL,
+      changeFrequency: "monthly",
+      priority: 0.88,
+    },
+    {
       url: `${BASE_URL}/sv/sweden`,
-      lastModified: new Date(),
+      lastModified: DATE_INTERNATIONAL,
       changeFrequency: "monthly",
       priority: 0.9,
     },

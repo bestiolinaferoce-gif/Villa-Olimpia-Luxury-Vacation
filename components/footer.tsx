@@ -153,6 +153,16 @@ export function Footer() {
                   Tour Enogastronomici Cirò
                 </Link>
               </li>
+              {currentLocale === "en" ? (
+                <li>
+                  <Link
+                    href="/en/dusseldorf-to-crotone-calabria"
+                    className="text-muted-foreground hover:text-primary transition-colors"
+                  >
+                    Dusseldorf to Calabria guide
+                  </Link>
+                </li>
+              ) : null}
             </ul>
           </div>
 

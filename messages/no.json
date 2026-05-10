@@ -27,13 +27,13 @@
     "hero": {
       "title": "9 Strandnære Lodges med Basseng i Calabria",
       "subtitle": "Direktefly Oslo (OSL) → Lamezia Terme (SUF) med Norwegian — 75 min fra flyplassen",
-      "description": "Ca. 70 meter fra sandstranden Spiaggia dei Gigli, i det marine verneområdet Capo Rizzuto",
+      "description": "Ca. 100 meter fra sandstranden Spiaggia dei Gigli, i det marine verneområdet Capo Rizzuto",
       "protectedArea": "Marint verneområde Capo Rizzuto",
       "apartments": "Leiligheter",
       "happyGuests": "Fornøyde gjester",
       "rating": "Vurdering",
       "ratingValue": "Utmerket vurdering",
-      "beachDistance": "Ca. 70 meter fra stranden",
+      "beachDistance": "Ca. 100 meter fra stranden",
       "privatePool": "Delt utendørsbasseng",
       "bookedBy": "Bestilt av mange gjester i 2024",
       "bookDirectly": "Book direkte og spar",
@@ -55,7 +55,7 @@
       "items": {
         "privilegedLocation": {
           "title": "Enestående beliggenhet",
-          "text": "Ca. 70 meter fra sandstranden Spiaggia dei Gigli, i det marine verneområdet"
+          "text": "Ca. 100 meter fra sandstranden Spiaggia dei Gigli, i det marine verneområdet"
         },
         "privatePool": {
           "title": "Delt utendørsbasseng",
@@ -121,7 +121,7 @@
       "items": {
         "beachDistance": {
           "q": "Hvor langt er det fra Villa Olimpia til stranden?",
-          "a": "Vi er ca. 70 meter fra sandstranden Spiaggia dei Gigli, nåbar på 1 minutt til fots."
+          "a": "Vi er ca. 100 meter fra sandstranden Spiaggia dei Gigli, nåbar på 1 minutt til fots."
         },
         "parking": {
           "q": "Er parkering inkludert?",
@@ -213,7 +213,7 @@
   "location": {
     "title": "Beliggenhet",
     "subtitle": "Capopiccolo, Isola di Capo Rizzuto",
-    "description": "Ca. 70 meter fra sandstranden"
+    "description": "Ca. 100 meter fra sandstranden"
   },
   "services": {
     "title": "Tjenester",
@@ -245,7 +245,7 @@
   "footer": {
     "brand": {
       "title": "Villa Olimpia — Strandnære leiligheter med utendørsbasseng i Capo Rizzuto, Calabria",
-      "description": "9 strandnære leiligheter i Calabria med delt utendørsbasseng, ca. 70 meter fra sandstranden i det marine verneområdet Capo Rizzuto. Direktebestilling."
+      "description": "9 strandnære leiligheter i Calabria med delt utendørsbasseng, ca. 100 meter fra sandstranden i det marine verneområdet Capo Rizzuto. Direktebestilling."
     },
     "quickLinks": "Hurtiglenker",
     "discover": "Oppdag Capo Rizzuto",
@@ -263,7 +263,7 @@
   "norway": {
     "badge": "Direktefly fra Oslo — mai–oktober 2026",
     "h1": "Drømmeferien i Calabria – Direktefly fra Oslo med Norwegian",
-    "intro": "Norwegian flyr direkte fra Oslo Gardermoen (OSL) til Lamezia Terme (SUF) hver mandag fra 4. mai til 19. oktober 2026. Villa Olimpia ligger kun 75 minutter fra flyplassen — 9 private lodges, delt utendørsbasseng, og sandstranden Spiaggia dei Gigli bare 70 meter unna.",
+    "intro": "Norwegian flyr direkte fra Oslo Gardermoen (OSL) til Lamezia Terme (SUF) hver mandag fra 4. mai til 19. oktober 2026. Villa Olimpia ligger kun 75 minutter fra flyplassen — 9 private lodges, delt utendørsbasseng, og sandstranden Spiaggia dei Gigli bare omtrent 100 meter unna.",
     "flightsSection": {
       "title": "Direktefly Oslo → Lamezia Terme 2026",
       "route": "Oslo Gardermoen (OSL) → Lamezia Terme (SUF)",
@@ -275,7 +275,7 @@
     "villaSection": {
       "title": "Villa Olimpia — 9 Private Lodges",
       "body": "Villa Olimpia er et eksklusivt leilighets-kompleks i Capopiccolo, i det marine verneområdet Capo Rizzuto. Anlegget har 9 separate lodges: Frangipane, Fiordaliso, Giglio, Tulipano, Orchidea, Lavanda, Geranio, Gardenia og Azalea. Hvert lodge er selvstendig med privat terrasse, fullt utstyrt kjøkken og aircondition. Gjestene deler et stort utendørsbasseng med solarium.",
-      "beach": "Sandstranden Spiaggia dei Gigli (Blått Flagg) er kun 70 meter fra Villa Olimpia, innenfor det marine verneområdet Capo Rizzuto."
+      "beach": "Sandstranden Spiaggia dei Gigli (Blått Flagg) er ca. 100 meter fra Villa Olimpia, innenfor det marine verneområdet Capo Rizzuto."
     },
     "transferSection": {
       "title": "Transport: Fra Lamezia Terme til Villa Olimpia",

@@ -8,7 +8,7 @@ export type SupportedLocale = (typeof SUPPORTED_LOCALES)[number]
 
 export const DEFAULT_LOCALE: SupportedLocale = "it"
 
-/** Core routes with full EN experience; DE/FR/NL only where PARTIAL_ROUTES allows */
+/** Core routes with full EN experience; DE/FR only on a selective subset */
 export const CORE_TRANSLATED_ROUTES = [
   "/",
   "/contatti",
@@ -28,8 +28,8 @@ export type PartialLocale = (typeof PARTIAL_LOCALES)[number]
 export const PARTIAL_ROUTES_FOR_DE_FR = [
   "/",
   "/contatti",
-  // NOTE: /capo-rizzuto and /settembre-capo-rizzuto removed —
-  // [locale] pages redirect to IT for DE/FR/NL/NO/SV → excluded from hreflang/sitemap
+  "/capo-rizzuto",
+  "/settembre-capo-rizzuto",
 ] as const
 
 export type PartialRouteForDeFr = (typeof PARTIAL_ROUTES_FOR_DE_FR)[number]
@@ -65,11 +65,8 @@ export function localeHasRoute(locale: SupportedLocale, canonicalPath: string): 
   if (!isCoreRoute(p)) return false
   if (locale === "it") return true
 
-  // [locale]/le-castella redirects to IT for ALL non-IT locales → exclude from hreflang/sitemap
+  // /le-castella has a real localized page only in EN. All other locales should not expose a URL.
   if (p === "/le-castella") return false
-
-  // [locale]/settembre-capo-rizzuto redirects to IT for ALL non-IT locales → exclude
-  if (p === "/settembre-capo-rizzuto") return false
 
   if (locale === "en") return true
 
@@ -77,9 +74,8 @@ export function localeHasRoute(locale: SupportedLocale, canonicalPath: string): 
   // Exclude /no from the homepage to avoid a redirecting URL in sitemap/hreflang.
   if (locale === "no" && p === "/") return false
 
-  // [locale]/capo-rizzuto: only EN has real content; DE/FR/NL/NO/SV redirect to IT → exclude
-  if (p === "/capo-rizzuto" && isPartialLocale(locale)) return false
-
-  if (isPartialLocale(locale)) return isPartialRouteForDeFr(p)
+  if (locale === "de" || locale === "fr") return isPartialRouteForDeFr(p)
+  if (locale === "nl" || locale === "sv") return p === "/"
+  if (locale === "no") return false
   return false
 }

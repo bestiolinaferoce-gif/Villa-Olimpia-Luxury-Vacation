@@ -29,7 +29,7 @@ const CAMPAIGNS: CampaignBanner[] = [
   {
     id: "july-push-2026",
     title: "Luglio: il mese perfetto per la tua vacanza al mare in Calabria",
-    subtitle: "Piscina privata, Spiaggia dei Gigli a 100m e serate mediterranee. Solo 3 appartamenti rimasti.",
+    subtitle: "Piscina condivisa, Spiaggia dei Gigli a 100 m e serate mediterranee. Disponibilità limitate.",
     ctaLabel: "Prenota Luglio",
     ctaHref: "/contatti?source=campaign_july&checkIn=2026-07-01#prenota",
     startsAt: "2026-02-01",

@@ -25,7 +25,7 @@
   },
   "home": {
     "hero": {
-      "title": "Villa Olimpia — Appartementen met privézwembad in Capo Rizzuto",
+      "title": "Villa Olimpia — Appartementen met gedeeld zwembad in Capo Rizzuto",
       "subtitle": "Luxe ervaring op het prachtige Spiaggia dei Gigli",
       "description": "Minder dan 100 meter van het prachtige Spiaggia dei Gigli, in het Zeereservaat Capo Rizzuto",
       "protectedArea": "Zeereservaat Capo Rizzuto",
@@ -34,7 +34,7 @@
       "rating": "Beoordeling",
       "ratingValue": "Uitstekende beoordeling",
       "beachDistance": "100 meter van het strand",
-      "privatePool": "Privé Zwembad",
+      "privatePool": "Gedeeld Zwembad",
       "bookedBy": "Geboekt door veel gasten in 2024",
       "bookDirectly": "Boek direct en bespaar",
       "bookStay": "Boek uw verblijf",
@@ -58,7 +58,7 @@
           "text": "Minder dan 100 meter van het prachtige Spiaggia dei Gigli, in het Zeereservaat"
         },
         "privatePool": {
-          "title": "Privé Zwembad",
+          "title": "Gedeeld Zwembad",
           "text": "Groot gedeeld zwembad met zonneterras en gazebo voor ontspanning"
         },
         "premiumComfort": {
@@ -188,7 +188,7 @@
   },
   "apartments": {
     "title": "Appartementen",
-    "subtitle": "9 luxe appartementen met privé zwembad",
+    "subtitle": "9 luxe appartementen met gedeeld zwembad",
     "description": "Alle appartementen beschikken over airconditioning, gratis WiFi, volledige keuken en toegang tot gedeeld zwembad",
     "guests": "gasten",
     "bedrooms": "slaapkamers",
@@ -249,8 +249,8 @@
   },
   "footer": {
     "brand": {
-      "title": "Villa Olimpia — Appartementen met privézwembad in Capo Rizzuto",
-      "description": "Uw luxe toevluchtsoord in Calabrië. 9 elegante appartementen met privé zwembad, slechts 100m van het prachtige Spiaggia dei Gigli."
+      "title": "Villa Olimpia — Appartementen met gedeeld zwembad in Capo Rizzuto",
+      "description": "Uw luxe toevluchtsoord in Calabrië. 9 elegante appartementen met gedeeld zwembad, op ongeveer 100 meter van het prachtige Spiaggia dei Gigli."
     },
     "quickLinks": "Snelle Links",
     "discover": "Ontdek Capo Rizzuto",

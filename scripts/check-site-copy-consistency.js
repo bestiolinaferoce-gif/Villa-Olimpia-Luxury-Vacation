@@ -78,6 +78,72 @@ function main() {
     assertContains(text, /una piazza e mezza/i, file, "Giglio con una piazza e mezza", errors)
   }
 
+  // Guardrail: la piscina è condivisa ad uso degli ospiti, MAI privata.
+  // Esclude file legacy non importati nel bundle (lib/seo-territory.ts, lib/seo-advanced.ts,
+  // lib/i18n/translations/*, scripts/auto-update-content.ts) e citazioni testimonial reali.
+  const poolGuardrailFiles = [
+    "lib/metadata.ts",
+    "app/layout.tsx",
+    "app/page.tsx",
+    "app/[locale]/page.tsx",
+    "app/appartamenti/[id]/page.tsx",
+    "app/spiagge-capo-rizzuto/page.tsx",
+    "app/blog/vacanze-famiglia-capo-rizzuto-bambini/page.tsx",
+    "app/blog/spiagge-piu-belle-capo-rizzuto/page.tsx",
+    "components/why-choose-us.tsx",
+    "components/parallax-hero.tsx",
+    "components/home-gallery.tsx",
+    "components/servizi-content.tsx",
+    "data/content-automation.ts",
+    "data/apartment-content.ts",
+    "data/apartments-seo.ts",
+    "messages/it.json",
+    "messages/en.json",
+    "messages/de.json",
+    "messages/fr.json",
+    "messages/nl.json",
+    "messages/no.json",
+    "messages/sv.json",
+  ]
+  for (const file of poolGuardrailFiles) {
+    const text = read(file)
+    assertNotContains(text, /piscina\s+privata/i, file, "piscina privata IT", errors)
+    assertNotContains(text, /private\s+pool/i, file, "private pool EN", errors)
+    assertNotContains(text, /privater\s+pool/i, file, "privater Pool DE", errors)
+    assertNotContains(text, /piscine\s+priv[ée]e/i, file, "piscine privée FR", errors)
+    assertNotContains(text, /priv[ée]\s*zwembad/i, file, "privé zwembad NL", errors)
+    assertNotContains(text, /privat\s+basseng/i, file, "privat basseng NO", errors)
+    assertNotContains(text, /privat\s+pool/i, file, "privat pool SV", errors)
+  }
+
+  // Guardrail: la distanza ufficiale dalla spiaggia è ~100 metri.
+  // Le menzioni "70m" / "70 meter" sui canali ufficiali sono incoerenti e vanno bloccate.
+  // (I testimonial reali in components/testimonials-carousel.tsx sono esclusi: sono citazioni di ospiti.)
+  const distanceGuardrailFiles = [
+    "lib/metadata.ts",
+    "app/layout.tsx",
+    "app/page.tsx",
+    "app/[locale]/page.tsx",
+    "app/[locale]/sweden/page.tsx",
+    "app/[locale]/norway/page.tsx",
+    "app/[locale]/dusseldorf-to-crotone-calabria/page.tsx",
+    "components/pages/contact-page-client.tsx",
+    "messages/it.json",
+    "messages/en.json",
+    "messages/de.json",
+    "messages/fr.json",
+    "messages/nl.json",
+    "messages/no.json",
+    "messages/sv.json",
+  ]
+  for (const file of distanceGuardrailFiles) {
+    const text = read(file)
+    // Match: "70m", "70 m", "70 metri", "70 meter", "cirka 70" — case-insensitive.
+    // Esclude "70 m²" (metratura) e "70 minutes/minutter/minutter" (tempi transfer).
+    const bad70 = /\b70\s*(?:m(?!²|inut)|metri|meter)\b/i
+    assertNotContains(text, bad70, file, "distanza 70m residua", errors)
+  }
+
   if (errors.length) fail(errors)
   console.log("✅ Controllo coerenza copy superato")
 }

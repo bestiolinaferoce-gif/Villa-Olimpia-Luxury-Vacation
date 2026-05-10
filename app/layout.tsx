@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next"
+import { headers } from "next/headers"
 import { Inter, Playfair_Display } from "next/font/google"
 import Script from "next/script"
 import "./globals.css"
@@ -48,8 +49,11 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const requestHeaders = await headers()
+  const locale = requestHeaders.get("x-next-intl-locale") ?? "it"
+
   return (
-    <html lang="it" className={`${inter.variable} ${playfair.variable}`} suppressHydrationWarning>
+    <html lang={locale} className={`${inter.variable} ${playfair.variable}`} suppressHydrationWarning>
       <head>
         {/* Consent Mode v2 - PRIMO script, prima di GTM */}
         <script

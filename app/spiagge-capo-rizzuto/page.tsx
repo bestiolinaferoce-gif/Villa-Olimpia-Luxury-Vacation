@@ -607,7 +607,7 @@ export default function SpiaggeCapoRizzutoPage() {
               {[
                 "A 100 metri dalla Spiaggia dei Gigli (1 minuto a piedi)",
                 "Parcheggio gratuito per raggiungere le altre spiagge",
-                "Piscina privata per relax dopo la spiaggia",
+                "Piscina condivisa riservata agli ospiti per il relax dopo la spiaggia",
                 "WiFi gratuito per condividere le tue foto",
                 "Cucina completa per pranzi al sacco",
                 "Posizione centrale per esplorare tutta la costa",

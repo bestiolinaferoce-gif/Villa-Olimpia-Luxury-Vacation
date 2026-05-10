@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { redirect } from "next/navigation"
+import { notFound } from "next/navigation"
 import {
   generateMetadata as definePageMetadata,
   buildHreflangLanguages,
@@ -17,31 +17,20 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { locale } = await params
-  if (locale === "en") {
-    const base = definePageMetadata({
-      title: "Direct Booking — Apartments in Capo Rizzuto | Villa Olimpia",
-      description:
-        "Book directly with Villa Olimpia: May, June and September are often ideal for calmer sea and quality stays. Families, small groups and multi-apartment requests — reply within 24 hours, tailored offer, no intermediaries.",
-      path: "/en/prenota",
-      keywords: [
-        "book Villa Olimpia",
-        "direct booking Capo Rizzuto",
-        "Capopiccolo apartments request",
-      ],
-    })
-    return {
-      ...base,
-      alternates: {
-        ...base.alternates,
-        languages: buildHreflangLanguages("/prenota"),
-      },
-    }
+  if (locale !== "en") {
+    notFound()
   }
+
   const base = definePageMetadata({
-    title: "Prenotazione Diretta Appartamenti a Capo Rizzuto | Villa Olimpia",
+    title: "Direct Booking — Apartments in Capo Rizzuto | Villa Olimpia",
     description:
-      "Prenotazione diretta Villa Olimpia: maggio, giugno e settembre sono spesso i mesi migliori per mare più tranquillo e soggiorni di qualità.",
-    path: "/prenota",
+      "Book directly with Villa Olimpia: May, June and September are often ideal for calmer sea and quality stays. Families, small groups and multi-apartment requests — reply within 24 hours, tailored offer, no intermediaries.",
+    path: "/en/prenota",
+    keywords: [
+      "book Villa Olimpia",
+      "direct booking Capo Rizzuto",
+      "Capopiccolo apartments request",
+    ],
   })
   return {
     ...base,
@@ -54,16 +43,17 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function LocalizedPrenotaPage({ params }: PageProps) {
   const { locale } = await params
-  if (locale === "en") {
-    const apartmentsHref = getLocalizedPathForCanonical("/appartamenti", "en")
-    const settembreHref = getLocalizedPathForCanonical("/settembre-capo-rizzuto", "en")
-    return (
-      <PrenotaPageView
-        apartmentsHref={apartmentsHref}
-        settembreHref={settembreHref}
-        interaVillaHref="/intera-villa-calabria"
-      />
-    )
+  if (locale !== "en") {
+    notFound()
   }
-  redirect("/prenota")
+
+  const apartmentsHref = getLocalizedPathForCanonical("/appartamenti", "en")
+  const settembreHref = getLocalizedPathForCanonical("/settembre-capo-rizzuto", "en")
+  return (
+    <PrenotaPageView
+      apartmentsHref={apartmentsHref}
+      settembreHref={settembreHref}
+      interaVillaHref="/intera-villa-calabria"
+    />
+  )
 }

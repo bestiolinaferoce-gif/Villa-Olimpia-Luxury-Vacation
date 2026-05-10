@@ -64,9 +64,9 @@ export default function ArticlePage() {
             </div>
 
             <div>
-              <h2 className="text-2xl md:text-3xl font-playfair font-bold mb-4">4. La piscina privata</h2>
+              <h2 className="text-2xl md:text-3xl font-playfair font-bold mb-4">4. La piscina della struttura, riservata agli ospiti</h2>
               <p className="text-lg text-muted-foreground">
-                La piscina privata di Villa Olimpia è ad uso esclusivo degli ospiti. L&apos;area solarium attrezzata permette ai genitori di rilassarsi mentre i bambini nuotano. Per i più piccoli, alternare mare e piscina è il modo perfetto per riempire le giornate estive.
+                La piscina condivisa di Villa Olimpia è riservata agli ospiti della struttura. L&apos;area solarium attrezzata permette ai genitori di rilassarsi mentre i bambini nuotano. Per i più piccoli, alternare mare e piscina è il modo perfetto per riempire le giornate estive.
               </p>
             </div>
 
@@ -90,7 +90,7 @@ export default function ArticlePage() {
             <div className="pt-8 border-t">
               <h2 className="text-2xl md:text-3xl font-playfair font-bold mb-4">Pianifica la tua vacanza in famiglia a Villa Olimpia</h2>
               <p className="text-lg text-muted-foreground mb-6">
-                Mare sicuro, piscina privata, lodge indipendente, spiaggia a un minuto: una combinazione difficile da trovare altrove sulla Costa Ionica.
+                Mare sicuro, piscina condivisa riservata agli ospiti, lodge indipendente, spiaggia a un minuto: una combinazione difficile da trovare altrove sulla Costa Ionica.
               </p>
               <div className="flex flex-wrap gap-4">
                 <Button asChild variant="default">

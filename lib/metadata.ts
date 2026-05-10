@@ -213,24 +213,24 @@ export const defaultMetadata: Metadata = {
       default: `${siteName} Capo Rizzuto | Appartamenti con Piscina al Mare`,
       template: `%s`,
     },
-  description: "Lodge privati con piscina a Capo Piccolo, a meno di 100 metri dalla Spiaggia dei Gigli. 9 appartamenti nell'Area Marina Protetta di Capo Rizzuto. Prenota ora.",
+  description: "9 lodge privati con piscina esterna condivisa a Capo Piccolo, a circa 100 metri dalla Spiaggia dei Gigli. Villa Olimpia ti aspetta nell'Area Marina Protetta di Capo Rizzuto. Prenota direttamente.",
   keywords: [
-    // Core estate 2026
-    "appartamenti capo rizzuto estate 2026",
-    "appartamenti capo rizzuto agosto 2026",
-    "vacanze calabria estate 2026",
-    "affitto appartamento luglio 2026 calabria",
-    "villa olimpia capo rizzuto 2026",
+    // Core prodotto
+    "appartamenti capo rizzuto",
+    "vacanze calabria mare",
+    "appartamenti capopiccolo",
+    "appartamenti capo rizzuto vicino mare",
+    "appartamenti calabria con piscina",
     // Prodotto
     "appartamenti vacanze Calabria piscina",
-    "villa piscina Capo Rizzuto",
-    "appartamento piscina privata capo rizzuto",
+    "villa con piscina Capo Rizzuto",
+    "appartamento con piscina capo rizzuto",
     "Isola Capo Rizzuto appartamenti",
     "Spiaggia dei Gigli alloggio",
     "vacanze Calabria piscina",
     "affitto settimanale Capo Rizzuto",
     "appartamento vacanze 100 metri dal mare Calabria",
-    "villa con piscina privata Isola Capo Rizzuto",
+    "villa con piscina Isola Capo Rizzuto",
     "affitto appartamento famiglia piscina Calabria",
     "dove dormire Capo Rizzuto vicino mare",
     "Capo Piccolo appartamenti",
@@ -269,7 +269,7 @@ export const defaultMetadata: Metadata = {
     url: baseUrl,
     siteName: openGraphSiteName,
     title: `${siteName} Capo Rizzuto | Appartamenti con Piscina al Mare`,
-    description: "Lodge privati con piscina a Capo Piccolo, a 70m dalla Spiaggia dei Gigli. 9 appartamenti nell'Area Marina Protetta di Capo Rizzuto. Prenota ora.",
+    description: "9 lodge privati con piscina esterna condivisa a Capo Piccolo, a circa 100 metri dalla Spiaggia dei Gigli. Prenotazione diretta a Villa Olimpia.",
     images: [
       {
         url: `${baseUrl}/og-image.jpg`,
@@ -282,7 +282,7 @@ export const defaultMetadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: `${siteName} Capo Rizzuto | Appartamenti con Piscina al Mare`,
-    description: "Lodge privati con piscina a Capo Piccolo, a 70m dalla Spiaggia dei Gigli. 9 appartamenti nell'Area Marina Protetta di Capo Rizzuto. Prenota ora.",
+    description: "9 lodge privati con piscina esterna condivisa a Capo Piccolo, a circa 100 metri dalla Spiaggia dei Gigli. Prenota direttamente.",
     images: [`${baseUrl}/og-image.jpg`],
   },
   alternates: {

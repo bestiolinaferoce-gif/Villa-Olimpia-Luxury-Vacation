@@ -57,7 +57,7 @@ export function HomePageEnView() {
               <p className="mt-4 text-lg leading-relaxed text-slate-600">
                 Villa Olimpia offers 9 independent apartments with private outdoor spaces, fully equipped kitchens,
                 and a shared outdoor pool — set in a quiet Mediterranean garden inside the Capo Rizzuto Marine
-                Protected Area. Good availability for June and July 2026 — contact us directly.
+                Protected Area. Contact us directly for current availability and a clear quote.
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <Button variant="luxury" size="lg" asChild onClick={() => trackEvent("cta_click", "Conversion", "en_hero_check_availability")}>
@@ -70,6 +70,13 @@ export function HomePageEnView() {
                   <Link href="/en/contact">Send us a quick request</Link>
                 </Button>
               </div>
+              <p className="mt-4 text-sm text-slate-500">
+                Travelling from Germany? Read our guide for arrivals via{" "}
+                <Link href="/en/dusseldorf-to-crotone-calabria" className="font-medium text-primary hover:underline">
+                  Dusseldorf, Crotone and Lamezia
+                </Link>
+                .
+              </p>
             </div>
             <div className="relative h-80 overflow-hidden rounded-2xl border border-primary/10 shadow-xl lg:h-[430px]">
               <Image

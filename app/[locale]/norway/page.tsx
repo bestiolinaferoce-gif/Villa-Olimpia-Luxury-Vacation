@@ -159,6 +159,13 @@ function NorwayPageContent() {
                 September i Calabria — havet 26°C →
               </Link>
             </div>
+            <p className="mt-4 text-sm text-blue-100/80">
+              Vil du ha en konkret flyguide? Les også{" "}
+              <Link href="/no/oslo-til-lamezia-villa-olimpia" className="font-medium text-white hover:underline">
+                Oslo–Lamezia og Villa Olimpia
+              </Link>
+              .
+            </p>
           </div>
         </section>
 

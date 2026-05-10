@@ -640,7 +640,7 @@ const contactPageCopy: Partial<Record<Locale, ContactPageCopy>> = {
       "Fortell oss reisedatoene dine, så svarer vi med et nøyaktig tilbud. Når du booker her, snakker du direkte med Villa Olimpia — ingen OTA-provisjoner, delt utendørsbasseng, middelhavspark og havet rett utenfor.",
     chips: {
       fastReply: "Svar innen 24 timer",
-      closeToSea: "70m fra stranden",
+      closeToSea: "Omtrent 100 m fra stranden",
       familyFriendly: "Perfekt for familier",
       flexibleCancellation: "Fleksibel avbestilling inntil 30 dager før ankomst",
       longStayDiscount: "Rabatt for opphold på 7+ netter (juni/juli)",
@@ -679,7 +679,7 @@ const contactPageCopy: Partial<Record<Locale, ContactPageCopy>> = {
       title: "Del Villa Olimpia",
       description: "En enkel melding kan hjelpe oss. Vi har forberedt teksten for deg.",
       shareText:
-        "Jeg anbefaler Villa Olimpia i Capopiccolo: leiligheter med basseng 70m fra stranden. Svar innen 24t.",
+        "Jeg anbefaler Villa Olimpia i Capopiccolo: leiligheter med basseng cirka 100 m fra stranden. Svar innen 24t.",
       shareOnWhatsApp: "Del på WhatsApp",
       copyText: "Kopier tekst",
       copiedText: "Kopiert",

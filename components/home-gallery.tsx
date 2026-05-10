@@ -12,7 +12,7 @@ const galleryImages = [
   // PISCINA - Prima sezione (priorità) - usando mapping centralizzato
   ...poolImages.all.map((src, idx) => ({
     src,
-    alt: `Piscina Villa Olimpia - Piscina privata 12x6m con solarium e vista mare${idx > 0 ? ` - Vista ${idx + 1}` : ''}`,
+    alt: `Piscina Villa Olimpia - Piscina condivisa 12x6m con solarium e vista mare${idx > 0 ? ` - Vista ${idx + 1}` : ''}`,
     category: 'Piscina'
   })),
   // RELAX - Gazebo e aree relax
@@ -178,7 +178,7 @@ export function HomeGallery() {
             La parte più bella del soggiorno, in uno sguardo
           </h2>
           <p className="mt-4 text-xl text-muted-foreground max-w-2xl mx-auto">
-            Dalla piscina privata alle spiagge di Capopiccolo, fino a Le Castella e all&apos;Area Marina Protetta:
+            Dalla piscina condivisa riservata agli ospiti alle spiagge di Capopiccolo, fino a Le Castella e all&apos;Area Marina Protetta:
             scopri in un colpo d&apos;occhio i motivi per cui Villa Olimpia e la sua posizione fanno davvero la differenza.
           </p>
         </div>
