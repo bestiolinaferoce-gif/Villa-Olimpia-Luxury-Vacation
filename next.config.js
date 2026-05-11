@@ -1,6 +1,37 @@
 const createNextIntlPlugin = require('next-intl/plugin');
 const withNextIntl = createNextIntlPlugin('./i18n/request.ts');
 
+const unsupportedLocalePrefixes = ['en', 'de', 'fr', 'nl', 'no', 'sv'];
+
+const rootOnlyLocalizedRedirects = [
+  '/location',
+  '/territorio',
+  '/servizi',
+  '/faq',
+  '/recensioni',
+  '/privacy',
+  '/cookie-policy',
+  '/termini',
+  '/gallery',
+  '/enogastronomia',
+  '/spiagge-capo-rizzuto',
+  '/area-marina-protetta',
+  '/cosa-fare-capo-rizzuto',
+  '/ciro-wine-tour',
+  '/intera-villa-calabria',
+  '/maggio-2026',
+  '/giugno-2026',
+  '/luglio-2026',
+];
+
+const generatedRootOnlyLocaleRedirects = unsupportedLocalePrefixes.flatMap((locale) =>
+  rootOnlyLocalizedRedirects.map((path) => ({
+    source: `/${locale}${path}`,
+    destination: path,
+    permanent: true,
+  }))
+);
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // Ottimizzazioni per Vercel
@@ -88,7 +119,7 @@ const nextConfig = {
       // Fix GSC (29/04/2026) - /en/appartamenti → listing inglese corretto
       { source: "/en/appartamenti", destination: "/en/apartments", permanent: true },
       // Fix GSC (29/04/2026) - /de|fr|nl/appartamenti/* → pagine lodge italiane (le uniche esistenti)
-      { source: "/:locale(de|fr|nl|no|sv)/appartamenti/:slug*", destination: "/appartamenti/:slug*", permanent: true },
+      { source: "/:locale(en|de|fr|nl|no|sv)/appartamenti/:slug*", destination: "/appartamenti/:slug*", permanent: true },
       // Fix Search Console (17/04/2026) - prefisso /it/ non necessario (locale di default)
       { source: "/it", destination: "/", permanent: true },
       { source: "/it/:path*", destination: "/:path*", permanent: true },
@@ -104,6 +135,13 @@ const nextConfig = {
       { source: "/da-oslo-a-lamezia-villa-olimpia", destination: "/oslo-lamezia-villa-olimpia", permanent: true },
       { source: "/da-crotone-aeroporto-a-villa-olimpia", destination: "/aeroporto-crotone-villa-olimpia", permanent: true },
       { source: "/nl/cosa-fare-capo-rizzuto", destination: "/cosa-fare-capo-rizzuto", permanent: true },
+      { source: "/:locale(en|de|fr|nl|no|sv)/blog", destination: "/blog", permanent: true },
+      { source: "/:locale(en|de|fr|nl|no|sv)/blog/:slug*", destination: "/blog/:slug*", permanent: true },
+      { source: "/en/oslo-lamezia-villa-olimpia", destination: "/en/oslo-to-lamezia-villa-olimpia", permanent: true },
+      { source: "/en/aeroporto-crotone-villa-olimpia", destination: "/en/crotone-airport-to-villa-olimpia", permanent: true },
+      { source: "/en/aeroporto-lamezia-villa-olimpia", destination: "/en/lamezia-airport-to-villa-olimpia", permanent: true },
+      { source: "/no/oslo-lamezia-villa-olimpia", destination: "/no/oslo-til-lamezia-villa-olimpia", permanent: true },
+      ...generatedRootOnlyLocaleRedirects,
       // Protezione URL interni da crawling diretto
       { source: "/utm", destination: "/", permanent: false },
       { source: "/verifica-analytics", destination: "/", permanent: false },
