@@ -83,7 +83,7 @@ export default function BandieraBlu2026Page() {
                 Bandiera Blu 2026 a Isola di Capo Rizzuto
               </h1>
               <p className="mt-5 text-base leading-relaxed text-white/85 sm:text-lg">
-                Villa Olimpia si trova a Capo Piccolo, frazione del Comune premiato, a soli 100 metri dalla Spiaggia dei Gigli — una delle spiagge dell'Area Marina Protetta di Capo Rizzuto. Calabria 2° in Italia con 27 spiagge Bandiera Blu nel 2026.
+                Villa Olimpia si trova a Capo Piccolo, frazione del Comune premiato, a soli 100 metri dalla Spiaggia dei Gigli — una delle spiagge dell&apos;Area Marina Protetta di Capo Rizzuto. Calabria 2° in Italia con 27 spiagge Bandiera Blu nel 2026.
               </p>
               <div className="mt-7 flex flex-col items-center gap-3 sm:flex-row sm:items-start sm:gap-4 lg:items-center">
                 <Link
@@ -110,7 +110,7 @@ export default function BandieraBlu2026Page() {
           Perché soggiornare a Villa Olimpia in zona Bandiera Blu
         </h2>
         <p className="mt-4 text-base leading-relaxed text-slate-700">
-          Villa Olimpia è un complesso di 9 appartamenti indipendenti con piscina condominiale, immerso in un giardino mediterraneo di circa 3.000 mq a Capo Piccolo, all'interno del Comune di Isola di Capo Rizzuto. Da casa raggiungi la Spiaggia dei Gigli a piedi in pochi minuti, una delle spiagge più suggestive dell'Area Marina Protetta — sabbia dorata, dune con gigli selvatici, mare cristallino. Il riconoscimento Bandiera Blu 2026 certifica qualità delle acque, gestione ambientale, servizi turistici e sicurezza in spiaggia per l'intero Comune.
+          Villa Olimpia è un complesso di 9 appartamenti indipendenti con piscina condominiale, immerso in un giardino mediterraneo di circa 3.000 mq a Capo Piccolo, all&apos;interno del Comune di Isola di Capo Rizzuto. Da casa raggiungi la Spiaggia dei Gigli a piedi in pochi minuti, una delle spiagge più suggestive dell&apos;Area Marina Protetta — sabbia dorata, dune con gigli selvatici, mare cristallino. Il riconoscimento Bandiera Blu 2026 certifica qualità delle acque, gestione ambientale, servizi turistici e sicurezza in spiaggia per l&apos;intero Comune.
         </p>
       </section>
 

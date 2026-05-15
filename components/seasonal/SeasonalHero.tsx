@@ -7,6 +7,7 @@ import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import type { MonthConfig } from "@/lib/seasonalConfig"
 import { getAvailabilityPercent, whatsappUrlForConfig } from "@/lib/seasonalConfig"
+import { trackCtaClick, trackPhoneClick, trackWhatsAppClick } from "@/components/analytics/google-analytics"
 import { Shield, Clock, Sparkles, MessageCircle, Phone } from "lucide-react"
 
 export interface SeasonalHeroProps {
@@ -77,7 +78,12 @@ export function SeasonalHero({ config, locale = "it" }: SeasonalHeroProps) {
               className="w-full gap-2 bg-[#25D366] text-white shadow-lg shadow-black/25 hover:bg-[#1ebe5d] sm:w-auto"
               asChild
             >
-              <a href={whatsappUrlForConfig(config)} target="_blank" rel="noopener noreferrer">
+              <a
+                href={whatsappUrlForConfig(config)}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => trackWhatsAppClick(`seasonal_${config.month}_hero`, locale)}
+              >
                 <MessageCircle className="h-5 w-5" />
                 WhatsApp diretto
               </a>
@@ -88,13 +94,17 @@ export function SeasonalHero({ config, locale = "it" }: SeasonalHeroProps) {
               className="w-full border border-white/25 bg-white/95 text-slate-900 hover:bg-white sm:w-auto"
               asChild
             >
-              <Link href={`/contatti?source=seasonal_hero&month=${config.month}#prenota`}>
+              <Link
+                href={`/contatti?source=seasonal_hero&month=${config.month}#prenota`}
+                onClick={() => trackCtaClick(`seasonal_${config.month}_hero_form`, locale)}
+              >
                 Preventivo via form
               </Link>
             </Button>
           </div>
           <a
             href="tel:+393335773390"
+            onClick={() => trackPhoneClick(`+393335773390_seasonal_${config.month}_hero`)}
             className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-white/90 underline-offset-4 transition hover:text-white hover:underline"
           >
             <Phone className="h-4 w-4 shrink-0" />

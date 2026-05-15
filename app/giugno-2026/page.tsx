@@ -4,6 +4,7 @@ import { generateSeasonalSchema } from "@/lib/seo-seasonal"
 import { SeasonalStickyBar } from "@/components/ui/SeasonalStickyBar"
 import { SeasonalHero } from "@/components/seasonal/SeasonalHero"
 import { SeasonalSocialProof } from "@/components/seasonal/SeasonalSocialProof"
+import { SeasonalValueProps } from "@/components/seasonal/SeasonalValueProps"
 import { SeasonalAvailabilityGrid } from "@/components/seasonal/SeasonalAvailabilityGrid"
 import { SeasonalUrgencyForm } from "@/components/seasonal/SeasonalUrgencyForm"
 import { SeasonalFAQ } from "@/components/seasonal/SeasonalFAQ"
@@ -30,7 +31,8 @@ export default function SeasonalPage() {
       <SeasonalViewTracker month={monthKey} />
       <SeasonalStickyBar targetMonth={monthKey} />
       <SeasonalHero config={config} />
-      <SeasonalSocialProof monthLabel={config.label} bookingsCount={10} />
+      <SeasonalSocialProof monthLabel={config.label} />
+      <SeasonalValueProps config={config} />
       <SeasonalAvailabilityGrid config={config} monthKey={monthKey} />
       <SeasonalUrgencyForm
         config={config}

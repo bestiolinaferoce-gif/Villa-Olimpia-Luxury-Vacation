@@ -18,11 +18,23 @@ const FAQ_IT: Record<Exclude<SeasonalMonth, "other">, Array<{ q: string; a: stri
   giugno: [
     {
       q: "Giugno è già alta stagione?",
-      a: "È un periodo molto richiesto: consigliamo di bloccare le date con anticipo.",
+      a: "Le prime due settimane sono ancora più tranquille rispetto a luglio e agosto; dall'ultima decade la domanda cresce. Per le date precise rispondiamo direttamente noi.",
+    },
+    {
+      q: "Com'è il mare a giugno a Capo Rizzuto?",
+      a: "Il mare è già adatto ai primi bagni estivi e le spiagge sono molto meno affollate rispetto ad agosto. Isola di Capo Rizzuto è Bandiera Blu 2026.",
+    },
+    {
+      q: "Gli appartamenti sono adatti a famiglie con bambini?",
+      a: "Sì: gli appartamenti sono indipendenti, con cucina e zona pranzo, parcheggio in struttura e piscina con area lettini a uso degli ospiti. Per esigenze specifiche, come lavatrice o spazi esterni, confermiamo il lodge più adatto in risposta.",
     },
     {
       q: "Posso scegliere il lodge?",
-      a: "Sì: indicatelo nel form e vi confermiamo disponibilità reale.",
+      a: "Sì: indicate la preferenza nel form (o su WhatsApp) e vi confermiamo cosa è davvero disponibile per le vostre date — niente calendario automatico.",
+    },
+    {
+      q: "Come aggiornate la disponibilità mostrata?",
+      a: "Lo stato in pagina è aggiornato manualmente per il canale diretto. La conferma reale arriva nella nostra risposta entro un giorno lavorativo.",
     },
   ],
   luglio: [

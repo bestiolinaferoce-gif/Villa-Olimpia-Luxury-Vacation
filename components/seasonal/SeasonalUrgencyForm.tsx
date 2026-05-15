@@ -10,7 +10,12 @@ import { apartments } from "@/data/apartments"
 import { reviews } from "@/data/reviews-complete"
 import type { MonthConfig, SeasonalMonth } from "@/lib/seasonalConfig"
 import { whatsappUrlForConfig } from "@/lib/seasonalConfig"
-import { trackEvent } from "@/components/analytics/google-analytics"
+import {
+  trackEvent,
+  trackFormStart,
+  trackPhoneClick,
+  trackWhatsAppClick,
+} from "@/components/analytics/google-analytics"
 import { MessageCircle, Phone, Star } from "lucide-react"
 
 export interface SeasonalUrgencyFormProps {
@@ -36,6 +41,13 @@ export function SeasonalUrgencyForm({
   const [message, setMessage] = useState("")
   const [marketingOptIn, setMarketingOptIn] = useState(false)
   const [status, setStatus] = useState<"idle" | "loading" | "done" | "error">("idle")
+  const [formStarted, setFormStarted] = useState(false)
+
+  const onFormStart = () => {
+    if (formStarted) return
+    setFormStarted(true)
+    trackFormStart(`seasonal_${monthKey}`)
+  }
 
   const topReviews = useMemo(
     () => reviews.filter((r) => r.rating >= 5).slice(0, 3),
@@ -69,6 +81,7 @@ export function SeasonalUrgencyForm({
       const data = await res.json().catch(() => null)
       if (res.ok && data?.ok) {
         setStatus("done")
+        trackEvent("lead_submit_success", "Conversion", `seasonal_${monthKey}`)
         try {
           localStorage.setItem("lead_submitted_v1", "1")
         } catch {
@@ -76,9 +89,11 @@ export function SeasonalUrgencyForm({
         }
       } else {
         setStatus("error")
+        trackEvent("lead_submit_error", "Conversion", `seasonal_${monthKey}_server`)
       }
     } catch {
       setStatus("error")
+      trackEvent("lead_submit_error", "Conversion", `seasonal_${monthKey}_network`)
     }
   }
 
@@ -101,13 +116,21 @@ export function SeasonalUrgencyForm({
         </div>
         <div className="flex flex-wrap gap-2">
           <Button variant="outline" size="sm" className="gap-1.5" asChild>
-            <a href={whatsappUrlForConfig(config)} target="_blank" rel="noopener noreferrer">
+            <a
+              href={whatsappUrlForConfig(config)}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => trackWhatsAppClick(`seasonal_${monthKey}_form`)}
+            >
               <MessageCircle className="h-4 w-4" />
               WhatsApp
             </a>
           </Button>
           <Button variant="outline" size="sm" className="gap-1.5" asChild>
-            <a href="tel:+393335773390">
+            <a
+              href="tel:+393335773390"
+              onClick={() => trackPhoneClick(`+393335773390_seasonal_${monthKey}_form`)}
+            >
               <Phone className="h-4 w-4" />
               Chiama
             </a>
@@ -120,6 +143,7 @@ export function SeasonalUrgencyForm({
 
       <form
         onSubmit={onSubmit}
+        onFocus={onFormStart}
         className="mt-8 space-y-4 rounded-2xl border border-primary/10 bg-white p-6 shadow-md ring-1 ring-slate-100"
       >
         <div className="grid gap-4 sm:grid-cols-2">
@@ -191,7 +215,7 @@ export function SeasonalUrgencyForm({
         )}
       </form>
       <p className="mt-4 text-center text-sm text-slate-600">
-        Non perdiamo mai una richiesta operativa: ti rispondiamo appena possibile (di solito entro un giorno lavorativo).
+        La richiesta arriva sul canale operativo: ti rispondiamo appena possibile, di solito entro un giorno lavorativo.
       </p>
       <div className="mt-10 grid gap-4 md:grid-cols-3">
         {topReviews.map((r) => (
