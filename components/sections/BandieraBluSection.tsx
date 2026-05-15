@@ -31,6 +31,7 @@ type Copy = {
   source: string
   landingPath: string
   contactPath: string
+  apartmentsPath: string
 }
 
 const COPY: Record<string, Copy> = {
@@ -56,6 +57,7 @@ const COPY: Record<string, Copy> = {
     source: "Fonte: FEE Italia · Bandiere Blu 2026, conferenza stampa 14 maggio 2026.",
     landingPath: "/bandiera-blu-2026-isola-capo-rizzuto",
     contactPath: "/contatti#prenota",
+    apartmentsPath: "/appartamenti",
   },
   en: {
     eyebrow: "FEE recognition — 14 May 2026",
@@ -77,8 +79,9 @@ const COPY: Record<string, Copy> = {
     ctaPrimary: "Check availability",
     ctaSecondary: "Discover the apartments",
     source: "Source: FEE Italy · Blue Flags 2026, press conference 14 May 2026.",
-    landingPath: "/en/blue-flag-2026-isola-capo-rizzuto",
+    landingPath: "/bandiera-blu-2026-isola-capo-rizzuto",
     contactPath: "/en/contact#prenota",
+    apartmentsPath: "/en/apartments",
   },
   de: {
     eyebrow: "FEE-Auszeichnung — 14. Mai 2026",
@@ -100,8 +103,9 @@ const COPY: Record<string, Copy> = {
     ctaPrimary: "Verfügbarkeit prüfen",
     ctaSecondary: "Apartments entdecken",
     source: "Quelle: FEE Italien · Blaue Flagge 2026, Pressekonferenz 14. Mai 2026.",
-    landingPath: "/de/blue-flag-2026-isola-capo-rizzuto",
+    landingPath: "/bandiera-blu-2026-isola-capo-rizzuto",
     contactPath: "/de/contatti#prenota",
+    apartmentsPath: "/de/apartments",
   },
   fr: {
     eyebrow: "Reconnaissance FEE — 14 mai 2026",
@@ -123,8 +127,9 @@ const COPY: Record<string, Copy> = {
     ctaPrimary: "Vérifier la disponibilité",
     ctaSecondary: "Découvrir les appartements",
     source: "Source: FEE Italie · Pavillons Bleus 2026, conférence de presse 14 mai 2026.",
-    landingPath: "/fr/blue-flag-2026-isola-capo-rizzuto",
+    landingPath: "/bandiera-blu-2026-isola-capo-rizzuto",
     contactPath: "/fr/contatti#prenota",
+    apartmentsPath: "/fr/apartments",
   },
   nl: {
     eyebrow: "FEE-erkenning — 14 mei 2026",
@@ -146,8 +151,9 @@ const COPY: Record<string, Copy> = {
     ctaPrimary: "Beschikbaarheid controleren",
     ctaSecondary: "Ontdek de appartementen",
     source: "Bron: FEE Italië · Blauwe Vlaggen 2026, persconferentie 14 mei 2026.",
-    landingPath: "/nl/blue-flag-2026-isola-capo-rizzuto",
+    landingPath: "/bandiera-blu-2026-isola-capo-rizzuto",
     contactPath: "/nl/contatti#prenota",
+    apartmentsPath: "/nl/apartments",
   },
   no: {
     eyebrow: "FEE-anerkjennelse — 14. mai 2026",
@@ -169,8 +175,9 @@ const COPY: Record<string, Copy> = {
     ctaPrimary: "Sjekk tilgjengelighet",
     ctaSecondary: "Oppdag leilighetene",
     source: "Kilde: FEE Italia · Blått Flagg 2026, pressekonferanse 14. mai 2026.",
-    landingPath: "/no/blue-flag-2026-isola-capo-rizzuto",
+    landingPath: "/bandiera-blu-2026-isola-capo-rizzuto",
     contactPath: "/no/contatti#prenota",
+    apartmentsPath: "/no/apartments",
   },
   sv: {
     eyebrow: "FEE-erkännande — 14 maj 2026",
@@ -192,8 +199,9 @@ const COPY: Record<string, Copy> = {
     ctaPrimary: "Kontrollera tillgänglighet",
     ctaSecondary: "Upptäck lägenheterna",
     source: "Källa: FEE Italien · Blå Flagg 2026, presskonferens 14 maj 2026.",
-    landingPath: "/sv/blue-flag-2026-isola-capo-rizzuto",
+    landingPath: "/bandiera-blu-2026-isola-capo-rizzuto",
     contactPath: "/sv/contatti#prenota",
+    apartmentsPath: "/sv/apartments",
   },
 }
 
@@ -208,6 +216,7 @@ export function BandieraBluSection() {
   const locale = detectLocale(pathname)
   const c = COPY[locale] ?? COPY.it
   const beaches = [c.beach1, c.beach2, c.beach3, c.beach4, c.beach5]
+  const contactHref = c.contactPath.replace("#prenota", "?source=bandiera_blu_section#prenota")
 
   return (
     <section
@@ -286,13 +295,13 @@ export function BandieraBluSection() {
 
         <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
           <a
-            href={c.contactPath + "?source=bandiera_blu_section"}
+            href={contactHref}
             className="inline-flex min-w-[220px] items-center justify-center rounded-full bg-[#f7c53b] px-7 py-3.5 text-base font-bold text-slate-900 shadow-xl transition hover:brightness-105"
           >
             {c.ctaPrimary}
           </a>
           <a
-            href={c.landingPath}
+            href={c.apartmentsPath}
             className="inline-flex min-w-[220px] items-center justify-center rounded-full border-2 border-white/30 px-7 py-3.5 text-base font-semibold text-white transition-colors hover:border-white/60 hover:bg-white/10"
           >
             {c.ctaSecondary}

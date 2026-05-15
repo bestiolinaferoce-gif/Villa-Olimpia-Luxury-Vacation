@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     canonical: `${BASE_URL}/bandiera-blu-2026-isola-capo-rizzuto`,
   },
   openGraph: {
-    title: "Bandiera Blu 2026 — Soggiorni a Villa Olimpia a 100m dalla spiaggia premiata",
+    title: "Bandiera Blu 2026 — Soggiorni a Villa Olimpia nel Comune premiato",
     description:
       "Isola di Capo Rizzuto Bandiera Blu 2026. Villa Olimpia: 9 appartamenti con piscina, Spiaggia dei Gigli a 100m, Area Marina Protetta.",
     url: `${BASE_URL}/bandiera-blu-2026-isola-capo-rizzuto`,

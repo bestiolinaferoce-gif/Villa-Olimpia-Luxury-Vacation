@@ -16,37 +16,37 @@ const COPY = {
     label: "Blue Flag 2026 — Isola di Capo Rizzuto",
     sub: "Stay in an awarded area · Calabria 2nd in Italy",
     dismiss: "Close",
-    landing: "/en/blue-flag-2026-isola-capo-rizzuto",
+    landing: "/bandiera-blu-2026-isola-capo-rizzuto",
   },
   de: {
     label: "Blaue Flagge 2026 — Isola di Capo Rizzuto",
     sub: "Übernachten Sie in einer prämierten Zone · Kalabrien Platz 2 in Italien",
     dismiss: "Schließen",
-    landing: "/de/blue-flag-2026-isola-capo-rizzuto",
+    landing: "/bandiera-blu-2026-isola-capo-rizzuto",
   },
   fr: {
     label: "Pavillon Bleu 2026 — Isola di Capo Rizzuto",
     sub: "Séjournez dans une zone primée · Calabre 2e en Italie",
     dismiss: "Fermer",
-    landing: "/fr/blue-flag-2026-isola-capo-rizzuto",
+    landing: "/bandiera-blu-2026-isola-capo-rizzuto",
   },
   nl: {
     label: "Blauwe Vlag 2026 — Isola di Capo Rizzuto",
     sub: "Verblijf in een bekroonde zone · Calabrië 2e in Italië",
     dismiss: "Sluiten",
-    landing: "/nl/blue-flag-2026-isola-capo-rizzuto",
+    landing: "/bandiera-blu-2026-isola-capo-rizzuto",
   },
   no: {
     label: "Blått Flagg 2026 — Isola di Capo Rizzuto",
     sub: "Bo i et premiert område · Calabria 2. plass i Italia",
     dismiss: "Lukk",
-    landing: "/no/blue-flag-2026-isola-capo-rizzuto",
+    landing: "/bandiera-blu-2026-isola-capo-rizzuto",
   },
   sv: {
     label: "Blå Flagg 2026 — Isola di Capo Rizzuto",
     sub: "Bo i ett prisbelönt område · Kalabrien 2:a i Italien",
     dismiss: "Stäng",
-    landing: "/sv/blue-flag-2026-isola-capo-rizzuto",
+    landing: "/bandiera-blu-2026-isola-capo-rizzuto",
   },
 } as const
 

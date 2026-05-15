@@ -15,7 +15,7 @@ const checks = [
     url: `${BASE_URL}/`,
     expectStatus: 200,
     expectContentType: /text\/html/i,
-    expect: [/Villa Olimpia/i, /Appartamenti con Piscina a Capo Rizzuto/i],
+    expect: [/Villa Olimpia/i, /9 appartamenti con piscina/i],
   },
   {
     label: "Robots",
