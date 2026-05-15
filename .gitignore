@@ -68,6 +68,10 @@ dev.db
 
 /data/ical-cache/
 
+# Persisted leads (PII — server-side runtime artefacts)
+/data/leads/
+*.ndjson
+
 # Local reports and Lighthouse artifacts
 _reports_local/
 lighthouse-*.json
