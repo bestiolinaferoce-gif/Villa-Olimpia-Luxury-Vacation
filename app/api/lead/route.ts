@@ -466,7 +466,8 @@ export async function POST(req: NextRequest) {
       },
       { status: 200 }
     )
-  } catch {
+  } catch (error) {
+    console.error("[/api/lead] internal_error:", error instanceof Error ? error.stack ?? error.message : error)
     return NextResponse.json(
       { ok: false, reason: "internal_error", fallback: "whatsapp_or_mailto" },
       { status: 500 }
