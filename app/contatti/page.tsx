@@ -5,6 +5,7 @@ import { Phone, Mail, MapPin, MessageCircle } from "lucide-react"
 import { Breadcrumb } from "@/components/breadcrumb"
 import { ShareKit } from "@/components/conversion/share-kit"
 import { TrackContactSource } from "@/components/analytics/track-contact-source"
+import { TrackedContactAnchor } from "@/components/analytics/tracked-contact-anchor"
 import { generateMetadata } from "@/lib/metadata"
 
 export const metadata = generateMetadata({
@@ -39,18 +40,24 @@ export default function ContattiPage() {
             </p>
             <p className="mt-3 text-sm text-slate-400">
               Preferisci un contatto immediato?{" "}
-              <a
+              <TrackedContactAnchor
+                kind="whatsapp"
                 href="https://wa.me/393335773390"
+                source="contatti_hero"
+                locale="it"
                 className="text-white underline underline-offset-2 hover:text-slate-200"
-                target="_blank"
-                rel="noopener noreferrer"
               >
                 Scrivi su WhatsApp
-              </a>{" "}
+              </TrackedContactAnchor>{" "}
               o chiama il{" "}
-              <a href="tel:+393335773390" className="text-white underline underline-offset-2 hover:text-slate-200">
+              <TrackedContactAnchor
+                kind="phone"
+                href="tel:+393335773390"
+                source="contatti_hero"
+                className="text-white underline underline-offset-2 hover:text-slate-200"
+              >
                 333&nbsp;577&nbsp;3390
-              </a>.
+              </TrackedContactAnchor>.
             </p>
           </div>
         </div>
@@ -78,36 +85,44 @@ export default function ContattiPage() {
                 <CardTitle className="font-playfair text-base">Contatti diretti</CardTitle>
               </CardHeader>
               <CardContent className="space-y-3 text-sm">
-                <a
+                <TrackedContactAnchor
+                  kind="whatsapp"
                   href="https://wa.me/393335773390"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  source="contatti_sidebar"
+                  locale="it"
                   className="flex items-center gap-2 text-slate-700 hover:text-primary transition-colors"
                 >
                   <MessageCircle className="h-4 w-4 text-emerald-600 shrink-0" />
                   WhatsApp · 333 577 3390
-                </a>
-                <a
+                </TrackedContactAnchor>
+                <TrackedContactAnchor
+                  kind="phone"
                   href="tel:+393335773390"
+                  source="contatti_sidebar_primary"
                   className="flex items-center gap-2 text-slate-700 hover:text-primary transition-colors"
                 >
                   <Phone className="h-4 w-4 text-primary shrink-0" />
                   Telefono · 333 577 3390
-                </a>
-                <a
+                </TrackedContactAnchor>
+                <TrackedContactAnchor
+                  kind="phone"
                   href="tel:+393290479193"
+                  source="contatti_sidebar_secondary"
                   className="flex items-center gap-2 text-slate-700 hover:text-primary transition-colors"
                 >
                   <Phone className="h-4 w-4 text-primary shrink-0" />
                   Secondo recapito · 329 047 9193
-                </a>
-                <a
+                </TrackedContactAnchor>
+                <TrackedContactAnchor
+                  kind="email"
                   href="mailto:villaolimpiacaporizzuto@gmail.com"
+                  source="contatti_sidebar"
+                  locale="it"
                   className="flex items-center gap-2 text-slate-700 hover:text-primary transition-colors"
                 >
                   <Mail className="h-4 w-4 text-primary shrink-0" />
                   villaolimpiacaporizzuto@gmail.com
-                </a>
+                </TrackedContactAnchor>
                 <div className="flex items-start gap-2 text-slate-500 pt-1">
                   <MapPin className="h-4 w-4 mt-0.5 text-primary shrink-0" />
                   <span>

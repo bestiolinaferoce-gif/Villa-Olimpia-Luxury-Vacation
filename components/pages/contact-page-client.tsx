@@ -7,7 +7,7 @@ import { DEFAULT_BOOKING_FORM_COPY } from "@/lib/booking-form-copy"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Phone, Mail, MapPin, MessageCircle, Sparkles, Clock, Waves, Heart } from "lucide-react"
-import { trackWhatsAppClick } from "@/components/analytics/google-analytics"
+import { trackEvent, trackPhoneClick, trackWhatsAppClick } from "@/components/analytics/google-analytics"
 import { Breadcrumb } from "@/components/breadcrumb"
 import { ShareKit, type ShareKitCopy } from "@/components/conversion/share-kit"
 import { TrackContactSource } from "@/components/analytics/track-contact-source"
@@ -859,10 +859,18 @@ export default function ContactPageClient() {
                   <div>
                     <p className="font-medium">{copy.directContacts.phone}</p>
                     <div className="space-y-1">
-                      <a href="tel:+393335773390" className="block text-muted-foreground hover:text-primary">
+                      <a
+                        href="tel:+393335773390"
+                        onClick={() => trackPhoneClick(`+393335773390_contact_${locale}_primary`)}
+                        className="block text-muted-foreground hover:text-primary"
+                      >
                         +39 333 577 3390
                       </a>
-                      <a href="tel:+393290479193" className="block text-muted-foreground hover:text-primary">
+                      <a
+                        href="tel:+393290479193"
+                        onClick={() => trackPhoneClick(`+393290479193_contact_${locale}_secondary`)}
+                        className="block text-muted-foreground hover:text-primary"
+                      >
                         +39 329 047 9193
                       </a>
                     </div>
@@ -873,7 +881,11 @@ export default function ContactPageClient() {
                   <Mail className="h-5 w-5 text-primary mt-0.5" />
                   <div>
                     <p className="font-medium">{copy.directContacts.email}</p>
-                    <a href="mailto:villaolimpiacaporizzuto@gmail.com" className="text-muted-foreground hover:text-primary">
+                    <a
+                      href="mailto:villaolimpiacaporizzuto@gmail.com"
+                      onClick={() => trackEvent("email_click", "Engagement", `contact_sidebar_${locale}`)}
+                      className="text-muted-foreground hover:text-primary"
+                    >
                       villaolimpiacaporizzuto@gmail.com
                     </a>
                   </div>
@@ -909,7 +921,10 @@ export default function ContactPageClient() {
               </CardHeader>
               <CardContent className="space-y-3">
                 <Button variant="luxury" className="w-full" asChild>
-                  <a href="mailto:villaolimpiacaporizzuto@gmail.com?subject=Collaborazione%20Agenzia%20-%20Villa%20Olimpia">
+                  <a
+                    href="mailto:villaolimpiacaporizzuto@gmail.com?subject=Collaborazione%20Agenzia%20-%20Villa%20Olimpia"
+                    onClick={() => trackEvent("email_click", "Engagement", `contact_b2b_${locale}`)}
+                  >
                     {copy.b2b.cta}
                   </a>
                 </Button>

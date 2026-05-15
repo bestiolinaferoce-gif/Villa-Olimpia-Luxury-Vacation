@@ -76,7 +76,7 @@ export const SEASONAL_CONFIG: Record<SeasonalMonth | "other", MonthConfig> = {
       "appartamento famiglie giugno capo rizzuto",
       "villa piscina giugno calabria",
       "mare calabria giugno tranquillo",
-      "appartamento cucina lavatrice giugno",
+      "appartamento con cucina giugno capo rizzuto",
       "isola capo rizzuto giugno bandiera blu",
     ],
     ctaLabel: "Richiedi date Giugno",
