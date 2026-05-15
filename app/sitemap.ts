@@ -30,6 +30,7 @@ const staticRoutes: Array<{
   { path: "/oslo-lamezia-villa-olimpia", priority: 0.84, changeFrequency: "monthly", lastMod: DATE_INTERNATIONAL },
   { path: "/aeroporto-crotone-villa-olimpia", priority: 0.84, changeFrequency: "monthly", lastMod: DATE_INTERNATIONAL },
   { path: "/aeroporto-lamezia-villa-olimpia", priority: 0.84, changeFrequency: "monthly", lastMod: DATE_INTERNATIONAL },
+  { path: "/bandiera-blu-2026-isola-capo-rizzuto", priority: 0.92, changeFrequency: "weekly", lastMod: new Date("2026-05-15") },
 
   { path: "/contatti", priority: 0.9, changeFrequency: "monthly", lastMod: DATE_CORE },
   { path: "/recensioni", priority: 0.9, changeFrequency: "weekly", lastMod: DATE_CORE },

@@ -4,6 +4,7 @@ import { Inter, Playfair_Display } from "next/font/google"
 import Script from "next/script"
 import "./globals.css"
 import { Header } from "@/components/header"
+import { BandieraBluTopBanner } from "@/components/BandieraBluTopBanner"
 import { Footer } from "@/components/footer"
 import { CookieConsent } from "@/components/CookieConsent"
 import { ScrollToTop } from "@/components/scroll-to-top"
@@ -207,6 +208,7 @@ export default async function RootLayout({
             <DirectionsProvider>
               <PreloadResources />
               <TouchOptimizer />
+              <BandieraBluTopBanner />
               <Header />
               <main className="site-shell min-h-screen">{children}</main>
               <Footer />

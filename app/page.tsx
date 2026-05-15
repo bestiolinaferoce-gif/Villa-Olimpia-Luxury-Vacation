@@ -2,6 +2,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { ArrowRight, CalendarRange, ShieldCheck, Waves, Users } from "lucide-react"
 import HomePageClient from "@/components/pages/home-page-client"
+import { BandieraBluSection } from "@/components/sections/BandieraBluSection"
 
 export default function HomePage() {
   return (
@@ -79,6 +80,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <BandieraBluSection />
 
       <section className="bg-background py-5">
         <div className="container mx-auto px-4">
