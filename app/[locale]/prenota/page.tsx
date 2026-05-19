@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const base = definePageMetadata({
     title: "Direct Booking — Apartments in Capo Rizzuto | Villa Olimpia",
     description:
-      "Book directly with Villa Olimpia: May, June and September are often ideal for calmer sea and quality stays. Families, small groups and multi-apartment requests — reply within 24 hours, tailored offer, no intermediaries.",
+      "Book Villa Olimpia direct in Capo Rizzuto: apartments with pool, reply within 24 hours and tailored offers with no intermediaries.",
     path: "/en/prenota",
     keywords: [
       "book Villa Olimpia",
@@ -51,6 +51,7 @@ export default async function LocalizedPrenotaPage({ params }: PageProps) {
   const settembreHref = getLocalizedPathForCanonical("/settembre-capo-rizzuto", "en")
   return (
     <PrenotaPageView
+      locale="en"
       apartmentsHref={apartmentsHref}
       settembreHref={settembreHref}
       interaVillaHref="/intera-villa-calabria"

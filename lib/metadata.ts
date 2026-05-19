@@ -213,7 +213,7 @@ export const defaultMetadata: Metadata = {
       default: `${siteName} Capo Rizzuto | Appartamenti con Piscina al Mare`,
       template: `%s`,
     },
-  description: "9 lodge privati con piscina esterna condivisa a Capo Piccolo, a circa 100 metri dalla Spiaggia dei Gigli. Villa Olimpia ti aspetta nell'Area Marina Protetta di Capo Rizzuto. Prenota direttamente.",
+  description: "9 lodge privati con piscina condivisa a Capo Piccolo, circa 100 metri dalla Spiaggia dei Gigli. Prenota diretto a Villa Olimpia.",
   keywords: [
     // Core prodotto
     "appartamenti capo rizzuto",

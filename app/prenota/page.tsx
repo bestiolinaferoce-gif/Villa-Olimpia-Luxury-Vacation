@@ -1,10 +1,10 @@
-import { generateMetadata } from "@/lib/metadata"
+import { buildHreflangLanguages, generateMetadata } from "@/lib/metadata"
 import { PrenotaPageView } from "@/components/pages/prenota-page-view"
 
 export const metadata = generateMetadata({
   title: "Prenotazione Diretta Appartamenti a Capo Rizzuto | Villa Olimpia",
   description:
-    "Prenotazione diretta Villa Olimpia: maggio, giugno e settembre sono spesso i mesi migliori per mare più tranquillo e soggiorni di qualità. Famiglie, piccoli gruppi e richieste per più appartamenti o intera struttura: risposta entro 24 ore, proposta su misura, senza intermediari.",
+    "Prenota direttamente Villa Olimpia a Capo Rizzuto: appartamenti con piscina, risposta entro 24 ore e proposta su misura senza intermediari.",
   path: "/prenota",
   keywords: [
     "prenota villa olimpia",
@@ -17,6 +17,11 @@ export const metadata = generateMetadata({
     "richiesta disponibilità villa olimpia",
   ],
 })
+
+metadata.alternates = {
+  ...metadata.alternates,
+  languages: buildHreflangLanguages("/prenota"),
+}
 
 export default function PrenotaPage() {
   return <PrenotaPageView />
