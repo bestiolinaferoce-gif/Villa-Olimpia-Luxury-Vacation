@@ -11,6 +11,8 @@ import path from "path"
 import { buildOwnerAvailabilityNotificationHtml } from "@/lib/email-branding"
 import { resolveOwnerEmailRecipients } from "@/lib/lead-inbox"
 import { DATA_DIR } from "@/lib/data-path"
+import { BASE_URL } from "@/lib/metadata"
+import { kv } from "@/lib/kv"
 
 const availabilitySchema = z.object({
   name: z.string().min(2).max(120),
@@ -27,6 +29,15 @@ const availabilitySchema = z.object({
 const rateLimitStore = new Map<string, { count: number; resetAt: number }>()
 const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000
 const RATE_LIMIT_MAX = 12
+const EMAIL_RATE_LIMIT_WINDOW_MS = 2 * 60 * 1000
+const EMAIL_RATE_LIMIT_MAX = 2
+const RATE_LIMIT_WINDOW_SECONDS = Math.floor(RATE_LIMIT_WINDOW_MS / 1000)
+const EMAIL_RATE_LIMIT_WINDOW_SECONDS = Math.floor(EMAIL_RATE_LIMIT_WINDOW_MS / 1000)
+const allowedOrigins = new Set(
+  [BASE_URL, process.env.NEXT_PUBLIC_SITE_URL]
+    .filter((value): value is string => Boolean(value))
+    .map((value) => value.replace(/\/+$/, ""))
+)
 
 function getClientIp(req: NextRequest) {
   const forwardedFor = req.headers.get("x-forwarded-for")
@@ -36,17 +47,41 @@ function getClientIp(req: NextRequest) {
   return req.headers.get("x-real-ip") || "unknown"
 }
 
-function isRateLimited(ip: string) {
+function isLocalRateLimited(key: string, max: number, windowMs: number) {
   const now = Date.now()
-  const current = rateLimitStore.get(ip)
+  const current = rateLimitStore.get(key)
   if (!current || now > current.resetAt) {
-    rateLimitStore.set(ip, { count: 1, resetAt: now + RATE_LIMIT_WINDOW_MS })
+    rateLimitStore.set(key, { count: 1, resetAt: now + windowMs })
     return false
   }
-  if (current.count >= RATE_LIMIT_MAX) return true
+  if (current.count >= max) return true
   current.count += 1
-  rateLimitStore.set(ip, current)
+  rateLimitStore.set(key, current)
   return false
+}
+
+async function isRateLimitedWithKv(params: {
+  key: string
+  max: number
+  windowSeconds: number
+  fallbackWindowMs: number
+}) {
+  const { key, max, windowSeconds, fallbackWindowMs } = params
+  try {
+    const nextCount = await kv.incr(key)
+    if (nextCount === 1) {
+      await kv.expire(key, windowSeconds)
+    }
+    return nextCount > max
+  } catch {
+    return isLocalRateLimited(key, max, fallbackWindowMs)
+  }
+}
+
+function hasAllowedOrigin(req: NextRequest) {
+  const origin = req.headers.get("origin")
+  if (!origin) return true
+  return allowedOrigins.has(origin.replace(/\/+$/, ""))
 }
 
 async function sendAvailabilityEmail(params: {
@@ -210,8 +245,17 @@ async function sendTelegramAvailabilityAlert(record: AvailabilityRecord) {
 
 export async function POST(req: NextRequest) {
   try {
+    if (!hasAllowedOrigin(req)) {
+      return NextResponse.json({ ok: false, reason: "invalid_origin" }, { status: 403 })
+    }
     const ip = getClientIp(req)
-    if (isRateLimited(ip)) {
+    const ipRateLimited = await isRateLimitedWithKv({
+      key: `rate_limit:availability:ip:${ip}`,
+      max: RATE_LIMIT_MAX,
+      windowSeconds: RATE_LIMIT_WINDOW_SECONDS,
+      fallbackWindowMs: RATE_LIMIT_WINDOW_MS,
+    })
+    if (ipRateLimited) {
       return NextResponse.json({ ok: false, reason: "rate_limited" }, { status: 429 })
     }
 
@@ -224,6 +268,15 @@ export async function POST(req: NextRequest) {
     }
 
     const body = parsed.data
+    const emailRateLimited = await isRateLimitedWithKv({
+      key: `rate_limit:availability:email:${body.email.trim().toLowerCase()}`,
+      max: EMAIL_RATE_LIMIT_MAX,
+      windowSeconds: EMAIL_RATE_LIMIT_WINDOW_SECONDS,
+      fallbackWindowMs: EMAIL_RATE_LIMIT_WINDOW_MS,
+    })
+    if (emailRateLimited) {
+      return NextResponse.json({ ok: false, reason: "rate_limited_email" }, { status: 429 })
+    }
     if (body.company) {
       return NextResponse.json({ ok: true, reason: "honeypot" }, { status: 200 })
     }
