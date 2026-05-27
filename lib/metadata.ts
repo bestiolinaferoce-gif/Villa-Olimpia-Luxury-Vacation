@@ -12,6 +12,7 @@ export const BASE_URL = "https://villaolimpiacaporizzuto.com"
 const baseUrl = BASE_URL
 const siteName = "Villa Olimpia"
 const openGraphSiteName = "Villa Olimpia Capo Rizzuto"
+const NORWAY_LANDING_PATH = "/no/norway"
 
 const OG_IMAGE_W = 1200
 const OG_IMAGE_H = 630
@@ -300,6 +301,9 @@ export function buildHreflangLanguages(canonicalPath: string): Record<string, st
     if (!localeHasRoute(loc, p)) continue
     const path = getLocalizedPathForCanonical(p, loc)
     languages[loc] = path === "/" ? baseUrl : `${baseUrl}${path}`
+  }
+  if (p === "/" && !languages.no) {
+    languages.no = `${baseUrl}${NORWAY_LANDING_PATH}`
   }
   languages["x-default"] = p === "/" ? baseUrl : `${baseUrl}${p}`
   return languages

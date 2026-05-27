@@ -8,6 +8,8 @@ import { buildOwnerLeadNotificationHtml } from "@/lib/email-branding"
 import { buildSeasonalAutoReplyHtml } from "@/lib/seasonal-auto-reply-html"
 import { SEASONAL_CONFIG, type SeasonalMonth } from "@/lib/seasonalConfig"
 import { resolveOwnerEmailRecipients } from "@/lib/lead-inbox"
+import { BASE_URL } from "@/lib/metadata"
+import { kv } from "@/lib/kv"
 
 const leadSchema = z.object({
   name: z.string().min(2).max(120),
@@ -34,6 +36,15 @@ type LeadPayload = z.infer<typeof leadSchema>
 const rateLimitStore = new Map<string, { count: number; resetAt: number }>()
 const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000
 const RATE_LIMIT_MAX = 8
+const EMAIL_RATE_LIMIT_WINDOW_MS = 2 * 60 * 1000
+const EMAIL_RATE_LIMIT_MAX = 2
+const RATE_LIMIT_WINDOW_SECONDS = Math.floor(RATE_LIMIT_WINDOW_MS / 1000)
+const EMAIL_RATE_LIMIT_WINDOW_SECONDS = Math.floor(EMAIL_RATE_LIMIT_WINDOW_MS / 1000)
+const allowedOrigins = new Set(
+  [BASE_URL, process.env.NEXT_PUBLIC_SITE_URL]
+    .filter((value): value is string => Boolean(value))
+    .map((value) => value.replace(/\/+$/, ""))
+)
 
 function getClientIp(req: NextRequest) {
   const forwardedFor = req.headers.get("x-forwarded-for")
@@ -44,22 +55,43 @@ function getClientIp(req: NextRequest) {
   return req.headers.get("x-real-ip") || "unknown"
 }
 
-function isRateLimited(ip: string) {
+function isLocalRateLimited(key: string, max: number, windowMs: number) {
   const now = Date.now()
-  const current = rateLimitStore.get(ip)
-
+  const current = rateLimitStore.get(key)
   if (!current || now > current.resetAt) {
-    rateLimitStore.set(ip, { count: 1, resetAt: now + RATE_LIMIT_WINDOW_MS })
+    rateLimitStore.set(key, { count: 1, resetAt: now + windowMs })
     return false
   }
-
-  if (current.count >= RATE_LIMIT_MAX) {
+  if (current.count >= max) {
     return true
   }
-
   current.count += 1
-  rateLimitStore.set(ip, current)
+  rateLimitStore.set(key, current)
   return false
+}
+
+async function isRateLimitedWithKv(params: {
+  key: string
+  max: number
+  windowSeconds: number
+  fallbackWindowMs: number
+}) {
+  const { key, max, windowSeconds, fallbackWindowMs } = params
+  try {
+    const nextCount = await kv.incr(key)
+    if (nextCount === 1) {
+      await kv.expire(key, windowSeconds)
+    }
+    return nextCount > max
+  } catch {
+    return isLocalRateLimited(key, max, fallbackWindowMs)
+  }
+}
+
+function hasAllowedOrigin(req: NextRequest) {
+  const origin = req.headers.get("origin")
+  if (!origin) return true
+  return allowedOrigins.has(origin.replace(/\/+$/, ""))
 }
 
 function buildTextEmail(lead: EnrichedLead) {
@@ -293,6 +325,9 @@ async function sendWithWebhook(lead: EnrichedLead) {
   if (!webhookUrl) {
     return { ok: false as const, reason: "missing_webhook_url" }
   }
+  if (webhookUrl.startsWith("http://")) {
+    return { ok: false as const, reason: "insecure_webhook_url" }
+  }
 
   const headers: Record<string, string> = {
     "Content-Type": "application/json",
@@ -377,8 +412,18 @@ async function sendTelegramAlert(lead: EnrichedLead) {
 
 export async function POST(req: NextRequest) {
   try {
+    if (!hasAllowedOrigin(req)) {
+      return NextResponse.json({ ok: false, reason: "invalid_origin" }, { status: 403 })
+    }
+
     const ip = getClientIp(req)
-    if (isRateLimited(ip)) {
+    const ipRateLimited = await isRateLimitedWithKv({
+      key: `rate_limit:lead:ip:${ip}`,
+      max: RATE_LIMIT_MAX,
+      windowSeconds: RATE_LIMIT_WINDOW_SECONDS,
+      fallbackWindowMs: RATE_LIMIT_WINDOW_MS,
+    })
+    if (ipRateLimited) {
       return NextResponse.json(
         { ok: false, reason: "rate_limited" },
         { status: 429 }
@@ -394,6 +439,15 @@ export async function POST(req: NextRequest) {
     }
 
     const lead = parsedBody.data as LeadPayload
+    const emailRateLimited = await isRateLimitedWithKv({
+      key: `rate_limit:lead:email:${lead.email.trim().toLowerCase()}`,
+      max: EMAIL_RATE_LIMIT_MAX,
+      windowSeconds: EMAIL_RATE_LIMIT_WINDOW_SECONDS,
+      fallbackWindowMs: EMAIL_RATE_LIMIT_WINDOW_MS,
+    })
+    if (emailRateLimited) {
+      return NextResponse.json({ ok: false, reason: "rate_limited_email" }, { status: 429 })
+    }
 
     // Honeypot anti-spam
     if (lead.company) {
