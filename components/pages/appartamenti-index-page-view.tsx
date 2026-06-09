@@ -78,10 +78,14 @@ export function AppartamentiIndexPageView({ mapLanguage = "it" }: AppartamentiIn
               <span className="text-sm font-semibold">9 Appartamenti Premium</span>
             </div>
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-playfair font-bold mb-6">
-              Appartamenti Villa Olimpia
+              {mapLanguage === "en"
+                ? "Holiday Apartments in Capo Rizzuto"
+                : "Appartamenti Vacanze a Capo Rizzuto"}
             </h1>
             <p className="text-xl md:text-2xl text-white/90 leading-relaxed max-w-3xl mx-auto mb-8">
-              9 appartamenti esclusivi a meno di 100 metri dal mare, piscina condivisa e comfort premium.
+              {mapLanguage === "en"
+                ? "9 exclusive Villa Olimpia apartments less than 100 m from the sea, with shared pool and premium comfort."
+                : "9 appartamenti esclusivi Villa Olimpia a meno di 100 metri dal mare, piscina condivisa e comfort premium."}
             </p>
             <div className="flex flex-wrap justify-center gap-4 text-sm">
               <div className="flex items-center gap-2 bg-white/15 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
@@ -164,6 +168,13 @@ export function AppartamentiIndexPageView({ mapLanguage = "it" }: AppartamentiIn
                 della stessa struttura rappresenta un vantaggio concreto. La presenza della piscina, la vicinanza
                 al mare e la facilità negli spostamenti aiutano a rendere il soggiorno più comodo, soprattutto nei
                 periodi estivi.
+              </p>
+              <p className="text-lg text-muted-foreground leading-relaxed mt-4">
+                Se stai valutando una{" "}
+                <Link href="/case-vacanze-isola-di-capo-rizzuto" className="text-amber-700 underline underline-offset-2">
+                  casa vacanze a Isola di Capo Rizzuto
+                </Link>
+                , trovi una panoramica completa dei 9 lodge con capienze, piani e servizi.
               </p>
             </div>
           </div>

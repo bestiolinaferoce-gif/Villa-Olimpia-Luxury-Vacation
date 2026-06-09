@@ -259,11 +259,11 @@ Cucina attrezzata, aria condizionata, WiFi, TV Smart. Prezzo da €150/notte. Bo
   9: {
     id: 9,
     name: "Azalea",
-    seoTitle: "Appartamento Azalea Villa Olimpia - 4 Ospiti | Terrazza Privata Vista Panoramica | Primo Piano",
-    seoDescription: "Appartamento Azalea 50 mq, terrazza privata vista panoramica, design moderno, 4 ospiti. Villa Olimpia Capopiccolo Primo Piano. Booking.com e Airbnb.",
+    seoTitle: "Appartamento Azalea Villa Olimpia - 4 Ospiti | Terrazza Privata Semipanoramica | Primo Piano",
+    seoDescription: "Appartamento Azalea 50 mq, terrazza privata semipanoramica, design moderno, 4 ospiti. Villa Olimpia Capopiccolo Primo Piano. Booking.com e Airbnb.",
     seoKeywords: [
       "appartamento azalea villa olimpia",
-      "affitto azalea terrazza panoramica",
+      "affitto azalea terrazza semipanoramica",
       "vacation rental azalea calabria",
       "design moderno capopiccolo",
       "booking azalea villa olimpia",
@@ -271,18 +271,18 @@ Cucina attrezzata, aria condizionata, WiFi, TV Smart. Prezzo da €150/notte. Bo
     ],
     seoContent: `L'appartamento Azalea è un appartamento moderno di 50 mq a destra al primo piano di Villa Olimpia, Capopiccolo, Isola di Capo Rizzuto. Ospita fino a 4 persone con 1 camera matrimoniale, zona living con divano letto, cucina completa e 1 bagno.
 
-La terrazza privata panoramica è il punto forte: vista sul mare Ionio e sulla costa calabrese, perfetta per colazioni e cene al tramonto. Arredi eleganti e design curato; accesso a piscina e giardino condivisi. A 100 m dalla Spiaggia dei Gigli, Area Marina Protetta Capo Rizzuto.
+La terrazza privata semipanoramica è il punto forte: scorcio sul mare Ionio e sulla costa calabrese, perfetta per colazioni e cene al tramonto. Arredi eleganti e design curato; accesso a piscina e giardino condivisi. A 100 m dalla Spiaggia dei Gigli, Area Marina Protetta Capo Rizzuto.
 
 Cucina completa, aria condizionata, WiFi, TV Smart. Prezzo da €145/notte. Booking.com, Airbnb e prenotazione diretta.`,
     bookingKeywords: [
       "Azalea Villa Olimpia Booking",
       "modern design apartment Booking.com",
-      "panoramic terrace Capopiccolo Booking"
+      "semi-panoramic terrace Capopiccolo Booking"
     ],
     airbnbKeywords: [
       "Azalea Villa Olimpia Airbnb",
       "modern design apartment Airbnb",
-      "panoramic terrace Calabria Airbnb"
+      "semi-panoramic terrace Calabria Airbnb"
     ]
   }
 }

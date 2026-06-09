@@ -13,6 +13,7 @@ const DATE_TERRITORIO = new Date("2026-04-19")
 const DATE_SCHEMA_FIX = new Date("2026-04-29") // Fix schema VacationRental + redirect
 const DATE_INTERNATIONAL = new Date("2026-05-10")
 const DATE_SEASONAL_CRO = new Date("2026-05-15") // CRO patch giugno + tracking + SocialProof refactor
+const DATE_COMMERCIAL_SEO = new Date("2026-06-10") // Pillar case vacanze + query commerciali
 
 const staticRoutes: Array<{
   path: string
@@ -21,9 +22,10 @@ const staticRoutes: Array<{
   lastMod: Date
 }> = [
   { path: "", priority: 1.0, changeFrequency: "weekly", lastMod: DATE_CORE },
-  { path: "/appartamenti", priority: 0.95, changeFrequency: "weekly", lastMod: DATE_CORE },
+  { path: "/appartamenti", priority: 0.95, changeFrequency: "weekly", lastMod: DATE_COMMERCIAL_SEO },
+  { path: "/case-vacanze-isola-di-capo-rizzuto", priority: 0.93, changeFrequency: "weekly", lastMod: DATE_COMMERCIAL_SEO },
   { path: "/prenota", priority: 0.95, changeFrequency: "monthly", lastMod: DATE_CORE },
-  { path: "/maggio-2026", priority: 0.9, changeFrequency: "weekly", lastMod: DATE_SEASONAL_CRO },
+  // /maggio-2026 archiviata (redirect 301 → /giugno-2026 via expiredSeasonalRedirects in next.config.js)
   { path: "/giugno-2026", priority: 0.9, changeFrequency: "weekly", lastMod: DATE_SEASONAL_CRO },
   { path: "/luglio-2026", priority: 0.9, changeFrequency: "weekly", lastMod: DATE_SEASONAL_CRO },
   { path: "/settembre-capo-rizzuto", priority: 0.88, changeFrequency: "weekly", lastMod: DATE_NEW_PAGES },

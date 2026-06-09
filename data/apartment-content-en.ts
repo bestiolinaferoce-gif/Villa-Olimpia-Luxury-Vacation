@@ -409,8 +409,8 @@ The Spiaggia dei Gigli is less than 100 metres from the complex. The Capo Rizzut
   /** ─── 9 · AZALEA ─────────────────────────────────────────────────────── */
   9: {
     shortDescription:
-      "Azalea lodge at Villa Olimpia — modern 50 m² on the first floor with a panoramic private terrace and spectacular sea views over the Ionian coast.",
-    fullDescription: `Azalea is the most visually striking lodge at Villa Olimpia. Designed with clean modern lines and finished with more care than the average holiday apartment, it sits on the first floor with a panoramic private terrace that frames the Ionian Sea in a way that doesn't need a filter.
+      "Azalea lodge at Villa Olimpia — modern 50 m² on the first floor with a semi-panoramic private terrace and sea views over the Ionian coast.",
+    fullDescription: `Azalea is the most visually striking lodge at Villa Olimpia. Designed with clean modern lines and finished with more care than the average holiday apartment, it sits on the first floor with a semi-panoramic private terrace that frames the Ionian Sea in a way that doesn't need a filter.
 
 At 50 m², the space is thoughtfully arranged: a double bedroom, a living area with sofa bed for up to 4 guests, and a fully equipped kitchen. The terrace is genuinely panoramic — enough space to eat outside comfortably, with an uninterrupted view across the coastline and the Marine Protected Area.
 
@@ -432,13 +432,13 @@ This is Capopiccolo at its best: calm, protected, undeveloped. The Spiaggia dei 
       "Anyone who won't compromise on the terrace",
     ],
     seoParagraph:
-      "Azalea is a modern 50 m² lodge at Villa Olimpia, Capopiccolo, with a panoramic private terrace and sea views. Sleeps 4. Shared pool. Less than 100 m from the beach in the Capo Rizzuto Marine Protected Area, Calabria. Book directly for the best rate.",
+      "Azalea is a modern 50 m² lodge at Villa Olimpia, Capopiccolo, with a semi-panoramic private terrace and sea views. Sleeps 4. Shared pool. Less than 100 m from the beach in the Capo Rizzuto Marine Protected Area, Calabria. Book directly for the best rate.",
     seoTitle:
-      "Azalea Lodge Villa Olimpia — Panoramic Sea View Terrace | Modern | 4 Guests | Capo Rizzuto",
+      "Azalea Lodge Villa Olimpia — Semi-Panoramic Sea View Terrace | Modern | 4 Guests | Capo Rizzuto",
     seoDescription:
-      "Book Azalea at Villa Olimpia: 50 m², panoramic private terrace, sea views, modern design. Sleeps 4. Capopiccolo, Capo Rizzuto, Calabria. Shared pool. Less than 100 m from the beach. Direct booking.",
+      "Book Azalea at Villa Olimpia: 50 m², semi-panoramic private terrace, sea views, modern design. Sleeps 4. Capopiccolo, Capo Rizzuto, Calabria. Shared pool. Less than 100 m from the beach. Direct booking.",
     seoKeywords: [
-      "azalea villa olimpia panoramic terrace",
+      "azalea villa olimpia semi-panoramic terrace",
       "modern holiday apartment capo rizzuto sea view",
       "panoramic terrace ionian coast calabria",
       "capopiccolo design apartment sea view",

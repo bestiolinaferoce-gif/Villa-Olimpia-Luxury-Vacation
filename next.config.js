@@ -19,9 +19,15 @@ const rootOnlyLocalizedRedirects = [
   '/cosa-fare-capo-rizzuto',
   '/ciro-wine-tour',
   '/intera-villa-calabria',
-  '/maggio-2026',
   '/giugno-2026',
   '/luglio-2026',
+];
+
+// Landing stagionali scadute: quando un mese passa, sposta qui il path con la
+// destinazione (mese successivo o /prenota). La pagina in app/ va eliminata.
+const expiredSeasonalRedirects = [
+  { source: '/maggio-2026', destination: '/giugno-2026', permanent: true },
+  { source: '/:locale(en|de|fr|nl|no|sv)/maggio-2026', destination: '/giugno-2026', permanent: true },
 ];
 
 const generatedRootOnlyLocaleRedirects = unsupportedLocalePrefixes.flatMap((locale) =>
@@ -142,6 +148,7 @@ const nextConfig = {
       { source: "/en/aeroporto-lamezia-villa-olimpia", destination: "/en/lamezia-airport-to-villa-olimpia", permanent: true },
       { source: "/no/oslo-lamezia-villa-olimpia", destination: "/no/oslo-til-lamezia-villa-olimpia", permanent: true },
       ...generatedRootOnlyLocaleRedirects,
+      ...expiredSeasonalRedirects,
       // Protezione URL interni da crawling diretto
       { source: "/utm", destination: "/", permanent: false },
       { source: "/verifica-analytics", destination: "/", permanent: false },

@@ -173,7 +173,7 @@ const PRIMO_PIANO: AptData[] = [
   { id: 'azalea', name: 'Azalea', floor: 'primo',
     sqm: 50, guests: 4, bedrooms: 1, bathrooms: 1,
     layout: { x: 65, y: 0, w: 35, h: 100 },
-    amenities: ['panoramic', 'sea_view', 'modern', 'kitchen', 'ac', 'wifi', 'tv', 'linens', 'bath_products', 'first_floor'],
+    amenities: ['sea_view', 'modern', 'kitchen', 'ac', 'wifi', 'tv', 'linens', 'bath_products', 'first_floor'],
     highlight: 'Terrazza privata con tramonto spettacolare' },
 ];
 

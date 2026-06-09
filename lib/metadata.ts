@@ -136,7 +136,7 @@ export function getApartmentMetadata(apartmentId: number): Metadata {
     },
     Azalea: {
       titleQualifier: "Terrazza Vista Mare",
-      descUsp: "Terrazza panoramica con vista mare spettacolare e design moderno",
+      descUsp: "Terrazza semipanoramica con vista mare e design moderno",
     },
   }
 
@@ -388,10 +388,10 @@ export function buildApartmentsListingMetadata(
   const isEn = locale === "en"
   const title = isEn
     ? "Apartments in Capo Rizzuto with Pool | Villa Olimpia Capopiccolo"
-    : "9 Lodge con Piscina a Capo Rizzuto | Villa Olimpia Capopiccolo"
+    : "Appartamenti Vacanze Capo Rizzuto con Piscina | Villa Olimpia"
   const description = isEn
     ? "Discover Villa Olimpia apartments in Capopiccolo, Capo Rizzuto: options for couples, families and small groups with pool, garden and Spiaggia dei Gigli a short walk away."
-    : "Scegli tra 9 lodge privati a Capopiccolo, Capo Rizzuto: piscina, giardino, Spiaggia dei Gigli a meno di 100 metri e prenotazione diretta senza commissioni."
+    : "Appartamenti vacanze a Isola di Capo Rizzuto: 9 lodge con piscina a Capopiccolo, Spiaggia dei Gigli a meno di 100 metri, prenotazione diretta senza commissioni."
   const base = generateMetadata({
     title,
     description,
@@ -403,11 +403,12 @@ export function buildApartmentsListingMetadata(
           "Capopiccolo apartments Italy",
         ]
       : [
+          "appartamenti vacanze capo rizzuto",
+          "appartamenti con piscina capo rizzuto",
+          "residence capo rizzuto sul mare",
+          "casa vacanze isola di capo rizzuto",
           "appartamenti Villa Olimpia",
-          "appartamenti Capo Rizzuto piscina",
-          "case vacanze Spiaggia dei Gigli",
           "appartamenti Capopiccolo Isola di Capo Rizzuto",
-          "alloggi famiglia Calabria mare",
         ],
   })
   return {

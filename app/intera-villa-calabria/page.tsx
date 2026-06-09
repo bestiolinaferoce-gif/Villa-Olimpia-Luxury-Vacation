@@ -197,7 +197,7 @@ export default function InteraVillaCalabriaPage() {
               <Link href="/settembre-capo-rizzuto">Settembre a Capo Rizzuto</Link>
             </Button>
             <Button variant="outline" size="lg" asChild>
-              <Link href="/maggio-2026">Maggio 2026</Link>
+              <Link href="/giugno-2026">Giugno 2026</Link>
             </Button>
           </div>
         </div>

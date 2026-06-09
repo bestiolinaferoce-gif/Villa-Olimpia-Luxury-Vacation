@@ -188,8 +188,9 @@ async function sendWithResend(lead: EnrichedLead) {
 
 async function sendAutoReplyToGuest(lead: EnrichedLead) {
   const apiKey = process.env.RESEND_API_KEY
-  const from = process.env.LEADS_FROM_EMAIL || "Villa Olimpia <onboarding@resend.dev>"
-  const enabled = process.env.LEADS_AUTOREPLY_ENABLED !== "false"
+  const from = (process.env.LEADS_FROM_EMAIL || "Villa Olimpia <onboarding@resend.dev>").trim()
+  const replyTo = (process.env.LEADS_PRIMARY_INBOX || "villaolimpiacaporizzuto@gmail.com").trim()
+  const enabled = process.env.LEADS_AUTOREPLY_ENABLED?.trim() !== "false"
   if (!enabled) return { ok: false as const, reason: "autoresponder_disabled" }
   if (!apiKey) return { ok: false as const, reason: "missing_resend_key" }
 
@@ -242,6 +243,7 @@ async function sendAutoReplyToGuest(lead: EnrichedLead) {
     body: JSON.stringify({
       from,
       to: lead.email,
+      reply_to: replyTo,
       subject,
       text,
       html,
@@ -249,6 +251,8 @@ async function sendAutoReplyToGuest(lead: EnrichedLead) {
   })
 
   if (!response.ok) {
+    const errorBody = await response.text().catch(() => "")
+    console.error("[Resend autoreply] Error:", response.status, errorBody)
     return { ok: false as const, reason: `autoresponder_error_${response.status}` }
   }
 
@@ -320,13 +324,17 @@ async function sendWithWebhook(lead: EnrichedLead) {
   if (process.env.LEADS_WEBHOOK_DISABLED === "true") {
     return { ok: false as const, reason: "webhook_disabled" }
   }
-  const webhookUrl = process.env.LEADS_WEBHOOK_URL
-  const webhookToken = process.env.LEADS_WEBHOOK_TOKEN
+  const webhookUrl = process.env.LEADS_WEBHOOK_URL?.trim()
+  const webhookToken = process.env.LEADS_WEBHOOK_TOKEN?.trim()
+  const allowInsecure = process.env.LEADS_WEBHOOK_ALLOW_INSECURE?.trim() === "true"
   if (!webhookUrl) {
     return { ok: false as const, reason: "missing_webhook_url" }
   }
-  if (webhookUrl.startsWith("http://")) {
+  if (webhookUrl.startsWith("http://") && !allowInsecure) {
     return { ok: false as const, reason: "insecure_webhook_url" }
+  }
+  if (webhookUrl.startsWith("http://")) {
+    console.warn("[Webhook] LEADS_WEBHOOK_URL is plain HTTP — token and lead data travel unencrypted. Move n8n behind HTTPS.")
   }
 
   const headers: Record<string, string> = {
@@ -347,10 +355,26 @@ async function sendWithWebhook(lead: EnrichedLead) {
   })
 
   if (!response.ok) {
+    const errorBody = await response.text().catch(() => "")
+    console.error("[Webhook] Error:", response.status, errorBody)
     return { ok: false as const, reason: `webhook_error_${response.status}` }
   }
 
   return { ok: true as const }
+}
+
+const KV_LEADS_KEY = "vo_leads"
+const KV_LEADS_MAX = 1000
+
+async function persistLeadToKv(lead: EnrichedLead) {
+  try {
+    await kv.lpush(KV_LEADS_KEY, JSON.stringify(lead))
+    await kv.ltrim(KV_LEADS_KEY, 0, KV_LEADS_MAX - 1)
+    return { ok: true as const }
+  } catch (err) {
+    console.error("[KV] persist lead failed:", err instanceof Error ? err.message : err)
+    return { ok: false as const, reason: "kv_persist_failed" }
+  }
 }
 
 async function persistLeadToFile(lead: EnrichedLead) {
@@ -468,14 +492,16 @@ export async function POST(req: NextRequest) {
       referer: req.headers.get("referer") || "unknown",
     })
 
-    const [resendDelivery, autoReplyDelivery, whatsappGuestDelivery, webhookDelivery, telegramDelivery, persisted] = await Promise.all([
+    const [resendDelivery, autoReplyDelivery, whatsappGuestDelivery, webhookDelivery, telegramDelivery, persistedKv, persistedFile] = await Promise.all([
       sendWithResend(enrichedLead),
       sendAutoReplyToGuest(enrichedLead),
       sendWhatsAppTemplateToGuest(enrichedLead),
       sendWithWebhook(enrichedLead),
       sendTelegramAlert(enrichedLead),
+      persistLeadToKv(enrichedLead),
       persistLeadToFile(enrichedLead),
     ])
+    const persisted = persistedKv.ok ? persistedKv : persistedFile
 
     // Only treat the lead as delivered when an owner-facing channel succeeds.
     // NOTE: webhookDelivery.ok is intentionally excluded — n8n returns HTTP 200 even when

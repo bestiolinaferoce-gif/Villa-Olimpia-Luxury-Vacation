@@ -277,9 +277,9 @@ Per chi cerca un appartamento a Capo Rizzuto vicino al mare ma in una posizione 
     }
   },
   9: {
-    // AZALEA - 50 mq, 4 ospiti, 1 camera, 1 bagno, primo piano, terrazza panoramica
-    shortDescription: "Appartamento Azalea a Capopiccolo con terrazza panoramica e vista mare, pensato per coppie e famiglie che vogliono un soggiorno luminoso e ben posizionato a Capo Rizzuto.",
-    fullPremiumDescription: `L'appartamento Azalea di Villa Olimpia è una delle soluzioni più interessanti per chi attribuisce grande valore agli spazi esterni e alla vista sul territorio. Situato al primo piano a Capopiccolo, offre una terrazza panoramica privata che rende il soggiorno particolarmente piacevole nei momenti di relax, nelle colazioni e nelle ore del tramonto.
+    // AZALEA - 50 mq, 4 ospiti, 1 camera, 1 bagno, primo piano, terrazza semipanoramica
+    shortDescription: "Appartamento Azalea a Capopiccolo con terrazza semipanoramica e vista mare, pensato per coppie e famiglie che vogliono un soggiorno luminoso e ben posizionato a Capo Rizzuto.",
+    fullPremiumDescription: `L'appartamento Azalea di Villa Olimpia è una delle soluzioni più interessanti per chi attribuisce grande valore agli spazi esterni e alla vista sul territorio. Situato al primo piano a Capopiccolo, offre una terrazza semipanoramica privata che rende il soggiorno particolarmente piacevole nei momenti di relax, nelle colazioni e nelle ore del tramonto.
 
 Azalea si distingue per uno stile più essenziale e contemporaneo, adatto a chi cerca una vacanza in Calabria con un contesto curato, una buona luminosità interna e un rapporto diretto con il paesaggio costiero. La camera matrimoniale, la zona living, la cucina completa e la terrazza privata rendono questa soluzione molto adatta a coppie e famiglie 2+2.
 
@@ -299,12 +299,12 @@ Per chi cerca un appartamento vista mare a Capo Rizzuto, Azalea è una proposta 
       "Famiglie 2+2",
       "Soggiorni lunghi vista mare"
     ],
-    seoParagraph: "Azalea è un appartamento di Villa Olimpia a Capopiccolo con terrazza panoramica e vista mare, ideale per chi cerca un soggiorno a Capo Rizzuto vicino alla Spiaggia dei Gigli e all'Area Marina Protetta. È una soluzione molto adatta a coppie e famiglie 2+2 che vogliono un appartamento luminoso, ben posizionato e prenotabile direttamente.",
+    seoParagraph: "Azalea è un appartamento di Villa Olimpia a Capopiccolo con terrazza semipanoramica e vista mare, ideale per chi cerca un soggiorno a Capo Rizzuto vicino alla Spiaggia dei Gigli e all'Area Marina Protetta. È una soluzione molto adatta a coppie e famiglie 2+2 che vogliono un appartamento luminoso, ben posizionato e prenotabile direttamente.",
     technicalSummary: {
       capacity: "4",
       rooms: "1 matrimoniale",
       bathrooms: "1",
-      outdoorArea: "Terrazza panoramica",
+      outdoorArea: "Terrazza semipanoramica",
       floor: "Primo"
     }
   }
