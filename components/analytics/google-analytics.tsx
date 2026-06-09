@@ -39,21 +39,38 @@ function hasAnalyticsConsent(): boolean {
   }
 }
 
+/**
+ * Garantisce che window.gtag esista SEMPRE come stub che accoda su dataLayer.
+ * gtag.js processa la coda quando si carica: non serve aspettare lo script
+ * né riprovare con timer. Il primo a definire lo stub mette in testa il
+ * consent default (denied), preservando l'ordine corretto della coda.
+ */
+function ensureGtag(): void {
+  if (typeof window === "undefined") return
+  window.dataLayer = window.dataLayer || []
+  if (typeof window.gtag !== "function") {
+    window.gtag = function gtag() {
+      // eslint-disable-next-line prefer-rest-params
+      window.dataLayer.push(arguments)
+    }
+    window.gtag("js", new Date())
+    window.gtag("consent", "default", {
+      ad_storage: "denied",
+      analytics_storage: "denied",
+      functionality_storage: "granted",
+      personalization_storage: "denied",
+      security_storage: "granted",
+    })
+  }
+}
+
 function sendCurrentPageView(
   pathname: string | null,
-  lastTrackedPathRef: MutableRefObject<string | null>,
-  retryCount = 0
+  lastTrackedPathRef: MutableRefObject<string | null>
 ) {
   if (!isGAEnabled() || typeof window === "undefined" || !pathname) return
   if (!hasAnalyticsConsent()) return
-
-  // Retry se gtag non è ancora disponibile (race condition script load)
-  if (!window.gtag) {
-    if (retryCount < 5) {
-      setTimeout(() => sendCurrentPageView(pathname, lastTrackedPathRef, retryCount + 1), 100)
-    }
-    return
-  }
+  ensureGtag()
 
   const pagePath = pathname + (window.location.search || "")
   if (lastTrackedPathRef.current === pagePath) return
@@ -163,8 +180,9 @@ export function trackEvent(
   label?: string,
   value?: number
 ) {
-  if (typeof window === "undefined" || !window.gtag) return
-  window.gtag("event", action, {
+  if (typeof window === "undefined" || !isGAEnabled()) return
+  ensureGtag()
+  window.gtag!("event", action, {
     event_category: category,
     event_label: label ?? undefined,
     value: value ?? undefined,
@@ -185,12 +203,10 @@ export function setConsentMode(prefs: { analytics?: boolean; marketing?: boolean
     security_storage: "granted",
   } as const
 
-  if (window.gtag) {
-    window.gtag("consent", "update", payload)
-  } else {
-    window.dataLayer = window.dataLayer || []
-    window.dataLayer.push(["consent", "update", payload])
-  }
+  // Fix: il vecchio fallback spingeva un ARRAY su dataLayer, formato ignorato
+  // da gtag.js (si aspetta oggetti `arguments`) → il consenso restava "denied".
+  ensureGtag()
+  window.gtag!("consent", "update", payload)
 }
 
 // Specific event tracking functions
