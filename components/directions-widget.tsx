@@ -7,6 +7,7 @@ import { VILLA_OLIMPIA_LOCATION } from "@/lib/location-data"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { useDirections } from "./directions-context"
+import { trackMapInteraction } from "@/components/analytics/google-analytics"
 
 interface RouteData {
   distance: number // in km
@@ -268,6 +269,7 @@ export function DirectionsWidget({ showBadge = true }: DirectionsWidgetProps = {
       : ""
 
     if (typeof window !== 'undefined') {
+      trackMapInteraction("open_directions", originParam ? "directions_widget_with_origin" : "directions_widget")
       if (originParam) {
         window.open(
           `https://www.google.com/maps/dir/${originParam}/${DESTINATION.lat},${DESTINATION.lng}`,
@@ -665,4 +667,3 @@ export function DirectionsWidget({ showBadge = true }: DirectionsWidgetProps = {
     </>
   )
 }
-

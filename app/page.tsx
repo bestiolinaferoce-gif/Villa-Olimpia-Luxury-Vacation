@@ -1,8 +1,9 @@
 import Image from "next/image"
 import Link from "next/link"
-import { ArrowRight, CalendarRange, ShieldCheck, Waves, Users } from "lucide-react"
+import { ArrowRight, CalendarRange, Plane, ShieldCheck, Sun, Waves, Users } from "lucide-react"
 import HomePageClient from "@/components/pages/home-page-client"
 import { BandieraBluSection } from "@/components/sections/BandieraBluSection"
+import { TrackedContactAnchor } from "@/components/analytics/tracked-contact-anchor"
 
 export default function HomePage() {
   return (
@@ -30,10 +31,13 @@ export default function HomePage() {
 
             <h1 className="font-playfair text-4xl font-bold leading-tight sm:text-5xl md:text-7xl">
               Villa Olimpia
+              <span
+                className="mt-4 block text-xl font-semibold text-white/95 md:text-3xl"
+                style={{ fontFamily: "var(--font-inter)" }}
+              >
+                Appartamenti con piscina a Capo Rizzuto, a 100 metri dalla Spiaggia dei Gigli
+              </span>
             </h1>
-            <p className="mt-4 text-xl font-semibold text-white/95 md:text-3xl">
-              9 appartamenti con piscina a 100 metri dalla Spiaggia dei Gigli
-            </p>
             <p className="mx-auto mt-5 max-w-3xl text-base leading-relaxed text-white/90 md:text-xl">
               Prenotazione diretta, risposta rapida e soggiorni su misura per coppie, famiglie e piccoli gruppi tra
               mare, relax e Calabria autentica.
@@ -47,14 +51,15 @@ export default function HomePage() {
                 Verifica disponibilita
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
-              <a
+              <TrackedContactAnchor
+                kind="whatsapp"
                 href="https://wa.me/393335773390?text=Richiesta%20disponibilita%20Villa%20Olimpia%20-%20fonte%20sito%20ufficiale"
-                target="_blank"
-                rel="noopener noreferrer"
+                source="home_hero_direct_whatsapp"
+                locale="it"
                 className="inline-flex items-center justify-center rounded-full border border-white/80 bg-white/10 px-7 py-4 text-base font-semibold text-white backdrop-blur-md transition hover:bg-white/20"
               >
                 WhatsApp diretto
-              </a>
+              </TrackedContactAnchor>
             </div>
 
             <div className="mt-8 grid gap-3 sm:grid-cols-3">
@@ -78,6 +83,47 @@ export default function HomePage() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="border-y border-amber-200/70 bg-white">
+        <div className="container mx-auto grid gap-3 px-4 py-5 md:grid-cols-3">
+          <Link
+            href="/giugno-2026?utm_source=homepage&utm_medium=internal&utm_campaign=recovery_giugno_2026"
+            className="group rounded-2xl border border-amber-200 bg-amber-50 px-4 py-4 transition hover:border-amber-300 hover:bg-amber-100/70"
+          >
+            <div className="flex items-center gap-3">
+              <CalendarRange className="h-5 w-5 text-amber-700" />
+              <div>
+                <p className="text-sm font-bold text-slate-900">Giugno: riempiamo le settimane libere</p>
+                <p className="mt-1 text-sm text-slate-700">Mare tranquillo, famiglie e coppie prima del picco estivo.</p>
+              </div>
+            </div>
+          </Link>
+          <Link
+            href="/settembre-capo-rizzuto?utm_source=homepage&utm_medium=internal&utm_campaign=recovery_settembre_2026"
+            className="group rounded-2xl border border-sky-200 bg-sky-50 px-4 py-4 transition hover:border-sky-300 hover:bg-sky-100/70"
+          >
+            <div className="flex items-center gap-3">
+              <Sun className="h-5 w-5 text-sky-700" />
+              <div>
+                <p className="text-sm font-bold text-slate-900">Settembre: mare caldo, meno folla</p>
+                <p className="mt-1 text-sm text-slate-700">La pagina migliore per ospiti italiani e Nord Europa.</p>
+              </div>
+            </div>
+          </Link>
+          <Link
+            href="/no/norway?utm_source=homepage&utm_medium=internal&utm_campaign=recovery_norway_2026"
+            className="group rounded-2xl border border-blue-200 bg-blue-50 px-4 py-4 transition hover:border-blue-300 hover:bg-blue-100/70"
+          >
+            <div className="flex items-center gap-3">
+              <Plane className="h-5 w-5 text-blue-700" />
+              <div>
+                <p className="text-sm font-bold text-slate-900">Norvegia: Oslo-Lamezia ogni lunedi</p>
+                <p className="mt-1 text-sm text-slate-700">Rotta diretta utile per giugno e settembre-ottobre.</p>
+              </div>
+            </div>
+          </Link>
         </div>
       </section>
 

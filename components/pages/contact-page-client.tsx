@@ -7,13 +7,14 @@ import { DEFAULT_BOOKING_FORM_COPY } from "@/lib/booking-form-copy"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Phone, Mail, MapPin, MessageCircle, Sparkles, Clock, Waves, Heart } from "lucide-react"
-import { trackEvent, trackPhoneClick, trackWhatsAppClick } from "@/components/analytics/google-analytics"
+import { trackEmailClick, trackMapInteraction, trackPhoneClick, trackWhatsAppClick } from "@/components/analytics/google-analytics"
 import { Breadcrumb } from "@/components/breadcrumb"
 import { ShareKit, type ShareKitCopy } from "@/components/conversion/share-kit"
 import { TrackContactSource } from "@/components/analytics/track-contact-source"
 import { useI18n } from "@/components/i18n-provider"
 import { localizeIfTranslated } from "@/lib/i18n/routing"
 import type { Locale } from "@/lib/i18n/config"
+import { VILLA_OLIMPIA_LOCATION } from "@/lib/location-data"
 
 type ContactPageCopy = {
   breadcrumbLabel: string
@@ -883,7 +884,7 @@ export default function ContactPageClient() {
                     <p className="font-medium">{copy.directContacts.email}</p>
                     <a
                       href="mailto:villaolimpiacaporizzuto@gmail.com"
-                      onClick={() => trackEvent("email_click", "Engagement", `contact_sidebar_${locale}`)}
+                      onClick={() => trackEmailClick("contact_sidebar", locale)}
                       className="text-muted-foreground hover:text-primary"
                     >
                       villaolimpiacaporizzuto@gmail.com
@@ -902,9 +903,10 @@ export default function ContactPageClient() {
                     </p>
                     <Button asChild variant="outline" size="sm" className="mt-3">
                       <a
-                        href="https://maps.google.com/?q=Villa+Olimpia+Capo+Rizzuto"
+                        href={VILLA_OLIMPIA_LOCATION.coordinates.directions}
                         target="_blank"
                         rel="noopener noreferrer"
+                        onClick={() => trackMapInteraction("open_directions", `contact_sidebar_${locale}`)}
                       >
                         {copy.directContacts.openMaps}
                       </a>
@@ -923,7 +925,7 @@ export default function ContactPageClient() {
                 <Button variant="luxury" className="w-full" asChild>
                   <a
                     href="mailto:villaolimpiacaporizzuto@gmail.com?subject=Collaborazione%20Agenzia%20-%20Villa%20Olimpia"
-                    onClick={() => trackEvent("email_click", "Engagement", `contact_b2b_${locale}`)}
+                    onClick={() => trackEmailClick("contact_b2b", locale)}
                   >
                     {copy.b2b.cta}
                   </a>

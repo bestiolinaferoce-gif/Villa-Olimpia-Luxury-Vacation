@@ -249,7 +249,7 @@ export const it = {
   footer: {
     brand: {
       title: 'Villa Olimpia',
-      description: 'Il tuo rifugio di lusso in Calabria. 9 appartamenti eleganti con piscina privata, a soli 100m dalla splendida Spiaggia dei Gigli.',
+      description: 'Il tuo rifugio di lusso in Calabria. 9 appartamenti eleganti con piscina esterna condivisa, a soli 100m dalla splendida Spiaggia dei Gigli.',
     },
     quickLinks: 'Link Rapidi',
     discover: 'Scopri Capo Rizzuto',
@@ -260,7 +260,6 @@ export const it = {
     copyright: 'Tutti i diritti riservati',
   },
 }
-
 
 
 

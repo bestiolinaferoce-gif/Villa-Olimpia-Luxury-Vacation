@@ -20,6 +20,7 @@ import { MetaPixelOptional } from "@/components/analytics/meta-pixel"
 import { SeasonalRootOverlays } from "@/components/seasonal/SeasonalRootOverlays"
 import { LazyOverlays } from "@/components/lazy-overlays"
 import { I18nProvider } from "@/components/i18n-provider"
+import { VILLA_OLIMPIA_LOCATION } from "@/lib/location-data"
 
 import { getAverageRating, reviews } from "@/data/reviews-complete"
 import { apartments, getApartmentSlug } from "@/data/apartments"
@@ -38,6 +39,9 @@ const playfair = Playfair_Display({
 })
 
 export const metadata: Metadata = defaultMetadata
+
+const villaLatitude = String(VILLA_OLIMPIA_LOCATION.coordinates.latitude)
+const villaLongitude = String(VILLA_OLIMPIA_LOCATION.coordinates.longitude)
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -87,16 +91,16 @@ export default async function RootLayout({
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
 
         {/* Meta tag posizione e contatti Facebook / Open Graph */}
-        <meta property="place:location:latitude" content="38.9136" />
-        <meta property="place:location:longitude" content="17.0836" />
-        <meta property="business:contact_data:street_address" content="Località Capo Piccolo" />
+        <meta property="place:location:latitude" content={villaLatitude} />
+        <meta property="place:location:longitude" content={villaLongitude} />
+        <meta property="business:contact_data:street_address" content={VILLA_OLIMPIA_LOCATION.address.fullAddress} />
         <meta property="business:contact_data:locality" content="Isola di Capo Rizzuto" />
         <meta property="business:contact_data:region" content="KR" />
         <meta property="business:contact_data:postal_code" content="88841" />
         <meta property="business:contact_data:country_name" content="IT" />
-        <meta property="og:latitude" content="38.9136" />
-        <meta property="og:longitude" content="17.0836" />
-        <meta property="og:street-address" content="Località Capo Piccolo" />
+        <meta property="og:latitude" content={villaLatitude} />
+        <meta property="og:longitude" content={villaLongitude} />
+        <meta property="og:street-address" content={VILLA_OLIMPIA_LOCATION.address.fullAddress} />
         <meta property="og:locality" content="Isola di Capo Rizzuto" />
         <meta property="og:region" content="KR" />
         <meta property="og:postal-code" content="88841" />
@@ -115,18 +119,18 @@ export default async function RootLayout({
               telephone: "+393335773390",
               address: {
                 "@type": "PostalAddress",
-                streetAddress: "Località Capo Piccolo",
-                addressLocality: "Isola di Capo Rizzuto",
-                addressRegion: "KR",
-                postalCode: "88841",
+                streetAddress: `${VILLA_OLIMPIA_LOCATION.address.street} ${VILLA_OLIMPIA_LOCATION.address.number}`,
+                addressLocality: VILLA_OLIMPIA_LOCATION.address.city,
+                addressRegion: VILLA_OLIMPIA_LOCATION.address.province,
+                postalCode: VILLA_OLIMPIA_LOCATION.address.postalCode,
                 addressCountry: "IT",
               },
               geo: {
                 "@type": "GeoCoordinates",
-                latitude: 38.9136,
-                longitude: 17.0836,
+                latitude: VILLA_OLIMPIA_LOCATION.coordinates.latitude,
+                longitude: VILLA_OLIMPIA_LOCATION.coordinates.longitude,
               },
-              hasMap: "https://www.google.com/maps/search/?api=1&query=38.9136,17.0836",
+              hasMap: VILLA_OLIMPIA_LOCATION.coordinates.googleMaps,
               sameAs: [
                 "https://www.facebook.com/villaolimpiacaporizzuto",
                 "https://www.instagram.com/villaolimpiacaporizzuto"

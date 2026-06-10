@@ -66,8 +66,8 @@ export const SEASONAL_CONFIG: Record<SeasonalMonth | "other", MonthConfig> = {
     availabilityLeft: 3,
     totalUnits: 9,
     priceFrom: 130,
-    discountBadge: "Stato aggiornato manualmente — confermiamo le date via WhatsApp o form",
-    heroTagline: "Giugno a Capo Rizzuto: mare già piacevole, piscina stagionale, ritmi tranquilli per famiglie",
+    discountBadge: "Giugno da spingere ora — proposta diretta su date libere e risposta rapida",
+    heroTagline: "Giugno a Capo Rizzuto: mare già piacevole, piscina stagionale, settimane da bloccare ora",
     heroTaglineEn: "June at Capo Rizzuto: pleasant early-summer sea, seasonal pool, calm pace for families",
     seoTitle: `Giugno ${SEASONAL_CAMPAIGN_YEAR} Capo Rizzuto | Appartamenti con Piscina per Famiglie`,
     seoDescription: `Vacanze famiglia a giugno a Isola di Capo Rizzuto (Bandiera Blu 2026): piscina, mare a pochi minuti, appartamenti con cucina e zona pranzo. Più calmo di agosto. Richiedi date e tariffe.`,
@@ -79,7 +79,7 @@ export const SEASONAL_CONFIG: Record<SeasonalMonth | "other", MonthConfig> = {
       "appartamento con cucina giugno capo rizzuto",
       "isola capo rizzuto giugno bandiera blu",
     ],
-    ctaLabel: "Richiedi date Giugno",
+    ctaLabel: "Ricevi proposta Giugno",
     ctaLabelEn: "Request June dates",
     whatsappMessage: `Ciao! Vorrei informazioni per Villa Olimpia a giugno ${SEASONAL_CAMPAIGN_YEAR}: potete confermarmi disponibilità e tariffe? Grazie.`,
     emailSubject: `Richiesta disponibilità — Giugno ${SEASONAL_CAMPAIGN_YEAR} | Villa Olimpia`,
@@ -93,7 +93,7 @@ export const SEASONAL_CONFIG: Record<SeasonalMonth | "other", MonthConfig> = {
     availabilityLeft: 2,
     totalUnits: 9,
     priceFrom: 150,
-    discountBadge: "Alta stagione — ultimi lodge in aggiornamento manuale",
+    discountBadge: "Luglio solo su verifica date — meglio richiesta rapida e flessibile",
     heroTagline: `Luglio ${SEASONAL_CAMPAIGN_YEAR}: alta domanda — prenota diretto per bloccare le date`,
     heroTaglineEn: `July ${SEASONAL_CAMPAIGN_YEAR}: peak demand — book direct to secure dates`,
     seoTitle: `Luglio ${SEASONAL_CAMPAIGN_YEAR} Capo Rizzuto | Villa Olimpia Lodge con Piscina`,
@@ -105,7 +105,7 @@ export const SEASONAL_CONFIG: Record<SeasonalMonth | "other", MonthConfig> = {
       "lodge lusso calabria luglio",
       "villa olimpia luglio disponibilita",
     ],
-    ctaLabel: "Blocca date Luglio",
+    ctaLabel: "Verifica ultime date Luglio",
     ctaLabelEn: "Secure July dates",
     whatsappMessage: `Ciao! Vorrei prenotare Villa Olimpia per luglio ${SEASONAL_CAMPAIGN_YEAR}. Potete confermarmi disponibilità e preventivo diretto?`,
     emailSubject: `Richiesta urgente — Luglio ${SEASONAL_CAMPAIGN_YEAR} | Villa Olimpia`,
@@ -172,8 +172,11 @@ export const SEASONAL_LODGE_UI: Record<Exclude<SeasonalMonth, "other">, Record<n
 
 export function getCurrentSeasonalMonth(now: Date = new Date()): SeasonalMonth {
   const m = now.getMonth() + 1
+  const d = now.getDate()
   if (m <= 4) return "maggio"
-  if (m === 5) return "maggio"
+  // Da fine maggio la pressione commerciale deve spostarsi su giugno:
+  // gli utenti che prenotano last-minute hanno bisogno di una CTA chiara.
+  if (m === 5) return d >= 20 ? "giugno" : "maggio"
   if (m === 6) return "giugno"
   if (m === 7) return "luglio"
   return "other"

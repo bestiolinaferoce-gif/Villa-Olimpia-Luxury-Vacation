@@ -4,6 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { MapPin, Route, ExternalLink } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { VILLA_OLIMPIA_LOCATION } from "@/lib/location-data"
+import { trackMapInteraction } from "@/components/analytics/google-analytics"
 
 /**
  * Mappa digitale moderna per la pagina Location.
@@ -14,12 +15,14 @@ import { VILLA_OLIMPIA_LOCATION } from "@/lib/location-data"
 export function LocationMapModern() {
   const openMaps = () => {
     if (typeof window !== "undefined") {
+      trackMapInteraction("open_maps", "location_map_modern")
       window.open(VILLA_OLIMPIA_LOCATION.coordinates.googleMaps, "_blank", "noopener,noreferrer")
     }
   }
 
   const openDirections = () => {
     if (typeof window !== "undefined") {
+      trackMapInteraction("open_directions", "location_map_modern")
       window.open(VILLA_OLIMPIA_LOCATION.coordinates.directions, "_blank", "noopener,noreferrer")
     }
   }

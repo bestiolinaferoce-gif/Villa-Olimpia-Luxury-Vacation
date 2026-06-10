@@ -7,6 +7,7 @@ import { SITE_CONFIG } from "@/lib/constants"
 import { CookiePreferencesTrigger } from "@/components/cookie-preferences-trigger"
 import { getLocalizedPathForCanonical } from "@/lib/i18n-routing"
 import type { SupportedLocale } from "@/lib/i18n-config"
+import { TrackedContactAnchor } from "@/components/analytics/tracked-contact-anchor"
 
 export function Footer() {
   const { t, locale } = useI18n()
@@ -173,28 +174,37 @@ export function Footer() {
               <li className="flex items-start gap-2">
                 <Phone className="h-4 w-4 mt-0.5 flex-shrink-0" />
                 <div className="space-y-1">
-                  <a
+                  <TrackedContactAnchor
+                    kind="phone"
                     href="tel:+393335773390"
+                    source="footer_primary"
+                    locale={currentLocale}
                     className="hover:text-primary transition-colors block"
                   >
                     +39 333 577 3390
-                  </a>
-                  <a
+                  </TrackedContactAnchor>
+                  <TrackedContactAnchor
+                    kind="phone"
                     href="tel:+393290479193"
+                    source="footer_secondary"
+                    locale={currentLocale}
                     className="hover:text-primary transition-colors block"
                   >
                     +39 329 047 9193
-                  </a>
+                  </TrackedContactAnchor>
                 </div>
               </li>
               <li className="flex items-start gap-2">
                 <Mail className="h-4 w-4 mt-0.5 flex-shrink-0" />
-                <a
+                <TrackedContactAnchor
+                  kind="email"
                   href="mailto:villaolimpiacaporizzuto@gmail.com"
+                  source="footer_email"
+                  locale={currentLocale}
                   className="hover:text-primary transition-colors"
                 >
                   villaolimpiacaporizzuto@gmail.com
-                </a>
+                </TrackedContactAnchor>
               </li>
               <li className="flex items-start gap-2">
                 <MapPin className="h-4 w-4 mt-0.5 flex-shrink-0" />
@@ -209,14 +219,15 @@ export function Footer() {
             <p className="text-sm text-muted-foreground mb-4">
               {t.footer.bookNowDescription}
             </p>
-            <a
+            <TrackedContactAnchor
+              kind="whatsapp"
               href={`${SITE_CONFIG.social.whatsapp}?text=${encodeURIComponent("Vorrei informazioni su Villa Olimpia")}`}
-              target="_blank"
-              rel="noopener noreferrer"
+              source="footer_book_now"
+              locale={currentLocale}
               className="inline-block bg-[#25D366] text-white px-6 py-3 rounded-full text-sm font-semibold hover:bg-[#20BA5A] transition-colors"
             >
               💬 {t.footer.whatsapp}
-            </a>
+            </TrackedContactAnchor>
           </div>
         </div>
 

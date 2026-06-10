@@ -53,6 +53,9 @@ async function main() {
   const envLocal = loadTrackedEnv();
   const gaId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || envLocal.NEXT_PUBLIC_GA_MEASUREMENT_ID || "";
   const gtmId = process.env.NEXT_PUBLIC_GTM_ID || envLocal.NEXT_PUBLIC_GTM_ID || "GTM-K5NQGHBD";
+  const analyticsUnified = fs.readFileSync(path.join(ROOT, "components/analytics/analytics-unified.tsx"), "utf8");
+  const gtmDisabledByCode =
+    analyticsUnified.includes("GTM disabilitato") && analyticsUnified.includes("return null");
   const metaPixelId =
     process.env.NEXT_PUBLIC_META_PIXEL_ID || envLocal.NEXT_PUBLIC_META_PIXEL_ID || "";
   const siteUrl = process.env.SITE_URL || "";
@@ -78,7 +81,9 @@ async function main() {
     ok = false;
   }
 
-  if (gtmId && gtmId !== "GTM-XXXXXXX") {
+  if (gtmDisabledByCode) {
+    console.log("  [OK] Google Tag Manager: disabilitato intenzionalmente; GA4 diretto attivo");
+  } else if (gtmId && gtmId !== "GTM-XXXXXXX") {
     console.log("  [OK] Google Tag Manager: ID configurato");
   } else {
     console.log("  [!!] Google Tag Manager: imposta NEXT_PUBLIC_GTM_ID se usi GTM");
@@ -96,6 +101,7 @@ async function main() {
         if (hasGA) console.log("  [OK] In HTML deployato: script GA4 presente");
         else console.log("  [--] In HTML: script GA4 non trovato (può essere iniettato lato client)");
         if (hasGTM) console.log("  [OK] In HTML deployato: GTM presente");
+        else if (gtmDisabledByCode) console.log("  [OK] In HTML: GTM assente come previsto; GA4 diretto evita doppio conteggio");
         else console.log("  [--] In HTML: GTM non trovato");
         if (hasDataLayer) console.log("  [OK] In HTML: dataLayer presente");
       }

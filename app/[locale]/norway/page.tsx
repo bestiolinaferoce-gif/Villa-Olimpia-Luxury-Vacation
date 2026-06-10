@@ -50,8 +50,8 @@ const lodgingSchema = {
   },
   geo: {
     "@type": "GeoCoordinates",
-    latitude: 38.9136,
-    longitude: 17.0836,
+    latitude: 38.913856,
+    longitude: 17.0754964,
   },
   amenityFeature: [
     {

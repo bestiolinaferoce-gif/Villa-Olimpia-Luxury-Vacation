@@ -11,6 +11,11 @@ import { reviews } from "@/data/reviews-complete"
 import type { MonthConfig, SeasonalMonth } from "@/lib/seasonalConfig"
 import { whatsappUrlForConfig } from "@/lib/seasonalConfig"
 import {
+  buildMailtoAvailabilityFallback,
+  buildOfficialAvailabilityMessage,
+  buildWhatsAppUrlFromText,
+} from "@/lib/booking-contact"
+import {
   trackEvent,
   trackFormStart,
   trackPhoneClick,
@@ -54,6 +59,30 @@ export function SeasonalUrgencyForm({
     []
   )
 
+  const openFallbackContact = () => {
+    const summary = buildOfficialAvailabilityMessage({
+      checkIn,
+      checkOut,
+      guests,
+      apartment,
+      sourceLabel: `landing ${monthKey}`,
+    })
+    const body = [
+      summary,
+      "",
+      `Nome: ${name}`,
+      `Email: ${email}`,
+      `Telefono: ${phone}`,
+      message ? `Messaggio: ${message}` : "",
+    ]
+      .filter(Boolean)
+      .join("\n")
+    const popup = window.open(buildWhatsAppUrlFromText(body), "_blank", "noopener,noreferrer")
+    if (!popup) {
+      window.location.href = buildMailtoAvailabilityFallback(config.emailSubject, body)
+    }
+  }
+
   const onSubmit = async (e: FormEvent) => {
     e.preventDefault()
     setStatus("loading")
@@ -90,10 +119,12 @@ export function SeasonalUrgencyForm({
       } else {
         setStatus("error")
         trackEvent("lead_submit_error", "Conversion", `seasonal_${monthKey}_server`)
+        openFallbackContact()
       }
     } catch {
       setStatus("error")
       trackEvent("lead_submit_error", "Conversion", `seasonal_${monthKey}_network`)
+      openFallbackContact()
     }
   }
 

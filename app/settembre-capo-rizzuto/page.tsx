@@ -2,9 +2,9 @@ import { generateMetadata } from "@/lib/metadata"
 import { SettembreCapoRizzutoPageView } from "@/components/pages/settembre-capo-rizzuto-page-view"
 
 export const metadata = generateMetadata({
-  title: "Settembre Capo Rizzuto | Mare 26°C Villa Olimpia con Piscina",
+  title: "Settembre Capo Rizzuto | Villa Olimpia Mare Caldo e Piscina",
   description:
-    "Settembre è il mese perfetto a Capo Rizzuto: acqua calda, spiagge libere e prezzi più bassi. Appartamenti con piscina disponibili. Prenota online.",
+    "Settembre è il mese perfetto a Capo Rizzuto: mare ancora caldo, spiagge più libere e appartamenti con piscina esterna condivisa. Richiedi disponibilità diretta.",
   path: "/settembre-capo-rizzuto",
   keywords: [
     "settembre capo rizzuto",

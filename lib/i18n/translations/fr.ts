@@ -149,7 +149,7 @@ export const fr = {
   },
   apartments: {
     title: 'Appartements',
-    subtitle: '9 appartements de luxe avec piscine privée',
+    subtitle: '9 appartements de luxe avec piscine extérieure partagée',
     description: 'Tous les appartements disposent de climatisation, WiFi gratuit, cuisine complète et accès à la piscine partagée',
     guests: 'invités',
     bedrooms: 'chambres',
@@ -211,7 +211,7 @@ export const fr = {
   footer: {
     brand: {
       title: 'Villa Olimpia',
-      description: 'Votre retraite de luxe en Calabre. 9 appartements élégants avec piscine privée, à seulement 100m de la magnifique Spiaggia dei Gigli.',
+      description: 'Votre retraite de luxe en Calabre. 9 appartements élégants avec piscine extérieure partagée, à seulement 100m de la magnifique Spiaggia dei Gigli.',
     },
     quickLinks: 'Liens Rapides',
     discover: 'Découvrir Capo Rizzuto',
@@ -222,7 +222,6 @@ export const fr = {
     copyright: 'Tous droits réservés',
   },
 }
-
 
 
 
