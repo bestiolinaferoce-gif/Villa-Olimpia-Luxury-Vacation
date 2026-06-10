@@ -7,7 +7,7 @@ export const TERRITORY_SEO = {
   // Meta tags per homepage con focus territorio
   homepage: {
     title: "Villa Olimpia Capo Rizzuto | Vacanze in Calabria con Spiagge Bandiera Blu e Siti UNESCO",
-    description: "Villa Olimpia a Capo Rizzuto: 9 appartamenti di lusso con piscina privata. Vicino a Spiaggia dei Gigli Bandiera Blu, Area Marina Protetta, Valli Cupe e Le Castella. Prenota la tua vacanza in Calabria.",
+    description: "Villa Olimpia a Capo Rizzuto: 9 appartamenti di lusso con piscina esterna condivisa. Vicino a Spiaggia dei Gigli Bandiera Blu, Area Marina Protetta, Valli Cupe e Le Castella. Prenota la tua vacanza in Calabria.",
     keywords: [
       "villa olimpia capo rizzuto",
       "appartamenti vacanze calabria",
@@ -27,7 +27,7 @@ export const TERRITORY_SEO = {
     ],
     openGraph: {
       title: "Villa Olimpia | Vacanze Premium in Calabria con Spiagge Bandiera Blu",
-      description: "9 appartamenti di lusso con piscina privata a Capo Rizzuto. Spiaggia dei Gigli Bandiera Blu, Area Marina Protetta, Valli Cupe e siti UNESCO nelle vicinanze.",
+      description: "9 appartamenti di lusso con piscina esterna condivisa a Capo Rizzuto. Spiaggia dei Gigli Bandiera Blu, Area Marina Protetta, Valli Cupe e siti UNESCO nelle vicinanze.",
       images: [
         {
           url: "https://villaolimpiacaporizzuto.com/images/villa/location/spiaggia-dei-gigli.jpg",
@@ -111,7 +111,7 @@ export const TERRITORY_SEO = {
       "spiaggia bandiera blu",
       "area marina protetta",
       "calabria",
-      "piscina privata",
+      "piscina esterna condivisa",
       "appartamenti vacanze",
       "valli cupe",
       "le castella",
@@ -125,7 +125,7 @@ export const TERRITORY_SEO = {
       "og:type": "website",
       "og:url": "https://villaolimpiacaporizzuto.com",
       "og:title": "Villa Olimpia | Vacanze Premium in Calabria",
-      "og:description": "9 appartamenti di lusso con piscina privata. Spiaggia Bandiera Blu, Area Marina Protetta, siti UNESCO. Capo Rizzuto, Calabria.",
+      "og:description": "9 appartamenti di lusso con piscina esterna condivisa. Spiaggia Bandiera Blu, Area Marina Protetta, siti UNESCO. Capo Rizzuto, Calabria.",
       "og:image": "https://villaolimpiacaporizzuto.com/images/villa/location/spiaggia-dei-gigli.jpg",
       "og:image:width": "1200",
       "og:image:height": "630",
@@ -147,7 +147,7 @@ export const TERRITORY_SEO = {
     "@context": "https://schema.org",
     "@type": "LodgingBusiness",
     "name": "Villa Olimpia",
-    "description": "9 appartamenti di lusso con piscina privata a Capo Rizzuto, Calabria. Vicino a Spiaggia dei Gigli Bandiera Blu, Area Marina Protetta, Valli Cupe e siti UNESCO.",
+    "description": "9 appartamenti di lusso con piscina esterna condivisa a Capo Rizzuto, Calabria. Vicino a Spiaggia dei Gigli Bandiera Blu, Area Marina Protetta, Valli Cupe e siti UNESCO.",
     "url": "https://villaolimpiacaporizzuto.com",
     "telephone": "+393335773390",
     "address": {
@@ -175,7 +175,7 @@ export const TERRITORY_SEO = {
       "bestRating": "5"
     },
     "amenityFeature": [
-      { "@type": "LocationFeatureSpecification", "name": "Piscina privata", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Piscina esterna condivisa", "value": true },
       { "@type": "LocationFeatureSpecification", "name": "Parcheggio gratuito", "value": true },
       { "@type": "LocationFeatureSpecification", "name": "Wi-Fi gratuito", "value": true },
       { "@type": "LocationFeatureSpecification", "name": "Aria condizionata", "value": true },
@@ -227,7 +227,6 @@ export function generateTerritoryMetaTags() {
     twitter: TERRITORY_SEO.homepage.twitter
   }
 }
-
 
 
 

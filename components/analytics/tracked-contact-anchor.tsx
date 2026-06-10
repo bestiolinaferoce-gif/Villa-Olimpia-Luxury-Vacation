@@ -1,6 +1,6 @@
 "use client"
 
-import { trackEvent, trackPhoneClick, trackWhatsAppClick } from "@/components/analytics/google-analytics"
+import { trackEmailClick, trackPhoneClick, trackWhatsAppClick } from "@/components/analytics/google-analytics"
 
 type ContactKind = "whatsapp" | "phone" | "email"
 
@@ -35,9 +35,7 @@ export function TrackedContactAnchor({
       trackPhoneClick(`${id}_${source}`)
       return
     }
-    // email
-    const label = locale ? `${source}_${locale}` : source
-    trackEvent("email_click", "Engagement", label)
+    trackEmailClick(source, locale)
   }
 
   const isExternal = kind === "whatsapp"

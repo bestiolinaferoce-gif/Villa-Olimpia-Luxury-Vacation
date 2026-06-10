@@ -17,6 +17,7 @@
     "quality:quick": "npm run check:repo && npm run check:seo && npm run check:apartments && npm run check:content",
     "quality:gate": "node scripts/quality-gate.js",
     "verify:live-seo": "node scripts/verify-live-seo.js",
+    "ops:recovery": "node scripts/seo-google-recovery-autopilot.js",
     "ops:daily": "npm run quality:quick && npm run health-check && npm run verify:live-seo",
     "verify:analytics": "node scripts/verify-analytics.js",
     "leads:report": "node scripts/leads-report.js",

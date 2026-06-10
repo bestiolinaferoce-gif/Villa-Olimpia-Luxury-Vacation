@@ -13,6 +13,7 @@ const DATE_TERRITORIO = new Date("2026-04-19")
 const DATE_SCHEMA_FIX = new Date("2026-04-29") // Fix schema VacationRental + redirect
 const DATE_INTERNATIONAL = new Date("2026-05-10")
 const DATE_SEASONAL_CRO = new Date("2026-05-15") // CRO patch giugno + tracking + SocialProof refactor
+const DATE_JUNE_RECOVERY = new Date("2026-05-26") // spinta commerciale giugno + recrawl segnali freschi
 
 const staticRoutes: Array<{
   path: string
@@ -20,20 +21,20 @@ const staticRoutes: Array<{
   changeFrequency: "daily" | "weekly" | "monthly" | "yearly"
   lastMod: Date
 }> = [
-  { path: "", priority: 1.0, changeFrequency: "weekly", lastMod: DATE_CORE },
+  { path: "", priority: 1.0, changeFrequency: "daily", lastMod: DATE_JUNE_RECOVERY },
   { path: "/appartamenti", priority: 0.95, changeFrequency: "weekly", lastMod: DATE_CORE },
-  { path: "/prenota", priority: 0.95, changeFrequency: "monthly", lastMod: DATE_CORE },
+  { path: "/prenota", priority: 0.96, changeFrequency: "daily", lastMod: DATE_JUNE_RECOVERY },
   { path: "/maggio-2026", priority: 0.9, changeFrequency: "weekly", lastMod: DATE_SEASONAL_CRO },
-  { path: "/giugno-2026", priority: 0.9, changeFrequency: "weekly", lastMod: DATE_SEASONAL_CRO },
+  { path: "/giugno-2026", priority: 0.98, changeFrequency: "daily", lastMod: DATE_JUNE_RECOVERY },
   { path: "/luglio-2026", priority: 0.9, changeFrequency: "weekly", lastMod: DATE_SEASONAL_CRO },
   { path: "/settembre-capo-rizzuto", priority: 0.88, changeFrequency: "weekly", lastMod: DATE_NEW_PAGES },
   { path: "/intera-villa-calabria", priority: 0.86, changeFrequency: "monthly", lastMod: DATE_NEW_PAGES },
   { path: "/oslo-lamezia-villa-olimpia", priority: 0.84, changeFrequency: "monthly", lastMod: DATE_INTERNATIONAL },
   { path: "/aeroporto-crotone-villa-olimpia", priority: 0.84, changeFrequency: "monthly", lastMod: DATE_INTERNATIONAL },
   { path: "/aeroporto-lamezia-villa-olimpia", priority: 0.84, changeFrequency: "monthly", lastMod: DATE_INTERNATIONAL },
-  { path: "/bandiera-blu-2026-isola-capo-rizzuto", priority: 0.92, changeFrequency: "weekly", lastMod: new Date("2026-05-15") },
+  { path: "/bandiera-blu-2026-isola-capo-rizzuto", priority: 0.92, changeFrequency: "daily", lastMod: DATE_JUNE_RECOVERY },
 
-  { path: "/contatti", priority: 0.9, changeFrequency: "monthly", lastMod: DATE_CORE },
+  { path: "/contatti", priority: 0.94, changeFrequency: "daily", lastMod: DATE_JUNE_RECOVERY },
   { path: "/recensioni", priority: 0.9, changeFrequency: "weekly", lastMod: DATE_CORE },
   { path: "/location", priority: 0.85, changeFrequency: "monthly", lastMod: DATE_CONTENT },
   { path: "/territorio", priority: 0.85, changeFrequency: "monthly", lastMod: DATE_TERRITORIO },

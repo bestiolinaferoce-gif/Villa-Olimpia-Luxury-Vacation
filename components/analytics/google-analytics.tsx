@@ -156,18 +156,22 @@ export function GoogleAnalytics() {
   )
 }
 
+type GAEventParams = Record<string, string | number | boolean | undefined>
+
 // Custom event tracking (no-op se GA non abilitato o gtag non pronto)
 export function trackEvent(
   action: string,
   category: string,
   label?: string,
-  value?: number
+  value?: number,
+  params: GAEventParams = {}
 ) {
   if (typeof window === "undefined" || !window.gtag) return
   window.gtag("event", action, {
     event_category: category,
     event_label: label ?? undefined,
     value: value ?? undefined,
+    ...params,
   })
 }
 
@@ -215,19 +219,33 @@ export const trackEmailSignup = (source: string) => {
 }
 
 export const trackPhoneClick = (phoneNumber: string) => {
-  trackEvent("phone_click", "Engagement", phoneNumber)
+  trackEvent("phone_click", "Lead", phoneNumber, 1, {
+    method: "phone",
+    lead_channel: "phone",
+  })
+  trackEvent("generate_lead", "Lead", phoneNumber, 1, {
+    method: "phone",
+    lead_channel: "phone",
+  })
 }
 
 export const trackExternalBookingClick = (platform: string, apartmentId?: number) => {
-  trackEvent("external_booking_click", "Conversion", `${platform} - Apartment ${apartmentId || "N/A"}`)
+  trackEvent("external_booking_click", "Lead", `${platform} - Apartment ${apartmentId || "N/A"}`, 1, {
+    method: "ota",
+    platform,
+    apartment_id: apartmentId,
+  })
 }
 
 export const trackReviewRead = (reviewId?: number) => {
   trackEvent("review_read", "Engagement", reviewId ? `Review ${reviewId}` : "Reviews Page")
 }
 
-export const trackMapInteraction = (interactionType: string) => {
-  trackEvent("map_interaction", "Engagement", interactionType)
+export const trackMapInteraction = (interactionType: string, source?: string) => {
+  trackEvent("map_interaction", "Engagement", source ? `${interactionType}_${source}` : interactionType, undefined, {
+    interaction_type: interactionType,
+    source,
+  })
 }
 
 export const trackLanguageChange = (language: string) => {
@@ -249,13 +267,41 @@ export const trackFormStart = (formId: string, locale?: string) => {
 /** Traccia click WhatsApp con contesto */
 export const trackWhatsAppClick = (source: string, locale?: string) => {
   const label = locale ? `${source}_${locale}` : source
-  trackEvent("whatsapp_click", "Conversion", label)
+  trackEvent("whatsapp_click", "Lead", label, 1, {
+    method: "whatsapp",
+    lead_channel: "whatsapp",
+    source,
+    locale,
+  })
+  trackEvent("generate_lead", "Lead", label, 1, {
+    method: "whatsapp",
+    lead_channel: "whatsapp",
+    source,
+    locale,
+  })
 }
 
 /** Traccia fallback (quando il submit API fallisce e si apre WA/mailto) */
 export const trackFormFallback = (reason: string, locale?: string) => {
   const label = locale ? `${reason}_${locale}` : reason
   trackEvent("form_fallback", "Conversion", label)
+}
+
+/** Traccia click email come contatto commerciale diretto */
+export const trackEmailClick = (source: string, locale?: string) => {
+  const label = locale ? `${source}_${locale}` : source
+  trackEvent("email_click", "Lead", label, 1, {
+    method: "email",
+    lead_channel: "email",
+    source,
+    locale,
+  })
+  trackEvent("generate_lead", "Lead", label, 1, {
+    method: "email",
+    lead_channel: "email",
+    source,
+    locale,
+  })
 }
 
 // Extend Window interface
@@ -265,7 +311,6 @@ declare global {
     gtag: (...args: any[]) => void
   }
 }
-
 
 
 

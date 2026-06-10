@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useState } from "react"
 import { AnimatePresence, motion } from "framer-motion"
-import { ArrowRight, Clock, Users, X } from "lucide-react"
+import { ArrowRight, Clock, MessageCircle, Users, X } from "lucide-react"
 import Link from "next/link"
 import {
   SEASONAL_CAMPAIGN_YEAR,
@@ -10,6 +10,7 @@ import {
   getAvailabilityPercent,
   getCurrentSeasonalMonth,
   getUrgencyTailwindClasses,
+  whatsappUrlForConfig,
   type SeasonalMonth,
 } from "@/lib/seasonalConfig"
 import { trackEvent } from "@/components/analytics/google-analytics"
@@ -51,13 +52,14 @@ export function SeasonalStickyBar({ targetMonth }: SeasonalStickyBarProps) {
 
   useEffect(() => {
     if (!mounted || closed) return
-    let showTimer: number | undefined
+    let showTimer: number | undefined = window.setTimeout(() => setVisible(true), 1200)
     const onScroll = () => {
       const el = document.documentElement
       const max = el.scrollHeight - el.clientHeight
       const scrollPct = max <= 0 ? 1 : el.scrollTop / max
       if (scrollPct >= 0.2) {
-        showTimer = window.setTimeout(() => setVisible(true), 3000)
+        if (showTimer !== undefined) window.clearTimeout(showTimer)
+        showTimer = window.setTimeout(() => setVisible(true), 400)
         window.removeEventListener("scroll", onScroll)
       }
     }
@@ -88,6 +90,14 @@ export function SeasonalStickyBar({ targetMonth }: SeasonalStickyBarProps) {
 
   const onCta = useCallback(() => {
     trackEvent("seasonal_sticky_cta", "Conversion", config.month)
+  }, [config.month])
+
+  const onWhatsApp = useCallback(() => {
+    trackEvent("seasonal_sticky_whatsapp", "Lead", config.month, 1, {
+      method: "whatsapp",
+      lead_channel: "whatsapp",
+      source: "seasonal_sticky",
+    })
   }, [config.month])
 
   if (!mounted || closed || !visible) return null
@@ -132,6 +142,16 @@ export function SeasonalStickyBar({ targetMonth }: SeasonalStickyBarProps) {
               </div>
             </div>
             <div className="flex shrink-0 items-center justify-end gap-2">
+              <a
+                href={whatsappUrlForConfig(config)}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={onWhatsApp}
+                className="inline-flex items-center justify-center gap-1 rounded-full bg-[#25D366] px-3 py-2 text-[11px] font-semibold leading-tight text-white shadow sm:py-1.5 sm:text-sm"
+              >
+                <MessageCircle className="h-4 w-4 shrink-0" aria-hidden />
+                <span>WhatsApp</span>
+              </a>
               <Link
                 href={`/contatti?source=seasonal_sticky&month=${config.month}#prenota`}
                 onClick={onCta}

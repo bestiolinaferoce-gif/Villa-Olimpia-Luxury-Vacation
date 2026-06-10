@@ -149,7 +149,7 @@ export const de = {
   },
   apartments: {
     title: 'Wohnungen',
-    subtitle: '9 Luxuswohnungen mit privatem Pool',
+    subtitle: '9 Luxuswohnungen mit gemeinsamem Außenpool',
     description: 'Alle Wohnungen verfügen über Klimaanlage, kostenloses WiFi, voll ausgestattete Küche und Zugang zum Gemeinschaftspool',
     guests: 'Gäste',
     bedrooms: 'Schlafzimmer',
@@ -211,7 +211,7 @@ export const de = {
   footer: {
     brand: {
       title: 'Villa Olimpia',
-      description: 'Ihr Luxus-Rückzugsort in Kalabrien. 9 elegante Wohnungen mit privatem Pool, nur 100m vom wunderschönen Spiaggia dei Gigli entfernt.',
+      description: 'Ihr Luxus-Rückzugsort in Kalabrien. 9 elegante Wohnungen mit gemeinsamem Außenpool, nur 100m vom wunderschönen Spiaggia dei Gigli entfernt.',
     },
     quickLinks: 'Schnelllinks',
     discover: 'Capo Rizzuto entdecken',
@@ -222,7 +222,6 @@ export const de = {
     copyright: 'Alle Rechte vorbehalten',
   },
 }
-
 
 
 
