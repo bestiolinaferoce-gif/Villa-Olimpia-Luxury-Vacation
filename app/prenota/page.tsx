@@ -2,9 +2,9 @@ import { buildHreflangLanguages, generateMetadata } from "@/lib/metadata"
 import { PrenotaPageView } from "@/components/pages/prenota-page-view"
 
 export const metadata = generateMetadata({
-  title: "Prenotazione Diretta Appartamenti a Capo Rizzuto | Villa Olimpia",
+  title: "Prenota Villa Olimpia: Prezzo Diretto senza Commissioni | Capo Rizzuto",
   description:
-    "Prenota direttamente Villa Olimpia a Capo Rizzuto: appartamenti con piscina, risposta entro 24 ore e proposta su misura senza intermediari.",
+    "Prenota direttamente il tuo appartamento a Villa Olimpia, Capo Rizzuto: niente commissioni dei portali, risposta entro 24 ore e proposta su misura. Verifica subito le date libere.",
   path: "/prenota",
   keywords: [
     "prenota villa olimpia",
