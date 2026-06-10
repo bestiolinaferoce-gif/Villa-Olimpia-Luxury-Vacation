@@ -89,30 +89,7 @@ export default async function ApartmentDetailPage({ params }: PageProps) {
     `Richiesta disponibilita ${apartment.name} - Villa Olimpia:\nDate: \nOspiti: ${apartment.guests}\nAppartamento: ${apartment.name}\nFonte: sito ufficiale (pagina appartamento)`
   )
   const apartmentUrl = `${BASE_URL}/appartamenti/${canonicalSlug}`
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Home",
-        item: BASE_URL,
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: "Appartamenti",
-        item: `${BASE_URL}/appartamenti`,
-      },
-      {
-        "@type": "ListItem",
-        position: 3,
-        name: apartment.name,
-        item: apartmentUrl,
-      },
-    ],
-  }
+  // BreadcrumbList JSON-LD: emesso una sola volta dal componente <Breadcrumb /> (evita duplicati)
   const apartmentSchema = {
     "@context": "https://schema.org",
     "@type": "Accommodation",
@@ -176,10 +153,6 @@ export default async function ApartmentDetailPage({ params }: PageProps) {
 
   return (
     <div className="min-h-screen pt-20">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-      />
       <VacationRentalSchema apartment={apartment} />
       <Breadcrumb
         items={[

@@ -31,10 +31,13 @@ export default function HomePage() {
 
             <h1 className="font-playfair text-4xl font-bold leading-tight sm:text-5xl md:text-7xl">
               Villa Olimpia
+              <span
+                className="mt-4 block text-xl font-semibold text-white/95 md:text-3xl"
+                style={{ fontFamily: "var(--font-inter)" }}
+              >
+                Appartamenti con piscina a Capo Rizzuto, a 100 metri dalla Spiaggia dei Gigli
+              </span>
             </h1>
-            <p className="mt-4 text-xl font-semibold text-white/95 md:text-3xl">
-              9 appartamenti con piscina a 100 metri dalla Spiaggia dei Gigli
-            </p>
             <p className="mx-auto mt-5 max-w-3xl text-base leading-relaxed text-white/90 md:text-xl">
               Prenotazione diretta, risposta rapida e soggiorni su misura per coppie, famiglie e piccoli gruppi tra
               mare, relax e Calabria autentica.
