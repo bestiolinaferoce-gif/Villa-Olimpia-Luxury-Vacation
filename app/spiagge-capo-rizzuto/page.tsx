@@ -7,10 +7,49 @@ import { Waves, MapPin, Star, Umbrella } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 
 export const metadata: Metadata = generateMetadata({
-  title: "Migliori Spiagge di Capo Rizzuto e Capopiccolo | Villa Olimpia",
-  description: "Scopri le migliori spiagge di Capo Rizzuto: Spiaggia dei Gigli, Capopiccolo, Le Castella e Area Marina Protetta. Villa Olimpia si trova a meno di 100 metri dal mare con accesso rapido alle spiagge migliori della costa ionica.",
+  title: "Le Spiagge più Belle di Capo Rizzuto: Guida Completa | Villa Olimpia",
+  description: "Le spiagge più belle di Capo Rizzuto: Spiaggia dei Gigli (Bandiera Blu), Capopiccolo, Spiaggia Grande di Le Castella e Spiagge Rosse. Stabilimenti, spiagge libere e consigli pratici.",
   path: "/spiagge-capo-rizzuto",
 })
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "Quali sono le spiagge più belle di Capo Rizzuto?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Le spiagge più apprezzate della zona sono la Spiaggia dei Gigli (Bandiera Blu, sabbia fine e fondale graduale), le calette di Capopiccolo nell'Area Marina Protetta, la Spiaggia Grande di Le Castella e le Spiagge Rosse, note per il colore delle rocce.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Com'è il mare a Capo Rizzuto?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Il mare di Capo Rizzuto si trova all'interno dell'Area Marina Protetta più estesa d'Italia: l'acqua è generalmente limpida, con fondali sabbiosi e graduali nelle spiagge principali e tratti rocciosi ideali per lo snorkeling nelle calette. La Spiaggia dei Gigli ha ottenuto la Bandiera Blu.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Ci sono stabilimenti balneari a Isola di Capo Rizzuto?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Sì: nelle spiagge principali come la Spiaggia dei Gigli e la Spiaggia Grande di Le Castella sono presenti stabilimenti balneari con lettini e ombrelloni, affiancati da tratti di spiaggia libera. In alta stagione conviene informarsi in anticipo su disponibilità e prenotazioni.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Qual è la spiaggia più vicina a Villa Olimpia?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "La Spiaggia dei Gigli, a circa 100 metri da Villa Olimpia: si raggiunge a piedi in circa 1 minuto, senza bisogno dell'auto.",
+      },
+    },
+  ],
+}
 
 const capopiccoloImages = [
   {
@@ -74,12 +113,16 @@ const selectedBeachPhotoSet = [
 export default function SpiaggeCapoRizzutoPage() {
   return (
     <div className="min-h-screen pt-20">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-ocean/10 to-primary/10 py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-playfair font-bold mb-6">
-              Le Migliori Spiagge di Capo Rizzuto
+              Le Spiagge più Belle di Capo Rizzuto
             </h1>
             <p className="text-xl text-muted-foreground mb-8">
               Scopri le spiagge più belle della costa ionica calabrese, dalla Spiaggia dei Gigli 
@@ -511,6 +554,57 @@ export default function SpiaggeCapoRizzutoPage() {
           </div>
         </div>
       </section>
+      <section className="py-16 bg-white border-b border-primary/10">
+        <div className="container mx-auto px-4 max-w-4xl">
+          <h2 className="text-3xl md:text-4xl font-playfair font-bold mb-6 text-center">
+            Stabilimenti balneari e spiagge libere a Isola di Capo Rizzuto
+          </h2>
+          <div className="space-y-4 text-lg text-muted-foreground leading-relaxed">
+            <p>
+              Lungo la costa di Isola di Capo Rizzuto convivono <strong>stabilimenti balneari attrezzati</strong> e
+              ampi tratti di <strong>spiaggia libera</strong>. Sulle spiagge principali — come la{" "}
+              <strong>Spiaggia dei Gigli</strong> e la <strong>Spiaggia Grande di Le Castella</strong> — trovi lidi
+              con lettini, ombrelloni e punti ristoro, mentre le calette dell&apos;Area Marina Protetta restano in
+              gran parte naturali e senza servizi.
+            </p>
+            <p>
+              In <strong>alta stagione (luglio e agosto)</strong> gli stabilimenti più richiesti possono esaurire le
+              postazioni nelle ore centrali: conviene arrivare al mattino o informarsi in anticipo sulla possibilità
+              di prenotare. A giugno e settembre la disponibilità è in genere ampia e i prezzi più convenienti.
+            </p>
+            <p className="text-sm rounded-lg bg-slate-50 border border-slate-200/80 p-4">
+              Gestori, tariffe e servizi dei lidi cambiano di stagione in stagione. Se soggiorni a Villa Olimpia,
+              chiedici pure: ti indichiamo le opzioni aggiornate vicino alla struttura.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 bg-slate-50/60 border-b border-primary/10">
+        <div className="container mx-auto px-4 max-w-4xl">
+          <h2 className="text-3xl md:text-4xl font-playfair font-bold mb-6 text-center">
+            Com&apos;è il mare a Capo Rizzuto?
+          </h2>
+          <div className="space-y-4 text-lg text-muted-foreground leading-relaxed">
+            <p>
+              Il mare di Capo Rizzuto è il cuore dell&apos;<strong>Area Marina Protetta più estesa d&apos;Italia</strong>:
+              acqua generalmente <strong>limpida</strong>, fondali <strong>sabbiosi e graduali</strong> nelle spiagge
+              principali — ideali con i bambini — e tratti rocciosi ricchi di vita marina nelle calette, perfetti per
+              lo <strong>snorkeling</strong>. La <strong>Spiaggia dei Gigli</strong> ha ottenuto la{" "}
+              <Link href="/bandiera-blu-2026-isola-capo-rizzuto" className="underline underline-offset-4 decoration-primary/60 hover:text-primary">
+                Bandiera Blu
+              </Link>
+              , riconoscimento legato a qualità delle acque e servizi.
+            </p>
+            <p>
+              Da giugno a settembre la temperatura dell&apos;acqua è piacevole per nuotare a lungo; nelle giornate di
+              brezza il mare resta spesso limpido proprio grazie ai fondali della riserva. Per lo snorkeling nelle
+              calette valuta sempre meteo e condizioni del giorno.
+            </p>
+          </div>
+        </div>
+      </section>
+
       <section className="py-16 bg-white border-y border-primary/10">
         <div className="container mx-auto px-4 max-w-4xl">
           <h2 className="text-3xl md:text-4xl font-playfair font-bold mb-6 text-center">
