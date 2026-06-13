@@ -100,6 +100,7 @@ VILLA_OLIMPIA_CLAUDE_CROSSCHECK_REPORT*.md
 
 # Claude Code harness state — never commit
 .claude/
+$CODEX_HOME/
 
 # Python build artifacts
 __pycache__/
