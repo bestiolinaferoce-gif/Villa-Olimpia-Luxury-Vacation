@@ -122,12 +122,15 @@ export default async function ApartmentDetailPage({ params }: PageProps) {
     numberOfRooms: apartment.bedrooms,
     occupancy: {
       "@type": "QuantitativeValue",
+      value: apartment.guests,
       maxValue: apartment.guests,
+      unitCode: "C62",
     },
     bed: getApartmentBedSchema(apartment),
     amenityFeature: apartment.features.map((feature) => ({
       "@type": "LocationFeatureSpecification",
       name: feature,
+      value: true,
     })),
     checkInTime: "15:00",
     checkOutTime: "10:00",
@@ -144,11 +147,7 @@ export default async function ApartmentDetailPage({ params }: PageProps) {
     },
     telephone: VILLA_OLIMPIA_LOCATION.contact.phone,
     url: apartmentUrl,
-    identifier: {
-      "@type": "PropertyValue",
-      name: "internal-slug",
-      value: canonicalSlug,
-    },
+    identifier: `villa-olimpia-${canonicalSlug}`,
   }
 
   return (

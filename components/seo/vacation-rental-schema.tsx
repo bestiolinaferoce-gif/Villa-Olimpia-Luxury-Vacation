@@ -26,14 +26,24 @@ export function VacationRentalSchema({ apartment }: Props) {
   // Google VacationRental richiede "occupancy" in ogni containsPlace item
   const bedroomPlaces = Array.from({ length: apartment.bedrooms }, (_, i) => ({
     "@type": "Accommodation",
+    additionalType: "https://schema.org/Room",
     name:
       apartment.bedrooms === 1
         ? "Camera da letto"
         : `Camera da letto ${i + 1}`,
     numberOfRooms: 1,
+    numberOfBedrooms: 1,
     occupancy: {
       "@type": "QuantitativeValue",
+      value: 2,
       maxValue: 2,
+      unitCode: "C62",
+    },
+    amenityFeature,
+    bed: {
+      "@type": "BedDetails",
+      numberOfBeds: 1,
+      typeOfBed: "Double bed",
     },
   }))
 
@@ -41,11 +51,20 @@ export function VacationRentalSchema({ apartment }: Props) {
     ...bedroomPlaces,
     {
       "@type": "Accommodation",
+      additionalType: "https://schema.org/Room",
       name: "Zona giorno",
       numberOfRooms: 1,
       occupancy: {
         "@type": "QuantitativeValue",
+        value: Math.max(apartment.guests - apartment.bedrooms * 2, 0),
         maxValue: 2,
+        unitCode: "C62",
+      },
+      amenityFeature,
+      bed: {
+        "@type": "BedDetails",
+        numberOfBeds: apartment.guests > apartment.bedrooms * 2 ? 1 : 0,
+        typeOfBed: "Sofa bed",
       },
     },
   ]
@@ -69,11 +88,8 @@ export function VacationRentalSchema({ apartment }: Props) {
     "@type": "VacationRental",
     "@id": `${url}#vacation-rental`,
     name: `${apartment.name} - Villa Olimpia Capo Rizzuto`,
-    identifier: {
-      "@type": "PropertyValue",
-      propertyID: "villa-olimpia-vacation-rental",
-      value: slug,
-    },
+    identifier: `villa-olimpia-${slug}`,
+    additionalType: "https://schema.org/Apartment",
     url,
     description: apartment.fullDescription || apartment.description,
     image: images,
@@ -99,6 +115,7 @@ export function VacationRentalSchema({ apartment }: Props) {
     numberOfBathroomsTotal: apartment.bathrooms,
     occupancy: {
       "@type": "QuantitativeValue",
+      value: apartment.guests,
       maxValue: apartment.guests,
       unitCode: "C62",
     },
