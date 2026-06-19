@@ -26,6 +26,8 @@ const MONTH_OPTIONS: Array<{ value: SeasonalMonth; label: string }> = [
   { value: "maggio", label: "Maggio" },
   { value: "giugno", label: "Giugno" },
   { value: "luglio", label: "Luglio" },
+  { value: "settembre", label: "Settembre" },
+  { value: "ottobre", label: "Ottobre" },
   { value: "other", label: "Altro / da definire" },
 ]
 
@@ -103,7 +105,11 @@ export function ExitIntentModal() {
             ? `${SEASONAL_CAMPAIGN_YEAR}-06-10`
             : month === "luglio"
               ? `${SEASONAL_CAMPAIGN_YEAR}-07-10`
-              : `${SEASONAL_CAMPAIGN_YEAR}-06-01`
+              : month === "settembre"
+                ? `${SEASONAL_CAMPAIGN_YEAR}-09-07`
+                : month === "ottobre"
+                  ? `${SEASONAL_CAMPAIGN_YEAR}-10-05`
+                  : `${SEASONAL_CAMPAIGN_YEAR}-09-01`
       const checkOut =
         month === "maggio"
           ? `${SEASONAL_CAMPAIGN_YEAR}-05-17`
@@ -111,7 +117,11 @@ export function ExitIntentModal() {
             ? `${SEASONAL_CAMPAIGN_YEAR}-06-17`
             : month === "luglio"
               ? `${SEASONAL_CAMPAIGN_YEAR}-07-17`
-              : `${SEASONAL_CAMPAIGN_YEAR}-06-08`
+              : month === "settembre"
+                ? `${SEASONAL_CAMPAIGN_YEAR}-09-14`
+                : month === "ottobre"
+                  ? `${SEASONAL_CAMPAIGN_YEAR}-10-12`
+                  : `${SEASONAL_CAMPAIGN_YEAR}-09-08`
 
       const res = await fetch("/api/lead", {
         method: "POST",
@@ -177,7 +187,8 @@ export function ExitIntentModal() {
               Aspetta! Prima di andare…
             </h2>
             <p className="mt-2 text-sm text-slate-600">
-              Maggio e giugno hanno ancora disponibilità limitata in aggiornamento manuale — lasciaci email e telefono e ti richiamiamo.
+              Settembre e ottobre sono i mesi da bloccare ora: mare più tranquillo, tariffe migliori e richieste Nord Europa in crescita.
+              Lasciaci email e telefono e ti richiamiamo.
             </p>
             <div className="mt-4 h-2 w-full overflow-hidden rounded-full bg-slate-100">
               <div

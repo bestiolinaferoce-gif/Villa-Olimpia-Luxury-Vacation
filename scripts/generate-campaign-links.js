@@ -22,6 +22,7 @@ const landings = [
   { path: "/giugno-2026", label: "Giugno" },
   { path: "/luglio-2026", label: "Luglio" },
   { path: "/settembre-capo-rizzuto", label: "Settembre" },
+  { path: "/ottobre-capo-rizzuto", label: "Ottobre" },
   { path: "/no/norway", label: "Norvegia" },
   { path: "/no/oslo-til-lamezia-villa-olimpia", label: "Norvegia Oslo-Lamezia" },
   { path: "/contatti", label: "Contatti diretti", hash: "prenota" },

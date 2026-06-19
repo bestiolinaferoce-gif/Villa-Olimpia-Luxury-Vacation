@@ -4,7 +4,16 @@ import { BASE_URL } from "@/lib/metadata"
 
 export function generateSeasonalSchema(month: Exclude<SeasonalMonth, "other">) {
   const config = SEASONAL_CONFIG[month]
-  const monthNum = month === "maggio" ? "05" : month === "giugno" ? "06" : "07"
+  const monthNum =
+    month === "maggio"
+      ? "05"
+      : month === "giugno"
+        ? "06"
+        : month === "luglio"
+          ? "07"
+          : month === "settembre"
+            ? "09"
+            : "10"
   const expires = `${SEASONAL_CAMPAIGN_YEAR}-${monthNum}-28`
 
   return {

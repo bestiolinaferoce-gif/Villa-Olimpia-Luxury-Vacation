@@ -27,7 +27,7 @@ const leadSchema = z.object({
   utmMedium: z.string().max(120).optional().or(z.literal("")),
   utmCampaign: z.string().max(160).optional().or(z.literal("")),
   landingPage: z.string().max(400).optional().or(z.literal("")),
-  seasonalMonth: z.enum(["maggio", "giugno", "luglio", "other"]).optional(),
+  seasonalMonth: z.enum(["maggio", "giugno", "luglio", "settembre", "ottobre", "other"]).optional(),
   marketingOptIn: z.boolean().optional(),
 })
 
@@ -196,7 +196,11 @@ async function sendAutoReplyToGuest(lead: EnrichedLead) {
 
   const sm = lead.seasonalMonth
   const seasonalKey: SeasonalMonth | "other" | undefined =
-    sm === "maggio" || sm === "giugno" || sm === "luglio" ? sm : sm === "other" ? "other" : undefined
+    sm === "maggio" || sm === "giugno" || sm === "luglio" || sm === "settembre" || sm === "ottobre"
+      ? sm
+      : sm === "other"
+        ? "other"
+        : undefined
 
   const subject =
     seasonalKey && seasonalKey !== "other"

@@ -15,6 +15,7 @@ const DATE_INTERNATIONAL = new Date("2026-05-10")
 const DATE_SEASONAL_CRO = new Date("2026-05-15") // CRO patch giugno + tracking + SocialProof refactor
 const DATE_COMMERCIAL_SEO = new Date("2026-06-10") // Pillar case vacanze + query commerciali + audit SEO on-page
 const DATE_JUNE_RECOVERY = new Date("2026-05-26") // spinta commerciale giugno + recrawl segnali freschi
+const DATE_SEP_OCT_RECOVERY = new Date("2026-06-19") // focus Nord Europa settembre/ottobre + CRO lead diretti
 
 const staticRoutes: Array<{
   path: string
@@ -29,7 +30,8 @@ const staticRoutes: Array<{
   // /maggio-2026 archiviata (redirect 301 → /giugno-2026 via expiredSeasonalRedirects in next.config.js)
   { path: "/giugno-2026", priority: 0.98, changeFrequency: "daily", lastMod: DATE_JUNE_RECOVERY },
   { path: "/luglio-2026", priority: 0.9, changeFrequency: "weekly", lastMod: DATE_SEASONAL_CRO },
-  { path: "/settembre-capo-rizzuto", priority: 0.88, changeFrequency: "weekly", lastMod: DATE_NEW_PAGES },
+  { path: "/settembre-capo-rizzuto", priority: 0.97, changeFrequency: "daily", lastMod: DATE_SEP_OCT_RECOVERY },
+  { path: "/ottobre-capo-rizzuto", priority: 0.94, changeFrequency: "daily", lastMod: DATE_SEP_OCT_RECOVERY },
   { path: "/intera-villa-calabria", priority: 0.86, changeFrequency: "monthly", lastMod: DATE_NEW_PAGES },
   { path: "/oslo-lamezia-villa-olimpia", priority: 0.84, changeFrequency: "monthly", lastMod: DATE_INTERNATIONAL },
   { path: "/aeroporto-crotone-villa-olimpia", priority: 0.84, changeFrequency: "monthly", lastMod: DATE_INTERNATIONAL },

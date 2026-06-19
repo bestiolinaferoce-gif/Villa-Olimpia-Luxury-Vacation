@@ -10,7 +10,7 @@ export const metadata = generateMetadata({
     "prenota villa olimpia",
     "prenotazione diretta appartamento capo rizzuto",
     "prenota appartamenti capopiccolo",
-    "vacanza maggio giugno settembre calabria",
+    "vacanza maggio giugno settembre ottobre calabria",
     "villa famiglie piccoli gruppi capo rizzuto",
     "prenotazione più appartamenti stessa struttura",
     "area marina protetta capo rizzuto alloggio diretto",

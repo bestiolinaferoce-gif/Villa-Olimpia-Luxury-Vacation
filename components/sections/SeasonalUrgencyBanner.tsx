@@ -10,7 +10,7 @@ import {
   type SeasonalMonth,
 } from "@/lib/seasonalConfig"
 
-const KEYS: Exclude<SeasonalMonth, "other">[] = ["maggio", "giugno", "luglio"]
+const KEYS: Exclude<SeasonalMonth, "other">[] = ["giugno", "luglio", "settembre", "ottobre"]
 
 export function SeasonalUrgencyBanner() {
   return (
@@ -23,7 +23,7 @@ export function SeasonalUrgencyBanner() {
           Prenotazione diretta: niente commissioni OTA. I numeri sono indicativi e aggiornati a mano su{" "}
           <code className="rounded bg-white px-1">seasonalConfig</code>.
         </p>
-        <div className="mt-8 grid gap-4 md:grid-cols-3">
+        <div className="mt-8 grid gap-4 md:grid-cols-4">
           {KEYS.map((k) => {
             const c = SEASONAL_CONFIG[k]
             const pct = getAvailabilityPercent(c)

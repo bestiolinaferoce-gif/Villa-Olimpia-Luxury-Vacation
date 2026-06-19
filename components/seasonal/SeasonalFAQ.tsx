@@ -47,6 +47,34 @@ const FAQ_IT: Record<Exclude<SeasonalMonth, "other">, Array<{ q: string; a: stri
       a: "Sì: WhatsApp è il canale più veloce per urgenze, email per dettagli e preventivi.",
     },
   ],
+  settembre: [
+    {
+      q: "Settembre è adatto al mercato Nord Europa?",
+      a: "Sì: per chi arriva da Nord Europa settembre unisce mare ancora piacevole, meno folla e migliore valore rispetto all'alta stagione. È il mese da promuovere per coppie, famiglie flessibili e soggiorni 7+ notti.",
+    },
+    {
+      q: "Meglio prenotare direttamente o via portale?",
+      a: "Per settembre conviene scriverci direttamente: possiamo proporre il lodge più adatto, verificare più appartamenti nella stessa struttura e rispondere con una tariffa chiara senza commissioni OTA.",
+    },
+    {
+      q: "La piscina e il mare sono ancora utilizzabili?",
+      a: "Il mare a settembre è spesso ancora piacevole. Per piscina e servizi stagionali confermiamo sempre nella risposta in base alle date precise del soggiorno.",
+    },
+  ],
+  ottobre: [
+    {
+      q: "Ottobre è un buon periodo per Villa Olimpia?",
+      a: "Ottobre è più adatto a chi cerca tranquillità, soggiorni lunghi, lavoro da remoto o base per scoprire costa e borghi. È meno balneare di agosto, ma molto interessante per ospiti Nord Europa.",
+    },
+    {
+      q: "Fate offerte per soggiorni lunghi?",
+      a: "Sì: per ottobre valutiamo proposte su misura per 7+ notti e long stay. Indicate date flessibili, numero ospiti ed esigenze nel form.",
+    },
+    {
+      q: "Come arrivo da Lamezia o Crotone?",
+      a: "Villa Olimpia è raggiungibile in auto dagli aeroporti di Lamezia Terme e Crotone. Nella risposta possiamo indicare distanze, tempi reali e consigli pratici.",
+    },
+  ],
 }
 
 export function SeasonalFAQ({ month }: { month: Exclude<SeasonalMonth, "other"> }) {

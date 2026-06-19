@@ -3,6 +3,10 @@ import { Breadcrumb } from "@/components/breadcrumb"
 import { Button } from "@/components/ui/button"
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Check, Sun, Users, Heart, Globe, Waves, ArrowRight, MessageCircle, Phone } from "lucide-react"
+import { SEASONAL_CONFIG } from "@/lib/seasonalConfig"
+import { SeasonalAvailabilityGrid } from "@/components/seasonal/SeasonalAvailabilityGrid"
+import { SeasonalUrgencyForm } from "@/components/seasonal/SeasonalUrgencyForm"
+import { SeasonalFAQ } from "@/components/seasonal/SeasonalFAQ"
 
 const reasons = [
   {
@@ -38,6 +42,9 @@ export function SettembreCapoRizzutoPageView({
   appartamentiHref = "/appartamenti",
   homeHref = "/",
 }: SettembreCapoRizzutoPageViewProps) {
+  const monthKey = "settembre" as const
+  const config = SEASONAL_CONFIG[monthKey]
+
   return (
     <div className="min-h-screen pt-20">
       <Breadcrumb items={[{ label: "Settembre a Capo Rizzuto" }]} />
@@ -161,6 +168,15 @@ export function SettembreCapoRizzutoPageView({
           </div>
         </div>
       </section>
+
+      <SeasonalAvailabilityGrid config={config} monthKey={monthKey} />
+      <SeasonalUrgencyForm
+        config={config}
+        monthKey={monthKey}
+        defaultCheckIn="2026-09-07"
+        defaultCheckOut="2026-09-14"
+      />
+      <SeasonalFAQ month={monthKey} />
 
       <section className="py-16 bg-gradient-to-br from-primary/5 to-ocean/5">
         <div className="container mx-auto max-w-2xl px-4 text-center">

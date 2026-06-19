@@ -17,10 +17,10 @@ export type PrenotaPageViewProps = {
 
 const pageCopy = {
   it: {
-    eyebrow: "Maggio · Giugno · Luglio · Settembre — diretto con la struttura",
+    eyebrow: "Giugno · Luglio · Settembre · Ottobre — diretto con la struttura",
     title: "Prenota il tuo soggiorno a Villa Olimpia",
     intro:
-      "Maggio, giugno e settembre sono spesso i mesi migliori per chi cerca mare bello, meno affollamento e ritmi piu tranquilli. Villa Olimpia e una base comoda per famiglie, piccoli gruppi e ospiti che vogliono una proposta diretta: risposta entro 24 ore, preventivo personalizzato e nessun intermediario.",
+      "Giugno, settembre e ottobre sono spesso i mesi migliori per chi cerca mare bello, meno affollamento e ritmi piu tranquilli. Villa Olimpia e una base comoda per famiglie, piccoli gruppi e ospiti che vogliono una proposta diretta: risposta entro 24 ore, preventivo personalizzato e nessun intermediario.",
     steps: ["Date e ospiti nel form", "Risposta con preventivo chiaro"],
     cards: [
       ["Trasparenza e fiducia", "Preventivo chiaro, nessuna sorpresa e contatto diretto."],
@@ -56,10 +56,10 @@ const pageCopy = {
     formLocale: "it-IT",
   },
   en: {
-    eyebrow: "May · June · July · September — direct with the property",
+    eyebrow: "June · July · September · October — direct with the property",
     title: "Book your stay at Villa Olimpia",
     intro:
-      "May, June and September are often the best months for guests looking for a beautiful sea with fewer crowds, generous light and a more relaxed pace. Villa Olimpia is a great base for families, small groups and guests from Northern Europe: direct booking, reply within 24 hours and a personalised offer — even if you need multiple apartments in the same complex or a solution for the entire property.",
+      "June, September and October are often the best months for guests looking for a beautiful sea with fewer crowds, generous light and a more relaxed pace. Villa Olimpia is a great base for families, small groups and guests from Northern Europe: direct booking, reply within 24 hours and a personalised offer — even if you need multiple apartments in the same complex or a solution for the entire property.",
     steps: ["Dates and guests in the form", "Reply with a clear quote"],
     cards: [
       ["Transparency & trust", "Clear quote, no surprises and direct contact."],
@@ -81,7 +81,7 @@ const pageCopy = {
     ],
     marketTitle: "Ideal for Northern European guests",
     marketText:
-      "May, June and September are often the best months for guests looking for sea, sun and quieter stays in Calabria. Direct booking with Villa Olimpia means a clear, personal reply — perfect if you are planning a longer stay or travelling with family and friends.",
+      "September and October are key months for Northern European guests looking for sea, sun and quieter stays in Calabria. Direct booking with Villa Olimpia means a clear, personal reply — perfect if you are planning a longer stay or travelling with family and friends.",
     septemberLink: "September in Capo Rizzuto",
     groupLink: "Groups & entire property requests",
     badges: ["Reply within 24h", "Beach about 100m", "9 independent apartments"],

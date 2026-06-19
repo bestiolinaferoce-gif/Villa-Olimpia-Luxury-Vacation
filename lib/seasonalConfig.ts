@@ -6,7 +6,7 @@ import { SITE_CONFIG } from "@/lib/constants"
 
 export const SEASONAL_CAMPAIGN_YEAR = 2026 as const
 
-export type SeasonalMonth = "maggio" | "giugno" | "luglio" | "other"
+export type SeasonalMonth = "maggio" | "giugno" | "luglio" | "settembre" | "ottobre" | "other"
 
 export interface MonthConfig {
   month: SeasonalMonth
@@ -111,6 +111,62 @@ export const SEASONAL_CONFIG: Record<SeasonalMonth | "other", MonthConfig> = {
     emailSubject: `Richiesta urgente — Luglio ${SEASONAL_CAMPAIGN_YEAR} | Villa Olimpia`,
     monthStartISO: `${SEASONAL_CAMPAIGN_YEAR}-07-01`,
   },
+  settembre: {
+    month: "settembre",
+    label: `Settembre ${SEASONAL_CAMPAIGN_YEAR}`,
+    labelEn: `September ${SEASONAL_CAMPAIGN_YEAR}`,
+    urgencyLevel: 2,
+    availabilityLeft: 5,
+    totalUnits: 9,
+    priceFrom: 120,
+    discountBadge: "Settembre smart — mare ancora caldo, meno folla e proposta diretta per soggiorni 7+ notti",
+    heroTagline: "Settembre a Capo Rizzuto: mare caldo, spiagge libere e ritmi eleganti",
+    heroTaglineEn: "September in Calabria: warm sea, quieter beaches and better-value stays",
+    seoTitle: `Settembre ${SEASONAL_CAMPAIGN_YEAR} Capo Rizzuto | Mare Caldo e Lodge con Piscina`,
+    seoDescription:
+      `Vacanze a settembre ${SEASONAL_CAMPAIGN_YEAR} a Capo Rizzuto: appartamenti con piscina a Villa Olimpia, Spiaggia dei Gigli a circa 100 metri, meno folla e prenotazione diretta.`,
+    seoKeywords: [
+      `vacanze settembre calabria ${SEASONAL_CAMPAIGN_YEAR}`,
+      "settembre capo rizzuto",
+      "mare caldo settembre calabria",
+      "appartamenti calabria settembre piscina",
+      "september calabria beach holiday",
+      "northern europe september italy holiday",
+    ],
+    ctaLabel: "Richiedi disponibilità Settembre",
+    ctaLabelEn: "Request September availability",
+    whatsappMessage: `Ciao! Vorrei informazioni per Villa Olimpia a settembre ${SEASONAL_CAMPAIGN_YEAR}: potete inviarmi disponibilità e tariffe dirette per le mie date?`,
+    emailSubject: `Richiesta disponibilità — Settembre ${SEASONAL_CAMPAIGN_YEAR} | Villa Olimpia`,
+    monthStartISO: `${SEASONAL_CAMPAIGN_YEAR}-09-01`,
+  },
+  ottobre: {
+    month: "ottobre",
+    label: `Ottobre ${SEASONAL_CAMPAIGN_YEAR}`,
+    labelEn: `October ${SEASONAL_CAMPAIGN_YEAR}`,
+    urgencyLevel: 1,
+    availabilityLeft: 7,
+    totalUnits: 9,
+    priceFrom: 110,
+    discountBadge: "Ottobre lento — ideale per coppie, long stay, smart working e ospiti Nord Europa",
+    heroTagline: "Ottobre in Calabria: luce mite, mare vicino e soggiorni lunghi più convenienti",
+    heroTaglineEn: "October in Calabria: mild light, seaside living and stronger long-stay value",
+    seoTitle: `Ottobre ${SEASONAL_CAMPAIGN_YEAR} Calabria Mare | Villa Olimpia Capo Rizzuto`,
+    seoDescription:
+      `Soggiorni a ottobre ${SEASONAL_CAMPAIGN_YEAR} a Villa Olimpia Capo Rizzuto: appartamenti con cucina, piscina stagionale, mare vicino e preventivo diretto per coppie, famiglie e long stay.`,
+    seoKeywords: [
+      `vacanze ottobre calabria ${SEASONAL_CAMPAIGN_YEAR}`,
+      "ottobre capo rizzuto",
+      "calabria october holiday",
+      "long stay calabria october",
+      "appartamenti calabria ottobre mare",
+      "autumn beach holiday southern italy",
+    ],
+    ctaLabel: "Richiedi disponibilità Ottobre",
+    ctaLabelEn: "Request October availability",
+    whatsappMessage: `Ciao! Sto valutando Villa Olimpia per ottobre ${SEASONAL_CAMPAIGN_YEAR}. Potete inviarmi disponibilità e tariffe dirette, anche per soggiorni lunghi?`,
+    emailSubject: `Richiesta disponibilità — Ottobre ${SEASONAL_CAMPAIGN_YEAR} | Villa Olimpia`,
+    monthStartISO: `${SEASONAL_CAMPAIGN_YEAR}-10-01`,
+  },
   other: {
     month: "other",
     label: `Estate ${SEASONAL_CAMPAIGN_YEAR}`,
@@ -168,6 +224,28 @@ export const SEASONAL_LODGE_UI: Record<Exclude<SeasonalMonth, "other">, Record<n
     8: "last",
     9: "available",
   },
+  settembre: {
+    1: "available",
+    2: "available",
+    3: "last",
+    4: "available",
+    5: "occupied",
+    6: "available",
+    7: "occupied",
+    8: "available",
+    9: "last",
+  },
+  ottobre: {
+    1: "available",
+    2: "available",
+    3: "available",
+    4: "available",
+    5: "last",
+    6: "available",
+    7: "available",
+    8: "occupied",
+    9: "available",
+  },
 }
 
 export function getCurrentSeasonalMonth(now: Date = new Date()): SeasonalMonth {
@@ -179,6 +257,9 @@ export function getCurrentSeasonalMonth(now: Date = new Date()): SeasonalMonth {
   if (m === 5) return d >= 20 ? "giugno" : "maggio"
   if (m === 6) return "giugno"
   if (m === 7) return "luglio"
+  if (m === 8) return "settembre"
+  if (m === 9) return "settembre"
+  if (m === 10) return d <= 20 ? "ottobre" : "other"
   return "other"
 }
 
@@ -206,10 +287,12 @@ export function whatsappUrlForConfig(config: MonthConfig): string {
 export function resolveSeasonalMonthParam(
   value: string | undefined
 ): SeasonalMonth | "other" {
-  if (value === "maggio" || value === "giugno" || value === "luglio") return value
+  if (value === "maggio" || value === "giugno" || value === "luglio" || value === "settembre" || value === "ottobre") return value
   return "other"
 }
 
 export function seasonalLandingPath(month: Exclude<SeasonalMonth, "other">): string {
+  if (month === "settembre") return "/settembre-capo-rizzuto"
+  if (month === "ottobre") return "/ottobre-capo-rizzuto"
   return `/${month}-${SEASONAL_CAMPAIGN_YEAR}`
 }
