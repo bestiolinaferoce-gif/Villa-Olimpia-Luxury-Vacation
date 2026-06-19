@@ -7,8 +7,8 @@ import { Waves, MapPin, Star, Umbrella } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 
 export const metadata: Metadata = generateMetadata({
-  title: "Le Spiagge più Belle di Capo Rizzuto: Guida Completa | Villa Olimpia",
-  description: "Le spiagge più belle di Capo Rizzuto: Spiaggia dei Gigli (Bandiera Blu), Capopiccolo, Spiaggia Grande di Le Castella e Spiagge Rosse. Stabilimenti, spiagge libere e consigli pratici.",
+  title: "Spiagge Capo Rizzuto + Soggiorni Settembre/Ottobre | Villa Olimpia",
+  description: "Guida alle spiagge più belle di Capo Rizzuto e soggiorni diretti a Villa Olimpia: Spiaggia dei Gigli a circa 100 metri, piscina e disponibilità settembre/ottobre.",
   path: "/spiagge-capo-rizzuto",
 })
 
@@ -136,6 +136,18 @@ export default function SpiaggeCapoRizzutoPage() {
               Questa guida ti aiuta a scegliere tra le spiagge di Capopiccolo, Le Castella e l&apos;Area Marina Protetta di Capo Rizzuto,
               con consigli pratici per famiglie, snorkeling e giornate di relax vicino a Villa Olimpia.
             </p>
+            <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
+              <Button asChild size="lg">
+                <Link href="/settembre-capo-rizzuto?source=spiagge_hero">
+                  Disponibilità settembre
+                </Link>
+              </Button>
+              <Button asChild size="lg" variant="outline">
+                <Link href="/ottobre-capo-rizzuto?source=spiagge_hero">
+                  Soggiorni ottobre
+                </Link>
+              </Button>
+            </div>
             <div className="relative w-full max-w-5xl mx-auto mt-6 overflow-hidden rounded-2xl shadow-lg ring-1 ring-black/5">
               <Image
                 src="/images/territory/spiaggia-capopiccolo-panorama.jpg"
@@ -231,6 +243,37 @@ export default function SpiaggeCapoRizzutoPage() {
                 </tr>
               </tbody>
             </table>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-12 bg-primary text-white">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <div className="grid gap-6 md:grid-cols-[1fr_auto] md:items-center">
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-wide text-white/75">
+                Settembre e ottobre 2026
+              </p>
+              <h2 className="mt-2 text-2xl md:text-3xl font-playfair font-bold">
+                Vuoi vivere queste spiagge con meno folla?
+              </h2>
+              <p className="mt-3 text-white/85">
+                Villa Olimpia è a circa 100 metri dalla Spiaggia dei Gigli: appartamenti indipendenti,
+                piscina esterna condivisa e richiesta diretta senza commissioni OTA.
+              </p>
+            </div>
+            <div className="flex flex-col sm:flex-row md:flex-col gap-3">
+              <Button asChild variant="luxury">
+                <Link href="/settembre-capo-rizzuto?source=spiagge_mid_cta">
+                  Verifica settembre
+                </Link>
+              </Button>
+              <Button asChild variant="secondary">
+                <Link href="/ottobre-capo-rizzuto?source=spiagge_mid_cta">
+                  Verifica ottobre
+                </Link>
+              </Button>
+            </div>
           </div>
         </div>
       </section>
@@ -760,7 +803,7 @@ export default function SpiaggeCapoRizzutoPage() {
             Prenota la Tua Vacanza al Mare
           </h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto text-white/90">
-            Prenota il tuo lodge a circa 100 metri dalla Spiaggia dei Gigli: contattaci per disponibilità e preventivo diretto, senza commissioni di portali.
+            Prenota il tuo lodge a circa 100 metri dalla Spiaggia dei Gigli: contattaci per disponibilità settembre/ottobre e preventivo diretto, senza commissioni di portali.
           </p>
           <Button variant="luxury" size="lg" asChild className="group">
             <Link href="/contatti?source=spiagge-pillar#prenota">

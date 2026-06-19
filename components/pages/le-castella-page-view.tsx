@@ -45,6 +45,18 @@ export function LeCastellaPageView({
               Una pagina utile per chi cerca cosa vedere a Le Castella, dove fare una passeggiata sul mare e perché scegliere Capopiccolo
               come base strategica per visitare la costa ionica calabrese.
             </p>
+            <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
+              <Button asChild size="lg">
+                <Link href="/settembre-capo-rizzuto?source=le_castella_hero">
+                  Disponibilità settembre
+                </Link>
+              </Button>
+              <Button asChild size="lg" variant="outline">
+                <Link href="/ottobre-capo-rizzuto?source=le_castella_hero">
+                  Soggiorni ottobre
+                </Link>
+              </Button>
+            </div>
             <div className="relative w-full max-w-5xl mx-auto mt-6 overflow-hidden rounded-2xl shadow-lg ring-1 ring-black/5">
               <Image
                 src="/images/territory/castello-aragonese-le-castella.jpg"
@@ -155,6 +167,28 @@ export function LeCastellaPageView({
                   <p className="text-muted-foreground">Bandiera Blu</p>
                 </CardContent>
               </Card>
+            </div>
+
+            <div className="rounded-2xl bg-primary p-6 md:p-8 text-white shadow-sm">
+              <div className="grid gap-6 md:grid-cols-[1fr_auto] md:items-center">
+                <div>
+                  <p className="text-sm font-semibold uppercase tracking-wide text-white/75">
+                    Soggiorni settembre e ottobre 2026
+                  </p>
+                  <h2 className="mt-2 text-2xl md:text-3xl font-playfair font-bold">
+                    Visita Le Castella e dormi vicino alla Spiaggia dei Gigli
+                  </h2>
+                  <p className="mt-3 text-white/85">
+                    Villa Olimpia è una base comoda per alternare Castello Aragonese, mare e relax:
+                    appartamenti indipendenti, piscina esterna condivisa e prenotazione diretta.
+                  </p>
+                </div>
+                <Button asChild variant="luxury">
+                  <Link href="/contatti?source=le_castella_mid_cta#prenota">
+                    Richiedi disponibilità
+                  </Link>
+                </Button>
+              </div>
             </div>
           </div>
         </div>
@@ -311,7 +345,7 @@ export function LeCastellaPageView({
             Prenota la Tua Vacanza a Le Castella
           </h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto text-white/90">
-            Scegli Villa Olimpia come base per esplorare Le Castella e tutta la bellezza della Calabria.
+            Scegli Villa Olimpia come base per esplorare Le Castella e la costa di Capo Rizzuto, anche per soggiorni settembre/ottobre fuori dall&apos;alta stagione.
           </p>
           <Button variant="luxury" size="lg" asChild className="group">
             <Link href={contactHref}>

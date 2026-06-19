@@ -3,9 +3,9 @@ import { generateMetadata } from "@/lib/metadata"
 import { LeCastellaPageView } from "@/components/pages/le-castella-page-view"
 
 export const metadata: Metadata = generateMetadata({
-  title: "Cosa Vedere a Le Castella: Castello Aragonese, Borgo e Spiagge | Villa Olimpia",
+  title: "Le Castella: Cosa Vedere + Dove Soggiornare | Villa Olimpia",
   description:
-    "Cosa vedere a Le Castella: Castello Aragonese, centro storico, spiagge e cosa fare la sera. Guida pratica al borgo, a 8 minuti da Villa Olimpia e a meno di 100 metri dalla Spiaggia dei Gigli.",
+    "Cosa vedere a Le Castella e dove soggiornare vicino al mare: Castello Aragonese, borgo, spiagge e Villa Olimpia a pochi minuti, a meno di 100 metri dalla Spiaggia dei Gigli.",
   path: "/le-castella",
   keywords: [
     "cosa vedere a le castella",
