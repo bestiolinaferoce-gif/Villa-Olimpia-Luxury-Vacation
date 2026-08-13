@@ -6,9 +6,7 @@ import { ScrollReveal } from "@/components/animations/scroll-reveal"
 import { SectionDivider } from "@/components/animations/section-divider"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { TrustBadges } from "@/components/conversion/trust-badges"
 import { SocialProof } from "@/components/conversion/social-proof"
-import { JuneJulySection } from "@/components/conversion/june-july-section"
 import Link from "next/link"
 import { Star, Wifi, Car, Waves, Utensils, Shield, Umbrella, MapPin, Sparkles, ArrowRight } from "lucide-react"
 import { getApartmentSlug, getFeaturedApartments } from "@/data/apartments"
@@ -140,11 +138,7 @@ export default function HomePageClient({ skipAboveTheFold = false }: { skipAbove
   return (
     <>
       {!skipAboveTheFold ? (
-        <>
-          <HeroSectionPremium />
-          <TrustBadges />
-          <JuneJulySection />
-        </>
+        <HeroSectionPremium />
       ) : null}
 
       <section className="py-20 bg-background cv-auto">
@@ -413,63 +407,11 @@ export default function HomePageClient({ skipAboveTheFold = false }: { skipAbove
         </div>
       </section>
 
-      <section className="py-16 bg-gradient-to-br from-muted/30 via-background to-primary/5 cv-auto">
-        <div className="container mx-auto px-4">
-          <ScrollReveal>
-            <div className="text-center mb-8">
-              <h3 className="text-2xl font-playfair font-bold text-foreground mb-2">
-                {t.home.trustBadges.title}
-              </h3>
-              <p className="text-muted-foreground">
-                {t.home.trustBadges.subtitle}
-              </p>
-            </div>
-            <div className="flex justify-center items-center gap-8 md:gap-12 flex-wrap">
-              {[
-                { label: t.home.trustBadges.items.booking.label, name: t.home.trustBadges.items.booking.name, color: "text-primary", icon: "🏆" },
-                { label: t.home.trustBadges.items.airbnb.label, name: t.home.trustBadges.items.airbnb.name, color: "text-primary", icon: "⭐" },
-                { label: t.home.trustBadges.items.protected.label, name: t.home.trustBadges.items.protected.name, color: "text-turquoise", icon: "🌊" }
-              ].map((badge, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 20, scale: 0.9 }}
-                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.15, duration: 0.6, type: "spring" }}
-                  whileHover={{
-                    scale: 1.15,
-                    y: -8,
-                    transition: { duration: 0.3, ease: "easeOut" }
-                  }}
-                  className="text-center cursor-pointer p-6 rounded-xl bg-white/80 backdrop-blur-sm border-2 border-primary/20 hover:border-primary/50 transition-all duration-300 shadow-lg hover:shadow-xl"
-                >
-                  <div className="text-4xl mb-2">{badge.icon}</div>
-                  <p className="text-sm font-semibold text-muted-foreground mb-2">{badge.label}</p>
-                  <p className={`text-3xl font-playfair font-bold ${badge.color}`}>{badge.name}</p>
-                </motion.div>
-              ))}
-            </div>
-          </ScrollReveal>
-        </div>
-      </section>
-
       <SectionDivider variant="accent" />
 
       <section className="py-24 bg-gradient-to-br from-ocean via-primary to-ocean/80 text-white relative overflow-hidden cv-auto">
         <div className="container mx-auto px-4 text-center relative z-10">
           <ScrollReveal delay={0.2}>
-            <div className="flex items-center justify-center gap-4 mb-6 flex-wrap">
-              <div className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full border border-white/30">
-                <span className="text-white text-sm font-semibold">✅ {t.home.trustBadges.badges.certified}</span>
-              </div>
-              <div className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full border border-white/30">
-                <span className="text-white text-sm font-semibold">🏆 {t.home.trustBadges.badges.superhost}</span>
-              </div>
-              <div className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full border border-white/30">
-                <span className="text-white text-sm font-semibold">🔒 {t.home.trustBadges.badges.secure}</span>
-              </div>
-            </div>
-
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -488,28 +430,6 @@ export default function HomePageClient({ skipAboveTheFold = false }: { skipAbove
             >
               {t.home.cta.description}
             </motion.p>
-
-            <motion.p
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3, duration: 0.6 }}
-              className="text-base mb-6 text-white/80"
-            >
-              Giugno e Luglio a tariffe vantaggiose — disponibilità limitata, prenota ora.
-            </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3, duration: 0.5 }}
-              className="mb-6"
-            >
-              <div className="inline-flex items-center gap-2 bg-green-500/90 backdrop-blur-sm px-6 py-3 rounded-full border border-green-300/50 shadow-lg">
-                <span className="text-white text-base font-bold">💰 {t.home.cta.saveUpTo}</span>
-              </div>
-            </motion.div>
 
             <CTAButtons />
           </ScrollReveal>

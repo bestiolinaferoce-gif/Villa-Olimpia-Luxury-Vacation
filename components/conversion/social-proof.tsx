@@ -1,84 +1,73 @@
 "use client"
 
-import { Star, TrendingUp, Users } from "lucide-react"
+import { Building2, Car, MessageCircle, Waves } from "lucide-react"
 import { motion } from "framer-motion"
 
-// ✅ VALORI STATICI - nessun hydration mismatch
-const STATS = {
-  verifiedBookings: 100,
-  averageRating: 4.9,
-  satisfactionRate: 98,
-} as const
+const FACTS = [
+  {
+    icon: Building2,
+    value: "9",
+    label: "Appartamenti indipendenti",
+    color: "text-blue-700",
+  },
+  {
+    icon: Waves,
+    value: "~100 m",
+    label: "Dalla Spiaggia dei Gigli",
+    color: "text-cyan-700",
+  },
+  {
+    icon: MessageCircle,
+    value: "Diretto",
+    label: "Preventivo dalla struttura",
+    color: "text-emerald-700",
+  },
+] as const
 
 export function SocialProof() {
-  // ✅ Usa sempre valori statici - nessun calcolo dinamico
-  const stats = [
-    {
-      icon: Users,
-      value: `${STATS.verifiedBookings}+`,
-      label: "Prenotazioni Verificate",
-      color: "text-blue-600",
-    },
-    {
-      icon: Star,
-      value: STATS.averageRating.toFixed(1),
-      label: "Media Recensioni",
-      color: "text-amber-600",
-    },
-    {
-      icon: TrendingUp,
-      value: `${STATS.satisfactionRate}%`,
-      label: "Tasso di Soddisfazione",
-      color: "text-green-600",
-    },
-  ]
-
   return (
-    <div className="py-10 sm:py-12 bg-gradient-to-r from-primary/5 via-background to-primary/5">
+    <section className="bg-gradient-to-r from-primary/5 via-background to-primary/5 py-10 sm:py-12">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-8">
-          <h3 className="text-xl sm:text-2xl font-playfair font-bold mb-2">
-            Cosa Dicono i Nostri Ospiti
+        <div className="mb-8 text-center">
+          <h3 className="mb-2 font-playfair text-xl font-bold sm:text-2xl">
+            Informazioni chiare prima di prenotare
           </h3>
-          <p className="text-sm sm:text-base text-muted-foreground">
-            Feedback raccolti da ospiti reali e richieste dirette
+          <p className="text-sm text-muted-foreground sm:text-base">
+            I dati essenziali della struttura, senza promesse difficili da verificare.
           </p>
         </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          {stats.map((stat, idx) => (
+
+        <div className="mb-8 grid grid-cols-1 gap-6 md:grid-cols-3">
+          {FACTS.map((fact, index) => (
             <motion.div
-              key={idx}
+              key={fact.label}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: idx * 0.1 }}
-              className="text-center p-5 sm:p-6 rounded-xl bg-white/80 backdrop-blur-sm border border-primary/10"
+              transition={{ delay: index * 0.1 }}
+              className="rounded-xl border border-primary/10 bg-white/80 p-5 text-center backdrop-blur-sm sm:p-6"
             >
-              <stat.icon className={`h-10 w-10 mx-auto mb-3 ${stat.color}`} />
-              <div className={`text-3xl sm:text-4xl font-bold mb-2 ${stat.color}`}>
-                {stat.value}
+              <fact.icon className={`mx-auto mb-3 h-10 w-10 ${fact.color}`} />
+              <div className={`mb-2 text-3xl font-bold sm:text-4xl ${fact.color}`}>
+                {fact.value}
               </div>
-              <div className="text-xs sm:text-sm text-muted-foreground">{stat.label}</div>
+              <div className="text-xs text-muted-foreground sm:text-sm">{fact.label}</div>
             </motion.div>
           ))}
         </div>
 
-        <div className="flex flex-wrap justify-center gap-3 sm:gap-4 items-center text-xs sm:text-sm">
-          <div className="flex items-center gap-2">
-            <Star className="h-5 w-5 text-amber-500 fill-amber-500" />
-            <span className="font-semibold">Certificato Airbnb Superhost</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <Star className="h-5 w-5 text-blue-500 fill-blue-500" />
-            <span className="font-semibold">Partner Booking.com</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <Star className="h-5 w-5 text-green-500 fill-green-500" />
-            <span className="font-semibold">Verificato Google</span>
-          </div>
+        <div className="flex flex-wrap items-center justify-center gap-4 text-xs sm:text-sm">
+          <span className="inline-flex items-center gap-2 font-semibold">
+            <Waves className="h-5 w-5 text-cyan-700" /> Piscina condivisa riservata agli ospiti
+          </span>
+          <span className="inline-flex items-center gap-2 font-semibold">
+            <Car className="h-5 w-5 text-blue-700" /> Parcheggio gratuito
+          </span>
+          <span className="inline-flex items-center gap-2 font-semibold">
+            <MessageCircle className="h-5 w-5 text-emerald-700" /> Contatto diretto
+          </span>
         </div>
       </div>
-    </div>
+    </section>
   )
 }

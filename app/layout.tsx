@@ -1,15 +1,12 @@
 import type { Metadata, Viewport } from "next"
 import { headers } from "next/headers"
 import { Inter, Playfair_Display } from "next/font/google"
-import Script from "next/script"
 import "./globals.css"
 import { Header } from "@/components/header"
 import { BandieraBluTopBanner } from "@/components/BandieraBluTopBanner"
 import { Footer } from "@/components/footer"
 import { CookieConsent } from "@/components/CookieConsent"
 import { ScrollToTop } from "@/components/scroll-to-top"
-import { WhatsAppButton } from "@/components/whatsapp-button"
-import { PreloadResources } from "@/components/performance/preload-resources"
 import { TouchOptimizer } from "@/components/mobile/touch-optimizer"
 import { DirectionsProvider } from "@/components/directions-context"
 import { ErrorBoundary } from "@/components/error-boundary"
@@ -18,11 +15,9 @@ import { AnalyticsUnified } from "@/components/analytics/analytics-unified"
 import { GoogleAnalytics } from "@/components/analytics/google-analytics"
 import { MetaPixelOptional } from "@/components/analytics/meta-pixel"
 import { SeasonalRootOverlays } from "@/components/seasonal/SeasonalRootOverlays"
-import { LazyOverlays } from "@/components/lazy-overlays"
 import { I18nProvider } from "@/components/i18n-provider"
 import { VILLA_OLIMPIA_LOCATION } from "@/lib/location-data"
 
-import { getAverageRating, reviews } from "@/data/reviews-complete"
 import { apartments, getApartmentSlug } from "@/data/apartments"
 const inter = Inter({
   subsets: ["latin"],
@@ -80,16 +75,6 @@ export default async function RootLayout({
         {/* viewport gestito tramite export const viewport (Next.js App Router) */}
         <link rel="icon" href="/favicon-neutral.svg" type="image/svg+xml" />
 
-        {/* Performance - Preconnect */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://www.google.com" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://maps.googleapis.com" crossOrigin="anonymous" />
-
-        {/* DNS Prefetch per Analytics */}
-        <link rel="dns-prefetch" href="https://www.google-analytics.com" />
-        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-
         {/* Meta tag posizione e contatti Facebook / Open Graph */}
         <meta property="place:location:latitude" content={villaLatitude} />
         <meta property="place:location:longitude" content={villaLongitude} />
@@ -146,19 +131,6 @@ export default async function RootLayout({
                 `${BASE_URL}/images/villa/gallery/Esterni_Piscina_Notte_01.jpg`,
               ],
               numberOfRooms: 9,
-              starRating: {
-                "@type": "Rating",
-                ratingValue: "5",
-              },
-              ...(getAverageRating() > 0 && reviews.length > 0 ? {
-                aggregateRating: {
-                  "@type": "AggregateRating",
-                  ratingValue: Math.round(getAverageRating() * 10) / 10,
-                  reviewCount: reviews.length,
-                  bestRating: 5,
-                  worstRating: 1
-                }
-              } : {}),
               amenityFeature: [
                 { "@type": "LocationFeatureSpecification", name: "Piscina esterna condivisa", value: true },
                 { "@type": "LocationFeatureSpecification", name: "Parcheggio gratuito", value: true },
@@ -208,9 +180,7 @@ export default async function RootLayout({
         <ErrorBoundary>
           <I18nProvider>
             <SeasonalRootOverlays />
-            <LazyOverlays />
             <DirectionsProvider>
-              <PreloadResources />
               <TouchOptimizer />
               <BandieraBluTopBanner />
               <Header />
@@ -218,7 +188,6 @@ export default async function RootLayout({
               <Footer />
               <CookieConsent />
               <ScrollToTop />
-              <WhatsAppButton />
             </DirectionsProvider>
           </I18nProvider>
         </ErrorBoundary>

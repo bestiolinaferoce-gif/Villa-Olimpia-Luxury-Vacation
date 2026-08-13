@@ -167,16 +167,10 @@ export function HeroSectionPremium() {
             className="flex items-center gap-3 sm:gap-4 justify-center mt-6 flex-wrap"
           >
             <div className="bg-white/20 backdrop-blur-sm px-3 py-2 sm:px-4 rounded-full border border-white/30">
-              <span className="text-white text-xs sm:text-sm font-semibold">⭐ {t.home.hero.ratingValue}</span>
-            </div>
-            <div className="bg-white/20 backdrop-blur-sm px-3 py-2 sm:px-4 rounded-full border border-white/30">
               <span className="text-white text-xs sm:text-sm font-semibold">🏖️ {t.home.hero.beachDistance}</span>
             </div>
             <div className="bg-white/20 backdrop-blur-sm px-3 py-2 sm:px-4 rounded-full border border-white/30">
               <span className="text-white text-xs sm:text-sm font-semibold">🏊 {t.home.hero.privatePool}</span>
-            </div>
-            <div className="bg-yellow-400/90 backdrop-blur-sm px-3 py-2 sm:px-4 rounded-full border border-yellow-300/50 shadow-lg animate-float-soft">
-              <span className="text-gray-900 text-xs sm:text-sm font-bold">✅ {t.home.hero.bookedBy}</span>
             </div>
             {/* Weather Widget integrato nei badge - visibile solo su desktop */}
             <div className="hidden lg:block">

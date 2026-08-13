@@ -208,7 +208,7 @@ export function CookieConsent() {
                 whileHover={{ scale: 1.05, backgroundColor: "hsl(var(--muted))" }}
                 whileTap={{ scale: 0.95 }}
                 onClick={handleReject}
-                className="px-3 py-1.5 rounded-lg text-[11px] font-medium bg-gray-50 text-gray-600 hover:bg-gray-100 transition-all border border-gray-200/50 flex-1"
+                className="min-h-11 px-3 py-2 rounded-lg text-xs font-medium bg-gray-50 text-gray-700 hover:bg-gray-100 transition-all border border-gray-200 flex-1"
               >
                 Rifiuta
               </motion.button>
@@ -216,7 +216,7 @@ export function CookieConsent() {
                 whileHover={{ scale: 1.05, backgroundColor: "hsl(var(--muted) / 0.5)" }}
                 whileTap={{ scale: 0.95 }}
                 onClick={handleCustomize}
-                className="px-3 py-1.5 rounded-lg text-[11px] font-medium border border-primary/30 bg-white text-primary hover:bg-primary/5 transition-all flex-1"
+                className="min-h-11 px-3 py-2 rounded-lg text-xs font-medium border border-sky-700/30 bg-white text-sky-700 hover:bg-sky-50 transition-all flex-1"
               >
                 Personalizza
               </motion.button>
@@ -224,7 +224,7 @@ export function CookieConsent() {
                 whileHover={{ scale: 1.05, boxShadow: "0 4px 12px hsl(var(--primary) / 0.3)" }}
                 whileTap={{ scale: 0.95 }}
                 onClick={handleAccept}
-                className="px-4 py-1.5 rounded-lg text-[11px] font-semibold bg-primary text-white hover:bg-primary/90 transition-all shadow-sm flex-1"
+                className="min-h-11 px-4 py-2 rounded-lg text-xs font-semibold bg-sky-700 text-white hover:bg-sky-800 transition-all shadow-sm flex-1"
               >
                 Accetta
               </motion.button>

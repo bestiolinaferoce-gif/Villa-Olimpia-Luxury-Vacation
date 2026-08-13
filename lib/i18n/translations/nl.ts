@@ -32,7 +32,7 @@ export const nl = {
       rating: 'Beoordeling',
       ratingValue: '4.9/5 Beoordeling',
       beachDistance: '100 meter van het strand',
-      privatePool: 'Privé Zwembad',
+      privatePool: 'Gedeeld Zwembad',
       bookedBy: 'Geboekt door 150+ gasten in 2024',
       bookDirectly: 'Boek direct en bespaar',
       bookStay: 'Beschikbaarheid controleren',
@@ -56,7 +56,7 @@ export const nl = {
           text: 'Minder dan 100 meter van het prachtige Spiaggia dei Gigli, in het Zeereservaat',
         },
         privatePool: {
-          title: 'Privé Zwembad',
+          title: 'Gedeeld Zwembad',
           text: 'Groot gedeeld zwembad met zonneterras en gazebo voor ontspanning',
         },
         premiumComfort: {
@@ -222,7 +222,6 @@ export const nl = {
     copyright: 'Alle rechten voorbehouden',
   },
 }
-
 
 
 

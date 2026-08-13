@@ -50,7 +50,7 @@ const faqSchema = {
       name: "Quanto dista Le Castella da Capo Rizzuto?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Le Castella è una frazione di Isola di Capo Rizzuto: dal villaggio di Capopiccolo, dove si trova Villa Olimpia, il borgo dista circa 8 chilometri, ovvero 8-10 minuti di auto.",
+        text: "Le Castella è una frazione di Isola di Capo Rizzuto: da Villa Olimpia, situata a circa 100 metri dalla Spiaggia dei Gigli, il borgo dista circa 8 chilometri, ovvero 8-10 minuti di auto.",
       },
     },
   ],

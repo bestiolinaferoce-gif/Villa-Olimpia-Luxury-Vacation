@@ -242,16 +242,21 @@ export function HomeGallery() {
 
           {/* Dots indicator */}
           {imagesToShow.length > 1 && (
-            <div className="flex justify-center gap-2 mt-4">
+            <div className="mt-4 flex justify-start overflow-x-auto sm:justify-center">
               {imagesToShow.map((_, idx) => (
                 <button
                   key={idx}
                   onClick={() => setCurrentIndex(idx)}
-                  className={`h-2 rounded-full transition-all ${
-                    idx === currentIndex ? 'w-8 bg-primary' : 'w-2 bg-gray-300'
-                  }`}
+                  className="flex h-6 min-w-6 items-center justify-center"
                   aria-label={`Vai all'immagine ${idx + 1}`}
-                />
+                >
+                  <span
+                    aria-hidden
+                    className={`h-2 rounded-full transition-all ${
+                      idx === currentIndex ? 'w-5 bg-primary' : 'w-2 bg-gray-300'
+                    }`}
+                  />
+                </button>
               ))}
             </div>
           )}

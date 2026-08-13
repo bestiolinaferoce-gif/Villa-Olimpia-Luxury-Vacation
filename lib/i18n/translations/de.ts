@@ -32,7 +32,7 @@ export const de = {
       rating: 'Bewertung',
       ratingValue: '4.9/5 Bewertung',
       beachDistance: '100 Meter vom Strand',
-      privatePool: 'Privater Pool',
+      privatePool: 'Gemeinschaftspool',
       bookedBy: 'Von 150+ Gästen im Jahr 2024 gebucht',
       bookDirectly: 'Direkt buchen und sparen',
       bookStay: 'Verfügbarkeit prüfen',
@@ -56,7 +56,7 @@ export const de = {
           text: 'Weniger als 100 Meter vom wunderschönen Spiaggia dei Gigli, im Meeresschutzgebiet',
         },
         privatePool: {
-          title: 'Privater Pool',
+          title: 'Gemeinschaftspool',
           text: 'Großer Gemeinschaftspool mit Solarium und Pavillon zum Entspannen',
         },
         premiumComfort: {
@@ -222,7 +222,6 @@ export const de = {
     copyright: 'Alle Rechte vorbehalten',
   },
 }
-
 
 
 

@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import Script from "next/script"
 import { usePathname } from "next/navigation"
 import { COOKIE_CONSENT_UPDATED_EVENT } from "@/lib/cookie-consent-events"
@@ -88,10 +88,12 @@ function sendCurrentPageView(
 export function GoogleAnalytics() {
   const pathname = usePathname()
   const lastTrackedPathRef = useRef<string | null>(null)
+  const [analyticsAllowed, setAnalyticsAllowed] = useState(false)
 
   useEffect(() => {
     if (typeof window !== "undefined") {
       window.dataLayer = window.dataLayer || []
+      setAnalyticsAllowed(hasAnalyticsConsent())
     }
   }, [])
 
@@ -104,10 +106,12 @@ export function GoogleAnalytics() {
     if (typeof window === "undefined") return
 
     const handleConsentUpdated = () => {
+      const allowed = hasAnalyticsConsent()
+      setAnalyticsAllowed(allowed)
       lastTrackedPathRef.current = null
       // Aggiorna esplicitamente analytics_storage PRIMA del pageview
       // per evitare race condition tra consent mode e hit GA4
-      if (hasAnalyticsConsent() && typeof window !== "undefined" && window.gtag) {
+      if (allowed && typeof window !== "undefined" && window.gtag) {
         window.gtag("consent", "update", {
           analytics_storage: "granted",
           functionality_storage: "granted",
@@ -127,6 +131,9 @@ export function GoogleAnalytics() {
     }
     return null
   }
+
+  // Non scaricare gtag.js finché l'utente non autorizza i cookie analytics.
+  if (!analyticsAllowed) return null
 
   return (
     <>
@@ -183,7 +190,7 @@ export function trackEvent(
   value?: number,
   params: GAEventParams = {}
 ) {
-  if (typeof window === "undefined" || !isGAEnabled()) return
+  if (typeof window === "undefined" || !isGAEnabled() || !hasAnalyticsConsent()) return
   ensureGtag()
   window.gtag!("event", action, {
     event_category: category,
@@ -327,7 +334,6 @@ declare global {
     gtag: (...args: any[]) => void
   }
 }
-
 
 
 

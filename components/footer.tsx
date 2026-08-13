@@ -224,7 +224,7 @@ export function Footer() {
               href={`${SITE_CONFIG.social.whatsapp}?text=${encodeURIComponent("Vorrei informazioni su Villa Olimpia")}`}
               source="footer_book_now"
               locale={currentLocale}
-              className="inline-block bg-[#25D366] text-white px-6 py-3 rounded-full text-sm font-semibold hover:bg-[#20BA5A] transition-colors"
+              className="inline-block bg-[#0d6f3a] text-white px-6 py-3 rounded-full text-sm font-semibold hover:bg-[#09552c] transition-colors"
             >
               💬 {t.footer.whatsapp}
             </TrackedContactAnchor>

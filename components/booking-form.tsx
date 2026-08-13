@@ -16,6 +16,7 @@ import { Users, AlertCircle, CheckCircle2, ChevronDown } from "lucide-react"
 import { apartments } from "@/data/apartments"
 import { trackBookingInitiation, trackEvent, trackFormStart, trackWhatsAppClick } from "@/components/analytics/google-analytics"
 import { usePathname, useSearchParams } from "next/navigation"
+import Link from "next/link"
 import {
   buildMailtoAvailabilityFallback,
   buildOfficialAvailabilityMessage,
@@ -263,8 +264,21 @@ export function BookingForm({
 
   const locale = useMemo(() => {
     const seg = pathname.split("/").filter(Boolean)[0]
-    return ["en", "de", "fr"].includes(seg) ? seg : "it"
+    return ["en", "de", "fr", "nl", "no", "sv"].includes(seg) ? seg : "it"
   }, [pathname])
+
+  const privacyNotice = useMemo(() => {
+    const notices: Record<string, { prefix: string; link: string }> = {
+      it: { prefix: "Inviando la richiesta accetti il trattamento dei dati descritto nella", link: "Privacy Policy" },
+      en: { prefix: "By sending your request, you accept the data processing described in our", link: "Privacy Policy" },
+      de: { prefix: "Mit dem Absenden akzeptieren Sie die in unserer Datenschutzerklärung beschriebene Datenverarbeitung:", link: "Datenschutzerklärung" },
+      fr: { prefix: "En envoyant votre demande, vous acceptez le traitement des données décrit dans notre", link: "Politique de confidentialité" },
+      nl: { prefix: "Door uw aanvraag te versturen, accepteert u de gegevensverwerking zoals beschreven in ons", link: "Privacybeleid" },
+      no: { prefix: "Ved å sende forespørselen godtar du databehandlingen som er beskrevet i vår", link: "Personvernerklæring" },
+      sv: { prefix: "Genom att skicka förfrågan godkänner du databehandlingen som beskrivs i vår", link: "Integritetspolicy" },
+    }
+    return notices[locale] ?? notices.it
+  }, [locale])
 
   const formStartTracked = useRef(false)
   const handleFormStart = useCallback(() => {
@@ -597,17 +611,20 @@ export function BookingForm({
         />
       </div>
 
-      <div className="space-y-1">
-        <Label htmlFor="agency" className="text-xs text-muted-foreground font-normal">
-          {t.labels.agency} <span className="text-slate-400">(opzionale — solo se scrivi per conto di un&apos;agenzia)</span>
-        </Label>
-        <Input
-          id="agency"
-          {...register("agency")}
-          placeholder={t.placeholders.agency}
-          className="text-sm"
-        />
-      </div>
+      <details className="rounded-md border border-slate-200 bg-slate-50/60 px-4 py-3">
+        <summary className="cursor-pointer text-sm font-medium text-slate-700">
+          {t.labels.agency}
+        </summary>
+        <div className="mt-3">
+          <Label htmlFor="agency" className="sr-only">{t.labels.agency}</Label>
+          <Input
+            id="agency"
+            {...register("agency")}
+            placeholder={t.placeholders.agency}
+            className="bg-white text-sm"
+          />
+        </div>
+      </details>
 
       <input type="text" tabIndex={-1} autoComplete="off" className="hidden" {...register("company")} />
 
@@ -622,6 +639,12 @@ export function BookingForm({
         {isSubmitting ? t.status.submitting : t.status.submit}
       </Button>
 
+      <p className="text-center text-xs leading-relaxed text-muted-foreground">
+        {privacyNotice.prefix}{" "}
+        <Link href="/privacy" className="font-medium underline underline-offset-2">
+          {privacyNotice.link}
+        </Link>.
+      </p>
       <p className="text-xs leading-relaxed text-muted-foreground text-center">{t.helperText}</p>
     </form>
   )

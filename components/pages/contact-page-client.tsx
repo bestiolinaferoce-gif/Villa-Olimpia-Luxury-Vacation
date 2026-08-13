@@ -74,7 +74,7 @@ const contactPageCopy: Partial<Record<Locale, ContactPageCopy>> = {
       closeToSea: "A 100m dal mare",
       familyFriendly: "Perfetto per famiglie",
       flexibleCancellation: "Cancellazione flessibile fino a 30 giorni prima",
-      longStayDiscount: "Sconto soggiorni 7+ notti (Giugno/Luglio)",
+      longStayDiscount: "Tariffe dirette per soggiorni di 7+ notti",
     },
     quoteCard: {
       title: "Richiedi un preventivo",
@@ -128,7 +128,7 @@ const contactPageCopy: Partial<Record<Locale, ContactPageCopy>> = {
       closeToSea: "about 100 meters from the sandy beach",
       familyFriendly: "Perfect for families",
       flexibleCancellation: "Flexible cancellation up to 30 days before arrival",
-      longStayDiscount: "Discount for stays of 7+ nights (June/July)",
+      longStayDiscount: "Direct rates for stays of 7+ nights",
     },
     quoteCard: {
       title: "Request a quote",
@@ -257,7 +257,7 @@ const contactPageCopy: Partial<Record<Locale, ContactPageCopy>> = {
       closeToSea: "100m vom Meer",
       familyFriendly: "Perfekt für Familien",
       flexibleCancellation: "Flexible Stornierung bis 30 Tage vor Anreise",
-      longStayDiscount: "Rabatt für Aufenthalte ab 7 Nächten (Juni/Juli)",
+      longStayDiscount: "Direkttarife für Aufenthalte ab 7 Nächten",
     },
     quoteCard: {
       title: "Angebot anfragen",
@@ -386,7 +386,7 @@ const contactPageCopy: Partial<Record<Locale, ContactPageCopy>> = {
       closeToSea: "À 100m de la mer",
       familyFriendly: "Parfait pour les familles",
       flexibleCancellation: "Annulation flexible jusqu'à 30 jours avant l'arrivée",
-      longStayDiscount: "Remise pour séjours de 7+ nuits (juin/juillet)",
+      longStayDiscount: "Tarifs directs pour les séjours de 7+ nuits",
     },
     quoteCard: {
       title: "Demander un devis",
@@ -515,7 +515,7 @@ const contactPageCopy: Partial<Record<Locale, ContactPageCopy>> = {
       closeToSea: "100m van het strand",
       familyFriendly: "Perfect voor families",
       flexibleCancellation: "Flexibele annulering tot 30 dagen voor aankomst",
-      longStayDiscount: "Korting bij verblijf van 7+ nachten (juni/juli)",
+      longStayDiscount: "Directe tarieven voor een verblijf van 7+ nachten",
     },
     quoteCard: {
       title: "Offerte aanvragen",
@@ -644,7 +644,7 @@ const contactPageCopy: Partial<Record<Locale, ContactPageCopy>> = {
       closeToSea: "Omtrent 100 m fra stranden",
       familyFriendly: "Perfekt for familier",
       flexibleCancellation: "Fleksibel avbestilling inntil 30 dager før ankomst",
-      longStayDiscount: "Rabatt for opphold på 7+ netter (juni/juli)",
+      longStayDiscount: "Direktepriser for opphold på 7+ netter",
     },
     quoteCard: {
       title: "Be om tilbud",

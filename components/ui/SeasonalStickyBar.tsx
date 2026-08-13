@@ -4,8 +4,8 @@ import { useCallback, useEffect, useMemo, useState } from "react"
 import { AnimatePresence, motion } from "framer-motion"
 import { ArrowRight, Clock, MessageCircle, Users, X } from "lucide-react"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 import {
-  SEASONAL_CAMPAIGN_YEAR,
   SEASONAL_CONFIG,
   getAvailabilityPercent,
   getCurrentSeasonalMonth,
@@ -14,6 +14,7 @@ import {
   type SeasonalMonth,
 } from "@/lib/seasonalConfig"
 import { trackEvent } from "@/components/analytics/google-analytics"
+import { COOKIE_CONSENT_UPDATED_EVENT } from "@/lib/cookie-consent-events"
 
 const SESSION_KEY = "seasonal_sticky_closed_v1"
 
@@ -22,6 +23,7 @@ export interface SeasonalStickyBarProps {
 }
 
 export function SeasonalStickyBar({ targetMonth }: SeasonalStickyBarProps) {
+  const pathname = usePathname()
   const activeKey = targetMonth ?? getCurrentSeasonalMonth()
   const config =
     activeKey === "other" ? SEASONAL_CONFIG.other : SEASONAL_CONFIG[activeKey]
@@ -31,15 +33,33 @@ export function SeasonalStickyBar({ targetMonth }: SeasonalStickyBarProps) {
   const [mounted, setMounted] = useState(false)
   const [closed, setClosed] = useState(false)
   const [visible, setVisible] = useState(false)
+  const [consentChoiceMade, setConsentChoiceMade] = useState(false)
   const [msgIndex, setMsgIndex] = useState(0)
 
+  const routeHasOwnConversionUi =
+    pathname === "/contatti" ||
+    pathname === "/prenota" ||
+    pathname.endsWith("/contact") ||
+    pathname.endsWith("/contatti") ||
+    pathname.endsWith("/prenota") ||
+    pathname === "/giugno-2026" ||
+    pathname === "/luglio-2026"
+
   const messages = useMemo(() => {
+    if (activeKey === "other") {
+      return [
+        "Settembre e ottobre: richiedi le date disponibili",
+        "Preventivo diretto e risposta dalla struttura",
+        "Nessuna commissione di portale sulla richiesta diretta",
+      ]
+    }
+
     return [
       `${config.availabilityLeft}/${config.totalUnits} lodge liberi (agg. manuale)`,
-      `Da €${config.priceFrom}/notte · Maggio–Luglio ${SEASONAL_CAMPAIGN_YEAR}`,
+      `Da €${config.priceFrom}/notte · ${config.label}`,
       config.discountBadge ?? "Prenota diretto — zero commissioni OTA",
     ]
-  }, [config])
+  }, [activeKey, config])
 
   useEffect(() => {
     setMounted(true)
@@ -51,7 +71,21 @@ export function SeasonalStickyBar({ targetMonth }: SeasonalStickyBarProps) {
   }, [])
 
   useEffect(() => {
-    if (!mounted || closed) return
+    const syncConsentChoice = () => {
+      try {
+        setConsentChoiceMade(Boolean(localStorage.getItem("cookieConsent")))
+      } catch {
+        setConsentChoiceMade(false)
+      }
+    }
+
+    syncConsentChoice()
+    window.addEventListener(COOKIE_CONSENT_UPDATED_EVENT, syncConsentChoice)
+    return () => window.removeEventListener(COOKIE_CONSENT_UPDATED_EVENT, syncConsentChoice)
+  }, [])
+
+  useEffect(() => {
+    if (!mounted || closed || !consentChoiceMade || routeHasOwnConversionUi) return
     let showTimer: number | undefined = window.setTimeout(() => setVisible(true), 1200)
     const onScroll = () => {
       const el = document.documentElement
@@ -69,7 +103,7 @@ export function SeasonalStickyBar({ targetMonth }: SeasonalStickyBarProps) {
       window.removeEventListener("scroll", onScroll)
       if (showTimer !== undefined) window.clearTimeout(showTimer)
     }
-  }, [mounted, closed])
+  }, [mounted, closed, consentChoiceMade, routeHasOwnConversionUi])
 
   useEffect(() => {
     if (!visible || closed) return
@@ -100,7 +134,7 @@ export function SeasonalStickyBar({ targetMonth }: SeasonalStickyBarProps) {
     })
   }, [config.month])
 
-  if (!mounted || closed || !visible) return null
+  if (!mounted || closed || !visible || routeHasOwnConversionUi) return null
 
   return (
     <AnimatePresence>
@@ -131,14 +165,16 @@ export function SeasonalStickyBar({ targetMonth }: SeasonalStickyBarProps) {
                     {messages[msgIndex]}
                   </motion.p>
                 </AnimatePresence>
-                <div className="mt-1 h-1.5 w-full max-w-md overflow-hidden rounded-full bg-black/20">
-                  <motion.div
-                    className="h-full rounded-full bg-white/90"
-                    initial={{ width: 0 }}
-                    animate={{ width: `${pct}%` }}
-                    transition={{ duration: 0.6 }}
-                  />
-                </div>
+                {activeKey !== "other" ? (
+                  <div className="mt-1 h-1.5 w-full max-w-md overflow-hidden rounded-full bg-black/20">
+                    <motion.div
+                      className="h-full rounded-full bg-white/90"
+                      initial={{ width: 0 }}
+                      animate={{ width: `${pct}%` }}
+                      transition={{ duration: 0.6 }}
+                    />
+                  </div>
+                ) : null}
               </div>
             </div>
             <div className="flex shrink-0 items-center justify-end gap-2">
@@ -147,7 +183,7 @@ export function SeasonalStickyBar({ targetMonth }: SeasonalStickyBarProps) {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={onWhatsApp}
-                className="inline-flex items-center justify-center gap-1 rounded-full bg-[#25D366] px-3 py-2 text-[11px] font-semibold leading-tight text-white shadow sm:py-1.5 sm:text-sm"
+                className="inline-flex min-h-11 items-center justify-center gap-1 rounded-full bg-[#128c4a] px-3 py-2 text-[11px] font-semibold leading-tight text-white shadow sm:min-h-10 sm:text-sm"
               >
                 <MessageCircle className="h-4 w-4 shrink-0" aria-hidden />
                 <span>WhatsApp</span>
@@ -155,7 +191,7 @@ export function SeasonalStickyBar({ targetMonth }: SeasonalStickyBarProps) {
               <Link
                 href={`/contatti?source=seasonal_sticky&month=${config.month}#prenota`}
                 onClick={onCta}
-                className="inline-flex max-w-[min(100%,14rem)] items-center justify-center gap-1 rounded-full bg-white px-3 py-2 text-left text-[11px] font-semibold leading-tight text-slate-900 shadow sm:max-w-none sm:py-1.5 sm:text-sm"
+                className="inline-flex min-h-11 max-w-[min(100%,14rem)] items-center justify-center gap-1 rounded-full bg-white px-3 py-2 text-left text-[11px] font-semibold leading-tight text-slate-900 shadow sm:min-h-10 sm:max-w-none sm:text-sm"
               >
                 <span className="line-clamp-2 sm:line-clamp-none">{config.ctaLabel}</span>
                 <ArrowRight className="h-4 w-4 shrink-0" aria-hidden />
@@ -163,7 +199,7 @@ export function SeasonalStickyBar({ targetMonth }: SeasonalStickyBarProps) {
               <button
                 type="button"
                 onClick={onClose}
-                className="rounded-full p-1.5 hover:bg-black/10"
+                className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full hover:bg-black/10 sm:min-h-10 sm:min-w-10"
                 aria-label="Chiudi"
               >
                 <X className="h-4 w-4" />

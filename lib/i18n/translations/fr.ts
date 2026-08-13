@@ -32,7 +32,7 @@ export const fr = {
       rating: 'Note',
       ratingValue: '4.9/5 Note',
       beachDistance: '100 mètres de la plage',
-      privatePool: 'Piscine Privée',
+      privatePool: 'Piscine Partagée',
       bookedBy: 'Réservé par 150+ clients en 2024',
       bookDirectly: 'Réservez directement et économisez',
       bookStay: 'Vérifier la disponibilité',
@@ -56,7 +56,7 @@ export const fr = {
           text: 'À moins de 100 mètres de la magnifique Spiaggia dei Gigli, dans l\'Aire Marine Protégée',
         },
         privatePool: {
-          title: 'Piscine Privée',
+          title: 'Piscine Partagée',
           text: 'Grande piscine partagée avec solarium et gazebo pour la détente',
         },
         premiumComfort: {
@@ -222,7 +222,6 @@ export const fr = {
     copyright: 'Tous droits réservés',
   },
 }
-
 
 
 

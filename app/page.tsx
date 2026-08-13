@@ -1,6 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
-import { ArrowRight, CalendarRange, Plane, ShieldCheck, Sun, Waves, Users } from "lucide-react"
+import { ArrowRight, CalendarRange, ShieldCheck, Sun, Waves, Users } from "lucide-react"
 import HomePageClient from "@/components/pages/home-page-client"
 import { BandieraBluSection } from "@/components/sections/BandieraBluSection"
 import { TrackedContactAnchor } from "@/components/analytics/tracked-contact-anchor"
@@ -15,7 +15,8 @@ export default function HomePage() {
             alt="Villa Olimpia con piscina a Capo Rizzuto"
             fill
             priority
-            quality={72}
+            fetchPriority="high"
+            quality={60}
             sizes="100vw"
             className="object-cover"
           />
@@ -24,7 +25,7 @@ export default function HomePage() {
 
         <div className="relative z-10 container mx-auto px-4 pt-28 pb-16 text-white">
           <div className="mx-auto max-w-5xl text-center">
-            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-2 text-sm font-semibold backdrop-blur-md">
+            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/25 bg-slate-950/25 px-4 py-2 text-sm font-semibold">
               <ShieldCheck className="h-4 w-4" />
               Area Marina Protetta di Capo Rizzuto
             </div>
@@ -56,25 +57,25 @@ export default function HomePage() {
                 href="https://wa.me/393335773390?text=Richiesta%20disponibilita%20Villa%20Olimpia%20-%20fonte%20sito%20ufficiale"
                 source="home_hero_direct_whatsapp"
                 locale="it"
-                className="inline-flex items-center justify-center rounded-full border border-white/80 bg-white/10 px-7 py-4 text-base font-semibold text-white backdrop-blur-md transition hover:bg-white/20"
+                className="inline-flex items-center justify-center rounded-full border border-white/80 bg-slate-950/25 px-7 py-4 text-base font-semibold text-white transition hover:bg-slate-950/35"
               >
                 WhatsApp diretto
               </TrackedContactAnchor>
             </div>
 
             <div className="mt-8 grid gap-3 sm:grid-cols-3">
-              <div className="rounded-2xl border border-white/15 bg-white/10 px-4 py-4 backdrop-blur-sm">
+              <div className="rounded-2xl border border-white/15 bg-slate-950/20 px-4 py-4">
                 <div className="text-2xl font-bold">9</div>
                 <div className="mt-1 text-sm text-white/85">Appartamenti nella stessa struttura</div>
               </div>
-              <div className="rounded-2xl border border-white/15 bg-white/10 px-4 py-4 backdrop-blur-sm">
+              <div className="rounded-2xl border border-white/15 bg-slate-950/20 px-4 py-4">
                 <div className="flex items-center justify-center gap-2 text-2xl font-bold">
                   <Waves className="h-5 w-5" />
                   100 m
                 </div>
                 <div className="mt-1 text-sm text-white/85">Dalla Spiaggia dei Gigli</div>
               </div>
-              <div className="rounded-2xl border border-white/15 bg-white/10 px-4 py-4 backdrop-blur-sm">
+              <div className="rounded-2xl border border-white/15 bg-slate-950/20 px-4 py-4">
                 <div className="flex items-center justify-center gap-2 text-2xl font-bold">
                   <Users className="h-5 w-5" />
                   Diretto
@@ -89,38 +90,38 @@ export default function HomePage() {
       <section className="border-y border-amber-200/70 bg-white">
         <div className="container mx-auto grid gap-3 px-4 py-5 md:grid-cols-3">
           <Link
-            href="/giugno-2026?utm_source=homepage&utm_medium=internal&utm_campaign=recovery_giugno_2026"
+            href="/settembre-capo-rizzuto?utm_source=homepage&utm_medium=internal&utm_campaign=seasonal_settembre_2026"
             className="group rounded-2xl border border-amber-200 bg-amber-50 px-4 py-4 transition hover:border-amber-300 hover:bg-amber-100/70"
           >
             <div className="flex items-center gap-3">
-              <CalendarRange className="h-5 w-5 text-amber-700" />
+              <Sun className="h-5 w-5 text-amber-700" />
               <div>
-                <p className="text-sm font-bold text-slate-900">Giugno: riempiamo le settimane libere</p>
-                <p className="mt-1 text-sm text-slate-700">Mare tranquillo, famiglie e coppie prima del picco estivo.</p>
+                <p className="text-sm font-bold text-slate-900">Settembre: mare caldo, meno folla</p>
+                <p className="mt-1 text-sm text-slate-700">Soggiorni più tranquilli per coppie e famiglie.</p>
               </div>
             </div>
           </Link>
           <Link
-            href="/settembre-capo-rizzuto?utm_source=homepage&utm_medium=internal&utm_campaign=recovery_settembre_2026"
+            href="/prenota?utm_source=homepage&utm_medium=internal&utm_campaign=autunno_2026"
             className="group rounded-2xl border border-sky-200 bg-sky-50 px-4 py-4 transition hover:border-sky-300 hover:bg-sky-100/70"
           >
             <div className="flex items-center gap-3">
-              <Sun className="h-5 w-5 text-sky-700" />
+              <CalendarRange className="h-5 w-5 text-sky-700" />
               <div>
-                <p className="text-sm font-bold text-slate-900">Settembre: mare caldo, meno folla</p>
-                <p className="mt-1 text-sm text-slate-700">La pagina migliore per ospiti italiani e Nord Europa.</p>
+                <p className="text-sm font-bold text-slate-900">Ottobre: Calabria fuori stagione</p>
+                <p className="mt-1 text-sm text-slate-700">Luce, territorio e soggiorni con ritmi più rilassati.</p>
               </div>
             </div>
           </Link>
           <Link
-            href="/no/norway?utm_source=homepage&utm_medium=internal&utm_campaign=recovery_norway_2026"
+            href="/intera-villa-calabria?utm_source=homepage&utm_medium=internal&utm_campaign=gruppi_villa_2026"
             className="group rounded-2xl border border-blue-200 bg-blue-50 px-4 py-4 transition hover:border-blue-300 hover:bg-blue-100/70"
           >
             <div className="flex items-center gap-3">
-              <Plane className="h-5 w-5 text-blue-700" />
+              <Users className="h-5 w-5 text-blue-700" />
               <div>
-                <p className="text-sm font-bold text-slate-900">Norvegia: Oslo-Lamezia ogni lunedi</p>
-                <p className="mt-1 text-sm text-slate-700">Rotta diretta utile per giugno e settembre-ottobre.</p>
+                <p className="text-sm font-bold text-slate-900">Gruppi e famiglie numerose</p>
+                <p className="mt-1 text-sm text-slate-700">Più appartamenti nella stessa struttura o intera villa.</p>
               </div>
             </div>
           </Link>
@@ -128,21 +129,6 @@ export default function HomePage() {
       </section>
 
       <BandieraBluSection />
-
-      <section className="bg-background py-5">
-        <div className="container mx-auto px-4">
-          <div className="flex justify-center">
-            <Link
-              href="/contatti?source=promo_giugno_home#prenota"
-              className="inline-flex items-center gap-2 rounded-full border border-amber-300/70 bg-gradient-to-r from-amber-50 via-white to-amber-100 px-4 py-2.5 text-sm font-semibold text-slate-800 shadow-sm transition hover:shadow-md md:text-base"
-            >
-              <CalendarRange className="h-4 w-4 text-amber-700" />
-              Promo giugno: 1 settimana a 750,00 EUR
-              <ArrowRight className="h-4 w-4 text-amber-700" />
-            </Link>
-          </div>
-        </div>
-      </section>
 
       <section className="bg-slate-50 py-10">
         <div className="container mx-auto px-4">
