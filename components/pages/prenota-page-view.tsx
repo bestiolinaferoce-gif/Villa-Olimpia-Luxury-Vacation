@@ -17,10 +17,10 @@ export type PrenotaPageViewProps = {
 
 const pageCopy = {
   it: {
-    eyebrow: "Giugno · Luglio · Settembre · Ottobre — diretto con la struttura",
-    title: "Prenota il tuo soggiorno a Villa Olimpia",
+    eyebrow: "Fine agosto · Settembre 2026 — diretto con la struttura",
+    title: "Trova le ultime date libere a Villa Olimpia",
     intro:
-      "Giugno, settembre e ottobre sono spesso i mesi migliori per chi cerca mare bello, meno affollamento e ritmi piu tranquilli. Villa Olimpia e una base comoda per famiglie, piccoli gruppi e ospiti che vogliono una proposta diretta: risposta entro 24 ore, preventivo personalizzato e nessun intermediario.",
+      "Per fine agosto verifichiamo gli ultimi incastri disponibili; a settembre trovi mare ancora piacevole, meno folla e tariffe da 120 euro a notte. Indica anche se le date sono flessibili: ti rispondiamo con la soluzione migliore, senza intermediari.",
     steps: ["Date e ospiti nel form", "Risposta con preventivo chiaro"],
     cards: [
       ["Trasparenza e fiducia", "Preventivo chiaro, nessuna sorpresa e contatto diretto."],

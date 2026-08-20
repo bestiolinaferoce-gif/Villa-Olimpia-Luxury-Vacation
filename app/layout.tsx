@@ -14,6 +14,7 @@ import { defaultMetadata, BASE_URL } from "@/lib/metadata"
 import { AnalyticsUnified } from "@/components/analytics/analytics-unified"
 import { GoogleAnalytics } from "@/components/analytics/google-analytics"
 import { MetaPixelOptional } from "@/components/analytics/meta-pixel"
+import { Analytics } from "@vercel/analytics/next"
 import { SeasonalRootOverlays } from "@/components/seasonal/SeasonalRootOverlays"
 import { I18nProvider } from "@/components/i18n-provider"
 import { VILLA_OLIMPIA_LOCATION } from "@/lib/location-data"
@@ -177,6 +178,7 @@ export default async function RootLayout({
         <AnalyticsUnified />
         <GoogleAnalytics />
         <MetaPixelOptional />
+        <Analytics />
         <ErrorBoundary>
           <I18nProvider>
             <SeasonalRootOverlays />

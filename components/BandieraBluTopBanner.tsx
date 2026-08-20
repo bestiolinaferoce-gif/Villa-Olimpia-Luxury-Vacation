@@ -3,50 +3,50 @@
 import { useEffect, useState } from "react"
 import { usePathname } from "next/navigation"
 
-const STORAGE_KEY = "villaolimpia.bandiera-blu-2026.dismissed"
+const STORAGE_KEY = "villaolimpia.fine-estate-2026.dismissed"
 
 const COPY = {
   it: {
-    label: "Bandiera Blu 2026 — Isola di Capo Rizzuto",
-    sub: "Soggiorni in zona premiata · Calabria 2° in Italia",
+    label: "Ultime date: fine agosto e settembre 2026",
+    sub: "Verifica ora · preventivo diretto",
     dismiss: "Chiudi",
-    landing: "/bandiera-blu-2026-isola-capo-rizzuto",
+    landing: "/contatti?source=top_banner_fine_estate#prenota",
   },
   en: {
-    label: "Blue Flag 2026 — Isola di Capo Rizzuto",
-    sub: "Stay in an awarded area · Calabria 2nd in Italy",
+    label: "Last dates: late August and September 2026",
+    sub: "Check now · direct quote",
     dismiss: "Close",
-    landing: "/bandiera-blu-2026-isola-capo-rizzuto",
+    landing: "/en/contact?source=top_banner_late_summer#prenota",
   },
   de: {
-    label: "Blaue Flagge 2026 — Isola di Capo Rizzuto",
-    sub: "Übernachten Sie in einer prämierten Zone · Kalabrien Platz 2 in Italien",
+    label: "Letzte Termine: Ende August und September 2026",
+    sub: "Jetzt anfragen · direktes Angebot",
     dismiss: "Schließen",
-    landing: "/bandiera-blu-2026-isola-capo-rizzuto",
+    landing: "/de/contatti?source=top_banner_spaetsommer#prenota",
   },
   fr: {
-    label: "Pavillon Bleu 2026 — Isola di Capo Rizzuto",
-    sub: "Séjournez dans une zone primée · Calabre 2e en Italie",
+    label: "Dernières dates : fin août et septembre 2026",
+    sub: "Vérifiez maintenant · devis direct",
     dismiss: "Fermer",
-    landing: "/bandiera-blu-2026-isola-capo-rizzuto",
+    landing: "/fr/contatti?source=top_banner_fin_ete#prenota",
   },
   nl: {
-    label: "Blauwe Vlag 2026 — Isola di Capo Rizzuto",
-    sub: "Verblijf in een bekroonde zone · Calabrië 2e in Italië",
+    label: "Laatste data: eind augustus en september 2026",
+    sub: "Controleer nu · directe offerte",
     dismiss: "Sluiten",
-    landing: "/bandiera-blu-2026-isola-capo-rizzuto",
+    landing: "/nl/contatti?source=top_banner_nazomer#prenota",
   },
   no: {
-    label: "Blått Flagg 2026 — Isola di Capo Rizzuto",
-    sub: "Bo i et premiert område · Calabria 2. plass i Italia",
+    label: "Siste datoer: slutten av august og september 2026",
+    sub: "Sjekk nå · direkte tilbud",
     dismiss: "Lukk",
-    landing: "/bandiera-blu-2026-isola-capo-rizzuto",
+    landing: "/no/contatti?source=top_banner_sensommer#prenota",
   },
   sv: {
-    label: "Blå Flagg 2026 — Isola di Capo Rizzuto",
-    sub: "Bo i ett prisbelönt område · Kalabrien 2:a i Italien",
+    label: "Sista datum: slutet av augusti och september 2026",
+    sub: "Kontrollera nu · direkt offert",
     dismiss: "Stäng",
-    landing: "/bandiera-blu-2026-isola-capo-rizzuto",
+    landing: "/sv/contatti?source=top_banner_sensommar#prenota",
   },
 } as const
 
@@ -100,7 +100,7 @@ export function BandieraBluTopBanner() {
   return (
     <div
       role="region"
-      aria-label="Annuncio Bandiera Blu 2026"
+      aria-label="Offerta fine estate 2026"
       className="relative w-full"
       style={{
         background: "linear-gradient(90deg, #062a44 0%, #0a3d62 50%, #0e5a8a 100%)",

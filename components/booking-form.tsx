@@ -47,7 +47,7 @@ function availabilityI18n(mt: BookingFormCopyResolved["messageTemplate"]) {
 function createBookingSchema(validation: BookingFormCopyResolved["validation"]) {
   return z.object({
     name: z.string().min(2, validation.nameMin),
-    email: z.string().email(validation.emailInvalid),
+    email: z.union([z.string().email(validation.emailInvalid), z.literal("")]),
     phone: z.string().min(8, validation.phoneMin),
     checkIn: z.string().min(1, validation.checkInRequired),
     checkOut: z.string().min(1, validation.checkOutRequired),
@@ -215,7 +215,7 @@ function DateRangePicker({
             onChange={handleSelect}
             value={localValue}
             selectRange={true}
-            showDoubleView={true}
+            showDoubleView={false}
             minDate={new Date()}
             locale={calendarLocale}
             tileClassName={({ date, view }) => {
@@ -267,6 +267,8 @@ export function BookingForm({
     return ["en", "de", "fr", "nl", "no", "sv"].includes(seg) ? seg : "it"
   }, [pathname])
 
+  const t = useMemo(() => resolveBookingFormCopy(copy), [copy])
+
   const privacyNotice = useMemo(() => {
     const notices: Record<string, { prefix: string; link: string }> = {
       it: { prefix: "Inviando la richiesta accetti il trattamento dei dati descritto nella", link: "Privacy Policy" },
@@ -280,14 +282,25 @@ export function BookingForm({
     return notices[locale] ?? notices.it
   }, [locale])
 
+  const optionalEmailLabel = useMemo(() => {
+    const optionalByLocale: Record<string, string> = {
+      it: "facoltativa",
+      en: "optional",
+      de: "optional",
+      fr: "facultatif",
+      nl: "optioneel",
+      no: "valgfritt",
+      sv: "valfritt",
+    }
+    return `${t.labels.email.replace(/\s*\*\s*$/, "")} (${optionalByLocale[locale] ?? optionalByLocale.it})`
+  }, [locale, t.labels.email])
+
   const formStartTracked = useRef(false)
   const handleFormStart = useCallback(() => {
     if (formStartTracked.current) return
     formStartTracked.current = true
     trackFormStart("booking_form", locale)
   }, [locale])
-
-  const t = useMemo(() => resolveBookingFormCopy(copy), [copy])
 
   const bookingSchema = useMemo(() => createBookingSchema(t.validation), [t.validation])
 
@@ -519,6 +532,7 @@ export function BookingForm({
           <Input
             id="name"
             {...register("name")}
+            autoComplete="name"
             placeholder={t.placeholders.name}
             className={errors.name ? "border-destructive" : ""}
             onFocus={handleFormStart}
@@ -527,11 +541,13 @@ export function BookingForm({
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor="email">{t.labels.email}</Label>
+          <Label htmlFor="email">{optionalEmailLabel}</Label>
           <Input
             id="email"
             type="email"
             {...register("email")}
+            autoComplete="email"
+            inputMode="email"
             placeholder={t.placeholders.email}
             className={errors.email ? "border-destructive" : ""}
           />
@@ -544,6 +560,8 @@ export function BookingForm({
             id="phone"
             type="tel"
             {...register("phone")}
+            autoComplete="tel"
+            inputMode="tel"
             placeholder={t.placeholders.phone}
             className={errors.phone ? "border-destructive" : ""}
           />
@@ -559,6 +577,7 @@ export function BookingForm({
               type="number"
               min="1"
               max="10"
+              inputMode="numeric"
               {...register("guests")}
               placeholder={t.placeholders.guests}
               className={`pl-9 ${errors.guests ? "border-destructive" : ""}`}

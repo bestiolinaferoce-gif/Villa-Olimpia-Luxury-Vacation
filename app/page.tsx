@@ -2,7 +2,6 @@ import Image from "next/image"
 import Link from "next/link"
 import { ArrowRight, CalendarRange, ShieldCheck, Sun, Waves, Users } from "lucide-react"
 import HomePageClient from "@/components/pages/home-page-client"
-import { BandieraBluSection } from "@/components/sections/BandieraBluSection"
 import { TrackedContactAnchor } from "@/components/analytics/tracked-contact-anchor"
 
 export default function HomePage() {
@@ -27,7 +26,7 @@ export default function HomePage() {
           <div className="mx-auto max-w-5xl text-center">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/25 bg-slate-950/25 px-4 py-2 text-sm font-semibold">
               <ShieldCheck className="h-4 w-4" />
-              Area Marina Protetta di Capo Rizzuto
+              Ultime disponibilità · fine agosto e settembre 2026
             </div>
 
             <h1 className="font-playfair text-4xl font-bold leading-tight sm:text-5xl md:text-7xl">
@@ -36,37 +35,37 @@ export default function HomePage() {
                 className="mt-4 block text-xl font-semibold text-white/95 md:text-3xl"
                 style={{ fontFamily: "var(--font-inter)" }}
               >
-                Appartamenti con piscina a Capo Rizzuto, a 100 metri dalla Spiaggia dei Gigli
+                Fine estate al mare, a 100 metri dalla Spiaggia dei Gigli
               </span>
             </h1>
             <p className="mx-auto mt-5 max-w-3xl text-base leading-relaxed text-white/90 md:text-xl">
-              Prenotazione diretta, risposta rapida e soggiorni su misura per coppie, famiglie e piccoli gruppi tra
-              mare, relax e Calabria autentica.
+              Scrivici le date, anche se sono flessibili: verifichiamo subito gli appartamenti rimasti e ti inviamo
+              una proposta diretta per fine agosto o settembre, senza commissioni di portale.
             </p>
 
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link
-                href="/contatti?source=hero_server_cta#prenota"
+                href="/contatti?source=hero_late_summer&utm_source=homepage&utm_medium=internal&utm_campaign=fine_estate_2026#prenota"
                 className="inline-flex items-center justify-center rounded-full bg-[#f7c53b] px-7 py-4 text-base font-bold text-slate-900 shadow-xl transition hover:brightness-105"
               >
-                Verifica disponibilita
+                Controlla le date libere
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
               <TrackedContactAnchor
                 kind="whatsapp"
-                href="https://wa.me/393335773390?text=Richiesta%20disponibilita%20Villa%20Olimpia%20-%20fonte%20sito%20ufficiale"
-                source="home_hero_direct_whatsapp"
+                href="https://wa.me/393335773390?text=Ciao%2C%20vorrei%20conoscere%20le%20date%20libere%20a%20Villa%20Olimpia%20tra%20fine%20agosto%20e%20settembre%202026.%20Siamo%20___%20persone%20e%20le%20date%20sono%20___."
+                source="home_hero_late_summer_whatsapp"
                 locale="it"
                 className="inline-flex items-center justify-center rounded-full border border-white/80 bg-slate-950/25 px-7 py-4 text-base font-semibold text-white transition hover:bg-slate-950/35"
               >
-                WhatsApp diretto
+                Chiedi su WhatsApp
               </TrackedContactAnchor>
             </div>
 
             <div className="mt-8 grid gap-3 sm:grid-cols-3">
               <div className="rounded-2xl border border-white/15 bg-slate-950/20 px-4 py-4">
-                <div className="text-2xl font-bold">9</div>
-                <div className="mt-1 text-sm text-white/85">Appartamenti nella stessa struttura</div>
+                <div className="text-2xl font-bold">Fine agosto</div>
+                <div className="mt-1 text-sm text-white/85">Ultime date solo su verifica</div>
               </div>
               <div className="rounded-2xl border border-white/15 bg-slate-950/20 px-4 py-4">
                 <div className="flex items-center justify-center gap-2 text-2xl font-bold">
@@ -78,9 +77,9 @@ export default function HomePage() {
               <div className="rounded-2xl border border-white/15 bg-slate-950/20 px-4 py-4">
                 <div className="flex items-center justify-center gap-2 text-2xl font-bold">
                   <Users className="h-5 w-5" />
-                  Diretto
+                  Settembre
                 </div>
-                <div className="mt-1 text-sm text-white/85">Preventivo personalizzato senza portali</div>
+                <div className="mt-1 text-sm text-white/85">Da €120/notte, proposta diretta</div>
               </div>
             </div>
           </div>
@@ -90,45 +89,45 @@ export default function HomePage() {
       <section className="border-y border-amber-200/70 bg-white">
         <div className="container mx-auto grid gap-3 px-4 py-5 md:grid-cols-3">
           <Link
-            href="/settembre-capo-rizzuto?utm_source=homepage&utm_medium=internal&utm_campaign=seasonal_settembre_2026"
+            href="/contatti?source=home_fine_agosto&utm_source=homepage&utm_medium=internal&utm_campaign=fine_agosto_2026#prenota"
             className="group rounded-2xl border border-amber-200 bg-amber-50 px-4 py-4 transition hover:border-amber-300 hover:bg-amber-100/70"
           >
             <div className="flex items-center gap-3">
-              <Sun className="h-5 w-5 text-amber-700" />
+              <CalendarRange className="h-5 w-5 text-amber-700" />
               <div>
-                <p className="text-sm font-bold text-slate-900">Settembre: mare caldo, meno folla</p>
-                <p className="mt-1 text-sm text-slate-700">Soggiorni più tranquilli per coppie e famiglie.</p>
+                <p className="text-sm font-bold text-slate-900">Fine agosto: verifica le ultime date</p>
+                <p className="mt-1 text-sm text-slate-700">Indica anche date flessibili: cerchiamo l&apos;incastro migliore.</p>
               </div>
             </div>
           </Link>
           <Link
-            href="/prenota?utm_source=homepage&utm_medium=internal&utm_campaign=autunno_2026"
+            href="/settembre-capo-rizzuto?utm_source=homepage&utm_medium=internal&utm_campaign=settembre_2026"
             className="group rounded-2xl border border-sky-200 bg-sky-50 px-4 py-4 transition hover:border-sky-300 hover:bg-sky-100/70"
           >
             <div className="flex items-center gap-3">
-              <CalendarRange className="h-5 w-5 text-sky-700" />
+              <Sun className="h-5 w-5 text-sky-700" />
               <div>
-                <p className="text-sm font-bold text-slate-900">Ottobre: Calabria fuori stagione</p>
-                <p className="mt-1 text-sm text-slate-700">Luce, territorio e soggiorni con ritmi più rilassati.</p>
+                <p className="text-sm font-bold text-slate-900">Settembre: da €120/notte</p>
+                <p className="mt-1 text-sm text-slate-700">Mare piacevole, meno folla e tariffe dirette.</p>
               </div>
             </div>
           </Link>
           <Link
-            href="/intera-villa-calabria?utm_source=homepage&utm_medium=internal&utm_campaign=gruppi_villa_2026"
+            href="/contatti?source=home_date_flessibili&utm_source=homepage&utm_medium=internal&utm_campaign=fine_estate_2026#prenota"
             className="group rounded-2xl border border-blue-200 bg-blue-50 px-4 py-4 transition hover:border-blue-300 hover:bg-blue-100/70"
           >
             <div className="flex items-center gap-3">
               <Users className="h-5 w-5 text-blue-700" />
               <div>
-                <p className="text-sm font-bold text-slate-900">Gruppi e famiglie numerose</p>
-                <p className="mt-1 text-sm text-slate-700">Più appartamenti nella stessa struttura o intera villa.</p>
+                <p className="text-sm font-bold text-slate-900">Date flessibili? Scrivilo nella richiesta</p>
+                <p className="mt-1 text-sm text-slate-700">Ti proponiamo l&apos;appartamento e il periodo più convenienti.</p>
               </div>
             </div>
           </Link>
         </div>
       </section>
 
-      <BandieraBluSection />
+      <HomePageClient skipAboveTheFold />
 
       <section className="bg-slate-50 py-10">
         <div className="container mx-auto px-4">
@@ -190,7 +189,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      <HomePageClient skipAboveTheFold />
     </>
   )
 }

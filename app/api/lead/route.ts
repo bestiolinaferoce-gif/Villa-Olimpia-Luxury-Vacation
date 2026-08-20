@@ -13,7 +13,7 @@ import { kv } from "@/lib/kv"
 
 const leadSchema = z.object({
   name: z.string().min(2).max(120),
-  email: z.string().email().max(200),
+  email: z.union([z.string().email().max(200), z.literal("")]),
   phone: z.string().min(6).max(40),
   checkIn: z.string().min(1).max(20),
   checkOut: z.string().min(1).max(20),
@@ -40,6 +40,7 @@ const EMAIL_RATE_LIMIT_WINDOW_MS = 2 * 60 * 1000
 const EMAIL_RATE_LIMIT_MAX = 2
 const RATE_LIMIT_WINDOW_SECONDS = Math.floor(RATE_LIMIT_WINDOW_MS / 1000)
 const EMAIL_RATE_LIMIT_WINDOW_SECONDS = Math.floor(EMAIL_RATE_LIMIT_WINDOW_MS / 1000)
+const DELIVERY_TIMEOUT_MS = 8_000
 const allowedOrigins = new Set(
   [BASE_URL, process.env.NEXT_PUBLIC_SITE_URL]
     .filter((value): value is string => Boolean(value))
@@ -103,7 +104,7 @@ function buildTextEmail(lead: EnrichedLead) {
     "",
     "OSPITE",
     `Nome:       ${lead.name}`,
-    `Email:      ${lead.email}`,
+    `Email:      ${lead.email || "Non fornita"}`,
     `Telefono:   ${lead.phone}`,
     ...(lead.agency ? [`Agenzia:    ${lead.agency}`] : []),
     "",
@@ -163,10 +164,11 @@ async function sendWithResend(lead: EnrichedLead) {
       Authorization: `Bearer ${apiKey}`,
       "Content-Type": "application/json",
     },
+    signal: AbortSignal.timeout(DELIVERY_TIMEOUT_MS),
     body: JSON.stringify({
       from,
       to,
-      reply_to: lead.email,
+      ...(lead.email ? { reply_to: lead.email } : {}),
       subject,
       text,
       html,
@@ -193,6 +195,7 @@ async function sendAutoReplyToGuest(lead: EnrichedLead) {
   const enabled = process.env.LEADS_AUTOREPLY_ENABLED?.trim() !== "false"
   if (!enabled) return { ok: false as const, reason: "autoresponder_disabled" }
   if (!apiKey) return { ok: false as const, reason: "missing_resend_key" }
+  if (!lead.email) return { ok: false as const, reason: "missing_guest_email" }
 
   const sm = lead.seasonalMonth
   const seasonalKey: SeasonalMonth | "other" | undefined =
@@ -244,6 +247,7 @@ async function sendAutoReplyToGuest(lead: EnrichedLead) {
       Authorization: `Bearer ${apiKey}`,
       "Content-Type": "application/json",
     },
+    signal: AbortSignal.timeout(DELIVERY_TIMEOUT_MS),
     body: JSON.stringify({
       from,
       to: lead.email,
@@ -295,6 +299,7 @@ async function sendWhatsAppTemplateToGuest(lead: EnrichedLead) {
       Authorization: `Bearer ${token}`,
       "Content-Type": "application/json",
     },
+    signal: AbortSignal.timeout(DELIVERY_TIMEOUT_MS),
     body: JSON.stringify({
       messaging_product: "whatsapp",
       to,
@@ -351,6 +356,7 @@ async function sendWithWebhook(lead: EnrichedLead) {
   const response = await fetch(webhookUrl, {
     method: "POST",
     headers,
+    signal: AbortSignal.timeout(DELIVERY_TIMEOUT_MS),
     body: JSON.stringify({
       event: "lead.created",
       priorityTag: leadPriorityTag(lead),
@@ -424,6 +430,7 @@ async function sendTelegramAlert(lead: EnrichedLead) {
   const response = await fetch(url, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
+    signal: AbortSignal.timeout(DELIVERY_TIMEOUT_MS),
     body: JSON.stringify({
       chat_id: chatId,
       text: message,
@@ -436,6 +443,21 @@ async function sendTelegramAlert(lead: EnrichedLead) {
   }
 
   return { ok: true as const }
+}
+
+async function runLeadChannel<T extends { ok: boolean }>(
+  channel: string,
+  operation: () => Promise<T>
+): Promise<T | { ok: false; reason: string }> {
+  try {
+    return await operation()
+  } catch (error) {
+    console.error(
+      `[Lead channel: ${channel}] failed:`,
+      error instanceof Error ? error.message : error
+    )
+    return { ok: false, reason: `${channel}_exception` }
+  }
 }
 
 export async function POST(req: NextRequest) {
@@ -467,8 +489,9 @@ export async function POST(req: NextRequest) {
     }
 
     const lead = parsedBody.data as LeadPayload
+    const contactRateLimitKey = lead.email.trim().toLowerCase() || lead.phone.replace(/\D/g, "")
     const emailRateLimited = await isRateLimitedWithKv({
-      key: `rate_limit:lead:email:${lead.email.trim().toLowerCase()}`,
+      key: `rate_limit:lead:contact:${contactRateLimitKey}`,
       max: EMAIL_RATE_LIMIT_MAX,
       windowSeconds: EMAIL_RATE_LIMIT_WINDOW_SECONDS,
       fallbackWindowMs: EMAIL_RATE_LIMIT_WINDOW_MS,
@@ -497,13 +520,13 @@ export async function POST(req: NextRequest) {
     })
 
     const [resendDelivery, autoReplyDelivery, whatsappGuestDelivery, webhookDelivery, telegramDelivery, persistedKv, persistedFile] = await Promise.all([
-      sendWithResend(enrichedLead),
-      sendAutoReplyToGuest(enrichedLead),
-      sendWhatsAppTemplateToGuest(enrichedLead),
-      sendWithWebhook(enrichedLead),
-      sendTelegramAlert(enrichedLead),
-      persistLeadToKv(enrichedLead),
-      persistLeadToFile(enrichedLead),
+      runLeadChannel("resend", () => sendWithResend(enrichedLead)),
+      runLeadChannel("autoresponder", () => sendAutoReplyToGuest(enrichedLead)),
+      runLeadChannel("whatsapp_guest", () => sendWhatsAppTemplateToGuest(enrichedLead)),
+      runLeadChannel("webhook", () => sendWithWebhook(enrichedLead)),
+      runLeadChannel("telegram", () => sendTelegramAlert(enrichedLead)),
+      runLeadChannel("kv_persist", () => persistLeadToKv(enrichedLead)),
+      runLeadChannel("file_persist", () => persistLeadToFile(enrichedLead)),
     ])
     const persisted = persistedKv.ok ? persistedKv : persistedFile
 

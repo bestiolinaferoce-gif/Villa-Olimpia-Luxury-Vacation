@@ -11,7 +11,7 @@ import { generateMetadata } from "@/lib/metadata"
 export const metadata = generateMetadata({
   title: "Richiedi disponibilità | Villa Olimpia Capo Rizzuto",
   description:
-    "Richiedi disponibilità e prezzi per gli appartamenti di Villa Olimpia a Capopiccolo, Capo Rizzuto. Risposta diretta entro 24h, senza intermediari.",
+    "Verifica le ultime date di fine agosto e settembre 2026 a Villa Olimpia, Capo Rizzuto. Risposta diretta entro 24h, senza intermediari.",
   path: "/contatti",
   keywords: [
     "contatti Villa Olimpia",
@@ -33,10 +33,10 @@ export default function ContattiPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-2xl">
             <h1 className="text-3xl font-playfair font-bold tracking-tight md:text-4xl">
-              Verifica disponibilità e prezzi
+              Ultime date di fine agosto e settembre
             </h1>
             <p className="mt-3 text-base text-slate-300 leading-relaxed">
-              Scrivi le date e quante persone siete: ti rispondiamo entro 24 ore con disponibilità e proposta chiara, senza intermediari.
+              Scrivi le date e quante persone siete. Se puoi spostarti di qualche giorno, indicalo nel messaggio: ti proponiamo l&apos;incastro migliore tra gli appartamenti ancora liberi.
             </p>
             <p className="mt-3 text-sm text-slate-400">
               Preferisci un contatto immediato?{" "}
@@ -68,9 +68,9 @@ export default function ContattiPage() {
           <div id="prenota" className="scroll-mt-24">
             <Card className="border-2 border-primary/15 shadow-xl shadow-primary/5">
               <CardHeader className="pb-2">
-                <CardTitle className="font-playfair text-2xl">Richiesta disponibilità</CardTitle>
+                <CardTitle className="font-playfair text-2xl">Controlla subito le date libere</CardTitle>
                 <CardDescription className="text-sm text-slate-600">
-                  Inserisci date e numero di persone — ti risponderemo con la proposta più adatta.
+                  Bastano telefono, date e numero di ospiti. L&apos;email è facoltativa.
                 </CardDescription>
               </CardHeader>
               <CardContent>
