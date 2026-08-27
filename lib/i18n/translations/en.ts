@@ -33,7 +33,7 @@ export const en = {
       apartments: 'Apartments',
       happyGuests: 'Happy Guests',
       rating: 'Rating',
-      ratingValue: '4.9/5 Rating',
+      ratingValue: 'Reviews on the original source',
       beachDistance: 'about 100 meters from the sandy beach',
       privatePool: 'Outdoor shared swimming pool',
       bookedBy: 'Booked by 150+ guests in 2024',
@@ -103,7 +103,7 @@ export const en = {
       title: 'Reviews from Our Guests',
       subtitle: 'Verified reviews',
       description: 'Average rating',
-      descriptionRating: '4.9/5',
+      descriptionRating: 'Public sources',
       descriptionStars: 'stars based on',
       descriptionCount: '100+',
       descriptionReviews: 'verified reviews from Booking.com, Airbnb and Google.',
@@ -260,7 +260,6 @@ export const en = {
     copyright: 'All rights reserved',
   },
 }
-
 
 
 

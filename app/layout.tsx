@@ -163,13 +163,6 @@ export default async function RootLayout({
                 name: `Appartamento ${apartment.name}`,
                 url: `${BASE_URL}/appartamenti/${getApartmentSlug(apartment)}`
               })),
-              availableAtOrFrom: {
-                "@type": "Offer",
-                name: "Prenotazione diretta Villa Olimpia",
-                description: "Richiedi disponibilità diretta per appartamenti con piscina a Capopiccolo, vicino alla Spiaggia dei Gigli e all'Area Marina Protetta di Capo Rizzuto.",
-                priceCurrency: "EUR",
-                availability: "https://schema.org/LimitedAvailability"
-              }
             }),
           }}
         />

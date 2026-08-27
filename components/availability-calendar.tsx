@@ -3,10 +3,10 @@
 import { useMemo } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Calendar } from "lucide-react"
-import type { OccupiedRange } from "@/lib/public-calendar/occupancy"
+import type { OccupancySnapshot, OccupiedRange } from "@/lib/public-calendar/occupancy"
 
 interface AvailabilityCalendarProps {
-  occupiedRanges: OccupiedRange[]
+  snapshot: OccupancySnapshot
 }
 
 const weekdayLabels = ["Lun", "Mar", "Mer", "Gio", "Ven", "Sab", "Dom"]
@@ -87,7 +87,9 @@ function MonthGrid({
   )
 }
 
-export function AvailabilityCalendar({ occupiedRanges }: AvailabilityCalendarProps) {
+export function AvailabilityCalendar({ snapshot }: AvailabilityCalendarProps) {
+  const isVerified = snapshot.status === "verified"
+  const occupiedRanges = isVerified ? snapshot.ranges : []
   const months = useMemo(() => {
     const now = new Date()
     return [0, 1, 2].map((offset) => {
@@ -104,20 +106,28 @@ export function AvailabilityCalendar({ occupiedRanges }: AvailabilityCalendarPro
           <CardTitle className="text-lg">Disponibilità</CardTitle>
         </div>
         <CardDescription>
-          Aggiornamento automatico ogni ora
+          {isVerified && snapshot.lastSyncedAt
+            ? `Calendario sincronizzato il ${new Date(snapshot.lastSyncedAt).toLocaleString("it-IT", { dateStyle: "short", timeStyle: "short" })}`
+            : "Calendario non verificabile in questo momento"}
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-6">
-        {months.map(({ year, monthIndex }) => (
-          <MonthGrid
-            key={`${year}-${monthIndex}`}
-            year={year}
-            monthIndex={monthIndex}
-            occupiedRanges={occupiedRanges}
-          />
-        ))}
+        {isVerified ? (
+          months.map(({ year, monthIndex }) => (
+            <MonthGrid
+              key={`${year}-${monthIndex}`}
+              year={year}
+              monthIndex={monthIndex}
+              occupiedRanges={occupiedRanges}
+            />
+          ))
+        ) : (
+          <div className="rounded-xl border border-amber-200 bg-amber-50 px-4 py-4 text-sm text-amber-950">
+            Non mostriamo date verdi finché la sincronizzazione non è aggiornata. Invia le date: la struttura le verifica prima di confermare.
+          </div>
+        )}
 
-        <div className="flex flex-wrap gap-3 text-xs text-muted-foreground pt-1 border-t">
+        {isVerified ? <div className="flex flex-wrap gap-3 text-xs text-muted-foreground pt-1 border-t">
           <div className="flex items-center gap-1.5">
             <span className="inline-flex h-3 w-3 rounded-full border bg-emerald-50 border-emerald-200" />
             <span>Disponibile</span>
@@ -130,13 +140,7 @@ export function AvailabilityCalendar({ occupiedRanges }: AvailabilityCalendarPro
             <span className="inline-flex h-3 w-3 rounded-full border bg-slate-50 border-slate-100" />
             <span>Passato</span>
           </div>
-        </div>
-
-        {occupiedRanges.length === 0 && (
-          <div className="rounded-xl border border-dashed border-primary/30 bg-primary/5 px-4 py-3 text-sm text-primary/80">
-            Disponibilità in aggiornamento: stiamo importando le date reali per questo appartamento.
-          </div>
-        )}
+        </div> : null}
       </CardContent>
     </Card>
   )

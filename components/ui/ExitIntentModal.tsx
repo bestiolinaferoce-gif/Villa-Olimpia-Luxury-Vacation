@@ -1,6 +1,6 @@
 "use client"
 
-import { useCallback, useEffect, useMemo, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { X } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -8,8 +8,6 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import {
   SEASONAL_CAMPAIGN_YEAR,
-  SEASONAL_CONFIG,
-  getAvailabilityPercent,
   getCurrentSeasonalMonth,
   type SeasonalMonth,
 } from "@/lib/seasonalConfig"
@@ -35,16 +33,12 @@ export function ExitIntentModal() {
   const [open, setOpen] = useState(false)
   const [email, setEmail] = useState("")
   const [phone, setPhone] = useState("")
-  const [month, setMonth] = useState<SeasonalMonth>("maggio")
+  const [month, setMonth] = useState<SeasonalMonth>(() => {
+    const current = getCurrentSeasonalMonth()
+    return current === "other" ? "settembre" : current
+  })
   const [busy, setBusy] = useState(false)
   const [done, setDone] = useState(false)
-
-  const cfg = useMemo(() => {
-    const m = month === "other" ? getCurrentSeasonalMonth() : month
-    return m === "other" ? SEASONAL_CONFIG.other : SEASONAL_CONFIG[m]
-  }, [month])
-
-  const pct = getAvailabilityPercent(cfg)
 
   useEffect(() => {
     if (typeof window === "undefined") return
@@ -138,7 +132,7 @@ export function ExitIntentModal() {
           source: "exit_intent_modal",
           landingPage: typeof window !== "undefined" ? window.location.href : "",
           seasonalMonth: month === "other" ? undefined : month,
-          marketingOptIn: true,
+          marketingOptIn: false,
         }),
       })
       const data = await res.json().catch(() => null)
@@ -190,12 +184,6 @@ export function ExitIntentModal() {
               Settembre e ottobre sono i mesi da bloccare ora: mare più tranquillo, tariffe migliori e richieste Nord Europa in crescita.
               Lasciaci email e telefono e ti richiamiamo.
             </p>
-            <div className="mt-4 h-2 w-full overflow-hidden rounded-full bg-slate-100">
-              <div
-                className="h-full rounded-full bg-primary transition-all"
-                style={{ width: `${pct}%` }}
-              />
-            </div>
             <div className="mt-4 grid gap-3">
               <div>
                 <Label htmlFor="exit-email">Email</Label>

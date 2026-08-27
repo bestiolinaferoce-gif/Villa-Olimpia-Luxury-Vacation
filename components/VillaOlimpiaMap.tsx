@@ -346,11 +346,11 @@ function ApartmentDetailPanel({
           ))}
         </div>
 
-        {/* Price */}
+        {/* Tariffa */}
         {price && (
           <div className="mt-4 pt-4 border-t border-slate-100 flex items-center justify-between">
             <span className="text-sm text-slate-500">
-              {t.from} <span className="text-2xl font-bold text-slate-800">€{price}</span>{t.perNight}
+              <span className="font-bold text-slate-800">Tariffa su richiesta</span>
             </span>
             <span
               className="w-3 h-3 rounded-full"

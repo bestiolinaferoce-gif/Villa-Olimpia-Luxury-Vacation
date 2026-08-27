@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server"
-import { getOccupiedRangesForLodge, APARTMENT_LODGE_MAP } from "@/lib/public-calendar/occupancy"
+import { getOccupancySnapshotForLodge, APARTMENT_LODGE_MAP } from "@/lib/public-calendar/occupancy"
 
 /**
  * GET /api/public-request/availability?lodgeId=<value>
@@ -52,12 +52,12 @@ export async function GET(request: NextRequest) {
     )
   }
 
-  const ranges = await getOccupiedRangesForLodge(lodgeName)
+  const snapshot = await getOccupancySnapshotForLodge(lodgeName)
 
-  return NextResponse.json(ranges, {
+  return NextResponse.json({ lodge: lodgeName, ...snapshot }, {
     status: 200,
     headers: {
-      "Cache-Control": "public, max-age=300",
+      "Cache-Control": "public, max-age=60, stale-while-revalidate=120",
     },
   })
 }

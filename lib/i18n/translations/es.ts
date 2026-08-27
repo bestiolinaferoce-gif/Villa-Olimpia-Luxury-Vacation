@@ -30,7 +30,7 @@ export const es = {
       apartments: 'Apartamentos',
       happyGuests: 'Huéspedes Felices',
       rating: 'Valoración',
-      ratingValue: '4.9/5 Valoración',
+      ratingValue: 'Reseñas en la fuente original',
       beachDistance: '100 metros de la playa',
       privatePool: 'Piscina Compartida',
       bookedBy: 'Reservado por 150+ huéspedes en 2024',
@@ -82,7 +82,7 @@ export const es = {
       title: 'Reseñas de Nuestros Huéspedes',
       subtitle: 'Reseñas verificadas',
       description: 'Valoración media',
-      descriptionRating: '4.9/5',
+      descriptionRating: 'Fuentes públicas',
       descriptionStars: 'estrellas basada en',
       descriptionCount: '100+',
       descriptionReviews: 'reseñas verificadas de Booking.com, Airbnb y Google.',
@@ -217,7 +217,6 @@ export const es = {
     copyright: 'Todos los derechos reservados',
   },
 }
-
 
 
 

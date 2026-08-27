@@ -29,11 +29,6 @@ export const SEO_CONFIG = {
       telephone: "+393335773390",
       email: "villaolimpiacaporizzuto@gmail.com",
       priceRange: "€€",
-      starRating: {
-        "@type": "Rating",
-        ratingValue: "4.9",
-        bestRating: "5"
-      },
       numberOfRooms: 9,
       amenityFeature: [
         {

@@ -101,8 +101,6 @@ export const TERRITORY_SEO = {
       { property: "business:contact_data:country_name", content: "Italia" },
       { property: "place:location:latitude", content: "38.913856" },
       { property: "place:location:longitude", content: "17.0754964" },
-      { name: "rating", content: "4.9" },
-      { name: "reviewCount", content: "62" }
     ],
     // Keywords per listing Airbnb
     keywords: [
@@ -169,11 +167,6 @@ export const TERRITORY_SEO = {
       "https://villaolimpiacaporizzuto.com/images/villa/location/spiaggia-dei-gigli.jpg"
     ],
     "numberOfRooms": 9,
-    "starRating": {
-      "@type": "Rating",
-      "ratingValue": "4.9",
-      "bestRating": "5"
-    },
     "amenityFeature": [
       { "@type": "LocationFeatureSpecification", "name": "Piscina esterna condivisa", "value": true },
       { "@type": "LocationFeatureSpecification", "name": "Parcheggio gratuito", "value": true },
@@ -227,7 +220,6 @@ export function generateTerritoryMetaTags() {
     twitter: TERRITORY_SEO.homepage.twitter
   }
 }
-
 
 
 

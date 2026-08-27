@@ -1,213 +1,55 @@
-"use client"
-
-import { useState, useMemo } from "react"
-import { reviews, Review } from "@/data/reviews-complete"
-import { ReviewCard } from "./review-card"
-import { ReviewStats } from "./review-stats"
-import { ReviewFilters } from "./review-filters"
-import { ReviewFiltersAdvanced } from "./review-filters-advanced"
+import Link from "next/link"
+import { ExternalLink, MapPin, MessageCircle, ShieldCheck } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { Star } from "lucide-react"
-
-const REVIEWS_PER_PAGE = 9
+import { SITE_CONFIG } from "@/lib/constants"
 
 export function ReviewsSection() {
-  const [selectedRating, setSelectedRating] = useState<number | null>(null)
-  const [selectedSource, setSelectedSource] = useState<string | null>(null)
-  const [selectedLocale, setSelectedLocale] = useState<string | null>(null)
-  const [sortBy, setSortBy] = useState<"date" | "rating">("date")
-  const [currentPage, setCurrentPage] = useState(1)
-
-  const filteredReviews = useMemo(() => {
-    if (!reviews || reviews.length === 0) {
-      return []
-    }
-    
-    let filtered = [...reviews]
-    
-    // Filtro per rating
-    if (selectedRating !== null) {
-      filtered = filtered.filter((review) => review.rating === selectedRating)
-    }
-    
-    // Filtro per source
-    if (selectedSource) {
-      filtered = filtered.filter((review) => review.source === selectedSource)
-    }
-    
-    // Filtro per locale
-    if (selectedLocale) {
-      filtered = filtered.filter((review) => review.locale === selectedLocale)
-    }
-    
-    // Ordina
-    filtered.sort((a, b) => {
-      if (sortBy === "date") {
-        try {
-          return new Date(b.date).getTime() - new Date(a.date).getTime()
-        } catch {
-          return 0
-        }
-      } else {
-        // Ordina per rating (più alto prima), poi per data
-        if (b.rating !== a.rating) {
-          return b.rating - a.rating
-        }
-        try {
-          return new Date(b.date).getTime() - new Date(a.date).getTime()
-        } catch {
-          return 0
-        }
-      }
-    })
-    
-    return filtered
-  }, [selectedRating, selectedSource, selectedLocale, sortBy])
-
-  const paginatedReviews = useMemo(() => {
-    const start = (currentPage - 1) * REVIEWS_PER_PAGE
-    return filteredReviews.slice(start, start + REVIEWS_PER_PAGE)
-  }, [filteredReviews, currentPage])
-
-  const totalPages = Math.ceil(filteredReviews.length / REVIEWS_PER_PAGE)
-
-  const handleRatingChange = (rating: number | null) => {
-    setSelectedRating(rating)
-    setCurrentPage(1)
-  }
-
-  const handleSourceChange = (source: string | null) => {
-    setSelectedSource(source)
-    setCurrentPage(1)
-  }
-
-  const handleLocaleChange = (locale: string | null) => {
-    setSelectedLocale(locale)
-    setCurrentPage(1)
-  }
-
-  const handleSortChange = (sort: "date" | "rating") => {
-    setSortBy(sort)
-    setCurrentPage(1)
-  }
-
   return (
-    <section className="py-20 bg-gradient-to-b from-background via-primary/5 to-background">
+    <section className="bg-gradient-to-b from-background via-primary/5 to-background py-20">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 bg-primary/10 px-4 py-2 rounded-full mb-6">
-            <Star className="h-5 w-5 text-primary fill-primary" />
-            <span className="text-sm font-semibold text-primary uppercase tracking-wide">Recensioni Verificate</span>
+        <div className="mx-auto max-w-4xl text-center">
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-2">
+            <ShieldCheck className="h-5 w-5 text-primary" />
+            <span className="text-sm font-semibold uppercase tracking-wide text-primary">
+              Fonti pubbliche consultabili
+            </span>
           </div>
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-playfair font-bold mb-6 bg-gradient-to-r from-primary via-ocean to-primary bg-clip-text text-transparent">
-            Recensioni Villa Olimpia — Cosa dicono i nostri ospiti
+          <h1 className="font-playfair text-4xl font-bold text-slate-900 md:text-6xl">
+            Recensioni di Villa Olimpia
           </h1>
-          <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto font-light">
-            Esperienze reali di chi ha già soggiornato a Villa Olimpia — verificate su tutte le piattaforme. Prenotando direttamente risparmi le commissioni.
+          <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-slate-600">
+            Per evitare copie incomplete o valutazioni non aggiornate, non ripubblichiamo recensioni né medie voto sul sito. Puoi consultare direttamente la scheda pubblica Google e verificare data, autore e contenuto sulla fonte originale.
           </p>
-          {reviews.length > 0 && (
-            <div className="mt-8 flex items-center justify-center gap-4 text-sm text-muted-foreground">
-              <span>✓ Booking.com</span>
-              <span>•</span>
-              <span>✓ Airbnb</span>
-            </div>
-          )}
-        </div>
 
-        {/* Stats */}
-        <ReviewStats />
-
-        {reviews.length > 0 ? (
-          <ReviewFiltersAdvanced
-            selectedRating={selectedRating}
-            selectedSource={selectedSource}
-            selectedLocale={selectedLocale}
-            sortBy={sortBy}
-            onRatingChange={handleRatingChange}
-            onSourceChange={handleSourceChange}
-            onLocaleChange={handleLocaleChange}
-            onSortChange={handleSortChange}
-          />
-        ) : (
-          <div className="text-center mb-10">
-            <p className="text-muted-foreground">
-              Stiamo importando le recensioni pubbliche dalle principali OTA (Booking, Airbnb, Google).
-              Se vuoi verifiche immediate, contattaci e ti inviamo i link ufficiali.
-            </p>
-            <div className="mt-4">
-              <Button variant="luxury" asChild>
-                <a href="/contatti">Contattaci per le recensioni</a>
+          <div className="mt-10 grid gap-5 text-left md:grid-cols-2">
+            <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+              <MapPin className="h-8 w-8 text-primary" />
+              <h2 className="mt-4 font-playfair text-2xl font-bold text-slate-900">
+                Scheda Google pubblica
+              </h2>
+              <p className="mt-3 text-sm leading-relaxed text-slate-600">
+                Le recensioni su Google sono pubblicate e moderate da Google. La struttura non può approvarle preventivamente né limitarne la pubblicazione.
+              </p>
+              <Button className="mt-6" variant="luxury" asChild>
+                <a href={SITE_CONFIG.social.googleReviews} target="_blank" rel="noopener noreferrer">
+                  Apri Villa Olimpia su Google
+                  <ExternalLink className="ml-2 h-4 w-4" />
+                </a>
               </Button>
             </div>
-          </div>
-        )}
 
-        {/* Reviews Grid */}
-        {paginatedReviews.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-            {paginatedReviews.map((review, index) => (
-              <ReviewCard
-                key={review.id}
-                review={review}
-                index={index}
-              />
-            ))}
-          </div>
-        ) : (
-          <div className="text-center py-12">
-            <p className="text-muted-foreground">
-              Nessuna recensione trovata per i filtri selezionati.
-            </p>
-          </div>
-        )}
-
-        {/* Pagination */}
-        {totalPages > 1 && (
-          <div className="flex justify-center items-center gap-2 mt-8">
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
-              disabled={currentPage === 1}
-            >
-              Precedente
-            </Button>
-            <span className="text-sm text-muted-foreground">
-              Pagina {currentPage} di {totalPages}
-            </span>
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
-              disabled={currentPage === totalPages}
-            >
-              Successiva
-            </Button>
-          </div>
-        )}
-
-        {/* Results count */}
-        <div className="text-center mt-6">
-          <p className="text-sm text-muted-foreground">
-            Mostrando {paginatedReviews.length} di {filteredReviews.length} recensioni
-          </p>
-        </div>
-
-        <div className="mt-10 rounded-3xl border border-primary/10 bg-gradient-to-br from-primary/5 via-white to-ocean/5 p-6 md:p-8 text-center shadow-sm">
-          <h2 className="text-2xl md:text-3xl font-playfair font-bold text-slate-900">
-            Pronto a prenotare o a chiedere disponibilità?
-          </h2>
-          <p className="mt-3 text-sm md:text-base text-muted-foreground max-w-2xl mx-auto">
-            Se le recensioni ti hanno convinto, il passo successivo è semplice: verifica le date disponibili
-            oppure scrivici per una proposta diretta su misura.
-          </p>
-          <div className="mt-5 flex flex-col sm:flex-row justify-center gap-3">
-            <Button variant="luxury" asChild>
-              <a href="/contatti?source=reviews_page_primary#prenota">Prenota Ora</a>
-            </Button>
-            <Button variant="outline" asChild>
-              <a href="/contatti?source=reviews_page#prenota">Contattaci</a>
-            </Button>
+            <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+              <MessageCircle className="h-8 w-8 text-emerald-700" />
+              <h2 className="mt-4 font-playfair text-2xl font-bold text-slate-900">
+                Domande prima di prenotare
+              </h2>
+              <p className="mt-3 text-sm leading-relaxed text-slate-600">
+                Se vuoi chiarire servizi, distanze, caratteristiche dei lodge o condizioni del soggiorno, chiedi una risposta scritta direttamente alla struttura.
+              </p>
+              <Button className="mt-6" variant="outline" asChild>
+                <Link href="/contatti?source=reviews_page#prenota">Contatta Villa Olimpia</Link>
+              </Button>
+            </div>
           </div>
         </div>
       </div>

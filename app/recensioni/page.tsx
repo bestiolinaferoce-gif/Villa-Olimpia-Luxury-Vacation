@@ -1,6 +1,4 @@
 import { ReviewsSection } from "@/components/reviews/reviews-section"
-import { reviews } from "@/data/reviews-complete"
-import { ReviewSchema } from "@/components/reviews/review-schema"
 import { Breadcrumb } from "@/components/breadcrumb"
 import { generateMetadata } from "@/lib/metadata"
 
@@ -20,10 +18,6 @@ export const metadata = generateMetadata({
 export default function RecensioniPage() {
   return (
     <>
-      {/* Schema markup per tutte le recensioni */}
-      {reviews && reviews.length > 0 && reviews.map((review) => (
-        <ReviewSchema key={review.id} review={review} />
-      ))}
       <div className="min-h-screen pt-20">
         <Breadcrumb items={[{ label: "Recensioni" }]} />
         <ReviewsSection />

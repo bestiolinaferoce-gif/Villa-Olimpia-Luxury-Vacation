@@ -33,7 +33,7 @@ export const it = {
       apartments: 'Appartamenti',
       happyGuests: 'Ospiti Felici',
       rating: 'Rating',
-      ratingValue: '4.9/5 Rating',
+      ratingValue: 'Recensioni sulla fonte originale',
       beachDistance: '100 metri dalla spiaggia',
       privatePool: 'Piscina Esterna Condivisa',
       bookedBy: 'Prenotato da 150+ ospiti nel 2024',
@@ -103,11 +103,11 @@ export const it = {
       title: 'Recensioni dei Nostri Ospiti',
       subtitle: 'Recensioni verificate',
       description: 'Valutazione media',
-      descriptionRating: '4.9/5',
+      descriptionRating: 'Fonti pubbliche',
       descriptionStars: 'stelle basata su',
       descriptionCount: '100+',
-      descriptionReviews: 'recensioni verificate da Booking.com, Airbnb e Google.',
-      verifiedCount: '100+ Recensioni Verificate',
+      descriptionReviews: 'recensioni consultabili direttamente sulle piattaforme originali.',
+      verifiedCount: 'Recensioni pubbliche',
       readMore: 'Leggi le Recensioni',
     },
     howToReach: {
@@ -260,5 +260,4 @@ export const it = {
     copyright: 'Tutti i diritti riservati',
   },
 }
-
 

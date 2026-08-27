@@ -11,7 +11,7 @@ import { generateMetadata } from "@/lib/metadata"
 export const metadata = generateMetadata({
   title: "Richiedi disponibilità | Villa Olimpia Capo Rizzuto",
   description:
-    "Verifica le ultime date di fine agosto e settembre 2026 a Villa Olimpia, Capo Rizzuto. Risposta diretta entro 24h, senza intermediari.",
+    "Verifica le date di settembre 2026 a Villa Olimpia, Capo Rizzuto. Risposta diretta entro un giorno lavorativo, senza intermediari.",
   path: "/contatti",
   keywords: [
     "contatti Villa Olimpia",
@@ -33,7 +33,7 @@ export default function ContattiPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-2xl">
             <h1 className="text-3xl font-playfair font-bold tracking-tight md:text-4xl">
-              Ultime date di fine agosto e settembre
+              Disponibilità settembre 2026
             </h1>
             <p className="mt-3 text-base text-slate-300 leading-relaxed">
               Scrivi le date e quante persone siete. Se puoi spostarti di qualche giorno, indicalo nel messaggio: ti proponiamo l&apos;incastro migliore tra gli appartamenti ancora liberi.

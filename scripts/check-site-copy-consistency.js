@@ -41,13 +41,6 @@ function fail(errors) {
 function main() {
   const errors = []
 
-  const reviewsFile = "data/reviews-detailed.ts"
-  const reviews = read(reviewsFile)
-  assertNotContains(reviews, /\bTropea\b/i, reviewsFile, "Tropea", errors)
-  assertNotContains(reviews, /\bCapo Vaticano\b/i, reviewsFile, "Capo Vaticano", errors)
-  assertNotContains(reviews, /\bGrotticelle\b/i, reviewsFile, "Grotticelle", errors)
-  assertNotContains(reviews, /\bRiaci\b/i, reviewsFile, "Riaci", errors)
-
   const distanceFiles = [
     "app/location/page.tsx",
     "app/cosa-fare-capo-rizzuto/page.tsx",

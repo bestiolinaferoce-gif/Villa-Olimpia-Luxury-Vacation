@@ -26,7 +26,7 @@ export default function HomePage() {
           <div className="mx-auto max-w-5xl text-center">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/25 bg-slate-950/25 px-4 py-2 text-sm font-semibold">
               <ShieldCheck className="h-4 w-4" />
-              Ultime disponibilità · fine agosto e settembre 2026
+              Settembre 2026 · verifica le date disponibili
             </div>
 
             <h1 className="font-playfair text-4xl font-bold leading-tight sm:text-5xl md:text-7xl">
@@ -35,12 +35,12 @@ export default function HomePage() {
                 className="mt-4 block text-xl font-semibold text-white/95 md:text-3xl"
                 style={{ fontFamily: "var(--font-inter)" }}
               >
-                Fine estate al mare, a 100 metri dalla Spiaggia dei Gigli
+              Settembre al mare, a 100 metri dalla Spiaggia dei Gigli
               </span>
             </h1>
             <p className="mx-auto mt-5 max-w-3xl text-base leading-relaxed text-white/90 md:text-xl">
               Scrivici le date, anche se sono flessibili: verifichiamo subito gli appartamenti rimasti e ti inviamo
-              una proposta diretta per fine agosto o settembre, senza commissioni di portale.
+              una proposta diretta per settembre, senza commissioni di portale.
             </p>
 
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -53,7 +53,7 @@ export default function HomePage() {
               </Link>
               <TrackedContactAnchor
                 kind="whatsapp"
-                href="https://wa.me/393335773390?text=Ciao%2C%20vorrei%20conoscere%20le%20date%20libere%20a%20Villa%20Olimpia%20tra%20fine%20agosto%20e%20settembre%202026.%20Siamo%20___%20persone%20e%20le%20date%20sono%20___."
+                href="https://wa.me/393335773390?text=Ciao%2C%20vorrei%20conoscere%20le%20date%20libere%20a%20Villa%20Olimpia%20per%20settembre%202026.%20Siamo%20___%20persone%20e%20le%20date%20sono%20___."
                 source="home_hero_late_summer_whatsapp"
                 locale="it"
                 className="inline-flex items-center justify-center rounded-full border border-white/80 bg-slate-950/25 px-7 py-4 text-base font-semibold text-white transition hover:bg-slate-950/35"
@@ -64,8 +64,8 @@ export default function HomePage() {
 
             <div className="mt-8 grid gap-3 sm:grid-cols-3">
               <div className="rounded-2xl border border-white/15 bg-slate-950/20 px-4 py-4">
-                <div className="text-2xl font-bold">Fine agosto</div>
-                <div className="mt-1 text-sm text-white/85">Ultime date solo su verifica</div>
+                <div className="text-2xl font-bold">Calendari</div>
+                <div className="mt-1 text-sm text-white/85">Sincronizzati ogni giorno</div>
               </div>
               <div className="rounded-2xl border border-white/15 bg-slate-950/20 px-4 py-4">
                 <div className="flex items-center justify-center gap-2 text-2xl font-bold">
@@ -79,7 +79,7 @@ export default function HomePage() {
                   <Users className="h-5 w-5" />
                   Settembre
                 </div>
-                <div className="mt-1 text-sm text-white/85">Da €120/notte, proposta diretta</div>
+                <div className="mt-1 text-sm text-white/85">Tariffa su date e ospiti</div>
               </div>
             </div>
           </div>
@@ -89,13 +89,13 @@ export default function HomePage() {
       <section className="border-y border-amber-200/70 bg-white">
         <div className="container mx-auto grid gap-3 px-4 py-5 md:grid-cols-3">
           <Link
-            href="/contatti?source=home_fine_agosto&utm_source=homepage&utm_medium=internal&utm_campaign=fine_agosto_2026#prenota"
+            href="/contatti?source=home_settembre&utm_source=homepage&utm_medium=internal&utm_campaign=settembre_2026#prenota"
             className="group rounded-2xl border border-amber-200 bg-amber-50 px-4 py-4 transition hover:border-amber-300 hover:bg-amber-100/70"
           >
             <div className="flex items-center gap-3">
               <CalendarRange className="h-5 w-5 text-amber-700" />
               <div>
-                <p className="text-sm font-bold text-slate-900">Fine agosto: verifica le ultime date</p>
+                <p className="text-sm font-bold text-slate-900">Settembre: verifica le date</p>
                 <p className="mt-1 text-sm text-slate-700">Indica anche date flessibili: cerchiamo l&apos;incastro migliore.</p>
               </div>
             </div>
@@ -107,7 +107,7 @@ export default function HomePage() {
             <div className="flex items-center gap-3">
               <Sun className="h-5 w-5 text-sky-700" />
               <div>
-                <p className="text-sm font-bold text-slate-900">Settembre: da €120/notte</p>
+                <p className="text-sm font-bold text-slate-900">Settembre: proposta su misura</p>
                 <p className="mt-1 text-sm text-slate-700">Mare piacevole, meno folla e tariffe dirette.</p>
               </div>
             </div>

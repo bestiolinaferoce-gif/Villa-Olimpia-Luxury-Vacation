@@ -14,7 +14,8 @@
     "check:seo": "node scripts/check-seo-foundations.js",
     "check:apartments": "node scripts/check-apartment-integrity.js",
     "check:content": "node scripts/check-site-copy-consistency.js",
-    "quality:quick": "npm run check:repo && npm run check:seo && npm run check:apartments && npm run check:content",
+    "check:trust": "node scripts/check-trust-claims.js",
+    "quality:quick": "npm run check:repo && npm run check:seo && npm run check:apartments && npm run check:content && npm run check:trust",
     "quality:gate": "node scripts/quality-gate.js",
     "verify:live-seo": "node scripts/verify-live-seo.js",
     "ops:recovery": "node scripts/seo-google-recovery-autopilot.js",
@@ -79,6 +80,6 @@
     "vercel": "^49.1.2"
   },
   "engines": {
-    "node": "20.x"
+    "node": "22.x"
   }
 }

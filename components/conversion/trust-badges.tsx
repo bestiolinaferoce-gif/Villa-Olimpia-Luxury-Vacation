@@ -6,32 +6,32 @@ import { motion } from "framer-motion"
 const badges = [
   {
     icon: Shield,
-    title: "Prenotazione Sicura",
-    description: "SSL e pagamento protetto",
+    title: "Sito protetto",
+    description: "Connessione HTTPS",
     color: "text-blue-600",
   },
   {
     icon: Award,
-    title: "4.9/5 Stelle",
-    description: "62+ recensioni verificate",
+    title: "Recensioni pubbliche",
+    description: "Consultabili sulle fonti",
     color: "text-amber-600",
   },
   {
     icon: CheckCircle2,
-    title: "Cancellazione Gratuita",
-    description: "Fino a 14 giorni prima",
+    title: "Condizioni chiare",
+    description: "Comunicate nel preventivo",
     color: "text-green-600",
   },
   {
     icon: Heart,
-    title: "Superhost",
-    description: "Anche sui principali portali di prenotazione",
+    title: "Contatto diretto",
+    description: "Con chi gestisce la struttura",
     color: "text-red-600",
   },
   {
     icon: Star,
-    title: "Best Value",
-    description: "Prezzo/Qualità ottimale",
+    title: "Tariffa verificata",
+    description: "In base a date e ospiti",
     color: "text-purple-600",
   },
 ]
@@ -61,7 +61,6 @@ export function TrustBadges() {
     </div>
   )
 }
-
 
 
 

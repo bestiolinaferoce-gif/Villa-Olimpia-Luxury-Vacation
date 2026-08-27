@@ -29,10 +29,6 @@ const schemaOrg = {
   },
   "telephone": "+393335773390",
   "priceRange": "€€",
-  "starRating": {
-    "@type": "Rating",
-    "ratingValue": "9.4"
-  },
   "amenityFeature": [
     {"@type": "LocationFeatureSpecification", "name": "Piscina"},
     {"@type": "LocationFeatureSpecification", "name": "Parcheggio gratuito"},

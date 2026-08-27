@@ -1,32 +1,32 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Users, Star, Calendar, Award } from "lucide-react"
+import { Building2, Waves, ShieldCheck, MessageCircle } from "lucide-react"
 
 const stats = [
   {
-    icon: Users,
-    value: "500+",
-    label: "Ospiti Soddisfatti",
-    description: "Ospiti da tutto il mondo",
-  },
-  {
-    icon: Star,
-    value: "4.9",
-    label: "Valutazione Media",
-    description: "Su 5 stelle",
-  },
-  {
-    icon: Calendar,
-    value: "95%",
-    label: "Tasso di Occupazione",
-    description: "Durante l'alta stagione",
-  },
-  {
-    icon: Award,
+    icon: Building2,
     value: "9",
     label: "Appartamenti",
-    description: "Tutti con vista mare",
+    description: "Unità indipendenti",
+  },
+  {
+    icon: Waves,
+    value: "~100 m",
+    label: "Dalla spiaggia",
+    description: "Spiaggia dei Gigli",
+  },
+  {
+    icon: ShieldCheck,
+    value: "1",
+    label: "Piscina condivisa",
+    description: "Riservata agli ospiti",
+  },
+  {
+    icon: MessageCircle,
+    value: "Diretto",
+    label: "Contatto struttura",
+    description: "Senza call center",
   },
 ]
 
@@ -108,4 +108,3 @@ export function StatsSection() {
     </section>
   )
 }
-

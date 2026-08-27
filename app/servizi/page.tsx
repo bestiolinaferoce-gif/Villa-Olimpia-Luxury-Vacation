@@ -301,7 +301,7 @@ export default function ServiziPage() {
               <Card>
                 <CardHeader>
                   <CardTitle className="text-2xl">100% Soddisfazione</CardTitle>
-                  <CardDescription>Ospiti soddisfatti, punteggio medio 4.9/5</CardDescription>
+                  <CardDescription>Recensioni consultabili sulle piattaforme originali</CardDescription>
                 </CardHeader>
               </Card>
               <Card>

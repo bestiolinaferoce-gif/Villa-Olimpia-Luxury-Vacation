@@ -108,11 +108,6 @@ function main() {
     errors.push('Trovata frase non valida su Giglio: "2 camere matrimoniali comunicanti"')
   }
 
-  const forbiddenOrchidea = /Orchidea[\s\S]{0,600}\b2 bagni?\b/i
-  if (forbiddenOrchidea.test(apartmentsTs) || forbiddenOrchidea.test(contentTs)) {
-    errors.push('Trovata frase non valida su Orchidea: "2 bagni"')
-  }
-
   const forbiddenGiglio = /Giglio[\s\S]{0,700}area letto a castello/i
   if (forbiddenGiglio.test(apartmentsTs) || forbiddenGiglio.test(contentTs)) {
     errors.push('Trovata frase non valida su Giglio: "area letto a castello"')

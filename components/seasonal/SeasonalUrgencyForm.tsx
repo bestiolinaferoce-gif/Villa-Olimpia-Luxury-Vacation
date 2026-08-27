@@ -1,13 +1,12 @@
 "use client"
 
 import Link from "next/link"
-import { useMemo, useState, FormEvent } from "react"
+import { useState, FormEvent } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { apartments } from "@/data/apartments"
-import { reviews } from "@/data/reviews-complete"
 import type { MonthConfig, SeasonalMonth } from "@/lib/seasonalConfig"
 import { whatsappUrlForConfig } from "@/lib/seasonalConfig"
 import {
@@ -21,7 +20,7 @@ import {
   trackPhoneClick,
   trackWhatsAppClick,
 } from "@/components/analytics/google-analytics"
-import { MessageCircle, Phone, Star } from "lucide-react"
+import { MessageCircle, Phone } from "lucide-react"
 
 export interface SeasonalUrgencyFormProps {
   config: MonthConfig
@@ -53,11 +52,6 @@ export function SeasonalUrgencyForm({
     setFormStarted(true)
     trackFormStart(`seasonal_${monthKey}`)
   }
-
-  const topReviews = useMemo(
-    () => reviews.filter((r) => r.rating >= 5).slice(0, 3),
-    []
-  )
 
   const openFallbackContact = () => {
     const summary = buildOfficialAvailabilityMessage({
@@ -248,19 +242,6 @@ export function SeasonalUrgencyForm({
       <p className="mt-4 text-center text-sm text-slate-600">
         La richiesta arriva sul canale operativo: ti rispondiamo appena possibile, di solito entro un giorno lavorativo.
       </p>
-      <div className="mt-10 grid gap-4 md:grid-cols-3">
-        {topReviews.map((r) => (
-          <div key={r.id} className="rounded-xl border border-slate-200 bg-slate-50 p-4 text-sm">
-            <div className="flex items-center gap-1 text-amber-500">
-              {Array.from({ length: 5 }).map((_, i) => (
-                <Star key={i} className="h-3.5 w-3.5 fill-current" />
-              ))}
-            </div>
-            <p className="mt-2 text-slate-700 line-clamp-4">{r.text}</p>
-            <p className="mt-2 text-xs text-slate-500">{r.author}</p>
-          </div>
-        ))}
-      </div>
     </section>
   )
 }

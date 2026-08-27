@@ -1,7 +1,7 @@
 import { notFound, permanentRedirect } from "next/navigation"
 import Image from "next/image"
 import { getApartmentBedSchema, getApartmentById, getApartmentBySlug, getApartmentSlug, apartments } from "@/data/apartments"
-import { getOccupiedRangesForLodge, lodgeNameForApartment } from "@/lib/public-calendar/occupancy"
+import { getOccupancySnapshotForLodge, lodgeNameForApartment } from "@/lib/public-calendar/occupancy"
 
 export const revalidate = 300
 // FIX: Import esplicito per risolvere problemi di routing
@@ -83,7 +83,7 @@ export default async function ApartmentDetailPage({ params }: PageProps) {
   }
 
   const content = getApartmentContent(apartmentId)
-  const occupiedRanges = await getOccupiedRangesForLodge(lodgeNameForApartment(apartmentId))
+  const occupancy = await getOccupancySnapshotForLodge(lodgeNameForApartment(apartmentId))
   const contactHref = `/contatti?source=apartment_detail&apartment=${encodeURIComponent(apartment.name)}&guests=${apartment.guests}#prenota`
   const apartmentWhatsAppHref = buildWhatsAppUrlFromText(
     `Richiesta disponibilita ${apartment.name} - Villa Olimpia:\nDate: \nOspiti: ${apartment.guests}\nAppartamento: ${apartment.name}\nFonte: sito ufficiale (pagina appartamento)`
@@ -134,17 +134,6 @@ export default async function ApartmentDetailPage({ params }: PageProps) {
     })),
     checkInTime: "15:00",
     checkOutTime: "10:00",
-    offers: {
-      "@type": "Offer",
-      url: apartmentUrl,
-      priceCurrency: "EUR",
-      price: apartment.price?.toString() || "120",
-      availability: "https://schema.org/LimitedAvailability",
-      eligibleQuantity: {
-        "@type": "QuantitativeValue",
-        maxValue: apartment.guests,
-      },
-    },
     telephone: VILLA_OLIMPIA_LOCATION.contact.phone,
     url: apartmentUrl,
     identifier: `villa-olimpia-${canonicalSlug}`,
@@ -378,7 +367,7 @@ export default async function ApartmentDetailPage({ params }: PageProps) {
                   </div>
                 </div>
 
-                <AvailabilityCalendar occupiedRanges={occupiedRanges} />
+                <AvailabilityCalendar snapshot={occupancy} />
 
                 <Button variant="luxury" className="w-full" size="lg" asChild>
                   <Link href={contactHref}>

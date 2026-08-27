@@ -7,7 +7,7 @@ const STORAGE_KEY = "villaolimpia.fine-estate-2026.dismissed"
 
 const COPY = {
   it: {
-    label: "Ultime date: fine agosto e settembre 2026",
+    label: "Settembre 2026: verifica le date disponibili",
     sub: "Verifica ora · preventivo diretto",
     dismiss: "Chiudi",
     landing: "/contatti?source=top_banner_fine_estate#prenota",

@@ -6,7 +6,7 @@ import { differenceInCalendarDays } from "date-fns"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import type { MonthConfig } from "@/lib/seasonalConfig"
-import { getAvailabilityPercent, whatsappUrlForConfig } from "@/lib/seasonalConfig"
+import { whatsappUrlForConfig } from "@/lib/seasonalConfig"
 import { trackCtaClick, trackPhoneClick, trackWhatsAppClick } from "@/components/analytics/google-analytics"
 import { Shield, Clock, Sparkles, MessageCircle, Phone } from "lucide-react"
 
@@ -19,7 +19,6 @@ export function SeasonalHero({ config, locale = "it" }: SeasonalHeroProps) {
   const start = new Date(config.monthStartISO + "T12:00:00")
   const today = new Date()
   const daysLeft = Math.max(0, differenceInCalendarDays(start, today))
-  const pct = getAvailabilityPercent(config)
   const headline = locale === "en" ? config.heroTaglineEn : config.heroTagline
 
   return (
@@ -42,9 +41,7 @@ export function SeasonalHero({ config, locale = "it" }: SeasonalHeroProps) {
           >
             <Sparkles className="h-3.5 w-3.5 shrink-0" />
             <span className="text-white">{config.label}</span>
-            <span className="font-normal normal-case text-white/80">
-              · {config.availabilityLeft}/{config.totalUnits} lodge liberi (agg. manuale)
-            </span>
+            <span className="font-normal normal-case text-white/80">· calendari Airbnb sincronizzati ogni giorno</span>
           </motion.div>
           <motion.h1
             initial={{ opacity: 0, y: 16 }}
@@ -64,14 +61,6 @@ export function SeasonalHero({ config, locale = "it" }: SeasonalHeroProps) {
               <span>Periodo imminente o in corso — scrivici per le date esatte.</span>
             )}
           </p>
-          <div className="mt-6 h-2 w-full max-w-md overflow-hidden rounded-full bg-white/15">
-            <motion.div
-              className="h-full rounded-full bg-emerald-400"
-              initial={{ width: 0 }}
-              animate={{ width: `${pct}%` }}
-              transition={{ duration: 0.8 }}
-            />
-          </div>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <Button
               size="lg"

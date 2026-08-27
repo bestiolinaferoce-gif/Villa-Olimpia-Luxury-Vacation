@@ -30,7 +30,7 @@ export const nl = {
       apartments: 'Appartementen',
       happyGuests: 'Blije Gasten',
       rating: 'Beoordeling',
-      ratingValue: '4.9/5 Beoordeling',
+      ratingValue: 'Beoordelingen op de oorspronkelijke bron',
       beachDistance: '100 meter van het strand',
       privatePool: 'Gedeeld Zwembad',
       bookedBy: 'Geboekt door 150+ gasten in 2024',
@@ -82,7 +82,7 @@ export const nl = {
       title: 'Beoordelingen van Onze Gasten',
       subtitle: 'Geverifieerde beoordelingen',
       description: 'Gemiddelde beoordeling',
-      descriptionRating: '4.9/5',
+      descriptionRating: 'Openbare bronnen',
       descriptionStars: 'sterren gebaseerd op',
       descriptionCount: '100+',
       descriptionReviews: 'geverifieerde beoordelingen van Booking.com, Airbnb en Google.',
@@ -222,7 +222,6 @@ export const nl = {
     copyright: 'Alle rechten voorbehouden',
   },
 }
-
 
 
 

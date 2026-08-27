@@ -7,7 +7,6 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import {
   SEASONAL_CONFIG,
-  getAvailabilityPercent,
   getCurrentSeasonalMonth,
   getUrgencyTailwindClasses,
   whatsappUrlForConfig,
@@ -27,7 +26,6 @@ export function SeasonalStickyBar({ targetMonth }: SeasonalStickyBarProps) {
   const activeKey = targetMonth ?? getCurrentSeasonalMonth()
   const config =
     activeKey === "other" ? SEASONAL_CONFIG.other : SEASONAL_CONFIG[activeKey]
-  const pct = getAvailabilityPercent(config)
   const styles = getUrgencyTailwindClasses(config.urgencyLevel)
 
   const [mounted, setMounted] = useState(false)
@@ -55,8 +53,8 @@ export function SeasonalStickyBar({ targetMonth }: SeasonalStickyBarProps) {
     }
 
     return [
-      `${config.availabilityLeft}/${config.totalUnits} lodge liberi (agg. manuale)`,
-      `Da €${config.priceFrom}/notte · ${config.label}`,
+      `Verifica le date per ${config.label}`,
+      "Calendari Airbnb sincronizzati ogni giorno",
       config.discountBadge ?? "Prenota diretto — zero commissioni OTA",
     ]
   }, [activeKey, config])
@@ -165,16 +163,6 @@ export function SeasonalStickyBar({ targetMonth }: SeasonalStickyBarProps) {
                     {messages[msgIndex]}
                   </motion.p>
                 </AnimatePresence>
-                {activeKey !== "other" ? (
-                  <div className="mt-1 h-1.5 w-full max-w-md overflow-hidden rounded-full bg-black/20">
-                    <motion.div
-                      className="h-full rounded-full bg-white/90"
-                      initial={{ width: 0 }}
-                      animate={{ width: `${pct}%` }}
-                      transition={{ duration: 0.6 }}
-                    />
-                  </div>
-                ) : null}
               </div>
             </div>
             <div className="flex shrink-0 items-center justify-end gap-2">

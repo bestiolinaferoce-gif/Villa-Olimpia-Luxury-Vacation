@@ -1,6 +1,5 @@
 import type { Apartment } from "@/data/apartments"
 import { getApartmentSlug } from "@/data/apartments"
-import { getAverageRating, reviews } from "@/data/reviews-complete"
 import { VILLA_OLIMPIA_LOCATION } from "@/lib/location-data"
 import { BASE_URL } from "@/lib/metadata"
 
@@ -69,20 +68,6 @@ export function VacationRentalSchema({ apartment }: Props) {
     },
   ]
 
-  const avg = getAverageRating()
-  const aggregateRating =
-    avg > 0 && reviews.length > 0
-      ? {
-          aggregateRating: {
-            "@type": "AggregateRating",
-            ratingValue: Math.round(avg * 10) / 10,
-            reviewCount: reviews.length,
-            bestRating: 5,
-            worstRating: 1,
-          },
-        }
-      : {}
-
   const data = {
     "@context": "https://schema.org",
     "@type": "VacationRental",
@@ -130,18 +115,6 @@ export function VacationRentalSchema({ apartment }: Props) {
     smokingAllowed: false,
     amenityFeature,
     containsPlace,
-    ...(apartment.price
-      ? {
-          offers: {
-            "@type": "Offer",
-            url,
-            priceCurrency: "EUR",
-            price: apartment.price.toString(),
-            availability: "https://schema.org/InStock",
-          },
-        }
-      : {}),
-    ...aggregateRating,
   }
 
   return (

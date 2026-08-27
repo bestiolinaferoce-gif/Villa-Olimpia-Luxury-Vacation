@@ -13,9 +13,6 @@ export interface MonthConfig {
   label: string
   labelEn: string
   urgencyLevel: 1 | 2 | 3
-  availabilityLeft: number
-  totalUnits: number
-  priceFrom: number
   discountBadge?: string
   heroTagline: string
   heroTaglineEn: string
@@ -36,9 +33,6 @@ export const SEASONAL_CONFIG: Record<SeasonalMonth | "other", MonthConfig> = {
     label: `Maggio ${SEASONAL_CAMPAIGN_YEAR}`,
     labelEn: `May ${SEASONAL_CAMPAIGN_YEAR}`,
     urgencyLevel: 1,
-    availabilityLeft: 4,
-    totalUnits: 9,
-    priceFrom: 120,
     discountBadge: "Prenota in anticipo — tariffa vantaggiosa diretta",
     heroTagline: "Maggio in Calabria: mare cristallino, ritmo tranquillo, valore alto",
     heroTaglineEn: "May in Calabria: crystal-clear sea, relaxed pace, strong value",
@@ -63,9 +57,6 @@ export const SEASONAL_CONFIG: Record<SeasonalMonth | "other", MonthConfig> = {
     label: `Giugno ${SEASONAL_CAMPAIGN_YEAR}`,
     labelEn: `June ${SEASONAL_CAMPAIGN_YEAR}`,
     urgencyLevel: 2,
-    availabilityLeft: 3,
-    totalUnits: 9,
-    priceFrom: 130,
     discountBadge: "Giugno da spingere ora — proposta diretta su date libere e risposta rapida",
     heroTagline: "Giugno a Capo Rizzuto: mare già piacevole, piscina stagionale, settimane da bloccare ora",
     heroTaglineEn: "June at Capo Rizzuto: pleasant early-summer sea, seasonal pool, calm pace for families",
@@ -90,9 +81,6 @@ export const SEASONAL_CONFIG: Record<SeasonalMonth | "other", MonthConfig> = {
     label: `Luglio ${SEASONAL_CAMPAIGN_YEAR}`,
     labelEn: `July ${SEASONAL_CAMPAIGN_YEAR}`,
     urgencyLevel: 3,
-    availabilityLeft: 2,
-    totalUnits: 9,
-    priceFrom: 150,
     discountBadge: "Luglio solo su verifica date — meglio richiesta rapida e flessibile",
     heroTagline: `Luglio ${SEASONAL_CAMPAIGN_YEAR}: alta domanda — prenota diretto per bloccare le date`,
     heroTaglineEn: `July ${SEASONAL_CAMPAIGN_YEAR}: peak demand — book direct to secure dates`,
@@ -116,9 +104,6 @@ export const SEASONAL_CONFIG: Record<SeasonalMonth | "other", MonthConfig> = {
     label: `Settembre ${SEASONAL_CAMPAIGN_YEAR}`,
     labelEn: `September ${SEASONAL_CAMPAIGN_YEAR}`,
     urgencyLevel: 2,
-    availabilityLeft: 5,
-    totalUnits: 9,
-    priceFrom: 120,
     discountBadge: "Settembre smart — mare ancora caldo, meno folla e proposta diretta per soggiorni 7+ notti",
     heroTagline: "Settembre a Capo Rizzuto: mare caldo, spiagge libere e ritmi eleganti",
     heroTaglineEn: "September in Calabria: warm sea, quieter beaches and better-value stays",
@@ -144,9 +129,6 @@ export const SEASONAL_CONFIG: Record<SeasonalMonth | "other", MonthConfig> = {
     label: `Ottobre ${SEASONAL_CAMPAIGN_YEAR}`,
     labelEn: `October ${SEASONAL_CAMPAIGN_YEAR}`,
     urgencyLevel: 1,
-    availabilityLeft: 7,
-    totalUnits: 9,
-    priceFrom: 110,
     discountBadge: "Ottobre lento — ideale per coppie, long stay, smart working e ospiti Nord Europa",
     heroTagline: "Ottobre in Calabria: luce mite, mare vicino e soggiorni lunghi più convenienti",
     heroTaglineEn: "October in Calabria: mild light, seaside living and stronger long-stay value",
@@ -172,9 +154,6 @@ export const SEASONAL_CONFIG: Record<SeasonalMonth | "other", MonthConfig> = {
     label: `Estate ${SEASONAL_CAMPAIGN_YEAR}`,
     labelEn: `Summer ${SEASONAL_CAMPAIGN_YEAR}`,
     urgencyLevel: 1,
-    availabilityLeft: 6,
-    totalUnits: 9,
-    priceFrom: 120,
     heroTagline: "Villa Olimpia — il tuo soggiorno in Calabria tra mare e comfort",
     heroTaglineEn: "Villa Olimpia — your Calabria stay between sea and comfort",
     seoTitle: "Villa Olimpia Capo Rizzuto | Lodge con piscina in Calabria",
@@ -186,65 +165,6 @@ export const SEASONAL_CONFIG: Record<SeasonalMonth | "other", MonthConfig> = {
     whatsappMessage: "Ciao! Sono interessato a Villa Olimpia. Potete inviarmi disponibilità e tariffe dirette?",
     emailSubject: "Richiesta informazioni | Villa Olimpia",
     monthStartISO: `${SEASONAL_CAMPAIGN_YEAR}-06-01`,
-  },
-}
-
-/** Stato UI manuale per lodge (id 1–9). Aggiorna qui quando cambi la griglia. */
-export const SEASONAL_LODGE_UI: Record<Exclude<SeasonalMonth, "other">, Record<number, "available" | "occupied" | "last">> = {
-  maggio: {
-    1: "available",
-    2: "available",
-    3: "available",
-    4: "available",
-    5: "occupied",
-    6: "occupied",
-    7: "occupied",
-    8: "occupied",
-    9: "occupied",
-  },
-  giugno: {
-    1: "last",
-    2: "available",
-    3: "available",
-    4: "occupied",
-    5: "occupied",
-    6: "occupied",
-    7: "occupied",
-    8: "occupied",
-    9: "occupied",
-  },
-  luglio: {
-    1: "occupied",
-    2: "occupied",
-    3: "occupied",
-    4: "occupied",
-    5: "occupied",
-    6: "occupied",
-    7: "occupied",
-    8: "last",
-    9: "available",
-  },
-  settembre: {
-    1: "available",
-    2: "available",
-    3: "last",
-    4: "available",
-    5: "occupied",
-    6: "available",
-    7: "occupied",
-    8: "available",
-    9: "last",
-  },
-  ottobre: {
-    1: "available",
-    2: "available",
-    3: "available",
-    4: "available",
-    5: "last",
-    6: "available",
-    7: "available",
-    8: "occupied",
-    9: "available",
   },
 }
 
@@ -261,11 +181,6 @@ export function getCurrentSeasonalMonth(now: Date = new Date()): SeasonalMonth {
   if (m === 9) return "settembre"
   if (m === 10) return d <= 20 ? "ottobre" : "other"
   return "other"
-}
-
-export function getAvailabilityPercent(config: MonthConfig): number {
-  if (config.totalUnits <= 0) return 0
-  return Math.round((config.availabilityLeft / config.totalUnits) * 100)
 }
 
 export function getUrgencyTailwindClasses(level: 1 | 2 | 3): { bar: string; text: string; pulse?: boolean } {

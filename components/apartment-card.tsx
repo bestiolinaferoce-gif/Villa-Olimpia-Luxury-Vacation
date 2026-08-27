@@ -141,18 +141,18 @@ const ApartmentCardComponent = ({
             </div>
           </div>
 
-          {/* Prezzo e CTA */}
+          {/* Tariffa e CTA */}
           <div className="flex items-center justify-between pt-6 border-t border-gray-200">
             <div>
-              <p className="text-xs text-gray-500 mb-1">A partire da</p>
+              <p className="text-xs text-gray-500 mb-1">Preventivo diretto</p>
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 className="flex items-baseline gap-1"
               >
                 <span className="text-3xl font-bold bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent">
-                  €{price}
+                  Su richiesta
                 </span>
-                <span className="text-sm text-gray-600 font-medium">/notte</span>
+                <span className="text-sm text-gray-600 font-medium">per date e ospiti</span>
               </motion.div>
             </div>
             <motion.div

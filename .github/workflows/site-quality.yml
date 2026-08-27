@@ -1,0 +1,33 @@
+name: Villa Olimpia quality
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+      - "codex/**"
+      - "claude/**"
+      - "cursor/**"
+  schedule:
+    - cron: "30 7 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run quality:quick
+      - run: npm run build
+      - name: Verify public SEO
+        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        run: npm run verify:live-seo

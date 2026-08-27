@@ -17,10 +17,10 @@ export type PrenotaPageViewProps = {
 
 const pageCopy = {
   it: {
-    eyebrow: "Fine agosto · Settembre 2026 — diretto con la struttura",
+    eyebrow: "Settembre 2026 — diretto con la struttura",
     title: "Trova le ultime date libere a Villa Olimpia",
     intro:
-      "Per fine agosto verifichiamo gli ultimi incastri disponibili; a settembre trovi mare ancora piacevole, meno folla e tariffe da 120 euro a notte. Indica anche se le date sono flessibili: ti rispondiamo con la soluzione migliore, senza intermediari.",
+      "A settembre trovi mare ancora piacevole e meno folla. Indica anche se le date sono flessibili: ti rispondiamo con disponibilità e tariffa per la soluzione più adatta, senza intermediari.",
     steps: ["Date e ospiti nel form", "Risposta con preventivo chiaro"],
     cards: [
       ["Trasparenza e fiducia", "Preventivo chiaro, nessuna sorpresa e contatto diretto."],
