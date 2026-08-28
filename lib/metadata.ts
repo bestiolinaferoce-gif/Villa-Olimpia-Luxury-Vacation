@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { apartments, getApartmentSlug } from "@/data/apartments"
 import {
+  isCoreRoute,
   localeHasRoute,
   normalizeCanonicalPath,
   SUPPORTED_LOCALES,
@@ -55,6 +56,12 @@ export function generateMetadata({
   const normalizedTitle = title.trim()
   const resolvedTitle = titleIncludesSiteName ? normalizedTitle : `${normalizedTitle} | ${siteName}`
   const optimizedDescription = description.trim()
+  const trimmedPath = path.trim()
+  const canonicalPath = normalizeCanonicalPath(trimmedPath || "/")
+  const hreflangLanguages =
+    trimmedPath.length > 0 && isCoreRoute(canonicalPath)
+      ? buildHreflangLanguages(canonicalPath)
+      : undefined
 
   return {
     title: resolvedTitle,
@@ -85,6 +92,7 @@ export function generateMetadata({
     },
     alternates: {
       canonical: url,
+      ...(hreflangLanguages ? { languages: hreflangLanguages } : {}),
     },
     ...(usesDefaultOgImage ? { other: { ...ogImageDimensions } } : {}),
   }

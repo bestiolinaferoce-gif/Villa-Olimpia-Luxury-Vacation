@@ -79,8 +79,18 @@ const FAQ_IT: Record<Exclude<SeasonalMonth, "other">, Array<{ q: string; a: stri
 
 export function SeasonalFAQ({ month }: { month: Exclude<SeasonalMonth, "other"> }) {
   const items = FAQ_IT[month]
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: items.map((item) => ({
+      "@type": "Question",
+      name: item.q,
+      acceptedAnswer: { "@type": "Answer", text: item.a },
+    })),
+  }
   return (
     <section className="mx-auto max-w-3xl px-4 py-14">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <h2 className="font-playfair text-3xl font-bold text-slate-900">FAQ · {month} {SEASONAL_CAMPAIGN_YEAR}</h2>
       <div className="mt-6 space-y-3">
         {items.map((item, idx) => (
