@@ -133,7 +133,8 @@ const nextConfig = {
       { source: "/:locale(de|fr|nl|no|sv)/prenota", destination: "/prenota", permanent: true },
       { source: "/:locale(de|fr|nl|no|sv)/le-castella", destination: "/le-castella", permanent: true },
       { source: "/:locale(nl|no|sv)/capo-rizzuto", destination: "/capo-rizzuto", permanent: true },
-      { source: "/:locale(nl|no|sv)/settembre-capo-rizzuto", destination: "/settembre-capo-rizzuto", permanent: true },
+      // no/sv hanno una landing settembre reale (mercato Nord Europa): restano fuori da questo redirect.
+      { source: "/:locale(nl)/settembre-capo-rizzuto", destination: "/settembre-capo-rizzuto", permanent: true },
       // Localized listing lives at /en/apartments; detail slugs stay on /appartamenti/*
       { source: "/en/contatti", destination: "/en/contact", permanent: true },
       // /no homepage redirects to the dedicated Norwegian landing page
