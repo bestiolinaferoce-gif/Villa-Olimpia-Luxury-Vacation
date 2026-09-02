@@ -16,6 +16,7 @@ const DATE_SEASONAL_CRO = new Date("2026-05-15") // CRO patch giugno + tracking 
 const DATE_COMMERCIAL_SEO = new Date("2026-06-10") // Pillar case vacanze + query commerciali + audit SEO on-page
 const DATE_JUNE_RECOVERY = new Date("2026-05-26") // spinta commerciale giugno + recrawl segnali freschi
 const DATE_SEP_OCT_RECOVERY = new Date("2026-06-19") // focus Nord Europa settembre/ottobre + CRO lead diretti
+const DATE_AUG_UPDATE = new Date("2026-08-28") // CRO mobile + consent, campagna tarda estate, disponibilita settembre e trust check, hreflang + schema FAQPage
 
 const staticRoutes: Array<{
   path: string
@@ -23,30 +24,30 @@ const staticRoutes: Array<{
   changeFrequency: "daily" | "weekly" | "monthly" | "yearly"
   lastMod: Date
 }> = [
-  { path: "", priority: 1.0, changeFrequency: "daily", lastMod: DATE_COMMERCIAL_SEO },
-  { path: "/appartamenti", priority: 0.95, changeFrequency: "weekly", lastMod: DATE_COMMERCIAL_SEO },
+  { path: "", priority: 1.0, changeFrequency: "daily", lastMod: DATE_AUG_UPDATE },
+  { path: "/appartamenti", priority: 0.95, changeFrequency: "weekly", lastMod: DATE_AUG_UPDATE },
   { path: "/case-vacanze-isola-di-capo-rizzuto", priority: 0.93, changeFrequency: "weekly", lastMod: DATE_COMMERCIAL_SEO },
-  { path: "/prenota", priority: 0.96, changeFrequency: "daily", lastMod: DATE_COMMERCIAL_SEO },
+  { path: "/prenota", priority: 0.96, changeFrequency: "daily", lastMod: DATE_AUG_UPDATE },
   // /maggio-2026 archiviata (redirect 301 → /giugno-2026 via expiredSeasonalRedirects in next.config.js)
   { path: "/giugno-2026", priority: 0.98, changeFrequency: "daily", lastMod: DATE_JUNE_RECOVERY },
   { path: "/luglio-2026", priority: 0.9, changeFrequency: "weekly", lastMod: DATE_SEASONAL_CRO },
-  { path: "/settembre-capo-rizzuto", priority: 0.97, changeFrequency: "daily", lastMod: DATE_SEP_OCT_RECOVERY },
-  { path: "/ottobre-capo-rizzuto", priority: 0.94, changeFrequency: "daily", lastMod: DATE_SEP_OCT_RECOVERY },
+  { path: "/settembre-capo-rizzuto", priority: 0.97, changeFrequency: "daily", lastMod: DATE_AUG_UPDATE },
+  { path: "/ottobre-capo-rizzuto", priority: 0.94, changeFrequency: "daily", lastMod: DATE_AUG_UPDATE },
   { path: "/intera-villa-calabria", priority: 0.86, changeFrequency: "monthly", lastMod: DATE_NEW_PAGES },
   { path: "/oslo-lamezia-villa-olimpia", priority: 0.84, changeFrequency: "monthly", lastMod: DATE_INTERNATIONAL },
   { path: "/aeroporto-crotone-villa-olimpia", priority: 0.84, changeFrequency: "monthly", lastMod: DATE_INTERNATIONAL },
   { path: "/aeroporto-lamezia-villa-olimpia", priority: 0.84, changeFrequency: "monthly", lastMod: DATE_INTERNATIONAL },
   { path: "/bandiera-blu-2026-isola-capo-rizzuto", priority: 0.92, changeFrequency: "daily", lastMod: DATE_JUNE_RECOVERY },
 
-  { path: "/contatti", priority: 0.94, changeFrequency: "daily", lastMod: DATE_JUNE_RECOVERY },
-  { path: "/recensioni", priority: 0.9, changeFrequency: "weekly", lastMod: DATE_CORE },
+  { path: "/contatti", priority: 0.94, changeFrequency: "daily", lastMod: DATE_AUG_UPDATE },
+  { path: "/recensioni", priority: 0.9, changeFrequency: "weekly", lastMod: DATE_AUG_UPDATE },
   { path: "/location", priority: 0.85, changeFrequency: "monthly", lastMod: DATE_CONTENT },
   { path: "/territorio", priority: 0.85, changeFrequency: "monthly", lastMod: DATE_TERRITORIO },
   { path: "/enogastronomia", priority: 0.8, changeFrequency: "monthly", lastMod: DATE_CONTENT },
-  { path: "/servizi", priority: 0.8, changeFrequency: "monthly", lastMod: DATE_CONTENT },
-  { path: "/capo-rizzuto", priority: 0.8, changeFrequency: "monthly", lastMod: DATE_CONTENT },
+  { path: "/servizi", priority: 0.8, changeFrequency: "monthly", lastMod: DATE_AUG_UPDATE },
+  { path: "/capo-rizzuto", priority: 0.8, changeFrequency: "monthly", lastMod: DATE_AUG_UPDATE },
   { path: "/gallery", priority: 0.75, changeFrequency: "monthly", lastMod: DATE_CONTENT },
-  { path: "/le-castella", priority: 0.75, changeFrequency: "monthly", lastMod: DATE_CONTENT },
+  { path: "/le-castella", priority: 0.75, changeFrequency: "monthly", lastMod: DATE_AUG_UPDATE },
   { path: "/spiagge-capo-rizzuto", priority: 0.75, changeFrequency: "monthly", lastMod: DATE_CONTENT },
   { path: "/area-marina-protetta", priority: 0.75, changeFrequency: "monthly", lastMod: DATE_CONTENT },
   { path: "/cosa-fare-capo-rizzuto", priority: 0.75, changeFrequency: "monthly", lastMod: DATE_CONTENT },
@@ -79,8 +80,35 @@ const EN_PRIORITY_LANDINGS: Array<{ canonical: string; priority: number }> = [
   { canonical: "/capo-rizzuto-holiday-apartments", priority: 0.9 },
 ]
 
+/**
+ * Mese di calendario (0-based) coperto da ogni landing stagionale.
+ * Serve solo a smettere di spingere una landing quando la sua stagione e' passata.
+ */
+const SEASONAL_ROUTE_MONTH: Record<string, number> = {
+  "/giugno-2026": 5,
+  "/luglio-2026": 6,
+  "/settembre-capo-rizzuto": 8,
+  "/ottobre-capo-rizzuto": 9,
+}
+
+/**
+ * Una landing stagionale conclusa non va piu' segnalata come priorita' alta a
+ * frequenza giornaliera: resta indicizzata ma smette di consumare crawl budget.
+ * `lastMod` non viene toccato di proposito, la pagina non e' cambiata.
+ */
+function tuneSeasonalRoute<T extends { path: string; priority: number; changeFrequency: "daily" | "weekly" | "monthly" | "yearly" }>(
+  route: T,
+  now = new Date()
+): T {
+  const month = SEASONAL_ROUTE_MONTH[route.path]
+  if (month === undefined || month >= now.getMonth()) return route
+  return { ...route, priority: 0.5, changeFrequency: "monthly" }
+}
+
+const tunedRoutes = staticRoutes.map((route) => tuneSeasonalRoute(route))
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  const pages: MetadataRoute.Sitemap = staticRoutes.map((route) => ({
+  const pages: MetadataRoute.Sitemap = tunedRoutes.map((route) => ({
     url: `${BASE_URL}${route.path}`,
     lastModified: route.lastMod,
     changeFrequency: route.changeFrequency,
@@ -113,7 +141,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const localizedExtra: MetadataRoute.Sitemap = []
   for (const canonical of MULTILINGUAL_CANONICAL) {
-    const baseMeta = staticRoutes.find((r) => r.path === canonical || (canonical === "/" && r.path === ""))
+    const baseMeta = tunedRoutes.find((r) => r.path === canonical || (canonical === "/" && r.path === ""))
     const lastMod = baseMeta?.lastMod ?? DATE_CORE
     const changeFrequency = baseMeta?.changeFrequency ?? ("monthly" as const)
     const priority = (baseMeta?.priority ?? 0.85) * 0.99
