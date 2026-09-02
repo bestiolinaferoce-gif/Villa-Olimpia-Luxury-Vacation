@@ -7,13 +7,23 @@ import { apartments } from "@/data/apartments"
 import type { MonthConfig } from "@/lib/seasonalConfig"
 import type { SeasonalMonth } from "@/lib/seasonalConfig"
 import type { OccupancyStatus } from "@/lib/public-calendar/occupancy"
+import { DEFAULT_LOCALE, type SupportedLocale } from "@/lib/i18n-config"
+import { getSeasonalLandingCopy } from "@/lib/seasonal-landing-copy"
 
 export interface SeasonalAvailabilityGridProps {
   config: MonthConfig
   monthKey: Exclude<SeasonalMonth, "other">
+  locale?: SupportedLocale
 }
 
-export function SeasonalAvailabilityGrid({ config, monthKey }: SeasonalAvailabilityGridProps) {
+export function SeasonalAvailabilityGrid({
+  config,
+  monthKey,
+  locale = DEFAULT_LOCALE,
+}: SeasonalAvailabilityGridProps) {
+  const copy = getSeasonalLandingCopy(locale)
+  const isDefaultLocale = locale === DEFAULT_LOCALE
+  const monthLabel = isDefaultLocale ? config.label : copy.monthLabel
   const [statuses, setStatuses] = useState<Record<number, OccupancyStatus | "loading">>({})
 
   useEffect(() => {
@@ -43,11 +53,9 @@ export function SeasonalAvailabilityGrid({ config, monthKey }: SeasonalAvailabil
   return (
     <section className="mx-auto max-w-6xl px-4 py-14">
       <h2 className="font-playfair text-3xl font-bold text-slate-900">
-        Lodge · {config.label}
+        {copy.grid.title} · {monthLabel}
       </h2>
-      <p className="mt-2 max-w-2xl text-slate-600">
-        I calendari Airbnb vengono sincronizzati automaticamente. La disponibilità finale viene sempre confermata sulle date richieste.
-      </p>
+      <p className="mt-2 max-w-2xl text-slate-600">{copy.grid.note}</p>
       <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {apartments
           .filter((a) => a.active !== false)
@@ -55,12 +63,12 @@ export function SeasonalAvailabilityGrid({ config, monthKey }: SeasonalAvailabil
             const st = statuses[a.id] ?? "loading"
             const badge =
               st === "verified"
-                ? { text: "CALENDARIO SINCRONIZZATO", className: "bg-emerald-700 text-white" }
+                ? { text: copy.grid.badgeVerified, className: "bg-emerald-700 text-white" }
                 : st === "stale"
-                  ? { text: "DA AGGIORNARE", className: "bg-amber-500 text-slate-900" }
+                  ? { text: copy.grid.badgeStale, className: "bg-amber-500 text-slate-900" }
                   : st === "loading"
-                    ? { text: "CONTROLLO…", className: "bg-slate-500 text-white" }
-                    : { text: "VERIFICA LE DATE", className: "bg-slate-700 text-white" }
+                    ? { text: copy.grid.badgeLoading, className: "bg-slate-500 text-white" }
+                    : { text: copy.grid.badgeUnknown, className: "bg-slate-700 text-white" }
 
             return (
               <div
@@ -84,16 +92,14 @@ export function SeasonalAvailabilityGrid({ config, monthKey }: SeasonalAvailabil
                 <div className="space-y-2 p-4">
                   <h3 className="font-semibold text-slate-900">{a.name}</h3>
                   <p className="text-xs text-slate-500">
-                    Fino a {a.guests} ospiti · {a.size}
+                    {copy.grid.guestsLabel.replace("{guests}", String(a.guests))} · {a.size}
                   </p>
-                  <p className="text-sm text-slate-600">
-                    Tariffa e disponibilità confermate in base a date e numero di ospiti.
-                  </p>
+                  <p className="text-sm text-slate-600">{copy.grid.rateNote}</p>
                   <Link
                     href={`/contatti?source=seasonal_grid&month=${monthKey}&apartment=${encodeURIComponent(a.name)}#prenota`}
                     className="inline-flex text-sm font-semibold text-primary hover:underline"
                   >
-                    Richiedi questo lodge
+                    {copy.grid.requestLodge}
                   </Link>
                 </div>
               </div>

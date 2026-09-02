@@ -96,5 +96,5 @@ export default async function LocalizedSettembrePage({ params }: PageProps) {
   }
 
   const links = linkSet(L)
-  return <SettembreCapoRizzutoPageView {...links} />
+  return <SettembreCapoRizzutoPageView {...links} locale={L} />
 }
