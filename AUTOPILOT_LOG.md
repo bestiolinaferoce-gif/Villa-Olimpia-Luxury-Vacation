@@ -6,6 +6,36 @@ e non riproporre cose già scartate.
 
 ---
 
+## 2026-09-02 (3) — seguito: corpo della landing localizzato
+
+**Branch:** `claude/i18n-settembre-nord-europa` · commit `7a5ef79` · `main` non toccato
+
+Chiude il limite lasciato aperto dalla voce precedente: il corpo della landing di settembre
+non è più cablato in italiano.
+
+- Nuovo `lib/seasonal-landing-copy.ts`: copy indicizzato per locale (it/en/de/fr/no/sv),
+  con `getSeasonalLandingCopy()`.
+- `SettembreCapoRizzutoPageView`, `SeasonalAvailabilityGrid`, `SeasonalUrgencyForm` e
+  `SeasonalFAQ` accettano una prop opzionale `locale`, default `it`.
+- **Percorso italiano invariato per costruzione:** con `locale === "it"` i componenti usano
+  ancora `config.label`, `config.ctaLabel` e `FAQ_IT`. Le landing italiane giugno, luglio e
+  ottobre, che montano gli stessi componenti, non cambiano.
+- Tradotto anche lo **schema JSON-LD FAQPage**, che prima dichiarava domande italiane su
+  pagine marcate `no`, `sv`, `de`, `fr`.
+- Logica di invio del form, tracking, endpoint e numeri di contatto: non toccati.
+- Traduzioni fedeli all'italiano: nessun prezzo, sconto, temperatura o claim nuovo.
+
+**Verifica:** `tsc` e `lint` puliti, `quality:gate` verde (exit 0). In produzione h1 e FAQ
+risultano tradotti su `no`/`sv`/`de`, lo schema FAQPage di `/no/settembre-capo-rizzuto` è in
+norvegese, mentre `/settembre-capo-rizzuto` e `/giugno-2026` restano identici in italiano.
+
+**Nota di stato:** la produzione è stata aggiornata via `vercel deploy --prod` da locale, su
+richiesta esplicita di Francesco. Il sito pubblico gira quindi codice non ancora su `main`:
+**il merge della PR resta necessario** per riallineare git e produzione, altrimenti il prossimo
+deploy automatico da `main` riporterebbe indietro queste pagine.
+
+---
+
 ## 2026-09-02 (2) — sessione autopilot
 
 **Baseline:** `quality:quick` verde · HEAD `e87c0f3` · working tree sporco all'avvio, lasciato intatto
