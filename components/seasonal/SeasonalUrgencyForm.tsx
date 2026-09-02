@@ -21,12 +21,15 @@ import {
   trackWhatsAppClick,
 } from "@/components/analytics/google-analytics"
 import { MessageCircle, Phone } from "lucide-react"
+import { DEFAULT_LOCALE, type SupportedLocale } from "@/lib/i18n-config"
+import { getSeasonalLandingCopy } from "@/lib/seasonal-landing-copy"
 
 export interface SeasonalUrgencyFormProps {
   config: MonthConfig
   monthKey: Exclude<SeasonalMonth, "other">
   defaultCheckIn: string
   defaultCheckOut: string
+  locale?: SupportedLocale
 }
 
 export function SeasonalUrgencyForm({
@@ -34,7 +37,12 @@ export function SeasonalUrgencyForm({
   monthKey,
   defaultCheckIn,
   defaultCheckOut,
+  locale = DEFAULT_LOCALE,
 }: SeasonalUrgencyFormProps) {
+  const copy = getSeasonalLandingCopy(locale)
+  const isDefaultLocale = locale === DEFAULT_LOCALE
+  const monthLabel = isDefaultLocale ? config.label : copy.monthLabel
+  const submitLabel = isDefaultLocale ? config.ctaLabel : copy.form.submit
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
   const [phone, setPhone] = useState("")
@@ -127,17 +135,15 @@ export function SeasonalUrgencyForm({
   return (
     <section className="mx-auto max-w-3xl px-4 py-14">
       <div className="inline-flex items-center rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-xs font-semibold text-primary">
-        {config.label}
+        {monthLabel}
       </div>
-      <h2 className="mt-3 font-playfair text-3xl font-bold tracking-tight text-slate-900">Preventivo per questo periodo</h2>
-      <p className="mt-2 text-slate-600 leading-relaxed">
-        Compila il form: riceviamo la richiesta sulla casella operativa e ti rispondiamo con una proposta chiara, senza intermediari.
-      </p>
+      <h2 className="mt-3 font-playfair text-3xl font-bold tracking-tight text-slate-900">{copy.form.title}</h2>
+      <p className="mt-2 text-slate-600 leading-relaxed">{copy.form.intro}</p>
 
       <div className="mt-6 flex flex-col gap-4 rounded-2xl border border-slate-200 bg-gradient-to-br from-slate-50/80 to-white p-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-wide text-primary">Contatto immediato</p>
-          <p className="mt-1 text-sm text-slate-600">Stesso giorno lavorativo · Villa Olimpia diretta</p>
+          <p className="text-xs font-semibold uppercase tracking-wide text-primary">{copy.form.immediateLabel}</p>
+          <p className="mt-1 text-sm text-slate-600">{copy.form.immediateNote}</p>
         </div>
         <div className="flex flex-wrap gap-2">
           <Button variant="outline" size="sm" className="gap-1.5" asChild>
@@ -157,11 +163,11 @@ export function SeasonalUrgencyForm({
               onClick={() => trackPhoneClick(`+393335773390_seasonal_${monthKey}_form`)}
             >
               <Phone className="h-4 w-4" />
-              Chiama
+              {copy.form.call}
             </a>
           </Button>
           <Button variant="ghost" size="sm" asChild>
-            <Link href="/contatti?source=seasonal_form_full#prenota">Form completo</Link>
+            <Link href="/contatti?source=seasonal_form_full#prenota">{copy.form.fullForm}</Link>
           </Button>
         </div>
       </div>
@@ -173,39 +179,39 @@ export function SeasonalUrgencyForm({
       >
         <div className="grid gap-4 sm:grid-cols-2">
           <div>
-            <Label htmlFor="sn">Nome</Label>
+            <Label htmlFor="sn">{copy.form.name}</Label>
             <Input id="sn" value={name} onChange={(e) => setName(e.target.value)} required minLength={2} />
           </div>
           <div>
-            <Label htmlFor="se">Email</Label>
+            <Label htmlFor="se">{copy.form.email}</Label>
             <Input id="se" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
           </div>
           <div>
-            <Label htmlFor="sp">Telefono</Label>
+            <Label htmlFor="sp">{copy.form.phone}</Label>
             <Input id="sp" type="tel" value={phone} onChange={(e) => setPhone(e.target.value)} required />
           </div>
           <div>
-            <Label htmlFor="sg">Ospiti</Label>
+            <Label htmlFor="sg">{copy.form.guests}</Label>
             <Input id="sg" value={guests} onChange={(e) => setGuests(e.target.value)} required />
           </div>
           <div>
-            <Label htmlFor="sci">Check-in</Label>
+            <Label htmlFor="sci">{copy.form.checkIn}</Label>
             <Input id="sci" type="date" value={checkIn} onChange={(e) => setCheckIn(e.target.value)} required />
           </div>
           <div>
-            <Label htmlFor="sco">Check-out</Label>
+            <Label htmlFor="sco">{copy.form.checkOut}</Label>
             <Input id="sco" type="date" value={checkOut} onChange={(e) => setCheckOut(e.target.value)} required />
           </div>
         </div>
         <div>
-          <Label htmlFor="sap">Lodge preferito</Label>
+          <Label htmlFor="sap">{copy.form.lodge}</Label>
           <select
             id="sap"
             className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
             value={apartment}
             onChange={(e) => setApartment(e.target.value)}
           >
-            <option value="">Nessuna preferenza</option>
+            <option value="">{copy.form.noPreference}</option>
             {options.map((a) => (
               <option key={a.id} value={a.name}>
                 {a.name}
@@ -214,7 +220,7 @@ export function SeasonalUrgencyForm({
           </select>
         </div>
         <div>
-          <Label htmlFor="sm">Messaggio (opzionale)</Label>
+          <Label htmlFor="sm">{copy.form.message}</Label>
           <Textarea id="sm" value={message} onChange={(e) => setMessage(e.target.value)} rows={4} />
         </div>
         <label className="flex items-start gap-2 text-sm text-slate-700">
@@ -224,7 +230,7 @@ export function SeasonalUrgencyForm({
             onChange={(e) => setMarketingOptIn(e.target.checked)}
             className="mt-1"
           />
-          Voglio ricevere aggiornamenti e offerte dedicate sul canale diretto (opt-in).
+          {copy.form.consent}
         </label>
         <Button
           type="submit"
@@ -233,15 +239,11 @@ export function SeasonalUrgencyForm({
           className="w-full"
           disabled={status === "loading" || status === "done"}
         >
-          {status === "done" ? "Richiesta inviata" : status === "loading" ? "Invio…" : config.ctaLabel}
+          {status === "done" ? copy.form.sent : status === "loading" ? copy.form.sending : submitLabel}
         </Button>
-        {status === "error" && (
-          <p className="text-sm text-red-600">Invio non riuscito. Riprova o usa WhatsApp.</p>
-        )}
+        {status === "error" && <p className="text-sm text-red-600">{copy.form.error}</p>}
       </form>
-      <p className="mt-4 text-center text-sm text-slate-600">
-        La richiesta arriva sul canale operativo: ti rispondiamo appena possibile, di solito entro un giorno lavorativo.
-      </p>
+      <p className="mt-4 text-center text-sm text-slate-600">{copy.form.footer}</p>
     </section>
   )
 }

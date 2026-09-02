@@ -3,6 +3,8 @@
 import { motion } from "framer-motion"
 import type { SeasonalMonth } from "@/lib/seasonalConfig"
 import { SEASONAL_CAMPAIGN_YEAR } from "@/lib/seasonalConfig"
+import { DEFAULT_LOCALE, type SupportedLocale } from "@/lib/i18n-config"
+import { getSeasonalLandingCopy } from "@/lib/seasonal-landing-copy"
 
 const FAQ_IT: Record<Exclude<SeasonalMonth, "other">, Array<{ q: string; a: string }>> = {
   maggio: [
@@ -77,8 +79,18 @@ const FAQ_IT: Record<Exclude<SeasonalMonth, "other">, Array<{ q: string; a: stri
   ],
 }
 
-export function SeasonalFAQ({ month }: { month: Exclude<SeasonalMonth, "other"> }) {
-  const items = FAQ_IT[month]
+export function SeasonalFAQ({
+  month,
+  locale = DEFAULT_LOCALE,
+}: {
+  month: Exclude<SeasonalMonth, "other">
+  locale?: SupportedLocale
+}) {
+  // Il copy tradotto copre la sola landing di settembre, l'unica servita fuori dall'italiano.
+  const localized = locale !== DEFAULT_LOCALE && month === "settembre"
+  const copy = getSeasonalLandingCopy(locale)
+  const items = localized ? copy.faq : FAQ_IT[month]
+  const heading = localized ? copy.faqHeading : `FAQ · ${month} ${SEASONAL_CAMPAIGN_YEAR}`
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -91,7 +103,7 @@ export function SeasonalFAQ({ month }: { month: Exclude<SeasonalMonth, "other"> 
   return (
     <section className="mx-auto max-w-3xl px-4 py-14">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <h2 className="font-playfair text-3xl font-bold text-slate-900">FAQ · {month} {SEASONAL_CAMPAIGN_YEAR}</h2>
+      <h2 className="font-playfair text-3xl font-bold text-slate-900">{heading}</h2>
       <div className="mt-6 space-y-3">
         {items.map((item, idx) => (
           <motion.div

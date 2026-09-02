@@ -34,6 +34,15 @@ export const PARTIAL_ROUTES_FOR_DE_FR = [
 
 export type PartialRouteForDeFr = (typeof PARTIAL_ROUTES_FOR_DE_FR)[number]
 
+/**
+ * Rotte servite anche in `no` e `sv`. Il Nord Europa e' il mercato estero prioritario
+ * (volo diretto Oslo-Lamezia, lunedi, maggio-ottobre): la landing di settembre deve
+ * esistere in quei due locali, non solo in de/fr.
+ */
+export const NORDIC_ROUTES = ["/settembre-capo-rizzuto"] as const
+
+export type NordicRoute = (typeof NORDIC_ROUTES)[number]
+
 export function isSupportedLocale(value: string | null | undefined): value is SupportedLocale {
   return Boolean(value && (SUPPORTED_LOCALES as readonly string[]).includes(value))
 }
@@ -50,6 +59,11 @@ export function isCoreRoute(path: string): path is CoreTranslatedRoute {
 export function isPartialRouteForDeFr(path: string): path is PartialRouteForDeFr {
   const p = normalizeCanonicalPath(path)
   return (PARTIAL_ROUTES_FOR_DE_FR as readonly string[]).includes(p)
+}
+
+export function isNordicRoute(path: string): path is NordicRoute {
+  const p = normalizeCanonicalPath(path)
+  return (NORDIC_ROUTES as readonly string[]).includes(p)
 }
 
 /** Normalize to canonical Italian path key (no locale prefix, no trailing slash except "/") */
@@ -75,7 +89,8 @@ export function localeHasRoute(locale: SupportedLocale, canonicalPath: string): 
   if (locale === "no" && p === "/") return false
 
   if (locale === "de" || locale === "fr") return isPartialRouteForDeFr(p)
-  if (locale === "nl" || locale === "sv") return p === "/"
-  if (locale === "no") return false
+  if (locale === "sv") return p === "/" || isNordicRoute(p)
+  if (locale === "nl") return p === "/"
+  if (locale === "no") return isNordicRoute(p)
   return false
 }

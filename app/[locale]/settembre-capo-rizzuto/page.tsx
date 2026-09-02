@@ -33,9 +33,19 @@ const metaByLocale: Record<string, { title: string; description: string }> = {
     description:
       "Septembre en Calabre : mer à 26°C, plages désertes et prix jusqu'à 30% plus bas. Réservez maintenant votre séjour de septembre.",
   },
+  no: {
+    title: "September i Calabria | Varmt Hav og Leiligheter med Basseng",
+    description:
+      "September på Capo Rizzuto: varmt hav, roligere strender og leiligheter med basseng. Spiaggia dei Gigli ligger cirka 100 meter unna. Book direkte.",
+  },
+  sv: {
+    title: "September i Calabrien | Varmt Hav och Lägenheter med Pool",
+    description:
+      "September på Capo Rizzuto: varmt hav, lugnare stränder och lägenheter med pool. Spiaggia dei Gigli ligger cirka 100 meter bort. Boka direkt.",
+  },
 }
 
-const SUPPORTED_SETTEMBRE_LOCALES = ["en", "de", "fr"] as const
+const SUPPORTED_SETTEMBRE_LOCALES = ["en", "de", "fr", "no", "sv"] as const
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { locale } = await params
@@ -43,12 +53,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     notFound()
   }
 
-  const path =
-    locale === "en"
-      ? "/en/settembre-capo-rizzuto"
-      : locale === "de"
-        ? "/de/settembre-capo-rizzuto"
-        : "/fr/settembre-capo-rizzuto"
+  const path = getLocalizedPathForCanonical("/settembre-capo-rizzuto", locale as SupportedLocale)
   const meta = metaByLocale[locale]
   const base = definePageMetadata({
     title: meta.title,
@@ -77,7 +82,9 @@ function linkSet(L: SupportedLocale) {
     appartamentiHref: isEn
       ? getLocalizedPathForCanonical("/appartamenti", "en")
       : getLocalizedPathForCanonical("/appartamenti", L),
-    homeHref: isEn ? "/en" : L === "de" ? "/de" : L === "fr" ? "/fr" : "/",
+    // `no` non ha homepage localizzata di proposito (/no reindirizza): il punto di
+    // ingresso norvegese e' la landing dedicata, la stessa usata dall'hreflang.
+    homeHref: L === "no" ? "/no/norway" : `/${L}`,
   }
 }
 
@@ -89,5 +96,5 @@ export default async function LocalizedSettembrePage({ params }: PageProps) {
   }
 
   const links = linkSet(L)
-  return <SettembreCapoRizzutoPageView {...links} />
+  return <SettembreCapoRizzutoPageView {...links} locale={L} />
 }

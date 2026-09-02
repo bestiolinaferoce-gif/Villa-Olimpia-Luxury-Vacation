@@ -6,6 +6,102 @@ e non riproporre cose già scartate.
 
 ---
 
+## 2026-09-02 (3) — seguito: corpo della landing localizzato
+
+**Branch:** `claude/i18n-settembre-nord-europa` · commit `7a5ef79` · `main` non toccato
+
+Chiude il limite lasciato aperto dalla voce precedente: il corpo della landing di settembre
+non è più cablato in italiano.
+
+- Nuovo `lib/seasonal-landing-copy.ts`: copy indicizzato per locale (it/en/de/fr/no/sv),
+  con `getSeasonalLandingCopy()`.
+- `SettembreCapoRizzutoPageView`, `SeasonalAvailabilityGrid`, `SeasonalUrgencyForm` e
+  `SeasonalFAQ` accettano una prop opzionale `locale`, default `it`.
+- **Percorso italiano invariato per costruzione:** con `locale === "it"` i componenti usano
+  ancora `config.label`, `config.ctaLabel` e `FAQ_IT`. Le landing italiane giugno, luglio e
+  ottobre, che montano gli stessi componenti, non cambiano.
+- Tradotto anche lo **schema JSON-LD FAQPage**, che prima dichiarava domande italiane su
+  pagine marcate `no`, `sv`, `de`, `fr`.
+- Logica di invio del form, tracking, endpoint e numeri di contatto: non toccati.
+- Traduzioni fedeli all'italiano: nessun prezzo, sconto, temperatura o claim nuovo.
+
+**Verifica:** `tsc` e `lint` puliti, `quality:gate` verde (exit 0). In produzione h1 e FAQ
+risultano tradotti su `no`/`sv`/`de`, lo schema FAQPage di `/no/settembre-capo-rizzuto` è in
+norvegese, mentre `/settembre-capo-rizzuto` e `/giugno-2026` restano identici in italiano.
+
+**Nota di stato:** la produzione è stata aggiornata via `vercel deploy --prod` da locale, su
+richiesta esplicita di Francesco. Il sito pubblico gira quindi codice non ancora su `main`:
+**il merge della PR resta necessario** per riallineare git e produzione, altrimenti il prossimo
+deploy automatico da `main` riporterebbe indietro queste pagine.
+
+---
+
+## 2026-09-02 (2) — sessione autopilot
+
+**Baseline:** `quality:quick` verde · HEAD `e87c0f3` · working tree sporco all'avvio, lasciato intatto
+**Branch:** `claude/i18n-settembre-nord-europa` · 1 commit · `main` non toccato
+**Backlog:** punto **10** — copertura `no`/`sv` di `/settembre-capo-rizzuto`
+
+### Il gap esisteva
+
+Sonda riproducibile su `localeHasRoute("/settembre-capo-rizzuto")` prima della modifica:
+`it/en/de/fr => true`, **`no => false`, `sv => false`**. Di conseguenza l'hreflang generato da
+`buildHreflangLanguages()` conteneva solo it/en/de/fr, il sitemap non esponeva nessuna URL
+`no`/`sv` della landing, e `app/[locale]/settembre-capo-rizzuto/page.tsx` faceva `notFound()`
+su quei due locali (`SUPPORTED_SETTEMBRE_LOCALES = ["en","de","fr"]`).
+
+Il mercato dichiarato prioritario in `CLAUDE.md` (Nord Europa, volo diretto Oslo–Lamezia)
+non aveva quindi la landing di settembre in nessuna delle sue due lingue.
+
+### Implementato
+
+| Livello | Cosa |
+|---|---|
+| 🟢 | `lib/i18n-config.ts`: nuovo set `NORDIC_ROUTES` + `isNordicRoute()`; `localeHasRoute()` serve `/settembre-capo-rizzuto` anche a `no` e `sv`. `nl` resta invariato (solo `/`) |
+| 🟢 | `app/[locale]/settembre-capo-rizzuto/page.tsx`: metadata `no`/`sv`, locali aggiunti a `SUPPORTED_SETTEMBRE_LOCALES`, `path` derivato da `getLocalizedPathForCanonical` invece della catena di ternari, `homeHref` → `/no/norway` per `no` (la homepage `/no` reindirizza di proposito) |
+| 🟡 | `next.config.js`: la regola `"/:locale(nl\|no\|sv)/settembre-capo-rizzuto" → "/settembre-capo-rizzuto"` 301-reindirizzava esattamente le URL che stavamo aggiungendo a sitemap e hreflang. Ristretta a `nl` |
+
+Sitemap e hreflang **non sono stati modificati a mano**: derivano già entrambi da
+`localeHasRoute()`, quindi si sono allineati da soli. Verificato, non assunto.
+
+### Verifica
+
+- `npx tsc --noEmit` pulito · `npm run quality:gate` verde (exit 0), build di produzione inclusa
+- sonda post-fix: `no => true`, `sv => true`; hreflang ora 7 voci (it/en/de/fr/no/sv/x-default)
+- `app/sitemap.ts` renderizzato: **71 URL** (erano 69), esattamente `+2`, nessuna rotta persa.
+  `/no/settembre-capo-rizzuto` e `/sv/settembre-capo-rizzuto` a `priority 0.96 / daily / lastmod 2026-08-28`
+- dev server: `/no/...` e `/sv/...` rispondono **200** con canonical self-referenziale e title
+  localizzato; `/nl/...` continua a reindirizzare (invariato); `/en/...` e `/de/...` invariati
+- destinazioni dei link della pagina verificate 200: `/no/contatti`, `/contatti`, `/appartamenti`, `/no/norway`
+
+### Limite noto di questa modifica (non un bug introdotto)
+
+`SettembreCapoRizzutoPageView` ha il **body copy cablato in italiano**: la pagina `no`/`sv` esce
+con navigazione, `<title>` e description localizzati, ma testo del corpo in italiano —
+**esattamente come già oggi per `de` e `fr`**. Non è una regressione, è il pattern esistente.
+Localizzare davvero il corpo significa parametrizzare la view e i tre componenti stagionali
+(`SeasonalAvailabilityGrid`, `SeasonalUrgencyForm`, `SeasonalFAQ`): diff grande, tocca il form di
+conversione, fuori dal perimetro di un commit reversibile. Va deciso a parte.
+
+### Rilevato ma non implementato
+
+- **`/no/contatti` risponde 200** pur non essendo dichiarato in `localeHasRoute`: è una "soft 200"
+  fuori da sitemap e hreflang, lo stesso caso che il commento in `next.config.js` dice di voler
+  evitare. Preesistente, fuori perimetro.
+- **CTA verso `/contatti` italiano.** Per `no`/`sv` `getLocalizedPathForCanonical("/contatti", L)`
+  ricade sulla versione italiana (200, ma non localizzata). Estendere `/contatti` a `no`/`sv`
+  sarebbe il passo successivo naturale.
+- Tutto quanto già elencato nella sessione precedente (split-brain, cron iCal, repo pesante,
+  documentazione contraddittoria) resta aperto e invariato.
+
+### Serve una decisione da Francesco
+
+1. Se localizzare davvero il corpo della landing settembre per `no`/`sv` (e a quel punto anche
+   `de`/`fr`), o se il livello "chrome + metadata localizzati" è considerato sufficiente.
+2. Se estendere `/contatti` ai locali `no`/`sv`, così che la CTA della landing resti in lingua.
+
+---
+
 ## 2026-09-02 — sessione autopilot
 
 **Baseline:** `quality:quick` verde · HEAD `7a7849c` · working tree sporco all'avvio (vedi sotto)
