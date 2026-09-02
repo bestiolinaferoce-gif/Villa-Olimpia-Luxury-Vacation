@@ -14,14 +14,64 @@ const SITE_URL = process.env.SITE_URL || "https://villaolimpiacaporizzuto.com"
 const REPORT_DIR = path.join(ROOT, "reports", "seo-google-autopilot")
 const TODAY = new Date().toISOString().slice(0, 10)
 
+/**
+ * Anno di campagna letto da lib/seasonalConfig.ts, per non avere due fonti di verita'.
+ */
+function readCampaignYear() {
+  try {
+    const src = fs.readFileSync(path.join(ROOT, "lib", "seasonalConfig.ts"), "utf8")
+    const m = src.match(/SEASONAL_CAMPAIGN_YEAR\s*=\s*(\d{4})/)
+    if (m) return Number(m[1])
+  } catch {}
+  return new Date().getFullYear()
+}
+
+const CAMPAIGN_YEAR = readCampaignYear()
+
+/** Mesi con una landing stagionale dedicata, in ordine di calendario (indice 0-based). */
+const SEASONAL_MONTHS = [
+  { key: "maggio", index: 4 },
+  { key: "giugno", index: 5 },
+  { key: "luglio", index: 6 },
+  { key: "settembre", index: 8 },
+  { key: "ottobre", index: 9 },
+]
+
+/** Stessa mappatura di seasonalLandingPath() in lib/seasonalConfig.ts. */
+function seasonalLandingPath(month) {
+  if (month === "settembre") return "/settembre-capo-rizzuto"
+  if (month === "ottobre") return "/ottobre-capo-rizzuto"
+  return `/${month}-${CAMPAIGN_YEAR}`
+}
+
+/**
+ * Il mese da spingere oggi: quello corrente se ha una landing dedicata,
+ * altrimenti il primo mese stagionale ancora davanti. Fuori stagione: nessuno.
+ */
+function resolveTargetMonth(now = new Date()) {
+  const current = now.getMonth()
+  return SEASONAL_MONTHS.find((m) => m.index >= current) || null
+}
+
+const TARGET_MONTH = resolveTargetMonth()
+const TARGET_LABEL = TARGET_MONTH
+  ? `${TARGET_MONTH.key.charAt(0).toUpperCase()}${TARGET_MONTH.key.slice(1)} ${CAMPAIGN_YEAR}`
+  : null
+const TARGET_PATH = TARGET_MONTH ? seasonalLandingPath(TARGET_MONTH.key) : null
+const CAMPAIGN_NAME = TARGET_MONTH
+  ? `${TARGET_MONTH.key}_${CAMPAIGN_YEAR}_recovery`
+  : `evergreen_${CAMPAIGN_YEAR}_diretto`
+
 const priorityPages = [
-  { label: "Giugno 2026", path: "/giugno-2026", intent: "vendita giugno immediata" },
+  ...(TARGET_MONTH
+    ? [{ label: TARGET_LABEL, path: TARGET_PATH, intent: `vendita ${TARGET_MONTH.key} immediata` }]
+    : []),
   { label: "Prenota", path: "/prenota", intent: "conversione richiesta disponibilita" },
   { label: "Contatti", path: "/contatti", intent: "telefono, WhatsApp, form diretto" },
   { label: "Home", path: "/", intent: "brand e domanda generica" },
   {
     label: "Bandiera Blu",
-    path: "/bandiera-blu-2026-isola-capo-rizzuto",
+    path: `/bandiera-blu-${CAMPAIGN_YEAR}-isola-capo-rizzuto`,
     intent: "query mare pulito e fiducia territoriale",
   },
 ]
@@ -86,7 +136,7 @@ function buildCampaignUrl(pagePath, channel) {
     source: "campaign_link",
     utm_source: channel.source,
     utm_medium: channel.medium,
-    utm_campaign: "giugno_2026_recovery",
+    utm_campaign: CAMPAIGN_NAME,
   })
   return `${SITE_URL}${pagePath}?${params.toString()}`
 }
@@ -152,12 +202,14 @@ function renderReport(scriptResults, pages) {
     }),
     "",
     "## Azioni Google Search Console",
-    "- Richiedi indicizzazione solo per queste URL, in questo ordine: /giugno-2026, /prenota, /contatti, /, /bandiera-blu-2026-isola-capo-rizzuto.",
+    `- Richiedi indicizzazione solo per queste URL, in questo ordine: ${priorityPages.map((p) => p.path).join(", ")}.`,
     "- Non richiedere indicizzazione per sitemap.xml, font .woff2, URL vecchie con redirect, URL noindex o duplicati canonici: sono rumore normale.",
     "- Se una delle 5 URL sopra risulta 'URL non su Google', usa 'Testa URL pubblicato' e poi 'Richiedi indicizzazione'.",
     "",
     "## Azioni Google Business Profile",
-    "- Pubblica un post/offerta oggi: 'Giugno a Capo Rizzuto: disponibilita limitate, appartamenti con piscina, prenotazione diretta'. Link: /giugno-2026 con UTM Google Business Profile.",
+    TARGET_MONTH
+      ? `- Pubblica un post/offerta oggi: '${TARGET_LABEL.split(" ")[0]} a Capo Rizzuto: disponibilita limitate, appartamenti con piscina, prenotazione diretta'. Link: ${TARGET_PATH} con UTM Google Business Profile.`
+      : "- Pubblica un post/offerta oggi sulla prenotazione diretta (nessuna landing stagionale attiva in questo periodo). Link: /prenota con UTM Google Business Profile.",
     "- Aggiungi 3 foto reali recenti: piscina/esterni, appartamento luminoso, mare o Bandiera Blu. Evita immagini generiche.",
     "- Controlla che telefono, sito e pulsante messaggio puntino ai contatti corretti.",
     "",
@@ -168,9 +220,11 @@ function renderReport(scriptResults, pages) {
     ]),
     "",
     "## Google Ads consigliato",
-    "- Budget emergenza: 10-20 euro/giorno fino al riempimento giugno.",
-    "- Landing: /giugno-2026.",
-    "- Query: appartamenti capo rizzuto, vacanze capo rizzuto giugno, appartamenti isola capo rizzuto piscina, villa capo rizzuto, casa vacanze capo rizzuto mare.",
+    TARGET_MONTH
+      ? `- Budget emergenza: 10-20 euro/giorno fino al riempimento ${TARGET_MONTH.key}.`
+      : "- Budget: nessuna spinta stagionale in corso, tenere solo brand difensivo.",
+    `- Landing: ${TARGET_PATH || "/prenota"}.`,
+    `- Query: appartamenti capo rizzuto, vacanze capo rizzuto${TARGET_MONTH ? ` ${TARGET_MONTH.key}` : ""}, appartamenti isola capo rizzuto piscina, villa capo rizzuto, casa vacanze capo rizzuto mare.`,
     "- Escludi: lavoro, affitto annuale, vendita, meteo, gratis, campeggio se non pertinente.",
     "",
     "## Esito",
