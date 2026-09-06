@@ -60,10 +60,17 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     description: meta.description,
     path,
   })
+  // Cannibalizzazione EN: /en/settembre-capo-rizzuto e /en/september-italy-holidays
+  // avevano title e meta description IDENTICI e canonical auto-referenziali, quindi
+  // competevano fra loro sulla stessa query. Consolidiamo i segnali sullo slug in
+  // lingua, che e' quello giusto da mostrare a un utente inglese.
+  const EN_SEPTEMBER_CANONICAL = "https://villaolimpiacaporizzuto.com/en/september-italy-holidays"
+
   return {
     ...base,
     alternates: {
       ...base.alternates,
+      ...(locale === "en" ? { canonical: EN_SEPTEMBER_CANONICAL } : {}),
       languages: buildHreflangLanguages("/settembre-capo-rizzuto"),
     },
   }

@@ -8,6 +8,7 @@ import { CookiePreferencesTrigger } from "@/components/cookie-preferences-trigge
 import { getLocalizedPathForCanonical } from "@/lib/i18n-routing"
 import type { SupportedLocale } from "@/lib/i18n-config"
 import { TrackedContactAnchor } from "@/components/analytics/tracked-contact-anchor"
+import { LanguageLinks } from "@/components/language-links"
 
 export function Footer() {
   const { t, locale } = useI18n()
@@ -231,7 +232,10 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t text-center text-sm text-muted-foreground space-y-2">
+        <div className="mt-12 pt-8 border-t text-center text-sm text-muted-foreground space-y-4">
+          {/* Link lingua crawlabili: rendono raggiungibili /en /de /fr /nl /no /sv,
+              che prima erano orfane perche' l'header usa bottoni, non <a href>. */}
+          <LanguageLinks className="flex justify-center" />
           <p>
             &copy; {new Date().getFullYear()} {t.footer.brand.title} - {t.footer.copyright} | Capo Rizzuto, Calabria
           </p>

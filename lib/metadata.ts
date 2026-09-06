@@ -33,6 +33,18 @@ const OPEN_GRAPH_LOCALE_BY_LOCALE: Record<SupportedLocale, string> = {
   sv: "sv_SE",
 }
 
+/**
+ * Ricava il locale dal primo segmento del path (/en/..., /de/..., ...).
+ * Serve a non dichiarare og:locale it_IT su pagine inglesi o tedesche:
+ * prima /en/capo-rizzuto e /de/capo-rizzuto dichiaravano entrambe it_IT.
+ */
+function localeFromPath(path: string): SupportedLocale {
+  const first = path.split("/").filter(Boolean)[0]
+  return SUPPORTED_LOCALES.includes(first as SupportedLocale)
+    ? (first as SupportedLocale)
+    : "it"
+}
+
 export function generateMetadata({
   title,
   description,
@@ -81,7 +93,7 @@ export function generateMetadata({
           alt: title,
         },
       ],
-      locale: "it_IT",
+      locale: OPEN_GRAPH_LOCALE_BY_LOCALE[localeFromPath(canonicalPath)],
       type,
     },
     twitter: {

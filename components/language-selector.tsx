@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useRef, useEffect, useMemo } from "react"
+import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
 import { Globe, Check } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
@@ -104,11 +105,25 @@ export function LanguageSelector() {
             className="absolute top-full right-0 mt-2 w-48 bg-white rounded-xl shadow-2xl border-2 border-primary/20 overflow-hidden z-50"
           >
             <div className="p-2">
+              {/* <Link> e non <button>: servono veri <a href> per accessibilita',
+                  apri-in-nuova-scheda e crawlabilita'. handleLanguageChange resta
+                  per il toast e la chiusura del menu. */}
               {languages.map((lang) => (
-                <button
+                <Link
                   key={lang.code}
-                  type="button"
-                  onClick={() => handleLanguageChange(lang.code)}
+                  href={buildUrlForLocale(pathname, lang.code)}
+                  hrefLang={lang.code}
+                  lang={lang.code}
+                  prefetch={false}
+                  aria-current={locale === lang.code ? "page" : undefined}
+                  onClick={(event) => {
+                    // Lascia passare cmd/ctrl-click e click centrale: apre in nuova scheda.
+                    if (event.metaKey || event.ctrlKey || event.shiftKey || event.button !== 0) {
+                      return
+                    }
+                    event.preventDefault()
+                    handleLanguageChange(lang.code)
+                  }}
                   className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all text-left ${
                     locale === lang.code
                       ? "bg-primary/10 text-primary font-semibold"
@@ -118,7 +133,7 @@ export function LanguageSelector() {
                   <span className="text-2xl">{lang.flag}</span>
                   <span className="flex-1 text-sm">{lang.name}</span>
                   {locale === lang.code && <Check className="w-4 h-4 text-primary" />}
-                </button>
+                </Link>
               ))}
             </div>
             <div className="px-4 py-2 bg-primary/5 border-t border-primary/10">
